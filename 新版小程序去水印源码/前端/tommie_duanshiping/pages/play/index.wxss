@@ -1,0 +1,57 @@
+.container {
+    height: 100%;
+    width: 750rpx;
+}
+
+video {
+    width: 750rpx;
+    height: 100%;
+}
+
+.title {
+    position: absolute;
+    color: white;
+    font-size: 28rpx;
+    left: 50rpx;
+    margin-right: 40rpx;
+    bottom: 100rpx;
+    display: inline;
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+.sidebar {
+    width: 100rpx;
+    height: 550rpx;
+    position: absolute;
+    right: 0;
+    top: 40%;
+}
+
+.sidebar .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 130rpx;
+}
+
+.sidebar .item cover-image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.sidebar .item .text {
+    color: white;
+    font-size: 24rpx;
+    margin-bottom: 28rpx;
+}
+
+.sidebar .item .share-img-button {
+    background: none;
+    border: none;
+}
+
+.sidebar .item .share-img-button::after {
+    border: none;
+}

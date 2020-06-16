@@ -1,0 +1,105 @@
+.qqtxt{float:left;margin:20px 0 0 0;width:960px;padding:0 0 20px 0;}
+.qqtxt li{float:left;}
+.qqtxt .l1{width:480px;text-align:center;border-right:#E7E7E7 dotted 1px;height:80px;padding:20px 0 0 0;color:#999;}
+.qqtxt .l1 img{margin-bottom:8px;}
+.qqtxt .l2{width:459px;padding:20px 0 0 20px;color:#999;line-height:20px;}
+.qqtxt .l3{width:960px;padding:20px 0 0 0;color:#999;line-height:24px;text-align:center;}
+.qqtxt .l3 strong{font-size:14px;color:#0066CC;}
+.qqtxt .l3 input{margin:10px 0 0 393px;}
+
+/*签到*/
+.qiandaocap{float:left;border:#E1E1E2 solid 1px;width:938px;margin:10px 10px 0 10px;height:40px;text-align:center;background-color:#F5F5F5;}
+.qiandaocap li{float:left;border-right:#e1e1e2 solid 1px;padding:12px 0 0 0;height:28px;}
+.qiandaocap .l1{width:230px;padding-top:13px;height:27px;}
+.qiandaocap .l2{width:130px;}
+.qiandaocap .l3{width:240px;}
+.qiandaocap .l4{width:335px;border-right:0;}
+.qiandao{float:left;border:#E1E1E2 solid 1px;width:938px;margin:0 10px 0 10px;height:32px;border-top:0;text-align:center;}
+.qiandao li{float:left;border-right:#e1e1e2 solid 1px;padding:8px 0 0 0;height:24px;}
+.qiandao .l1{width:230px;}
+.qiandao .l2{width:130px;}
+.qiandao .l3{width:240px;}
+.qiandao .l4{width:335px;border-right:0;}
+.qiandao:hover{background-color:#f9f9f9;}
+
+/*积分*/
+.jflogcap{float:left;border:#E1E1E2 solid 1px;width:938px;margin:10px 10px 0 10px;height:40px;text-align:center;background-color:#F5F5F5;}
+.jflogcap li{float:left;border-right:#e1e1e2 solid 1px;padding:12px 0 0 0;height:28px;}
+.jflogcap .l1{width:230px;padding-top:13px;height:27px;}
+.jflogcap .l2{width:130px;}
+.jflogcap .l3{width:240px;}
+.jflogcap .l4{width:335px;border-right:0;}
+.jflog{float:left;border:#E1E1E2 solid 1px;width:938px;margin:0 10px 0 10px;height:32px;border-top:0;text-align:center;}
+.jflog li{float:left;border-right:#e1e1e2 solid 1px;padding:8px 0 0 0;height:24px;}
+.jflog .l1{width:230px;}
+.jflog .l2{width:130px;}
+.jflog .l3{width:240px;}
+.jflog .l4{width:335px;border-right:0;}
+.jflog:hover{background-color:#f9f9f9;}
+
+/*收货地址*/
+.shdzlistcap{float:left;border:#E1E1E2 solid 1px;width:938px;margin:10px 10px 0 10px;height:40px;text-align:center;background-color:#F5F5F5;}
+.shdzlistcap li{float:left;border-right:#e1e1e2 solid 1px;padding:12px 0 0 0;height:28px;}
+.shdzlistcap .l0{width:30px;padding-top:13px;height:27px;}
+.shdzlistcap .l1{width:440px;text-align:left;padding-left:10px;}
+.shdzlistcap .l2{width:130px;}
+.shdzlistcap .l3{width:174px;}
+.shdzlistcap .l4{width:150px;border-right:0;}
+.shdzlist{float:left;border:#E1E1E2 solid 1px;width:938px;margin:0 10px 0 10px;height:32px;border-top:0;text-align:center;}
+.shdzlist li{float:left;border-right:#e1e1e2 solid 1px;padding:8px 0 0 0;height:24px;}
+.shdzlist .l0{width:30px;padding:10px 0 0 0;height:22px;text-align:center;}
+.shdzlist .l1{width:440px;text-align:left;padding-left:10px;}
+.shdzlist .l2{width:130px;}
+.shdzlist .l3{width:174px;}
+.shdzlist .l4{width:150px;border-right:0;}
+.shdzlist:hover{background:rgba(252,253,254,1);-webkit-transition:background-color 0.3s linear;-moz-transition:background-color 0.3s linear;-o-transition:background-color 0.3s linear;transition:background-color 0.3s linear;}
+
+/*收藏*/
+.favshop{float:left;width:940px;margin:10px 0 0 10px;border-bottom:#E5E5E5 solid 1px;padding:0 0 10px 0;}
+.favshop .u1{float:left;width:185px;border-right:#eee solid 1px;height:156px;}
+.favshop .u1 li{float:left;}
+.favshop .u1 .l1{width:80px;text-align:center;}
+.favshop .u1 .l1 .tp{margin:0 0 8px 0;}
+.favshop .u1 .l2{width:85px;line-height:25px;padding:0 10px 0 10px;}
+.favshop .u2{float:left;width:718px;}
+.favshop .u2 li{float:left;}
+.favshop .u2 .l1{width:104px;margin:0 0 0 15px;}
+.favshop .u2 .l1 a:hover{text-decoration:none;color:#ff6600;}
+.favshop .u2 .l1 img{border:#eee solid 1px;padding:1px;}
+.favpro{float:left;width:940px;}
+.favpro .u1{float:left;width:940px;}
+.favpro .u1 li{float:left;}
+.favpro .u1 .l1{width:124px;margin:10px 0 0 10px;height:220px;}
+.favpro .u1 .l1 a:hover{text-decoration:none;color:#ff6600;}
+.favpro .u1 .l1 img{border:#eee solid 1px;padding:1px;}
+
+/*会员等级*/
+.djcap{float:left;margin:20px 0 0 10px;width:916px;border:#ddd solid 1px;height:30px;background-color:#f2f2f2;}
+.djcap li{float:left;padding-top:8px;}
+.djcap .l1{width:150px;text-align:center;}
+.djcap .l2{width:536px;}
+.djcap .l3{width:100px;text-align:center;}
+.djcap .l4{width:130px;text-align:center;}
+.djlist{float:left;margin:0 0 0 10px;width:916px;border:#ddd solid 1px;border-top:0;min-height:45px;font-size:14px;}
+.djlist li{float:left;padding-top:13px;}
+.djlist .l1{width:150px;text-align:center;color:green;}
+.djlist .l2{width:536px;}
+.djlist .l2 strong{color:red;}
+.djlist .l3{width:100px;text-align:center;color:#ff6600;}
+.djlist .l4{width:130px;text-align:center;padding:0;}
+.djlist .l4 a{float:left;width:80px;padding:3px 0 0 0;height:19px;text-align:center;color:#fff;border-radius:4px;margin:8px 0 0 25px;font-size:12px;}
+.djlist .l4 .a1{background-color:#F39;}
+.djlist .l4 .a0{background-color:#63C;}
+.djlist .l4 a:hover{text-decoration:none;}
+.djlist .l4 .s1{float:left;width:130px;padding:0 0 5px 0;font-size:12px;text-align:center;}
+
+/*登录日志*/
+.loginlogcap{float:left;border:#E1E1E2 solid 1px;width:938px;margin:10px 10px 0 10px;height:40px;text-align:center;background-color:#F5F5F5;}
+.loginlogcap li{float:left;border-right:#e1e1e2 solid 1px;padding:12px 0 0 0;height:28px;}
+.loginlogcap .l1{width:463px;padding-left:10px;text-align:left;}
+.loginlogcap .l2{width:464px;border-right:0;}
+.loginlog{float:left;border:#E1E1E2 solid 1px;width:938px;margin:0 10px 0 10px;height:32px;border-top:0;text-align:center;}
+.loginlog li{float:left;border-right:#e1e1e2 solid 1px;padding:8px 0 0 0;height:24px;}
+.loginlog .l1{width:463px;padding-left:10px;text-align:left;}
+.loginlog .l2{width:464px;border-right:0;}
+.loginlog:hover{background:rgba(252,253,254,1);-webkit-transition:background-color 0.3s linear;-moz-transition:background-color 0.3s linear;-o-transition:background-color 0.3s linear;transition:background-color 0.3s linear;}

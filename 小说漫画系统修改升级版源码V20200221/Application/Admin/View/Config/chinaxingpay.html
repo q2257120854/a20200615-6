@@ -1,0 +1,36 @@
+
+        <div class="pageheader notab">
+            <h1 class="pagetitle">易支付管理设置</h1>
+            <span class="pagedesc">设置易支付的基本信息</span>
+            
+        </div><!--pageheader-->
+        
+        <div id="contentwrapper" class="contentwrapper lineheight21">
+        
+        
+            <form class="stdform stdform2" method="post">
+				<p>
+					<label>支付接口</label>
+					<span class="field"><input type="text" name="payurl" id="Url" value="{$_CFG.chinaxingpay.payurl}" class="smallinput" />	
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="radius3"><a href="http://www.code517.cn/" target="_blank">易支付接口申请</a></button>	
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="radius3"><a href="https://codepay.fateqq.com/i/54825" target="_blank">码支付接口申请</a></button></span>
+				</p>
+				 
+				<p>
+					<label>商户ID</label>
+					<span class="field"><input type="text" name="payid" id="payid" value="{$_CFG.chinaxingpay.payid}" class="smallinput" /></span>
+				</p>
+				
+				<p>
+					<label>商户Key</label>
+					<span class="field"><input type="text" name="paykey" id="paykey" value="{$_CFG.chinaxingpay.paykey}" class="smallinput" /></span>
+				</p>
+				<p class="stdformbutton">
+					<button class="submit radius2">提交</button>
+					<input type="reset" class="reset radius2" value="重置" />
+				</p>
+			</form>
+        
+        
+        </div><!--contentwrapper-->
+        

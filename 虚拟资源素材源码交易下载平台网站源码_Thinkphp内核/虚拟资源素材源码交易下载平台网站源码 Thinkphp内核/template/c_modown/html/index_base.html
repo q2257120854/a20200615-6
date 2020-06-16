@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> {block name="seo"}{/block}
+    <link rel="shortcut icon" href="__PUBLIC__/images/favicon.ico">
+    <!--<link rel="stylesheet" href="__PUBLIC__/plugins/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="__PUBLIC__/plugins/layui/css/layui.css">
+    <!--<link rel="stylesheet" href="__HOME__/css/index2.css">-->
+    <!--<script src="__HOME__/js/jquery.min.js" ></script>-->
+    <!--<script src="__HOME__/js/comm.js" ></script>-->
+    <![endif]-->
+    <!--<link rel="stylesheet" href="__HOME__/css/public.css"> -->
+    {block name="css"}{/block}
+    <!--<script src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>-->
+    <!--<script src="__PUBLIC__/plugins/bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="__PUBLIC__/plugins/layui/layui.js"></script>
+    <script src="__HOME__/js/lazyload.js"></script>
+    <script src="__HOME__/js/public.js"></script>
+    <!--<script src="__HOME__/js/dropdown.js"></script>-->
+    <!--<link rel='stylesheet' id='wp-block-library-css'  href='__HOME__/css/style.min.css' type='text/css' media='all' />-->
+    <link rel='stylesheet' id='MBT-base-css'  href='__HOME__/css/base.css' type='text/css' media='screen' />
+    <script type='text/javascript' src='__HOME__/js/jquery.js'></script>
+    <script type='text/javascript' src='__HOME__/js/jquery-migrate.min.js'></script>
+    <!--[if lt IE 9]><script src="__HOME__/js/html5.min.js"></script><![endif]-->
+    <style>
+        .btn, .cat-nav li.current-menu-item a:after, .grids .grid.grid-tj:after, .pagination ul > .active > a,.pagination ul > .active > span, .pagination-trigger a, .erphpdown-box .down, .article-tags a:hover, .widget-erphpdown .down, .comt-submit, .sign .captcha-clk, .btn-primary, .mocat .more a, .mocat h2:after, .filter a.active, .mocat h2 i{background-color:#00a1ff !important;}
+        a:hover, .nav-main> li.current-menu-item > a, .nav-main> li.current-menu-parent > a, .nav-main .sub-menu a:hover, .banner a:hover, .cat-nav li.current-menu-item a, .grids .grid h3 a:hover, .widget-tags .items a:hover, .sign-trans a, .widget-erphpdown .custom-metas .meta a{color:#00a1ff;}
+        .erphpdown-box, .comt-submit, .sign .captcha-clk, .btn-primary{border-color:#00a1ff !important;}
+        @media (max-width: 768px){
+            .nav-right .nav-button a{color:#00a1ff !important;}
+        }  .header{background: #191919}
+        .nav-main > li > a, .nav-right a{color:#cacaca;}
+        .nav-main> li.current-menu-item > a, .nav-main > li > a:hover, .nav-right a:hover, .nav-main> li.current-menu-parent > a{color:#fff;}
+        @media (max-width: 768px){
+            .nav-right .nav-button a {color: #cacaca;}
+            .nav-mobile-show .nav-main{background: #191919;border-top: 1px solid #403e3e;}
+            .nav-mobile-show .nav-main .sub-menu.show{background: #191919}
+        }
+        body.home .banner{margin-top: -70px;}
+        body.home .swiper-container{margin-top: -70px;}
+        body.home .swiper-container .swiper-slide:after {content: "";position: absolute;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0,0,0,.7);z-index: 9;}
+        body.archive .banner-archive,body.search .banner-archive, body.page-template-all .banner-archive {height: 250px !important;padding-top: 110px !important;margin-top: -70px;}
+        body.home .header, body.archive .header, body.search .header, body.page-template-all .header{background: transparent;}
+        body.home .header.scrolled, body.archive .header.scrolled, body.search .header.scrolled, body.page-template-all .header.scrolled{background: #191919}
+        body.home .header .nav-main > li > a, body.home .header .nav-right a, body.archive .header .nav-main > li > a, body.archive .header .nav-right a, body.search .header .nav-main > li > a, body.search .header .nav-right a, body.page-template-all .header .nav-main > li > a, body.page-template-all .header .nav-right a{color:#cacaca;}
+        body.home .header .nav-main> li.current-menu-item > a, body.home .header .nav-main > li > a:hover, body.home .header .nav-right a:hover, body.archive .header .nav-main> li.current-menu-item > a, body.archive .header .nav-main > li > a:hover, body.archive .header .nav-right a:hover, body.search .header .nav-main> li.current-menu-item > a, body.search .header .nav-main > li > a:hover, body.search .header .nav-right a:hover, body.page-template-all .header .nav-main > li > a:hover, body.page-template-all .header .nav-right a:hover{color:#fff;}
+        @media (max-width: 768px){
+            body.home .header .nav-main > li > a, body.archive .header .nav-main > li > a, body.search .header .nav-main > li > a, body.page-template-all .header .nav-main > li > a{color:#6b6b6b;}
+            body.home .banner, body.home .swiper-container{margin-top: -60px;}
+            body.home .header .nav-main> li.current-menu-item > a, body.archive .header .nav-main> li.current-menu-item > a, body.search .header .nav-main> li.current-menu-item > a, body.page-template-all .header .nav-main> li.current-menu-item > a{color:#1d1d1d;}
+        }
+        .logo{width:160px;}@media (max-width: 1024px){.logo, .logo a {width: 130px;height: 60px;}}@media (max-width: 768px){.nav-right .nav-vip{display: none;}}
+    </style>
+</head>
+<body class="post-template-default single single-post postid-559 single-format-standard logged-in">
+        {include file="index/header"} {block name="body"}{/block} {include file="index/footer"}
+    {block name="js"}
+    <!--<script src="__PUBLIC__/js/default.js"></script>-->
+        {/block}
+    <!--页面JS脚本-->
+    {block name="script"}{/block}
+</body>
+</html>

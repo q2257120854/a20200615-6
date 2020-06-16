@@ -1,0 +1,17 @@
+<?
+if($cssjsty=="a"){$l=weburl."m/";}
+elseif($cssjsty=="b"){$l="";} //首页
+else{$l="../";}
+?>
+<link href="<?=$l?>css/global.css" rel="stylesheet" type="text/css" />
+<link href="<?=$l?>css/basic.css" rel="stylesheet" type="text/css" />
+<? if($cssjsty!="a"){?>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<? }?>
+<script language="javascript" src="<?=$l?>js/global.js"></script>
+<script language="javascript" src="<?=$l?>js/basic.js"></script>
+<script language="javascript" src="<?=$l?>js/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="<?=$l?>js/layer.js"></script>
+<? if($cssjsty!="a"){?>
+<script language="javascript" src="js/index.js"></script>
+<? }?>

@@ -1,0 +1,259 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel4-1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			签到积分--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="span12">
+
+
+
+			<div class="portlet box ">
+
+
+
+				<div class="portlet-body">
+
+
+					<form action="{:Url('Signbase/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+
+
+						<div class="control-group chongdingy">
+
+
+
+							<label class="control-label chongdingywz">签到积分</label>
+
+
+
+						</div>
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">随机积分区间 <span style="color: red">*</span></label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="score" type="text" class="span3 m-wrap" value="{if $bases}{$bases.score}{/if}"  style="height: 35px !important;" />
+								<span style="color:#999999; line-height:40px; margin-left:20px;">请按“10/20”格式进行填写</span>
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">最大积分 <span style="color: red">*</span></label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="max_score" type="text" class="span3 m-wrap" value="{if $bases}{$bases.max_score}{/if}"  style="height: 35px !important;" />
+
+								<span style="color:#999999; line-height:40px; margin-left:20px;">通过签到可获取的最大积分，达到不再累加</span>
+
+							</div>
+
+
+
+						</div>
+
+
+
+				
+
+
+
+						<div class="form-actions">
+
+
+
+							<button type="submit" class="btn green">确定</button>
+
+
+
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

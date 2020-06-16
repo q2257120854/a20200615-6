@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+    <title>安卓x5播放器</title>
+</head>
+<body>
+   <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()"> 
+             <span class="aui-iconfont aui-icon-left"></span> 
+       </a> 
+        <div class="aui-title" id="title"></div>
+   </header> 
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+<script type="text/javascript">
+var api_url = localStorage.getItem('api_url');
+apiready = function(){
+var video_h = 550;
+    var header = $api.byId('header');
+    $api.fixStatusBar(header);
+    var header_h = $api.offset(header).h;
+          var title = $api.byId('title');
+ title.innerHTML = api.pageParam.title;  
+	
+	 var jx1 = localStorage.getItem('jx1');
+		if(api.systemType == 'ios'){
+		  var browser = api.require('webBrowser');
+        browser.openView({
+            url:jx1+api.pageParam.url,
+            rect: { x: 0, y: header_h, w: 'auto', h: 'auto'}
+        });  
+	 }else{
+	  var browser = api.require('webBrowser');
+        browser.openView({
+            url: api_url+'/Public/x5.html?title='+ api.pageParam.title +'&videourl='+ api.pageParam.url,
+            rect: { x: 0, y: header_h, w: 'auto', h: video_h }
+        });
+	 }
+	
+	
+			
+      };
+	  
+</script>
+</html>

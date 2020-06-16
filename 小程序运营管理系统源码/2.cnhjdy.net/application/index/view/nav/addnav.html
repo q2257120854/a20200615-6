@@ -1,0 +1,530 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navDIY"  class="navDIY2-7">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			自定义导航--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+			
+
+			<div class="portlet-body form">
+
+
+
+				<form action="{:Url('Nav/savenav')}?appletid=<?php echo $_GET['appletid']?>&id={$cid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+					<div class="control-group"> 
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $nav}{$nav.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">是否启用</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="1"  {if $nav}{if $nav.flag==1}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							启用
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="0"  {if $nav}{if $nav.flag==0}checked=checked{/if}{/if}/>
+
+
+
+							不启用
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">是否启用</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">类型</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="type" class="span3 m-wrap" id="type" onchange="xiansshu(this)">
+
+								<option value="2" {if $nav}{if $nav.type==2}selected=selected{/if}{/if}>打开导航</option>
+
+								<option value="0" {if $nav}{if $nav.type==0}selected=selected{/if}{/if}>小程序页面</option>
+
+		                        <option value="1" {if $nav}{if $nav.type==1}selected=selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="3" {if $nav}{if $nav.type==3}selected=selected{/if}{/if}>微信客服</option>
+
+		                        <option value="4" {if $nav}{if $nav.type==4}selected=selected{/if}{/if}>打开小程序</option>
+
+		                        <option value="5" {if $nav}{if $nav.type==5}selected=selected{/if}{/if}>打开网页</option>
+
+							</select>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不同栏目图片大小不同，请谨慎选择</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">导航图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+
+
+
+								<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:90px;">
+
+
+
+									{if $nav && $nav.pic}
+
+									<img src="{$nav.pic}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:90px;">
+
+									
+
+								</div>
+
+								<div>
+
+
+								<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic"></span></span>
+
+
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">导航标题</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="title" type="text" class="span3 m-wrap" value="{if $nav}{$nav.title}{/if}"  style="height: 35px !important;" />
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div id="jutxs">
+
+						
+
+						{if $nav && $nav.type==0}
+
+							<div class='control-group' id='xcxdz'>
+
+								<label class='control-label'>小程序页面地址</label>
+
+								<div class='controls'>
+
+									<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>
+
+								</div>
+
+							</div>
+
+						{/if}
+
+
+
+						{if $nav && $nav.type==1}
+
+							<div class='control-group' id='xcxdz'>
+
+								<label class='control-label'>电话号码</label>
+
+								<div class='controls'>
+
+									<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>
+
+								</div>
+
+							</div>
+
+
+
+						{/if}
+
+
+
+						{if $nav && $nav.type==4}
+
+							<div class='control-group' id='xcxdz'>
+
+								<label class='control-label'>小程序appid</label>
+
+								<div class='controls'>
+
+									<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>
+
+								</div>
+
+							</div>
+
+							<div class='control-group' id='xcxdz'>
+
+								<label class='control-label'>小程序页面路径</label>
+
+								<div class='controls'>
+
+									<input name='url2' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url2}{/if}'  style='height: 35px !important;'/>
+
+								</div>
+
+							</div>
+
+
+
+						{/if}
+
+
+
+						{if $nav && $nav.type==5}
+
+							<div class='control-group' id='xcxdz'>
+
+								<label class='control-label'>https网址</label>
+
+								<div class='controls'>
+
+									<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>
+
+								</div>
+
+							</div>
+
+
+
+						{/if}
+
+
+
+
+
+					</div>
+
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+	
+
+
+
+	
+
+
+
+	<script type="text/javascript">
+
+
+
+		function xiansshu(me){
+
+			var val = $(me).val();
+
+			if(val ==0){
+
+				var str = 	"<div class='control-group' id='xcxdz'>"+
+
+								"<label class='control-label'>小程序页面地址</label>"+
+
+								"<div class='controls'>"+
+
+									"<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>"+
+
+								"</div>"+
+
+							"</div>";
+
+			}
+
+			if(val ==1){
+
+				var str = 	"<div class='control-group' id='xcxdz'>"+
+
+								"<label class='control-label'>电话号码</label>"+
+
+								"<div class='controls'>"+
+
+									"<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>"+
+
+								"</div>"+
+
+							"</div>";
+
+			}
+
+			if(val ==2){
+
+				var str = "";
+
+			}
+
+			if(val ==3){
+
+				var str = "";
+
+			}
+
+			if(val ==4){
+
+				var str = 	"<div class='control-group' id='xcxdz'>"+
+
+								"<label class='control-label'>小程序appid</label>"+
+
+								"<div class='controls'>"+
+
+									"<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>"+
+
+								"</div>"+
+
+							"</div>"+
+
+							"<div class='control-group' id='xcxdz'>"+
+
+								"<label class='control-label'>小程序页面路径</label>"+
+
+								"<div class='controls'>"+
+
+									"<input name='url2' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url2}{/if}'  style='height: 35px !important;'/>"+
+
+								"</div>"+
+
+							"</div>";
+
+			}
+
+			if(val ==5){
+
+				var str = 	"<div class='control-group' id='xcxdz'>"+
+
+								"<label class='control-label'>https网址</label>"+
+
+								"<div class='controls'>"+
+
+									"<input name='url' type='text' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'  style='height: 35px !important;'/>"+
+
+								"</div>"+
+
+							"</div>";
+
+			}
+
+
+
+			$("#jutxs").html(str);
+
+
+
+		}
+
+
+
+
+
+	</script>
+
+
+
+
+
+{include file="public/foot_more" /}

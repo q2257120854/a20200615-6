@@ -1,0 +1,15 @@
+{extend name="index_base" /} {block name="seo"}
+<title>错误页面 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="main">
+    <div class="fly-panel">
+        <div class="fly-none">
+            <h2><i class="iconfont icon-404"></i></h2>
+            <p>你瞧！页面或者数据被<a href="http://www.laysns.com"> 纸飞机 </a>运到火星了</p>
+        </div>
+    </div>
+</div>
+{/block}

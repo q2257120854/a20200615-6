@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>验证二级密码</title>
+<link href="/Public/Style/floatStyle.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="/Public/js/jquery.js"></script>
+<script type="text/javascript" src="/Public/js/ValidateCommon.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#txtUserPass2").blur(function() { if (checkUserPass2()) { checkUserPass2OK(); } });
+
+    $("#Button1").click(function() {
+            return checkInput();
+        });
+    });
+
+    //单击提交按钮
+    function checkInput() {
+
+        //验证二级密码
+        if (!checkUserPass2()) {
+            alert("请输入您的二级密码！");
+            $("#txtUserPass2").focus(); return false;
+        }
+
+        $("#Button1").hide();
+        $("#btnClose").hide();
+        $("#showText").html('<img src=/Images/loading.gif> 正在提交中…')
+
+        return true;
+    }
+
+    //验证二级密码
+    function checkUserPass2() {
+        if ($("#txtUserPass2").val() == "") {
+            //hintMessage("lblUserPass2", "error", "请输入您的二级密码！");
+            return false;
+        }
+        hintMessage("lblUserPass2", "right", "");
+        return true;
+    }
+    document.onkeydown = mykeydown;
+    function mykeydown() {
+        if (event.keyCode == 116) {
+            window.event.keyCode = 0;
+            return false;
+        }
+    }
+    function isEnter(ev) {
+        var ev = ev || window.event;
+        var keycode;
+        if (window.event) keycode = ev.keyCode;
+        else keycode = ev.which;
+        if (keycode == 10 || keycode == 13) return true;
+        else return false;
+    }
+</script>
+</head>
+<body onContextMenu="return false" onSelectStart="return false">
+    <form name="form1" method="post" action="{:U('Index/Common/beginCheck')}" id="form1">
+<div>
+    
+<b>验证二级密码</b>
+<hr />
+<font color="#FF0000">為了保障玩家帐号安全，当前操作需要验证您的二级密码，请在下面输入！</font>
+		<br /><br />
+		
+<table border="0" cellpadding="0" cellspacing="0" class="tb">
+             <tr>
+                <td class="TbText">二级密码：</td>
+                <td><input name="txtUserPass2" type="password" maxlength="20" id="txtUserPass2" class="input" onkeydown="if(isEnter(event)){Button1.click();return false;}" style="width:160px;" />  <span id="lblUserPass2" class="red"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                <input type="submit" value="提交" id="Button1" class="buttom" />
+                <input id="btnClose" type="button" value="关闭" class="buttom" onclick="javascript:parent.ShowNo()" />
+                <input type="hidden" value="{$Think.get.go}" name="go"/>
+                <span id="showText"></span></td>
+            </tr>
+        </table>
+    
+    </div>
+    </form>
+</body>
+</html>

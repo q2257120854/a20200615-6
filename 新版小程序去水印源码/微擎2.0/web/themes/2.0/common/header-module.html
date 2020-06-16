@@ -1,0 +1,47 @@
+<!-- <span class="menu-title">
+	<i class="wi wi-apply"></i>应用
+</span> -->
+<div class="sub-module-info">
+	<div class="module-info-name">
+		{if $_W['current_module']['main_module']}
+		{if file_exists(IA_ROOT. "/addons/". $_W['current_module']['main_module']. "/icon-custom.jpg")}
+			<img src="{php echo tomedia("addons/".$_W['current_module']['main_module']."/icon-custom.jpg")}" class="head-app-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+		{else}
+			<img src="{php echo tomedia("addons/".$_W['current_module']['main_module']."/icon.jpg")}" class="head-app-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+		{/if}
+		
+		<div class="name text-over">{$_W['current_module']['main_module_title']}</div>
+		{else}
+		{if file_exists(IA_ROOT. "/addons/". $_W['current_module']['name']. "/icon-custom.jpg")}
+			<img src="{php echo tomedia("addons/".$_W['current_module']['name']."/icon-custom.jpg")}" class="head-app-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+		{else}
+			<img src="{php echo tomedia("addons/".$_W['current_module']['name']."/icon.jpg")}" class="head-app-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+		{/if}
+		<div class="name text-over">{$_W['current_module']['title']}</div>
+		{/if}
+	</div>
+	<div class="module-inof-cut">
+		<a href="{php echo url('module/link/list', array('m'=> $_GPC['m']))}" class="btn btn-default">切换关联</a>
+		<a href="{php echo url('module/display')}" class="btn btn-default">切换应用</a>
+	</div>
+	{if $_W['current_module']['main_module']}
+	<div class="module-plugin-info">
+		<a href="{php echo url('home/welcome/ext', array('m' => $frames['section']['platform_module_menu']['plugin_menu']['main_module']))}"><i class="wi wi-angle-left"></i></a>
+		<div class="plugin-info-box">
+
+			{if file_exists(IA_ROOT. "/addons/". $_W['current_module']['name']. "/icon-custom.jpg")}
+				<img src="{php echo tomedia("addons/".$_W['current_module']['name']."/icon-custom.jpg")}" class="plugin-info-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+			{else}
+				<img src="{php echo tomedia("addons/".$_W['current_module']['name']."/icon.jpg")}" class="plugin-info-logo" onerror="this.src='./resource/images/gw-wx.gif'">
+			{/if}
+		</div>
+		<div class="plugin-info-name text-over">{$_W['current_module']['title']}</div>
+	</div>
+	{/if}
+</div>
+
+<!-- 兼容历史性问题：模块内获取不到模块信息$module的问题-start -->
+{if defined('CRUMBS_NAV') && CRUMBS_NAV == 1}
+{php global $module;}
+{/if}
+<!-- end -->

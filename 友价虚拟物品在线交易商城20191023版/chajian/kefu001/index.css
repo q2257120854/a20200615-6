@@ -1,0 +1,33 @@
+@charset "gb2312";
+.icon {    background: url(/chajian/kefu001/icon.png);}
+.contact{z-index: 9;position:  fixed; right:0; top:50%; margin-top: -315px; border:1px solid #F4F2F2; background:#eaeaea;text-align: center; width:140px;}
+.contact i{ display: inline-block; vertical-align: top;}
+.contact .close_contact{  cursor: pointer;width:16px; height:16px; position:absolute; right:5px; top:5px;    background-position: -17px 325px;}
+span.tel{ display:none;     right: 0;position: fixed; z-index: 9;text-align: center; width: 26px;    padding: 12px 6px;    top: 50%;    margin-top: -50px;   border-radius: 5px 0 0 5px;    line-height: 15px;background:#FFA800;  color: #fff; font-size: 14px;}
+span.tel a{ color:#fff;}
+span.tel a:hover{text-decoration:none;}
+span.tel i{ width:22px; height:22px;    background-position: -16px 294px; margin-bottom: 4px; display: inline-block;*display: inline;*zoom:1;}
+.contact .goTop{ display:none;}
+.contact .goTop p{ margin: 0 auto;width:100%; cursor:pointer; color:#fff; background:#ffa800; line-height: 25px; height:25px; font-size: 16px; text-align: center;    padding-top: 10px;}
+.contact .goTop p i{    margin-top: 5px; width:16px; height:16px; background:url(/chajian/kefu001/jiantou1.png);  }
+.contact .goTop p:last-child{ padding-bottom:10px;    padding-top: 0;}
+.contact .goTop p a{ color:#fff;}
+.contact ul{ padding:0 16px;}
+.contact ul li{ border-bottom: 1px solid #eef0f1;    padding: 8px 0;}
+.contact ul li:last-child{ border:0;}
+.contact ul li.qq{}
+.contact ul li.qq i{ width:76px; height:76px;    background-position: -76px 326px;    margin-top: 25px;   margin-bottom: 10px;}
+.contact ul li.qq p{ font-size: 16px; color:#3d3d3d;}
+.contact ul li.qq button{ cursor: pointer; line-height: 20px; padding:0 10px; color:#fff; border:0; background:#ffa800; font-size: 14px; height:20px;       margin-top: 10px;    border-radius: 20px;}
+.contact ul li.tel{}
+.contact ul li.tel i{width:22px; height:22px;    background-position: -16px 265px;    margin-top: 2px;    margin-right: 2px;}
+.contact ul li.tel p{ font-size: 16px; line-height: 26px; color:#f92b32;}
+.contact ul li.tel p span{ line-height: 30px; color:#3d3d3d; font-size: 14px;}
+.contact a:hover{text-decoration:none;}
+
+.goto{ text-align:center;}
+.goto .imgIcon{ width:100%;  }
+.goto p{ font-size:14px; line-height:25px;}
+.goto.trial p { color:#1abd6c;}
+.goto.watch p { color:#ffa800;}
+.goto.scanCode p { color:#3d3d3d; font-size:12px;}

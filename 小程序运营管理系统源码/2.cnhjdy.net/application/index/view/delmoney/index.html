@@ -1,0 +1,247 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+</style>
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<input type="hidden" id="nowhtml" value="navSale" class="navSale9">
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			满额立减--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	<style type="text/css">
+
+		.sss{
+
+			display: inline-block;
+
+		}
+
+	</style>
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('Delmoney/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" ">
+
+					<div class="control-group">
+
+						<label class="control-label chongdingywz" style="width: 500px">满减优惠设置</label>
+
+					</div>
+
+					{if $money }
+
+						{volist name="money" id="res" key="index"}
+
+							
+
+						<div class="form-group" style="margin-bottom: 10px">
+
+	                    <div class="col-sm-1"></div>
+
+	                    <div class="form-controls col-sm-4">
+
+	                        <div class="input-group" style="margin-left: 20px;">
+
+								<span class="input-group-addon" style="color:black;margin-left: 20px;">单笔订单满</span>
+
+								<input type="text" class="form-control" name="reach<?php echo $index ; ?>"  value="{$res['reach']}">
+
+								<span class="input-group-addon" style="color:black">元 立减</span>
+
+								<input type="text" class="form-control" name="del<?php echo $index; ?>"  value="{$res['del']}">
+
+								<span class="input-group-addon" style="color:black">元</span>
+
+								<a class="btn btn-xs btn-danger" onclick="delSelf(this)" style="margin-left: 5px;display: inline-block;">×</a>
+
+	                        </div>
+
+	                    </div>
+
+	                    
+
+	                </div>
+
+
+
+						{/volist}
+
+					{/if}
+
+					<div class="form-group" id="bottom">
+
+	                	<div class="col-sm-1"></div>
+
+	                	<div class="form-controls col-sm-1" style="margin-left: 20px">
+
+	                		<a class="btn btn-default btn-sm" id="add-youhui" style="margin-left: 20px">+增加优惠项</a>
+
+	                	</div>
+
+	                </div>
+
+	                <div class="form-group" style="margin-top: 50px">
+
+	                	<div class="col-sm-1"></div>
+
+					    <div class="form-controls col-sm-10">
+
+					    	<input type="hidden" name="num" value="{$num}" id="getnum" />
+
+					        <div class="form-actions">
+
+								<button type="submit" class="btn green" name="submit">保存设置</button>
+
+							</div>
+
+					    </div>
+
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		var i = {$num};
+
+		$("#add-youhui").click(function(){
+
+			i++;
+
+			$("#getnum").val(i);
+
+			var html = '<div class="form-group">'+
+
+                    '<div class="col-sm-1"></div>'+
+
+                    '<div class="form-controls col-sm-4">'+
+
+                        '<div class="input-group" style="margin-left:20px">'+
+
+							'<span class="input-group-addon" style="color:black;margin-left:20px">单笔订单满</span>'+
+
+							'<input type="text" class="form-control" name="reach' + i + '" value="">'+
+
+							'<span class="input-group-addon" style="color:black">元 立减</span>'+
+
+							'<input type="text" class="form-control" name="del' + i + '" value="">'+
+
+							'<span class="input-group-addon" style="color:black">元</span>'+
+
+							'<a class="btn btn-xs btn-danger" onclick="delSelf(this)" style="margin-left: 5px;display:inline-block">×</a>'+
+
+                        '</div>'+
+
+                    '</div>'+
+
+                '</div>';
+
+			$("#bottom").before(html);
+
+		})
+
+
+
+	})
+
+
+
+	function delSelf(e){
+
+		$(e).parent().parent().remove();
+
+	}
+
+</script>

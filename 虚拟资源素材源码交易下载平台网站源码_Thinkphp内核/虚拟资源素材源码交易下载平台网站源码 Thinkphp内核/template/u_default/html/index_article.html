@@ -1,0 +1,188 @@
+{extend name="index_base" /} {block name="seo"}
+<title>我的文章 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+    <div class="fly-panel fly-panel-user" pad20>
+        <!--
+    <div class="fly-msg" style="margin-top: 15px;">
+      您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+    </div>
+    -->
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title" id="LAY_mine">
+                <li data-type="mine-jie" lay-id="index" class="layui-this">我发的文章（
+                    <span>{$count}</span>）</li>
+                <li lay-id="collection">我收藏的文章（{$count_collect}）</li>
+                <li><a href="{:url('index/articles/add')}">发布文章</a></li>
+            </ul>
+            <div class="layui-tab-content" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+
+                    <table id="demo" lay-filter="test"></table>
+
+                </div>
+                <div class="layui-tab-item">
+                    <table id="myCollection" lay-filter="test11"></table>
+
+                    <script type="text/javascript">
+                        //帖子收藏
+                        layui.use(['form', 'laytpl', 'form', 'element', 'table', 'util'], function() {
+                            var form = layui.form,
+                                jq = layui.jquery;
+                            var util = layui.util;
+                            var laytpl = layui.laytpl;
+
+                            var element = layui.element;
+
+                            var table = layui.table;
+
+  jq('.alone-tips').click(function(){
+                alert(1);
+    // var content = jq(this).attr('lay-tips');
+    
+    // this.index = layer.tips('<div style="padding: 10px; font-size: 14px; color: #eee;">'+ content + '</div>', this, {
+    //   time: -1
+    //   ,maxWidth: 280
+    //   ,tips: [3, '#3A3D49']
+    // });
+  }).on('mouseleave', function(){
+    layer.close(this.index);
+  });         
+                            //我发表的文章
+                            table.render({
+                                elem: '#demo',
+                                url: "{:url('index/api/getMyItem')}" //数据接口
+                                    ,
+                                method: 'post',
+                                where: {
+                                    item: 'article'
+                                },
+                                cols: [
+                                    [{
+                                        field: 'title',
+                                        title: '文章标题',
+                                        minWidth: 300,
+                                        templet: '<div><a href="html/{{ d.id }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+                                    }, {
+                                        title: '栏目',
+                                        width: 100,
+                                        templet: '<div><span style="font-size: 12px;">{{d.catename}}</span></div>'
+                                    }, {
+                                        field: 'open',
+                                        title: '状态',
+                                        width: 100,
+                                        align: 'center',
+                                        templet: function(d) {
+                                            if (d.open == 1) {
+                                                return '<span style="color: #999;">正常</span>';
+                                            } else if (d.open == 0) {
+                                                return '<span style="color: #ccc;">待审核</span>';
+                                            } else {
+                                                return '<span style="color: #FF5722;">站长禁显</span>'
+                                            }
+                                        }
+                                    }, {
+                                        field: 'time',
+                                        title: '发表时间',
+                                        width: 120,
+                                        align: 'center',
+                                        templet: '<div>{{ layui.util.timeAgo(d.time*1000, 1) }}</div>'
+                                    }, {
+                                        title: '数据',
+                                        width: 60,
+                                        templet: '<div><span style="font-size: 12px;">{{d.view}}阅</span></div>'
+                                    }, {
+                                        title: '操作',
+                                        width: 100,
+                                        templet: function(d) {
+                                            return d.open != 1 ? '<a class="layui-btn layui-btn-sm" href="/artedit/' + d.id + '" target="_blank">编辑</a> <i class="layui-icon alone-tips" lay-tips="推荐追求开发效率和缺乏前端开发经验的使用，后端开发者的最爱。"></i>' : ''
+                                        }
+                                    }]
+                                ],
+                                page: true,
+                                skin: 'line'
+                            });
+                            //我收藏的文章
+                            table.render({
+                                elem: '#myCollection',
+                                url: "{:url('index/api/getMyCollect')}" //数据接口
+                                    ,
+                                method: 'post',
+                                where: {
+                                    ctype: 3,
+                                    item: 'article'
+                                },
+                                cols: [
+                                    [{
+                                        field: 'title',
+                                        title: '文章标题',
+                                        minWidth: 300,
+                                        templet: '<div><a href="html/{{ d.fid }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+
+                                    }, {
+                                        field: 'username',
+                                        title: '作者',
+                                        minWidth: 300,
+                                        templet: '<div><a href="/home/{{ d.zuid }}.html" target="_blank" class="layui-table-link">{{ d.username }}</a></div>'
+                                    }, {
+                                        field: 'time',
+                                        title: '收藏时间',
+                                        width: 120,
+                                        align: 'center',
+                                        templet: '<div>{{ layui.util.timeAgo(d.time*1000, 1) }}</div>'
+                                    }]
+                                ],
+                                page: true,
+                                skin: 'line'
+                            });
+
+
+          
+
+                            jq('.discollect').click(function() {
+
+                                var idnum = jq(this).data('id');
+                                var obj = jq(this);
+                                layer.confirm('取消收藏', {
+                                    icon: 3,
+                                    title: '提示'
+                                }, function(index) {
+
+                                    jq.post('{:url("index/api/zan_collect")}', {
+                                        'zan_collect': 'collect',
+                                        'id': idnum,
+                                        'type': 1
+                                    }, function(data) {
+                                        if (data.code == 201) {
+                                            jq(obj).parent().remove();
+                                            layer.msg(data.msg, {
+                                                icon: 1,
+                                                time: 1000
+                                            });
+                                        } else {
+                                            layer.msg(data.msg, {
+                                                icon: 2,
+                                                anim: 6,
+                                                time: 1000
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+       
+                        });
+                        
+                    
+            
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}

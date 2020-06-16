@@ -1,0 +1,29 @@
+<div class="fly-panel fly-link">
+    <h3 class="fly-panel-title">友情链接</h3>
+    <dl class="fly-panel-main">
+        {volist name="superlinks" id="vo"} {if condition="$vo['type'] eq 2"}
+
+        <dd>
+
+            <a target="_blank" title="{$vo.title}" href="{$vo.link}">{$vo.title}</a>
+
+        </dd>
+
+        {else /}
+
+        <dd>
+
+            <a target="_blank" title="{$vo.title}" {if @$vo['nofollow']}rel="nofollow"{/if} href="{$vo.link}">
+
+
+
+                <img src={$vo.savepath} width="88" height="31" />
+
+            </a>
+
+        </dd>
+        {/if} {/volist}
+        <dd>
+            <a href="javascript:;" id="apply_link" class="fly-link">申请友链</a>
+        </dd>     </dl>
+</div>

@@ -1,0 +1,187 @@
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/web-icons/web-icons.css">
+<style>
+ul{margin:0;}
+.btncolor{background: #ffffff;color:#333333;border:1px solid #e7e7e7;}
+</style>
+<div class="asidebox clearfix">
+  <div class="aside1">
+    <nav class="aside1_nav" style="padding-top: 30px">
+      <ul>
+        <li class="" id="navFunc">
+          <a class="aside1_nav_a1" href="javascript:;">
+            <i class="wb-pie-chart"></i>功能</a>
+        </li>
+        <li class="" id="navNews">
+          <a class="aside1_nav_a1" href="javascript:;">
+            <i class="wb-list"></i>动态</a>
+        </li>
+        <li class="" id="navCase">
+          <a class="aside1_nav_a1" href="javascript:;">
+            <i class="wb-order"></i>案例</a>
+        </li>
+        <li class="" id="navSolution">
+          <a class="aside1_nav_a1" href="javascript:;">
+            <i class="wb-user"></i>方案</a>
+        </li>
+        <li class="" id="navAbout">
+          <a class="aside1_nav_a1" href="javascript:;">
+            <i class="wb-map"></i>关于</a>
+        </li>
+        <li class="" id="navHelp">
+          <a class="aside1_nav_a1" href="{:Url('index/applet/index')}"><i class="wb-help-circle"></i>返回</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="aside2 sidebar-2">
+    <div class="aside2_title">功能列表</div>
+    <nav class="aside2_nav navFunc" style="display: none">
+      <ul>
+        <li class="navFunc1">
+          <i></i>
+          <a href="{:Url('Functionshow/index')}">功能展示</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="aside2_nav navNews" style="display: none">
+      <ul>
+        <li class="navNews1">
+          <i></i>
+          <a href="{:Url('News/index')}">产品动态</a>
+        </li>
+        <li class="navNews2">
+          <i></i>
+          <a href="{:Url('News/gg')}">公司公告</a>
+        </li>
+        <li class="navNews3">
+          <i></i>
+          <a href="{:Url('News/update')}">更新日志</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="aside2_nav navCase" style="display: none">
+      <ul>
+        <li class="navCase1">
+          <i></i>
+          <a href="{:Url('Cases/index')}">案例</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="aside2_nav navSolution" style="display: none">
+      <ul>
+        <li class="navSolution1">
+          <i></i>
+          <a href="{:Url('Solution/index')}">方案</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="aside2_nav navAbout" style="display: none">
+      <ul>
+        <li class="navAbout3">
+          <i></i>
+          <a href="{:Url('About/base')}">基本信息</a>
+        </li>
+        <li class="navAbout1">
+          <i></i>
+          <a href="{:Url('About/index')}">关于我们</a>
+        </li>
+        <li class="navAbout2">
+          <i></i>
+          <a href="{:Url('About/lists')}">员工列表</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+  <script>
+  $('.aside1_nav li').click(function(){
+    var id = $(this).attr("id");
+    if(id != "navHelp"){
+      $('.aside1_nav li').removeClass("active1");
+      $(this).addClass("active1");
+      if($('.aside2_nav.'+id+' li a').attr("href")=="javascript:;"){
+        window.location.href = $('.aside2_nav.'+id+' li a').eq(1).attr("href");
+      }else{
+        window.location.href = $('.aside2_nav.'+id+' li a').attr("href");
+      }
+    }
+  });
+
+
+
+  // $('.aside1_nav li').click(function(){
+  //    var id = $(this).attr("id");
+  //    window.location.href = $('.aside2_nav.'+id+' li a').attr("href");
+  //  });
+  $(function(){
+    $('.aside1_nav li').removeClass("active1");
+    var nowhtml = $("#nowhtml").val();
+    $("#"+nowhtml).addClass("active1");
+    $('.aside2_nav').hide();
+    $('.aside2_nav.'+nowhtml).show();
+    $('.aside2_nav.'+nowhtml+' li').eq(0).addClass("active2");
+    $('.aside2_nav.'+nowhtml+' li').removeClass("active2");
+    var nowclass = $("#nowhtml").attr("class");
+    if(nowclass.indexOf("-")>=0) { 
+      var arr = nowclass.split('-');
+      $('.aside2_nav.'+nowhtml+' li.'+arr[0]+" a").removeClass("active");
+      $('.aside2_nav.'+nowhtml+' li.'+arr[0]+' a.'+arr[0]+"-0").addClass("active");
+      $('.aside2_nav.'+nowhtml+' li.'+arr[0]+' a.'+nowclass).addClass("active");
+      $('.aside2_nav.'+nowhtml+' li.'+arr[0]+' .sub-item-list').addClass("active");
+      var subtitle = $('.aside2_nav.'+nowhtml+' li.'+arr[0]+' a.'+nowclass+" span").html();
+      $(".navbar .content_head_left").html(subtitle);
+    }else{
+      $('.aside2_nav.'+nowhtml+' li.'+nowclass).addClass("active2");
+      var subtitle = $('.aside2_nav.'+nowhtml+' li.'+nowclass+" a").html();
+      $(".navbar .content_head_left").html(subtitle);
+    }
+  });
+
+  $(document).on("click", ".child-item",
+    function() {
+      if ($(this).hasClass('active')) {
+        $(this).removeClass('active');
+      } else {
+        $(this).addClass('active');
+      }
+      if ($($(this).parents('li')).find('.sub-item-list').hasClass('active')) {
+        $($(this).parents('li')).find('.sub-item-list').removeClass('active');
+      } else {
+        $($(this).parents('li')).find('.sub-item-list').addClass('active');
+        var liclass = $($(this).parents('li')).attr("class");
+        var nclass = $("#nowhtml").attr("class");
+        if(nclass.indexOf(liclass)>=0){
+          $($(this).parents('li')).find('.sub-item-list a.'+nclass).addClass('active');
+        }else{
+          $($(this).parents('li')).find('.sub-item-list a').addClass('active');
+        }
+      }
+    });
+
+
+    // $(document).ready(function() {
+    //   var child = parseInt("19");
+    //   $(".sub-item-list").each(function() {
+    //     var flag = false;
+    //     if (parseInt($(this).data('id')) == child) {
+    //       $(this).parents('.sidebar-content').find('.nav-item').addClass('active');
+    //       $(this).addClass('active').siblings().addClass('active').find('a').removeClass('active');
+    //     }
+    //   });
+    // });
+    </script>
+  <div class="aside_user">v2.29</div></div>
+<div class="contentbox">
+    <div class="content_head clearfix navbar" style="margin-bottom: 0">
+      <div class="content_head_left"></div>
+      <ul class="nav pull-right">
+
+        <li class="dropdown user">
+          <a href="/Index/Applet/index" style="display: inline-block"><返回系统</a>
+          <a href="/Index/login/index" style="display: inline-block">
+          <i class="icon-key"></i>退出
+          </a>
+        </li>
+      </ul>
+    </div>

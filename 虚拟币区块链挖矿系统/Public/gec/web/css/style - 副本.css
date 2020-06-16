@@ -1,0 +1,196 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body{color:#333; font-size:14px;font-family:"Microsoft YaHei"}
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+input{ font-size:12px;}
+a{ text-decoration:none; color:#000;}
+a:hover{color:#c00; text-decoration:none;}
+.clear{clear:both;}
+.row{
+	margin: 0;
+}
+/* 大转盘样式 */
+.banner{display:block;width:95%;margin-left:auto;margin-right:auto;margin-bottom: 20px;}
+.banner .turnplate{display:block;width:100%;position:relative;}
+.banner .turnplate canvas.item{width:100%;}
+.banner .turnplate img.pointer{position:absolute;width:31.5%;height:42.5%;left:34.6%;top:23%;}
+/* 提示框样式表 */
+#hint{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	z-index: 1000;
+}
+#hint .content{
+    width: 300px;
+    height: 235px;
+    background: url('../img/lw.png') no-repeat;	
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -127.5px;
+    z-index: 1200;
+    text-align: center;
+}
+#hint .content span{
+    background: #e4393c;
+    color: #fff;
+    font-size: 16px;
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    width: 250px;
+    margin-left: 25px;
+    line-height: 40px;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0px 0px 1px 1px #fff;
+}
+.jyzx_list{
+    width: 94%;
+    margin-left: 3%;
+    background-color: #FFFFFF;
+}
+.jyzx_list thead th {
+    border-bottom: 2px solid #eeeeee;
+}
+.jyzx_list tbody tr td{
+    border-bottom: 1px solid #eeeeee;
+}
+.myjy_head{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+    float: left;
+}
+.myjy_head li{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+.myjy_body{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    background-color: #FFFFFF;
+    border-radius:5px ;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+}
+.myjy_body li{
+    float: left;
+    width: 25%;
+    overflow: hidden;
+    text-align: center;
+    line-height: 30px;
+}
+.myjy_tj{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+.myjy_tj li{
+    float: left;
+    width: 25%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.myjy_tj li>a{
+    width: 95%;
+   height: 30px;
+    border:0px;
+    border-radius: 5px;
+}
+.myjy_tj .bl1 a{
+    background-color: #E60012;
+    display: block;
+    line-height: 30px;
+    color: #000000;
+
+}
+.myjy_tj .bl2 a{
+    background-color: #ffbe00;
+    display: block;
+    line-height: 30px;
+    color: #000000;
+
+}
+.myjy_tj .bl3 a{
+    background-color: #039702;
+    display: block;
+    line-height: 30px;
+    color: #000000;
+
+}
+.div1{
+    float: left;
+    height: 30px;
+    background: #007aff;
+    width: 90px;
+    position:relative;
+    line-height: 30px;
+}
+.div2{
+    text-align:center;
+    font-size:1em;
+}
+.inputstyle{
+    width: 100%;
+    height: 90px;
+    cursor: pointer;
+    font-size: 30px;
+    outline: medium none;
+    position: absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity:0;
+    left:0px;
+    top: 0px;
+}
+#qiugou{
+    margin-top: 75px;
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+}
+#qiugou p{
+    float: left;
+    color: #E60012;
+    height: 30px;
+    line-height: 30px;
+    width: 20%;
+    padding-bottom: 10px;
+}
+#qiugou input{
+    float: left;
+    height: 30px;
+    width:75%;
+    margin-bottom: 10px;
+    text-align: right;
+    padding-right: 5px;
+    border:1px solid #E60012;
+    border-radius: 5px;
+}
+#qiugou button{
+    float: left;
+    display: block;
+    width: 44%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 1.2em;
+    background-color:#E60012;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-left: 3%;
+    border:0px;
+}

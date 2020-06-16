@@ -1,0 +1,53 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<div class="listBoxGen">
+        <div class="listBoxTitleGen"><div class="showTitle">我的消息</div></div>
+            <div class="listBoxContentGen">
+                
+	            
+<fieldset class="fieldset">
+<legend><span class="fieldset_title">查看消息</span>！</legend>
+ <table width="96%" border="0" align="center" cellpadding="3" cellspacing="0" class="CommonTb">
+  <tr>
+    <td colspan="2" align="center"> <span class="MsgTitle">{$mail.title}</span></td>
+  </tr>
+    <tr>
+        <td align="center" colspan="2">【<span>{$mail.addtime|date='Y-m-d H:i:s',###}</span>】</td>
+    </tr>
+  <tr>
+    <td align="left" colspan="2"> <span class="MsgContent">
+        {$mail.content}
+    </span></td>
+  </tr>
+</table>
+<br />
+    <input type="hidden" name="act" value="delete" />
+<div style="text-align:center; margin-top:30px;">
+    <input id="btnback" class="buttom" onclick="window.location.href='{:U('Index/Mailbox/index')}'" type="button" value="返 回" />
+</div>
+</fieldset>
+<br /><br /><br />
+
+            </div>
+            <br /><br />
+        </div>
+	</div>
+</div>
+
+<!-- Transparent layer --> 
+<div id="divBox" style="filter:alpha(opacity=40);-moz-opacity:0.3;opacity:0.3;background-color:#000;width:100%;height:100%;z-index:1000;position: absolute;left:0;top:0;display:none;overflow: hidden;">
+</div>
+<!-- message layer --> 
+<div id="divMsg" style="border:solid 5px #339999;background:#fff;padding:10px;width:780px;z-index:1001; position: absolute; display:none;top:50%; left:50%;margin:-200px 0 0 -400px;"> 
+    <div style="padding:3px 15px 3px 15px;text-align:left;vertical-align:middle;" > 
+        <div class="IndexShowMsg"> 
+            <div id="divShowMsg"></div>
+            
+        </div> 
+        <br/>
+        <div id="showbtnCancel" style="text-align:right;"> 
+            <input id="btnCancel" type="button" class="buttom" value=" 关闭 " onclick="ShowNo()" /> 
+        </div> 
+    </div> 
+</div> 
+</body>
+</html>

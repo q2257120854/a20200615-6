@@ -1,0 +1,609 @@
+.soft-container {
+    padding: 0;
+    background: #FFF;
+    box-shadow: 0 1px 3px #cecece;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0px 2%;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .soft-container {
+        margin: 0 8px;
+    }
+}
+
+.jc_title {
+    margin-top: 20px;
+}
+
+.jc_title div h3 {
+    line-height: 40px;
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 9px;
+    overflow: hidden;
+    float: left;
+}
+
+.jc_title div span {
+    margin-right: 10px;
+    position: relative;
+    top: -1px;
+}
+
+.jc_title div a {
+    float: right;
+    height: 51px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #A7A7A7;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    text-align: right;
+}
+
+.jc_title div {
+    border-bottom: 1px solid #efefef;
+}
+
+.jc_jietu {
+    margin-top: 30px;
+    float: left;
+    height: 239px;
+    text-align: center;
+    overflow: hidden;
+    display: flex!important;
+    justify-content: center;
+    align-items: Center;
+}
+
+.jc_jietu img {
+    overflow: hidden;
+    border-radius: 4px;
+    max-width: 100%;
+    position: relative;
+    max-height: 239px;
+}
+
+.jc_jieshao {
+    margin-top: 30px;
+    float: right;
+    text-align: center;
+}
+
+.jc_jieshao ul {
+    height: 100%;
+}
+
+.jc_jieshao ul li {
+    text-align: left;
+    height: 40.8px;
+    line-height: 40.8px;
+    font-size: 14px;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 50%;
+    float: left;
+    padding: 0 8px;
+}
+
+.download_now {
+    border: 1px solid #FF9A5F;
+    display: block;
+    height: 48px;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #FFF;
+    float: left;
+    border-radius: 5px;
+    background: #FF9A5F;
+}
+
+.download_now:hover {
+    background: #F1925B;
+    color: #FFF;
+}
+
+.download_now span {
+    margin-right: 10px;
+    top: 2px;
+    display: none;
+}
+
+.jc_jieshao1 {
+    margin-top: 44px;
+}
+
+.jc_jieshao_title {
+    font-size: 19px;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 15px;
+}
+
+.jc_jieshao_title span {
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    overflow: hidden;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #828282;
+    font-size: 15px;
+}
+
+.jc_jieshao_title span i {
+    font-size: 29px;
+    position: relative;
+    top: 5px;
+    margin-right: 8px;
+    display: none;
+}
+
+.jc_jieshao_con {
+    margin-top: 10px;
+    line-height: 33px;
+    color: #A7A7A7;
+    padding: 17px 3%;
+}
+
+.jc_other {
+    padding: 0;
+}
+
+.jc_other div {
+    display: block;
+    overflow: hidden;
+    height: 34px;
+    margin-right: 2%;
+    padding: 0;
+    float: right;
+    margin-top: 16px;
+}
+
+.jc_other div span {
+    margin-right: 0;
+    background: url('../images/new_lc.png')no-repeat;
+    display: block;
+    float: left;
+    width: 36px;
+    height: 100%;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.jc_other div a {
+    display: block;
+    float: left;
+    width: 73px;
+    height: 34px;
+    border: 1px solid #e8e8e8;
+    border-left: none;
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+    line-height: 32px;
+    font-size: 13px;
+    font-style: normal;
+    color: #A9A6A6;
+}
+
+.downph,
+.download {
+    padding: 0!important;
+}
+
+.download ul li {
+    padding: 0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-right: 24px;
+}
+
+.download ul li a {
+    display: block;
+    height: 43px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.download ul li a i {
+    width: 23%;
+    line-height: 43px;
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    color: #0b588c;
+    float: left;
+    overflow: hidden;
+    border-right: 1px solid #d7d7d7;
+}
+
+.download ul li a b {
+    display: block;
+    height: 100%;
+    float: left;
+    width: 77%;
+    color: #0b588c;
+    overflow: hidden;
+    line-height: 43px;
+    text-align: center;
+}
+
+.downph ul li {
+    padding: 0;
+    margin-bottom: 13px;
+}
+
+.downph ul li a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.downph ul li a i {
+    width: 9%;
+    height: 29px;
+    line-height: 29px;
+    text-align: center;
+    display: block;
+    color: #FFF;
+    background: #D2D2D2;
+    border-radius: 4px;
+    float: left;
+    overflow: hidden;
+    font-style: normal;
+    margin-top: 2px;
+}
+
+.downph ul li a span {
+    display: block;
+    height: 33px;
+    line-height: 33px;
+    width: 85%;
+    color: #9E9E9E;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: right;
+}
+
+.downph ul li:nth-child(1) a i {
+    background: #ff5555;
+}
+
+.downph ul li:nth-child(2) a i {
+    background: #ff9900;
+}
+
+.downph ul li:nth-child(3) a i {
+    background: #ffcc00;
+}
+
+.downph ul li span:hover {
+    color: #f60;
+}
+
+.download ul li a:hover {
+    background: #FFFFFF;
+    border: 1px solid #3690CD!important;
+}
+
+.download ul li a:hover i,
+.download ul li a:hover b {
+    color: #106097;
+    border-right: 1px solid #3690CD;
+}
+
+.download ul li a:hover b {
+    border: 0;
+}
+
+.emoji-list li {
+    width: 33%!important;
+}
+
+#cyEmoji .emoji-tip {
+    display: none!important;
+}
+
+.zuozxinxi img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    z-index: 100;
+    position: relative;
+    float: left;
+}
+
+.zuozxinxi {
+    margin-bottom: 20px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.zz_nick {
+    display: inline-block;
+    font-size: 19px;
+    margin-left: 29px;
+    max-width: 44%;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.Rotation {
+    -webkit-transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+}
+
+.zuozxinxi a {
+    font-size: 17px;
+    left: 130px;
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    border-radius: 5px;
+    color: #44C2F1;
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border: 1px solid #44C2F1;
+}
+
+.zuozxinxi a:hover {
+    background: #44C2F1;
+    color: #FFF;
+}
+
+.jc-js span {
+    color: #828282;
+    font-size: 15px;
+}
+
+.jc-js span i {
+    font-size: 29px;
+    position: relative;
+    top: 5px;
+    margin-right: 8px;
+}
+
+.article-left {
+    box-shadow: 0 1px 3px #cecece;
+    background: #FFF;
+    padding: 0;
+}
+
+.article-right1 {
+    padding: 0;
+}
+
+.article-right {
+    box-shadow: 0 1px 3px #cecece;
+    background: #FFF;
+    margin-left: 7px;
+    padding: 10px 8%;
+}
+
+.article_title {
+    padding: 0px 13px;
+    margin-top: 34px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 33px;
+    font-family: Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .jc_jieshao1 {
+        margin-top: 5px;
+    }
+    .jc_jietu {
+        display: none!important;
+    }
+    .article-right {
+        margin: 0;
+        margin-top: 10px;
+    }
+    .article_title {
+        margin-top: 20px;
+    }
+}
+
+.article_ini {
+    text-align: center;
+    margin-top: 9px;
+    color: #868686;
+    font-size: 13px;
+    line-height: 26px;
+    padding: 0px 13px;
+}
+
+.article_ini span,
+.ar_author {
+    margin-right: 8px;
+}
+
+.article_ini a {
+    color: #868686;
+}
+
+.hx {
+    margin: 16px 5%;
+}
+
+.article_wenz {
+    padding: 10px 4%;
+    padding-bottom: 30px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.article_wenz img {
+    cursor: pointer;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.article_wenz1 {
+    padding: 10px 4%;
+    padding-bottom: 30px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.article_wenz1 img {
+    cursor: pointer;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.article-pinglun {
+    margin: 0px 4%;
+    border-top: 1px dashed #ADADAD;
+    padding-top: 10px;
+}
+
+.ar_rtitle {
+    font-size: 15px;
+    display: block;
+    line-height: 35px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    color: #585858;
+    border-bottom: 1px solid #585858;
+}
+
+.ar_rtitle i {
+    margin-right: 10px;
+}
+
+.listone_img {
+    width: 100%;
+    max-width: 179px;
+    display: block;
+    margin: 0px auto;
+}
+
+.arph_list li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 33px;
+}
+
+.arph_list li a {
+    color: #7D7D7D;
+}
+
+.arph_list li a:hover {
+    color: #FFB546;
+}
+
+.ar_athuor img {
+    margin-bottom: 10px;
+    border-radius: 50%;
+    max-width: 130px;
+}
+
+.ar_athuor span {
+    display: block;
+    line-height: 40px;
+    text-align: center;
+}
+
+.ar_athuor a:hover img {
+    box-shadow: 0px 1px 30px #DEDEDE;
+}
+
+.ar_athuor {
+    text-align: center;
+    margin-top: 39px;
+    margin-bottom: 20px;
+}
+
+.tuijian li {}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.ar_athuor a img:hover {
+    -webkit-transform: rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+}
+
+.yinghuoc .layui-layer-content {
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.yinghuoc .layui-layer-content img {
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+
+.yinghuoc {
+    max-width: 95%;
+}
+
+#downloadurl a {
+    cursor: pointer;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+}
+
+.downph ul li a p {
+    line-height: 31px;
+    height: 31px;
+    padding-left: 64px;
+    text-align: left;
+}
+
+.article_wenz * {
+    overflow: hidden;
+}
+
+.yinghuoc {
+    max-height: 90%;
+    max-width: 90%;
+}

@@ -1,0 +1,52 @@
+{include file="public/top" /}
+<title>产品动态</title>
+<meta name="keywords" content="产品动态">
+<meta name="description" content="产品动态">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/wnmd.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+    {include file="public/head"}
+        <div class="dynamic_banner">
+            <div class="main2">
+                <div class="contact_banner_div1">ENTERPRISE NEWS</div>
+                <div class="contact_banner_div2">企业公告</div>
+            </div>
+        </div>
+        <div class="dynamic_nav">
+            <div class="main2 clearfix">
+                <a href="{:Url('News/index')}">更新日志</a>
+
+                <a href="{:Url('News/index')}">产品动态</a>
+
+                <a class="hover" href="{:Url('News/gg')}">企业公告</a>
+
+            </div>
+        </div>
+        <div class="dynamic_content main2">
+            {foreach $list as $rs}
+            <a href="{:Url('showgg')}?id={$rs.id}" class="dynamic_single">
+                <div class="dynamic_single_date"><span></span>{:date('Y',$rs.createtime)}.{:date('m',$rs.createtime)}.{:date('d',$rs.createtime)}</div>
+                <div class="dynamic_single_div2 clearfix">
+                    <div class="dynamic_single_title">{$rs.title}</div>
+                    <div class="dynamic_link">VIEW MORE <img src="/com/img/dynamic_yjt.png"/></div>
+                </div>
+            </a>
+            {/foreach}
+            <div class="dynamic_fy">
+                <ul>
+                    {$lists->render()}
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    {include file="public/foot"}
+    
+</body> 
+</html>

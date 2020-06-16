@@ -1,0 +1,45 @@
+/*
+友价源码 　
+后台登录页面CSS
+编辑于2013年7月25日
+*/
+
+body{margin:0;font-size:12px;text-align:center;color:#7E7F83;background:url(../img/loginbg.gif) left top repeat;}
+ul{margin:0;list-style-type:none;}
+form{margin:0;}
+p{margin:2pt 0 0 0;}
+*{margin:0 auto;padding:0;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ff6600;text-decoration:none;}
+input{outline:medium;}
+
+.main{width:562px;}
+.main .lmain{float:left;background:url(../img/loginmain.gif) left top no-repeat;width:562px;height:279px;margin-top:150px;text-align:left;}
+.main .lmain .u1{float:left;width:329px;}
+.main .lmain .u1 li{float:left;}
+.main .lmain .u1 .l1{width:312px;font-size:14px;font-weight:700;padding:25px 0 0 17px;height:33px;}
+.main .lmain .u1 .l2{width:90px;height:18px;font-size:14px;padding:27px 0 0 0;text-align:right;}
+.main .lmain .u1 .l3{width:239px;height:26px;padding:19px 0 0 0;}
+.main .lmain .u1 .l3 .inp1{border:0;background:url(../img/logint1.gif) left top no-repeat;width:214px;height:28px;font-size:14px;padding:8px 0 0 5px;font-weight:700;font-family:Arial, Helvetica, sans-serif;color:#2773EA;}
+.main .lmain .u1 .l3 .inp2{background:url(../img/logint2.gif) left top no-repeat;}
+.main .lmain .u1 .l31{width:239px;height:45px;}
+.main .lmain .u1 .l31 .inp1{border:0;background:url(../img/logint11.gif) left top no-repeat;width:114px;height:28px;font-size:14px;padding:8px 0 0 5px;font-weight:700;font-family:Arial, Helvetica, sans-serif;color:#2773EA;float:left;margin-top:19px;}
+.main .lmain .u1 .l31 .inp2{background:url(../img/logint21.gif) left top no-repeat;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.main .lmain .u1 .l3 .inp1{height:24px;padding:5px 0 0 5px;}
+.main .lmain .u1 .l3 .inp2{height:24px;padding:5px 0 0 5px;}
+.main .lmain .u1 .l31 .inp1{height:24px;padding:5px 0 0 5px;}
+.main .lmain .u1 .l31 .inp2{height:24px;padding:5px 0 0 5px;}
+}
+.main .lmain .u1 .l31 img{float:left;margin:20px 0 0 10px;}
+.main .lmain .u1 .l5{padding:25px 0 0 90px;}
+.main .lmain .u1 .l4{padding:40px 0 0 0;color:#A8A9AD;width:118px;text-align:right;}
+.main .lmain .u2{float:left;width:233px;text-align:left;}
+.main .lmain .u2 li{float:left;}
+.main .lmain .u2 .l1{text-align:right;height:70px;width:233px;}
+.main .lmain .u2 .l2{line-height:20px;padding:0 0 0 22px;height:150px;width:201px;}
+.main .lmain .u2 .l3{padding:0 0 0 21px;}
+
+
+
+

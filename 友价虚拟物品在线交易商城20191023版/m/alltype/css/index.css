@@ -1,0 +1,18 @@
+@charset "gb2312";
+.pleft{float:left;width:44px;height:calc(100% - 50px);background-color:#f9f9f9;overflow-y:scroll;}
+.pleft a{float:left;border-top:#fff solid 1px;color:#666;line-height:15px;padding:15px 7px 15px 7px;text-align:center;width:30px;}
+.pleft .a1{border-left:#ff0000 solid 2px;width:28px;color:#ff0000;}
+.pleft::-webkit-scrollbar{display:none;}
+
+.pright{float:left;width:calc(100% - 74px);margin-left:10px;margin-right:10px;height:calc(100% - 50px);overflow-y:scroll;}
+.pright .d1{float:left;width:calc(33% - 30px);padding:0 15px;text-align:center;height:69px;overflow:hidden;margin:20px 0 0 0;}
+.pright .d1 img{width:40px;height:40px;margin:0 0 10px 0;}
+.pright::-webkit-scrollbar{display:none;}
+
+
+
+
+
+
+
+

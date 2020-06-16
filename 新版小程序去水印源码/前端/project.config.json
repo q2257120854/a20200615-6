@@ -1,0 +1,90 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.6",
+	"appid": "wx6474b630d1275a14",
+	"projectname": "app",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "tommie_duanshiping/pages/pay/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "keypay",
+					"pathName": "tommie_duanshiping/pages/keypay/keypay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "推荐",
+					"pathName": "tommie_duanshiping/pages/video/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "web",
+					"pathName": "tommie_duanshiping/pages/web/index",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "member",
+					"pathName": "tommie_duanshiping/pages/member/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

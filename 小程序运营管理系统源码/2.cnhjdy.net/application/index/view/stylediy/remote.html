@@ -1,0 +1,191 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem9">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			远程附件--{$applet.name}
+		</li>
+	</ul>
+	<div class="row-fluid">
+		<div class="portlet box">
+			<div class="portlet-body form">
+				<form action="{:Url('Stylediy/remotesave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					<div class="control-group">
+						<label class="control-label">远程附件</label>
+						<div class="controls">
+							<select name="remote" class="span3 m-wrap" id="remote" onchange="change()">
+								<option value="1" {if $base}{if $base.remote==1}selected=selected{/if}{/if}>无（服务器）</option>
+		                        <option value="2" {if $base}{if $base.remote==2}selected=selected{/if}{/if}>七牛云存储</option>
+		                        <!-- <option value="3" {if $base}{if $base.remote==3}selected=selected{/if}{/if}>阿里云OSS</option> -->
+							</select>
+						</div>
+					</div>
+
+					<div class="qiniu" style="{if $base}{if $base.remote==2}display: block{else}display: none{/if}{/if}">
+						<div class="control-group">
+							<label class="control-label">存储空间名称(Bucket)<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="bucket2" type="text" class="span3 m-wrap" value="{if $remote2}{$remote2.bucket}{/if}" style="height: 35px !important;">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">绑定域名（或测试域名）<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="domain2" type="text" class="span3 m-wrap" value="{if $remote2}{$remote2.domain}{/if}" style="height: 35px !important;">
+								<span style="color:#999999; line-height:40px; margin-left:20px;">例子：http://abstehdsdw.bkt.clouddn.com，请加上http://或https://，结尾不需要/</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">AccessKey（AK）<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="ak2" type="text" class="span4 m-wrap" value="{if $remote2}{$remote2.ak}{/if}" style="height: 35px !important;">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">SecretKey（SK）<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="sk2" type="text" class="span4 m-wrap" value="{if $remote2}{$remote2.sk}{/if}" style="height: 35px !important;">
+							</div>
+						</div>
+				<!-- 		<div class="control-group">
+							<label class="control-label">图片样式接口（选填）</label>
+							<div class="controls">
+								<input name="imgstyle2" type="text" class="span4 m-wrap" value="{if $remote2}{$remote2.imgstyle}{/if}" style="height: 35px !important;">
+								<span style="color:#999999; line-height:40px; margin-left:20px;">例子：imageView2/0/w/1080/h/1080/q/85|imageslim</span>
+							</div>
+						</div> -->
+					</div>
+					<div class="ali" style="{if $base}{if $base.remote==3}display: block{else}display: none{/if}{/if}">
+						<div class="control-group">
+							<label class="control-label">存储空间名称(Bucket)<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="bucket3" type="text" class="span3 m-wrap" value="{if $remote3}{$remote3.bucket}{/if}" style="height: 35px !important;">
+								<span style="color:#999999; line-height:40px; margin-left:20px;">请设置存储空间为公共读</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Endpoint（或自定义域名）<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="domain3" type="text" class="span3 m-wrap" value="{if $remote3}{$remote3.domain}{/if}" style="height: 35px !important;">
+								<span style="color:#999999; line-height:40px; margin-left:20px;">例子：http://abstehdsdw.bkt.clouddn.com，请加上http://或https://，结尾不需要/</span>
+							</div>
+						</div>
+						<div class="control-group">
+
+							<!--新增的字段-->
+
+							<label class="control-label">是否开启自定义域名<span style="color:red">*</span></label>
+
+							<div class="controls">
+
+								<label class="radio">
+
+								<input type="radio" name="domainIs" value="2"  {if $remote3}{if $remote3.domainIs==2}checked="checked"{/if}{else}checked="checked"{/if}{/if}>
+
+								否
+
+								</label>
+
+								<label class="radio">
+
+								<input type="radio" name="domainIs" value="1" {if $remote3}{if $remote3.domainIs==1}checked="checked"{/if}{/if}></span>
+
+								是
+
+								</label> 
+
+
+							</div>
+
+						</div>
+						<div class="control-group">
+							<label class="control-label">Access Key ID<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="ak3" type="text" class="span4 m-wrap" value="{if $remote3}{$remote3.ak}{/if}" style="height: 35px !important;">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Access Key Secret<span style="color:red">*</span></label>
+							<div class="controls">
+								<input name="sk3" type="text" class="span4 m-wrap" value="{if $remote3}{$remote3.sk}{/if}" style="height: 35px !important;">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">图片样式接口（选填）</label>
+							<div class="controls">
+								<input name="imgstyle3" type="text" class="span4 m-wrap" value="{if $remote3}{$remote3.imgstyle}{/if}" style="height: 35px !important;">
+								<span style="color:#999999; line-height:40px; margin-left:20px;">例子：sample.jpg?x-oss-process=style/stylename</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+	
+<script type="text/javascript">
+function change(){
+	var remote = $("#remote option:selected").val();
+	if(remote == 1){
+		$(".qiniu").hide();
+		$(".ali").hide();
+	}else if(remote == 2){
+		$(".qiniu").show();
+		$(".ali").hide();
+	}else if(remote == 3){
+		$(".qiniu").hide();
+		$(".ali").show();
+	}
+	
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}
+

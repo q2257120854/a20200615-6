@@ -1,0 +1,1619 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px dotted #eee;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navDIY"  class="navDIY2-1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			样式DIY--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Stylediy/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+
+					
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">首页各块DIY</label>
+
+
+
+					</div>
+
+
+
+
+
+
+
+		            <div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">最上方头部</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="newhead" value="1" {if $bases}{if $bases.config}{if $bases.config['newhead']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							纯LOGO
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="newhead" value="2" {if $bases}{if $bases.config}{if $bases.config['newhead']=="2"}checked=checked{/if}{/if}{/if}/>
+
+							LOGO+电话
+
+							</label> 
+
+							<label class="radio">
+
+							<input type="radio" name="newhead" value="0" {if $bases}{if $bases.config}{if $bases.config['newhead']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不启用
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">首页顶部样式</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_style" value="header" {if $bases}{if $bases.index_style=="header"}checked=checked{/if}{/if}/>
+
+
+
+							背景、标题、LOGO
+
+
+
+							</label>
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_style" value="slide" {if $bases}{if $bases.index_style=="slide"}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							幻灯片[基础设置]
+
+
+
+							</label> 
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_style" value="newslide" {if $bases}{if $bases.index_style=="newslide"}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							幻灯片[带连接]
+
+
+
+							</label> 
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_style" value="none" {if $bases}{if $bases.index_style=="none"}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							不启用
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">首页电话、时间区块</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="tel_box" value="1" {if $bases}{if $bases.tel_box==1}checked=checked{/if}{/if}/>
+
+
+
+							显示
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="tel_box" value="0" {if $bases}{if $bases.tel_box==0}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							隐藏
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+					
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">搜索模块</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="search" value="1" {if $bases}{if $bases.config}{if $bases.config['search']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							显示
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="search" value="0" {if $bases}{if $bases.config}{if $bases.config['search']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							隐藏
+
+							</label> 
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">首页多商户是否显示</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="duomerchants" value="1" {if $bases}{if $bases.duomerchants==1}checked=checked{/if}{/if}/>
+
+
+
+							显示
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="duomerchants" value="2" {if $bases}{if $bases.duomerchants==2}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							隐藏
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">开屏广告</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="bigadT" value="1" {if $bases}{if $bases.config}{if $bases.config['bigadT']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							纯图片
+
+							</label>
+							<label class="radio">
+
+							<input type="radio" name="bigadT" value="2" {if $bases}{if $bases.config}{if $bases.config['bigadT']=="2"}checked=checked{/if}{/if}{/if}/>
+
+							带链接图片
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="bigadT" value="0" {if $bases}{if $bases.config}{if $bases.config['bigadT']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不启用
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">开屏广告关闭方式</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="bigadC" value="1" {if $bases}{if $bases.config}{if $bases.config['bigadC']=="1"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							倒计时关闭
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="bigadC" value="0" {if $bases}{if $bases.config}{if $bases.config['bigadC']=="0"}checked=checked{/if}{/if}{/if}/>
+
+							按钮进入
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">倒计时</label>
+
+						<div class="controls">
+
+							<input name="bigadCTC" type="text" class="span1 m-wrap" value="{if $bases}{if $bases.config}{$bases.config['bigadCTC']}{/if}{/if}"  style="height: 35px !important;" />
+
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+
+								秒
+
+							</span>
+
+						</div>
+
+					</div>
+
+					
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">按钮名称</label>
+
+						<div class="controls">
+
+							<input name="bigadCNN" type="text" class="span2 m-wrap" value="{if $bases}{if $bases.config}{$bases.config['bigadCNN']}{/if}{/if}"  style="height: 35px !important;" />
+
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+
+								点击会进入首页
+
+							</span>
+
+						</div>
+
+					</div>
+
+					
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">弹窗广告</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="miniadT" value="2" {if $bases}{if $bases.config}{if $bases.config['miniadT']=="2"}checked=checked{/if}{/if}{/if}/>
+
+							纯图片弹窗
+
+							</label>
+
+							<label class="radio">
+							<input type="radio" name="miniadT" value="1" {if $bases}{if $bases.config}{if $bases.config['miniadT']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							带简介弹窗
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="miniadT" value="0" {if $bases}{if $bases.config}{if $bases.config['miniadT']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不启用
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">弹窗广告弹出方式</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="miniadC" value="1" {if $bases}{if $bases.config}{if $bases.config['miniadC']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							更新自动弹出
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="miniadC" value="0" {if $bases}{if $bases.config}{if $bases.config['miniadC']=="0"}checked=checked{/if}{/if}{/if}/>
+
+							每次弹出
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">标题名称</label>
+
+						<div class="controls">
+
+							<input name="miniadN" type="text" class="span2 m-wrap" value="{if $bases}{if $bases.config}{$bases.config['miniadN']}{/if}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+
+					
+
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">按钮名称</label>
+
+						<div class="controls">
+
+							<input name="miniadB" type="text" class="span2 m-wrap" value="{if $bases}{if $bases.config}{$bases.config['miniadB']}{/if}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+
+
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">介绍板块栏目名</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="aboutCN" type="text" class="span2 m-wrap" value="{if $bases}{$bases.aboutCN}{/if}"  style="height: 35px !important;" />
+
+							
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								英文名称
+
+							</span>
+
+							<input name="aboutCNen" type="text" class="span2 m-wrap" value="{if $bases}{$bases.aboutCNen}{/if}"  style="height: 35px !important;" />
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group" >
+
+
+
+						<label class="control-label">介绍板块标题样式</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_about_title" value="title1" {if $bases}{if $bases.index_about_title=="title1"}checked=checked{/if}{/if}/>
+
+
+
+							上下结构
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_about_title" value="title2" {if $bases}{if $bases.index_about_title=="title2"}checked=checked{/if}{/if}/>
+
+
+
+							左右结构
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_about_title" value="none" {if $bases}{if $bases.index_about_title=="none"}checked=checked{/if}{/if}/>
+
+
+
+							不显示标题
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="index_about_title" value="9" {if $bases}{if $bases.index_about_title==9}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							<font color="#c00">本版块隐藏</font>
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+					
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">优惠券区块</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="copT" value="1" {if $bases}{if $bases.config}{if $bases.config['copT']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							标题上下结构
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="copT" value="2" {if $bases}{if $bases.config}{if $bases.config['copT']=="2"}checked=checked{/if}{/if}{/if}/>
+
+							标题左右结构
+
+							</label> 
+
+							<label class="radio">
+
+							<input type="radio" name="copT" value="0" {if $bases}{if $bases.config}{if $bases.config['copT']=="0"}checked=checked{/if}{/if}{/if}/>
+
+							不显示标题
+
+							</label> 
+
+							<label class="radio">
+
+							<input type="radio" name="copT" value="9" {if $bases}{if $bases.config}{if $bases.config['copT']=="9"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							<font color="#c00">本版块隐藏</font>
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">横排推荐区中文名</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="catename_x" type="text" class="span2 m-wrap" value="{if $bases}{$bases.catename_x}{/if}"  style="height: 35px !important;" />
+
+							
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								英文名称
+
+							</span>
+
+							<input name="catenameen_x" type="text" class="span2 m-wrap" value="{if $bases}{$bases.catenameen_x}{/if}"  style="height: 35px !important;" />
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group" >
+
+
+
+						<label class="control-label">横排推荐区标题样式</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_x_ts" value="1" {if $bases}{if $bases.i_b_x_ts==1}checked=checked{/if}{/if}/>
+
+
+
+							上下结构
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_x_ts" value="2" {if $bases}{if $bases.i_b_x_ts==2}checked=checked{/if}{/if}/>
+
+
+
+							左右结构
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_x_ts" value="0" {if $bases}{if $bases.i_b_x_ts==0}checked=checked{/if}{/if}/>
+
+
+
+							不显示标题
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_x_ts" value="9" {if $bases}{if $bases.i_b_x_ts==9}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							<font color="#c00">本版块隐藏</font>
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">横排推荐区图片宽度</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="i_b_x_iw" type="number" class="span1 m-wrap" value="{if $bases}{$bases.i_b_x_iw}{/if}"  style="height: 35px !important;" />
+
+	
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可填写200-600之间数值</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">竖排推荐区中文名</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="catename" type="text" class="span2 m-wrap" value="{if $bases}{$bases.catename}{/if}"  style="height: 35px !important;" />
+
+							
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								英文名称
+
+							</span>
+
+							<input name="catenameen" type="text" class="span2 m-wrap" value="{if $bases}{$bases.catenameen}{/if}"  style="height: 35px !important;" />
+
+
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group" >
+
+
+
+						<label class="control-label">竖排推荐区标题</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_y_ts" value="1" {if $bases}{if $bases.i_b_y_ts==1}checked=checked{/if}{/if}/>
+
+
+
+							上下结构
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_y_ts" value="2" {if $bases}{if $bases.i_b_y_ts==2}checked=checked{/if}{/if}/>
+
+
+
+							左右结构
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_y_ts" value="0" {if $bases}{if $bases.i_b_y_ts==0}checked=checked{/if}{/if}/>
+
+
+
+							不显示标题
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="i_b_y_ts" value="9" {if $bases}{if $bases.i_b_y_ts==9}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							<font color="#c00">本版块隐藏</font>
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+					<div class="control-group">
+						<label class="control-label">竖排推荐区最大数</label>
+						<div class="controls">
+							<input name="sptj_max" type="text" class="span2 m-wrap" value="{if $bases}{$bases.sptj_max}{/if}"  style="height: 35px !important;" />
+						</div>
+					</div>
+					<div class="control-group">
+
+		                <label class="control-label">竖排推荐区列表样式</label>
+
+		                <div class="controls">
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_lstyle" value="1"  {if $bases}{if $bases.index_pro_lstyle==1}checked=checked{/if}{/if}/>单行大图
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_lstyle" value="2"  {if $bases}{if $bases.index_pro_lstyle==2}checked=checked{/if}{/if}/>两列图片
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_lstyle" value="5"  {if $bases}{if $bases.index_pro_lstyle==5}checked=checked{/if}{/if}/>三列图片
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_lstyle" value="3"  {if $bases}{if $bases.index_pro_lstyle==3}checked=checked{/if}{/if}/>单行图文、带简介、时间
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_lstyle" value="4"  {if $bases}{if $bases.index_pro_lstyle==4}checked=checked{/if}{/if}/>纯标题样式
+
+		                    </label>
+
+		                </div>
+
+		            </div>
+
+
+
+		            <div class="control-group">
+
+		                <label class="control-label">竖排推荐区列表标题</label>
+
+		                <div class="controls">
+
+		                    <label class="select_one_b">
+
+                        		<input type="radio" name="index_pro_ts_al" value="tl"  {if $bases}{if $bases.index_pro_ts_al=="tl"}checked=checked{/if}{/if}/>【无背景】标题左对齐
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_ts_al" value="tc"  {if $bases}{if $bases.index_pro_ts_al=="tc"}checked=checked{/if}{/if}/>【无背景】标题居中下方
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_ts_al" value="tlb"  {if $bases}{if $bases.index_pro_ts_al=="tlb"}checked=checked{/if}{/if}/>【透明背景】标题左对齐底部
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_ts_al" value="tcb"  {if $bases}{if $bases.index_pro_ts_al=="tcb"}checked=checked{/if}{/if}/>【透明背景】标题居中底部
+
+		                    </label>
+
+		                    <label class="select_one_b">
+
+		                        <input type="radio" name="index_pro_ts_al" value="none"  {if $bases}{if $bases.index_pro_ts_al=="none"}checked=checked{/if}{/if}/>不显示标题
+
+		                    </label>
+
+		                </div>
+
+		            </div>
+						
+
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">商品竖排推荐区中文名</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="spcatename" type="text" class="span2 m-wrap" value="{if $bases}{$bases.spcatename}{/if}"  style="height: 35px !important;" />
+
+							
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								英文名称
+
+							</span>
+
+							<input name="spcatenameen" type="text" class="span2 m-wrap" value="{if $bases}{$bases.spcatenameen}{/if}"  style="height: 35px !important;" />
+
+
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">商品竖排推荐区最大数</label>
+						<div class="controls">
+							<input name="sptj_max_sp" type="text" class="span2 m-wrap" value="{if $bases}{$bases.sptj_max_sp}{/if}"  style="height: 35px !important;" />
+						</div>
+					</div>
+
+					<div class="control-group" >
+
+
+
+						<label class="control-label">商品竖排推荐区标题</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="sp_i_b_y_ts" value="1" {if $bases}{if $bases.sp_i_b_y_ts==1}checked=checked{/if}{/if}/>
+
+
+
+							上下结构
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="sp_i_b_y_ts" value="2" {if $bases}{if $bases.sp_i_b_y_ts==2}checked=checked{/if}{/if}/>
+
+
+
+							左右结构
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="sp_i_b_y_ts" value="0" {if $bases}{if $bases.sp_i_b_y_ts==0}checked=checked{/if}{/if}/>
+
+
+
+							不显示标题
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="sp_i_b_y_ts" value="9" {if $bases}{if $bases.sp_i_b_y_ts==9}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							<font color="#c00">本版块隐藏</font>
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+			
+						
+
+					<div style="border-bottom:1px dotted #eee; margin-bottom:40px;"></div>
+
+
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">服务中心背景图</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+
+
+
+								<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:90px;">
+
+
+
+									{if $bases && $bases.c_b_bg}
+
+									<img src="{$bases.c_b_bg}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:90px;">
+
+									
+
+								</div>
+
+								<div>
+
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic"></span></span>
+
+								</div>
+
+
+
+								<font color="#999999">默认为白色背景</font>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group" >
+
+
+
+						<label class="control-label">服务中心按钮样式</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="c_b_btn" value="1" {if $bases}{if $bases.c_b_btn==1}checked=checked{/if}{/if}/>
+
+
+
+							彩色实心
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="c_b_btn" value="2" {if $bases}{if $bases.c_b_btn==2}checked=checked{/if}{/if}/>
+
+
+
+							白色边框
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="c_b_btn" value="0" {if $bases}{if $bases.c_b_btn==0}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							<font color="#c00">首页本版块隐藏</font>
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">首页表单模块</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="form_index" value="1" {if $bases}{if $bases.form_index==1}checked=checked{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="form_index" value="0" {if $bases}{if $bases.form_index==0}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+							
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">个人中心【餐饮订单】</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="userFood" value="1" {if $bases}{if $bases.config}{if $bases.config['userFood']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="userFood" value="0" {if $bases}{if $bases.config}{if $bases.config['userFood']=="0"}checked=checked{/if}{else}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+
+						</div>
+
+					</div>
+					
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">全局参数配置</label>
+
+
+
+					</div>
+					
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">文章评论</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="commA" value="1" {if $bases}{if $bases.config}{if $bases.config['commA']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="commA" value="0" {if $bases}{if $bases.config}{if $bases.config['commA']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可在每篇文章中单独控制</span>
+						</div>
+
+					</div>
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">文章评论审核</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="commAs" value="1" {if $bases}{if $bases.config}{if $bases.config['commAs']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="commAs" value="0" {if $bases}{if $bases.config}{if $bases.config['commAs']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可在每篇文章中单独控制</span>
+						</div>
+
+					</div>
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">商品评论</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="commP" value="1" {if $bases}{if $bases.config}{if $bases.config['commP']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="commP" value="0" {if $bases}{if $bases.config}{if $bases.config['commP']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可在单个商品中单独控制</span>
+						</div>
+
+					</div>
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">商品评论审核</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="commPs" value="1" {if $bases}{if $bases.config}{if $bases.config['commPs']=="1"}checked=checked{/if}{/if}{/if}/>
+
+							开启
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="commPs" value="0" {if $bases}{if $bases.config}{if $bases.config['commPs']=="0"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							不开启
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可在每篇文章中单独控制</span>
+						</div>
+
+					</div>
+					<div class="control-group" >
+
+						<!--新增的字段-->
+
+						<label class="control-label">预约商品底部客服按钮</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="serverBtn" value="1" {if $bases}{if $bases.config}{if $bases.config['serverBtn']=="1"}checked=checked{/if}{else}checked=checked{/if}{/if}/>
+
+							电话
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="serverBtn" value="0" {if $bases}{if $bases.config}{if $bases.config['serverBtn']=="0"}checked=checked{/if}{/if}{/if}/>
+
+							微信客服
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可在每篇文章中单独控制</span>
+						</div>
+
+					</div>
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

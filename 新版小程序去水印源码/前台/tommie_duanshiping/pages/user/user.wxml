@@ -1,0 +1,19 @@
+<view class="content" style="background: #090722;">
+    <view class="content_kami_shuoming">
+        <view class="content_shuoming_li_t">短视频MD5是什么?</view>
+        <view class="content_shuoming_li">   答：MD5值类似于人类的身份证，每一个MD5值对于小视频本身都是独一无二的，平台自有系统通过判断MD5值是验证视频是否重复的手段之一</view>
+    </view>
+    <view class="content_top">
+  修改MD5前,上传视频原创是别人的(如下图)
+  </view>
+    <view class="content_img">
+        <image src="/tommie_duanshiping/resource/image/xiugaiqian.jpg"></image>
+    </view>
+    <view class="content_top">
+  修改MD5后,上传视频原创是自己的(如下图)
+  </view>
+    <view class="content_img">
+        <image src="/tommie_duanshiping/resource/image/xiugaihou.jpg"></image>
+    </view>
+    <view class="kongbaibottom"></view>
+</view>

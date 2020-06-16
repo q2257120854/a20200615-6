@@ -1,0 +1,48 @@
+<view class="UCenter-bg">
+    <button bindgetuserinfo="updateUserInfo" class="login" hoverClass="login-hover" openType="getUserInfo" wx:if="{{loginState=='0'}}">登陆</button>
+    <image class="png" src="{{headimg}}" wx:else></image>
+    <view class="text-xl">
+        {{nickname}}
+    </view>
+    <image class="gif-wave" mode="scaleToFill" src="../../resource/image/wave.gif"></image>
+</view>
+<i-cell-group>
+    <view wx:if="{{is_pay==1}}">
+        <view wx:if="{{isMember==1}}">
+            <view wx:if="{{date=='1'}}">
+                <i-cell title="剩余次数" value="{{num}}次"></i-cell>
+                <i-cell isLink onlyTapFooter label="成功邀请一人可获得{{inviteaward}}次奖励" title="您已邀请{{inviteuum}}人" url="../invite/index" value="邀请统计"></i-cell>
+            </view>
+            <view wx:else>
+                <i-cell title="会员到期时间" value="{{date}}"></i-cell>
+                <i-cell isLink onlyTapFooter label="成功邀请一人可获得{{inviteaward}}次奖励" title="您已邀请{{inviteuum}}人" url="../invite/index" value="邀请统计"></i-cell>
+            </view>
+        </view>
+        <view wx:else>
+            <i-cell title="剩余下载次数" value="{{num}}次"></i-cell>
+            <i-cell isLink onlyTapFooter label="成功邀请一人可获得{{inviteaward}}次奖励" title="您已邀请{{inviteuum}}人" url="../invite/index" value="邀请统计"></i-cell>
+        </view>
+    </view>
+    <view wx:if="{{is_pay==1}}">
+        <view wx:if="{{isMember==1}}">
+            <i-cell isLink title="兑换中心" url="../keypay/keypay">
+                <i-icon color="#ed3f14" size="22" slot="icon" type="success_fill"></i-icon>
+            </i-cell>
+        </view>
+        <view wx:else>
+            <view wx:if="{{onpayenter==1}}">
+                <i-cell isLink title="充值中心" url="../pay/index">
+                    <i-icon color="#ed3f14" size="22" slot="icon" type="transaction_fill"></i-icon>
+                </i-cell>
+            </view>
+        </view>
+    </view>
+    <i-cell isLink title="使用帮助" url="../help/index">
+        <i-icon color="#ff9900" size="22" slot="icon" type="feedback_fill"></i-icon>
+    </i-cell>
+    <i-cell bind:click="business" title="作者微信：jov1212123">
+        <i-icon color="#2d8cf0" size="22" slot="icon" type="mine_fill"></i-icon>
+    </i-cell>
+   <i-cell bind:click="copyqq_group" title="QQ交流群" value="点击复制群号"></i-cell>
+</i-cell-group>
+<ad unit-id="adunit-e034e201db5d4238"></ad>

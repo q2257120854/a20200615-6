@@ -1,0 +1,112 @@
+{if condition="$isbanzhu eq 1"}
+<span class="layui-badge layui-bg-orange jie-admin-delete" type="del" style="margin-left: 20px;">删</span> {if condition="$t['settop'] eq 1"}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="settop" data-id="0">取消顶</span> {else /}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="settop" data-id="1" style="background-color:#ccc;">
+
+顶</span> {/if} {if condition="$t['choice'] eq 1"}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="choice" data-id="0">取消精</span> {else /}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="choice" data-id="1" style="background-color:#ccc;">
+
+精</span> {/if} {if condition="$t['jiacu'] eq 1"}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="jiacu" data-id="0">取消粗</span> {else /}
+<span class="layui-badge layui-bg-orange jie-admin" type="set" data-field="jiacu" data-id="1" style="background-color:#ccc;">
+
+粗</span> {/if}
+<div style="display: inline-block;">
+
+
+    <ul id="showcolor" style="float:left;display:none">
+        <li class="setcolor" data-id="#ff0000" data-field="yanse" title="红色" style="background:#ff0000"></li>
+        <li class="setcolor" data-id="#800080" data-field="yanse" title="紫色" style="background:#800080"></li>
+        <li class="setcolor" data-id="#ff00ff" data-field="yanse" title="粉色" style="background:#ff00ff"></li>
+        <li class="setcolor" data-id="#0000ff" data-field="yanse" title="蓝色" style="background:#0000ff"></li>
+        <li class="setcolor" data-id="#008000" data-field="yanse" title="绿色" style="background:#008000"></li>
+        <li class="setcolor" data-id="#808000" data-field="yanse" title="橄榄" style="background:#808000"></li>
+        <li class="setcolor" data-id="#ffcc00" data-field="yanse" title="橙黄" style="background:#ffcc00"></li>
+        <li class="setcolor" data-id="#000000" data-field="yanse" title="黑色" style="background:#000"></li>
+    </ul>
+    <span class="layui-badge layui-bg-orange jie-admin-color" type="set" data-field="yanse" rank="1">高亮</span>
+</div>
+{/if}
+
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+        jq('.jie-admin,.setcolor').click(function() {
+            var value = jq(this).data('id');
+            var field = jq(this).data('field');
+            var id = "{$t['id']}";
+            var url = "{:url('bbs/forum/setstatus')}";
+            jq.post(url, {
+                id: id,
+                field: field,
+                value: value
+            }, function(data) {
+                if (data.code == 1) {
+
+                    location.reload();
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+        });
+
+        var delurl = "{:url('bbs/forum/delete',array(),true)}";
+        jq('.jie-admin-delete').click(function() {
+            var id = "{$t['id']}";
+            layer.confirm('确定删除该帖子吗?', function(index) {
+                loading = layer.load(2, {
+                    shade: [0.2, '#000']
+                });
+                jq.post(delurl, {
+                    id: id
+                }, function(data) {
+                    if (data.code == 1) {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        }, function() {
+                            location.href = "{:url('bbs/index/index')}";
+                        });
+                    } else {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 2,
+                            anim: 6,
+                            time: 1000
+                        });
+                    }
+                });
+                layer.close(index);
+            });
+        });
+        var show = 0;
+        jq('.jie-admin-color').click(function() {
+            var id = "{$t['id']}";
+            if (show == 0) {
+                jq('#showcolor').show("fast", function() {
+                    show = 1;
+                });
+            } else {
+                jq('#showcolor').hide("fast", function() {
+                    show = 0;
+                });
+            }
+        });
+    });
+</script>

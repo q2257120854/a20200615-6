@@ -1,0 +1,595 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon10-1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			多栏目新增--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+				<div class="control-group chongdingy" style="background-color:#dff0d8; margin-bottom:20px !important">
+					<div class="control-label chongdingywz" style="background-color:#dff0d8; color:#3c763d;">
+				        <p>内容模型：</p>
+				        <p>【内容】文章：可以添加普通新闻、带视频的内页。</p>
+				        <p>【内容】组图：可添加组图、适用于多图展示（婚纱摄影内页、荣誉资质页面）</p>
+				        <p>【内容】商品：可添加商品，在线购买，到店核销。</p>
+				    </div>
+				</div>
+
+				<form action="{:Url('multicate/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					<input type="hidden" name="cateid" value="{$cateid}">
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz">多栏目基础内容</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">启用</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="statue" value="1"  {if $cateinfo}{if $cateinfo.statue==1}checked ="checked "{/if}{/if}/>
+
+
+
+							启用
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="statue" value="0" {if $cateinfo}{if $cateinfo.statue==0}checked ="checked "{/if}{/if}/>
+
+
+
+							不启用
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">启用后，模块其他设置方可生效</span>
+
+						</div>
+
+
+
+					</div>
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">内容模型</label>
+
+
+
+						<div class="controls">
+
+							{if $cateinfo}
+
+								<input type="hidden" name="type"  value="{$cateinfo.type}">
+
+								{if $cateinfo.type=="showArt"}
+
+									普通文章页
+
+								{/if}
+
+								{if $cateinfo.type=="showPic"}
+
+									组图幻灯片
+
+								{/if}
+
+								{if $cateinfo.type=="showPro"}
+
+									商品
+
+								{/if}
+
+							{else}
+
+								<select name="type" id="typsdi" class="span3 m-wrap" onchange="changq(this)">
+
+									<option value="0">---请选择---</option>
+
+									<option value="showArt"  {if $cateinfo}{if $cateinfo.type=="showArt"}selected=selected{/if}{/if}>普通文章页</option>
+
+									<option value="showPic"  {if $cateinfo}{if $cateinfo.type=="showPic"}selected=selected{/if}{/if}>组图幻灯片</option>
+
+									<option value="showPro"  {if $cateinfo}{if $cateinfo.type=="showPro"}selected=selected{/if}{/if}>商品</option>
+								</select>
+
+							{/if}
+
+							<span style="color:#c00; line-height:40px; margin-left:20px;">选择后无法修改，请看上方绿色提示！</span>
+
+						</div>
+
+					</div>
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">栏目名称</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="name" type="text" class="span3 m-wrap" value="{if $cateinfo}{$cateinfo.name}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">栏目中文名称</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+		                <label for="" class="control-label" style="margin-right:15px">筛选顶级栏目</label>
+		                <div class="controls" style="padding-right: 30px;">
+		                    {foreach $top_catat as $vv}
+		                    <label style="float: left;padding-top: 5px;margin-right:20px"><input type="checkbox" name="top_cats[]" value="{$vv['id']}" {if $cateinfo}<?php if(in_array($vv['id'],$cateinfo['top_catas'])){echo 'checked';} ?>{/if}>{$vv['varible']}</label>
+		                    {/foreach}
+		                    <span style="color:#999999; line-height:40px; margin-left:20px;">栏目中文名称</span>
+		                </div>
+		            </div>
+
+					<style type="text/css">
+
+
+
+						.yincs{
+
+							display: none;
+
+						}
+
+					</style>
+
+					
+
+
+
+
+
+					<div id="zdyys1">
+
+
+
+						<div class="control-group chongdingy">
+
+
+
+							<label class="control-label chongdingywz" >栏目自定义样式</label>
+
+
+
+						</div>
+
+
+
+						<div class="control-group yincs"  id="type1" {if $cateinfo}{if $cateinfo.type=="showArt" || $cateinfo.type=="showWxapps" || $cateinfo.type=="showPic"}style="display:block"{/if}{/if}>
+
+
+
+							<label class="control-label">列表板块样式</label>
+
+
+
+							<div class="controls">
+
+
+
+								<label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="1" {if $cateinfo}{if $cateinfo.list_style==1}checked=checked{/if}{/if}>单行大图
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="2" {if $cateinfo}{if $cateinfo.list_style==2}checked=checked{/if}{/if}>两列图片
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="5" {if $cateinfo}{if $cateinfo.list_style==5}checked=checked{/if}{/if}>三列图片
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="6" {if $cateinfo}{if $cateinfo.list_style==6}checked=checked{/if}{/if}>四列图片
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="7" {if $cateinfo}{if $cateinfo.list_style==7}checked=checked{/if}{/if}>五列图片
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="3" {if $cateinfo}{if $cateinfo.list_style==8}checked=checked{/if}{/if}>单行图文、带简介
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="3" {if $cateinfo}{if $cateinfo.list_style==3}checked=checked{/if}{/if}>单行图文、带简介、时间、阅读量
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="4" {if $cateinfo}{if $cateinfo.list_style==4}checked=checked{/if}{/if}>纯标题样式
+
+			                    </label>
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group yincs" id="type2" {if $cateinfo}{if $cateinfo.type=="showPro"}style="display:block"{/if}{/if}>
+
+
+
+							<label class="control-label">列表板块样式</label>
+
+
+
+							<div class="controls">
+
+								<label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="11" {if $cateinfo}{if $cateinfo.list_style==11}checked=checked{/if}{/if}>单列产品
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="12" {if $cateinfo}{if $cateinfo.list_style==12}checked=checked{/if}{/if}>两列产品
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="13" {if $cateinfo}{if $cateinfo.list_style==13}checked=checked{/if}{/if}>三列产品
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="14" {if $cateinfo}{if $cateinfo.list_style==14}checked=checked{/if}{/if}>四列产品
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="15" {if $cateinfo}{if $cateinfo.list_style==15}checked=checked{/if}{/if}>五列产品
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_style" value="19" {if $cateinfo}{if $cateinfo.list_style==19}checked=checked{/if}{/if}>产品带介绍
+
+			                    </label>
+
+		                    </div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group yincs" id="type3" {if $cateinfo}{if $cateinfo.type=="showArt" || $cateinfo.type=="showWxapps" || $cateinfo.type=="showPic" || $cateinfo.type=="showPro"}style="display:block"{/if}{/if}>
+
+
+
+							<label class="control-label">板块标题样式</label>
+
+
+
+							<div class="controls">
+
+
+
+								<label class="select_one_b">
+
+			                        <input type="radio" name="list_stylet" value="tl" {if $cateinfo}{if $cateinfo.list_stylet=="tl"}checked=checked{/if}{/if}>【无背景】标题左对齐
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_stylet" value="tc" {if $cateinfo}{if $cateinfo.list_stylet=="tc"}checked=checked{/if}{/if}>【无背景】标题居中下方
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_stylet" value="tlb" {if $cateinfo}{if $cateinfo.list_stylet=="tlb"}checked=checked{/if}{/if}>【透明背景】标题左对齐底部
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_stylet" value="tcb" {if $cateinfo}{if $cateinfo.list_stylet=="tcb"}checked=checked{/if}{/if}>【透明背景】标题居中底部
+
+			                    </label>
+
+			                    <label class="select_one_b">
+
+			                        <input type="radio" name="list_stylet" value="none" {if $cateinfo}{if $cateinfo.list_stylet=="none"}checked=checked{/if}{/if}>不显示标题
+
+			                    </label>
+
+
+
+							</div>
+
+
+
+						</div>
+
+			            <div class="control-group yincs" id="type6" {if $cateinfo}{if $cateinfo.type=="page"}style="display:block"{/if}{/if}>
+
+			 				
+
+						<div class="editors">
+
+					        <script id="editor" name="content" type="text/plain">{if $cateinfo}{$cateinfo.content}{/if}</script>
+
+					    </div>
+
+
+
+			            </div>
+
+
+
+					</div>
+
+
+
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+	
+
+    <script type="text/javascript">
+
+
+
+        $(function() {
+
+	    	var ue = UE.getEditor('editor');
+
+		});
+
+
+
+    	function checkinfo(){
+
+
+
+    		var typsdi = $("#typsdi").val();
+
+	    	if(typsdi==0){
+
+	    		alert("选择所属内容模型");
+
+	    		return false;
+
+	    	}
+
+    		val = $("#ueditor_textarea_content").val();
+
+    		$("#content").val(val);
+
+	    }
+
+
+
+	    function changq(me){
+		var val = $(me).val();
+
+		
+		if(val == "showArt" || val == "showWxapps"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").show();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPro"){
+
+			$("#type1").hide();
+
+			$("#type2").show();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPic"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").show();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "page"){
+
+			$("#type1").hide();
+
+			$("#type2").hide();
+
+			$("#type3").hide();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").show();
+
+		}
+
+
+
+	}
+
+
+
+     </script>
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

@@ -1,0 +1,55 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updatesms')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item">
+                        <label class="layui-form-label">短信接口地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sms[apiurl]" value="{$sms.apiurl|default='http://api.smsbao.com/sms'}" placeholder="填写短信接口API地址" autocomplete="off" class="layui-input">
+                        </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">单个手机发送条数</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sms[mobile_max]" value="{$sms.mobile_max|default='5'}" placeholder="每个手机每天可发送条数" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">发送间隔</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="sms[interval_time]" value="{$sms.interval_time|default='60'}" placeholder="每条短信发送间隔" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">同一IP一天限制</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="sms[ip_max]" value="{$sms.ip_max|default='10'}" placeholder="每条短信发送间隔" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">过期时间</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="sms[expiry_time]" value="{$sms.expiry_time|default='60'}" placeholder="过期时间（秒）" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+           
+            <div class="layui-form-item">
+                <label class="layui-form-label">请求参数配置</label>
+                <div class="layui-input-block">
+                        <textarea name="sms[params]"  class="layui-textarea" style="height: 60px;">{$sms.params|default="u=你的用户名/np=你的密码"}</textarea>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <div class="formbtngroup">
+        <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+        <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+    </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

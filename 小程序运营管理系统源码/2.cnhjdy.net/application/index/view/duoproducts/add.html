@@ -1,0 +1,1853 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+    .dels{
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        cursor:pointer;
+    }
+
+    .waic1{
+        border:1px solid #dedede; margin-top:20px; padding:10px;
+    }
+    .waic2{
+        background-color:#eeeeee;; line-height:30px; padding:0 10px; position:relative;
+        height: 30px;
+    }
+    .waic3{
+        position: relative; margin-top:10px;
+    }
+    .ggzbtn3{
+        border-right: 1px solid #dedede;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        text-align: center !important;
+        height: 34px;
+        line-height: 34px;
+        padding-top: 0 !important;
+        background-color: #eeeeee;
+        position: absolute;
+        width: 60px;
+        cursor:pointer;
+        right:0px;
+        top: 0;
+    }
+    .yandd{
+        display: inline-block;
+        border: 1px solid #dedede;
+        padding: 3px 5px;
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+    .ssnd{
+        cursor:pointer;
+        padding: 0 5px;
+    }
+    .biaotou{
+        text-align: center;
+        padding: 8px 0;
+        font-weight: bold;
+    }
+    .tds{
+        text-align: center;
+        padding: 8px 0;
+    }
+    .shukdd{
+        width: 100px;
+        padding: 4px 5px;
+        border: 1px solid #dedede;
+    }
+    .sddds{
+        position: relative;
+    }
+    .ggsx{
+        border: 1px solid #dedede;
+        width: 60px;
+        text-align: center;
+        padding: 2px;
+        position: absolute;
+        right: 5px;
+        top: 6px;
+        cursor:pointer;
+    }
+    .ggzbcaa{
+        position: relative;
+        height: 30px;
+        margin-top: 10px;
+    }
+    .ggzbc{
+        border: 1px solid #dedede;
+        background-color: #eeeeee;
+        width: 120px;
+        padding: 5px;
+        position: absolute;
+        left: 50%;
+        margin-left: -60px;
+        text-align: center;
+        cursor:pointer;
+    }
+    .sdhd{
+        line-height: 35px;
+    }
+    .xuzndt{
+        border: 1px solid #dedede;
+        width: 40%;
+        display: inline-block;
+        text-align: center;
+        padding: 3px 0px;
+        cursor:pointer;
+    }
+    .xuzndd{
+        width: 50px;
+        max-height: 50px;
+        margin-top: 5px;
+        margin-left: 10%;
+    }
+    .xuzndd img{
+        width: 100%;
+        max-height: 50px;
+    }
+
+  
+</style>
+<link rel="stylesheet" href="/css/select2.css">
+
+<script type="text/javascript">
+    var a = {
+        "themeCss": ".select2-container--krajee",
+        "sizeCss": "",
+        "doReset": true,
+        "doToggle": true,
+        "doOrder": false
+    };
+    window.b = {
+        "theme": "krajee",
+        "width": "30%",
+        "placeholder": "请选择所属门店，可多选",
+        "language": "zh-CN"
+    };
+</script>
+<input type="hidden" id="nowhtml" value="navCon"  class="navCon5">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			多规格商品添加--{$applet.name}
+		</li>
+	</ul>
+	<div class="row-fluid">
+		<div class="portlet box">
+			<div class="portlet-body form">
+				<form action="{:Url('Duoproducts/save')}?appletid=<?php echo $_GET['appletid']?>&newsid={$id}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					<input type="hidden" id="onlyid" name="onlyid" value="{if $id > 0}{$products.onlyid}{/if}">
+					<div class="control-group">
+						<label class="control-label">排序</label>
+						<div class="controls">
+							<input name="num" type="text" class="span1 m-wrap" value="{if $products}{$products.num}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">所属栏目</label>
+						<div class="controls">
+							<select name="cid" class="span3 m-wrap" id="cid">
+								<option value="0">请选择所属栏目</option>
+								{if $listAll}
+									{foreach $listAll as $cateP}
+										{if $products}
+											<option value="{$cateP.id}" {if $cateP.id==$products.cid}selected{/if}>{if $cateP.cid == 0}{/if}{$cateP.name}</option>
+				                            {foreach $cateP.data as $cate}
+				                                <option value="{$cate.id}" {if $cate.id==$products.cid}selected{/if}>{if $cate.cid !== 0}&nbsp;&nbsp;|----{/if}{$cate.name}</option>
+				                            {/foreach}
+										{else}
+											<option value="{$cateP.id}" >{if $cateP.cid == 0}{/if}{$cateP.name}</option>
+				                            {foreach $cateP.data as $cate}
+				                                <option value="{$cate.id}">{if $cate.cid !== 0}&nbsp;&nbsp;|----{/if}{$cate.name}</option>
+				                            {/foreach}
+										{/if}
+									{/foreach}
+								{/if}
+							</select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择所属栏目</span>
+						</div>
+					</div>
+					<div class="control-group" id="shops_list" style="display: block;">
+						<label class="control-label" style="margin-right:15px">所属门店</label>
+						<div class="controls" id="shops">
+							<span id="parent-s2-togall-w1" style="display:none">
+	            	           <span id="s2-togall-w1" class="s2-togall-button s2-togall-select">
+	            		          <span class="s2-select-label"><i class="glyphicon glyphicon-unchecked"></i>全选</span>
+				                  <span class="s2-unselect-label"><i class="glyphicon glyphicon-check"></i>全不选</span>
+				                </span>
+				            </span>
+							<input id="mengdian" name="stores" type="hidden"/>
+						       	<div class="kv-plugin-loading loading-w1">&nbsp;</div>
+							    <select id="w1" class="form-control"  multiple size="4" placeholder="请选择所属门店，可多选" data-s2-options="a" data-krajee-select2="b" style="display:none">
+									{if $stores}
+									{foreach $stores as $items}
+									    <?php
+											$storeid = $items['id'];
+											$storetitle = $items['title'];
+
+											if($products && $products['stores']){
+											    $stores = explode(",",$products['stores']);
+												if(in_array($items['id'],$stores)){
+													echo '<option value="'.$storeid.'" selected="selected">'.$storetitle.'</option>';
+													}else{
+														echo '<option value="'.$storeid.'">'.$storetitle.'</option>';
+													}
+											}else{
+											   echo '<option value="'.$storeid.'">'.$storetitle.'</option>';
+											}
+									    ?>
+									{/foreach}
+									{/if}
+								 </select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">订单可用选择门店员工核销、可不选</span>
+								 
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">推荐到横排</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="type_x" value="0" {if $products}{if $products.type_x==0}checked=checked{/if}{/if}/>
+							不推荐
+							</label>
+							<label class="radio">
+							<input type="radio" name="type_x" value="1" {if $products}{if $products.type_x==1}checked=checked{/if}{/if}/>
+							推荐
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页横排区块显示</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">推荐到竖排</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="type_y" value="0" {if $products}{if $products.type_y==0}checked=checked{/if}{/if}/>
+							不推荐
+							</label>
+							<label class="radio">
+							<input type="radio" name="type_y" value="1" {if $products}{if $products.type_y==1}checked=checked{/if}{/if}/>
+							推荐
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页竖排区块显示</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">推荐到首页栏目</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="type_i" value="0" {if $products}{if $products.type_i==0}checked=checked{/if}{/if}/>
+							不推荐
+							</label>
+							<label class="radio">
+							<input type="radio" name="type_i" value="1" {if $products}{if $products.type_i==1}checked=checked{/if}{/if}/>
+							推荐
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页该栏目块显示</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">是否上架</label>
+						<div class="controls">
+							<label class="radio">
+								<input type="radio" name="is_sale" value="0" {if $products}{if $products.is_sale==0}checked=checked{/if}{/if}/>
+								上架
+							</label>
+							<label class="radio">
+								<input type="radio" name="is_sale" value="1" {if $products}{if $products.is_sale==1}checked=checked{/if}{/if}/>
+								下架
+							</label>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">商品上架后可以看见和购买</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">标题</label>
+						<div class="controls">
+							<input name="title" type="text" id="proTitle" class="span5 m-wrap" value="{if $products}{$products.title}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写产品标题</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">抵用积分</label>
+						<div class="controls">
+							<input name="score" type="text" class="span5 m-wrap" value="{if $products}{$products.score}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">设置最高抵用积分</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">买送积分</label>
+						<div class="controls">
+							<input name="scoreback" type="text" class="span5 m-wrap" value="{if $products}{$products.scoreback}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<!--<div class="control-group">-->
+						<!--<label class="control-label">价格</label>-->
+						<!--<input name="priceq" type="text" class="span2 m-wrap" value="{if $products}{$products.price}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />-->
+					<!--</div>-->
+					<div class="control-group">
+						<label class="control-label">市场价</label>
+						<input name="mark_priceq" type="text" class="span2 m-wrap" value="{if $products}{$products.market_price}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+					</div>
+					<div class="control-group">
+						<label class="control-label">浏览量</label>
+						<input name="hits" type="text" class="span2 m-wrap" value="{if $products}{$products.hits}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+					</div>
+					<div class="control-group">
+						<label class="control-label">缩略图</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic1" style="width: 140px; height:90px;">
+									{if $products && $products.thumb}
+									<img src="{$products.thumb}"/>
+									{else}
+									<img src="/image/noimage.jpg" alt="" />
+									{/if}
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic1"></span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分享图</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic2" style="width: 140px; height:90px;">
+									{if $products && $products.shareimg}
+									<img src="{$products.shareimg}"/>
+									{else}
+									<img src="/image/noimage.jpg" alt="" />
+									{/if}
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic2"></span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">简介</label>
+						<div class="controls">
+							<textarea class="span3 m-wrap" style="height:150px;" name="desc">{if $products}{$products.desc}{/if}</textarea>
+						</div>
+					</div>
+					<div class="control-group" style="margin-bottom:20px !important">
+						<label class="control-label">幻灯片</label>
+						<div class="controls">
+							<div id="xztpan" class="btn commonchangepic" style="background-color:#e5e5e5; color:#333333" data-type="2">
+							选择图片
+							<input type="hidden" name="commonuploadslide">
+							</div>
+							<span style="color:#999999; line-height:40px; margin-left:20px;"最宽750px，高度随意</span>
+						</div>
+					</div>
+
+					<div class="control-group" style="padding-top:10px">
+						<label class="control-label"></label>
+						<div class="controls commonuploadslide" id="imgzs" style="font-size:0">
+							{if $allimg}
+
+							{foreach  $allimg as $res}
+
+								<div class="paiwei" onmousemove="xians(this)" onmouseout="gb(this)" id="li{$res.id}">
+
+									<img src="{$res.url}" style="width: 140px; height:90px;">
+
+									<div class="beijingys">
+
+									</div>
+
+									<div class="sancann" onclick="del({$res.id})">
+
+										<span class="cancel">删除</span>
+
+									</div>
+
+								</div>
+
+							{/foreach}
+
+							{/if}
+		
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">商品标签</label>
+						<div class="controls">
+							<input name="labels" type="text" class="span5 m-wrap" value="{if $products}{$products.labels}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">设置商品标签，多个用英文","隔开</span>
+						</div>
+					</div>
+				
+					<div class="control-group">
+						<label class="control-label">商品详情</label>
+						<div class="controls">
+						    <div class="editors">
+								<script id="editor" name="product_txt" type="text/plain">{if $products}{$products.product_txt}{/if}</script>
+						    </div>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="hidden" id="ischeck" name="ischeck" value="2">
+							<input name="guig" id="guig" onchange="setgg(this)" type="hidden" class="span5 m-wrap" value="2" style="height: 35px !important;" />
+						</div>
+					</div>
+					<div class="control-group" id="jtgg" style="">
+						<label class="control-label">规格组和规格值</label>
+						<div class="controls" style="overflow: hidden;">
+							<label for="" class="span1 btn" style="float:left;border-radius: 0 !important">规格组</label>
+							<input type="text" id="ggzval" placeholder="如颜色、尺码、套餐" style="width:298px;height:22px;line-height:32px;float: left;" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+							<label for="" class="col-sm-2 ggzbtn btn" onclick="ggzset()" style="float:left;border-radius: 0 !important">确定</label>
+							<span class="sdhd span4" style="color:#999999" id="izggzw" >
+	                            最多只可添加3个规格组
+	                        </span>
+						</div>	
+                        <div class="span4" id="izggzwval" style="margin-left:172px">
+
+                        </div>
+					</div>
+					
+					<div class="panel panel-default span8" id="ggzs" style="overflow: hidden;float: none;margin-left: 170px">
+			            <div class="panel-heading sddds">
+			                <h3 class="panel-title" style="width:60%">规格值<font color="red">[请先进行规格组和规格值创建]</font></h3>
+			        <!--         <div class="ggsx" onclick="datasets()"  style="z-index: 10000">
+			                    刷新
+			                </div> -->
+			            </div>
+
+			            <div style="padding:10px">
+			                <table cellpadding="0" cellspacing="0" style="border:1px solid #dedede" border="1px" width="100%" id="tabb"><tbody><tr></tr></tbody></table>       
+			      <!--           <div class="ggzbcaa">
+			                    <div class="ggzbc" onclick="ggzbc()">规格值保存</div>
+			                </div> -->
+			            </div>
+			        </div>
+					
+					<!-- 规格组长度 -->
+			        <input type="hidden" id="typelen" name="typelen">
+			        <!-- 规格组 -->
+			        <input type="hidden" id="typesarr" name="typesarr">
+			        <!-- 所有字商品的数据 -->
+			        <input type="hidden" id="biaogedata" name="biaogedata">  
+					
+					<!-- 会员卡设置 -->
+			        <div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">会员购买设置</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">开启单独会员购买设置</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="set1" value="1" {if $products}{if $products['vipconfig']}{if $products['vipconfig']['set1']==1}checked=checked{/if}{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="set1" value="0" {if $products}{if $products['vipconfig']}{if $products['vipconfig']['set1']==0}checked=checked{/if}{else}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">开启后启用当前商品自身设置</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">会员购买设置</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="set2" value="1" {if $products}{if $products['vipconfig']}{if $products['vipconfig']['set2']==1}checked=checked{/if}{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="set2" value="0" {if $products}{if $products['vipconfig']}{if $products['vipconfig']['set2']==0}checked=checked{/if}{else}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">开启后必须开通会员才可购买该商品</span>
+						</div>
+					</div>
+
+			        <!-- 分销设置 -->
+			        <div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">分销设置</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">开启单独分销设置</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="fx_uni" value="1" {if $products}{if $products.fx_uni==1}checked=checked{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="fx_uni" value="2" {if $products}{if $products.fx_uni==2}checked=checked{/if}{/if}/>
+							关闭
+							</label> 
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分销佣金型</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="commission_type" value="1" {if $products}{if $products.commission_type==1}checked=checked{/if}{/if}/>
+							百分比
+							</label>
+							<label class="radio">
+							<input type="radio" name="commission_type" value="2" {if $products}{if $products.commission_type==2}checked=checked{/if}{/if}/>
+							固定金额
+							</label> 
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">单独分销设置</label>
+						<div class="controls">
+							<span style="color:#999999; line-height:40px; margin-left:10px;">一级佣金： </span>
+							<input name="commission_one" type="number" class="span2 m-wrap" value="{if $products}{$products.commission_one}{else}0{/if}"  style="height: 35px !important;" />
+								<span class="uti" style="color:#999999; line-height:40px; margin-left:20px;">%</span>		
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span style="color:#999999; line-height:40px; margin-left:10px;">二级佣金： </span>
+							<input name="commission_two" type="number" class="span2 m-wrap" value="{if $products}{$products.commission_two}{else}0{/if}"  style="height: 35px !important;" />
+								<span class="uti" style="color:#999999; line-height:40px; margin-left:20px;">%</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span style="color:#999999; line-height:40px; margin-left:10px;">三级佣金： </span>
+							<input name="commission_three" type="number" class="span2 m-wrap" value="{if $products}{$products.commission_three}{else}0{/if}"  style="height: 35px !important;" />
+								<span class="uti" style="color:#999999; line-height:40px; margin-left:20px;">%</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							分销层级的优先级高于商品单独的分销比例，例：层级只开二级分销，那商品的单独分销比例只有二级有效
+						</div>
+					</div>
+
+
+			        <div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">每日他人点击分享获取积分设置</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">是否启用规则</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="get_share_gz" value="1" {if $products}{if $products.get_share_gz==1}checked=checked{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="get_share_gz" value="2" {if $products}{if $products.get_share_gz==2}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">分享获得积分的类型</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">获取积分</label>
+						<div class="controls">
+							<input name="get_share_score" type="text" class="span2 m-wrap" value="{if $products}{$products.get_share_score}{else}0{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">他人点击分享一次获得的积分 </span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">获取积分限制</label>
+						<div class="controls">
+							<input name="get_share_num" type="text" class="span2 m-wrap" value="{if $products}{$products.get_share_num}{else}0{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">他人每日点击分享获取积分次数限制</span>
+						</div>
+					</div>
+
+
+					<div class="form-actions" style="overflow: hidden;display: block;">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<style type="text/css">
+		.panel{
+			margin-bottom: 20px;
+		    background-color: #fff;
+		    border: 1px solid #e7e7e7;
+		    border-radius: 4px;
+		}
+		.panel-heading{
+			padding: 0 15px;
+		    border-bottom: 1px solid #e7e7e7;
+		    border-top-left-radius: 3px;
+		    border-top-right-radius: 3px;
+		}
+		.sddds{
+			position: relative;
+		}
+		.panel-title{
+			margin-top: 0;
+		    margin-bottom: 0;
+		    font-size: 16px;
+		    color: inherit;
+		}
+		.modal{
+			width: 795px !important;
+			margin-left: -397px !important;
+			min-height: 290px !important;
+		}
+	</style>
+	<div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first" style="width:795px !important; margin-left:-400px;">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+			<h3>图片上传</h3>
+		</div>
+		<div class="controls">
+			<div class="uploader-list-container" >
+				<div class="queueList">
+					<div id="dndArea" class="placeholder">
+						<div id="filePicker-2"></div>
+					</div>
+				</div>
+				<div class="statusBar" style="display:none;">
+					<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+					<div class="info"></div>
+					<div class="btns">
+						<div id="filePicker2"></div>
+						<div class="uploadBtn">开始上传</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<form id='myupload' action="{:Url('Duoproducts/imgupload')}?uniacid=<?php echo $_GET['appletid']?>" method='post' enctype='multipart/form-data'>
+		<input type="file" id="uploadphoto" name="uploadfile" value="请点击上传图片"   style="display:none" />
+	</form>
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/jquery.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/select2.full.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/select2-krajee.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript" src="/webuploader/js/webuploader.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.form.js"></script>
+	<script>
+        if(jQuery('#w1').data('select2')) {
+            jQuery('#w1').select2('destroy');
+        }
+        jQuery.when(jQuery('#w1').select2(b)).done(initS2Loading('w1', 'a'));
+
+	</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+	    $('input[type=radio][name=commission_type]').change(function() {
+	        if (this.value == '1') {
+	            $(".uti").text("%");
+	        }
+	        else if (this.value == '2') {
+	            $(".uti").text("元");;
+	        }
+	    });
+	});
+    var imgid = 0;
+	function getd(id){
+    	imgid = id;
+    }
+    $(function(){
+
+    	$("#uploadphoto").change(function(){
+	       	$("#myupload").ajaxSubmit({ 
+	          dataType:  'json', //数据格式为json 
+	          success: function(data) {
+	            var url = $.parseJSON(data)['url'];
+	            console.log(url);
+	            console.log(imgid);
+	            $("#imgurl"+imgid).val(url);
+	            var imgxs = "#imgxs"+imgid;
+	            $(imgxs+" img").html("");
+	            var imgurl = "<img src="+url+">";
+	            $(imgxs).html(imgurl);
+	          }
+	      	}); 
+		});
+    })
+
+
+
+    //规格开始
+    	var datacounts = 0;
+        var typessy = 2;
+	    // var ggznum=0;
+        {if $id}
+            $(function(){
+                ggzhtml();
+                datasets();
+            })
+        {/if}
+
+        //是否使用规格
+        function setgg(me){
+            var flag = $(me).is(":checked");
+            if(flag){
+                typessy = 1; //使用规格
+                $("#nokc").val(0);
+                $("#nokc").attr("readonly","true");
+                $("#noprice").attr("readonly","true");
+                $("#cpccz").removeAttr("onclick");
+                $("#cpcss").removeAttr("onclick");
+                $("#jtgg").show();
+                $("#ggzs").show();
+                $("#ischeck").val(2);
+            }else{
+                typessy=2;
+                $("#nokc").val(0);
+                $("#nokc").removeAttr("readonly");
+                $("#noprice").val(0);
+                $("#noprice").removeAttr("readonly");
+                $("#cpccz").attr("onclick","showImageDialog(this)");
+                $("#cpcss").attr("onclick","delimage(this)");
+                $("#jtgg").hide();
+                $("#ggzs").hide();
+                $("#ischeck").val(1);
+            }
+        }
+
+    	var ggznum = 0;  //控制显示可输入规格组input
+
+    		// 规格组数组
+	        {if $counttypes && $counttypes > 0}
+	            var ggzarr = [];
+	            {foreach $typesarr as $item}
+                     ggznum++;
+	                ggzarr.push("{$item}");
+	            {/foreach}
+
+	            datacounts = 1;
+	        {else}
+	            var ggzarr = [];
+	            datacounts = 0;
+	        {/if}
+        
+
+	        //规格组json
+	        {if $counttypes && $counttypes > 0}
+
+	            var ggzjson = {}; 
+	            {foreach $typesjson as $aa => $res}
+	                var carr = [];
+	                {foreach $res as $rec}
+	                    carr.push("{$rec}");
+	                {/foreach}       
+	                ggzjson["{$aa}"] = carr;
+	            {/foreach}
+
+	        {else}
+	            var ggzjson = {}; 
+	        {/if}
+
+
+        //增加规格组
+        function ggzset(){
+            datacounts = 0;
+            var ggzval = $("#ggzval").val();
+            if(ggzval){
+                ggznum++;
+
+                if(ggznum>3){
+                    $("#izggz").hide();
+                    $("#izggzw").show();
+                    ggznum--;
+                    console.log(ggznum)
+      				return false;
+                }
+                ggzarr.push(ggzval);  //追加规格数组
+
+                ggzjson[ggzval] = [];
+
+                $("#ggzval").val("");
+                ggzhtml();
+            }else{
+                alert("请先设置规格组名！")
+            }
+        }
+
+        // 增加规格组操作
+        function ggzhtml(){
+            var ggzhtml = "";
+
+            for(var i=0; i<ggzarr.length; i++){
+                var jsonarr = "";
+                var key = ggzarr[i];
+                var arr = ggzjson[key];
+                for(var j=0; j<arr.length; j++){
+                    jsonarr +=  "<div class='yandd'>"+
+                                    "<span>"+arr[j]+"</span>"+
+                                    "<span class='ssnd' onclick='delbq("+j+","+i+")'>x</span>"+
+                                "</div>";
+                }
+
+                ggzhtml += "<div class='waic1'>"+
+                                "<div class='waic2'>"+
+                                    ggzarr[i]+
+                                    "<div class='leix5 wi wi-delete dels' onclick='delgg("+i+")'>"+"X</div>"+
+                                "</div>"+
+                                "<div class='waic4' id='ggzid"+i+"'>"+
+                                jsonarr+
+                                "</div>"+
+                                "<div class='waic3' style='overflow:hidden'>"+
+                                    "<label for='' class='col-sm-2 ggz btn' style='float:left;border-radius: 0 !important'>规格值</label>"+
+                                    "<input type='text' id='ggzval"+i+"' placeholder='如红色、白色'  style='width:276px;height:22px;float:left;' class='form-control ng-pristine ng-untouched ng-valid ng-empty'>"+
+                                    "<label for='' class='col-sm-2 ggzbtn3 btn' onclick='ggzqd("+i+")' style='float:left;border-radius: 0 !important'>确定</label>"+
+                                "</div>"+
+                            "</div>";
+            }
+            $("#izggzwval").html(ggzhtml)
+        }
+
+ 		// 删除规格组
+    	function delgg(i){
+            datacounts = 0;
+            ggznum--;
+            $("#izggz").show();
+            $("#izggzw").hide();
+
+            var keys = ggzarr[i];
+            delete ggzjson[keys];  
+
+            ggzarr.splice(i,1);
+            ggzhtml();
+            datasets();
+        }
+	
+	
+//        // 增加规格值
+        function ggzqd(val){
+            datacounts = 0;
+            var keys = ggzarr[val];
+            var ggz = $("#ggzval"+val).val();
+            console.log(val);
+            console.log(ggzarr[val]);
+            if(!ggz){
+                alert("请输入对应的规格值");
+            }else {
+                var arr = ggzjson[keys];
+                if (arr.indexOf(ggz) >= 0) {
+                    alert("规格值不能重复");
+                    $("#ggzval" + val).val("")
+                    return false;
+                }
+                arr.push(ggz);
+            }
+
+            var strhtml = "";
+            for(var i=0; i<arr.length; i++){
+                strhtml += "<div class='yandd'>"+
+                                "<span>"+arr[i]+"</span>"+
+                                "<span class='ssnd' onclick='delbq("+i+","+val+")'>x</span>"+
+                            "</div>";
+            }
+            $("#ggzid"+val).html(strhtml);
+            $("#ggzval"+val).val("");
+            ggzjson[keys] = arr;
+           
+             datasets();
+
+        }
+       
+
+        // 删除标签功能
+        function delbq(i,val){
+            var keys = ggzarr[val];
+            var arr = ggzjson[keys];
+            arr.splice(i,1);
+
+            var strhtml = "";
+            for(var i=0; i<arr.length; i++){
+                strhtml += "<div class='yandd'>"+
+                                "<span>"+arr[i]+"</span>"+
+                                "<span class='ssnd' onclick='delbq("+i+","+val+")'>x</span>"+
+                            "</div>";
+            }
+            $("#ggzid"+val).html(strhtml);
+            $("#ggzval"+val).val("");
+
+            ggzjson[keys] = arr;
+            datasets();
+        }
+
+        var jg = ["库存","价格","货号","已售数量","虚拟销量","规格图片"];
+        var allarrone = []; //构建多重json
+        var tablearr = [];  //构建表格头部
+
+        // 构建规格
+        function datasets(){
+            allarrone = []; //构建多重json
+            tablearr = [];  //构建表格头部
+            $("#tabb").html("");
+            //判断规格组的值有没有都设置
+
+            for(var i=0; i<ggzarr.length; i++){
+                if(ggzjson[ggzarr[i]].length == 0){
+                    alert(ggzarr[i]+"规格组没有设置规格值！");
+                    return;
+                }
+            }
+
+            console.log(ggzarr.length);
+            //构建多重json一条数据
+            if(ggzarr.length == 1){
+                var sz1 = ggzjson[ggzarr[0]];
+
+                //构建表格
+                tablearr.push(ggzarr[0]);
+                tablearr = tablearr.concat(jg);
+                var datacount = '<?php echo count($datajson); ?>';
+                for(var i=0; i<sz1.length; i++){
+                    var datakey = sz1[i];
+                    if(datacounts == 1){
+                        {if $datajson}
+	                        {foreach $datajson as $index => $item}
+
+	                            if("{$index}"== datakey){
+	                                var aa = "{$item}";
+	                                var newarr = aa.split(",");
+	                                var jsondata = {};
+	                                jsondata[ggzarr[0]] = sz1[i];
+	                                jsondata["库存"] = newarr[0];
+	                                jsondata["价格"] = newarr[1];
+	                                jsondata["货号"] = newarr[2];
+	                                jsondata["已售数量"] = newarr[3];
+                                    jsondata["虚拟销量"]=newarr[4];
+	                                jsondata["规格图片"] = newarr[5];
+	                                allarrone.push(jsondata);
+	                            }
+
+	                        {/foreach}
+                        {/if}
+                    }else{
+                    	if( i < datacount){
+	                    	{if $datajson}
+		                        {foreach $datajson as $index => $item}
+		                            if("{$index}"== datakey){
+		                                var aa = "{$item}";
+		                                var newarr = aa.split(",");
+		                                var jsondata = {};
+		                                jsondata[ggzarr[0]] = sz1[i];
+		                                jsondata["库存"] = newarr[0];
+		                                jsondata["价格"] = newarr[1];
+		                                jsondata["货号"] = newarr[2];
+		                                jsondata["已售数量"] = newarr[3];
+	                                    jsondata["虚拟销量"]=newarr[4];
+		                                jsondata["规格图片"] = newarr[5];
+		                                allarrone.push(jsondata);
+		                            }
+		                        {/foreach}
+	                        {/if}
+                    	}else{
+                        	var jsondata = {};
+	                        jsondata[ggzarr[0]] = sz1[i];
+	                        jsondata["库存"] = 0;
+	                        jsondata["价格"] = 0;
+	                        jsondata["货号"] = 0;
+	                        jsondata["已售数量"] = 0;
+	                        jsondata["虚拟销量"]=0;
+	                        jsondata["规格图片"] = "";
+	                        allarrone.push(jsondata);
+                    	}
+                    }
+
+                }
+            }
+            //构建多重json二条数据
+            if(ggzarr.length == 2){
+            	
+
+                var sz1 = ggzjson[ggzarr[0]];
+                var sz2 = ggzjson[ggzarr[1]];
+
+                //构建表格
+                tablearr.push(ggzarr[0]);
+                tablearr.push(ggzarr[1]);
+                tablearr = tablearr.concat(jg);
+
+                var sz11 = '<?php $temp_data = array_keys($typesjson); echo count($typesjson[$temp_data[0]]); ?>';
+                var sz22 = '<?php $temp_data = array_keys($typesjson); if(count($temp_data) > 1){ echo count($typesjson[$temp_data[1]]);} ?>';
+                
+                for(var i=0; i<sz1.length; i++){
+                	if(i < sz11){
+                		for(var j=0; j<sz2.length; j++){
+	                        var datakey = sz1[i]+sz2[j];
+	                        if(datacounts == 1){
+	                        	{if $datajson}
+	                            {foreach $datajson as $index => $item}
+	                                if("{$index}"== datakey){
+	                                    var aa = "{$item}";
+	                                    var newarr = aa.split(",");
+	                                    var jsondata = {};
+	                                    jsondata[ggzarr[0]] = sz1[i];
+	                                    jsondata[ggzarr[1]] = sz2[j];
+	                                    jsondata["库存"] = newarr[0];
+	                                    jsondata["价格"] = newarr[1];
+	                                    jsondata["货号"] = newarr[2];
+	                                    jsondata["已售数量"] = newarr[3];
+	                                    jsondata["虚拟销量"]=newarr[4];
+	                                    jsondata["规格图片"] = newarr[5];
+	                                    allarrone.push(jsondata);
+	                                }
+
+	                            {/foreach}
+	                            {/if}
+	                        }else{
+	                        	if(j < sz22){
+	                        		{if $datajson}
+			                            {foreach $datajson as $index => $item}
+			                                if("{$index}"== datakey){
+			                                    var aa = "{$item}";
+			                                    var newarr = aa.split(",");
+			                                    var jsondata = {};
+			                                    jsondata[ggzarr[0]] = sz1[i];
+			                                    jsondata[ggzarr[1]] = sz2[j];
+			                                    jsondata["库存"] = newarr[0];
+			                                    jsondata["价格"] = newarr[1];
+			                                    jsondata["货号"] = newarr[2];
+			                                    jsondata["已售数量"] = newarr[3];
+			                                    jsondata["虚拟销量"]=newarr[4];
+			                                    jsondata["规格图片"] = newarr[5];
+			                                    allarrone.push(jsondata);
+			                                }
+
+			                            {/foreach}
+		                            {/if}
+
+	                        	}else{
+	                        		var jsondata = {};
+		                            jsondata[ggzarr[0]] = sz1[i];
+		                            jsondata[ggzarr[1]] = sz2[j];
+		                            jsondata["库存"] = 0;
+		                            jsondata["价格"] = 0;
+		                            jsondata["货号"] = 0;
+		                            jsondata["已售数量"] = 0;
+		                            jsondata["规格图片"] = "";
+		                            jsondata["虚拟销量"]=0;
+		                            allarrone.push(jsondata);
+	                        	}
+	                            
+
+	                        }
+
+	                    }
+                	}else{
+                		for(var j=0; j<sz2.length; j++){
+                			var jsondata = {};
+                            jsondata[ggzarr[0]] = sz1[i];
+                            jsondata[ggzarr[1]] = sz2[j];
+                            jsondata["库存"] = 0;
+                            jsondata["价格"] = 0;
+                            jsondata["货号"] = 0;
+                            jsondata["已售数量"] = 0;
+                            jsondata["规格图片"] = "";
+                            jsondata["虚拟销量"]=0;
+                            allarrone.push(jsondata);
+                		}
+                	}
+                    
+                }
+
+            }
+            //构建多重json三条数据
+            if(ggzarr.length == 3){
+                var sz1 = ggzjson[ggzarr[0]];
+                var sz2 = ggzjson[ggzarr[1]];
+                var sz3 = ggzjson[ggzarr[2]];
+
+                //构建表格
+                tablearr.push(ggzarr[0]);
+                tablearr.push(ggzarr[1]);
+                tablearr.push(ggzarr[2]);
+                tablearr = tablearr.concat(jg);
+
+                var sz31 = '<?php $temp_data = array_keys($typesjson); echo count($typesjson[$temp_data[0]]); ?>';
+                var sz32 = '<?php $temp_data = array_keys($typesjson); if(count($temp_data) > 1){ echo count($typesjson[$temp_data[1]]);} ?>';
+                var sz33 = '<?php $temp_data = array_keys($typesjson); if(count($temp_data) > 2){ echo count($typesjson[$temp_data[2]]);} ?>';
+
+                for(var i=0; i<sz1.length; i++){
+                	if(i < sz31){
+                		for(var j=0; j<sz2.length; j++){
+                			if( j < sz32){
+                				for(var z=0; z<sz3.length; z++){
+		                            var datakey = sz1[i]+sz2[j]+sz3[z];
+		                            if(datacounts == 1){
+		                            	{if $datajson}
+		                                {foreach $datajson as $index => $item}
+		                                    if("{$index}"== datakey){
+		                                        var aa = "{$item}";
+		                                        var newarr = aa.split(",");
+		                                        var jsondata = {};
+		                                        jsondata[ggzarr[0]] = sz1[i];
+		                                        jsondata[ggzarr[1]] = sz2[j];
+		                                        jsondata[ggzarr[2]] = sz3[z];
+		                                        jsondata["库存"] = newarr[0];
+		                                        jsondata["价格"] = newarr[1];
+		                                        jsondata["货号"] = newarr[2];
+		                                        jsondata["已售数量"] = newarr[3];
+		                                        jsondata["虚拟销量"]=newarr[4];
+		                                        jsondata["规格图片"] = newarr[5];
+		                                        allarrone.push(jsondata);
+		                                    }
+		                                {/foreach}
+		                                {/if}
+		                            }else{
+		                            	if(z < sz33){
+		                            		{if $datajson}
+			                                {foreach $datajson as $index => $item}
+			                                    if("{$index}"== datakey){
+			                                        var aa = "{$item}";
+			                                        var newarr = aa.split(",");
+			                                        var jsondata = {};
+			                                        jsondata[ggzarr[0]] = sz1[i];
+			                                        jsondata[ggzarr[1]] = sz2[j];
+			                                        jsondata[ggzarr[2]] = sz3[z];
+			                                        jsondata["库存"] = newarr[0];
+			                                        jsondata["价格"] = newarr[1];
+			                                        jsondata["货号"] = newarr[2];
+			                                        jsondata["已售数量"] = newarr[3];
+			                                        jsondata["虚拟销量"]=newarr[4];
+			                                        jsondata["规格图片"] = newarr[5];
+			                                        allarrone.push(jsondata);
+			                                    }
+			                                {/foreach}
+			                                {/if}
+		                            	}else{
+		                            		var jsondata = {};
+			                                jsondata[ggzarr[0]] = sz1[i];
+			                                jsondata[ggzarr[1]] = sz2[j];
+			                                jsondata[ggzarr[2]] = sz3[z];
+			                                jsondata["库存"] = 0;
+			                                jsondata["价格"] = 0;
+			                                jsondata["货号"] = 0;
+			                                jsondata["已售数量"] = 0;
+			                                jsondata["虚拟销量"]=0;
+			                                jsondata["规格图片"] = "";
+			                                allarrone.push(jsondata);
+		                            	}
+		                                
+		                            }
+		                        }
+                			}else{
+                				for(var z=0; z<sz3.length; z++){
+                					var jsondata = {};
+	                                jsondata[ggzarr[0]] = sz1[i];
+	                                jsondata[ggzarr[1]] = sz2[j];
+	                                jsondata[ggzarr[2]] = sz3[z];
+	                                jsondata["库存"] = 0;
+	                                jsondata["价格"] = 0;
+	                                jsondata["货号"] = 0;
+	                                jsondata["已售数量"] = 0;
+	                                jsondata["虚拟销量"]=0;
+	                                jsondata["规格图片"] = "";
+	                                allarrone.push(jsondata);
+                				}
+                			}
+	                    }
+                	}else{
+                		for(var j=0; j<sz2.length; j++){
+                			for(var z=0; z<sz3.length; z++){
+                				var jsondata = {};
+		                        jsondata[ggzarr[0]] = sz1[i];
+		                        jsondata[ggzarr[1]] = sz2[j];
+		                        jsondata[ggzarr[2]] = sz3[z];
+		                        jsondata["库存"] = 0;
+		                        jsondata["价格"] = 0;
+		                        jsondata["货号"] = 0;
+		                        jsondata["已售数量"] = 0;
+		                        jsondata["虚拟销量"]=0;
+		                        jsondata["规格图片"] = "";
+		                        allarrone.push(jsondata);
+                			}
+                		}
+                		
+
+                	}
+                    
+                }
+
+            }
+
+            // 构建表头
+            var strtab = "<tr>";
+            for(var k = 0; k<tablearr.length; k++){
+                strtab += "<td class='biaotou'>"+tablearr[k]+"</td>";
+            }
+            strtab += "</tr>";
+            $("#tabb").html(strtab);
+            //构建表身
+            var lensz = ggzarr.length;
+            var tabdata = "";
+            for(var d = 0; d<allarrone.length; d++){
+                tabdata +=  "<tr>";
+                for(var k = 0; k<tablearr.length; k++){
+                    if(k<lensz){
+                        tabdata += "<td class='tds '>"+allarrone[d][tablearr[k]]+"</td>";
+                    }else if(tablearr[k]=="规格图片"){
+                        var imgkk = "";
+                        if(allarrone[d][tablearr[k]]){
+                            var imgkk = "<img src="+allarrone[d][tablearr[k]]+">";
+                        }else{
+                            var imgkk = "";
+                        }
+                        tabdata +=  "<td class='tds' style='position: relative;'>"+
+                                        "<input type='hidden' id='imgurl"+d+"' name='valarr"+d+"' value="+allarrone[d][tablearr[k]]+">"+
+                                        "<div class='xuzndt' name='imgurl"+d+"' onclick='uploadphoto.click();getd("+d+");'>选择</div>"+
+                                        "<div class='xuzndt' name='imgurl"+d+"' onclick='delimage(imgurl"+d+")'>删除</div>"+
+                                        "<div class='xuzndd' id='imgxs"+d+"'>"+
+                                            imgkk+
+                                        "</div>"
+                                    "</td>";
+                    }else if(tablearr[k]=="已售数量"){
+                        tabdata += "<td class='tds'><input type='text' disabled class='shukdd' name='valarr"+d+"' value='"+allarrone[d][tablearr[k]]+"'></td>";
+					}else{
+                        tabdata += "<td class='tds'><input type='text' class='shukdd' name='valarr"+d+"' value='"+allarrone[d][tablearr[k]]+"'></td>";
+                    }
+                }
+                tabdata +=  "</tr>";
+            }
+            $("#tabb").append(tabdata);
+
+        }
+        function delimage(me){
+            var key = $(me).attr("name");
+            var dval = key.substr(6,key.length);
+            var imgkey = "imgxs"+dval;
+            $("#"+key).val("");
+            $("#imgurl"+dval).val("");
+            $("#"+imgkey).html("");
+            if(typessy==2){
+                $("#imgyc999").val("");
+            }
+        }
+       	function showImageDialog(id){
+       		
+
+			
+       	}
+		function ggzbc(){
+
+            for(var i=0; i<allarrone.length; i++){
+                var kucun = $("input[name='valarr"+i+"']")[0].value;
+                var money = $("input[name='valarr"+i+"']")[1].value;
+                var huohao = $("input[name='valarr"+i+"']")[2].value;
+                var salenum = $("input[name='valarr"+i+"']")[3].value;
+                var imgs = $("input[name='valarr"+i+"']")[5].value;
+                var vsalenum = $("input[name='valarr"+i+"']")[4].value;
+                allarrone[i]['库存'] = kucun;
+                allarrone[i]['价格'] = money;
+                allarrone[i]['货号'] = huohao;
+                allarrone[i]['已售数量'] = salenum;
+                allarrone[i]['规格图片'] = imgs;
+                allarrone[i]['虚拟销量'] = vsalenum;
+            }
+
+            var val = JSON.stringify(allarrone);
+
+            $("#biaogedata").val(val);
+            $("#typelen").val(ggzarr.length); 
+            $("#typesarr").val(ggzarr.toString());
+
+        }
+
+
+
+	    //规格结束
+	    function catecheck(me){
+			var id = $(me).val();
+			if(id !=0){
+				$.ajax({
+					url:"{:Url('Products/getcates')}",type:"post",dataType:'json',
+					data:{
+						id:id
+					},success:function(res){
+						$("#catelists_i").show();
+						var con1 = "";
+						var con2 = "";
+						var con3 = "";
+						for(var i=0;i<res.length;i++){
+							for(var j=0;j<res[i].length;j++){
+								if(j!=0){
+									con= "<option value='"+res[i][j]['id']+"'>"+res[i][j]['name']+"</option>"
+									con1 = con1+con;
+								}
+							}
+							con2="<select name='catearr[]' class='span3 m-wrap'><option value='0'>选择多栏目</option>"+con1+"</select>";
+							con1 = "";
+							con3 = con3+con2;
+						}
+						$("#catelists").html(con3);
+					}
+				})
+			}else{
+				$("#catelists_i").hide();
+				$("#catelists").html("");
+			}
+		}
+
+        $(function() {
+	    	var ue = UE.getEditor('editor');
+		});
+    	function checkinfo(){
+    		$("#mengdian").val($("#w1").val());
+    		var lanmu = $("#cid").val();
+        	if(lanmu==0){
+        		alert("请选择所属栏目");
+        		return false;
+        	}
+        	var proTitle = $("#proTitle").val();
+        	if(!proTitle){
+        		alert("请输入产品标题");
+        		return false;
+        	}
+    		val = $("#ueditor_textarea_product_txt").val();
+    		if(!val){
+        		alert("请输入内容");
+        		return false;
+        	}else{
+        		$("#text").val(val);
+        	}
+        	//判断规格组的值有没有都设置
+        	if(ggzarr.length == 0){
+        		alert("请添加规格组");
+        		return false;
+        	}
+            for(var i=0; i<ggzarr.length; i++){
+                if(ggzjson[ggzarr[i]].length == 0){
+                    alert(ggzarr[i]+"规格组没有设置规格值！");
+                    return false;
+                }
+            }
+            ggzbc();
+            // if(confirm('你确定就这样保存本产品?')){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+	    }
+        // 多图上传
+        var date = new Date();
+    	var stronly = String(date.getFullYear())+String(date.getMonth())+String(date.getDate())+String(date.getHours())+String(date.getMinutes())+String(date.getSeconds())+String(Math.floor(Math.random()*1000+1));
+    	//判断URL中有没有栏目ID
+    	var newsid = {$id};
+    	
+
+    	if(newsid==0){
+    		$("#onlyid").val(stronly);
+    	}else{
+    		var onlyid_is = $("#onlyid").val();
+    		if(onlyid_is == ""){
+    			$("#onlyid").val(stronly);
+    		}
+    	}
+
+        function del(id){
+			if(confirm('你确定要删除这张图片嘛?')){
+				$("#li"+id).remove();
+				$.post("{:Url('Duoproducts/del_img')}",{"id":id},function(data){
+				})
+			}else{
+				return false;
+			}
+		}
+		function xians(me){
+			var b = $(me).find("div[class='beijingys']");
+			var s = $(me).find("div[class='sancann']");
+			$(b).show();
+			$(s).show();
+		}
+		function gb(me){
+			var b = $(me).find("div[class='beijingys']");
+			var s = $(me).find("div[class='sancann']");
+			$(b).hide();
+			$(s).hide();
+		}
+    (function( $ ){
+    // 当domReady的时候开始初始化
+    $(function(){
+    	jzsc();
+    })
+	})( jQuery );
+	function jzsc(){
+        var $wrap = $('.uploader-list-container'),
+            // 图片容器
+            $queue = $( '<ul class="filelist" id="filelist"></ul>' )
+                .appendTo( $wrap.find( '.queueList' ) ),
+            // 状态栏，包括进度和控制按钮
+            $statusBar = $wrap.find( '.statusBar' ),
+            // 文件总体选择信息。
+            $info = $statusBar.find( '.info' ),
+            // 上传按钮
+            $upload = $wrap.find( '.uploadBtn' ),
+            // 没选择文件之前的内容。
+            $placeHolder = $wrap.find( '.placeholder' ),
+            $progress = $statusBar.find( '.progress' ).hide(),
+            // 添加的文件数量
+            fileCount = 0,
+            // 添加的文件总大小
+            fileSize = 0,
+            // 优化retina, 在retina下这个值是2
+            ratio = window.devicePixelRatio || 1,
+            // 缩略图大小
+            thumbnailWidth = 180 * ratio,
+            thumbnailHeight = 120 * ratio,
+            // 可能有pedding, ready, uploading, confirm, done.
+            state = 'pedding',
+            // 所有文件的进度信息，key为file id
+            percentages = {},
+            // 判断浏览器是否支持图片的base64
+            isSupportBase64 = ( function() {
+                var data = new Image();
+                var support = true;
+                data.onload = data.onerror = function() {
+                    if( this.width != 1 || this.height != 1 ) {
+                        support = false;
+                    }
+                }
+                data.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+                return support;
+            } )(),
+            // 检测是否已经安装flash，检测flash的版本
+            flashVersion = ( function() {
+                var version;
+                try {
+                    version = navigator.plugins[ 'Shockwave Flash' ];
+                    version = version.description;
+                } catch ( ex ) {
+                    try {
+                        version = new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
+                                .GetVariable('$version');
+                    } catch ( ex2 ) {
+                        version = '0.0';
+                    }
+                }
+                version = version.match( /\d+/g );
+                return parseFloat( version[ 0 ] + '.' + version[ 1 ], 10 );
+            } )(),
+            supportTransition = (function(){
+                var s = document.createElement('p').style,
+                    r = 'transition' in s ||
+                            'WebkitTransition' in s ||
+                            'MozTransition' in s ||
+                            'msTransition' in s ||
+                            'OTransition' in s;
+                s = null;
+                return r;
+            })(),
+            // WebUploader实例
+            uploader;
+        // 实例化
+        uploader = WebUploader.create({
+            pick: {
+                id: '#filePicker-2',
+                label: '点击选择图片'
+            },
+            formData: {
+                uid: 123
+            },
+            dnd: '#dndArea',
+            paste: '#uploader',
+            swf: '/webuploader/Uploader.swf',
+            chunked: false,
+            chunkSize: 512 * 1024,
+            server: '{:Url('Duoproducts/imgupload_duo')}?randid='+$("#onlyid").val(),
+            // runtimeOrder: 'flash',
+            // accept: {
+            //     title: 'Images',
+            //     extensions: 'gif,jpg,jpeg,bmp,png',
+            //     mimeTypes: 'image/*'
+            // },
+            // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
+            disableGlobalDnd: false,
+            fileNumLimit: 8,
+            fileSizeLimit: 200 * 1024 * 1024,    // 200 M
+            fileSingleSizeLimit: 50 * 1024 * 1024    // 50 M
+        });
+        // 拖拽时不接受 js, txt 文件。
+        uploader.on( 'dndAccept', function( items ) {
+            var denied = false,
+                len = items.length,
+                i = 0,
+                // 修改js类型
+                unAllowed = 'text/plain;application/javascript ';
+            for ( ; i < len; i++ ) {
+                // 如果在列表里面
+                if ( ~unAllowed.indexOf( items[ i ].type ) ) {
+                    denied = true;
+                    break;
+                }
+            }
+            return !denied;
+        });
+        uploader.on('dialogOpen', function() {
+            console.log('here');
+        });
+        // uploader.on('filesQueued', function() {
+        //     uploader.sort(function( a, b ) {
+        //         if ( a.name < b.name )
+        //           return -1;
+        //         if ( a.name > b.name )
+        //           return 1;
+        //         return 0;
+        //     });
+        // });
+        // 添加“添加文件”的按钮，
+        uploader.addButton({
+            id: '#filePicker2',
+            label: '继续添加'
+        });
+        uploader.on('ready', function() {
+            window.uploader = uploader;
+        });
+        // 当有文件添加进来时执行，负责view的创建
+        function addFile( file ) {
+            var $li = $( '<li id="' + file.id + '">' +
+                    '<p class="imgWrap"></p>'+                
+                    '</li>' ),
+                $btns = $('<div class="file-panel">' +
+                    '<span class="cancel">删除</span>' +
+					'</div>').appendTo( $li ),
+                $prgress = $li.find('p.progress span'),
+                $wrap = $li.find( 'p.imgWrap' ),
+                $info = $('<p class="error"></p>'),
+                showError = function( code ) {
+                    switch( code ) {
+                        case 'exceed_size':
+                            text = '文件大小超出';
+                            break;
+                        case 'interrupt':
+                            text = '上传暂停';
+                            break;
+                        default:
+                            text = '上传失败，请重试';
+                            break;
+                    }
+                    $info.text( text ).appendTo( $li );
+                };
+            if ( file.getStatus() === 'invalid' ) {
+                showError( file.statusText );
+            } else {
+                // @todo lazyload
+                $wrap.text( '预览中' );
+                uploader.makeThumb( file, function( error, src ) {
+                    var img;
+                    if ( error ) {
+                        $wrap.text( '不能预览' );
+                        return;
+                    }
+                    if( isSupportBase64 ) {
+                        img = $('<img src="'+src+'">');
+                        $wrap.empty().append( img );
+                    } else {
+                        $.ajax('/webuploader/server/preview.php', {
+                            method: 'POST',
+                            data: src,
+                            dataType:'json'
+                        }).done(function( response ) {
+                            if (response.result) {
+                                img = $('<img src="'+response.result+'">');
+                                $wrap.empty().append( img );
+                            } else {
+                                $wrap.text("预览出错");
+                            }
+                        });
+                    }
+                }, thumbnailWidth, thumbnailHeight );
+                percentages[ file.id ] = [ file.size, 0 ];
+                file.rotation = 0;
+            }
+            file.on('statuschange', function( cur, prev ) {
+                if ( prev === 'progress' ) {
+                    $prgress.hide().width(0);
+                } else if ( prev === 'queued' ) {
+                    $li.off( 'mouseenter mouseleave' );
+                    $btns.remove();
+                }
+                // 成功
+                if ( cur === 'error' || cur === 'invalid' ) {
+                    console.log( file.statusText );
+                    showError( file.statusText );
+                    percentages[ file.id ][ 1 ] = 1;
+                } else if ( cur === 'interrupt' ) {
+                    showError( 'interrupt' );
+                } else if ( cur === 'queued' ) {
+                    percentages[ file.id ][ 1 ] = 0;
+                } else if ( cur === 'progress' ) {
+                    $info.remove();
+                    $prgress.css('display', 'block');
+                } else if ( cur === 'complete' ) {
+                    $li.append( '<span class="success"></span>' );
+                }
+                $li.removeClass( 'state-' + prev ).addClass( 'state-' + cur );
+            });
+            $li.on( 'mouseenter', function() {
+                $btns.stop().animate({height: 30});
+            });
+            $li.on( 'mouseleave', function() {
+                $btns.stop().animate({height: 0});
+            });
+            $btns.on( 'click', 'span', function() {
+                var index = $(this).index(),
+                    deg;
+                switch ( index ) {
+                    case 0:
+                        uploader.removeFile( file );
+                        return;
+                    case 1:
+                        file.rotation += 90;
+                        break;
+                    case 2:
+                        file.rotation -= 90;
+                        break;
+                }
+                if ( supportTransition ) {
+                    deg = 'rotate(' + file.rotation + 'deg)';
+                    $wrap.css({
+                        '-webkit-transform': deg,
+                        '-mos-transform': deg,
+                        '-o-transform': deg,
+                        'transform': deg
+                    });
+                } else {
+                    $wrap.css( 'filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+ (~~((file.rotation/90)%4 + 4)%4) +')');
+                    // use jquery animate to rotation
+                    // $({
+                    //     rotation: rotation
+                    // }).animate({
+                    //     rotation: file.rotation
+                    // }, {
+                    //     easing: 'linear',
+                    //     step: function( now ) {
+                    //         now = now * Math.PI / 180;
+                    //         var cos = Math.cos( now ),
+                    //             sin = Math.sin( now );
+                    //         $wrap.css( 'filter', "progid:DXImageTransform.Microsoft.Matrix(M11=" + cos + ",M12=" + (-sin) + ",M21=" + sin + ",M22=" + cos + ",SizingMethod='auto expand')");
+                    //     }
+                    // });
+                }
+            });
+            $li.appendTo( $queue );
+        }
+        // 负责view的销毁
+        function removeFile( file ) {
+            var $li = $('#'+file.id);
+            delete percentages[ file.id ];
+            updateTotalProgress();
+            $li.off().find('.file-panel').off().end().remove();
+        }
+        function updateTotalProgress() {
+            var loaded = 0,
+                total = 0,
+                spans = $progress.children(),
+                percent;
+            $.each( percentages, function( k, v ) {
+                total += v[ 0 ];
+                loaded += v[ 0 ] * v[ 1 ];
+            } );
+            percent = total ? loaded / total : 0;
+            spans.eq( 0 ).text( Math.round( percent * 100 ) + '%' );
+            spans.eq( 1 ).css( 'width', Math.round( percent * 100 ) + '%' );
+            updateStatus();
+        }
+        function updateStatus() {
+            var text = '', stats;
+            if ( state === 'ready' ) {
+                text = '选中' + fileCount + '张图片，共' +
+                        WebUploader.formatSize( fileSize ) + '。';
+            } else if ( state === 'confirm' ) {
+                stats = uploader.getStats();
+                if ( stats.uploadFailNum ) {
+                    text = '已成功上传' + stats.successNum+ '张照片至XX相册，'+
+                        stats.uploadFailNum + '张照片上传失败，<a class="retry" href="#">重新上传</a>失败图片或<a class="ignore" href="#">忽略</a>'
+                }
+            } else {
+                stats = uploader.getStats();
+                text = '共' + fileCount + '张（' +
+                        WebUploader.formatSize( fileSize )  +
+                        '），已上传' + stats.successNum + '张';
+                if ( stats.uploadFailNum ) {
+                    text += '，失败' + stats.uploadFailNum + '张';
+                }
+            }
+            $info.html( text );
+        }
+        function setState( val ) {
+            var file, stats;
+            if ( val === state ) {
+                return;
+            }
+            $upload.removeClass( 'state-' + state );
+            $upload.addClass( 'state-' + val );
+            state = val;
+            switch ( state ) {
+                case 'pedding':
+                    $placeHolder.removeClass( 'element-invisible' );
+                    $queue.hide();
+                    $statusBar.addClass( 'element-invisible' );
+                    uploader.refresh();
+                    break;
+                case 'ready':
+                    $placeHolder.addClass( 'element-invisible' );
+                    $( '#filePicker2' ).removeClass( 'element-invisible');
+                    $queue.show();
+                    $statusBar.removeClass('element-invisible');
+                    uploader.refresh();
+                    break;
+                case 'uploading':
+                    $( '#filePicker2' ).addClass( 'element-invisible' );
+                    $progress.show();
+                    $upload.text( '暂停上传' );
+                    break;
+                case 'paused':
+                    $progress.show();
+                    $upload.text( '继续上传' );
+                    break;
+                case 'confirm':
+                    $progress.hide();
+                    $( '#filePicker2' ).removeClass( 'element-invisible' );
+                    $upload.text( '开始上传' );
+                    stats = uploader.getStats();
+                    if ( stats.successNum && !stats.uploadFailNum ) {
+                        setState( 'finish' );
+                        return;
+                    }
+                    break;
+                case 'finish':
+                    stats = uploader.getStats();
+                    if ( stats.successNum ) {
+                    	$.post("{:Url('Duoproducts/getimg')}",{"id":$("#onlyid").val()},function(data){
+                        	var str="";
+                        	if(data){
+                        		for(var i=0; i<data.length; i++){
+                        			str+=	"<div class='paiwei' onmousemove='xians(this)' onmouseout='gb(this)' id='li"+data[i].id+"'>"+
+												"<img src='"+data[i].url+"' style='width: 140px; height:90px;'>"+
+												"<div class='beijingys'>"+
+												"</div>"+
+												"<div class='sancann' onclick='del("+data[i].id+")'>"+
+													"<span class='cancel'>删除</span>"+
+												"</div>"+
+											"</div>"
+                        		}
+                        		$("#imgzs").html(str);
+                        		jzsc();
+                        	}
+                        })
+                        alert( '上传成功' );
+                    } else {
+                        // 没有成功的图片，重设
+                        state = 'done';
+                    }
+                    break;
+            }
+            updateStatus();
+        }
+        uploader.onUploadProgress = function( file, percentage ) {
+            var $li = $('#'+file.id),
+                $percent = $li.find('.progress span');
+            $percent.css( 'width', percentage * 100 + '%' );
+            percentages[ file.id ][ 1 ] = percentage;
+            updateTotalProgress();
+        };
+        uploader.onFileQueued = function( file ) {
+            fileCount++;
+            fileSize += file.size;
+            if ( fileCount === 1 ) {
+                $placeHolder.addClass( 'element-invisible' );
+                $statusBar.show();
+            }
+            addFile( file );
+            setState( 'ready' );
+            updateTotalProgress();
+        };
+        uploader.onFileDequeued = function( file ) {
+            fileCount--;
+            fileSize -= file.size;
+            if ( !fileCount ) {
+                setState( 'pedding' );
+            }
+            removeFile( file );
+            updateTotalProgress();
+        };
+        uploader.on( 'all', function( type ) {
+            var stats;
+            switch( type ) {
+                case 'uploadFinished':
+                    setState( 'confirm' );
+                    break;
+                case 'startUpload':
+                    setState( 'uploading' );
+                    break;
+                case 'stopUpload':
+                    setState( 'paused' );
+                    break;
+            }
+        });
+        uploader.onError = function( code ) {
+            alert( 'Eroor: ' + code );
+        };
+        $upload.on('click', function() {
+            if ( $(this).hasClass( 'disabled' ) ) {
+                return false;
+            }
+            if ( state === 'ready' ) {
+                uploader.upload();
+            } else if ( state === 'paused' ) {
+                uploader.upload();
+            } else if ( state === 'uploading' ) {
+                uploader.stop();
+            }
+        });
+        $info.on( 'click', '.retry', function() {
+            uploader.retry();
+        } );
+        $info.on( 'click', '.ignore', function() {
+            alert( 'todo' );
+        } );
+        $upload.addClass( 'state-' + state );
+        updateTotalProgress();
+	}
+    </script>
+{include file="public/foot_more" /}

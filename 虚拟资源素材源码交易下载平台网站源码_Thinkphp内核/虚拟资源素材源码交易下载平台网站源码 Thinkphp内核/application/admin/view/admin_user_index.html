@@ -1,0 +1,71 @@
+{extend name="base" /}
+{block name="body"}
+<div class="admin-main">
+
+		
+				
+		
+			
+				
+				<div class="layui-field-box layui-form">
+				<a href="{:url('admin/admin_user/add')}" class="layui-btn layui-btn-sm" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加管理员
+				</a>
+			<!-- <a href="#" class="layui-btn layui-btn-sm" id="import" >
+					<i class="layui-icon">&#xe608;</i> 导入信息
+				</a>
+				<a href="#" class="layui-btn layui-btn-sm">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
+				</a>
+				<a href="#" class="layui-btn layui-btn-sm" id="getSelected">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 获取全选信息
+				</a>
+				<a href="javascript:;" class="layui-btn layui-btn-sm" id="search">
+					<i class="layui-icon">&#xe615;</i> 搜索
+				</a> -->	
+					<table class="layui-table admin-table">
+						<thead>
+							   <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>用户名</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                        <th>最后登录时间</th>
+                        <th>最后登录IP</th>
+                        <th>操作</th>
+                    </tr>
+						</thead>
+						<tbody id="content">
+						    {volist name="admin_user_list" id="vo"}
+                 
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.username}</td>
+                        <td>{php}echo $vo['status']==1 ? '启用' : '禁用';{/php}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>{$vo.last_login_time}</td>
+                        <td>{$vo.last_login_ip}</td>
+                      <td>
+				
+					<a href="{:url('admin/admin_user/edit',array('id'=>$vo['id']))}" data-name="{$vo.id}" data-opt="edit" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+					<a href="javascript:;" data-id="{$vo.id}" data-url="{:url('admin/admin_user/delete',array('id'=>$vo['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm">删除</a>
+				</td>
+                    </tr>
+                   {/volist}
+						</tbody>
+					</table>
+				</div>
+		
+			
+		</div>
+ {/block}
+  {block name="page"}
+<div class="btable-paged" >
+<div class="layui-main">
+{$admin_user_list->render()}
+</div>
+</div>
+   {/block}
+ {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+ {/block}

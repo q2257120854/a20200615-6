@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>云API</title>
+   <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+  
+	  <style>
+	html,body{
+		color:#000;
+	}
+       .aui-nav-list-box ul li a {
+    color: #8B8386;
+}
+.guanggao ul li a {   
+    color: #8B8386;
+}
+
+ .guanggao{
+	
+	
+}
+.guanggao ul{
+		display: -webkit-box;	display: -webkit-flex;	display: flex;
+	}
+
+.guanggao ul li {
+	float: left;
+    color: #000;
+    cursor: pointer;
+    line-height: 30px;
+	flex: 1;
+    text-align: center;
+    font-size: 14px;
+margin-top:5px;
+
+}
+
+.aui-nav-list-item {
+    display: none;
+}
+.slidebox{
+	height:200px;
+}
+.guanggao img {
+    border-radius: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+}
+
+
+
+  
+
+
+#notice_active{
+    float: left;
+    width: 80%;
+    height: 1.5rem;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+	font-size:14px;
+	color:black;
+}
+.notice_active_ch{
+	list-style-type: none;
+    line-height: 1.5rem;
+    overflow: hidden;
+}
+
+    </style>
+</head>
+<body>
+     
+	 <div id="aui-slide" class="fx-box">
+			
+				<div id="slidebox" class="aui-slide-wrap" >
+                <!--顶部横幅未加载完成时的提示-->
+                  <img id="bpic" src="../image/TV.png">
+				  
+                <!--顶部横幅未加载完成时的提示-->
+			    </div>
+				<div class="gonggao" id="gonggao" style=" border-radius: 30px 30px 30px 30px; box-shadow: 0.15rem 0.15rem 0.15rem rgba(0, 0, 0, 0.1);position: absolute;bottom:120px;padding: 2px 6px;background: rgba(0,0,0,0.5);color: #fff;">
+                <div class="list-title-l">
+                  <i class="iconfont icon-xitonggonggao" style="color:#EE4000;font-size:1rem"></i>
+                </div>
+                <div class="gonggao-r" id="notice_active">
+				<ul id="gong">
+				<li class="notice_active_ch" >
+                  <span id="gonggao" style="color: #fff;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  <li class="notice_active_ch">
+                  <span id="gonggao" style="color: #fff;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  <li class="notice_active_ch">
+                  <span id="gonggao" style="ccolor: #fff;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  </ul>
+                </div>
+              </div>
+				<div class="aui-slide-page-wrap"><!--分页容器--></div>
+		  </div>
+		  
+		  
+		  
+		  
+		  
+				  <div class="list-title" style="border-bottom: 0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:16px;"><i class="iconfont icon-huiyuan" style="color:#1C86EE;"></i>&nbsp;热播电视剧</span>
+					</div>
+					<div class="list-title-r" id="wzbox_bottom">  <!--右侧底部右侧文字广告位-->
+					 <span style="color:#CDC9C9;font-size:15px;" onclick="chaju()">更多</span>
+					</div>
+				  </div>  
+		<div class="v-list-wrap" id="dianshiju" style="background:#fff;">
+		
+			<ul class="clearfix" >
+				<li style="margin-bottom:12px;height:145px;width:49%; margin-right:2px;" v-for="v in list" @click="openWind(v.lianjie)">
+			
+			<div class="video-mask-box">
+			<img :src="v.pic" style="width:98%;max-height: 105px;height: 105px;min-height: 105px;border-radius:5px 5px 0px 0px;">
+			<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">{{v.tag}}</span>
+			</div>
+			<div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+			<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#000; ">{{v.title}}</span>
+			
+			<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#A3A3A3;margin-top:-20px;">{{v.biao}}</span>
+			</div>
+			</li>
+					
+				
+			</ul>
+		
+			</div>
+		
+		
+		
+		
+		<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:16px;"><i class="iconfont icon-huiyuan" style="color:#1C86EE;"></i>&nbsp;电影推荐</span>
+					</div>
+					<div class="list-title-r" id="wzbox_bottom">  <!--右侧底部右侧文字广告位-->
+					 <span style="color:#CDC9C9;font-size:15px;" onclick="chadian()">更多</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="dianying">
+		
+			<ul class="clearfix" >
+			
+			<li style='margin-bottom: 12px;' v-for="v in list" @click="openWind(v.lianjie)">
+			 <div class="video-mask-box">
+			 <img :src="v.pic" style="width: 98%;max-height: 155px;height: 155px;min-height: 155px;border-radius:5px 5px 0px 0px;">
+			<span class="pay" style="    position: absolute;top: 4px;left: 4px;display: block;width: 39px;height: 19px;line-height: 19px;background: #cd1919;color: #fff;text-align: center;border-radius: 2px;">推荐</span>
+			 </div>
+			 <div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+			 <span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;    width: 100%; color:#000;">{{v.title}}</span>
+			 <span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  color:#000;  width: 100%;color:#A3A3A3;margin-top:-20px;">{{v.biao}}</span>
+			 </div>
+			 </li>
+			</ul>
+			
+		</div>
+		
+
+		<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:16px;"><i class="iconfont icon-huiyuan" style="color:#1C86EE;"></i>&nbsp;精彩综艺</span>
+					</div>
+					<div class="list-title-r" id="wzbox_bottom">  <!--右侧底部右侧文字广告位-->
+					 <span style="color:#CDC9C9;font-size:15px;" onclick="chazong()">更多</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="zongyi">
+		  
+			<ul class="clearfix" >
+				<li style="margin-bottom:12px;height:145px;width:49%; margin-right:2px;" v-for="v in list" @click="openWind(v.lianjie)">
+					
+					<div class="video-mask-box">
+					<img :src="v.pic" style="width:98%;max-height: 105px;height: 105px;min-height: 105px;border-radius:5px 5px 0px 0px;">
+					<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">{{v.tag}}</span>
+					</div>
+					<div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+					<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#000; ">{{v.title}}</span>
+					
+					<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#A3A3A3;margin-top:-20px;">{{v.biao}}</span>
+					</div>
+					</li>
+			</ul>
+						
+			</div>
+		
+		
+		
+			
+				<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:16px;"><i class="iconfont icon-huiyuan" style="color:#1C86EE;"></i>&nbsp;人气动漫</span>
+					</div>
+					<div class="list-title-r" id="wzbox_bottom">  <!--右侧底部右侧文字广告位-->
+					 <span style="color:#CDC9C9;font-size:15px;" onclick="chaman()">更多</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="dongman">
+		
+			<ul class="clearfix" >
+			<li style="margin-bottom:12px;height:145px;width:49%; margin-right:2px;" v-for="v in list" @click="openWind(v.lianjie)">
+			   
+			<div class="video-mask-box">
+			<img :src="v.pic" style="width:98%;max-height: 105px;height: 105px;min-height: 105px;border-radius:5px 5px 0px 0px;">
+			<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">{{v.tag}}</span>
+			</div>
+			<div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+			<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#000; ">{{v.title}}</span>
+			
+			<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 98%;color:#A3A3A3;margin-top:-20px;">{{v.biao}}</span>
+			</div>
+			</li>
+	
+			</ul>
+			
+			
+			
+			</div>
+		
+		
+		
+		
+		
+		</div>
+	
+	
+	
+	
+	
+	
+	
+</body>
+ <script type="text/x-dot-template" id="template">
+		{{~ it : value : index }}
+				 <div class="aui-slide-node bg-dark" tapmode onclick="openApp('{{= value. link }}')">
+					<img src="{{= value. picname }}" />
+				</div>
+		{{~}}
+	</script>
+	<script type="text/x-dot-template" id="notice1">
+		{{~ it : value : index }}
+				 
+				<li class="notice_active_ch" >
+                  <span class="aui-font-size-12 aui-text-index" style="color: #fff;font-size: 0.65rem;margin-left: 5px;">{{= value. neirong }}</span>
+				  
+				  </li>
+		{{~}}
+	</script>
+	<script type="text/javascript" src="../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+	function timer(opj){
+		$(opj).find('ul').animate({
+			marginTop : "0rem"  
+			},500,function(){  
+			$(this).css({marginTop : "0rem"}).find("li:first").appendTo(this);  
+		})  
+	}
+	$(function(){ 
+		var num = $('#notice_active').find('li').length;
+		if(num > 1){
+		   var time=setInterval('timer("#notice_active")',5000);
+			$('.gg_more a').mousemove(function(){
+				clearInterval(time);
+			}).mouseout(function(){
+				time = setInterval('timer("#notice_active")',5000);
+			}); 
+		}
+		
+		$(".news_ck").click(function(){
+			location.href = $("#notice_active .notice_active_ch").children(":input").val();
+		})
+	});
+</script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../script/auislide.js"></script>
+
+<script type="text/javascript">
+var api_url = localStorage.getItem('api_url');
+var jx1 = localStorage.getItem('jx1');
+var jx2 = localStorage.getItem('jx2');
+	apiready = function(){
+	
+		 api.parseTapmode();
+		
+	
+		  lunbo();
+		notice();
+			juji();
+		  dianying();
+		  zongyi();
+		  dongman();
+		
+		    
+		 
+		api.setCustomRefreshHeaderInfo({
+              bgColor : '#fff',
+          }, function() {
+              //下拉刷新被触发，自动进入加载状态，使用 api.refreshHeaderLoadDone() 手动结束加载中状态
+		lunbo();
+		notice();	
+              setTimeout(function(){
+					api.refreshHeaderLoadDone()
+              }, 2000);
+          });
+		  
+		
+		
+		
+	}
+
+	
+	 //轮播开始//
+	  function lunbo(){
+	   var bannerid = $api.byId('slidebox');
+		var template = $api.byId('template');
+			api.ajax({
+				  url: api_url+'/App/App/lunbo.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret.slun))
+					var pagefn = doT.template(template.text);
+					bannerid.innerHTML = pagefn(ret.slun);
+					
+					banNer();
+				  } else {
+				 // alert( '导航加载失败！' );
+				  api.hideProgress();
+				}      
+			  });
+			}
+		 
+		 function zongyi(){
+			  var zongyi = new Vue({
+				  el: '#zongyi',
+				  data: {list: []},
+				  mounted: function(){
+					  api.ajax({
+					  url: api_url+'/App/Youni/zzheng',
+					  method: 'get',
+				  },function(ret, err){
+					  if (ret) {
+						//console.log(JSON.stringify(ret))
+						 zongyi.list = ret;
+					
+					  } else {
+						alert( '导航加载失败！' );
+						api.hideProgress();
+					}      
+				  });
+				  }
+			  });
+		  }
+		 
+		 function notice(){
+	   var gong = $api.byId('gong');
+		var notice1 = $api.byId('notice1');
+			api.ajax({
+				  url: api_url+'/App/App/notice.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret))
+					var pagefn = doT.template(notice1.text);
+					gong.innerHTML = pagefn(ret);
+				
+				  } else {
+					alert( '视频加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+			}
+		 
+		 function dongman(){
+			  var dongman = new Vue({
+				  el: '#dongman',
+				  data: {list: []},
+				  mounted: function(){
+					  api.ajax({
+					  url: api_url+'/App/Youni/drebo',
+					  method: 'get',
+				  },function(ret, err){
+					  if (ret) {
+						//console.log(JSON.stringify(ret))
+						 dongman.list = ret;
+					
+					  } else {
+						alert( '导航加载失败！' );
+						api.hideProgress();
+					}      
+				  });
+				  }
+			  });
+		  }
+	function juji(){
+			  var dianshiju = new Vue({
+				  el: '#dianshiju',
+				  data: {list: []},
+				  mounted: function(){
+					  api.ajax({
+					  url: api_url+'/App/Youni/xiaobian',
+					  method: 'get',
+				  },function(ret, err){
+					  if (ret) {
+						//console.log(JSON.stringify(ret))
+						 dianshiju.list = ret;
+					
+					  } else {
+						alert( '导航加载失败！' );
+						api.hideProgress();
+					}      
+				  });
+				  }
+			  });
+		  }
+		  
+		function dianying(){
+			  var dianying = new Vue({
+				  el: '#dianying',
+				  data: {list: []},
+				  mounted: function(){
+					  api.ajax({
+					  url: api_url+'/App/Youni/drb',
+					  method: 'get',
+				  },function(ret, err){
+					  if (ret) {
+						//console.log(JSON.stringify(ret))
+						 dianying.list = ret;
+					
+					  } else {
+						alert( '导航加载失败！' );
+						api.hideProgress();
+					}      
+				  });
+				  }
+			  });
+		  }  
+		  
+		 
+		function openWind(url){
+	
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+		
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+			 if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'play_win',
+					url: 'play_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						url:api_url+'/others/player/play.php?play='+url
+					}
+				});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		}
+
+
+
+
+
+
+				function VipExpiredHint() {
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' 
+                },
+                content:{              //（可选项）JSON 
+                    marginT: 20,       
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'open_vip_win',
+                            url: './open_vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+		}
+		 
+	 function openApp(url){
+				if(api.systemType == 'android'){
+					api.openApp({
+						androidPkg: 'android.intent.action.VIEW',
+						mimeType: 'text/html',
+						uri: url
+					}, function(ret, err) {});
+				}else{
+					api.openApp({
+						iosUrl: url
+				   });
+				} 
+			}
+	  	function banNer(){
+		  var slide = new auiSlide({
+			  container:document.getElementById("aui-slide"),
+			  // "width":300,
+			  "height":150,
+			  "speed":300,
+			  "pageShow":true,
+			  "autoPlay": 5000,
+			  "pageStyle":'dot',
+			  "loop":true,
+			  'dotPosition':'center',
+			  
+		  });
+		}
+		function chaju() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'juji_win',
+				url: 'juji_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chadian() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'dianying_win',
+				url: 'dianying_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chazong() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'zongyi_win',
+				url: 'zongyi_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chaman() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'dongman_win',
+				url: 'dongman_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+</script>
+
+
+
+</html>

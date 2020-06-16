@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>个人中心</title>
+    <link href="/Public/kj/css/style.css" type="text/css" rel="stylesheet">
+    <script src="/Public/kj/js/jquery.min.js"></script>
+    <script src="/Public/kj/js/rem.js"></script>
+    <script src="/Public/kj/js/safari.js"></script>
+</head>
+<body>
+<!--个人中心头-->
+<div class="PersonalHeadr"></div>
+<div class="PersonalTopbox">
+    <div class="PersonaId">
+        <div class="Idimg"><img src='/Public/kj/img/Idimg.png'></div>
+        <div class="Idcont">
+            <h3>ID:{$minfo.id}</h3>
+            <p>{$minfo.name}</p>
+            <p><label>会员等级：</label>{:group($minfo['level'])}</p>
+            <p><label>认证状态：</label><if condition="$bzjstatus eq 0 ">未认证<else/>已认证</if></p>
+        </div>
+    </div>
+    <div class="PersonaNumbar">
+        <ul>
+            <li><label>可用PCO</label><h3>{$minfo.jinbi|four_number=###}</h3></li>
+            <li><label>冻结</label><h3>{$minfo.qjinbi|four_number=###}</h3></li>
+            <li><label>佣金</label><h3>{$minfo.yj|four_number=###}</h3></li>
+        </ul>
+    </div>
+</div>
+<!--end-->
+<!--个人中心列表-->
+ <div class="PersonalCenterItem">
+     <div class="PersonalCenterlist">
+         <ul>
+             <li><a href="{:U('Index/Emoney/yjlist')}"><i class="icon1"><img src="/Public/kj/img/prenicon1.jpg"></i><b>佣金明细</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Emoney/tixian')}"><i class="icon1"><img src="/Public/kj/img/prenicon2.jpg"></i><b>提现申请</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Emoney/withdrawList')}"><i class="icon2"><img src="/Public/kj/img/prenicon3.jpg"></i><b>提现记录</b><span class="rtjt"></span></a></li>
+         </ul>
+     </div>
+     <div class="PersonalCenterlist">
+         <ul>
+             <li><a href="{:U('Index/PersonalSet/myinfo')}"><i class="icon1"><img src="/Public/kj/img/prenicon4.jpg"></i><b>实名认证</b><span class="rtjt"></span></a></li>
+          <!--    <li><a href="javascript:alert('保证金已经缴纳18元！');"><i class="icon1"><img src="/Public/kj/img/prenicon5.jpg"></i><b>保证金</b><span class="rtjt"></span><em>18元</em></a></li> -->
+         </ul>
+     </div>
+     <div class="PersonalCenterlist">
+         <ul>
+             <li><a href="{:U('Index/Emoney/myjiaoyi')}"><i class="icon3"><img src="/Public/kj/img/prenicon6.jpg"></i><b>我的交易</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Shop/orderlist')}"><i class="icon1"><img src="/Public/kj/img/prenicon7.jpg"></i><b>我的矿机</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Financial/kslist')}"><i class="icon1"><img src="/Public/kj/img/prenicon8.jpg"></i><b>矿机收益</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Financial/kglist')}"><i class="icon1"><img src="/Public/kj/img/prenicon9.jpg"></i><b>财务明细</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Account/tuiguangma')}"><i class="icon1"><img src="/Public/kj/img/prenicon10.jpg"></i><b>推广中心</b><span class="rtjt"></span><div class="Moneyreward">每直推1人立得10元</div></a></li>
+         </ul>
+     </div>
+     <div class="PersonalCenterlist">
+         <ul>
+             <li><a href="{:U('Index/Account/myAccount')}"><i class="icon1"><img src="/Public/kj/img/prenicon11.jpg"></i><b>团队详情</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/msg/addmsg')}"><i class="icon1"><img src="/Public/kj/img/prenicon12.jpg"></i><b>客服中心</b><span class="rtjt"></span></a></li>
+             <li><a href="javascript:alert('暂未开放，敬请期待！');"><i class="icon1"><img src="/Public/kj/img/prenicon13.jpg"></i><b>钱包</b><span class="rtjt"></span></a></li>
+         </ul>
+     </div>
+     <div class="PersonalCenterlist">
+         <ul>
+             <li><a href="{:U('Index/new/news')}"><i class="icon4"><img src="/Public/kj/img/prenicon14.jpg"></i><b>系统消息（<small>{$w_read}</small>）</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/PersonalSet/updatePass')}"><i class="icon1"><img src="/Public/kj/img/prenicon15.jpg"></i><b>安全设置</b><span class="rtjt"></span></a></li>
+             <li><a href="{:U('Index/Index/logout')}"><i class="icon3"><img src="/Public/kj/img/prenicon16.jpg"></i><b>退出系统</b><span class="rtjt"></span></a></li>
+         </ul>
+     </div>
+ </div>
+<!--edn-->
+<!--footer-->
+<div class="footer">
+    <ul>
+        <li><a href="{:U('Index/Emoney/shouye')}"> <span class="icn1"></span><p>首页</p></a></li>
+        <li><a href="{:U('Index/Shop/plist')}"> <span class="icn2"></span><p>矿机商场</p></a></li>
+        <li><a href="{:U('Index/Emoney/index')}"> <span class="icn3"></span><p>交易中心</p></a></li>
+        <li class="active"><a href="{:U('Index/index/index')}"> <span class="icn4"></span><p>个人中心</p></a></li>
+    </ul>
+</div>
+<!--end-->
+</body>
+</html>

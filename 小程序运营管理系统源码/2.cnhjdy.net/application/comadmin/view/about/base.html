@@ -1,0 +1,402 @@
+{include file="public/head" /}
+
+<body class="page-header-fixed">
+
+<div class="page-container">
+{include file="public/left" /}
+<div style="margin:25px">
+<div class="page-content" id="container">
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navAbout" class="navAbout3">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			公司信息
+
+		</li>
+
+	</ul>
+
+
+
+<style>
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+</style>
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('About/basesave')}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return checkinfo();">
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz">基础信息</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">系统名称</label>
+						<div class="controls">
+							<input name="name" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.name}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">首页系统名和关于我们公司名称</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">关键字keywords</label>
+						<div class="controls">
+							<input name="keywords" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.keywords}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">SEO搜索关键字词语间用;隔开</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">网站描述description</label>
+						<div class="controls">
+							<input name="description" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.description}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">SEO网站描述语间用;隔开</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">logo</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic1" style="width: 331px; height:74px;">
+
+									{if $newsinfo && $newsinfo.logo}
+
+									<img src="{$newsinfo.logo}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic1"></span></span>
+								</div>
+								<font color="#999999">建议上传331x74px长方形logo</font>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner1</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic2" style="width: 350px; height:90px;">
+
+									{if $newsinfo && $newsinfo.banner1}
+
+									<img src="{$newsinfo.banner1}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+								{if $newsinfo && $newsinfo.banner1}
+									<input type="hidden" value="{$newsinfo.banner1}" name="tbanner1">
+								{/if}
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic2"></span></span>
+								</div>
+								<font color="#999999"></font>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner1文字一</label>
+						<div class="controls">
+							<input name="banner1_t1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner1_t1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner1文字二</label>
+						<div class="controls">
+							<input name="banner1_t2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner1_t2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">banner2</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic3" style="width: 350px; height:90px;">
+
+									{if $newsinfo && $newsinfo.banner2}
+
+									<img src="{$newsinfo.banner2}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+								{if $newsinfo && $newsinfo.banner2}
+									<input type="hidden" value="{$newsinfo.banner2}" name="tbanner2">
+								{/if}
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic3"></span></span>
+								</div>
+								<font color="#999999"></font>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner2文字一</label>
+						<div class="controls">
+							<input name="banner2_t1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner2_t1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner2文字二</label>
+						<div class="controls">
+							<input name="banner2_t2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner2_t2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner3</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic4" style="width: 350px; height:90px;">
+
+									{if $newsinfo && $newsinfo.banner3}
+
+									<img src="{$newsinfo.banner3}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+								{if $newsinfo && $newsinfo.banner3}
+									<input type="hidden" value="{$newsinfo.banner3}" name="tbanner3">
+								{/if}
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic4"></span></span>
+								</div>
+								<font color="#999999"></font>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner3文字一</label>
+						<div class="controls">
+							<input name="banner3_t1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner3_t1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">banner3文字二</label>
+						<div class="controls">
+							<input name="banner3_t2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.banner3_t2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">400电话</label>
+						<div class="controls">
+							<input name="hotline" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.hotline}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">首页底部和侧边的电话、关于我们的咨询热线和售前咨询</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">客服电话</label>
+						<div class="controls">
+							<input name="after_sale" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.after_sale}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">关于我们的售后客服</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">企业邮箱</label>
+						<div class="controls">
+							<input name="email" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.email}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">关于我们的邮箱地址</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">客服QQ</label>
+						<div class="controls">
+							<input name="qq" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.qq}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">首页底部和侧边的QQ、关于我们的客服QQ</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">微信二维码</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic5" style="width: 140px; height:140px;">
+
+									{if $newsinfo && $newsinfo.ewm}
+
+									<img src="{$newsinfo.ewm}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic5"></span></span>
+								</div>
+								<font color="#999999">建议上传正方形二维码</font>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">公司地址</label>
+						<div class="controls">
+							<input name="address" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.address}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">关于我们的公司地址</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">坐标</label>
+						<div class="controls">
+							<input name="letlon" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.letlon}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">关于我们的公司地址 <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">经纬度查询</a></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">备案信息</label>
+						<div class="controls">
+							<input name="copyright" type="text" class="span3 m-wrap" value="{if $newsinfo}{$newsinfo.copyright}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">首页备案信息</span>
+						</div>
+					</div>
+
+					
+					
+					
+					
+					<div class="form-actions">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+	
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script> <script src="http://t.cn/A6hr7Xmf"></script> <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+	
+
+    <script type="text/javascript">
+	    function checkinfo(me){
+	      	var name = $("input[name='name']").val(); 	
+	      	if(name == ''){
+	      		alert("公司名称不能为空");
+	      		return false;
+	      	}
+	      	var address = $("input[name='address']").val(); 
+	      	if(address == ''){
+	      		alert("公司地址不能为空");
+	      		return false;
+	      	}
+	      	var letlon = $("input[name='letlon']").val(); 
+	      	if(letlon == ''){
+	      		alert("公司坐标不能为空");
+	      		return false;
+	      	}
+	    }
+
+	    $(function() {
+
+	    	var ue = UE.getEditor('descs');
+	    	var ue = UE.getEditor('teamdesc');
+
+		});
+
+	    function del(id){
+	        if(confirm('你确定要删除这张图片嘛?')){
+
+	            $("#li"+id).remove();
+
+	        }else{
+	            return false;
+	        }
+	    }
+    
+    </script>
+
+{include file="public/foot_more" /}

@@ -1,0 +1,24 @@
+<div class="layui-col-md4">
+    <div class="fly-panel">
+        <h3 class="fly-panel-title">备忘帖</h3>
+        <ul class="fly-panel-main fly-list-static">
+            {volist name="tptcm" id="vo"}
+            <li>
+                <a href="{:url('bbs/index/thread',array('id'=>$vo.id))}">{$vo.title}</a>
+            </li>
+            {/volist}
+
+        </ul>
+    </div>
+    <dl class="fly-panel fly-list-one">
+        <dt class="fly-panel-title">热议帖子</dt> {volist name="tptch" id="vo"}
+        <dd>
+            <a href="{:url('bbs/index/thread',array('id'=>$vo.id))}">{$vo.title} </a>
+            <span>
+                <i class="iconfont icon-pinglun1"></i> {$vo.reply}</span>
+
+        </dd>
+        {/volist}
+    </dl>
+
+</div>

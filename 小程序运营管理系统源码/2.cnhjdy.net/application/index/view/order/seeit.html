@@ -1,0 +1,302 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+	.control-group_c{
+		width: 100%;
+		min-height: 35px;
+		margin-bottom: 10px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navSale">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			预约管理--{$applet.name}
+		</li>
+	</ul>
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+					<form  action="{:Url('Order/seeit_do')}?appletid=<?php echo $_GET['appletid']?>&orderid={$orderinfo.id}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" id="form_sample_2" class="form-horizontal">
+						<div class="control-group chongdingy">
+
+							<label class="control-label chongdingywz">表单样式</label>
+
+						</div>
+
+						{if $configform.name_must==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.name}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.name}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.tel_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.tel}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.tel}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.wechat_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.wechat}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.wechat}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.address_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.address}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.address}
+
+							</div>
+
+						</div>
+						{/if}
+
+						
+						{if $configform.t5['t5u']==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.t5['t5n']}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.t5}
+
+							</div>
+
+						</div>
+						{/if}
+						{if $configform.t6['t6u']==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.t6['t6n']}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.t6}
+
+							</div>
+
+						</div>
+						{/if}
+						{if $configform.date_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.date}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.date}
+
+							</div>
+
+						</div>
+						{/if}
+						{if $configform.time_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.time}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.timef}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.single_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.single_n}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.single}
+
+							</div>
+
+						</div>
+						{/if}
+						{if $configform.s2['s2u']==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.s2['s2n']}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.s2}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.checkbox_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.checkbox_n}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.checkbox}
+
+							</div>
+
+						</div>
+						{/if}
+
+						{if $configform.c2['c2u']==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.c2['c2n']}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.c2}
+
+							</div>
+
+						</div>
+						{/if}
+						
+
+						{if $configform.content_use==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.content_n}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.content}
+
+							</div>
+
+						</div>
+						{/if}
+						{if $configform.con2['con2u']==1}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">{$configform.con2['con2n']}</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.con2}
+
+							</div>
+
+						</div>
+						{/if}
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">提交时间</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.time|date='Y-m-d H:i:s',###}
+
+							</div>
+
+						</div>
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">查看时间</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$orderinfo.vtime|date='Y-m-d H:i:s',###}
+
+							</div>
+
+						</div>
+
+						<div class="form-actions">
+
+							<button type="submit" class="btn green">设置已查看</button>
+
+						</div>
+
+					</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

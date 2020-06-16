@@ -1,0 +1,153 @@
+{include file="index/header"}
+<body>
+<style type="text/css">
+.layui-form-checkbox {height: 22px;line-height: 20px;margin-right: 0px;padding-right: 20px;}
+.layui-form-checkbox i {right: 3px;width: 20px;font-size: 16px;top: 2px;}
+</style>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<button class="layui-btn">
+<a href="{:url('banner/add')}"><i class="layui-icon">&#xe608;</i> 添加图片</a>
+</button>
+
+<form class="layui-form">
+<table width="100%">
+<tr>
+<th width="5%" align="center"><input type="checkbox" name="checkAll" lay-filter="checkAll"></th>
+<th width="5%" align="center">ID</th>
+<th width="30%" align="center">标题</th>
+<th width="10%" align="center">显示</th>
+<th width="10%" align="center">图片</th>
+<th width="20%" align="center">连接</th>
+<th width="10%" align="center">时间</th>
+<th width="10%" align="center">基本操作</th>
+</tr>
+{volist name="tptc" id="vo"}
+<tr>
+<td align="center"><input type="checkbox" name="ids[{$vo.id}]" lay-filter="checkOne" value="{$vo.id}"></td>
+<td align="center">{$vo.id}</td>
+<td style="padding-left: 20px;">{$vo.title}</td>
+<td align="center">
+<a change="{$vo.id}" onclick="changeshow(this);" {if condition="$vo['show'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+<em>显示</em><i></i>
+</a>
+</td>
+<td align="center">{if condition="$vo['pic'] neq ''"}<img src="{$vo.pic}" height="30">{else /}暂无图片{/if}</td>
+<td style="padding-left: 20px;">{$vo.links}</td>
+<td align="center">{$vo.time}</td>
+<td align="center">
+<a class="layui-btn layui-btn-sm layui-btn-warm" href="{:url('banner/edit',array('id'=>$vo['id']))}">修改</a> <a class="layui-btn layui-btn-sm layui-btn-danger del_btn" member-id="{$vo.id}" title="删除" nickname="{$vo.title}">删除</a>
+</td>
+</tr>
+{/volist}
+</table>
+<div class="layui-form-item">
+<div style="margin-top: 20px;float: left;">
+<button class="layui-btn" lay-submit lay-filter="delete">删除选中</button>
+</div>
+<div class="pages" style="float: right;">{$tptc->render()}</div>
+</div>
+</form>
+<script>
+function changeshow(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('banner/changeshow')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+</script>
+<script>
+layui.use('form',function(){
+  var form = layui.form
+  ,jq = layui.jquery;
+
+  jq('.del_btn').click(function(){
+    var name = jq(this).attr('nickname');
+    var id = jq(this).attr('member-id');
+    layer.confirm('确定删除【'+name+'】?', function(index){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      jq.post('{:url("banner/dels")}',{'id':id},function(data){
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        }
+      });
+    });
+  });
+
+  form.on('checkbox(checkAll)', function(data){
+    if(data.elem.checked){
+      jq("input[type='checkbox']").prop('checked',true);
+    }else{
+      jq("input[type='checkbox']").prop('checked',false);
+    }
+    form.render('checkbox');
+  });  
+
+  form.on('checkbox(checkOne)', function(data){
+    var is_check = true;
+    if(data.elem.checked){
+      jq("input[lay-filter='checkOne']").each(function(){
+        if(!jq(this).prop('checked')){ is_check = false; }
+      });
+      if(is_check){
+        jq("input[lay-filter='checkAll']").prop('checked',true);
+      }
+    }else{
+      jq("input[lay-filter='checkAll']").prop('checked',false);
+    } 
+    form.render('checkbox');
+  });
+
+  form.on('submit(delete)', function(data){
+    var is_check = false;
+    jq("input[lay-filter='checkOne']").each(function(){
+      if(jq(this).prop('checked')){ is_check = true; }
+    });
+    if(!is_check){
+      layer.msg('请选择数据', {icon: 2,anim: 6,time: 1000});
+      return false;
+    }
+    layer.confirm('确定批量删除?', function(index){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+      var param = data.field;
+      jq.post('{:url("banner/delss")}',param,function(data){
+        if(data.code == 200){
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+            location.reload();
+          });
+        }else{
+          layer.close(loading);
+          layer.msg(data.msg, {icon: 2,anim: 6, time: 1000});
+        }
+      });
+    });
+    return false;
+  });
+
+})
+</script>
+</div>
+</div>
+</body>
+</html>

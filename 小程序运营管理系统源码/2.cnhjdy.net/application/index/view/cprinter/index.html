@@ -1,0 +1,226 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+<style>
+.radio input[type="radio"], .checkbox input[type="checkbox"]{
+	margin-left: 0
+}
+</style>
+<input type="hidden" id="nowhtml" value="navModel" class="navModel2-6">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			打印机基本配置--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	<div class="row-fluid">
+
+
+		<div class="portlet box">
+
+
+
+
+
+			<div class="portlet-body form">
+
+
+
+				<!-- BEGIN FORM-->
+
+
+
+				<form action="{:Url('Cprinter/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<div class="control-group">
+
+						<label class="control-label">打印机状态 <span style="color:red">*</span></label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="status" value="2" {if $bases}{if $bases.status==2}checked=checked{/if}{else}checked=checked{/if}/>
+
+							关闭
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="status" value="1" {if $bases}{if $bases.status==1}checked=checked{/if}{/if}/>
+
+							开启
+
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认关闭</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">打印机名称 <span style="color:red">*</span></label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="pname" type="text" class="span3 m-wrap" value="{if $bases}{$bases.pname}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">头部标题 <span style="color:red">*</span></label>
+
+
+
+						<div class="controls">
+
+							<input name="title" type="text" class="span3 m-wrap" value="{if $bases}{$bases.title}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">打印机型号 <span style="color:red">*</span></label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="models" class="span3 m-wrap" id="cid">
+
+								<option value="1">易联云(K4)</option>
+
+							</select>
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">打印机终端号 <span style="color:red">*</span></label>
+						<div class="controls">
+							<input name="nid" type="text" class="span3 m-wrap" value="{if $bases}{$bases.nid}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+						<label class="control-label">终端号秘钥 <span style="color:red">*</span></label>
+						<div class="controls">
+							<input name="nkey" type="text" class="span3 m-wrap" value="{if $bases}{$bases.nkey}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+						<label class="control-label">用户id <span style="color:red">*</span></label>
+						<div class="controls">
+							<input name="uid" type="text" class="span3 m-wrap" value="{if $bases}{$bases.uid}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">apikey <span style="color:red">*</span></label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="apikey" type="text" class="span3 m-wrap" value="{if $bases}{$bases.apikey}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+
+
+
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+				</form>
+
+
+
+				<!-- END FORM-->
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+{include file="public/foot_more" /}

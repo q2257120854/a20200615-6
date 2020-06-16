@@ -1,0 +1,134 @@
+{include file="public/head" /}
+{include file="public/top" /}
+{if $op=='display'}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP2-1">
+{/if}
+{if $op=='get'}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP2-2">
+{/if}
+{if $op=='spend'}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP2-3">
+{/if}
+{if $op=='store'}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP2-4">
+{/if}
+{if $op=='forum'}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP2-5">
+{/if}
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		{if $op=='display'}
+		消费流水管理(全部)--{$applet.name}
+		{/if}
+		{if $op=='get'}
+		消费流水管理(获得记录)--{$applet.name}
+		{/if}
+		{if $op=='spend'}
+		消费流水管理(消费记录)--{$applet.name}
+		{/if}
+		{if $op=='store'}
+		消费流水管理(店内支付记录)--{$applet.name}
+		{/if}
+		{if $op=='forum'}
+		论坛模块发布管理--{$applet.name}
+		{/if}
+	</li>
+</ul>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							<th>用户信息</th>
+							<th>金额</th>
+							<th>类型</th>
+							<th>说明</th>
+							<th>订单号</th>
+							<th>时间</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $scorelist}
+						{foreach $scorelist as $item}
+							<tr>
+								<td>
+				                    <img src="{$item.avatar}" style="width:30px; height:30px;">
+									{$item.nickname}
+				                </td>
+								<td>
+									{$item.score}
+								</td>
+								<td>
+									{if $item.type == "add"}
+					                    <span class="btn  btn-success">获得</span>
+					                {else}
+					                    <span class="btn  btn-primary">消费</span>
+					                {/if}
+								</td>
+								<td>
+									{$item.message}
+								</td>
+								<td>
+									{$item.orderid}
+								</td>
+								<td>
+									{:date("Y-m-d H:i:s",$item.creattime)}
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$scorelist->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

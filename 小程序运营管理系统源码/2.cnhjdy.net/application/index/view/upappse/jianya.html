@@ -1,0 +1,49 @@
+{include file="public/head" /}
+{include file="public/s_head" /}
+
+
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body" style="width:60%; margin:0 auto">
+				
+				<div style="text-align:center;font-size:16px; margin-botto:20px;">
+					版本更新
+				</div>	
+
+				<div style="text-align:center; margin-botto:20px;">
+					{$vidkds}
+				</div>	
+
+				<div style="text-align:center; margin-botto:20px;">
+					页面将于3秒后跳转,<a href="{:Url('Applet/index')}">立即跳转</a>
+				</div>							
+
+			</div>	
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+	
+$(function(){
+	setTimeout(function(){
+		location.href="{:Url('Applet/index')}"
+	},3000)
+})
+
+
+</script>
+

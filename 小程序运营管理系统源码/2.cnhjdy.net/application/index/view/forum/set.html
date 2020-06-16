@@ -1,0 +1,154 @@
+{include file="public/head" /}
+
+
+
+{include file="public/top" /}
+
+
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel7-4">
+
+	<ul class="breadcrumb">
+
+
+
+		<li>
+
+
+
+			<i class="icon-home"></i>
+
+
+
+			论坛相关设置--{$applet.name}
+
+
+
+		</li>
+
+
+
+	</ul>
+
+
+
+	
+
+
+
+	<style type="text/css">
+
+
+
+		.chongdingy{
+
+
+
+			background-color:#f5f5f5; 
+
+
+
+			padding:10px 0;
+
+
+
+		} 
+
+
+
+		.chongdingywz{
+
+
+
+			text-align: left !important;
+
+
+
+			font-size: 16px;
+
+
+
+			padding-left: 20px;
+
+
+
+		}
+
+
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+
+
+
+
+		<div class="portlet box">
+
+
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Forum/setSave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+					<div class="control-group chongdingy">
+
+
+						<label class="control-label chongdingywz">论坛相关设置</label>
+
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">发布费用</label>
+
+						<div class="controls">
+
+							<input name="release_money" type="text" class="span3 m-wrap" value="{if $set}{$set.release_money}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不填默认为0</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">置顶每日费用</label>
+
+						<div class="controls">
+
+							<input name="stick_money" type="text" class="span3 m-wrap" value="{if $set}{$set.stick_money}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不填默认为10</span>
+
+						</div>
+
+					</div>
+
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+{include file="public/foot_more" /}

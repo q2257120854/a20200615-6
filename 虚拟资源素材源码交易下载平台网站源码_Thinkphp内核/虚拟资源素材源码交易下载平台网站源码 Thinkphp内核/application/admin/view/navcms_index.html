@@ -1,0 +1,168 @@
+{extend name="base" /}
+{block name="body"}
+<div class="admin-main">
+    <!--tab标签-->
+    <div class="layui-field-box layui-form">
+    <a href="{:url('admin/navcms/add')}" class="layui-btn layui-btn-sm" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加导航
+        </a>
+        
+
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+              <li class="layui-this">顶部</li>
+              <li>底部</li>
+              <li>首页中部</li>
+            </ul>
+            <div class="layui-tab-content">
+              <div class="layui-tab-item layui-show">
+                <table class="layui-table admin-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th style="width: 30px;">排序</th>
+                        <th>导航名称</th>
+                        <th>链接</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="nav_level_list[1]" id="vo1"}
+                        <tr>
+                    <td align="center">{$vo1.id}</td>
+                    <td>{$vo1.sort}</td>
+                    <td style="padding-left: 20px;">{neq name="vo1.level" value="1"}|{php}for($i=1;$i
+                                <$vo1[ 'level'];$i++){echo ' --';}{/php}{/neq} {$vo1.name}</td>
+                    <td>{$vo1.link|getnavlink=$vo1.sid}</td>
+                  
+                    <td><input type="checkbox" name="status" lay-skin="switch" lay-text="显示|隐藏" lay-filter="switchTest"  value="{$vo1['id']}" {php}echo $vo1['status']==1 ? 'checked' : '';{/php}></td>
+                    <td>
+                        
+                        <a href="{:url('admin/navcms/edit',['id'=>$vo1['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                        <a  href="javascript:;" data-id="{$vo1.id}" data-url="{:url('admin/navcms/delete',array('id'=>$vo1['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                    </td>
+                  </tr>
+                  {/volist}
+                    </tbody>
+                </table>
+              </div>
+              <div class="layui-tab-item">
+                <table class="layui-table admin-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th style="width: 30px;">排序</th>
+                        <th>导航名称</th>
+                        <th>链接</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="nav_level_list[0]" id="vo1"}
+                        <tr>
+                    <td align="center">{$vo1.id}</td>
+                    <td>{$vo1.sort}</td>
+                    <td style="padding-left: 20px;">{neq name="vo1.level" value="1"}|{php}for($i=1;$i
+                                <$vo1[ 'level'];$i++){echo ' --';}{/php}{/neq} {$vo1.name}</td>
+                    <td>{$vo1.link|getnavlink=$vo1.sid}</td>
+                  
+                    <td><input type="checkbox" name="status" lay-skin="switch" lay-text="显示|隐藏" lay-filter="switchTest"  value="{$vo1['id']}" {php}echo $vo1['status']==1 ? 'checked' : '';{/php}></td>
+                    <td>
+                        
+                        <a href="{:url('admin/navcms/edit',['id'=>$vo1['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                        <a  href="javascrip
+                        t:;" data-id="{$vo1.id}" data-url="{:url('admin/navcms/delete',array('id'=>$vo1['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                    </td>
+                  </tr>
+                  {/volist}
+                    </tbody>
+                </table>
+              </div>
+              <div class="layui-tab-item">
+                <table class="layui-table admin-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th style="width: 30px;">排序</th>
+                        <th>导航名称</th>
+                        <th>链接</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="nav_level_list[2]" id="vo1"}
+                        <tr>
+                    <td align="center">{$vo1.id}</td>
+                    <td>{$vo1.sort}</td>
+                    <td style="padding-left: 20px;">{neq name="vo1.level" value="1"}|{php}for($i=1;$i
+                                <$vo1[ 'level'];$i++){echo ' --';}{/php}{/neq} {$vo1.name}</td>
+                    <td>{$vo1.link|getnavlink=$vo1.sid}</td>
+                  
+                    <td><input type="checkbox" name="status" lay-skin="switch" lay-text="显示|隐藏" lay-filter="switchTest"  value="{$vo1['id']}" {php}echo $vo1['status']==1 ? 'checked' : '';{/php}></td>
+                    <td>
+                        
+                        <a href="{:url('admin/navcms/edit',['id'=>$vo1['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                        <a  href="javascrip
+                        t:;" data-id="{$vo1.id}" data-url="{:url('admin/navcms/delete',array('id'=>$vo1['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                    </td>
+                  </tr>
+                  {/volist}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+       
+      </div>
+</div>
+{/block}
+     {block name="js"}
+     <script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+ {/block}
+    {block name="script"}
+    <script>
+layui.use(['element','form'],function(){
+  var form = layui.form
+  ,jq = layui.jquery;
+
+var element = layui.element;
+  
+ 
+ var status=0;
+ form.on('switch(switchTest)', function(data){
+	  loading = layer.load(2, {
+	      shade: [0.2,'#000']
+	    });
+	    if(data.elem.checked){
+	    	status=1;
+	    }else{
+	    	status=0;
+	    }
+	    var url="{:url('admin/navcms/updatestatus')}?id="+data.value+'&status='+status ;
+	   
+	    
+	    jq.get(url,function(data){
+	    	
+	      if(data.code == 200){
+	        layer.close(loading);
+	        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+	        //  location.reload();
+	        });
+	      }else{
+	        layer.close(loading);
+	        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+	      }
+	    });
+	    return false;
+	  });
+
+})
+</script>
+ {/block}

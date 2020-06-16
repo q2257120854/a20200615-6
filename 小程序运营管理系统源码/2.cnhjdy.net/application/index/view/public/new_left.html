@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="/css/iconfont_new.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/new-index.css" />
+
+    <script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="/js/new-index.js" type="text/javascript" charset="utf-8"></script>
+
+    <title>{$Think.session.sysnames}</title>
+
+</head>
+
+
+
+<body>
+
+<div class="nav_side">
+
+    <img class="logo2" src="/image/logo2.png" />
+
+    <div class="nav_sidebox">
+
+        <a href="{:Url('Applet/index')}">
+
+        <div class="nav_side_single" id="index">
+
+            <div class="iconfont icon-index"></div>
+
+            <div class="navside_text">首页</div>
+
+        </div>
+        
+        {if $Think.session.usergroup==2}
+        </a>
+
+        <a href="{:Url('Combo/index')}">
+
+        <div class="nav_side_single" id="combo">
+
+            <div class="iconfont icon-taocan"></div>
+
+            <div class="navside_text">功能套餐</div>
+
+        </div>
+
+        </a>
+
+        <a href="{:Url('Timecombo/index')}">
+
+        <div class="nav_side_single" id="time_combo">
+
+            <div class="iconfont icon-shijian"></div>
+
+            <div class="navside_text">时长套餐</div>
+
+        </div>
+
+        </a>
+
+       
+
+        <a href="{:Url('Applet/jxs')}">
+
+            <div class="nav_side_single" id="jxs">
+
+                <div class="iconfont icon-daili"></div>
+
+                <div class="navside_text">代理商管理</div>
+
+            </div>
+
+        </a>
+
+        
+        <a href="{:Url('Log/index')}">
+
+        <div class="nav_side_single" id="log">
+
+            <div class="iconfont icon-rizhi"></div>
+
+            <div class="navside_text">系统日志</div>
+
+        </div>
+
+        </a>
+
+       
+
+        {/if}
+
+         <a href="{:Url('Applet/index')}" >
+
+        <div class="nav_side_single" id="applet">
+
+            <div class="iconfont icon-xiaochengxu"></div>
+
+            <div class="navside_text">小程序管理</div>
+
+        </div>
+
+        </a>
+
+        <a href="{:Url('Applet/user')}">
+
+        <div class="nav_side_single" id="user">
+
+            <div class="iconfont icon-guanli"></div>
+
+            <div class="navside_text">用户管理</div>
+
+        </div>
+
+        </a>
+       
+        {if $Think.session.usergroup==2}
+        <a href="{:Url('ComAdmin/Functionshow/index')}">
+
+        <div class="nav_side_single" id="user">
+
+            <div class="iconfont icon-30wangzhanguanli"></div>
+
+            <div class="navside_text">网站管理</div>
+
+        </div>
+
+        </a>
+         <a href="{:Url('Upappse/index')}">
+
+            <div class="nav_side_single" id="update">
+
+                <div class="iconfont icon-shujugengxin"></div>
+
+                <div class="navside_text">系统更新</div>
+
+            </div>
+
+        </a>
+        {/if}
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    $(function () {
+
+        var show = $("#choose").val();
+
+        if(show == 'combo'){
+
+            $("#combo").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'timecombo'){
+
+            $("#time_combo").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'applet'){
+
+            $("#applet").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'jxs'){
+
+            $("#jxs").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'user'){
+
+            $("#user").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'log'){
+
+            $("#log").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }else if(show == 'update'){
+
+            $("#update").removeClass('nav_side_single').addClass('nav_side_single_show');
+
+        }
+
+
+
+    });
+
+</script>

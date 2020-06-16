@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+		body{
+
+		}
+		.list{
+		}
+		.list li{
+			box-sizing: border-box;
+			height:73px;
+			width:100%;
+			border-bottom:1px solid #f0f0f0;
+			padding-left:80px;
+		}
+		.left{
+			float:left;
+			width:80px;
+			height:100%;
+			margin-left:-80px;
+		}
+		.logo_frame{
+			width:46px;
+			height:46px;
+			margin-top:17px;
+			margin-left:17px;
+			overflow: hidden;
+		}
+		.logo_frame img{
+			width:100%;
+		}
+		.info{
+			float:left;
+			width:100%;
+
+		}
+		.list_title{
+			box-sizing: border-box;
+			padding-right:10px;
+			margin-top:8px;
+			width:95%;
+			overflow:hidden;
+			font-size:15px;
+			line-height:40px;
+			font-family: '黑体';
+			min-height:40px;
+
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		}
+		.list_date{
+			margin-top:0px;
+			font-size:14px;
+			color:#767676;
+		}
+		.empty{
+			width:100%;
+			height:30px;
+			line-height:20px;
+			font:14px;
+			text-align:center;
+			margin-top:10px;
+
+		}
+
+
+	/*新加空提示信息*/
+
+	.m-noRecord {
+    padding: .395rem 0 0;
+    text-align: center;
+}
+
+.m-noRecord .c-icon-noRecord {
+    background: url(../image/app/Browsehistory.png) no-repeat;
+    background-size: cover;
+		width: 5rem;
+    height: 4.6rem;
+    /* margin: .485rem auto 0; */
+    margin: 0 auto;
+	  margin-top: 50px;
+		opacity:0.4;    /*图片透明度*/
+		filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+.m-noRecord .c-info {
+    color: #cecfce;
+    line-height: 4rem;
+    padding: .25rem 0;
+    font-size: .8rem;
+}
+
+
+    </style>
+</head>
+<body>
+
+	<ul id="list" class="list">
+		
+	</ul>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/zepto.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../script/date.min.js"></script>
+<script type="text/javascript">
+    var jx_url2 = localStorage.getItem('jx1');
+	var list_template;
+	var api_url = localStorage.getItem('api_url');
+	apiready = function(){
+		list_template = $("#list_template").text();
+		update();
+
+	};  
+var zongyi = $api.byId('list');//html容器
+	function update(){
+		api.ajax({
+	       	        url: api_url+'/App/App/jilu?uid=' + localStorage.getItem('user_id')
+        },function(ret,err){
+        	//coding...
+			
+        	if(ret.code==0){
+        		//$("#list").empty();
+      //  		$("#list").html('<div  class="empty">'+ ret.msg +'</div>');
+ 		$("#list").html('<section class="m-noRecord"><div class="c-icon-noRecord"></div> <div class="c-info">看过的那些精彩视频会保存在这里</div></section>');
+
+
+
+        		return;
+        	}
+			
+					
+			
+			var jj =ret.msg;
+			
+			var html = '';
+			for(i in jj){
+			
+				
+				item = jj[i];
+				
+					var date = new Date();
+        			date.setTime(item.addtime*1000);
+        			date_str = date.format('MM-dd hh:mm');
+				
+				html += "<li onclick=\"go_detail('" + item.url +"')\">";
+			
+				html += '<div class="left">';
+				html +='<div class="logo_frame">';
+				html += '<img src="../image/paly.png">';
+				html += '</div>';
+				html +='</div>';
+				html +='<div class="info">';
+				html +='<div class="list_title"> ' + item.title + '</div>';
+				html +='<div class="list_date"> ' + date_str + '</div>';
+				html+='</div>';
+				html += '</li>';
+			}
+
+			 zongyi.innerHTML = html;
+			
+			
+        });
+	}
+
+	function go_detail(dataurl2){
+		api.openWin({
+           name: 'play_frm',
+           url: './play_frm.html',
+           delay: 300,
+           pageParam:{
+           		url:jx_url2+dataurl2,
+           		srcUrl:dataurl2,
+           		needRecordHistory: false
+           	},
+           //pageParam:{url:dataurl2},
+           bgColor: '#000000'
+       });
+	}
+
+
+</script>
+</html>

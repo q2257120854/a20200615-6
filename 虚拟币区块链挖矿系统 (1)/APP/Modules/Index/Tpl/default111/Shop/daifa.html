@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>超市</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="icon" type="image/png" href="/theme/default/images/favicon.png">
+		<link href="/Public/home/css/amazeui.min.css" rel="stylesheet" type="text/css" />
+		<link href="/Public/home/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="/Public/home/css/check.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
+		<link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
+		<link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
+
+	<link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+    <header class="header">
+        <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+        <span class="header_c">全部订单</span>
+    </header>
+	    <div style="height: 49px;"></div>
+	    <ul class="order-style">
+	    	<li><a href="{:U('Index/Shop/dingdan')}">全部</a></li>
+	    	<li class="current"><a href="{:U('Index/Shop/daifa')}">待发货</a></li>
+	    	<li><a href="{:U('Index/Shop/daishou')}">待收货</a></li>
+	    	<li><a href="{:U('Index/Shop/wancheng')}">已完成</a></li>
+	    </ul>
+		<foreach name="orders_info" item="v">
+	    <div class="c-comment">
+			<if condition="$v['status'] eq 0">
+			<span class="c-comment-suc">待发货</span></if>
+			<if condition="$v['status'] eq 1">
+			<span class="c-comment-num">待收货&nbsp;<i>快递单号：{$v.expressnum}&nbsp;({$v.kuaidiname})</i></span></if>
+			<if condition="$v['status'] eq 2">
+			<span class="c-comment-num">已完成&nbsp;<i>快递已签收</i></span>
+			</if>
+		</div>
+
+		<div class="c-comment-list" style="border: 0;">
+			<a href="">
+			<p>应付MHC：{$v.total}     实付MHC：<span>{$v.total}</span></p>
+			<p>订单编号：{$v.onumber}</p>
+			<p>下单时间：{$v.otime}</p>
+			<p>联系店长：<span>{$v.username}</span></p>
+            </a>
+		</div>
+
+		<div class="c-com-btn">
+			<if condition="$v['status'] eq 0">
+			<a class="canelpay" onclick="return confirm('你确定要删除吗')" href="{:U(GROUP_NAME .'/Shop/deldingdan',array('onumber'=>$v['onumber']))}">取消订单</a></if>
+			<if condition="$v['status'] eq 1"><a class="canelpay" onclick="return confirm('你确定已经收到货物了吗')" href="{:U(GROUP_NAME .'/Shop/shouhuo',array('onumber'=>$v['onumber']))}">确认收货</a></if>
+			<if condition="$v['status'] eq 2">
+			<a class="oncepay">订单已完成</a>
+			</if>
+		</div>
+
+		<div class="clear"></div>
+				</foreach>
+
+		
+		  <!--底部-->
+ <div style="height:55px;"></div>
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+ 
+	</body>
+</html>

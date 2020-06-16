@@ -1,0 +1,303 @@
+{include file="public/head" /}
+
+
+
+{include file="public/top" /}
+
+
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel7-1">
+
+	<ul class="breadcrumb">
+
+
+
+		<li>
+
+
+
+			<i class="icon-home"></i>
+
+
+
+			分类新增--{$applet.name}
+
+
+
+		</li>
+
+
+
+	</ul>
+
+
+
+	
+
+
+
+	<style type="text/css">
+
+
+
+		.chongdingy{
+
+
+
+			background-color:#f5f5f5; 
+
+
+
+			padding:10px 0;
+
+
+
+		} 
+
+
+
+		.chongdingywz{
+
+
+
+			text-align: left !important;
+
+
+
+			font-size: 16px;
+
+
+
+			padding-left: 20px;
+
+
+
+		}
+
+
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+
+
+
+
+		<div class="portlet box">
+
+
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Forum/funcSave')}?appletid=<?php echo $_GET['appletid']?>&func_id={$func_id}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					<div class="control-group chongdingy">
+
+
+						<label class="control-label chongdingywz">分类基础内容</label>
+
+
+					</div>
+
+
+
+				
+
+
+
+					<div class="control-group">
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $func}{$func.num}{/if}"  style="height: 35px !important;" />
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+
+
+						</div>
+
+
+
+
+
+
+
+					</div>
+
+					<div class="control-group">
+
+
+						<label class="control-label">启用</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="status" value="1" {if $func}{if $func.status==1}checked=checked{/if}{/if} />
+
+							启用
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="status" value="2" {if $func}{if $func.status==2}checked=checked{/if}{/if}/>
+
+							不启用
+
+							</label> 
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">启用后，分类方可在小程序端显示，不选默认启用。</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">分类名称</label>
+
+						<div class="controls">
+
+							<input name="title" type="text" class="span3 m-wrap" value="{if $func}{$func.title}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">分类名称</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">分类缩略图</label>
+
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:90px;">
+									{if $func && $func.func_img}
+									<img src="{$func.func_img}"/>
+									{else}
+									<img src="/image/noimage.jpg" alt="" />
+									{/if}
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic" ></span></span>	
+								</div>
+								<div class="zphpx"><font color="#999999"></font></div>
+
+							</div>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+
+						<label class="control-label">发布列表页面布局</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+								<input type="radio" name="page_type" value="1" {if $func}{if $func.page_type==1}checked=checked{/if}{/if} />
+								<div>
+									<img src="/diypage/img/2.jpg" alt="" style="width:150px;border:1px solid #eee">
+								</div>
+
+							</label>
+
+							<label class="radio">
+
+								<input type="radio" name="page_type" value="2" {if $func}{if $func.page_type==2}checked=checked{/if}{/if} />
+								<div>
+									<img src="/diypage/img/1.jpg" alt="" style="width:150px;border:1px solid #eee">
+								</div>
+
+								</label>
+
+							</label> 
+							<label class="radio">
+
+								<input type="radio" name="page_type" value="3" {if $func}{if $func.page_type==3}checked=checked{/if}{/if} />
+								<div>
+									<img src="/diypage/img/3.jpg" alt="" style="width:150px;border:1px solid #eee">
+								</div>
+
+								</label>
+
+							</label> 
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		function checkinfo(){
+			var title = $("input[name='title']").val();
+			if(title == ""){
+				alert("标题不能为空");
+				return false;
+			}
+			$.ajax({
+				url:"{:Url('Forum/checktitle')}",
+				type:'post',dataType:'json',
+				data:{
+                    title : title,
+                    uniacid:<?php echo $_GET['appletid']?>
+                },success:function (res) {
+                	if(res == 1){
+                		alert("标题重复，请修改！");
+                		return false;
+                	}
+                }
+			})
+			
+			var pic = $("input[name='commonuploadpic']").val();
+			
+			if(pic == ""){
+				alert("图片不能为空");
+				return false;
+			}
+
+			var type = $("input[name='page_type']:checked").val();
+			if(type == undefined){
+				alert("请选择页面列表布局");
+				return false;
+			}
+		}
+	</script>
+
+{include file="public/foot_more" /}

@@ -1,0 +1,378 @@
+body {
+        min-width: 1002px;
+    }
+    .grid_m {
+        width: 600px;
+    }
+    .core .grid_m{
+        width:800px;
+    }
+    .grid_s5m25 .grid_m {
+        width: 800px;
+    }
+    .slider {
+        width: 800px;
+    }
+    .slider_img {
+        margin-left: -100px;
+    }
+    .dailybeta_bd {
+        width: 799px;
+    }
+    .dailybeta_goods {
+        width: 800px;
+    }
+    .dailybeta_goods li {
+        width: 179px;
+    }
+    .dailybeta .mod_goods_w100 {
+        height: auto !important;
+        min-height: 80px;
+        padding-left: 90px;
+    }
+    .dailybeta .mod_goods_img {
+        margin-left: -90px;
+        margin-top: 10px;
+    }
+    .dailybeta .mod_goods_img, .dailybeta .mod_goods_img img {
+        height: 80px;
+        width: 80px;
+    }
+    .ulike_r2 .ulike_r2_narrow, .ulike_r2 li {
+        width: 330px;
+    }
+    .ulike_r2 .ulike_r2_item {
+        margin-left: -35px;
+    }
+    .ulike_thh_img, .ulike_tg_img {
+        margin-left: 45px;
+        margin-top: 25px;
+        width: 110px;
+    }
+    .ulike_thh_img img, .ulike_tg_img img {
+        width: 100px;
+    }
+    .sx_mod_rank {
+        width: 799px;
+    }
+    .sx_mod_fgoods_wrap {
+        width: 599px;
+    }
+    .grid_s5m10 .grid_m_2 {
+        width: 200px;
+    }
+    .grid_s5m10 .grid_m_2 .ftwin_goods_wrap {
+        width: 199px;
+    }
+    .ftejia .ftejia_goods_wrap {
+        width: 799px;
+    }
+    .ic_rwd .grid_c1, .ic_rwd .grid_c2a, .ic_rwd .grid_c2b, .ic_rwd .grid_c3a {
+        width: 990px;
+    }
+     .ic_rwd .mod_fbanner {
+        width: 990px;
+    }
+    .ic_rwd .mod_fbanner a {
+        margin-left: -100px;
+    }
+    .ic_rwd .mod_fbanner_close {
+        margin-left: -120px;
+    }
+    .ic_rwd .mod_search_con {
+        width: 240px;
+    }
+    .ic_rwd .mod_skey {
+        width: 250px;
+    }
+.center_main{
+	width:990px;
+	height:700px;
+	margin:0px auto;
+
+    }
+.breadnav{
+	height:45px;
+	line-height:45px;
+}
+/*左边部分*/
+.center_left{
+	float:left;
+	width:143px;
+	height:635px;
+	border:1px solid rgb(215,215,215);
+	background:rgb(243,243,243);
+}
+.center_ul li{
+	list-style:none;
+	line-height:30px;
+	height:30px;
+	padding-left:20px;
+
+}
+/*分类*/
+.center_classify{
+	margin-top:15px; 
+	padding-left:10px;
+	font-size:15px; 
+}
+/*右边部分*/
+.center_right{
+	width:830px;	
+	height:635px;
+	float:left;
+	margin-left:10px; 
+}
+/*************个人中心首页样式********************/
+.index_indent{
+	color:rgb(49,101,176);
+	float:right;
+}
+.index_h1{
+	float:left;
+	font-size:15px;
+}
+.index_title{
+	height:40px;
+	line-height:40px;
+}
+.index_details{
+	height:30px;
+	background:rgb(243,243,243);
+	line-height:30px;
+	
+}
+.index_details ul li{
+	list-style:none;
+	width:130px;
+	float:left;
+	text-align:center;
+}
+.index_content{
+	height:30px;
+	line-height:30px;
+}
+.index_content ul li{
+	list-style:none;
+	width:130px;
+	float:left;
+	text-align:center;
+}
+.indent_border{
+	border:1px solid rgb(215,215,215);
+	border-top:1px solid rgb(49,101,176);
+}
+
+/********我的订单页面样式**********/
+.center_indent{
+	height:30px;
+	font-size:14px;
+}
+/*普通订单和充值订单一大块*/
+.center_common{
+	height:30px;
+	border-bottom:1px solid rgb(49,101,176);
+	margin-top:10px; 
+
+}
+.center_common ul li{
+	width:75px;
+	height:30px;
+	line-height:30px;
+	margin-left:10px;
+	float:left;
+	text-align:center;
+	border:1px solid rgb(49,101,176); 
+	border-bottom:0px; 
+}
+.center_state{
+	height:30px;
+	line-height:30px;
+	float:right;
+	color:rgb(49,101,176);
+}
+.center_qq{
+	height:30px;
+	line-height:30px;
+	color:rgb(49,101,176);
+}
+/*订单详情*/
+.center_details{
+	height:40px;
+	line-height:40px;
+	border:1px solid #ccc;
+}
+.center_details ul li{
+	list-style:none;
+	float:left;
+	width:170px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+}
+/*********我的收藏页面样式**************/
+.collect_goods{
+	margin-top:10px; 
+	height:30px;
+	line-height:40px;
+	background:#ccc;
+}
+.collect_goods ul li{
+	list-style:none;
+	float:left;
+	width:170px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+.collect_striping{
+	height:1px;
+	margin-top:20px; 
+	background:#ccc;
+}
+.collect_poster{
+	margin-top:10px;
+	height:126px;
+}
+/**********我的积分页面样式***************/
+.scores_usable{
+	height:30px;
+}
+.scores_usable ul li{
+	width:100px;
+	height:25px;
+	line-height:25px;
+	list-style:none;
+	float:left;
+
+}
+/***************价格保护**********************/
+.protect_details{
+	height:30px;
+	margin-top:10px; 
+	background:#ccc;
+}
+.protect_details ul li{
+	list-style:none;
+	float:left;
+	width:110px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+/*************个人资料管理****************/
+.data_manage{
+	height:30px;
+}
+.data_manage ul li{
+	list-style:none;
+	float:left;
+	height:30px;
+	line-height:30px;
+}
+.data_details{
+	height:30px;
+	line-height:30px;
+	background:#ccc;
+	margin-top:10px;
+	padding-left:10px; 
+}
+.data_account{
+	height:40px;
+	line-height:40px;
+	margin-top:20px;
+}
+.data_login{
+	width:70px;
+	height:40px;
+	line-height:40px;
+	float:left;
+	padding-left:10px; 
+
+}
+.data_name{
+	width:165px;
+	height:35px;
+	float:left;
+}
+.uname{
+	width:165px;
+	height:25px;
+}
+.data_sex{
+	width:44px;
+	height:40px;
+	line-height:40px;
+	float:left;
+	padding-left:35px; 
+}
+.data_sex1{
+	float:left;
+	width:80px;
+
+}
+.data_submit{
+	width:250px;
+	height:26px;
+	margin-top:20px; 
+	
+}
+#submit{
+	width:70px;
+	height:24px;
+	border:0px;
+	background:rgb(60,137,243);
+
+	margin-left:70px; 
+	color:#ffffff;
+	font-size:16px;
+}
+/**********************收货信息管理样式**********************/
+.delivery_location{
+	margin-top:10px; 
+	height:30px;
+	line-height:40px;
+	background:#ccc;
+}
+.delivery_location ul li{
+	list-style:none;
+	float:left;
+	width:270px;
+	height:30px;
+	line-height:30px;
+	text-align:left;
+}
+.delivery_button{
+	width:120px;
+	margin-top:10px;
+}
+.delivery_details{
+	display:none;
+	height:300px;
+	background:rgb(243,243,243);
+	margin-top:10px;
+	border:1px solid rgb(215,215,215);
+}
+.delivery_label{
+	margin-top:10px;
+	height:30px;
+}
+.delivery_label ul li{
+	width:400px;
+	height:30px;
+	line-height:30px;
+	float:left;
+	text-align:left;
+	
+}
+.delivery_site{
+	margin-top:10px;
+	height:30px;
+}
+.delivery_site ul li{
+	width:400px;
+	height:30px;
+	line-height:30px;
+	float:left;
+	text-align:left;
+}

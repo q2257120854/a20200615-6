@@ -1,0 +1,17 @@
+.bfb1{background-color:#EEEEEE;padding:20px 0;}
+.bfb1 .u1{float:left;border:#DCDCDC solid 2px;width:400px;background-color:#fff;text-align:left;height:200px;}
+.bfb1 .u1 li{float:left;}
+.bfb1 .u1 .l1{font-size:18px;padding:25px 0 0 25px;height:40px;width:375px;}
+.bfb1 .u1 .l2{width:305px;height:33px;margin:0 25px;font-size:15px;font-weight:700;padding:13px 0 0 45px;background:url(img/u.gif) left top no-repeat;}
+.bfb1 .u1 .l2 a:hover{text-decoration:none;color:#ff6600;}
+.bfb1 .u1 .l3{font-size:14px;padding:15px 25px 0 25px;width:350px;text-align:center;line-height:25px;}
+.bfb1 .u2{float:left;border:#DCDCDC solid 2px;width:250px;background-color:#fff;height:200px;margin-left:75px;}
+.bfb1 .u2 li{float:left;}
+.bfb1 .u2 .l1{font-size:18px;padding:25px 0 0 0;width:100%;}
+.bfb1 .u2 .l2{width:100%;}
+.bfb1 .u3{float:left;border:#DCDCDC solid 2px;width:338px;background-color:#fff;height:200px;margin-left:75px;}
+.bfb1 .u3 li{float:left;}
+.bfb1 .u3 .l1{font-size:18px;padding:25px 0 0 0;height:40px;width:100%;}
+.bfb1 .u3 .l2{padding:0 47px;width:244px;}
+.bfb1 .u3 .l2 .a1{float:left;background:url(img/a.gif) left top no-repeat;width:242px;height:52px;border:#ddd solid 1px;}
+.bottomy{margin:0;}

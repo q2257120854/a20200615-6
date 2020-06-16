@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>登陆window</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+      <style>
+      #header{border-bottom: 0;background-color:#fff}
+      .aui-text-default {color: #8b8b8b !important;}
+      img.logo{border-radius: 20%;width:5rem}
+      .aui-bar-nav .aui-btn .aui-iconfont{font-weight:bold;}
+      .aui-btn-wechat{background-color:#00bc0d;color:#fff}
+      .aui-icon-wechat{font-size: 1.5rem !important; vertical-align: middle;}
+      </style>
+  </head>
+  <body class="aui-bg-white">
+    <!-- <header id="header" class="aui-bar aui-bar-nav"> -->
+        <!-- <a class="aui-pull-left aui-btn" onclick="api.closeWin()"> -->
+            <!-- <span class="aui-iconfont aui-text-info aui-icon-close"></span> -->
+        <!-- </a> -->
+    <!-- </header> -->
+    <section class="aui-content aui-text-center aui-padded-15">
+        <img src="../image/logo.png" class="aui-inline logo">
+    </section>
+    <section class="aui-content-padded">
+        <ul class="aui-list aui-form-list aui-border-0">
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-mobile aui-font-size-20"></i>
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input name="phone" type="tel" id="username" placeholder="输入您的手机号">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-lock aui-font-size-20"></i>
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input name="password" type="password" id="password" placeholder="输入8-32位密码">
+                    </div>
+                    <div class="aui-list-item-right" id="see">
+                        <i class="aui-iconfont aui-icon-attentionfill aui-font-size-20"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div class="aui-content-padded">
+        <div class="aui-btn aui-btn-info aui-btn-block aui-font-size-20" id="login"  onclick="loginTo()">立即登陆</div>
+    </div>
+    <div class="aui-content-padded">
+        <div class="aui-btn .aui-btn-success aui-btn-block aui-font-size-20" id="onelogin"  onClick="oneRegister()">一键登录</div>
+    </div>
+    <div class="aui-content-padded aui-padded-t-10">
+        <div class="aui-row aui-font-size-16">
+            <div class="aui-col-xs-6" onclick="openWin('register')"><a class="aui-text-default">注册</a></div>
+            <div class="aui-col-xs-6 aui-text-right" ><a onClick="forgetPass()" class="aui-text-default">没有密码/忘记密码</a></div>
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+
+  <script type="text/javascript">
+   var api_url = localStorage.getItem('api_url');
+  apiready = function(){
+      
+  }
+  
+  
+  function loginTo() {
+		var username = $api.val($api.byId('username'));
+			var password = $api.val($api.byId('password'));
+	
+		if(username == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 调皮~   账号都没输入',
+					duration: 5000
+				});
+				return;
+			}
+			if(password == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 哎呀~   密码还没输入',
+					duration: 5000
+				});
+				return;
+			}
+	
+			api.toast({
+				msg: 'ヾ(◍°∇°◍)ﾉﾞ 努力验证中……',
+				duration: 5000
+			});
+
+			api.closeWin({
+				name: 'reg_frm'
+			});
+	
+			api.ajax({
+				 url: api_url+'/App/App/denglu.html',
+				method: 'get',
+				data: {
+					values: {
+						username: username,
+						passwd: password,
+						imei: api.deviceId
+					}
+				}
+			}, function(ret, err) {
+				if(ret) {
+					if(ret.code == 0) {
+						api.toast({
+							msg: '(ｷ｀ﾟДﾟ´)!! 账号或密码不正确',
+							duration: 5000
+						});
+						return;
+					} else if(ret.code == 1) {
+						/*       alert('登录成功');
+						      原弹窗提示  */
+						api.toast({
+							msg: '(#^.^#) 登陆成功！',
+							duration: 5000
+						});
+						
+						  localStorage.setItem('user_id',ret.msg['id']);
+						  localStorage.setItem('user_name',ret.msg['name']);
+						  localStorage.setItem('pass',ret.msg['pass']);
+						  localStorage.setItem('viptime',ret.msg['viptime']);
+						  localStorage.setItem('mim',ret.msg['mim']);
+						  localStorage.setItem('jifen',ret.msg['jifen']);
+						 localStorage.setItem('share',ret.msg['share']);
+						  localStorage.setItem('money',ret.msg['money']);
+						 localStorage.setItem('bg',ret.msg['bg']);
+						api.sendEvent({
+							name: 'newLoingdata',
+							extra: {}
+						});
+						api.hideProgress();
+						api.closeWin({});
+						// api.openWin({
+						//     name: 'index',
+						//     url: '../index.html',
+						// });
+					}else if(ret.code == 2) {
+						api.toast({
+							msg: '(ｷ｀ﾟДﾟ´)!! 该账号已绑定另一个设备！',
+							duration: 5000
+						});
+						return;
+					}else if(ret.code == 3) {
+						api.toast({
+							msg: '(ｷ｀ﾟДﾟ´)!! 该设备已绑定另一个账号，请使用一键登录！',
+							duration: 5000
+						});
+						return;
+					}
+				} else {
+					api.hideProgress();
+					/*   alert('网络错误！');
+					      原弹窗提示*/
+					api.toast({
+						msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+						duration: 5000
+					});
+
+					//alert( JSON.stringify( err ) );
+					return;
+				}
+			});
+
+	}
+  
+   function openWin(name){
+		api.openWin({
+			  name: ''+name+'',
+			  url: ''+name+'.html',
+			 
+		  });
+	}
+  function oneRegister(){
+	 api.showProgress({
+          title: '注册中...',
+          text: '请稍等...',
+          modal: false
+      });
+	var deviceId = api.deviceId; 
+	api.ajax({
+            url: api_url+'/App/App/oneRegister.html',
+            method: 'get',
+            data: {
+                values: {
+                    uuid:deviceId
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+          
+                api.toast({
+                    msg: '(#^.^#) 登陆成功！',
+                    duration: 5000
+                });
+				  localStorage.setItem('user_id',ret.id);
+                  localStorage.setItem('user_name',ret.name);
+                  localStorage.setItem('pass',ret.pass);
+                  localStorage.setItem('viptime',ret.viptime);
+				  localStorage.setItem('mim',ret.mim);
+				  localStorage.setItem('num',ret.num);
+				  localStorage.setItem('money',ret.money);
+					localStorage.setItem('share',ret.share);
+					localStorage.setItem('jifen',ret.jifen);
+					localStorage.setItem('bg',ret.bg);
+					 jiage()
+					api.sendEvent({
+						name: 'newLoingdata',
+						extra: {
+						}
+					});
+                  api.hideProgress();
+                  api.closeWin({
+                  });
+            } else {
+              api.hideProgress();
+                  api.toast({
+                      msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+                      duration: 5000
+                  });
+              return;
+            }
+        });
+  }
+  function  jiage(){
+	
+	 api.ajax({
+            url: api_url+'/App/App/fenxiao.html',
+            method: 'get',
+			data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					} 
+        },function(ret, err){
+            if (ret) {
+			
+				var yif = $api.byId('yif');
+				yif.innerHTML = ret.yi+'%';
+				var erf = $api.byId('erf');
+				erf.innerHTML = ret.er+'%';
+				var sanf = $api.byId('sanf');
+				sanf.innerHTML = ret.san+'%';
+				localStorage.setItem('tixian',ret.tixian);
+				localStorage.setItem('money',ret.money);
+				var bishu = $api.byId('bishu');
+				bishu.innerHTML = ret.bi+'笔';
+				var zonghe = $api.byId('zonghe');
+				zonghe.innerHTML = ret.zong+'元';
+				var zbishu = $api.byId('zbishu');
+				zbishu.innerHTML = ret.zbi+'笔';
+				var zzonghe = $api.byId('zzonghe');
+				zzonghe.innerHTML = ret.zzong+'元';
+				var yue = $api.byId('yue');
+				yue.innerHTML = ret.money;
+            } else {
+              api.hideProgress();
+                  api.toast({
+                      msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+                      duration: 5000
+                  });
+              return;
+            }
+        });
+	
+	}
+function forgetPass(){
+alert('请联系客服：' + localStorage.getItem('kefu'));
+}
+  </script>
+  </html>

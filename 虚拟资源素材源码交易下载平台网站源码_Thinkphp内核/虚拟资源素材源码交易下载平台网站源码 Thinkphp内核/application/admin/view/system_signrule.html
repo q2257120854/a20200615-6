@@ -1,0 +1,76 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updatesignrule')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            {if count($rules) eq 0}
+            <div class="layui-form-item">
+                <label class="layui-form-label">连续天数</label>
+                <div class="layui-input-inline" style="width:80px">
+                    <input name="days[]" required lay-verify="required" class="layui-input" value="1" readonly style="width:50px">
+                </div>
+                <label class="layui-form-label layui-input-inline" style="width:90px;margin:0px">奖励（积分）</label>
+                <div class="layui-input-inline">
+                    <input name="score[]" required lay-verify="required" type="number" min="0" autocomplete="off" class="layui-input" style="width:50px">
+                </div>
+                <div class="layui-input-inline">
+                    <a id="addrule" href="javascript:;" class="layui-btn jie-add" style="background-color:#7ACA3C">添加一条</a>
+                </div>
+            </div>
+            {else /} {foreach name="rules" key="key" item="vo"}
+            <div class="layui-form-item">
+                <label class="layui-form-label">连续天数</label>
+                <div class="layui-input-inline" style="width:80px">
+                    <input name="days[]" required lay-verify="required" class="layui-input" value="{$vo.days}" readonly style="width:50px">
+                </div>
+                <label class="layui-form-label layui-input-inline" style="width:90px;margin:0px">奖励（积分）</label>
+                <div class="layui-input-inline">
+                    <input name="score[]" required lay-verify="required" type="number" min="0" autocomplete="off" value="{$vo.score}" class="layui-input" style="width:50px">
+                </div>
+                <div class="layui-input-inline">
+                    {if condition="$key eq 0"} <a id="addrule" href="javascript:;" class="layui-btn jie-add" style="background-color:#7ACA3C">添加一条</a> {else /}<a href="javascript:;" class="layui-btn jie-add" style="background-color: #ff8400" onclick="delrule(this);">删除</a>                    {/if}
+                </div>
+            </div>
+            {/foreach} {/if}
+            <div id="morerule"></div>
+
+
+
+
+
+
+        </div>
+    </div>
+    <div class="formbtngroup">
+        <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+        <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+    </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+<script>
+    layui.use(['element', 'jquery'], function() {
+        var $ = layui.$;
+        $("#addrule").click(function() {
+
+            var html = '<div class="layui-form-item"><label class="layui-form-label">连续天数</label><div class="layui-input-inline" style="width:80px">' +
+                '<input name="days[]" required lay-verify="required" class="layui-input" type="number" min="1" style="width:50px"></div>' +
+                '<label class="layui-form-label layui-input-inline"  style="width:90px;margin:0px">奖励（积分）</label><div class="layui-input-inline">' +
+                '<input  name="score[]"  required lay-verify="required" type="number" min="0" autocomplete="off" class="layui-input" style="width:50px"></div>' +
+                '<div class="layui-input-inline"><a  href="javascript:;" class="layui-btn jie-add" style="background-color: #ff8400" onclick="delrule(this);">删除</a></div></div>';
+            $("#morerule").append(html);
+        });
+
+    });
+
+
+
+
+    function delrule(obj) {
+        //alert(11);
+        $(obj).parent().parent().remove();
+    }
+</script>
+{/block}

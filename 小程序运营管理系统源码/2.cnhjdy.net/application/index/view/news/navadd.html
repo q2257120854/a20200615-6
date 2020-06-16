@@ -1,0 +1,393 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon9-2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			文章底部导航组管理--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+<style>
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+</style>
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('News/navsave')}?appletid=<?php echo $_GET['appletid']?>&newsid={$newsid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">文章底部导航组管理</label>
+
+
+
+					</div>
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $list}{$list.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+
+
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">是否启用</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="1" {if $list}{if $list.flag==1}checked=checked{/if}{/if}/>
+
+
+
+							启用
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="0" {if $list}{if $list.flag==0}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+							不启用
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页横排区块显示</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">导航组</label>
+
+						<div class="controls">
+
+							<select name="cid" class="span3 m-wrap" id="cid">
+
+								<option value="0">不启用</option>
+								{if $cate}
+		                        {volist name="cate" id="v"}
+		                            <option value="{$v['id']}" {if $list}{if $v['id'] == $list['cid']}selected{/if}{/if}>{$v['title']}</option>
+		                         {/volist}
+		                        {/if}
+										
+							</select>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择导航组</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">类型</label>
+
+						<div class="controls">
+
+							<select name="type" class="span3 m-wrap" id="catetype" onchange="change_catetype()">
+
+								<option value="">请选择</option>
+								
+								<option value="0" {if $list}{if $list.type==0}selected{/if}{/if} >小程序页面</option>
+
+		                        <option value="1" {if $list}{if $list.type==1}selected{/if}{/if} >拨打电话</option>
+
+		                        <option value="3" {if $list}{if $list.type==3}selected{/if}{/if} >微信客服</option>
+
+		                        <option value="5" {if $list}{if $list.type==5}selected{/if}{/if} >打开网页</option>
+								
+							</select>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择功能类型</span>
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">导航标题</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="title" type="text" class="span3 m-wrap" value="{if $list}{$list.title}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">导航组标题</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group url1" {if $list}{if $list.type==3}style="display:none"{/if}{else}style="display:none"{/if}>
+
+						<label class="control-label" id="url1">
+						{if $list}
+							{if $list.type==0}小程序页面地址{/if}
+
+			                {if $list.type==1}电话号码{/if}
+
+			                {if $list.type==5}https网址{/if}
+						{/if}
+		                </label>
+
+						<div class="controls">
+
+							<input name="url" type="text" class="span3 m-wrap" value="{if $list}{$list.url}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;" id="notice">{if $list}{if $list.type==1}不填则为基础设置里的电话{/if}
+                			{if $list.type==5}必须要加到业务域名{/if}{/if}</span>
+						</div>
+
+					</div>
+
+
+		            <div class="control-group">
+
+
+
+						<label class="control-label">导航背景颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_t', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_t" value="{if $list}{$list.bgcolor}{else}fff{/if}" class="span2 m-wrap" name="bgcolor">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">半透明背景</span>
+
+
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">导航文字颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_t1', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_t1" value="{if $list}{if $list.textcolor}{$list.textcolor}{else}000000{/if}{else}000000{/if}" class="span2 m-wrap" name="textcolor">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+
+
+						</div>
+
+
+
+					</div>
+							
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+					
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+	</div>
+
+<script>
+    function change_catetype(){
+        var p1=$('#catetype').children('option:selected').val();
+        if(p1 == 0){
+            $("#url1").text("小程序页面地址");
+            $(".url1").show();
+            $(".hide1").hide();
+            $("#notice").hide();
+        }
+        if(p1 == 1){
+            $("#url1").text("电话号码");
+            $(".url1").show();
+            $(".hide1").hide();
+            $("#notice").show();
+            $("#notice").text("不填则为基础设置里的电话");
+        }
+        if(p1 == 2){
+            $(".url1").hide();
+            $(".hide1").hide();
+            $("#notice").hide();
+        }
+        if(p1 == 3){
+            $(".url1").hide();
+            $(".hide1").hide();
+            $("#notice").hide();
+        }
+        if(p1 == 4){
+            $("#url1").text("小程序appid");
+            $(".url1").show();
+            $(".hide1").show();
+            $("#notice").hide();
+        }
+        if(p1 == 5){
+            $("#url1").text("https网址");
+            $(".hide1").hide();
+            $("#notice").show();
+            $("#notice").text("必须要加到业务域名");
+        }
+    }
+</script>
+
+{include file="public/foot_more" /}

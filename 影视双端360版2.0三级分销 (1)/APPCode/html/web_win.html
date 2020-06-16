@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>网页window</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+      <style>.aui-bar-nav .aui-title{font-size:0.8rem;left:2.5rem;right:2.5rem;}</style>
+  </head>
+  <body>
+    <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="goback()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title"></div>
+        <a class="aui-pull-right aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-close"></span>
+        </a>
+    </header>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript">
+      apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          //传参标题
+          $api.text($api.dom(header, 'div.aui-title'), api.pageParam.title);
+          //加载frame
+          var header_h = $api.offset(header).h;
+          var params = {
+        		  name: 'web',
+              progress: {type:'page'},
+            	rect: {x:0, y:header_h, w:'auto', h:api.frameHeight-header_h}
+        	};
+          if(api.pageParam.data){
+              params.data = api.pageParam.data;
+          }else
+          if(api.pageParam.url){
+              params.url = api.pageParam.url;
+          }
+          api.openFrame(params);
+      };
+      //后退
+      var i = 0;
+      function goback(){
+        api.historyBack({
+            frameName: 'web'
+        }, function(ret, err) {
+            if (!ret.status) {
+                api.closeWin();
+            }
+        });
+      }
+  </script>
+  </html>

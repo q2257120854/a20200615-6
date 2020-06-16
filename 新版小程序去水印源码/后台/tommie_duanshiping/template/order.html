@@ -1,0 +1,40 @@
+{template 'common/header'}
+<table class="table table-bordered">
+  <caption>充值订单</caption>  
+  <thead>
+    <tr>
+      <th style="width:6%">序号</th>
+      <th style="width:5%">头像</th>
+      <th style="width:15">用户名</th>
+      <th style="width:10">金额</th>
+      <th style="width:15">次数</th>
+      <th style="width:18%">订单号</th>
+      <th style="width:10%">状态</th>
+      <th style="width:25%">充值时间</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+        {loop $orderdata $key $row}
+        {php $n--;}
+    <tr >
+        <td>{$n}</td>
+        <td><img src="{$row['headimg']}" height="25px" width="25px"></td>
+        <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{$row['nickname']}</td>
+        <td>{$row['money']} 元</td>
+        <td>{$row['num']} 次</td>
+        <td>{$row['orderid']}</td>
+        {if $row['paystate'] == 1}
+        <td style="color:red;">已支付</td>
+            {else}
+            <td> 未支付</td>
+         {/if} 
+        
+        <td>{php echo date("Y-m-d H:i:s",$row['t']);}</td>
+    </tr>
+ {/loop}
+  </tbody>
+</table>
+
+{$pager}
+{template 'common/footer'}

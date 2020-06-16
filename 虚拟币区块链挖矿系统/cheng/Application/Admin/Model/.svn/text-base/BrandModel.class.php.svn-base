@@ -1,0 +1,22 @@
+<?php
+    namespace Admin\Model;
+    use Think\Model;
+    class BrandModel extends Model{
+
+    	//查询品牌列表
+        public function selectBrand($map= '1' ,$limit = ''){
+        	$brand = M('brand');
+        	return $brand -> where($map) -> limit($limit) -> order("brandpic asc,bid asc") -> select();
+        }
+
+        //查询品牌列表总数
+        public function brandCount($map= '1'){
+        	$brand = M('brand');
+        	return $brand -> where($map) -> count();
+        }
+
+        public function allClass($bid){
+        	$brand = D('ClassBrandView');
+        	return $brand -> where("bid = $bid") -> select();
+        }
+    }

@@ -1,0 +1,101 @@
+{extend name="base" /} {block name="body"}
+<div class="admin-main">
+    <div class="layui-field-box layui-form">
+
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">本地插件</li>
+                <li><a href="{:url('addons/online')}">在线插件</a></li>
+            </ul>
+        </div>
+
+        {if condition="$list eq 0"}
+        <blockquote style="padding: 10px;border-left: 5px solid #009688;" class="layui-elem-quote">还未有任何插件</blockquote>
+        {else /}
+
+        <table class="layui-table admin-table">
+            <thead>
+                <tr>
+                    <th width="100">名称</th>
+                    <th>标识</th>
+                    <th width="400">描述</th>
+                    <th width="50">状态</th>
+                    <th>作者</th>
+                    <th width="50">版本</th>
+                    <th width="200">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name="list" item="vo"}
+                <tr>
+                    <td>{$vo.title}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.description}</td>
+                    <td>{$vo.status_text|default="未安装"}</td>
+                    <td><a target="_blank" href="{$vo.url|default='http://www.laysns.com'}">{$vo.author}</a></td>
+                    <td>{$vo.version}</td>
+                    <td>
+                        {eq name="vo.uninstall" value="0"} {if condition="$vo['config'] neq 'null'"}
+                        <a class="layui-btn layui-btn-normal layui-btn-sm" href="{:url('addons/config',array('id'=>$vo['id']))}"> <span class="button-content"> 设置</span></a>
+                        {/if}
+
+
+                        <a class="layui-btn layui-btn-danger layui-btn-sm caozuo" href="javascript:;" data-adminlist="{$vo['has_adminlist']}" data-uurl="{:url('addons/adminlist',array('name'=>$vo['name']))}" data-url="{:url('addons/uninstall',array('id'=>$vo['id']))}" zs-name="{$vo['name']}">
+                            <span class="button-content"> 卸载</span></a>
+
+                        {else /}
+                        <a class="layui-btn layui-btn-success layui-btn-sm  caozuo" href="javascript:;" data-adminlist="{$vo['has_adminlist']}" data-uurl="{:url('addons/adminlist',array('name'=>$vo['name']))}" data-url="{:url('addons/install',array('addon_name'=>$vo['name']))}">
+                            <span class="button-content"> 安装</span></a>
+                        <a class="layui-btn layui-btn-warm layui-btn-sm  caozuo" href="javascript:;" data-adminlist="{$vo['has_adminlist']}" data-uurl="{:url('addons/adminlist',array('name'=>$vo['name']))}" data-url="{:url('addons/deladdon',array('addon_name'=>$vo['name']))}">
+                            <span class="button-content"> 删除</span></a>
+                        {/eq}
+                    </td>
+
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+
+        {/if}
+
+    </div>
+
+
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['layer', 'jquery', 'form'], function() {
+        var layer = layui.layer,
+            form = layui.form,
+            jq = layui.jquery;
+
+        jq('.caozuo').click(function() {
+            var url = jq(this).data('url');
+            jq.getJSON(url, function(data) {
+
+
+                if (data.code == 200) {
+
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+
+                        location.reload();
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        });
+
+
+
+    });
+</script>
+{/block}

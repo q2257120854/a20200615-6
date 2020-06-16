@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>结算佣金明细</title>
+<link rel="stylesheet" type="text/css" href="../css/apic.css" />
+</head>
+<body>
+ 
+    <section class="aui-tab" >
+       
+    </section>
+    <section class="aui-content aui-border-b">
+        <ul class="aui-list aui-media-list" id="commission" >
+            
+        </ul>
+    </section>
+</body>
+  <script type="text/x-dot-template" id="xiaoxi">
+		{{~ it : value : index }}
+			<li  class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-row aui-row-padded">
+                        <p class="aui-col-xs-3 aui-text-center aui-font-size-12" >{{= value. title }}</p>
+                        <p class="aui-col-xs-3 aui-text-center" >{{= value. type }}</p>
+                        <p class="aui-col-xs-3 aui-text-center" >{{= value.price}}</p>
+                        <p class="aui-col-xs-3 aui-text-center aui-font-size-12" >{{= value.shijian}}</p>
+                    </div>
+                </div>
+            </li>
+		{{~}}
+	</script>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+<script type="text/javascript" src="../script/common.js" ></script>
+<script type="text/javascript">
+	var api_url = localStorage.getItem('api_url');
+	apiready = function () {
+	  mess()
+	}
+	function mess(){
+	 var commission = $api.byId('commission');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/mingxi.html',
+				  method: 'get',
+				  data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					commission.innerHTML = pagefn(ret.msg);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '数据加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+	
+
+</script>
+</html>

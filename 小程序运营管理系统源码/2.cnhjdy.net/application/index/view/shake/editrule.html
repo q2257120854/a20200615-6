@@ -1,0 +1,149 @@
+{include file="public/head" /}
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navSale" class="navSale10">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			编辑积分规则--{$applet.name}
+		</li>
+	</ul>
+
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('shake/save_editrule')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					<div class="control-group">
+
+						<label class="control-label">标题</label>
+
+						<div class="controls">
+
+							<input name="title" type="text" class="span5 m-wrap"  style="height: 35px !important;"  id="title" value="{$rule.title}" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写积分规则标题</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">简介</label>
+
+						<div class="controls">
+
+							<input name="descp" type="text" class="span5 m-wrap"  style="height: 35px !important;"  id="descp" value="{$rule.descp}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写积分规则简介</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">积分数</label>
+
+						<div class="controls">
+
+							<input name="score" type="number" class="span5 m-wrap"  style="height: 35px !important;"  id="score" value="{$rule.score}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写积分规则积分数</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">链接</label>
+
+						<div class="controls">
+
+							<input name="link" type="text" class="span5 m-wrap"  style="height: 35px !important;"  id="link" value="{$rule.link}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写积分规则链接</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">是否开启</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="0" {if $rule.flag == 0}checked{/if}/>
+
+							关闭
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="1" {if $rule.flag == 1}checked{/if} />
+
+							开启
+
+							</label> 
+
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+						<input type="hidden" name="id" value="{$rule.id}" />
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+{include file="public/foot_more" /}
+
+
+<script type="text/javascript">
+
+   	function checkinfo(){
+
+   		var title = $("#title").val();
+   		var descp = $("#descp").val();
+   		var score = $("#score").val();
+   		var link = $("#link").val();
+
+   		if(!title){
+   			alert("标题不能为空！");
+   			return false;
+   		}
+
+   		if(!descp){
+   			alert("规则简介不能为空！");
+   			return false;
+   		}
+
+   		if(!score){
+   			alert("规则积分数不能为空！");
+   			return false;
+   		}
+
+   		if(!link){
+   			alert("规则链接不能为空！");
+   			return false;
+   		}
+
+   	}
+
+</script>

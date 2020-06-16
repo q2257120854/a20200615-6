@@ -1,0 +1,493 @@
+{include file="public/head" /}
+
+<body class="page-header-fixed">
+
+<div class="page-container">
+{include file="public/left" /}
+<div style="margin:25px">
+<div class="page-content" id="container">
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navSolution" class="navSolution1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			内容管理
+
+		</li>
+
+	</ul>
+
+
+
+<style>
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+</style>
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('Solution/save')}?newsid={$newsid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">管理</label>
+
+
+
+					</div>
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">序号</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">是否上线</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="1" {if $newsinfo}{if $newsinfo.flag==1}checked=checked{/if}{/if}/>
+
+
+
+							上线
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="2" {if $newsinfo}{if $newsinfo.flag==2}checked=checked{/if}{/if}/>
+
+
+
+							下线
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+
+						</div>
+
+
+
+					</div>
+
+
+					<div class="control-group">
+						<label class="control-label">推荐</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="recommend" value="2" {if $newsinfo}{if $newsinfo.recommend==2}checked=checked{/if}{/if}/>
+							不推荐
+							</label>
+							<label class="radio">
+							<input type="radio" name="recommend" value="1" {if $newsinfo}{if $newsinfo.recommend==1}checked=checked{/if}{/if}/>
+							推荐
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页显示</span>
+
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">访问量</label>
+						<div class="controls">
+							<input name="hits" type="text" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.hits}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可自行填写</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">标题</label>
+						<div class="controls">
+							<input name="title" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写标题</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">英文标题</label>
+						<div class="controls">
+							<input name="entitle" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.entitle}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写英文标题</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">列表背景颜色</label>
+						<div class="controls">
+							<input name="listbg" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.listbg}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填列表背景颜色</span>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">图标</label>
+						<div class="controls">
+							<input name="icon" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					
+
+					<div class="control-group">
+						<label class="control-label">描述</label>
+						<div class="controls">
+							<textarea class="span3 m-wrap" style="height:150px;" name="descs">{if $newsinfo}{$newsinfo.descs}{/if}</textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类1图标</label>
+						<div class="controls">
+							<input name="icon1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类1标题</label>
+						<div class="controls">
+							<input name="title1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类1描述</label>
+						<div class="controls">
+							<input name="descs1" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.descs1}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类2图标</label>
+						<div class="controls">
+							<input name="icon2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类2标题</label>
+						<div class="controls">
+							<input name="title2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类2描述</label>
+						<div class="controls">
+							<input name="descs2" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.descs2}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类3图标</label>
+						<div class="controls">
+							<input name="icon3" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon3}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类3标题</label>
+						<div class="controls">
+							<input name="title3" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title3}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类3描述</label>
+						<div class="controls">
+							<input name="descs3" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.descs3}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类4图标</label>
+						<div class="controls">
+							<input name="icon4" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon4}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类4标题</label>
+						<div class="controls">
+							<input name="title4" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title4}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类4描述</label>
+						<div class="controls">
+							<input name="descs4" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.descs4}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类5图标</label>
+						<div class="controls">
+							<input name="icon5" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.icon5}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类5标题</label>
+						<div class="controls">
+							<input name="title5" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title5}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">分类5描述</label>
+						<div class="controls">
+							<input name="descs5" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.descs5}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+
+
+					<div class="control-group" style="margin-bottom:0px !important;">
+
+						<label class="control-label">内页轮播图</label>
+
+						<div class="controls">
+
+							<div id="xztpan" class="btn commonchangepic" style="background-color:#e5e5e5; color:#333333" data-type="2">
+							选择图片
+							<input type="hidden" name="commonuploadslide">
+							</div>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请先选择栏目，建议上传750大小图片</span>
+
+						</div>
+
+						
+
+					</div>
+					<div class="control-group " style="padding-top:10px">
+
+						<label class="control-label"></label>
+
+						<div class="controls commonuploadslide" id="imgzs" style="font-size:0">
+
+							{if $newsinfo}
+							{if $newsinfo.slides}
+							{foreach  $newsinfo.slides as $k => $res}
+
+								<div class="paiwei " onmousemove="xians(this)" onmouseout="gb(this)" id="li{$k}">
+		                            <img src="{$res}" style="width: 140px; height:90px;">
+		                            <div class="beijingys">
+		                            </div>
+		                            <div class="sancann" onclick="del({$k})">
+		                                <span class="cancel">删除</span>
+		                            </div>
+		                            <input type="hidden" name="imgsrcs[]" value="{$res}">
+		                        </div>
+							{/foreach}
+
+							{/if}
+							{/if}
+
+
+
+						</div>
+
+						
+
+					</div>
+
+					
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+					
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+    <script type="text/javascript">
+    function catecheck(me){
+        var id = $(me).val();
+        if(id !=0){
+            $.ajax({
+        		url:"{:Url('Pictures/getcates')}",type:"post",dataType:'json',
+        		data:{
+        			id:id
+        		},success:function(res){
+                    var shtml = '';
+                    $.each(eval(res),function (k,v) {
+                        var opg = '<select name="sons[]" class="span3 m-wrap">';
+                        opg += '<optgroup label="'+v.varible+'">';
+
+                        var option = '';
+                        $.each(v.sons,function (ks,vs) {
+                            option += '<option value="'+vs.id+'">'+vs.varible+'</option>';
+                        });
+                        opg += option+"</optgroup></select>";
+                        shtml+=opg;
+                    });
+                    $("#sonscatas").html(shtml);
+                }
+            })
+        }else{
+            $("#catelists").html("");
+        }
+    }
+
+
+
+
+		function xians(me){
+
+			var b = $(me).find("div[class='beijingys']");
+
+			var s = $(me).find("div[class='sancann']");
+
+			$(b).show();
+
+			$(s).show();
+
+		}
+
+		function gb(me){
+
+			var b = $(me).find("div[class='beijingys']");
+
+			var s = $(me).find("div[class='sancann']");
+
+			$(b).hide();
+
+			$(s).hide();
+
+		}
+
+    function del(id){
+        if(confirm('你确定要删除这张图片嘛?')){
+
+            $("#li"+id).remove();
+
+        }else{
+            return false;
+        }
+    }
+    </script>
+
+{include file="public/foot_more" /}

@@ -1,0 +1,286 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/index.css">
+<style type="text/css">
+.首页 {background: #008bff;}
+</style>  
+<script src="__HOME__/js/index.js"></script>
+<div class="container index">
+    <div class="serch2">
+    </div>
+<!-- 签到排行 -->
+<div class="qudiao hot-top layui-clear">
+    <i class="tg-ph"></i>
+      <div class="left">
+        <a class="hover">签到排行</a>
+        <a>{include file="index/sign"}</a>
+    </div>
+    <div class="right">
+        <div class="right-overflow" style="transform: translateY(-120px);">
+            <div class="right-main">
+                <ul class="layui-clear top-ul">
+                  {volist name="member" id="vo " key="k"}
+                                        <li><a href="{:url('user/index/home',array('id'=>$vo.id))}">
+                        <div class="list-img"><img src="{$vo.userhead|getheadurl}" title="累计投稿{$vo.forumnum}篇"/></div>
+                        <h3>{$vo.username}</h3></a>
+                    </li>
+ {/volist}
+                                    </ul>
+            </div>
+  
+        </div>
+    </div>
+</div>
+
+        <!-- 首页内容 { -->
+<div class="qudiao">
+<div style="margin-top: 10px;"></div>
+<div id="diyfastposttop1" class="area"><div class="portal_block_summary">{:hook('showad',array('alias'=>'home_br'))}</div></div>	
+</div>
+		<div class="user_login col-xs-12 col-md-4">
+            <style type="text/css">
+            #span1{
+                position: absolute;/*绝对定位*/
+                width: 100%;
+                bottom: 240px;/*离底下0像素*/
+                left: 14px;/*离左边0像素*/
+                text-align: center;
+                font-size: 20px;
+				color: #fff;
+            }  
+			@media screen and (max-width:100%) { .yca {display:none;} }
+        </style>
+<div class="yca ">		
+ <table width="100%" bgcolor="#FFFFFF">
+  <tr>
+    <td>
+        <div class="layui-carousel" id="test1">
+            <div carousel-item>  
+                {volist name="carousel" id="vo"}  
+              <div><a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank"> <span id="span1" class="a3333">{$vo.title}</span><img src={$vo.coverpic} width="100%" height="100%" /></a></div>
+               {/volist}
+            </div>
+          </div>
+    </td>
+  </tr>
+</table>
+<script>
+layui.use('carousel', function(){
+  
+});
+</script>
+</div>
+        <div class="index-login qudiao">
+            <div class="cz-title ">
+                我的信息
+            </div>
+            <div class="info layui-clear">
+ {if condition="$Think.session.userid neq ''"}
+                <!-- 登录后 -->
+                <div class="lg_tr">
+                    <a href="/user/">
+                        <img src="{$Think.session.userhead|getheadurl}" onerror="this.src='{$Think.session.userhead|getheadurl}'" class="user-img"/>
+                    </a>
+                    <div class="u-info">
+                        <h3 class="u_nick">{$Think.session.username}</h3>
+                        <a href="/artadd.html">我要投稿</a>
+                    </div>
+                </div>
+                {else /}
+                <!-- 登录前 -->
+                <div class="lg_no">
+                    <a href="/user/">
+                        <img src="/public/images/default.png" class="user-img" />
+                    </a>
+                    <div class="u-info">
+                        <h3>您还没有登录哦~</h3>
+                        <a onclick="openLoginK();">立即登录</a>
+                    </div>
+                </div>
+{/if}
+
+            </div>
+            <div class="intr">
+                <h3>投稿拿奖励</h3>
+                <span>支持在线投稿<br/>优质教程一律送现金</span>
+            </div>
+        </div>
+
+</div>
+    <div class="today col-xs-12 col-md-8 ">
+        <div class="today_title ">
+            <div class="cz-title ">
+                最近更新
+今天更新 <b style="color:red"> {$today_update}</b> 篇
+            <a  class="z5_ck_more layui-icon layui-icon-youyou "  style="margin-right: 10px" href="{:url('index/articles/lists')}"></a>
+			            </div>
+        </div>
+        <div class="today_container ">
+                <div class="content">
+            <ul class="jc_list clearfix ">
+                {volist name="article_new " id="vo "}
+                <li class="col-sm-6 col-xs-12 clearfix ">
+                    <a href="{:url('user/index/home',array('id'=>$vo.uid))}" target="_blank " title="点击查看作者">
+                        <img src="{$vo.userhead|getheadurl}" class="jc_list_logo " />
+                    </a>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" title="{$vo.title}" class="col-xs-8" {if $vo.settop eq 1 }style="color:red;font-weight:bold;" {/if}>{if $vo.settop eq 1 }【置顶】 {/if}{$vo.title|mb_substr=0,20,'utf-8'}</a>
+                    {if $vo.settop eq 0 }<em class="old_time col-xs-2" {if date( 'Ymd') eq date( 'Ymd',$vo.time) }style="color:red" {/if}>{$vo.time|date='m-d',###}</em>{/if}
+                </li>
+                {/volist}
+            </ul>
+            </div>
+            <div class="page layui-clear" data-nowpage="1">
+                <div class="top prev">上一页</div>
+                <b class="cfx"></b>
+                <div class="bottom next">下一页</div>
+              </div>
+        </div>
+    </div>
+    <!-- 今日更新 -->
+    <div class="qqtouxiang col-xs-12 git_top">
+        {volist name="cmsnav[2]" id="vo" }
+        <div class="col-lg-4 col-sm-4  col-xs-4  gitbar ">
+            <a href="{$vo.link}" target="{$vo.target}" class="get_qq_btn">
+
+                <div class="col-lg-3  col-sm-4 col-xs-8">
+                    <img src="{$vo.icon}">
+                </div>
+                <div class="col-lg-6 hidden-xs">
+                    <h3 style="margin-top: 0px;">{$vo.name}</h3>
+                    <span>{$vo.description}</span>
+                </div>
+                <div class="col-lg-3 hidden-sm hidden-md hidden-xs">
+                    <a class="go get_qq_btn" target="{$vo.target}" href="{$vo.link}">{$vo.alias}</a>
+                </div>
+                <div class="col-xs-4 visible-xs-block">
+                    <a href="{$vo.link}" target="{$vo.target}" class="sm_go get_qq_btn"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </a>
+        </div>
+        {/volist}
+
+    </div>
+    <!-- 用户登录框 -->
+
+    <div class="updata_list col-xs-12">
+        {volist name="artbycatelist" id="vo" }
+        <div class="col-lg-4 col-md-6  clear_pd_z5">
+            <div class="column-five">
+                <div class="strategy">
+                    <div class="cz-title">
+                            {$vo.name}
+                        <a href="{:url('index/articles/lists',array('cate_alias'=>$vo.alias))}" target="_blank"  class="z5_ck_more layui-icon layui-icon-right" style="margin-right: -5px" title="更多">
+                        </a>
+                    </div>
+                    <ul class="list-style">
+                        {volist name="$vo.artlists" id="v" key="k"}
+                        <li><span {if date( 'Ymd') eq date( 'Ymd',$v.time) }style="color:red" {/if}>{$v.time|date='m/d',###}</span><a
+                                href="{:url( 'index/index/html',array( 'id'=>$v.id))}" target="_blank"
+                                title="{$v.title}">{$k}、{$v.title}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+
+    {volist name="article_pic" id="vo"}
+    <div class="qqtouxiang col-xs-12">
+        <div class="cz-title">
+        
+            <a href="{:url('index/articles/lists',array('cate_alias'=>$vo.alias))}" target="_blank" title="更多"  class="z5_ck_more layui-icon layui-icon-youyou " style="margin-right: -5px"  style="margin-right: 10px"> {$vo.name}</a>
+        </div>
+        <div class="tx_container clearfix">
+            <ul class="tx_img clearfix col-md-8 col-xs-12">
+
+
+                {volist name="$vo.artlists" id="v"}
+                <li>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$v.id))}" target="_blank">
+                        <img src="{:$v['coverpic']?$v['coverpic']:DEF_COVER}" alt="{$v.title}"/>
+                        <span>{$v.title}</span>
+                    </a>
+                </li>
+                {/volist}
+            </ul>
+
+            <ul class="tx_text clearfix col-md-4 col-xs-12">
+                {volist name="$vo.artlists" id="v" length="7" key="k"}
+                <li><span>{$k}</span><a href="{:url( 'index/index/html',array( 'id'=>$v.id))}" target="_blank">{$v.title}</a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+    {/volist}
+		
+    <div class="qudiao phb_index col-xs-12 clearfix">
+        <div class="phb_shu col-xs-12 col-md-4">
+            <div class="cz-title">
+                本月热门
+            </div>
+
+            <ul class="phb_cont clearfix ">
+                {volist name="$art_top30" id="vo" key="k"}
+                <li><i>{$k}</i><a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank">{$vo.title}</a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="phb_other col-xs-12 col-md-8">
+            <div id="app_goods" class="phb_other1">
+                <div class="cz-title">
+              
+                        {if $site_config['open_taoke'] eq 1}今日淘宝天猫优惠商品{else /}站长精选{/if}
+                    {if $site_config['open_taoke'] eq 0} <a href="{:url( 'index/articles/choice')}" class="z5_ck_more layui-icon layui-icon-youyou " style="margin-right: 10px"> </a>{/if}
+                </div>
+                <ul class="shop_list clearfix" id="youhuiquan">{if $site_config['open_taoke'] eq 1}
+
+                    <script>
+                        layui.use('layer', function() {
+
+                            $.getJSON("{:url('index/api/gettaoke')}", {},
+                                function(res) {
+
+                                    if (res.code == 200) {
+                                        var a = res.data;
+                                        var html = '';
+                                        for (x in a) {
+                                            html += ' <li class="col-xs-12 col-md-6"><div class="shop_left"><img src="' + a[x].pic + '" alt="' + a[x].title + '" class="shop_logo"></div><div class="shop_right"><h4>' + a[x].title + '</h4><span><k style="font-size: 23px; color: #FF5722;">¥' + Math.ceil(a[x].price - a[x].quan, 2) + '</k> <font style="text-decoration:line-through">' + a[x].price + '元</font></span><a href="' + a[x].link + '" title="' + a[x].title + '" target="_blank">领券购买</a></div></li>';
+                                            //  html += '<li style="margin-top: 0;">' + a[x].title + '，满' + a[x].manjian + '减￥' + a[x].value + '</li>';
+                                        }
+
+                                        $("#youhuiquan").html(html);
+                                    }
+
+                                }, {
+                                    type: 'get'
+                                });
+
+
+                        });
+                    </script>
+
+                    {else /} {volist name="$art_choice" id="vo"}
+                    <li class="col-xs-12 col-md-6">
+                        <div class="shop_left">
+                            <img src="{:$vo['coverpic']?$vo['coverpic']:DEF_COVER}" alt="{$vo.title}" class="shop_logo">
+                        </div>
+                        <div class="shop_right">
+                            <h4>{$vo.title}</h4>
+                            <span>{$vo.view}<font>℃</font></span>
+                            <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank">查看详情</a>
+                        </div>
+                    </li>
+                    {/volist} {/if}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 排行榜结束和推荐 结束 -->
+    {include file="index/superlinks"}
+</div>
+{/block}

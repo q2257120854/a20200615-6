@@ -1,0 +1,114 @@
+{include file="public/head" /}
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel8-1">
+<link href="/css/common.css?v=20170426" rel="stylesheet">
+
+
+<div class="clearfix">
+    <input type="hidden" name="activity_id" value="<?php echo $_GET['aid']; ?>" disabled id="activity_id" />
+    <div style="float: left;"><h3 style="float: left;margin-top: -5px;">抽奖记录</h3></div>
+    <a class="btn green" style="display:block;float: left;margin-left:20px" id="excel" href="{:Url('Shake/toExcel')}?appletid=<?php echo $_GET['appletid']?>&aid=<?php echo $_GET['aid']?>">导出excel</a>
+    
+    <form style="float: right;" class="form-inline clearfix" action="" method="post">
+        <div class="form-group" style="float: left;margin-left:20px" >
+            <div class="form-controls">
+                <select name="select_pid" id="select_pid" class="" style="width: 200px; float: right;">
+                    <option value="">--中奖奖项--</option>
+                    {volist name="$prizesSet" id="p"}
+                    <option value="{$p['id']}" {if $select_pid == $p['id']}selected{/if} >{$p['detail']}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="float: left;margin-left:20px">
+            <div class="form-controls">
+                <select name="select_status" id="select_status" class="" style="width: 200px; float: right; display: inline;">
+                    <option value="">--中奖状态--</option>
+                    <option value="0" {if $select_status == '0'}selected{/if}>未中奖</option>
+                    <option value="1" {if $select_status == '1'}selected{/if}>待领取</option>
+                    <option value="2" {if $select_status == '2'}selected{/if}>已领取</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="float: left;margin-left:20px">
+            <div class="col-sm-3">
+                <div class="btn green" id="filter" style="float: right; display: inline;" />提交</div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+<table class="table table-responsive we7-table table-hover vertical-middle" style="table-layout: fixed;margin-top: 20px" > 
+    <tbody>
+        <tr>
+            <td style="width: 90px">序号</td>
+            <td style="width: 120px">抽奖人姓名</td>
+            <td style="width: 140px">手机号</td>
+            <td style="width: 205px">地址</td>
+            <td style="width: 180px">抽奖结果</td>
+            <td>抽奖时间</td>
+        </tr>
+        {volist name="$records['data']"  id="record" key="index" }
+        <tr>
+            <td>{$index}</td>
+            <td>{$record['realname']}</td>
+            <td>{$record['mobile']}</td>
+            <td>{$record['address']}</td>
+            <td>
+                {if $record['status'] == '0'}<div class="label label-sm label-primary">未中奖</div>{else}
+
+                {if $record['types'] == '3' && $record['status'] == '1'}
+                    <!-- <div class="label label-sm label-success">待领取</div> -->
+                    <a class="btn btn-xs btn-danger shenhe" data-rid="{$record['id']}" >审核发货</a>
+                    <div>{$record['prize_detail']}</div>
+                {/if}
+                {if ($record['types'] != '3' || $record['status'] == '2') && $record['status'] != '0' }<div class="label label-sm label-success">已领取</div><div>{$record['prize_detail']}</div>{/if}
+                {/if}
+            </td>
+            <td>{$record['createtime']}</td>
+        </tr>
+        {/volist}
+       
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        
+
+        $("#excel").click(function(){
+            
+        })
+
+        $("#filter").click(function(){
+            window.location.href = "{:Url('shake/record')}" + "?appletid=" + "<?php echo $_GET['appletid']; ?>" + "&select_pid=" + $('#select_pid').val() + "&select_status=" + $('#select_status').val() + "&aid=" + $("#activity_id").val();
+        })
+
+        $(".shenhe").each(function(){
+            $(this).click(function(){
+                var rid = $(this).data("rid");
+                $.ajax({
+                    url: "{:Url('shake/shenhe')}",
+                    type:'POST',
+                    data: {
+                        appletid: "<?php echo $_GET['appletid']; ?>",
+                        rid : rid
+                    },
+                    success: function(res){
+                        if(res == 1){
+                            location.reload();
+                        }
+                    }
+                })
+            });
+            
+            
+        })
+    });
+</script>
+
+{$page}
+
+
+{include file="public/foot_more" /}

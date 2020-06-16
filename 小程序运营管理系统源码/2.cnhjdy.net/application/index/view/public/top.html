@@ -1,0 +1,64 @@
+<body class="page-header-fixed">
+	
+<!-- 导航 -->
+
+	<!-- <div class="header navbar navbar-inverse navbar-fixed-top">
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<a class="brand" href="{:Url('Applet/index')}" style="padding-left:20px;">
+
+				{$Think.APP_COMPANY}
+
+				</a>
+
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+
+				<img src="/image/menu-toggler.png" alt="" />
+
+				</a>          
+          
+				<ul class="nav pull-right">
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						{if $Think.session.icon}
+							<img alt="" src="{$Think.session.icon}" style="width:29px; height:29px;"/> 
+						{else}
+							<img alt="" src="/image/avatar1_small.jpg" style="width:29px; height:29px;" />
+						{/if}
+
+						<span class="username">
+							{$Think.session.name}
+						</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+
+							<li><a href="{:Url('User/index')}"><i class="icon-user"></i>个人中心</a></li>
+							<li><a href="{:Url('Login/index')}"><i class="icon-key"></i>退出</a></li>
+
+						</ul>
+
+					</li>
+
+				</ul>
+
+
+			</div>
+
+		</div>
+
+	</div>
+	 -->
+	<div class="page-container">
+	{include file="public/left" /}
+	<div style="margin:25px">
+	<div class="page-content" id="container">

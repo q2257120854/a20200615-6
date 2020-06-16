@@ -1,0 +1,9 @@
+@charset "gb2312";
+.uk{border-bottom:#ddd solid 1px;height:70px;}
+.uk .d1{margin:10px 10px 0 10px;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;text-align:center;}
+.uk .d1 input{float:left;width:100%;height:50px;color:#999;font-size:14px;border:0;}
+
+.tjbutton{margin:15px 0 0 0;}
+.tjbutton .d0{width:10px;margin:0;}
+.tjbutton .d1{marign:0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;width:100%;text-align:center;color:#999;}
+.tjbutton .d1 input{background-color:#ff6600;font-size:16px;color:#fff;width:100%;height:40px;border:0;}

@@ -1,0 +1,29 @@
+</div>
+<div class="container-fluid footer text-center" role="footer">
+	<div class="friend-link">
+		{if empty($_W['setting']['copyright']['footerright'])}
+				<a href="https://mp.weixin.qq.com" target="_blank">公众平台</a>		
+				<a href="https://pay.weixin.qq.com" target="_blank">微信支付</a>
+				<a href="https://work.weixin.qq.com/" target="_blank">企业微信</a>		
+				<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank">开发者工具</a>
+		{else}
+		{$_W['setting']['copyright']['footerright']}
+		{/if}
+	</div>
+	<div class="copyright">{if empty($_W['setting']['copyright']['footerleft'])}Copyright &copy; 2014-2018 Tencent. All Rights Reserved. Ver {IMS_VERSION}{else}{$_W['setting']['copyright']['footerleft']}{/if}</div>
+	{if !empty($_W['setting']['copyright']['icp'])}<div>备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">{$_W['setting']['copyright']['icp']}</a></div>{/if}
+</div>
+{if !empty($_W['setting']['copyright']['statcode'])}{$_W['setting']['copyright']['statcode']}{/if}
+{if !empty($_GPC['m']) && !in_array($_GPC['m'], array('keyword', 'special', 'welcome', 'default', 'userapi')) || defined('IN_MODULE')}
+<script>
+	if(typeof $.fn.tooltip != 'function' || typeof $.fn.tab != 'function' || typeof $.fn.modal != 'function' || typeof $.fn.dropdown != 'function') {
+		require(['bootstrap']);
+	}
+</script>
+{/if}
+</div>
+
+<script type="text/javascript" src="{$_W['siteroot']}web/index.php?c=utility&a=visit&do=showjs&type={FRAME}"></script>
+
+</body>
+</html>

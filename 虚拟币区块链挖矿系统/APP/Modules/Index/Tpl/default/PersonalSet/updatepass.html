@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1.0"/>
+   <meta content="telephone=no" name="format-detection">
+    <title>密码管理</title>
+    <script src="/Public/gec/web/js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
+    <link rel="stylesheet" href="/Public/gec/web/css/jquery-weui.min.css">
+    <link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
+    <script src="/Public/js/layer/layer.js"></script>
+</head>
+<body>
+    <!--顶部开始-->
+    <header class="header">
+        <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+        <span class="header_c">密码管理</span>
+		<!--	<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+    </header>
+    <div class="height40;"></div>
+    <!--顶部结束-->
+    <!--列表开始-->
+	
+	<form action="" method="POST" style="font-size:14px" id="myform1">
+		<ul style="width: 80%;margin-left: 10%;color: #000;padding-top:100px" >
+		
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">原登录密码：</span><input type="password" id="old_password" name="old_password"  placeholder="请输入原登录密码"style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px"/></li>
+			
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">新登录密码：</span><input type="password" placeholder="请输入新登录密码" name="newpwd" type="password"  id="phone" style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px">
+			</li>
+			
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">确认密码：</span><input type="password" placeholder="请重新输入新登录密码" name="newpwd1"  id="phone" style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px">
+			</li>
+			<li>
+			     <input type="hidden" value="1" name="typeid"/>
+			<input type="button"  class="btn_submit_my" value="确认修改" idtype="myform1" style="width: 100%;height: 30px;line-height: 30px;border-radius: 5px;border: 0px; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;"/></li>
+		</ul>
+	</form>
+	
+	
+	<form action="" method="POST" style="font-size:14px;margin-bottom:40px;" id="myform2">
+		<ul style="width: 80%;margin-left: 10%;color: #000;padding-top:20px" >
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">原安全密码：</span><input type="password" name="old_password" placeholder="请输入原安全密码"style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px"/></li>
+			
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">新安全密码：</span><input type="password" placeholder="请输入新安全密码" name="oldpwd2" required id="phone" style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px">
+			</li>
+			<li style="height: 30px;line-height: 30px;margin-top: 5px;width:100%"><span style="display:inline-block;width:33%;">确定密码：</span><input type="password" placeholder="请重新输入新安全密码" name="newpwd2" required id="phone" style="height: 30px;line-height: 30px;width: 62%;border-radius: 5px;border: 1px solid #eeeeee;padding-left: 5px">
+			</li>
+			<li>
+			 <input type="hidden" value="2" name="typeid"/>
+			<input type="button" class="btn_submit_my" value="确认修改" idtype="myform2" style="width: 100%;height: 30px;line-height: 30px;border-radius: 5px;border: 0px; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;"/></li>
+		</ul>
+	</form>
+	
+	<div style="text-align:right; width:80%; margin:0 auto;"><a href="{:U('Index/Login/editPwd2')}"><input type="button" value="交易密码找回>>" style="padding:5px 10px; background:#ff7387; color:#ffffff; border-radius:4px; border:0px;"></a></div>
+</div>
+
+<script type="text/javascript">
+	$(".btn_submit_my").click(function(){
+			var idtype=$(this).attr("idtype"); 
+			$.ajax({
+				url:'{:U("Index/PersonalSet/updatePass")}',
+				type:'POST',
+				data:$("#"+idtype).serialize(),
+				dataType:'json',
+				success:function(json){
+						layer.msg(json.info);
+						if(json.result ==1){
+							window.location.href=json.url;	
+						}
+					
+					
+				},
+				error:function(){
+						
+						layer.msg("网络故障");	
+				}
+					
+				
+				
+			})	
+		
+	})
+
+
+</script>
+<!--底部开始-->
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+<include file="./Public/ajaxsubmit/ajaxsubmit_nojquery.html" />
+</body>
+</html>
+

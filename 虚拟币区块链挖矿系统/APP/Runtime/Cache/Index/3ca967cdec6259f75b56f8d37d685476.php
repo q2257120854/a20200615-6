@@ -1,0 +1,128 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>登录</title>
+<link href="/Public/kj/css/layer.css" type="text/css" rel="stylesheet">
+<link href="/Public/kj/css/style.css" rel="stylesheet" type="text/css">
+<script src="/Public/kj/js/jquery.min.js"></script>
+<script src="/Public/kj/js/rem.js"></script>
+<script src="/Public/kj/js/safari.js"></script>
+<script src="/Public/kj/js/layer.js"></script>
+</head>
+<body>
+	<!--登录头部-->
+	<div class="loginbg">
+		<div class="title">
+			<span><img src="/Public/kj/img/icon1.png"></span>
+		</div>
+	</div>
+	<!--edn-->
+	<!--登录框-->
+	<div class="loginbord">
+		<div class="loginbox">
+			<form class="formpot" method="post" id="form">
+				<div class="login-inpt">
+					<ul>
+						<li><label>会员账号</label>
+							<div class="inpt-lit">
+								<input type="text" name="username" id="username" placeholder="请输入账户名">
+							</div></li>
+						<li><label>登录密码</label>
+							<div class="inpt-lit">
+								<input type="password" name="password" id="password"
+									placeholder="请输入密码">
+							</div></li>
+						<li><label>验证码</label>
+							<div class="inpt-lit Veroficationcode">
+								<input type="text" name="verify" id="verify"
+									placeholder="请输入验证码"> <i><img src="<?php echo U('Sem/verify');?>" onClick="this.src='<?php echo U('Sem/verify','','');?>?'+Math.random();" width="100%" height="100%"></i>
+							</div></li>
+					</ul>
+					<div class="RememberPassword">
+						<div class="checkicon">
+							<input type="checkbox" name="remember" value="1"  <?php if(!empty($rememberusername)): ?>checked="checked"<?php endif; ?>>
+						</div>
+						记住密码
+					</div>
+				</div>
+			</form>
+			<div class="loginbtn">
+				<button id="gologin">登录</button>
+			</div>
+		</div>
+		<div class="login-btom">
+			<a href="http://fir.im/vgyr" target="_black" class="fll">APP下载</a> <a
+				href="<?php echo U('Index/Login/editpwd');?>" class="frr">忘记密码</a>
+			<p>
+				没有账号？<a href="<?php echo U('Index/Login/register');?>" class="linkregister">立即注册</a>
+			</p>
+		</div>
+	</div>
+	<!--edn-->
+	<script>
+    $(function() {
+        $('#gologin').on('click', function () {
+            var username = $.trim($('#username').val());
+            var password = $.trim($('#password').val());
+            var verify = $.trim($('#verify').val());
+            if (!username) {
+                layer.open({
+                    content: '请输入用户名!',
+                    skin: 'msg',
+                    time: 2 //停留2秒
+                });
+                $('#user').focus();
+                return false;
+            }
+            if (!password) {
+                layer.open({
+                    content: '请输入密码!',
+                    skin: 'msg',
+                    time: 2
+                });
+                $('#password').focus();
+                return false;
+            }
+            if (!verify) {
+                layer.open({
+                    content: '请输入验证码!',
+                    skin: 'msg',
+                    time: 2
+                });
+                $('#verify').focus();
+                return false;
+            }
+            $.ajax({
+				url:'<?php echo U("Index/Login/index");?>',
+				type:'POST',
+				data:$("#form").serialize(),
+				dataType:'json',
+				success:function(json){
+					layer.open({
+	                    content: json.info,
+	                    skin: 'msg',
+	                    time: 2
+	                });
+					if(json.result ==1){
+						window.location.href=json.url;	
+					}
+				},
+				error:function(){
+					layer.open({
+	                    content: '网络故障!',
+	                    skin: 'msg',
+	                    time: 2
+	                });
+				}
+			})	
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{extend name="base" /}
+{block name="body"}
+
+    <!--tab标签-->
+    <div class="layui-tab-brief">
+
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" data-url="{:url('admin/message/update')}"  localtion-url="{:url('message/index')}">
+                   <div class="layui-form-item">
+                        <label class="layui-form-label">系统消息</label>
+                        <div class="layui-input-block">
+                         <textarea name="content" placeholder="请输入系统消息" class="layui-textarea">{$slide_category.content}</textarea>
+                       
+                        </div>
+                    </div>
+                  
+                            <input type="hidden" name="id" value="{$slide_category.id}">
+                         <div class="btable-paged" >
+				<div class="layui-main">
+                    <div class="formbtngroup">
+<button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">更新</button>
+<button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+</div>
+</div>
+        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

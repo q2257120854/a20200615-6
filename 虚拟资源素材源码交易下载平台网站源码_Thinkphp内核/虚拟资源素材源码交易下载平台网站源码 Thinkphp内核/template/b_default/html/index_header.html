@@ -1,0 +1,105 @@
+<div class="fly-header layui-bg-green" style="border-bottom: 1px solid #01AAED;">
+    <div class="layui-container">
+        <a class="fly-logo" href="{:url('bbs/index/index')}" style="top: 0;">
+            <img src="__ROOT__{$site_config['bbslogo']|default='__PUBLIC__images/logo.png'}" style="height:60px" alt="laysns"></a>
+        <ul class="layui-nav fly-nav layui-hide-xs">
+            {if CBOPEN==3}
+            <li class="layui-nav-item">
+                <a href="{:url('index/index/index')}" target="_self" title="">
+                    <i class="layui-icon"></i>CMS首页 </a>
+            </li>{/if} {volist name="nav" id="vo" } {eq name="vo.pid" value="1"}
+            <li class="layui-nav-item">
+                <a href="{$vo.link|getnavlink=$vo.sid}" target="{$vo.target}" title="{$vo.alias}">
+                    <i class="layui-icon">{$vo.icon}</i>{$vo.name}
+                </a>
+            </li>
+            {/eq} {/volist}
+        </ul>
+        <ul class="layui-nav fly-nav-user">
+            <input id="uid" type="hidden" value="{$Think.session.userid}" /> {if condition="$Think.session.userid neq ''"}
+            <!-- 登录后的状态 -->
+            <li class="layui-nav-item">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs">{$Think.session.username}</cite>
+
+                    <img src="{$Think.session.userhead|getheadurl}">
+                </a>
+
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="{:url('user/index/index')}">
+                            <i class="layui-icon">&#xe612;</i>个人中心</a>
+
+                    </dd>
+
+                    <dd>
+                        {if CBOPEN==3}
+                        <a href="{:url('index/index/index')}">
+                            <i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>CMS首页</a>
+                        {/if}
+                    </dd>
+                    <hr style="margin: 5px 0;">
+                    <dd>
+                        <a data-url="{:url('user/login/logout')}" location-url="{:url('bbs/index/index')}" href="javascript:void(0)" class="logi_logout" style="text-align: center;">退出</a></dd>
+                </dl>
+                <!-- <a href="{:url('user/index/topic')}"><span class="layui-badge" id="number">0</span></a> -->
+            </li>
+            <script>
+                layui.use(['jquery', 'layer'], function() {
+                    var $ = layui.jquery;
+                    var layer = layui.layer;
+
+                    function getmsgnum() {
+                        var elemUser = $('.fly-nav-user');
+                        $.getJSON("{:url('user/message/getUnreadMsg')}?", {
+                            _: new Date().getTime()
+                        }, function(res) {
+
+                            if (res.code == 200 && res.count > 0) {
+                                var msgurl = "{:url('user/index/message')}";
+                                var msg = $('<a class="fly-nav-msg" href="' + msgurl + '">' + res.count + '</a>');
+                                elemUser.append(msg);
+                                // msg.on('mouseenter', function() {
+                                //     layer.closeAll('tips');
+                                // });
+                                // layer.tips('你有 ' + res.count + ' 条未读消息，点击可查看', msg, {
+                                //     tips: 3,
+                                //     // tipsMore: true,
+                                //     fixed: true,
+                                //     time: 3000
+                                // });
+                                msg.on('click', function() {
+                                    $.post("{:url('user/message/readmsg')}", {}, function(res) {
+                                        if (res.status == 0) {
+                                            location.href = "{:url('user/index/message')}";
+                                        }
+                                    });
+                                });
+                            }
+
+                        });
+                    }
+                    getmsgnum();
+                    //1分钟执行一次
+                    setInterval(getmsgnum, 60000);
+
+                });
+            </script>
+            {else /}
+            <li class="layui-nav-item">
+                <a class="iconfont icon-touxiang layui-hide-xs" href="{:url('user/login/index')}"></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="{:url('user/login/index')}">登录</a></li>
+            <li class="layui-nav-item">
+                <a href="{:url('user/login/reg')}">注册</a></li>
+            <!-- <li class="layui-nav-item layui-hide-xs">
+                <a href="{:url('user/applogin/qqlogin')}" onclick="layer.msg('正在通过QQ登录', {icon:16, shade: 0.1, time:0})" title="QQ登录" class="iconfont icon-qq"></a>
+            </li> -->
+            <!--<li class="layui-nav-item layui-hide-xs">
+            <a href="/app/weibo/" onclick="layer.msg('正在通过微博登录', {icon:16, shade: 0.1, time:0})" title="微博登录" class="iconfont icon-weibo"></a>
+          </li>-->
+            {/if}
+        </ul>
+    </div>
+</div>

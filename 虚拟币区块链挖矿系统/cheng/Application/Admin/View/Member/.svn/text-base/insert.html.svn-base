@@ -1,0 +1,116 @@
+<extend name="Index:base" />
+
+		<block name="content">
+
+				<!-- 中间部分开始 -->
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<!-- 面包屑导航 -->
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="__APP__/admin/index">首页</a>
+							</li>
+							<li class="active">添加会员</li>
+						</ul><!-- .breadcrumb -->
+
+					</div>
+
+					<div class="page-content">
+
+						<!-- 页面导航 -->
+						<div class="page-header">
+							<h1>
+								添加用户
+								<a class="btn btn-info btn-sm pull-right" href="__CONTROLLER__/index">
+									<i class="icon-reply icon-only"></i>
+								</a>
+							</h1>
+						</div>
+
+						<div class="row" style="margin-top:35px;">
+							<div class="col-xs-12">
+								<form class="form-horizontal" role="form" action="__CONTROLLER__/add" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="adplace" value="1" />
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 用户名 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text" placeholder="请填写用户名" name="uname">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 密码 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="password" placeholder="请填写密码" name="password">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 确认密码 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="password" placeholder="请确认密码">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 邮箱 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="email" placeholder="请填写邮箱" name="email">
+										</div>
+									</div>
+									<!--文件上传-->
+									<!--<div class="form-group" style="margin-bottom:0px;">
+										<label class="col-sm-2 control-label no-padding-right"> 会员等级 </label>
+										<div class="col-sm-10">
+											<div class="ace-file-input no-padding col-xs-10 col-sm-5">
+												<input style="height:30px;" type="file" id="id-input-file-2" name="adpic" />
+											</div>
+										</div>
+									</div>-->
+								
+								
+
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-2 col-md-10">
+											<button class="btn btn-info" type="submit">
+												<i class="icon-ok bigger-110"></i>
+												提交
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset">
+												<i class="icon-undo bigger-110"></i>
+												重置
+											</button>
+										</div>
+									</div>
+								</form>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+				<!-- 中间部分结束 -->
+
+								
+		</block>
+		<block name="privatejs">
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			jQuery(function($) {
+
+				//设置当前页面的菜单高亮显示 开始
+				var nownav = "#sidebar a[href*=Member]";
+				var parentattr = $(nownav).parent().parent().attr("class");
+				$(nownav).parent().addClass('active');
+				if (parentattr == 'submenu') {
+					$(nownav).parent().parent().parent().addClass('active open');
+				};
+				//设置当前页面的菜单高亮显示 结束
+
+			});
+		</script>
+	</block>
+

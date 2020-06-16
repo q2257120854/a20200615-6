@@ -1,0 +1,297 @@
+{include file="public/head" /}
+
+
+
+{include file="public/s_head" /}
+
+		
+
+	<div>
+
+		<div class="wgldxcs">
+
+			<a href="{:Url('Systemset/index')}">
+
+				<span>
+
+					<img src="/image/weixin.png">
+
+				</span>
+
+				系统设置
+
+			</a>
+
+		</div>
+
+
+
+	</div>
+
+
+
+	<div style="margin-top:50px; border-top:1px solid #dedede; padding-top:20px">
+
+
+
+		<form action="{:Url('Systemset/savenew')}{if $news}?id={$news.id}{/if}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">排序<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="num" type="text" class="span1 m-wrap" id="num" value="{if $news}{$news.num}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">新闻标题<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="title" type="text" class="span5 m-wrap" id="title" value="{if $news}{$news.title}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+			
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">所属栏目</label>
+
+
+
+				<div class="controls">
+
+
+
+					<select name="cate" class="span3 m-wrap" id="cate">
+
+
+
+						{if $cate}
+
+							{foreach $cate as $item}
+
+								<option value="{$item.id}" {if $news}{if $news.cate==$item.id}selected=selected{/if}{/if}>{$item.name}</option>
+
+							{/foreach}
+
+						{/if}
+
+
+
+					</select>
+
+					<span style="color:#999999; line-height:40px; margin-left:20px;">选择所属栏目</span>
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">缩略图</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width:186px; height:85px">
+
+							{if $news && $news.thumb}
+
+							<img src="{$news.thumb}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:186px; height:85px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="thumb" id="thumb" /></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传372x170</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">简介</label>
+
+
+
+				<div class="controls">
+
+					<textarea class="span3 m-wrap" style="height:150px;" name="desc">{if $news}{$news.desc}{/if}</textarea>
+
+				</div>
+
+
+
+			</div>
+
+			
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">文章详情</label>
+
+
+
+				<div class="controls">
+
+
+					
+
+					<!-- <div id="editor" class="editors"> -->
+
+							
+					<div class="editors">
+						<script id="editor" name="content" type="text/plain">{if $news}{$news.text}{/if}</script>
+				    </div>
+				    <!-- </div> -->
+
+					
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="form-actions">
+
+
+
+				<button type="submit" class="btn green" id="tijiao" >确定</button>
+
+
+
+			</div>
+
+
+
+		</form>
+
+
+
+	</div>
+
+	
+
+<!-- 	<script type="text/javascript" src="/js/jquery.js"></script> -->
+
+	<!-- <script type="text/javascript" src="/editer/release/wangEditor.js"></script> -->
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+    	$(function() {
+	    	var ue = UE.getEditor('editor');
+		});
+        function checkinfo(){
+
+        	var lanmu = $("#cid").val();
+
+        	if(lanmu==0){
+
+        		alert("请选择所属栏目");
+
+        		return false;
+
+        	}
+
+
+			val = $("#ueditor_textarea_content").val();
+        	if(!val){
+
+        		alert("写点什么吧");
+
+        		return false;
+
+        	}else{
+
+        		$("#content").val(val);
+
+        	}
+
+        	
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+{include file="public/foot" /}

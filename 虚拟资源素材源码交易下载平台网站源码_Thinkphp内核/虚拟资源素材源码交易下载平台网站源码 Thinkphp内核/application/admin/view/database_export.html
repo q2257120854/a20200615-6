@@ -1,0 +1,225 @@
+{extend name="base" /} {block name="body"}
+<div class="admin-main">
+    <div class="layui-field-box layui-form">
+        <form name="myform" id="export-form" class="layui-form">
+            <div class="layui-box-searchber">
+
+                <a class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formexport" href="javascript:void(0)"><i class="layui-icon">&#xe628</i>备份表</a>
+                <a class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formoptimize" href="javascript:void(0)"><i class="layui-icon">&#xe62e</i>优化表</a>
+                <a class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formrepair" href="javascript:void(0)"><i class="layui-icon">&#xe631</i>修复表</a>
+            </div>
+
+            <table class="layui-table admin-table layui-elem-field">
+                <thead>
+                    <tr>
+                        <th width="48"><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                        <th>表名</th>
+                        <th width="60">数据量</th>
+                        <th width="60">引擎</th>
+                        <th width="120">字符集</th>
+                        <th width="120">数据大小</th>
+                        <th width="160">创建时间</th>
+                        <th width="160">更新时间</th>
+                        <th width="60">状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name='list' id='vo'}
+                    <tr>
+                        <td>
+                            <input lay-skin="primary" type="checkbox" class="subcheck" name="tables[]" value="{$vo.name}">
+                        </td>
+                        <td>{$vo.name}</td>
+                        <td align="center">{$vo.rows}</td>
+                        <td align="center">{$vo.engine}</td>
+                        <td align="center">{$vo.collation}</td>
+                        <td>{$vo.data_length|format_bytes}</td>
+                        <td align="center">{$vo.create_time}</td>
+                        <td align="center">{$vo.update_time}</td>
+                        <td align="center" id="{$vo.name}">未备份</td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+
+
+</div>
+
+
+{/block} {block name="script"}
+<script>
+    layui.use(['form'], function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+        form.on('checkbox(allChoose)', function(data) {
+            var child = jq(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item) {
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+
+        });
+
+
+        function getall(url) {
+
+            jq.getJSON(url, function(data) {
+                if (data.code == 200) {
+                    jq('#' + data.name).html(data.msg);
+                    // layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+
+                    //  });
+
+                    if (data.url != undefined) {
+
+                        getall(data.url);
+                    } else {
+
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        });
+                        // location.href ="{:url('Database/index')}?type=export";
+
+                    }
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        }
+
+
+        form.on('submit(formexport)', function(data) {
+            var url = "{:url('admin/database/export')}";
+            var tables = [];
+
+            jq('input.subcheck:checked').each(function() {
+                tables.push(jq(this).val());
+            });
+
+           if(tables.length==0){
+               layer.msg('没有选择任何表');
+               return false;
+           }     
+
+            jq.post(url, {
+                'tables': tables
+            }, function(data) {
+                if (data.code == 200) {
+
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+
+                    });
+                    if (data.url != undefined) {
+
+                        getall(data.url);
+                    } else {
+                        location.href = "{:url('Database/index')}?type=export";
+                    }
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+        form.on('submit(formrepair)', function(data) {
+            var url = "{:url('Database/repair')}";
+            var tables = [];
+
+            jq('input.subcheck:checked').each(function() {
+                tables.push(jq(this).val());
+            });
+            if(tables.length==0){
+               layer.msg('没有选择任何表');
+               return false;
+           }     
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            //var param = data.field;
+            jq.post(url, {
+                'tables': tables
+            }, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        // location.href =data.url;
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+
+            return false;
+        });
+        form.on('submit(formoptimize)', function(data) {
+            var url = "{:url('Database/optimize')}";
+            var tables = [];
+
+            jq('input.subcheck:checked').each(function() {
+                tables.push(jq(this).val());
+            });
+            if(tables.length==0){
+               layer.msg('没有选择任何表');
+               return false;
+           }     
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            //var param = data.field;
+            jq.post(url, {
+                'tables': tables
+            }, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+
+                        // location.href = data.url;
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+
+            return false;
+        });
+
+    });
+</script>
+
+{/block}

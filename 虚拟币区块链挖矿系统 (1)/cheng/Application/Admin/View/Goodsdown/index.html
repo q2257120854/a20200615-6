@@ -1,0 +1,254 @@
+<extend name="Index:base" />
+<!-- 写入主体部分 -->
+<block name="content">
+	<!-- 中间部分开始 -->
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="__APP__/admin">首页</a>
+				</li>
+				<li class="active">仓库商品</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<!-- 页面导航 -->
+			<div class="page-header">
+				<h1>
+					仓库商品
+					<small>
+						<i class="icon-double-angle-right"></i>
+						查看
+					</small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<!--搜索-->
+					<div class="row" style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;">
+							<div class="col-xs-12 col-sm-8">
+							<a class="btn btn-primary pull-left" style="padding:1px 10px;" href="__APP__/admin/goodsissue">
+								<i class="icon-plus-sign bigger-125"></i>
+								商品发布
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<form action="__CONTROLLER__/search" method="get">
+								<div class="input-group pull-right">
+									<input class="form-control search-query" type="text" value="{$searchval}" name="uname" placeholder="输入搜索内容...">
+									<span class="input-group-btn">
+										<button class="btn btn-info btn-sm" type="submit">
+											Search
+											<i class="icon-search icon-on-right bigger-110"></i>
+										</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--搜索结束-->
+					<div class="table-responsive">
+						<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="center" width="5%">
+										<label>
+											<input type="checkbox" class="ace" id="check"/>
+											<span class="lbl"></span>
+										</label>
+									</th>
+									<th class="center"  width="10%">商品图片</th>
+									<th class="center" >商品名称</th>
+									<th class="center" >价格</th>
+									<th class="center" >库存</th>
+									<th class="center" >总销量</th>
+									<th class="center" >发布时间</th>
+									<th class="center" width="10%">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<foreach name="goodupdata" item="vo">
+									<tr>
+										<td class="center">
+											<label>
+												<input type="hidden" name="gid[]" value="{$vo.gid}" />
+												<input type="checkbox" class="ace" name="box"/>
+												<span class="lbl"></span>
+											</label>
+										</td>
+										<td class="center"  width="80px">
+											<img width="40px" src="__PUBLIC__/Goodsuploads/{$vo.gpic|explode='/',###|implode='/30_',###}">
+										</td>
+										<td>{$vo.gname}</td>
+										<td class="center" >￥{$vo.goldprice}</td>
+										<td class="center" >{$vo.goodnums}</td>
+										<td class="center" >{$vo.gsellnums}</td>
+										<td class="center" >{$vo.gissuetime|date="Y-m-d H:i:s",###}</td>
+										<td>
+											<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+												<a class="blue" name="up_{$vo.gid}" data-toggle="modal" href="#myModal">
+													<i class="icon-upload bigger-130"></i>
+												</a>
+												<a class="green" href="__CONTROLLER__/modgoods/gid/{$vo.gid}">
+													<i class="icon-pencil bigger-130"></i>
+												</a>
+												<a name="del_{$vo.gid}" class="red" data-toggle="modal" href="#deleteModal">
+													<i class="icon-trash bigger-130"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								</foreach>
+								<tr style="height:50px;">
+									<td colspan="8">{$page}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 删除按钮弹出层 -->
+	<!-- S删除数据提示 -->
+	<div class="modal modal-small fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:300px;">
+			<div class="modal-content" style="top:160px;left:80%;">
+				<div class="modal-header" style="height:40px;padding:5px 10px;line-height:30px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<p class="bigger-120" id="myModalLabel">删除数据</p>
+				</div>
+				<div class="modal-body" style="height:70px;padding:5px 10px;line-height:60px;">
+					<p class="text-danger bigger-150">确定删除数据！</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-danger" id="delete-data">删除</button>
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- E删除数据提示 -->
+	<!-- S商品下架提示 -->
+	<div class="modal modal-small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:300px;">
+			<div class="modal-content" style="top:160px;left:80%;">
+				<div class="modal-header" style="height:40px;padding:5px 10px;line-height:30px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<p class="bigger-120" id="myModalLabel">商品上架</p>
+				</div>
+				<div class="modal-body" style="height:70px;padding:5px 10px;line-height:60px;">
+					<p class="text-danger bigger-150">确定上架该商品！</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-danger" id="up-goods">确定</button>
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- E商品下架提示 -->
+	<div id="delete-success" class="alert alert-success fade in col-xs-4" style="position:fixed;top:20px;left:35%;z-index:1000;">
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<strong>删除数据成功!</strong>
+	</div>
+	<div id="delete-error" class="alert alert-danger fade in col-xs-4" style="position:fixed;top:20px;left:35%;z-index:10000;">
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<strong>删除数据失败!</strong>
+	</div>
+</block>
+<block name="privatejs">
+	<!-- //加载公共js -->
+	<script type="text/javascript">
+		jQuery(function($) {
+			//设置当前页面的菜单高亮显示 开始
+			var nownav = "#sidebar a[href*=Goodsdown]";
+			var parentattr = $(nownav).parent().parent().attr("class");
+			$(nownav).parent().addClass('active');
+			if (parentattr == 'submenu') {
+				$(nownav).parent().parent().parent().addClass('active open');
+			};
+			//设置当前页面的菜单高亮显示 结束
+			//全选js
+			$('table th input:checkbox').on('click', function(){
+				var that = this;
+				$(this).closest('table').find('tr > td:first-child input:checkbox')
+				.each(function(){
+					this.checked = that.checked;
+					$(this).closest('tr').toggleClass('selected');
+				});
+			});
+			//删除弹窗和信息提示
+			$('#delete-success').fadeOut(0);
+			$('#delete-error').fadeOut(0);
+			var delid;
+			var delline;
+			// 操作的是a标签，里面的name属性，匹配给定的属性是以某些值开始的元素（^）
+			$('a[name^=del]').on('click',function(){
+				// split函数，以'_'拆分name属性，为一个数组，将下标为1的数值保存至变量，即要操作的id值
+				delid = ($(this).attr('name').split('_'))[1];
+				// 找到当前点击删除位置的tr行，父元素的父元素的父元素就是tr
+				delline = $(this).parent().parent().parent();
+			});
+			// 删除商品ajax操作
+			$('#delete-data').on('click',function(){
+				$.ajax({
+					url:"__CONTROLLER__/delgoods",
+					type:"get",
+					data:{gid:delid},
+					// 执行成功执行以下函数，返回值为data
+					success:function(data){
+						if (data == 1) {
+							// 干掉相应的tr行
+							delline.remove();
+							warningInfo("#success-info","删除成功！");
+						}else{
+							warningInfo("#error-info","删除失败！");
+						}
+						$('#deleteModal').modal('hide');
+					}
+				});
+			});
+			var upid;
+			var upline;
+			// 操作的是a标签，里面的name属性，匹配给定的属性是以某些值开始的元素（^）
+			$('a[name^=up]').on('click',function(){
+				// split函数，以'_'拆分name属性，为一个数组，将下标为1的数值保存至变量，即要操作的id值
+				upid = ($(this).attr('name').split('_'))[1];
+				// 找到当前点击删除位置的tr行，父元素的父元素的父元素就是tr
+				upline = $(this).parent().parent().parent();
+			});
+			// 商品上架ajax操作
+			$('#up-goods').on('click',function(){
+				$.ajax({
+					url:"__CONTROLLER__/upGoods",
+					type:"get",
+					data:{gid:upid},
+					// 执行成功执行以下函数，返回值为data
+					success:function(data){
+						if (data == 1) {
+							// 干掉相应的tr行
+							upline.remove();
+							warningInfo("#success-info","商品上架成功！");
+						}else{
+							warningInfo("#error-info","商品上架失败！");
+						}
+						$('#myModal').modal('hide');
+					}
+				});
+			}); 
+			//信息提示函数
+			function warningInfo(id,info){
+				$(id).removeClass('hide');
+				$(id).fadeOut(0);
+				$(id).children().eq(1).html(info);
+				$(id).fadeToggle(0).delay(1000).fadeToggle(1000);
+			}
+		});
+	</script>
+</block>

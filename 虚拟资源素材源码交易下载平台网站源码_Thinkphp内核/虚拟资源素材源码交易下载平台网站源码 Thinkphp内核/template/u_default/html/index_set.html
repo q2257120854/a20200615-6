@@ -1,0 +1,380 @@
+{extend name="index_base" /} {block name="seo"}
+<title>用户设置 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title" id="LAY_mine">
+                <li class="layui-this" lay-id="info">我的资料</li>
+                <li lay-id="avatar">头像</li>
+                <li lay-id="pass">密码</li>
+                <li lay-id="bind">帐号绑定</li>
+            </ul>
+            <div class="layui-tab-content" style="padding: 20px 0;">
+                <div class="layui-form layui-form-pane layui-tab-item layui-show">
+
+                    <div class="layui-form-item">
+                        <div class="layui-form-item">
+                            <label for="L_city" class="layui-form-label">用户名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" title="4-10个字节" required lay-verify="required" value="{$tptc.username}" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label for="L_city" class="layui-form-label">手机号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="mobile" required lay-verify="mobile" value="{$tptc.mobile}" class="layui-input">
+                            </div>
+                        </div>
+                        <label for="L_email" class="layui-form-label">邮箱</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_email" name="usermail" required lay-verify="email" autocomplete="off" value="{$tptc.usermail}" class="layui-input" {if condition="($tptc.status eq 2) OR ($tptc.status eq 5)" }disabled{/if}>
+                        </div>
+                        {if condition="($tptc.status eq 2) OR ($tptc.status eq 5)"}
+                        <div class="layui-form-mid layui-word-aux">如果您在邮箱已激活的情况下，变更了邮箱，需
+                            <a href="javascript:;" style="font-size: 12px; color: #4f99cf;" id="rejhemail">重新验证邮箱</a>。</div>
+                        {else /}
+                        <div class="layui-form-mid layui-word-aux"><a href="javascript:;" style="font-size: 12px; color: #4f99cf;" id="jhemail">激活邮箱</a>。</div>
+
+                        {/if}
+
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别</label>
+
+
+                        <div class="layui-input-block">
+                            <input type="radio" name="sex" value="1" title="男" {if condition="$tptc['sex'] eq 1" }checked{/if}>
+                            <input type="radio" name="sex" value="0" title="女" {if condition="$tptc['sex'] eq 0" }checked{/if}>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_city" class="layui-form-label">城市</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="L_city" name="userhome" value="{$tptc.userhome}" autocomplete="off" value="" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item layui-form-text">
+                        <label for="L_sign" class="layui-form-label">签名</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="description" autocomplete="off" class="layui-textarea" style="height: 80px;">{$tptc.description}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button class="layui-btn" key="set-mine" lay-filter="user_set" lay-submit>修改</button>
+                    </div>
+                    </form>
+                    {:hook('killad')}
+
+                </div>
+
+                <div class="layui-form layui-form-pane layui-tab-item">
+                    <form method="post">
+                        <div class="layui-form-item">
+                            <div class="avatar-add">
+                                <p>建议尺寸168*168，支持jpg、png、gif，最大不能超过50KB</p>
+
+                                <button id="image" type="button" class="layui-btn upload-img"> <i class="layui-icon"></i>上传头像 </button>
+                                <input type="hidden" name="userhead" value="{$tptc.userhead}" class="layui-input">
+
+                                <img id="headedit" src="{$tptc.userhead|getheadurl}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn" lay-submit="" lay-filter="user_headedit">确认修改</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="layui-form layui-form-pane layui-tab-item">
+                    <form method="post">
+
+                        {if condition="$tptc.password neq 0"}
+                        <div class="layui-form-item">
+                            <label for="L_nowpass" class="layui-form-label">当前密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" id="L_nowpass" name="nowpass" required lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        {else /}
+                        <input type="hidden" value="0" name="nowpass"> {/if}
+                        <div class="layui-form-item">
+                            <label for="L_pass" class="layui-form-label">新密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" id="L_pass" name="password" required lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label for="L_repass" class="layui-form-label">确认密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" id="L_repass" name="confirm_password" required lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn" key="set-mine" lay-filter="user_setedit" lay-submit>确认修改</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="layui-form layui-form-pane layui-tab-item">
+                    <ul class="app-bind">
+                        <li class="fly-msg app-havebind">
+                            <i class="iconfont icon-qq"></i> {if condition="$userinfo eq 0"}
+                            <a href="{:url('user/applogin/qqlogin')}" onclick="layer.msg('正在绑定QQ', {icon:16, shade: 0.1, time:0})" class="acc-bind" type="qq_id">立即绑定</a>
+                            <span>，即可使用QQ帐号登录本社区</span> {else /}
+                            <span>已成功绑定，您可以使用QQ帐号直接登录本社区。当然，您也可以</span>
+                            <a href="javascript:;" class="acc-unbind" id="unbind" data-id="{$userinfo.openid}" type="qq_id">解除绑定</a> {/if}
+                        </li>
+                        <script>
+                            layui.use('form', function() {
+                                var form = layui.form,
+                                    jq = layui.jquery;
+
+                                var url = "{:url('user/applogin/unbind')}";
+                                jq('#unbind').click(function() {
+                                    var openid = jq(this).data('id');
+                                    layer.confirm('您确定要解除绑定吗,解绑前请确定已填写邮箱和密码?', {
+                                        icon: 3,
+                                        title: '提示'
+                                    }, function(index) {
+                                        jq.post(url, {
+                                            openid: openid
+                                        }, function(data) {
+
+                                            if (data.code == 200) {
+                                                layer.msg(data.msg, {
+                                                    icon: 1,
+                                                    time: 1000
+                                                }, function() {
+                                                    location.reload();
+                                                });
+                                            } else {
+
+                                                layer.msg(data.msg, {
+                                                    icon: 2,
+                                                    anim: 6,
+                                                    time: 1000
+                                                });
+                                            }
+                                        });
+
+                                        layer.close(index);
+                                    });
+                                });
+                            });
+                        </script>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['form', 'upload', 'element'], function() {
+        var form = layui.form,
+            upload = layui.upload,
+            element = layui.element,
+            jq = layui.jquery;
+
+
+        upload.render({
+            elem: '#image',
+            url: '{:url("index/upload/upimage")}',
+            done: function(res) {
+                //如果上传失败
+                if (res.code == 0) {
+                    var src=res.data.src;
+                    jq('input[name=userhead]').val(src);
+                    headedit.src = src;
+                    return layer.msg('上传成功');
+                } else {
+                    //上传成功
+                    return layer.msg(res.msg);
+                }
+
+            }
+        });
+        jq('#jhemail').click(function() {
+            //激活邮箱直接变成disable，然后发送邮件。邮件验证成功后，该status变为2或者5
+
+            var email = jq('#L_email').val();
+            var url = "{:url('index/mail/yzemail')}";
+
+            if (email == '') {
+                layer.msg('邮箱不能为空', {
+                    icon: 2,
+                    anim: 6,
+                    time: 1000
+                });
+                return false;
+            }
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            jq.post(url, {
+                'email': email
+            }, function(data) {
+                layer.close(loading);
+                if (data.code == 1) {
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        jq('#L_email').attr('disabled', 'disabled');
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        });
+        var emailold = '';
+
+        jq('#rejhemail').click(function() {
+
+            var url = "{:url('index/mail/reyzemail')}";
+
+            if (jq(this).html() == '立即激活') {
+                var reemail = jq('#L_email').val();
+                if (reemail == emailold) {
+                    layer.msg('请更改邮箱进行验证', {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                } else {
+                    loading = layer.load(2, {
+                        shade: [0.2, '#000']
+                    });
+                    jq.post(url, {
+                        'email': reemail
+                    }, function(data) {
+
+                        if (data.code == 1) {
+                            layer.close(loading);
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1000
+                            }, function() {
+                                jq('#L_email').attr('disabled', 'disabled');
+                            });
+                        } else {
+
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                anim: 6,
+                                time: 1000
+                            });
+                        }
+                    });
+                }
+
+
+            } else {
+                emailold = jq('#L_email').val();
+                jq('#L_email').removeAttr('disabled');
+                jq(this).html('立即激活');
+
+            }
+
+        });
+
+
+
+        form.on('submit(user_set)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            var param = data.field;
+            jq.post('{:url("user/index/set")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/index/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+        form.on('submit(user_setedit)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            var param = data.field;
+            jq.post('{:url("user/index/setedit")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/index/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+        form.on('submit(user_headedit)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            console.log(data);
+            var param = data.field;
+            jq.post('{:url("user/index/headedit")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/index/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+    });
+</script>{/block}

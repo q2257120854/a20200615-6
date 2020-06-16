@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<title>养生链-MHC</title>
+<link rel="stylesheet" type="text/css" href="/Public/byb/css/common1.css" />
+<link rel="stylesheet" type="text/css" href="/Public/byb/css/style2.css" />
+<link href="/Public/btb/fonts/iconfont.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
+</head>
+<body>
+
+<div class="summary">
+<div class="head">
+<img id="photoImage" src="/Public/byb/Images/logo.png" style="width:80px;height:80px;z-index:0;">
+<div class="user_float">
+<a href="#" class="z-03">我的ID：{$minfo.id}</a> <span class="username">{:group($minfo['level'])}</span>
+</div>
+<div style="clear:both;"></div>
+<div class="headamount">
+<div class="p-amount" title="【冻结MHC：{$minfo.qjinbi|four_number=###}】"> <i>{$minfo.qjinbi|four_number=###}</i><br>
+【冻结MHC】 </div>
+<div class="p-amount" title="【可用MHC：{$minfo.jinbi|four_number=###}】"> <i>
+<label> {$minfo.jinbi|four_number=###}</label>
+</i><br>【可用MHC】</div>
+</div>
+</div>
+</div>
+<div style="width:95%; margin:0 auto;">
+<marquee style=" width:100%; height:20px; line-height:30px;" scrollamount="2" direction="left">
+<a href="{:U('Index/New/newsdetails',array('news_id'=>$news_info['id']))}" target="_blank" style="color:#DC143C;">{$news_info.title}</a>
+</marquee >
+</div>
+<div class="personal">
+<div class="personalout"> <a class="plist" href="javascript:alert('维护中，敬请期待！');"> <span class="picon0"></span><span class="ptit" title="完善个人信息">个人资料</span></a>
+<div class="personal-list"> <a class="plist" href="{:U('Index/Emoney/myjiaoyi')}"> <span class="picon1"></span><span class="ptit">我的交易</span></a>
+<a class="plist" href="{:U('Index/Shop/orderlist')}"> <span class="picon2"></span><span class="ptit">我的矿机</span></a>
+<!-- <a class="plist" href="{:U('Index/Index/recharge')}"> <span class="picon10"></span><span class="ptit">在线认购</span></a> -->
+<a class="plist" href="{:U('Index/Financial/kchange')}"> <span class="picon14"></span><span class="ptit">我要转账</span></a>
+<a class="plist" href="{:U('Index/Financial/kchangeoutlist')}"> <span class="picon15"></span><span class="ptit">转账记录</span></a>
+<a class="plist" href="{:U('Index/Financial/kslist')}"> <span class="picon11"></span><span class="ptit">矿机收益</span></a>
+<a class="plist" href="{:U('Index/Account/myAccount')}"> <span class="picon16"></span><span class="ptit">团队详情</span></a>
+<a class="plist" href="{:U('Index/Financial/kzlist')}"> <span class="picon13"></span><span class="ptit">团队收益</span></a>
+<a class="plist" href="{:U('Index/Financial/kglist')}"> <span class="picon3"></span><span class="ptit">财务明细</span></a>
+
+<a class="plist" href="{:U('Account/tuiguangma')}"> <span class="picon4"></span><span class="ptit">推广中心</span></a>
+<a class="plist" href="{:U('Index/msg/addmsg')}"> <span class="picon8"></span><span class="ptit">在线留言</span></a>
+<!-- <a class="plist" href="{:U('Index/Shop/shop')}"> <span class="picon9"></span><span class="ptit">MHC商城</span></a> -->
+<a class="plist" href="javascript:alert('暂未开放，敬请期待！');"> <span class="picon10"></span><span class="ptit">MHC钱包</span></a>
+</div>
+<div class="personalout"> <a class="plist" href="{:U('Index/new/news')}"> <span class="picon5"></span><span class="ptit">系统消息（<i class="pink">{$w_read}</i> 条未读）</span></a> </div>
+
+<div class="personalout"> <a class="plist" href="{:U('Index/PersonalSet/updatePass')}"> <span class="picon6"></span><span class="ptit">安全设置</span></a> </div>
+<div class="personalout"> <a class="plist" href="{:U('Index/Index/logout')}"> <span class="picon7"></span><span class="ptit">退出系统</span></a> </div>
+<div style="text-align:center;margin:0px 0; font:normal 14px/24px 'MicroSoft YaHei';color: red">
+人人懂养生 | 全民要健康</div>
+<script type="text/javascript" src="/Public/byb/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/Public/byb/js/modal.js"></script>
+
+
+	<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+</body>
+</html>

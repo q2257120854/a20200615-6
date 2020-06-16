@@ -1,0 +1,27 @@
+<view class="containers">
+    <view class="rengwu">
+        <view class="title">做任务</view>
+        <view class="item">
+            <view>邀请新用户</view>
+            <view>+{{invite_award}}次</view>
+            <view class="right">
+                <button class="but" openType="share">去邀请</button>
+            </view>
+        </view>
+    </view>
+    <ad unit-id="adunit-e2498d84f6dc4c56" ad-type="video" ad-theme="white"></ad>
+    <view wx:for="{{tuijian}}" wx:key="key">
+        <navigator appId="{{item.app_id}}" class="items" extraData="" hoverClass="none" openType="navigate" path="{{item.path}}" target="miniProgram" version="release" wx:if="{{item.app_id.length>1}}">
+            <image src="{{url}}{{item.img}}"></image>
+            <view class="t">
+                <text>{{item.app_name}}</text>
+            </view>
+        </navigator>
+        <navigator class="items" hoverClass="none" openType="navigate" url="../../pages/web/index?url={{item.path}}" wx:else>
+            <image src="{{url}}{{item.img}}"></image>
+            <view class="t">
+                <text>{{item.app_name}}</text>
+            </view>
+        </navigator>
+    </view>
+</view>

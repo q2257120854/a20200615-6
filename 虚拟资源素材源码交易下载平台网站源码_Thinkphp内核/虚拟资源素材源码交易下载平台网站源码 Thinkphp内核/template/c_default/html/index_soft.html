@@ -1,0 +1,130 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$t.title|strip_tags} - {$site_config['site_title']}</title>
+<meta name="keywords" content="{:isset($t['keywords'])?$t['keywords']:$site_config['seo_keyword']}">
+<meta name="description" content="{:isset($t['description'])?strip_tags(htmlspecialchars_decode($t['description'])):$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/soft.css">
+<div class="container weizhi_now visible-md visible-lg">
+</div>
+<div class="container soft-container clearfix">
+    <div class="jc_title">
+        <div class="clearfix">
+            <h3 class="col-xs-12 col-sm-10"><span class="layui-icon">&#xe641;</span>{$t.title}{if condition="session('userid') eq 1"}
+
+                <a style="float:left" href="{:url('index/articles/edit',array('id'=>$t['id']))}" target="_blank">【编辑】</a> {/if}
+            </h3>
+            <!--<a href="#download" class="hidden-xs col-sm-2">下载地址>></a>-->
+        </div>
+    </div>
+    <div class="jc_jietu col-md-4 visible-md visible-lg">
+        <img src="{:$t['coverpic']?$t['coverpic']:DEF_COVER}" title="{$t.title}" />
+    </div>
+    <div class="jc_jieshao col-md-8 col-xs-12">
+        <ul class="clearfix col-xs-12 col-md-9">
+            <li class="col-xs-12 col-sm-6">教程语言：
+                <font>简体中文</font>
+            </li>
+            <li class="col-xs-12 col-sm-6">更新时间：
+                <font>{$t.updatetime|date='Y-m-d H:i',###}</font>
+            </li>
+            <li class="col-xs-12 col-sm-6">教程类别：
+                <font>技术教程</font>
+            </li>
+            <li class="col-xs-12 col-sm-6 hidden-xs">授权方式：
+                <font>共享版</font>
+            </li>
+            <li class="col-xs-12 col-sm-6 hidden-xs">运行环境：
+                <font>WinAll/Android/iOS</font>
+            </li>
+            <li class="col-xs-12 col-sm-6">软件等级：
+                <font><img src="__HOME__/images/s3.gif" /></font>
+            </li>
+            <li class="col-xs-12 col-sm-6">浏览统计：
+                <font class="ar_person">{$t.view}</font>
+            </li>
+            <a href="#download" class="col-xs-12 col-md-6 download_now hidden-sm hidden-xs"><span class="glyphicon glyphicon-download-alt"></span>立即下载/观看</a>
+        </ul>
+        <div class="jc_other col-md-3 visible-lg visible-md clearfix">
+            <div><span style="background-color: #22c66e; background-position: -408px -361px;"></span><a href="/">回到首页</a></div>
+            {if $t['userid'] neq session('userid') && session('userid') neq ''}
+            <div><span style="background-color: #ff5e5e; background-position: -370px -361px;"></span><a href="javaScript:void(0)" data-id="{$t.id}" class="shoucang">{if condition="$iscollect eq 1"}<e style="display:block;background:#dedede">取消收藏</e>{else /}收藏本文{/if}</a></div>
+            {/if}
+            <div><span style="background-color: #59aff8; background-position: -179px -403px;"></span><a href="#download">下载教程</a></div>
+            <div><span style="background-color: #ff8200; background-position: -446px -361px;"></span><a href="#SOHUCS">网友评论</a></div>
+        </div>
+    </div>
+    <div class="jc_jieshao1 clearfix col-xs-12">
+
+        <fieldset class="layui-elem-field jc-js" style="border-radius:6px;">
+            <legend><span><i class="layui-icon">&#xe60a;</i>教程简介</span></legend>
+            <div class="layui-field-box jc_jieshao_con" style="margin-top: 0px;">
+                {$t.content|htmlspecialchars_decode}
+                {:hook('viewVideo',array('id'=>$t.id,'type'=>1))}
+            </div>
+        </fieldset>
+        {if condition="$t['keywords'] neq ''"}
+        <p> {volist name="$t.keyword_arr" id="vo"}
+    
+            <a class="layui-btn layui-btn-primary layui-btn-xs"  href="{:url('index/index/search',array( 'ks'=>$vo))}" target="_blank">{$vo}</a>
+       
+          {/volist}
+          </p>
+        {/if}
+        <div class="download col-md-8 col-xs-12 clearfix" id="download">
+            {:hook('attachlinkshow',array('id'=>$t.id,'type'=>1))}
+            <div class="jc_jieshao_title clearfix" style="margin-top:11px;border:0;"> <span><i class="layui-icon" style="top: 0px;font-size:19px;margin-right:5px;">&#xe613;</i>作者信息</span> </div>
+            <div class="zuozxinxi">
+                <img src="{$t.userhead|getheadurl}" class="Rotation" />
+                <span class="zz_nick col-xs-5 col-sm-3">{$t.username}</span>
+                <span> {if $t.sex}<i class="layui-icon" style="font-size: 30px;font-weight:bold; color: #24c3f9;">&#xe662;</i>{else /} <i class="layui-icon" style="font-size: 30px; font-weight:bold;color: #ff51ba;"> &#xe661;</i>{/if}</span>
+                <br /><a href="{:url('user/index/home',array('id'=>$t.userid))}" target="_blank" class="col-xs-5 col-sm-3">查看作者</a>
+            </div>
+        </div>
+
+        <div class="downph col-md-4 col-xs-12 clearfix">
+            <div class="jc_jieshao_title clearfix" style="margin-top:11px;border:0;"> <span><i class="glyphicon glyphicon-signal" style="top: 3px;font-size:19px;"></i>本周排行</span> </div>
+            <ul class="clearfix" style="text-align: right;">
+                {volist name="artphb" id="vo" key="k"}
+                <li>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank"> <i>{$k}</i>
+                        <p>{$vo.title}</p>
+                    </a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+
+
+    </div>
+    <div class="col-xs-12">
+        {include file="index/comment"}
+    </div>
+</div>
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+        //收藏
+        jq('.shoucang').click(function() {
+            var idnum = jq(this).data('id');
+            var obj = jq(this);
+            jq.post('{:url("index/api/zan_collect")}', {
+                'zan_collect': 'collect',
+                'id': idnum,
+                'type': 3
+            }, function(data) {
+                if (data.code == 200) {
+                    if (data.res == '减') {
+                        //  jq(obj).removeClass('layui-btn-danger');
+                        obj.html("收藏本文");
+                    } else {
+                        //  jq(obj).addClass('layui-btn-danger');
+                        obj.html('<e style="display:block;background:#dedede">取消收藏</e>');
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+{/block}

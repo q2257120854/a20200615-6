@@ -1,0 +1,12 @@
+ <ul class="upage">
+ <li class="l1"><img src="img/ok.gif" style="cursor:pointer;" onclick="pagegoto('<?=$nowurl?>','<?=$nowwd?>')" width="40" height="20" /></li>
+ <li class="l2"></li>
+ <li class="l3"><a href="<?=$nowurl?>?page=<?=$page_count?>&<?=$nowwd?>"></a></li>
+ <li class="l4"><? if($page<$page_count){?><a href="<?=$nowurl?>?page=<?=$page+1?>&<?=$nowwd?>"></a><? }else{?><a href="<?=$nowurl?>?page=<?=$page_count?>&<?=$nowwd?>"></a><? }?></li>
+ <li class="l2"></li>
+ <li class="l5">共<?=$page_count?>页，<?=$count?>条数据</li>
+ <li class="l6"><span>第</span><input name="" id="pagetext" value="<?=$page?>" type="text" /><span>页</span></li>
+ <li class="l2"></li>
+ <li class="l7"><? if($page>1){?><a href="<?=$nowurl?>?page=<?=$page-1?>&<?=$nowwd?>"></a><? }else{?><a href="<?=$nowurl?>?<?=$nowwd?>"></a><? }?></li>
+ <li class="l8"><a href="<?=$nowurl?>?<?=$nowwd?>"></a></li>
+ </ul>

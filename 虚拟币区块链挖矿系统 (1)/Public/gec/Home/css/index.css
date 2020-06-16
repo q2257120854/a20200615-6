@@ -1,0 +1,532 @@
+/* 公共样式 */
+body{
+	font-size: 10px;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	color: #fff;
+	background: #21202D;
+}
+div,p,h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
+ul,li,dl,dt,dd{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	color: #fff;
+	text-decoration: none;
+}
+a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.fc{
+	clear: both;
+}
+.myimg{
+	width: 100%;
+}
+#mybox{
+	height:600px;
+	overflow-y: auto;
+}
+/* head */
+#head{
+	width: 100%;
+	height: 100px;
+}
+#head .top{
+	height: 60px;
+	overflow:hidden;
+}
+#head .top img{
+	width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+#head .top .xx{
+    height:100%;
+	width: calc( 100% - 151px );
+}
+#head .top .xx>h2{
+   width:100%;
+   text-align:center;
+   line-height:35px;
+   font-size:20px;
+   color:#
+}
+#head .top .xx>p{
+width:100%;
+text-align:center;
+
+}
+#head .bot .fl{
+    border-right:1px solid #fff;
+	margin-left:-1px;
+}
+#head .bot>.fl>ul{
+    width:calc( 100% - 2px );
+}
+#head .top .fr{
+	display: block;
+	width: 70px;
+	height:35px;
+	background: #E34D4D;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px 1px #444;
+	margin-top: 12.5px;
+	margin-right: 10px;
+}
+#head .top .fr>a{
+    display:block;
+	height:100%;
+	width:100%;
+}
+#head .bot{
+	border-top: 1px solid #fff;
+	height:40px;
+}
+#head .bot>div{
+    width:50%;
+	height:39px;
+	position:relative;
+	text-align:center;
+	line-height:40px;
+	font-size:16px;
+}
+#head .bot>div>ul{
+background:#21202D;
+color:#fff;
+position:absolute;
+top:40px;
+left:0;
+height:0;
+width:100%;
+z-index:1200;
+overflow:hidden;
+border:1px solid #fff;
+border-top:none;
+}
+#head .bot>div>ul>li{
+width:100%;
+height:30px;
+line-height:30px;
+font-size:14px;
+}
+/* footer */
+#footer{
+	height: 50px;
+	width: 100%;
+	background: #131224;
+	position: fixed;
+	bottom: 0;
+}
+#footer ul>li{
+   width: 25%;
+   text-align:  center;
+   height: 50px;
+   color: #999;
+}
+#footer ul>li>a{
+	display: block;
+    line-height: 20px;
+    width: 100%;
+    color: #999;
+}
+#footer ul>li>p{
+	margin-top: 10px;
+}
+#footer ul> .active{
+	color: #0067AC;
+}
+#footer ul> .active>a{
+	color: #0067AC;
+}
+/* echars */
+#echars{
+	width: 100%;
+	height: auto;
+}
+/* ts */
+#ts{
+	color: #efefef;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+/* mybtn */
+#mybtn{
+	margin-top: 10px;
+}
+#mybtn>div{
+	width: 30%;
+	height: 60px;
+	text-align: center;
+}
+#mybtn .bz{
+	margin-left: 5%;
+	background: #E34D4D;
+	border-radius: 10px;
+}
+#mybtn .bd{
+    margin-right: 5%;
+    background: #01B85B;
+    border-radius: 10px;
+}
+#mybtn .bn{
+	margin-top:10px;
+}
+#mybtn .bn b{
+	font-size: 20px;
+}
+#mybtn .tatle{
+    font-size: 20px;
+    line-height: 35px;
+}
+/* buy_box */
+#buy_box{
+	background: #f9f9f9;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	height: 0;
+	width: 100%;
+}
+#buy_box .top{
+	height: 60px;
+	background: #e9e9e9;
+}
+#buy_box .top .active{
+	background: #0067AC;
+	color: #fff;
+}
+#buy_box .syxj{
+	margin-top: 10px;
+	float: left;
+	width: 100px;
+    line-height: 40px;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 16px;
+    text-align: center;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border: 1px solid #0067AC;
+    color: #444;
+}
+#buy_box .sydjq{
+    margin-top: 10px;
+	float: left;
+    width: 100px;
+    line-height: 40px;
+    position: relative;
+    left: 50%;
+    font-size: 16px;
+    text-align: center;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    border: 1px solid #0067AC;
+    color: #444;
+}
+#buy_box .close{
+	color: #444;
+	font-size: 20px;
+	font-weight: 600;
+	margin-right: 20px;
+	line-height: 60px;
+}
+
+#buy_box .q1{
+	height: 30px;
+}
+#buy_box .q1>div{
+	font-size: 16px;
+	line-height: 30px;
+}
+#buy_box .q1 i{
+	display: inline-block;
+     width: 25px;
+     height: 25px;
+     background: #E34D4D;
+     border-radius: 2px;
+     color: #fff;
+     line-height: 25px;
+     text-align: center;
+     font-style: normal;
+}
+#buy_box .q1 .fl{
+	color: #0067AC;
+	margin-left: 20px;
+}
+#buy_box .q1 .fr{
+	color: green;
+	margin-right: 20px;
+}
+#buy_box .q2{
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 10px;
+	height: 35px;
+	position: relative;
+}
+#buy_box .q2>span{
+	color: #E34D4D;
+}
+#buy_box .q2 .min,#buy_box .q2 .add{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	line-height: 40px;
+	text-align: center;
+}
+#buy_box .q2 .xx{
+	display: block;
+	width: 60px;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	margin-left: -30px;
+	font-size: 12px;
+}
+#buy_box .price{
+	line-height: 45px;
+	border-top: 1px solid #ddd;
+	width: 100%;
+    height: 45px;
+    color: #444;
+}
+#buy_box .price .fl{
+	margin-left: 10px;
+}
+#buy_box .price .fr{
+	margin-right: 10px;
+}
+#buy_box .bottom{
+	font-size: 16px;
+	height: 60px;
+	background: #1A172F;
+	line-height: 60px;
+}
+#buy_box .bottom .fl{
+	width: 65%;
+	background: #1A172F;
+	text-align: center;
+	height:100%;
+}
+#buy_box .bottom .fr{
+    height:100%;
+	width: 35%;
+	background: #e7393c;
+	text-align: center;
+}
+#buy_box .content2{
+	display: none;
+    height: 137px;
+}
+#buy_box .content2 .quan{
+	height: 60px;
+}
+#buy_box .content2 .quan .fl{
+   width: 30px;
+   height: 30px;
+   border: 1px solid #e4393c;
+   border-radius: 5px;
+   line-height: 30px;
+   text-align: center;
+   color: #e4393c;
+   font-size: 14px;
+   margin: 15px;
+}
+#myquan{
+	position: relative;
+	width: calc( 100% - 100px );
+	height: 35px;
+    border: 1px solid #e4393c;
+    color: #444;
+    margin-top: 12px;
+    border-radius: 5px;
+    margin-right: 25px;
+    font-size: 12px;
+    line-height: 35px;
+    text-align: left;
+    padding-left: 10px;
+}
+#myquanbox{
+	position: absolute;
+	left: 0;
+	top: 35px;
+	width: 100%;
+	height: 0;
+	overflow-y:auto; 
+}
+#myquanbox li{
+    height: 35px;
+    width: calc( 100% - 10px );
+    background: #e4393c;
+    color: #fff;
+    border-radius: 5px;
+    border-top: 2px solid #fff;
+    padding-left: 10px;
+}
+#buy_box .content2 .qxx{
+	width: 100%;
+	border-top: 1px solid #666;
+	color: #444;
+	line-height: 40px;
+	font-size: 14px;
+}
+#buy_box .content2 .qxx .fr{
+	margin-right: 45px;
+}
+#buy_box .content2 .qxx b{
+	color: red;
+}
+#fsx{
+    margin-top:2px;
+	height: 29px;
+	color: #fff;
+	position: relative;
+	z-index: 100;
+}
+#fsx ul{
+	height: 100%;
+}
+#fsx ul>li{
+	width: 25%;
+	line-height: 29px;
+	text-align: center;
+}
+#fsx ul>li.active{
+	background: #fff;
+	color: #0067AC;
+}
+#buyPrice{
+	width: 50px;
+	height: 15px;
+	margin-top: 2.5px;
+	text-align: center;
+}
+/* 加载提示 */
+#loading{
+	display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -73.5px;
+    text-align: center;
+    font-size: 16px;
+}
+#loading .load-container{
+	width: 150px;
+	height: 30px;
+	margin: 0 auto;
+}
+#loading .load7 .loader{
+	font-size: 14px;
+	margin: 0 auto;
+}
+#loading .load7 a{
+	position: relative;
+	top: 45px;
+	padding: 5px 7px;
+    background: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: orange;
+    font-weight: 600;
+}
+/* 代金券 */
+#myquan>span{
+	display: block;
+	width: calc( 100% - 20px );
+	padding-left: 10px;
+	height: 29px;
+	line-height: 29px;
+	margin-top: 3px;
+	border-radius: 5px;
+}
+/* modal */
+#mymodal{
+	position: fixed;
+	top: 30%;
+	left: 0;
+	width: 90%;
+	margin-left:5%;
+	background: #f9f9f9;
+	color: #444;
+	border-radius: 10px;
+	z-index:10000;
+	height: auto;
+}
+#mymodal>h2{
+   width: 100%;
+   text-align: center;
+   line-height: 50px;
+   font-size: 18px;
+   border-bottom: 1px solid #ddd;
+   font-weight:500;
+}
+#mymodal>input{
+	display: block;
+	width: 70%;;
+	height: 30px;
+	margin: 0 auto;
+	margin-top: 25px;
+	border-radius: 10px;
+	outline: none;
+	margin-left:15%;
+	text-align:center;
+	font-size: 16px;
+}
+#mymodal>button{
+   display: block;
+   margin: 0 auto;
+   width: 70%;
+   height: 30px;
+   margin-left:15%;
+   line-height: 30px;
+   color: #fff;
+   margin-top: 20px;
+   background: #0067AC;
+   border: none;
+   border-radius: 10px;
+   box-shadow: 1px 1px 1px 1px #ddd;
+   outline: none;
+   font-size:20px;
+}
+#mymodal>p{
+	width: 100%;
+	text-align: center;
+	margin-top: 5px;
+	font-size:14px;
+	line-height:40px;
+}
+/* modal-box */
+#modal-box{
+    position:fixed;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,.5);
+	top:0;
+	z-index:2000;
+}

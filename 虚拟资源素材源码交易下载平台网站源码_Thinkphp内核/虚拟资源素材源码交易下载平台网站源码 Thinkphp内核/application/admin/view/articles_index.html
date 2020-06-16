@@ -1,0 +1,329 @@
+{extend name="base" /} {block name="css"}{/block} {block name="body"}
+<div class="admin-main layui-form">
+    <div class="layui-field-box">
+        <div class="layui-box-searchber" style="overflow: visible">
+            <a class="layui-btn layui-btn-sm" href="{:url('admin/articles/add')}">新增文章</a>
+            <button class="layui-btn layui-btn-danger layui-btn-sm" data-url="{:url('articles/alldelete')}" lay-submit lay-filter="alldelete">删除选中</button>
+            <div class="layui-form-pane">
+            <form class="layui-form" action="{:url('admin/articles/index')}" method="get">
+
+             
+                    <div class="layui-inline" style="width:100px">
+                        <select name="tid" lay-filter="selecttid">
+                                <option value="">栏目分类</option>
+                           
+                                {volist name="category_level_list" id="vo"}
+                                <option {if condition="$tid eq $vo['id']"}selected="selected"{/if} value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' --';}{/php}{/neq}{$vo.name}</option>
+                                {/volist}
+                              </select>
+                    </div>
+                    <div class="layui-inline" style="width:100px">
+                        <select name="open" lay-filter="selectopen">
+                                <option  value="">状态</option>
+                                <option {if condition="$open eq '0'"}selected="selected"{/if} value="0">待审</option>
+                                <option {if condition="$open eq 1"}selected="selected"{/if} value="1">正常</option>
+                                <option {if condition="$open eq 2"}selected="selected"{/if} value="2">不通过</option>
+                                <option {if condition="$open eq -1"}selected="selected"{/if} value="-1">关闭</option>
+                              </select>
+                    </div>
+                    <div class="layui-inline" style="width:100px">
+                        <input type="text" placeholder="开始日期" value="{$startdate}" name="startdate" class="layui-input" id="startdate">
+                    </div>
+                    <div class="layui-inline" style="width:100px">
+                        <input type="text" placeholder="结束日期" value="{$enddate}" name="enddate" class="layui-input" id="enddate">
+                    </div>
+                    <div class="layui-inline" style="width:100px">
+                        <select name="settop" lay-filter="selectopen">
+                                <option  value="">是否置顶</option>
+                                <option {if condition="$settop eq 1"}selected="selected"{/if} value="1">置顶</option>
+                                <option {if condition="$settop eq '0'"}selected="selected"{/if} value="0">普通</option>
+                              </select>
+                    </div>
+                    <div class="layui-inline" style="width:100px">
+                        <select name="choice" lay-filter="selectopen">
+                                <option  value="">是否精选</option>
+                                <option {if condition="$choice eq 1"}selected="selected"{/if} value="1">精选</option>
+                                <option {if condition="$choice eq '0'"}selected="selected"{/if} value="0">一般</option>
+                              </select>
+                    </div>
+
+
+                    <div class="layui-inline" style="width:100px">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="关键词" class="layui-input">
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">每页条数</label>
+                        <div class="layui-inline" style="width:50px"><input type="number" name="perpage" value="{$perpage}" title placeholder="每页条数" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn  layui-btn-sm">搜索</button>
+                    </div>
+               
+
+
+
+            </form>
+        </div>
+        </div>
+
+        <hr>
+
+        <table class="layui-table admin-table">
+            <thead>
+                <tr>
+                    <th width="10px" align="center"><input type="checkbox" lay-skin="primary" name="checkAll" lay-filter="checkAll"></th>
+                    <th width="20px" style="text-align:center">ID</th>
+                    <th>文章标题</th>
+                    <th width="60px" style="text-align:center">作者</th>
+                    <th width="70px" style="text-align:center">状态</th>
+                    <th width="60px" style="text-align:center">是否顶置</th>
+                    <th width="60px" style="text-align:center">是否精选</th>
+                    <th width="60px" style="text-align:center">首页轮播</th>
+                    <th width="100px" style="text-align:center">所属栏目</th>
+                    <th width="100px" style="text-align:center">更新时间</th>
+                    <th width="210px" style="text-align:center">操作</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                {volist name="article_list" id="vo"}
+                <tr>
+                    <td align="center"><input type="checkbox" lay-skin="primary" name="ids[{$vo.id}]" lay-filter="checkOne" value="{$vo.id}"></td>
+                    <td align="center">{$vo.id}</td>
+                    <td style="padding-left: 20px;"><a target="_blank" href="{:routerurl('index/index/'.($vo.template),array('id'=>$vo.id))}">{$vo.title|mb_substr=0,20,'utf-8'}</a></td>
+                    <td align="center">{$vo.username}</td>
+                    <td align="center">
+                        {if $vo.open eq 0}<span style="padding:5px;color:#FFF;background:green">待审</span>{elseif $vo.open eq 1}正常 {elseif $vo.open eq 2}<span style="padding:5px;color:#FFF;background:red">不通过</span>{else /}<span style="padding:5px;color:#FFF;background:grey">隐藏</span>                        {/if}
+                    </td>
+                    <td align="center">
+                        <input type="checkbox" lay-skin="switch" lay-text="置顶|置顶" lay-filter="switchsettop" value="{$vo['id']}" {php}echo $vo[ 'settop']==1 ? 'checked' : '';{/php}>
+                    </td>
+                    <td align="center">
+                        <input type="checkbox" lay-skin="switch" lay-text="精选|精选" lay-filter="switchchoice" value="{$vo['id']}" {php}echo $vo[ 'choice']==1 ? 'checked' : '';{/php}>
+                    </td>
+                    <td align="center">
+                        <input type="checkbox" lay-skin="switch" lay-text="轮播|轮播" lay-filter="switchcarousel" value="{$vo['id']}" {php}echo $vo[ 'carousel']==1 ? 'checked' : '';{/php}>
+                    </td>
+                    <td align="center"><a href="{:url('admin/articles/index')}?tid={$vo.tid}">{$vo.name}</a></td>
+                    <td align="center">{$vo.time|friendlyDate}</td>
+                    <td align="center">
+                        <button class="layui-btn layui-btn-danger layui-btn-sm {if $vo.open neq 1}layui-btn-disabled{/if} reward" data-uid="{$vo.uid}" data-id="{$vo.id}" data-url="{:url('articles/edit',array('id'=>$vo['uid']))}" {if $vo.open neq 1}disabled="disabled" {/if} title="奖励作者积分">奖励</button>
+                        <a class="layui-btn layui-btn-normal layui-btn-sm" href="{:url('articles/edit',array('id'=>$vo['id']))}">编审</a>
+                        <a class="elementdel layui-btn layui-btn-danger layui-btn-sm" href="javascript:;" data-id="{$vo.id}" data-url="{:url('admin/articles/delete',array('id'=>$vo['id']))}" title="删除">删除</a>
+                    </td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+{/block} {block name="page"}
+<div class="btable-paged">
+    <div class="layui-main">
+        {$article_list->render()}
+    </div>
+</div>
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+{/block} {block name="script"}
+
+<script>
+    layui.use(['form', 'laydate'], function() {
+        var form = layui.form,
+            laydate = layui.laydate,
+            $form = $('form'),
+            jq = layui.jquery;
+        form.on('select()', function(data) {
+            $form.submit();
+        });
+
+        laydate.render({
+            elem: '#startdate' //指定元素
+                ,
+            done: function(value, date) {
+                $form.submit();
+            }
+        });
+        laydate.render({
+            elem: '#enddate' //指定元素
+                ,
+            done: function(value, date) {
+                $form.submit();
+            }
+        });
+        $(".reward").on('click', function() {
+            var author = $(this).parent().parent().find("td").eq(3).text();
+            var fid = $(this).data('id');
+            var uid = $(this).data('uid');
+            layer.prompt({
+                title: '奖励作者' + author
+            }, function(val, index) {
+                var ival = parseInt(val);
+                var url = "{:url('admin/point_note/reward')}";
+                if (!isNaN(ival)) {
+
+                    jq.post(url, {
+                            type: 'rewardArticleAuthor',
+                            score: $.trim(val),
+                            fid: fid,
+                            uid: uid
+                        },
+                        function(data) {
+
+                            if (data.code == 200) {
+
+                                layer.msg(data.msg, {
+                                    icon: 1,
+                                    time: 1000
+                                });
+                            } else {
+
+                                layer.msg(data.msg, {
+                                    icon: 2,
+                                    anim: 6,
+                                    time: 1000
+                                });
+                            }
+                            layer.close(index);
+                        });
+                } else {
+                    layer.msg(val + "不是数字");
+
+                }
+            });
+
+        });
+        var status = 0;
+        form.on('switch(switchopen)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            if (data.elem.checked) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+            var url = "{:url('admin/articles/toggle')}?id=" + data.value + '&status=' + status + '&name=open';
+
+
+            jq.get(url, function(data) {
+
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+        form.on('switch(switchchoice)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            if (data.elem.checked) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+            var url = "{:url('admin/articles/toggle')}?id=" + data.value + '&status=' + status + '&name=choice';
+
+
+            jq.get(url, function(data) {
+
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+        form.on('switch(switchsettop)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            if (data.elem.checked) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+            var url = "{:url('admin/articles/toggle')}?id=" + data.value + '&status=' + status + '&name=settop';
+
+
+            jq.get(url, function(data) {
+
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+ form.on('switch(switchcarousel)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            if (data.elem.checked) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+            var url = "{:url('admin/articles/toggle')}?id=" + data.value + '&status=' + status + '&name=carousel';
+
+
+            jq.get(url, function(data) {
+
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+
+    })
+</script>
+{/block}

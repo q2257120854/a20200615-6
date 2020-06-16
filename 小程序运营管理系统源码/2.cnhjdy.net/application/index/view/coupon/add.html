@@ -1,0 +1,283 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+</style>
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<input type="hidden" id="nowhtml" value="navSale" class="navSale1-1">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			优惠券管理--{$applet.name}
+		</li>
+	</ul>
+
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Coupon/save')}?appletid=<?php echo $_GET['appletid']?>&couponid={$couponid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					
+				
+					<div class="control-group">
+
+						<label class="control-label">排序</label>
+
+						<div class="controls">
+
+							<input name="num" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $couponinfo && $couponinfo['num']}{$couponinfo['num']}{else}0{/if}" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+						</div>
+
+					</div>
+	
+					<div class="control-group">
+
+						<label class="control-label">标题</label>
+
+						<div class="controls">
+
+							<input name="title" type="text" class="span5 m-wrap"  style="height: 35px !important;"  id="title" value="{if $couponinfo && $couponinfo['title']}{$couponinfo['title']}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写文章标题</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">优惠券颜色</label>
+						<div class="controls">
+							<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+							</button>
+							<input id="chosen-value" value="{if $couponinfo && $couponinfo['color']}{$couponinfo['color']}{/if}" class="span2 m-wrap" name="color">
+						</div>
+					</div>
+					
+
+					<div class="control-group">
+
+						<label class="control-label">抵用金额</label>
+
+						<div class="controls">
+
+							<input name="price" id="price" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $couponinfo && $couponinfo['price']}{$couponinfo['price']}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置优惠价格</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">满多少可用</label>
+
+						<div class="controls">
+
+							<input name="pay_money" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $couponinfo && $couponinfo['pay_money']}{$couponinfo['pay_money']}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置使用条件价格</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">优惠券总数</label>
+
+						<div class="controls">
+
+							<input name="counts" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $couponinfo && $couponinfo['counts']}{$couponinfo['counts']}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置优惠券总数,-1不限制</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">每人限领数</label>
+
+						<div class="controls">
+
+							<input name="xz_count" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $couponinfo && $couponinfo['xz_count']}{$couponinfo['xz_count']}{else}0{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置每人限领数,0不限制</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">优惠券开始时间</label>
+
+						<div class="controls">
+							
+							<input type="text" value="{if $couponinfo && $couponinfo.btime!=0}{$couponinfo.btime|date='Y-m-d',###}{else}0{/if}"  name="btime"  readonly id="btimes" data-date-format="yyyy-mm-dd">
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置开始时间,0不限制</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">优惠券结束时间</label>
+
+						<div class="controls">
+
+							<input type="text" value="{if $couponinfo && $couponinfo.etime!=0}{$couponinfo.etime|date='Y-m-d',###}{else}0{/if}"  name="etime"  readonly id="etimes" data-date-format="yyyy-mm-dd">
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置结束时间,0不限制</span>
+						</div>
+
+					</div>
+
+
+					
+
+					<div class="control-group">
+
+						<label class="control-label">是否关闭领取</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="0" {if $couponinfo && $couponinfo['flag']==0}checked{/if}/>
+
+							关闭
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="1" {if $couponinfo && $couponinfo['flag']==1}checked{/if}/>
+
+							开启
+
+							</label> 
+
+						</div>
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+{include file="public/foot_more" /}
+
+
+<script type="text/javascript">
+
+	$.fn.datetimepicker.dates['zh-CN'] = {  
+        days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],  
+        daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],  
+        daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],  
+        months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+        monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+        today: "今天",  
+        suffix: [],  
+        meridiem: ["上午", "下午"]  
+	}; 
+   	$('#btimes').datetimepicker({
+   		language:  'zh-CN',
+   		minView: "month",
+   		autoclose:true,
+   		startDate: new Date()
+   	});
+
+   	$('#etimes').datetimepicker({
+   		language:  'zh-CN',
+   		minView: "month",
+   		autoclose:true,
+   		startDate: new Date()
+   	});
+
+
+
+
+
+
+   	function checkinfo(){
+
+   		var title = $("#title").val();
+   		var price = $("#price").val();
+
+   		if(!title){
+   			alert("标题不能为空！");
+   			return false;
+   		}
+
+   		if(!price){
+   			alert("优惠价格不能为空！");
+   			return false;
+   		}
+
+
+   	}
+
+
+
+
+
+</script>

@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+		<input type="hidden" value="10" id="nextrow" />
+      <section class="aui-content-padded" id="message">
+          <div class="aui-card-list">
+              <div class="aui-card-list-content-padded"></div>
+              <div class="aui-card-list-footer" ></div>
+          </div>
+         
+      </section>
+	
+  </body>
+  <script type="text/x-dot-template" id="xiaoxi">
+		{{~ it : value : index }}
+				 
+				 <div class="aui-card-list">
+              <div class="aui-card-list-content-padded">{{= value. title }}</div>
+              <div class="aui-card-list-footer" >{{= value. shijian }}</div>
+          </div>
+		{{~}}
+	</script>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/doT.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+    apiready = function(){
+        api.parseTapmode();
+      mess();
+	  api.addEventListener({ 
+			name:'scrolltobottom',  
+			extra:{      
+			threshold:0    
+			//设置距离底部多少距离时触发，默认值为0，数字类型  
+			}}, function(ret, err){     
+
+			messs();
+			});
+    };
+	function mess(){
+	 var message = $api.byId('message');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/mess.html',
+				  method: 'get',
+				  data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					message.innerHTML = pagefn(ret.msg);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '消息加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+	function messs(){
+	 var message = $api.byId('message');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/messs.html',
+				  method: 'get',
+				  data: {
+					values: {  
+							uid: localStorage.getItem('user_id'),
+							nextrow: nextrow,
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					message.innerHTML = pagefn(ret.msg);
+					$("#nextrow").val(parseInt(nextrow)+10);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '消息加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+  </script>
+  </html>

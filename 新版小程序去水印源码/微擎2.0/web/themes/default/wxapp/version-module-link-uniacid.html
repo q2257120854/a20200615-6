@@ -1,0 +1,132 @@
+{template 'common/header'}
+<div class="alert we7-page-alert">
+	{if $_W['account']['type_sign'] == 'wxapp'}
+	<p><i class="wi wi-info-sign"></i>从关联账号应用同步的会员信息,在小程序应用登录时会被判断为新用户,此处无法识别为同一会员；</p>
+	{/if}
+	<p><i class="wi wi-info-sign"></i>本{$_W['account']['type_name']}可操作的模块中，仅显示可进行同步的模块；</p>
+	<p><i class="wi wi-info-sign"></i>可以把PC应用或公众号应用的会员、数据等信息同步至{$_W['account']['type_name']}应用当中；</p>
+	<p><i class="wi wi-info-sign"></i>一个模块，只能同步了PC、公众号、小程序中的其中一种，且只可同步一个；</p>
+	<p><i class="wi wi-info-sign"></i>若小程序A应用已同步{$_W['account']['type_name']}，则{$_W['account']['type_name']}同步小程序应用时，无法选择小程序A且小程序A不会显示在同步列表中，即两者不可相互同步,PC同理。</p>
+</div>
+<div id="js-module-link-uniacid" ng-controller="moduleLinkUniacidCtrl" ng-cloak>
+	<table class="table we7-table table-hover vertical-middle">
+		<col width="180px" />
+		<col width="140px"/>
+		<col width="140px" />
+		<tr>
+			<th class="text-left">关联设置</th>
+			<th class="text-left">关联账号</th>
+			<th class="text-right">操作</th>
+		</tr>
+		<tr ng-repeat="module in versionInfo.modules" ng-if="versionInfo.modules">
+			<td class="text-left">
+				<img ng-src="{{module.logo}}" style="width:50px;height:50px;">
+				{{module.title}}
+			</td>
+			<td class="text-left" ng-if="module.account">
+				<img ng-src="{{module.account.logo}}" style="width:50px;height:50px;">
+				<span>{{module.account.name}}</span>
+			</td>
+			<td class="text-left" ng-if="!module.account && !module.passive_link_uniacid">
+				<span>暂无</span>
+			</td>
+			<td class="text-left" ng-if="!module.account && module.passive_link_uniacid">
+				<div ng-repeat="item in module.passive_link_uniacid">
+					已被 {{item.type_name}} <span class="color-default" ng-bind="item.name"></span> 同步
+				</div>
+			</td>
+			<td>
+				<div class="link-group" ng-if="module.account">
+					<a href="javascript:;" ng-click="searchLinkAccount(module.name, jurindex)">修改</a>
+					<a href="javascript:;" ng-click="module_unlink_uniacid(module.name)">删除</a>
+				</div>
+				<div class="link-group" ng-if="!module.account && !module.passive_link_uniacid">
+					<a href="javascript:;" ng-click="searchLinkAccount(module.name, jurindex)">添加</a>
+				</div>
+				<div class="link-group" ng-if="!module.account && module.passive_link_uniacid">
+					<a href="javascript:;">---</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div class="modal fade uploader-modal module" id="show-account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog we7-modal-dialog" style="width:800px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">选择</h4>
+				</div>
+				<div class="modal-body material-content">
+					<div class="material-nav">
+                        {if $_W['account']['type_sign'] != 'account'}
+                        <a href="javascript:;" ng-click="tabChange(1)"  ng-class="{true:'active',false:''}[jurindex==1]" >公众号</a>
+                        {/if}
+                        <a href="javascript:;" ng-click="tabChange(4)"  ng-class="{true:'active',false:''}[jurindex==4]" >微信小程序</a>
+                        {if $_W['account']['type_sign'] != 'webapp'}
+                        <a href="javascript:;" ng-click="tabChange(5)" ng-class="{true:'active',false:''}[jurindex==5]">PC</a>
+                        {/if}
+						{if $_W['account']['type_sign'] != 'phoneapp'}
+                        <a href="javascript:;" ng-click="tabChange(6)" ng-class="{true:'active',false:''}[jurindex==6]">APP</a>
+						{/if}
+                        {if $_W['account']['type_sign'] != 'xzapp'}
+                        <a href="javascript:;" ng-click="tabChange(9)" ng-class="{true:'active',false:''}[jurindex==9]">熊掌号</a>
+                        {/if}
+						{if $_W['account']['type_sign'] != 'aliapp'}
+                        <a href="javascript:;" ng-click="tabChange(11)" ng-class="{true:'active',false:''}[jurindex==11]">支付宝小程序</a>
+						{/if}
+					</div>
+                    <div class="material-body" id="link-accouts">
+                        <div class="alert bg-light-gray" ng-show="jurindex!=4">
+                            <p><i class="wi wi-info-sign color-default"></i>该应用必须同时支持{{typeName}}应用</p>
+                            <p><i class="wi wi-info-sign color-default"></i>{{typeName}}必须安装有该应用.</p>
+                            <p><i class="wi wi-info-sign color-default"></i>必须有{$_W['account']['type_name']}和{{typeName}}的主管理员及以上权限</p>
+                        </div>
+						<div class="alert bg-light-gray"ng-show="jurindex==4">
+							{if $_W['account']['type_sign'] != 'aliapp'}
+							<p><i class="wi wi-info-sign color-default"></i>关联小程序只关联最高版本；</p>
+							<p><i class="wi wi-info-sign color-default"></i>要关联的小程序最高版本必须打包有该应用，其他低版本打包该应用自动过滤；</p>
+							{else}
+							<p><i class="wi wi-info-sign color-default"></i>该应用必须同时支持{{typeName}}应用</p>
+							<p><i class="wi wi-info-sign color-default"></i>{{typeName}}必须安装有该应用.</p>
+							{/if}
+							<p><i class="wi wi-info-sign color-default"></i>必必须有{$_W['account']['type_name']}和{{typeName}}的主管理员及以上权限。</p>
+						</div>
+                        <div class="form-group we7-padding" ng-show="loadData">
+                            <span class="help-block text-center"><img src="./resource/images/loading.gif" alt="" width="45px"> 拼命加载中。。。</span>
+                        </div>
+                        <div class="row js-show-account-content" ng-show="!loadData">
+                            <div class="col-sm-2" ng-repeat="account in linkAccounts" ng-if="linkAccounts">
+                                <div class="item" ng-click="selectLinkAccount(account, $event)">
+                                    <img ng-src="{{account.logo}}" class="icon" alt="">
+                                    <div class="name">{{account.name}}</div>
+                                    <div class="mask">
+                                        <span class="wi wi-right"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-center we7-margin-top" ng-if="linkAccounts.length == 0">没有可以关联的{{typeName}}</div>
+                        </div>
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="moduleLinkUniacid()">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	angular.module('wxApp').value('config', {
+		'version_info': {php echo !empty($version_info) ? json_encode($version_info) : 'null'},
+		'token': "{php echo $_W['token']}",
+        'jurindex': "{if $_W['account']['type_sign'] == 'account'}4{else}1{/if}",
+		'links' : {
+			'search_link_account': "{php echo url('wxapp/module-link-uniacid/search_link_account')}",
+			'module_link_uniacid': "{php echo url('wxapp/module-link-uniacid')}",
+			'module_unlink_uniacid':"{php echo url('wxapp/module-link-uniacid/module_unlink_uniacid')}"
+		},
+	});
+	angular.bootstrap($('#js-module-link-uniacid'), ['wxApp']);
+</script>
+{template 'common/footer'}

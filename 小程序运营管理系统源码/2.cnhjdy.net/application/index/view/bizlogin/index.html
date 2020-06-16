@@ -1,0 +1,199 @@
+{include file="public/head" /}
+
+<body class="page-header-fixed">
+<link href="/css/data_home.css" rel="stylesheet" type="text/css">
+
+<div class="page-container">
+{include file="public/bizloginleft" /}
+<div class="page">
+        <style>
+        .page_content{padding:0;}
+        .row{margin-left: 0}
+        *{box-sizing: border-box;}
+        body{line-height: normal;}
+            .dataRow{margin-bottom: 40px}
+            .card-block {float:left;width: 18%;margin-right:2%;padding:20px;overflow: hidden;border-radius: 3px;background: #fff}
+            .counter-label4 {
+                color: #37474f;
+                font-size: 18px;
+                font-weight: 400;
+            }
+            .counter-label4>span {
+                padding-left: 1px;
+                color: #a4a4a4;
+                font-size: 14px;
+                font-weight: 400;
+                float: right;
+            }
+            .counter-number-group {
+                text-align: center;padding: 6px 0;
+            }
+            .counter-number1 {
+                font-size: 55px;
+                font-weight: 400;
+            }
+            .counter-number2 {
+                font-size: 14px;
+            }
+            .blue{
+                color: #3e8ef7;
+            }
+            .counter-number1{
+                font-size: 55px;
+                font-weight: 400;
+            }
+            .counter-number2{
+                font-size: 14px;
+            }
+            .color-e8{
+                color:#e8e8e8;
+            }
+            .clicks:hover{
+                background-color: #688cf2;
+            }
+            .clicks:hover .counter-label4{
+                color: #fff;
+            }
+            .clicks:hover .counter-label4>span{
+                color: #fff;
+            }
+            .clicks:hover .counter-number-group{
+                color: #fff;
+            }
+            .clicks:hover .color-e8{
+                color: #fff;
+            }
+            .color-c7aaf8{
+                color: #c7aaf8;
+            }
+            .color-f6b37f {
+                color: #f6b37f;
+            }
+            .color-48d5fd {
+                color: #48d5fd;
+            }
+            .zxtbox{position: relative;background:#fff;width:48%;height:320px;float: left;margin-right: 2%;border-radius: 3px;padding: 20px}
+            .zxtzj {
+                position: absolute;
+                top: 10px;
+                z-index: 9999;
+                color: #333;
+                right: 40px;
+            }
+            .list_li{    float: left;
+                width: 33.33%;}
+            .list_li>div {
+                background-color: #fff;
+                padding:30px 20px;
+            }
+            .list_li>div>a {
+                display: flex;
+                align-items: center;
+                border-right: 1px solid #eee;
+            }
+            .list_li>div>a>img {
+                float: left;
+                display: block;
+                width: 48px;
+                height: 48px;margin-right: 10px;
+            }
+            .list_li>div>a>div {
+                float: left;
+                text-align: center;
+                flex: 1;
+                color: #333;
+            }
+            .list_li>div>a>div h5 {
+                margin-top: 5px;
+            }
+
+        </style>
+        <div class="page_content" style="background: none">
+
+            <div class="row dataRow">
+                <div class="card card-block clicks">
+                    <div class="counter-label4">总访问量<span>上线后小程序访问量</span></div>
+                    <div class="counter-number-group blue">
+                        <span class="counter-number1">0</span>
+                        <span class="counter-number2">人</span>
+                    </div>
+                    <div class="row pt-10 color-e8">
+                        <div class="col-sm-8 text-left font-size-12">
+                            <span>Total visit</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <i class="site-menu-icon icon iconfont"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-block clicks">
+                    <div class="counter-label4">客户数量<span>门店客户总量</span></div>
+                    <div class="counter-number-group color-c7aaf8">
+                        <span class="counter-number1">0</span>
+                        <span class="counter-number2">人</span>
+                    </div>
+                    <div class="row pt-10 color-e8">
+                        <div class="col-sm-8 text-left font-size-12">
+                            <span>Customer number</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <i class="site-menu-icon icon iconfont"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-block clicks">
+                    <div class="counter-label4">会员数量<span>已办理会员卡</span></div>
+                    <div class="counter-number-group color-f6b37f">
+                        <span class="counter-number1">0</span>
+                        <span class="counter-number2">人</span>
+                    </div>
+                    <div class="row pt-10 color-e8">
+                        <div class="col-sm-8 text-left font-size-12">
+                            <span>Member number</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <i class="site-menu-icon icon iconfont"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-block clicks">
+                    <div class="counter-label4">生日祝福<span>近期一个月生日客户</span></div>
+                    <div class="counter-number-group blue">
+                        <span class="counter-number1">0</span>
+                        <span class="counter-number2">人</span>
+                    </div>
+                    <div class="row pt-10 color-e8">
+                        <div class="col-sm-8 text-left font-size-12">
+                            <span>Birthday</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <i class="site-menu-icon icon iconfont"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-block clicks">
+                    <div class="counter-label4">充值总额<span>客户充值未消费金额</span></div>
+                    <div class="counter-number-group color-48d5fd">
+                        <span class="counter-number1">0</span>
+                        <span class="counter-number2">元</span>
+                    </div>
+                    <div class="row pt-10 color-e8">
+                        <div class="col-sm-8 text-left font-size-12">
+                            <span>Total recharge</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <i class="site-menu-icon icon iconfont"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+
+</html>

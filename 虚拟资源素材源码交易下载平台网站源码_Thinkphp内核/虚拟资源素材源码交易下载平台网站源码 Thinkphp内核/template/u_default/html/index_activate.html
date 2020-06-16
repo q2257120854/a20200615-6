@@ -1,0 +1,221 @@
+{extend name="index_base" /} {block name="seo"}
+<title>激活邮箱 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <li class="layui-this">
+                    <a href="javascript:;">激活邮箱</a></li>
+            </ul>
+            <div class="layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                <ul class="layui-form">
+                    <li class="layui-form-li">
+                        <label for="activate">您的邮箱：</label>
+                        <span class="layui-form-text">{:session('usermail')}
+              <em style="color:#c00;">（尚未激活）</em></span>
+                    </li>
+                    <li class="layui-form-li" style="margin-top: 20px; line-height: 26px;">
+                        <div>1. 如果您未收到邮件，或激活链接失效，您可以
+                            <a class="layui-form-a" style="color:#4f99cf;" id="jhemail" href="javascript:;" email="137528837@qq.com">重新发送邮件</a>，或者
+                            <a class="layui-form-a" style="color:#4f99cf;" href="{:url('user/index/set')}">更换邮箱</a>；</div>
+                        <div>2. 如果您始终没有收到 LaySNS 发送的邮件，请注意查看您邮箱中的垃圾邮件；</div>
+                        <div>3. 如果你实在无法激活邮件，您还可以邮箱联系管理员：278198348@qq.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['form', 'upload', 'element'], function() {
+        var form = layui.form,
+            upload = layui.upload,
+            element = layui.element,
+            jq = layui.jquery;
+
+
+
+        jq('#jhemail').click(function() {
+            //激活邮箱直接变成disable，然后发送邮件。邮件验证成功后，该status变为2或者5
+
+            var email = jq(this).attr('email');
+            var url = "{:url('index/yzemail')}";
+
+            if (email == '') {
+                layer.msg('邮箱不能为空', {
+                    icon: 2,
+                    anim: 6,
+                    time: 1000
+                });
+                return false;
+            }
+
+
+            jq.post(url, {
+                'email': email
+            }, function(data) {
+                if (data.code == 1) {
+
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        // 
+
+                        jq('#L_email').attr('disabled', 'disabled');
+
+
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        });
+        var emailold = '';
+
+        jq('#rejhemail').click(function() {
+            //重新激活邮箱后，去掉disable,然后传送email的参数
+            //  var id= jq(this).data('id');
+            var url = "{:url('index/reyzemail')}";
+
+            if (jq(this).html() == '立即激活') {
+                var reemail = jq('#L_email').val();
+                if (reemail == emailold) {
+                    layer.msg('请更改邮箱进行验证', {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                } else {
+                    jq.post(url, {
+                        'email': reemail
+                    }, function(data) {
+                        if (data.code == 1) {
+
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1000
+                            }, function() {
+                                // 
+
+                                jq('#L_email').attr('disabled', 'disabled');
+
+
+
+                            });
+                        } else {
+
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                anim: 6,
+                                time: 1000
+                            });
+                        }
+                    });
+                }
+
+
+            } else {
+                emailold = jq('#L_email').val();
+                jq('#L_email').removeAttr('disabled');
+                jq(this).html('立即激活');
+
+            }
+
+        });
+
+
+
+        form.on('submit(user_set)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            var param = data.field;
+            jq.post('{:url("user/set")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+        form.on('submit(user_setedit)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            var param = data.field;
+            jq.post('{:url("user/setedit")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+        form.on('submit(user_headedit)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            console.log(data);
+            var param = data.field;
+            jq.post('{:url("user/headedit")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/set")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+    });
+</script>{/block}

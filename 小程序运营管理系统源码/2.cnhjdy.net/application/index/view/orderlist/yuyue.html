@@ -1,0 +1,224 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navOrder" class="navOrder2">
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		预约预定订单管理--{$applet.name}
+	</li>
+</ul>
+
+<style type="text/css">
+	.shuk{
+		outline: none;
+		border: 1px solid #dedede;
+		width: 300px;
+	}
+	.cesd{
+		height: 28px;
+		line-height: 28px;
+	    width: 28px;
+	    display: inline-block;
+	    vertical-align: top;
+	    cursor: pointer;
+	    border:1px solid #dedede;
+	    padding: 0 10px;
+	}
+</style>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+				
+				<div class="input-box" style="margin-bottom: 10px; position: relative; text-align:center; margin-top:20px; margin-bottom:40px; ">
+
+					请输入订单号：
+
+					<input type="text" placeholder="请输入搜索订单号" class="shuk" id="getorder">
+					
+					<div class="cesd" onclick="search()">
+						搜索
+					</div> 
+
+				</div>
+				<div class="btn-group" style="float:right">
+					<a href="{:Url('Orderlist/orderdown')}?appletid=<?php echo $_GET['appletid']?>&is_more=1">
+						<button id="sample_editable_1_new" class="btn green">
+						导出订单列表 
+						</button>
+					</a>
+
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th>商品</th>
+				            <th>单价/数量</th>
+				            <th>姓名</th>
+				            <th>联系方式</th>
+				            <th>价格</th>
+				            <th>核销信息</th>
+				            <th>核销时间</th>
+				            <th>状态</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $neworder}
+						{foreach $neworder['data'] as $item}
+							<tr>
+								<td colspan="4">订单编号: {$item.order_id}</td>
+								<td colspan="4" style="text-align:right">下单时间：{$item.creattime}</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="{$item.thumb}" onerror="this.src='/image/noimage.jpg'" style="width:50px; height:50px; ">      {$item.product}
+								</td>
+								<td>
+									{if $item.is_more==0}
+				                    {$item.price}  x  {$item.num}
+									{/if}
+
+									{if $item.is_more==1}
+				                    	{foreach $item['order_duo'] as $ikm}
+				                    		{if $ikm[4] != 0}
+				                    			{$ikm[0]} : {$ikm[1]}  X {$ikm[4]} </br>
+				                    		{/if}
+				                    	{/foreach}
+									{/if}
+
+				                </td>
+								<td style="width:150px;">
+									{$item.nickname}
+								</td>
+								<td>
+									{$item.mobile}
+								</td>
+								<td style="width:100px;">
+									{$item.true_price}
+								</td>
+								<td style="width:150px;">
+									{$item.hxinfo2}
+								</td>
+								<td style="width:150px;">
+									{$item.custime}
+								</td>
+								<td style="width:100px;">
+									{if $item.flag==-2}
+									<font color="red">无效订单</font>
+									{elseif $item.flag==-1}
+									<font color="#f0ad4e">已关闭</font>
+									{elseif $item.flag==0}
+									未支付
+									{elseif $item.flag==1}
+									<form action="{:Url('Orderlist/hexiao')}?appletid=<?php echo $_GET['appletid']?>&order={$item.order_id}"  method="post" enctype="multipart/form-data" onsubmit = "return heixiao()">
+										<button style="background-color: #ca4242;border: 1px solid #d43f3a;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;">立即核销</button>
+									</form>
+									{elseif $item.flag==2}
+									<font color="#5cb85c">已完成</font>
+									{elseif $item.flag==3}
+									<form action="{:Url('Orderlist/queren')}?appletid=<?php echo $_GET['appletid']?>&order={$item.order_id}"  method="post" enctype="multipart/form-data" onsubmit = "return queren()">
+										<button style="background-color: green;border: 1px solid green;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;">确认订单</button>
+									</form>
+									{/if}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8" style="height:30px">
+									备注：   {$item.beizhu}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8" style="height:30px"></td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$order->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	
+function heixiao(){
+
+	if(confirm('你确定要核销该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function queren(){
+
+	if(confirm('你确定要确认该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function search(){
+
+	var order = $("#getorder").val();
+	if(!order){
+		alert("请输入订单号");
+		return;
+	}
+	if(isNaN(order)){
+		alert("请输入正确的订单号格式");
+		return;
+	}
+
+	location.href = "{:Url('Orderlist/yuyue')}?appletid=<?php echo $_GET['appletid']?>&order="+order;
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+{include file="public/foot_more" /}

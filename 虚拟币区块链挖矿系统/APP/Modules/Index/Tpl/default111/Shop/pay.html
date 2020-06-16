@@ -1,0 +1,131 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<header id="topbar" class="affix">
+    <div class="topbar-left">
+        <ol class="breadcrumb">
+            <li class="crumb-active">
+                <a href="/">Member</a>
+            </li>
+            <li class="crumb-icon">
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="crumb-trail">
+                <a href="#">
+                   零售管理
+                </a>
+            </li>
+            <li class="crumb-trail">
+                零售申请
+            </li>
+
+        </ol>
+    </div>
+</header>
+
+<div id="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading br-b-n">
+                    <div class="panel-title hidden-xs">
+                        <span class="glyphicon glyphicon-tasks"></span>零售申请
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" >
+					 
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">友情提示</label>
+                            <div class="col-lg-4">
+                                <label class="control-label text-info-light">请填写正确的信息，否则会影响审核！</label>
+                            </div>
+                         </div>	
+                        <div class="form-group">
+                            <label for="email" class="col-lg-3 control-label">打款姓名</label>
+                            <div class="col-lg-4">
+							<input type="text"  name="name"  class="form-control" autocomplete="off"   >
+						
+                            </div>
+                          
+                        </div>
+                       <div class="form-group">
+                            <label for="telphone" class="col-lg-3 control-label">账号类型</label>
+                            <div class="col-lg-4">
+								  <select name="type" id="type" class="form-control">
+										<option value="">选择收款方式</option>
+										<option <if condition="$memmber.sktype == '工商银行'">selected="selected"</if> value="工商银行">工商银行</option>
+										<option <if condition="$memmber.sktype == '农业银行'">selected="selected"</if> value="农业银行">农业银行</option>
+										<option <if condition="$memmber.sktype == '建设银行'">selected="selected"</if> value="建设银行">建设银行</option>
+										<option <if condition="$memmber.sktype == '中国银行'">selected="selected"</if> value="中国银行">中国银行</option>
+										<option <if condition="$memmber.sktype == '支付宝'">selected="selected"</if> value="支付宝">支付宝</option>
+                                 </select>
+                 
+                            </div>
+                           
+                        </div>
+						
+						<div class="form-group">
+                            <label for="telphone" class="col-lg-3 control-label">打款账号</label>
+                            <div class="col-lg-4">
+                         
+						
+							<input type="text" name="account"  class="form-control" autocomplete="off">
+                            </div>
+                           
+                        </div>
+						
+						
+						
+
+						  <div class="form-group">
+                            <label for="email" class="col-lg-3 control-label">零售金额</label>
+                            <div class="col-lg-4">
+							<input  name="money" type="text"   onkeyup="value=value.replace(/[^0-9]/g,'')" class="form-control" autocomplete="off" /> 
+							
+                 
+                            </div>
+                        
+                        </div>
+
+						<div class="form-group">
+                            <label for="content" class="col-lg-3 control-label">备注信息</label>
+                            <div class="col-lg-4">
+                         
+						
+							<input type="text" name="content"  class="form-control" autocomplete="off">
+                            </div>
+                           
+                        </div>								
+                        <div class="form-group">
+                            <label for="telphone" class="col-lg-3 control-label">二级密码</label>
+                            <div class="col-lg-4">
+                                <input class="form-control" value="" name="password2" type="text"  class="form-control" autocomplete="off" /> 
+                            </div>
+                           
+                        </div>
+						
+						
+						
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="col-lg-8">
+                                   
+                                <button type="submit" class="btn btn-primary btn-submit">提 交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Content -->
+
+    </section>
+</div>
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+

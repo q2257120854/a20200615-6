@@ -1,0 +1,1 @@
+<?php $config = array('app_id' => "tmp_appid",'merchant_private_key' => "tmp_siyao",'notify_url' => "tmp_webm/user/alipay/notify_url.php",'return_url' => "tmp_webm/user/",'charset' => "UTF-8",'sign_type'=>"RSA2",'gatewayUrl' => "https://openapi.alipay.com/gateway.do",'alipay_public_key' => "tmp_gonyao",);?>

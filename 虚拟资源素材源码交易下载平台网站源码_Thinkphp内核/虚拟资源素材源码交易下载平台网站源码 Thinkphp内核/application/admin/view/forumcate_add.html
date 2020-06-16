@@ -1,0 +1,88 @@
+{extend name="base" /} {block name="body"}
+
+<!--tab标签-->
+<div class="layui-tab-brief">
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form form-container" data-url="{:url('admin/forumcate/save')}" localtion-url="{:url('forumcate/index')}">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="sort" placeholder="仅限整数" autocomplete="off" class="layui-input" value="1">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">板块名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">别名（英文）</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="alias" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 300px;">
+                    <label class="layui-form-label">所属板块</label>
+                    <div class="layui-input-block">
+                        <select name="tid">
+                          <option value="0">顶级板块</option>
+                          {volist name="category_level_list" id="vo"}
+                        <option value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' --';}{/php}{/neq}{$vo.name}</option>
+                           {/volist}
+                          </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属类型</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="type" value="1" title="帖子" checked="">
+
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">板块图片</label>
+                    <div class="layui-upload">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" id="image">上传图片</button>
+                            <input type="text" id="coverpic" name="pic" class="layui-input" style="position: absolute;left: 111px;top: 0px;width: 500px;">
+                        </div>
+                        <div class="layui-upload-list">
+                            <label class="layui-form-label"></label>
+                            <img class="layui-upload-img" id="picshow" style="max-height: 200px">
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keywords" placeholder="关键词请用|隔开" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-block">
+                        <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="btable-paged">
+                    <div class="layui-main">
+                        <div class="formbtngroup">
+                            <button class="layui-btn layui-btn-small" lay-submit="" lay-filter="formadd">添加</button>
+                            <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-small">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+{/block} 

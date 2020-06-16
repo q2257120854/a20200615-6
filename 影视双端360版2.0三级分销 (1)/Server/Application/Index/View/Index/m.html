@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no;">
+<title>{$config['webname']}APP下载</title>
+<meta name="keywords" content="{$config['webname']}APP下载">
+<meta name="description" content="聚合全网影视免费观看，{$config['webname']}">
+
+<link rel="stylesheet" href="/Public/static/index/css/app3.css" />
+<script type="text/javascript" src="/Public/static/index/js/jquery-1.8.3.min.js"></script>
+<script>
+window.onload=window.onresize=function(){
+    document.documentElement.style.fontSize=20*document.documentElement.clientWidth/375+'px'
+};
+</script>
+
+</head>
+<body>
+<div class="warps">
+  <div class="main1">
+     <p class="more_p"></p>
+     <p class="bg1"><img src="/Public/static/index/picture/bg1.jpg"></p>
+     <div class="syb">全网聚合影视</div>
+     <script src="/Public/static/index/js/touchslide.1.1.js" type="text/javascript"></script>
+     <div id="slideBox" class="slideBox">
+				<div class="bd">
+					<ul>
+						<li>
+							<a class="pic" href="javascript:void(0);"><img src="/Public/static/index/picture/case1.jpg" /><span></span></a>
+							<a class="tit" href="javascript:void(0);">全新首页，内容优质清新简约</a>
+						</li>
+						<li>
+							<a class="pic" href="javascript:void(0);"><img src="/Public/static/index/picture/case3.jpg"/><span></span></a>
+							<a class="tit" href="javascript:void(0);">各种直播影视应有尽有</a>
+						</li>
+						<li>
+							<a class="pic" href="javascript:void(0);"><img src="/Public/static/index/picture/p3.jpg"/><span></span></a>
+							<a class="tit" href="javascript:void(0);">每日签到、积分商城、更多福利更多精彩</a>
+						</li>
+						<li>
+							<a class="pic" href="javascript:void(0);"><img src="/Public/static/index/picture/case5.jpg"/><span></span></a>
+							<a class="tit" href="javascript:void(0);">个人中心，功能丰富，代理权限</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hd">
+					<ul></ul>
+				</div>
+                <div class="sc2-wave1"><img src="/Public/static/index/picture/sc2-wave1.png" width="100%"></div>
+                <div class="sc2-wave3"><img src="/Public/static/index/picture/sc2-wave3.png" width="100%"></div>
+			</div>
+			<script type="text/javascript">
+				TouchSlide({ 
+					slideCell:"#slideBox",
+					titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					mainCell:".bd ul", 
+					effect:"leftLoop", 
+					autoPage:true,//自动分页
+					autoPlay:true //自动播放
+				});
+			</script>
+       
+      
+  </div>
+  <div class="main2">
+     <div class="logo"><img src="/Public/static/index/picture/logo.png" alt="{$config['webname']}"></div>
+     <div class="bnt"><a href="{$config['xiazai']}">立即下载</a></div>
+  </div>
+</div>
+
+</body>
+</html>

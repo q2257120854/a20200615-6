@@ -1,0 +1,24 @@
+
+<aside class="sidebar" style="transform: none;">
+    <div>
+        <div>
+            <!--广告1-->
+<!--             <div class="widget widget-text nopadding"><div style="border:2px dashed #2d3757;text-align:center;font-size:24px;height:200px;line-height:200px;width:100%;">广告位招租</div></div> -->
+            <!--最新文章-->
+            <div class="widget widget-postlist">
+                <h3>最新文章</h3>
+                <ul>
+                    {volist name="article_new" id="vo"}
+                    <li>
+            <h4><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}">{$vo.title}</a></h4>
+            <p class="meta">
+                <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span>
+                <span class="price"><i class="dripicons dripicons-ticket"></i> VIP专享</span>
+            </p>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>

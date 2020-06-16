@@ -1,0 +1,436 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navOrder" class="navOrder4">
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        订单管理--{$applet.name}
+    </li>
+</ul>
+
+<style type="text/css">
+    .fege{
+        height:30px;
+    }
+    .shuk{
+        outline: none;
+        border: 1px solid #dedede;
+        width: 300px;
+    }
+    .cesd{
+        height: 28px;
+        line-height: 28px;
+        width: 28px;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        border:1px solid #dedede;
+        padding: 0 10px;
+    }
+    .zzcc{
+        position: fixed;
+        top: 0; 
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.4;
+        z-index: 100000;
+
+    }
+    .bbdd{
+        position: fixed;
+        z-index: 100001;
+        background-color: #ffffff;
+        width: 400px;
+        height: 220px;
+        top: 50%;
+        left: 50%;
+        margin-top: -200px;
+        margin-left: -110px;
+        padding: 10px;
+        border:1px solid #e7e7e7;
+    }
+    .bbdd2{
+        position: fixed;
+        z-index: 100001;
+        background-color: #ffffff;
+        width: 400px;
+        height: 220px;
+        top: 50%;
+        left: 50%;
+        margin-top: -200px;
+        margin-left: -110px;
+        padding: 10px;
+        border:1px solid #e7e7e7;
+    }
+
+    .ddhh{
+        line-height: 30px;
+        position: relative;
+    }
+    .ddxx{
+        position: absolute;
+        right: 0;
+        top:0;
+        cursor:pointer
+    }
+</style>
+<script type="text/javascript">
+    function shoscc(id,nav){
+        if(nav==1){
+            $("#orderfh").val(id);
+            $(".loader").show();
+            $(".la-ball-clip-rotate").hide();
+            //$('body').append('<div class="zzcc" id="zzcc" style="display:none"></div>');
+            $("#bbdd").show();
+        }else{
+            if(window.confirm('确定该订单提货？')){
+                location.href = "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=fahuo&orderid="+id;
+
+            }else{
+                return false;
+            }
+
+
+        }
+    }
+    function quxiao(id){
+//        console.log(id);
+        $("#orderfh2").val(id);
+        $(".loader").show();
+        $(".la-ball-clip-rotate").hide();
+        //$('body').append('<div class="zzcc" id="zzcc" style="display:none"></div>');
+        $("#qxdd").show();
+    }
+
+    function ycc(){
+        $(".loader").hide();
+        $("#bbdd").hide();
+    }
+
+    function ycc2(){
+        console.log(33);
+        $(".loader").hide();
+        $("#qxdd").hide();
+    }
+
+    function tijiao(){
+        var kuaidihao = $("#kuaidihao").val();
+        if(kuaidihao == 0){
+            alert("快递单号不能为空！");
+            return false;
+        }
+        var order = $("#orderfh").val();
+        var kuaidi = $("#kuaidi").val();
+
+        location.href = "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=fahuo&orderid="+order+"&kuadi="+kuaidi+"&kuaidihao="+kuaidihao;
+
+    }
+
+</script>
+<!--取消订单-->
+<div class="bbdd2" id="qxdd" style="display:none">
+    <div class="ddhh">
+        <div class="ddxx" onclick="ycc2()">[关闭]</div>
+    </div>
+    <div>
+        <div style="margin-top: 36px">
+            <form class="form-horizontal" action="" method="post">
+                <input type="hidden" id="orderfh2" name="orderfh2">
+                <table class="table we7-table  vertical-middle" style="border:0">
+
+                    <tr>
+                        <td style="width:95px">取消备注</td>
+                        <td >
+                            <input type="text" id="qxbeizhu" name="qxbeizhu" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:95px"></td>
+                        <td >
+                            <a onclick="qxtijiao()" class="btn btn-success btn-sm">提交</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+        <div class="span12">
+
+            <div class="portlet box ">
+
+
+                <div class="portlet-body">
+                    <div class="bbdd" id="bbdd" style="display:none">
+                        <div class="ddhh">
+                            <span>请填写快递单号</span>
+                            <div class="ddxx" onclick="ycc()">[关闭]</div>
+                        </div>
+                   
+                        <form class="form-horizontal" action="" method="post">
+                            <input type="hidden" id="orderfh" name="orderfh">
+                            <table class="table we7-table  vertical-middle" style="border:0">
+
+                                <tr>
+                                    <td style="width:110px">快递：</td>
+                                    <td >
+                                        <select style="width:200px" id="kuaidi" name="kuaidi">
+                                            <option value="圆通">圆通</option>
+                                            <option value="申通">申通</option>
+                                            <option value="韵达">韵达</option>
+                                            <option value="中通">中通</option>
+                                            <option value="顺丰">顺丰</option>
+                                            <option value="天天">天天</option>
+                                            <option value="EMS">EMS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:95px">快递号：</td>
+                                    <td >
+                                        <input type="text" id="kuaidihao" name="kuaidihao" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:95px"></td>
+                                    <td >
+                                        <a onclick="tijiao()" class="btn btn-success btn-sm">提交</a>
+                                    </td>
+                                </tr>
+                           
+                            </table>
+                        </form>
+                </div>
+
+                    <div class="input-box" style="margin-bottom: 10px; position: relative; text-align:center; margin-top:20px; margin-bottom:40px; ">
+
+                        请输入订单号：
+
+                        <input type="text" placeholder="请输入搜索订单号" class="shuk" id="order_id" value="{if isset($_GET['order_id'])}{$_GET['order_id']}{/if}">
+                        
+                        <div class="cesd" onclick="search()">
+                            搜索
+                        </div> 
+
+                    </div>
+
+        <script type="text/javascript">
+
+            function search(){
+                var val = $("#order_id").val();
+                if(!val){
+                    alert("定单号不能为空，请输入订单号！");
+                    return;
+                }
+                var url = GetQueryString("order_id");
+                // console.log(url);
+                // if(url=="null"){
+                //     var newurl = document.URL+"&order_id="+val;
+                //     location.href = newurl;
+                // }else{
+                //     var newurl = document.URL.replace("&order_id="+url, "&order_id="+val);
+                //     location.href = newurl;
+                // }
+                location.href = "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&order_id="+val;
+            }
+            function qxtijiao(){
+                var qxbeizhu = $("#qxbeizhu").val();
+                var order = $("#orderfh2").val();
+//                var newurl = document.URL+"&opt=quxiao&orderid="+order+"&qxbeizhu="+qxbeizhu;
+                location.href = "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=quxiao&orderid="+order+"&qxbeizhu="+qxbeizhu;
+            }
+            function GetQueryString(name){
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return "null";
+            }
+
+            function xiaofei(id){
+                if(window.confirm('确定核销该订单？')){
+                    location.href = "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=hx&orderid="+id;
+
+                }else{
+                    return false;
+                }
+
+            }
+
+            function allowth(id){
+                if(window.confirm('确定允许退货？退款将直接退回')){
+//                    var newurl = document.URL+"&opt=allowth&order="+id;
+                    location.href =  "{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=allowth&orderid="+id;
+                }
+            }
+            function refuseth(id){
+                if(window.confirm('确定要拒绝该退货申请？')){
+//                    var newurl = document.URL+"&opt=refuseth&order="+id;
+                    location.href ="{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=refuseth&orderid="+id;
+                }
+            }
+
+        </script>
+
+    <div class="btn-group" style="float:right">
+        <a href="{:Url('Duoproducts/orderdown')}?appletid=<?php echo $_GET['appletid']?>">
+            <button id="sample_editable_1_new" class="btn green">
+            导出订单列表 
+            </button>
+        </a>
+
+    </div>
+    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+    <thead>
+        <tr style="background:#f8f8f8">
+
+            <td style="width:60px;border-left:1px solid #f2f2f2;">商品</td>
+
+            <td style="width:150px;">单价(元)/数量</td>
+
+            <td style="width:70px;text-align: center;">营销信息</td>
+
+            <td style="width:100px;text-align: center;">运费(元)</td>
+
+            <td style="width:100px;text-align: center;">实付金额</td>
+
+            <td style="width:100px;text-align: center;">联系方式</td>
+
+            <td style="width:120px;text-align: center">状态</td>
+
+        </tr>
+    </thead>
+
+
+<tbody>
+{foreach $order['data'] as $item}
+<tr class="fege"></tr>
+    <tr class="trorder">
+
+        <td colspan="3" style="border:0;background:#f9f9f9">
+            {$item['creattime']} <span class="dingdan">订单编号: {$item['order_id']}</span>
+        </td>
+        <td colspan="4" style="text-align:right;font-size:12px;border:0;background:#f9f9f9" class="aops">
+            订单备注： {$item['liuyan']}
+        </td>
+
+
+    </tr>
+    
+    {foreach $item['jsondata'] as $index => $val}
+
+    <tr class="trbody">
+        <td style="line-height: 24px">
+            <img src="{if $val['proinfo']['thumb']}{$val['proinfo']['thumb']}{else}{$val['baseinfo']['thumb']}{/if}" style="width:50px;height:50px;border:1px solid #ccc; padding:1px;margin-right: 20px;display: block;;float: left;" onerror=""><strong>{$val['baseinfo']['title']}</strong><br><span style="color: #666">{$val['proinfo']['ggz']}</span>
+        </td>
+
+        <td style="text-align:center;border-left:none; border-right:1px solid #dedede">
+            {$val['proinfo']['price']}x{$val['num']}
+        </td>
+
+        {if $index == 0}
+        <td style="text-align:center;border-left:none;" rowspan="{$item['counts']}">
+            {if $item['mjinfo']}
+            <span class="textbg textbg2">减</span>{$item['mjinfo']}<br>
+            {/if}
+            {if $item['couponinfo']!= "未使用优惠券"}
+            <span class="textbg">券</span>{$item['couponinfo']}<br>
+            {/if}
+            {if $item['jfinfo']!="未使用积分"}
+            <span class="textbg" style="background: #00c4ff">分</span>{$item['jfinfo']}<br>
+            {/if}
+        </td>
+        <td style="width:100px;" rowspan="{$item['counts']}">
+        ￥{$item['yunfei']}
+        </td>
+
+        <td style="width:100px;" rowspan="{$item['counts']}">
+        总价：￥{$item['allprice']}
+        <br/>
+        实付：￥{$item['price']}
+        </td>
+
+        <td style="width:300px;" rowspan="{$item['counts']}">
+       {if  $item['address_get'] }
+        {$item['address_get']['name']}
+        <br>
+        {$item['address_get']['mobile']}
+        <br>
+        {$item['address_get']['address']} {$item['address_get']['more_address']} {$item['address_get']['postalcode']}
+        {/if}
+        </td>
+        <td style="width:200px;" rowspan="{$item['counts']}">
+        {if $item['flag'] ==0}<span class="btn btn-default btn-sm">未支付</span>{/if}
+            {if $item['flag'] ==1 && $item['nav'] == 2}
+            <a class="btn green" onclick="xiaofei({$item['id']})">立即核销</a>
+            {/if}
+            {if $item['flag'] ==1 && $item['nav'] == 1}
+            <a class="btn green" onclick="shoscc('{$item['id']}','{$item['nav']}')">立即发货</a>
+            {/if}
+        {if $item['flag'] ==2 && $item['nav'] == 1} <span class="btn btn-success btn-sm">已完成</span><br>{$item['hxtime']}{/if}
+        {if $item['flag'] ==2 && $item['nav'] == 2} <span class="btn btn-success btn-sm">已核销</span><br>{$item['hxtime']}{/if}
+        {if $item['flag'] ==3} <span class="btn btn-default btn-sm">已过期</span>{/if}
+        {if $item['flag'] ==4} <a class="btn btn-success btn-sm">已发货</a><br>{$item['kuadi']}<br>{$item['kuaidihao']}{/if}
+        {if $item['flag'] ==5} <a class="btn btn-warning btn-sm">已取消</a><br>备注：{$item['qxbeizhu']}{/if}
+        {if $item['flag'] ==1 && $item['nav'] == 1} <a style="background-color: #ca4242;border: 1px solid #d43f3a; color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;" onclick="quxiao('{$item['id']}')">取消订单</a>  {/if}
+            {if $item['flag'] ==1 && $item['nav'] == 2} <a style="background-color: #ca4242;border: 1px solid #d43f3a; color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;" onclick="quxiao('{$item['id']}')">取消订单</a>  {/if}
+        {if $item['flag'] == 6}
+        <!--<a class="btn btn-success btn-sm" onclick="return confirm('确定允许客户取消该笔订单？退款将直接到账'); return false;" href="{php echo $this->createWebUrl('Orderset', array('opt' => 'confirmtk','op'=>'orderdo','cateid'=>$_GPC['cateid'],'chid'=>$_GPC['chid'],'orderid'=>$item['id']))}" >同意取消</a>-->
+            <a class="btn btn-success btn-sm" onclick="return confirm('确定允许客户取消该笔订单？退款将直接到账'); return false;" href="{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=confirmtk&orderid={$item['id']}" >同意取消</a>
+            <a class="btn btn-danger btn-sm" onclick="return confirm('确定拒绝该客户的退款请求？'); return false;" href="{:Url('Duoproducts/order')}?appletid=<?php echo $_GET['appletid']?>&op=refuseqx&orderid={$item['id']}" >拒绝取消</a>
+
+        <!--<a class="btn btn-danger btn-sm" onclick="return confirm('确定拒绝该客户的退款请求？'); return false;" href="{php echo $this->createWebUrl('Orderset', array('opt' => 'refuseqx','op'=>'orderdo','cateid'=>$_GPC['cateid'],'chid'=>$_GPC['chid'],'orderid'=>$item['id']))}" >拒绝取消</a>-->
+        {/if}
+        {if $item['flag'] ==7}
+        <a class="btn btn-success btn-sm" onclick="allowth({$item['id']})">允许退货</a>
+        <a class="btn btn-danger btn-sm" onclick="refuseth({$item['id']})">拒绝退货</a>
+        <br>
+        {$item['kuaidi_th']}
+        <br>
+        {$item['kuaidihao_th']}
+        {/if}
+        {if $item['flag'] ==8} <span class="btn btn-default btn-sm">已退货</span> {/if}
+        {if $item['flag'] ==9} <span class="btn btn-default btn-sm">已拒绝退货</span> {/if}
+        </td>
+        {/if}
+
+        </tr>
+    {/foreach}
+
+
+    <tr>
+        <td colspan="7" style="height:40px;padding:0;border-top:none;">
+            核销信息:{$item['hxinfo2']}
+        </td>
+    </tr>
+
+   {/foreach}
+
+
+        </tbody></table>
+
+            <div id="fenye">
+                
+                    <div class="fenye_left">
+                        一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+                    </div>
+                    <div class="fenye_right">
+                        {$orders->render()}
+                    </div>
+
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{include file="public/foot_more" /}

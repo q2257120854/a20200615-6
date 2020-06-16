@@ -1,0 +1,976 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<form id='app_my_upload' action="{:Url('Applet/upimg')}" method='post' enctype='multipart/form-data'>
+    <input type="file" id="app_upload_photo" name="uploadfile" value="请点击上传图片"   style="display:none" />
+</form>
+<form id='app_my_upload_a' action="{:Url('Applet/upimg')}" method='post' enctype='multipart/form-data'>
+    <input type="file" id="app_upload_photo_a" name="uploadfile" value="请点击上传图片"   style="display:none" />
+</form>
+<input type="hidden" id="choose" value="user">
+
+<div class="content">
+
+	<div class="clearfix">
+
+		<div class="content_title fl agent_list_title">用户列表</div>
+
+		
+
+		<div class="overview_right fr">
+
+			<div class="add_agent fl" onclick="show_add()" style="cursor: pointer">新增用户</div>
+
+			<div class="agent_search hbj fl">
+
+				<input class="agent_search_input flex1" type="" name="keyworld" id="keyworld" value="" placeholder="输入关键词" />
+
+				<div class="agent_search_icon iconfont icon-sousuo" onclick="search()"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+<div class="overview_center clearfix">
+
+			<div class="overview_all fl" id="type0"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="user">全部：{$all_count}</a></div>
+
+			{if $group == 2}<div class="overview_all fl" id="type1"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="user?show=1">属代理商：{$syjxs_count}</a></div>{/if}
+
+			<div class="overview_all fl" id="type2"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="user?show=2">三个月内登陆用户数：{$three_count}</a></div>
+
+			<div class="overview_all fl" id="type3"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="user?show=3">一年未登陆用户数：{$year_count}</a></div>
+
+			<div class="overview_all fl" id="type4"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="user?show=4">用户回收站：{$del_count}</a></div>
+
+		</div>
+	<table class="agent_list_table" border="0" cellspacing="0" cellpadding="0">
+
+		<thead>
+
+		<tr>
+
+			<th>ID</th>
+
+			<th>姓名</th>
+
+			<th>联系电话</th>
+
+			<th>用户名</th>
+
+			<th>用户邮箱</th>
+
+			<th>开通时间</th>
+
+			<!-- <th>到期时间</th> -->
+
+			<th>最近登陆时间</th>
+
+			<th>所属代理商</th>
+
+			<th>状态</th>
+
+			<th>操作</th>
+
+		</tr>
+
+		{if $admin_arr}
+
+		{foreach $admin_arr as $item}
+
+		<tr>
+
+			<td class="fontfamily-a">{$item.uid}</td>
+
+			<td>{$item.realname}</td>
+
+			<td class="fontfamily-a">{$item.mobile}</td>
+
+			<td>{$item.username}</td>
+
+			<td class="fontfamily-a">{$item.email}</td>
+
+			<td class="fontfamily-a">{$item.updatetime|date='Y-m-d ',###}</td>
+
+			<!-- <td>{if $item.overtime}{$item.overtime|date='Y-m-d',###}{/if}</td> -->
+
+			<td class="fontfamily-a">{if $item.lastlogintime}{$item.lastlogintime|date='Y-m-d',###}{/if}</td>
+
+			<td>{$item.jxs}</td>
+
+			<td>正常</td>
+
+			<td>
+				<?php
+					$show  = input('show');
+				 ?>
+				 {if 4 == $show}
+
+				 	<div class="newbtn" onclick="recove({$item.uid});" style="cursor: pointer;display: inline-block;">恢复</div>
+				 	<span class="linetd"></span>
+				 	<div class="newbtn" style="cursor: pointer" onclick="real_del({$item.uid})">彻底删除</div>
+
+				 {else}
+
+					<div class="newbtn" onclick="edit_user({$item.uid})" style="cursor: pointer;display: inline-block;">编辑</div>
+					<span class="linetd"></span>
+					<div class="newbtn" style="cursor: pointer;display: inline-block;" onclick="czmm({$item.uid})">重置密码</div>
+					<span class="linetd"></span>
+					<div class="newbtn" style="margin-right: 0;cursor: pointer;display: inline-block;" onclick="del_user({$item.uid})" >删除用户</div>
+				{/if}
+
+
+			</td>
+
+		</tr>
+
+		{/foreach}
+
+		{/if}
+
+		</thead>
+
+	</table>
+
+	<div class="list_page">
+
+		{$admins->render()}
+
+	</div>
+
+</div>
+
+<!--重置密码-->
+
+<div class="alertbox" style="display: none;" id="show_czmm">
+
+	<div class="alert2" style="height: 160px">
+
+		<div class="alert2_head">重置密码
+
+			<img src="/image/close_alert.png" onclick="close_czmm()"/>
+
+		</div>
+
+		<div class="alert2_content hbj">
+
+			<div class="alert2_content_text">确定将密码重置为123456吗？</div>
+
+			<input type="hidden" value="" name="uid" id="uid">
+
+			<div class="alert2_content_btn1" onclick="czmm_ex()" style="cursor: pointer">确定</div>
+
+			<div class="alert2_content_btn2" onclick="close_czmm()" style="cursor: pointer">取消</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--重置密码-->
+
+<!--重置密码成功-->
+
+<div class="alertbox" style="display: none;"  id="cz_success">
+
+	<div class="alert3">
+
+		<div class="alert2_head">提示
+
+			<img src="/image/close_alert.png" onclick="close_success()"/>
+
+		</div>
+
+		<div class="alert3_content">
+
+			<div class="alert3_content_icon iconfont icon-chenggong"></div>
+
+			<div class="alert3_content_text">重置密码成功！</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--充值密码成功-->
+
+<!--删除用户-->
+
+<div class="alertbox" style="display: none;" id="del_user">
+
+	<div class="alert2" style="height: 160px">
+
+		<div class="alert2_head">删除用户
+
+			<img src="/image/close_alert.png" onclick="close_del()"/>
+
+		</div>
+
+		<div class="alert2_content hbj">
+
+			<div class="alert2_content_text">确定要删除名为<span id="user_name" style="color: #f73e4c;">王美丽</span>的用户吗？</div>
+
+			<input type="hidden" value="" name="uid" id="user_id">
+
+			<div class="alert2_content_btn1" onclick="del_ex()" style="cursor: pointer">确定</div>
+
+			<div class="alert2_content_btn2" onclick="close_del()" style="cursor: pointer">取消</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--删除用户-->
+
+<!--删除成功-->
+
+<div class="alertbox" style="display: none;"  id="del_sucesss">
+
+	<div class="alert3">
+
+		<div class="alert2_head">提示
+
+			<img src="/image/close_alert.png" onclick="close_del_success()"/>
+
+		</div>
+
+		<div class="alert3_content">
+
+			<div class="alert3_content_icon iconfont icon-chenggong"></div>
+
+			<div class="alert3_content_text">删除成功！</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--删除成功-->
+
+<!--彻底删除用户-->
+
+<div class="alertbox" style="display: none;" id="real_del">
+
+	<div class="alert2" style="height: 160px">
+
+		<div class="alert2_head">彻底删除用户
+
+			<img src="/image/close_alert.png" onclick="close_real_del()"/>
+
+		</div>
+
+		<div class="alert2_content hbj">
+
+			<div class="alert2_content_text">确定要彻底删除该用户吗？</div>
+
+			<input type="hidden" value="" name="uid" id="real_del_uid">
+
+			<div class="alert2_content_btn1" onclick="real_del_ex();" style="cursor: pointer">确定</div>
+
+			<div class="alert2_content_btn2" onclick="close_real_del();" style="cursor: pointer">取消</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--彻底删除用户-->
+
+<!--彻底删除成功-->
+
+<div class="alertbox" style="display: none;"  id="real_del_sucesss">
+
+	<div class="alert3">
+
+		<div class="alert2_head">提示
+
+			<img src="/image/close_alert.png" onclick="close_real_del_success()"/>
+
+		</div>
+
+		<div class="alert3_content">
+
+			<div class="alert3_content_icon iconfont icon-chenggong"></div>
+
+			<div class="alert3_content_text">彻底删除成功！</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--彻底删除成功-->
+
+<!--修改资料-->
+
+<div class="alertbox" style="display: none" id="edit_user">
+
+	<div class="alert" style="height: 410px;top: 0;bottom: 0">
+
+		<div class="alert_head">编辑用户
+
+			<img src="/image/close_alert.png" onclick="close_edit()"/>
+
+		</div>
+
+		<div class="alert_content">
+
+			<form action="{:Url('Applet/save_edit_admin')}" method="POST" enctype="multipart/form-data" onsubmit = "return checkeditinfo();">
+
+				<div class="clearfix">
+
+					<div class="alert_form_left fl">
+
+						<div class="clearfix mb-30">
+
+							<div class="open_form_title fl">用户名<span>*</span></div>
+
+							<div class="alert_form_right fl">
+
+								<input class="open_form_text" type="text" name="username" id="e_username" value="" placeholder="密码默认为123456，请登录帐号修改"/>
+
+							</div>
+
+						</div>
+
+						<div class="clearfix mb-30">
+
+							<div class="open_form_title fl">头像</div>
+
+							<div class="alert_form_right hbj fl">
+								
+								<img class="upimg" src="/image/upimg.png" id="app_upimg" />
+
+								<div class="up_imgbox">
+
+									<div class="up_img_btn" onClick="app_upload_photo.click();">上传图片
+
+										<input type="hidden" name="icon" id="thumb" value=""/>
+
+									</div>
+
+									<div class="up_img_bz">建议上传正方形图片</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="clearfix">
+
+							<div class="open_form_title fl">姓名<span>*</span></div>
+
+							<div class="alert_form_right fl">
+
+								<input class="open_form_text" type="text" name="realname" id="e_realname" value="" />
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+					<div class="alert_form_left fr">
+
+						<div class="clearfix mb-30">
+
+
+
+							<div class="alert_form_right fr">
+
+								<input class="open_form_text" type="text" name="mobile" id="e_mobile" value="" />
+
+							</div>
+
+							<div class="open_form_title fr">手机号码<span>*</span></div>
+
+						</div>
+
+						<div class="clearfix mb-30">
+
+
+
+							<div class="alert_form_right fr">
+
+								<input class="open_form_text" type="email" name="email" id="e_email" value="" />
+
+							</div>
+
+							<div class="open_form_title fr">邮箱<span>*</span></div>
+
+						</div>
+
+						<!-- <div class="clearfix">
+
+
+
+							<div class="alert_form_right fr">
+
+								<label class="alert_form_label">
+
+									<input class="alert_checkbox" type="checkbox" name="group"  value="" checked/>小程序管理员
+
+								</label>
+
+							</div>
+
+							<div class="open_form_title fr" style="margin-top: 0;">用户组</div>
+
+						</div> -->
+
+					</div>
+
+				</div>
+
+				<input type="hidden" id="edit_uid" name="uid" value="">
+
+				<input type="hidden" id="old_username" name="old_username" value="">
+
+				<input class="alert_submit" type="submit" name=""  value="确定" />
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--修改资料-->
+
+<!--添加用户-->
+
+<div class="alertbox" style="display: none;" id="add_user">
+
+	<div class="alert" style="height: 430px;top: 0;bottom: 0;">
+
+		<div class="alert_head">添加用户
+
+			<img src="/image/close_alert.png" onclick="close_add()" />
+
+		</div>
+
+		<div class="alert_content">
+
+			<form action="{:Url('Applet/save_admin')}" method="POST" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+				<div class="clearfix">
+
+					<div class="alert_form_left fl">
+
+						<div class="clearfix mb-30">
+
+							<div class="open_form_title fl">用户名<span>*</span></div>
+
+							<div class="alert_form_right fl">
+
+								<input class="open_form_text" type="text" name="username" id="user_user" value="" placeholder="密码默认为123456，请登录帐号修改"/>
+
+							</div>
+
+						</div>
+
+						<div class="clearfix mb-30">
+
+							<div class="open_form_title fl">头像</div>
+
+							<div class="alert_form_right hbj fl">
+						
+								<img class="upimg" src="/image/upimg.png" id="e_image" />
+
+								<div class="up_imgbox">
+
+									<div class="up_img_btn"  onClick="app_upload_photo_a.click();">上传图片
+
+										<input type="hidden" name="icon" id="e_thumb" value="" />
+
+									</div>
+
+									<div class="up_img_bz">建议上传正方形图片</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="clearfix">
+
+							<div class="open_form_title fl">姓名<span>*</span></div>
+
+							<div class="alert_form_right fl">
+
+								<input class="open_form_text" type="text" name="realname" id="real_real" value="" />
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+					<div class="alert_form_left fr">
+
+						<div class="clearfix mb-30">
+
+
+
+							<div class="alert_form_right fr">
+
+								<input class="open_form_text" type="text" name="mobile" id="mob_mob" value="" />
+
+							</div>
+
+							<div class="open_form_title fr">手机号码<span>*</span></div>
+
+						</div>
+
+						<div class="clearfix">
+
+
+
+							<div class="alert_form_right fr">
+
+								<input class="open_form_text" type="email" name="email" id="em" value="" />
+
+							</div>
+
+							<div class="open_form_title fr">邮箱<span>*</span></div>
+
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+				<input class="alert_submit" type="submit"  value="确定" />
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--添加用户-->
+
+</body>
+
+
+
+</html>
+
+<script>
+
+	$("#app_upload_photo").change(function(){
+        $("#app_my_upload").ajaxSubmit({ 
+          dataType:  'json', //数据格式为json 
+          success: function(data) {
+            $("#thumb").val(data);
+            $("#app_upimg").attr("src",data);
+          }
+        }); 
+    });
+    $("#app_upload_photo_a").change(function(){
+        $("#app_my_upload_a").ajaxSubmit({ 
+          dataType:  'json', //数据格式为json 
+          success: function(data) {
+            $("#e_thumb").val(data);
+            $("#e_image").attr("src",data);
+          }
+        }); 
+    });
+
+    //判断显示类型
+
+    $(function () {
+
+        var show = '<?php echo input('show'); ?>';
+
+        if(show){
+
+            if(show == 1){
+
+                $("#type1").addClass('on');
+
+            }else if(show == 2){
+
+                $("#type2").addClass('on');
+
+            }else if(show == 3){
+
+                $("#type3").addClass('on');
+
+            }else if(show == 4){
+
+                $("#type4").addClass('on');
+
+            }
+
+        }else{
+
+            $("#type0").addClass('on');
+
+        }
+
+    });
+
+
+
+	//显示添加用户框
+
+	function show_add() {
+
+		$("#add_user").show();
+
+    }
+
+
+
+    //关闭添加用户
+
+	function close_add() {
+
+        $("#add_user").hide();
+
+    }
+
+
+
+    //检验提交
+
+    function checkinfo(){
+
+        var username = $("#user_user").val();
+
+        var realname = $("#real_real").val();
+
+        var mobile = $("#mob_mob").val();
+
+        if(!username){
+
+            alert("请输入用户名！");
+
+            return false;
+
+        }else if(!realname){
+
+            alert("请输入用户真实姓名！");
+
+            return false;
+
+        }else if(!mobile){
+
+            alert("请输入用户手机号");
+
+            return false;
+
+        }else{
+
+            return true;
+
+        }
+
+    }
+
+
+
+    function checkeditinfo(){
+
+        var username = $("#e_username").val();
+
+        var realname = $("#e_realname").val();
+
+        var mobile = $("#e_mobile").val();
+
+        if(!username){
+
+            alert("请输入用户名！");
+
+            return false;
+
+        }else if(!realname){
+
+            alert("请输入用户真实姓名！");
+
+            return false;
+
+        }else if(!mobile){
+
+            alert("请输入用户手机号");
+
+            return false;
+
+        }else{
+
+            return true;
+
+        }
+
+    }
+
+
+
+    //搜索
+
+    function search(){
+
+        var val = $("#keyworld").val();
+
+        if(!val){
+
+            alert("请输入搜索用户姓名");
+
+        }else{
+
+            location.href="{:Url('Applet/user')}"+"?keyworld="+val;
+
+        }
+
+    }
+
+
+
+    //编辑页面显示
+
+	function edit_user(id) {
+
+	    var id = id;
+
+	    //根据ID获取当前用户的信息
+
+        $.post("{:Url('Applet/user_info')}",{"id":id},function(data){
+
+            $("#edit_uid").val(data['uid']);
+
+            $("#e_username").val(data['username']);
+
+            $("#e_realname").val(data['realname']);
+
+            $("#e_mobile").val(data['mobile']);
+
+            $("#e_email").val(data['email']);
+
+            $("#old_username").val(data['username']);
+
+            if(data['icon']){
+
+                $("#app_upimg").attr('src',data['icon']);
+
+			}else{
+
+                $("#app_upimg").attr('src','/image/upimg.png');
+
+			}
+
+        })
+
+		$("#edit_user").show();
+
+    }
+
+
+
+    //关闭编辑页面
+
+	function close_edit() {
+
+		$("#edit_user").hide();
+
+    }
+
+    
+
+    //提示删除用户
+
+	function del_user(id) {
+
+	    var id = id;
+
+
+
+        //获取用户名称
+
+        $.post("{:Url('Applet/user_name')}",{"id":id},function(data){
+
+            $("#user_name").html(data);
+
+        });
+
+        $("#user_id").val(id);
+
+	    $("#del_user").show();
+
+    }
+
+
+
+    //执行删除用户
+
+    function del_ex() {
+
+        $("#del_user").hide();
+
+        var id = $("#user_id").val();
+
+        $.post("{:Url('Applet/del_user')}",{"id":id},function(data){
+
+            if(data == 1){
+
+                $("#del_sucesss").show();
+
+                setInterval(g, 2000);
+
+
+
+            }else{
+
+                return false;
+
+            }
+
+        })
+
+    }
+
+
+
+    //关闭删除用户
+
+	function close_del() {
+
+        $("#del_user").hide();
+
+    }
+
+
+
+    //显示重置密码框
+
+    function czmm (id) {
+
+        $("#uid").val(id) ;
+
+        $("#show_czmm").show();
+
+    }
+
+
+
+    //确认重置
+
+    function czmm_ex() {
+
+        $("#show_czmm").hide();
+
+        var id = $("#uid").val();
+
+        $.post("{:Url('Applet/czmm')}",{"uid":id},function(data){
+
+            if(data == 1){
+
+                $("#cz_success").show();
+
+                setInterval(g, 2000);
+
+            }
+
+        })
+
+
+
+    }
+
+
+
+    //手动关闭成功提示框
+
+    function close_success() {
+
+        $("#cz_success").hide();
+
+    }
+
+
+
+    function g() {
+
+        location.reload();
+
+    }
+
+
+
+    //关闭重置密码框
+
+    function close_czmm() {
+
+        $("#show_czmm").hide();
+
+    }
+
+    //恢复删除用户
+    function recove(id){
+    	var uid = id;
+    	 $.post("{:Url('Applet/recove')}",{"uid":id},function(data){
+    	 		if(data == 1){
+    	 			location.reload();
+    	 		}else{
+    	 			return false;
+    	 		}
+    	 });
+
+    }
+
+    //彻底删除用户
+    function real_del(id){
+
+    	$("#real_del_uid").val(id);
+
+    	$("#real_del").show();
+
+    }
+
+    //彻底删除关闭
+    function close_real_del(){
+
+    	$("#real_del").hide();
+
+    }
+
+    //执行彻底删除
+    function real_del_ex(){
+    	$("#real_del").hide();
+    	var uid = $("#real_del_uid").val();
+    	$.post("{:Url('Applet/real_del_user')}",{"uid":uid},function(data){
+
+    		 if(data == 1){
+
+                $("#real_del_sucesss").show();
+
+                setInterval(g, 2000);
+
+            }
+
+    	});
+    }
+
+
+
+</script>

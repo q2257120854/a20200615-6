@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>注册window</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+      <style>
+      .aui-radio{width:1rem;height:1rem;}
+      .aui-btn.aui-btn-outlined{border-radius:50px}
+      .aui-list .aui-list-item-right{ position: absolute; right: 0; top: 0.25rem; }
+      </style>
+  </head>
+  <body class="aui-bg-white">
+    <header id="header" class="aui-bar aui-bar-nav aui-bar-light">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">注册</div>
+    </header>
+    <section class="aui-content-padded">
+        <ul class="aui-list aui-form-list aui-border-0">
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-mobile aui-font-size-20"></i>
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input name="phone" type="tel" id="username" placeholder="输入您的手机号">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-friendadd aui-font-size-20"></i>
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input name="invite" type="text" id="share" placeholder="输入邀请码（选填）">
+                    </div>
+                    <div class="aui-list-item-right" id="getinvite">
+                        <div class="aui-btn aui-btn-outlined aui-btn-sm">粘贴邀请码</div>
+                    </div>
+                </div>
+            </li>
+           <!-- <li class="aui-list-item aui-padded-10" style="display:none;"> -->
+                <!-- <div class="aui-list-item-inner"> -->
+                    <!-- <div class="aui-list-item-label-icon"> -->
+                        <!-- <i class="aui-iconfont aui-icon-safe aui-font-size-20"></i> -->
+                    <!-- </div> -->
+                    <!-- <div class="aui-list-item-input"> -->
+                        <!-- <input name="code" type="tel" placeholder="输入验证码"> -->
+                    <!-- </div> -->
+                    <!-- <div class="aui-list-item-right" id="getcode"> -->
+                        <!-- <div class="aui-btn aui-btn-outlined aui-btn-sm">获取验证码</div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </li> -->
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-lock aui-font-size-20"></i>
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input name="password" type="password" id="password" placeholder="输入8-32位密码">
+                    </div>
+                    <div class="aui-list-item-right" id="see">
+                        <i class="aui-iconfont aui-icon-attentionfill aui-font-size-20"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div class="aui-content-padded">
+        <div class="aui-btn aui-btn-info aui-btn-block aui-font-size-20"  onclick="toReg()">立即注册</div>
+    </div>
+    <div class="aui-content-padded aui-font-size-14 aui-padded-t-10">
+        <input class="aui-radio aui-margin-r-10" type="radio" checked>同意 <a href="#" class="aui-text-info">《用户协议》</a>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/doT.js"></script>
+ 
+
+  <script type="text/javascript">
+   var api_url = localStorage.getItem('api_url');
+  apiready = function(){
+      var header = $api.byId('header');
+      $api.fixStatusBar(header);
+	  
+	   var clipBoard = api.require('clipBoard');
+      clipBoard.get(function(ret, err) {
+          if (ret) {
+
+            if (ret.value.length == 6) {
+              var share = $api.byId('share');
+              share.value = ret.value;
+              api.toast({
+                  msg: '已为您自动粘贴刚才复制的邀请码',
+                  duration: 4000,
+                  location: 'middle'
+              });
+            }
+          } else {
+
+          }
+      });
+  };
+  
+  
+  //注册
+    function toReg(){
+      var username = $api.val($api.byId('username'));
+      var password = $api.val($api.byId('password'));
+      var share = $api.val($api.byId('share'));
+
+      if(username == ''){
+      api.alert({ 
+            title: '警告！', 
+            msg: '请输入登录账号', 
+       }); 
+         return; 
+     } 
+     if(password == ''
+	 ){ 
+        api.alert({ 
+            title: '警告！', 
+            msg: '请输入密码', 
+        }); 
+         return; 
+       } 
+
+	     
+            
+	  
+       <!-- if(share == ''){ -->
+         <!-- api.alert({ -->
+             <!-- title: '警告！', -->
+             <!-- msg: '请输入邀请码', -->
+         <!-- }); -->
+         <!-- return; -->
+       <!-- } -->
+	   
+       if(username.length < 6){ 
+         api.alert({ 
+             title: '警告！', 
+             msg: '请输入6位以上账号', 
+         }); 
+         return; 
+       }
+
+	  <!-- if ($api.byId('password').value != $api.byId('password_reg').value) { -->
+                <!-- $api.byId('password_reg').focus(); -->
+                <!-- api.toast({ -->
+                    <!-- msg : '两次密码不一致，请重新输入!' -->
+                <!-- }); -->
+                <!-- return; -->
+                 <!-- } -->
+
+      user = $api.val($api.byId('username'));
+      pass = $api.val($api.byId('password'));
+	
+      api.showProgress({
+          title: '注册中...',
+          text: '请稍等...',
+          modal: false
+      });
+      api.ajax({
+           url: api_url+'/App/App/reg.html',
+          method: 'get',
+          data: {
+              values: {
+                  name: username,
+                  password:password,
+					share:share,
+				  uuid: api.deviceId
+				  
+              }
+          }
+      },function(ret, err){
+      	//alert(ret)
+          if (ret) {
+              if (ret.code == 0) {
+                api.hideProgress();
+                api.alert({
+                    title: '错误~',
+                    msg: ret.msg,
+                });
+              }else {
+
+                api.hideProgress();
+                api.alert({
+                    title: '注册成功！',
+                    msg: '当前身份：体验会员',
+                });
+               
+                 api.closeWin({
+                    name: 'login'
+                });  
+				
+				  localStorage.setItem('user_id',ret.id);
+                  localStorage.setItem('user_name',ret.name);
+                  localStorage.setItem('pass',ret.pass);
+                  localStorage.setItem('viptime',ret.viptime);
+				  localStorage.setItem('mim',ret.mim);
+				  localStorage.setItem('num',ret.num);
+				  localStorage.setItem('money',ret.money);
+					localStorage.setItem('share',ret.share);
+				localStorage.setItem('bg',ret.bg);
+					api.sendEvent({
+                            name: 'newLoingdata',
+                            extra: {
+                            }
+                          });
+
+
+                          api.hideProgress();
+						  
+						  api.closeWin();
+						  
+              }
+          } else {
+            api.hideProgress();
+            api.alert({
+                title: '糟糕~',
+                msg: '网络错误！',
+            });
+          }
+      });
+    }
+  </script>
+  </html>

@@ -1,0 +1,1 @@
+<?php return ['C_TPL'=>'c_modown','B_TPL'=>'b_default','U_TPL'=>'u_default',]; 

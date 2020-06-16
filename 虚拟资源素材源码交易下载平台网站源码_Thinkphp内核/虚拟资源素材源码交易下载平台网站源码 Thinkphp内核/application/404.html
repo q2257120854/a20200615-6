@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>404 - laysns</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="/public/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/public/css/global.css" media="all">
+</head>
+
+<body>
+
+    <div style="padding: 50px 0; height: 600px; text-align: center;">
+        <h1>
+            <i class="layui-icon" style="line-height: 500px; font-size: 500px; color: #393D50;">&#xe61c;</i>
+        </h1>
+        <p style="font-size: 20px; font-weight: 300; color: #999;">你访问的页面不存在！<span style="color:#3366ff;"><span id="tt" style="color:red; font-size:18">3</span> 秒后自动跳转到首页。如未跳转请 <a href="/">点击返回</a>
+            <HR>
+            <script language="javascript" type="text/javascript">
+                var sec = document.getElementById('tt').textContent;
+                setInterval("redirect()", 1000);
+
+                function redirect() {
+                    if (sec > 0) document.getElementById('tt').textContent = --sec;
+                    if (sec <= 0) location.href = '/';
+                }
+            </script>
+            </span>
+        </p>
+    </div>
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
+</body>
+
+</html>

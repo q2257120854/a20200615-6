@@ -1,0 +1,72 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$site_config['site_title']} - {$site_config['seo_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="banner">
+    <div class="container">
+        <h2>{$site_config['site_title']}</h2>
+        <p>源码下载平台，仅供学习</p>
+        <div class="search-form">
+            <form action="{:url('index/index/search')}" class="site-search-form">
+                <select class="search-cat"><option value="">全站</option></select>
+                <input class="search-input" required="required" name="ks" value="<?php echo input('ks');?>" type="text" placeholder="搜索一下">
+                <button class="search-btn" type="submit">搜索</button>
+            </form>
+        </div>
+    </div>
+</div>
+<a href="https://wpa.qq.com/msgrd?v=3&uin=86929780&site=qq&menu=yes" rel="nofollow" target="_blank" title="">
+  <img src="/template/c_modown/images/gg.png" style="width: 100%;border-radius: 10px;height: px">
+      </a>
+      <a href="https://wpa.qq.com/msgrd?v=3&uin=86929780&site=qq&menu=yes" rel="nofollow" target="_blank" title="">
+  <img src="/template/c_modown/images/wx.png" style="width: 100%;border-radius: 10px;height: px">
+      </a>
+<!--     <div class="home-blogs">
+        <div class="container">
+        
+            <h2><span>站内新闻</span></h2>
+            <p class="desc">自定义文字</p>
+            <ul class="clearfix">
+                {volist name="toutiao" id="vo"}
+                <li>
+                    <div class="img"><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank" rel="bookmark">
+                        <img src="__HOME__/picture/thumbnail.png" data-src="{$vo.coverpic}" alt="{$vo.title}" style="display: inline;">
+                    </a></div>
+                    <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank">{$vo.title}</a></h3>
+                    <div class="excerpt-meta">
+                        <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span></div>
+                </li>
+                {/volist}
+            </ul>
+            <div class="more"><a href="/choice.html" target="_blank">查看更多</a></div>
+        </div>
+    </div> -->
+<div class="main">
+    <div class="mocat">
+    <div class="container">
+        <h2><span>最新发布<i>NEW</i></span></h2>
+        <div id="posts" class="posts grids  clearfix">
+            {volist name="article_new" id="vo"}
+            {if $vo.choice eq 1}
+            <div class="post grid grid-tj">
+                {else}
+                <div class="post grid">
+                    {/if}
+                <div class="img"><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank" rel="bookmark">
+                    <img src="__HOME__/picture/thumbnail.png" data-src="{$vo.coverpic}" alt="{$vo.title}" style="display: inline;">
+
+                </a></div>
+                <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank">{$vo.title}</a></h3>
+                <div class="cats"><a href="{:url('index/articles/lists',array('cate_alias'=>$vo.alias))}" rel="category tag">{$vo.name}</a></div>
+                <div class="grid-meta">
+                    <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span>    <span class="price"><i class="dripicons dripicons-ticket"></i> VIP专享</span>  </div>
+            </div>
+            {/volist}
+        </div>
+        <div class="lmore"><a href="/all.html" target="_blank">查看全部</a></div>
+
+    </div>
+    </div>
+
+    </div>
+{/block}

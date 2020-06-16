@@ -1,0 +1,139 @@
+{include file="public/top" /}
+
+<title>功能展示</title>
+
+<meta name="keywords" content="功能展示">
+
+<meta name="description" content="功能展示">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/index.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    {include file="public/head"}
+
+    <div class="funbox" style="padding-top: 50px">
+
+            <div class="fun main clearfix">
+
+                <div class="fun_leftbox">
+
+                    <div class="fun_leftbd">
+
+                        {if $info}
+
+                            {if $info['funcimg']}
+
+                                {foreach $info['funcimg'] as $index=>$val}
+
+                                <div>
+
+                                    <img src="{$val}" style="width: 260px;height: 459px" />
+
+                                </div>
+
+                                {/foreach}
+
+                            {/if}
+
+                        {/if}
+
+                    </div>
+
+                    <div class="fun_left_hd">
+
+                        <ul></ul>
+
+                    </div>
+
+                    <div class="prev iconfont icon-arrow-left"></div>
+
+                    <div class="next iconfont icon-arrow-right"></div>
+
+                </div>
+
+                <div class="fun_right">
+
+                    <p class="fun_right_p1">{if $info}{$info.title}{/if}</p>
+
+                    <p class="fun_right_p2">{if $info}{$info.descs}{/if}</p>
+
+                    <p class="fun_right_p3"><span class="iconfont icon-changjing"></span>适用场合</p>
+
+                    <div class="fun_right_div1">
+
+                    {if $info}
+
+                        {if $info.place}
+
+                        {foreach $info.place as $rs}
+
+                        <span>{$rs}</span>
+
+                        {/foreach} 
+
+                        {/if}
+
+                    {/if}
+
+                    </div>
+
+                    <p class="fun_right_p3"><span class="iconfont icon-gongnenglan"></span>功能展示</p>
+
+                    <div class="fun_right_div2">
+
+                    {if $info}
+
+                        {if $info.func}
+
+                        {foreach $info.func as $rs}
+
+                        <span>{$rs}</span>
+
+                        {/foreach} 
+
+                        {/if}
+
+                    {/if}
+
+                    </div>
+
+                    <!-- <div id="myfunshow" style="display: none"></div> -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="casesbox fun2box">
+
+            <div class="main">
+
+                {if $info}{$info.text}{/if}
+
+            </div>
+
+        </div>
+
+    {include file="public/foot"}
+</body>
+<script>
+$(function(){
+            $.ajax({
+                url:"{:Url('Functionshow/addHits')}?id=<?php echo $_GET['id']?>",
+                type:"POST",
+                dateType:"json",
+                success:function(res){
+                    if(res == 1){
+                        // alert(res)
+                    }
+                }
+            });
+        })
+</script>
+</html>

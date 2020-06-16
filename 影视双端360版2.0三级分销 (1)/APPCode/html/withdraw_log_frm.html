@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>提现记录</title>
+<link rel="stylesheet" type="text/css" href="../css/apic.css" />
+</head>
+<body>
+    <section class="aui-content aui-border-b">
+        <ul class="aui-list aui-media-list" id="withdraw">
+           
+        </ul>
+    </section>
+</body>
+<script type="text/x-dot-template" id="xiaoxi">
+		{{~ it : value : index }}
+			 <li  class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-row aui-row-padded">
+                        <p class="aui-col-xs-4 aui-text-center aui-font-size-12" >{{= value. shijian }}</p>
+                        <p class="aui-col-xs-4 aui-text-center" >{{= value. price }}</p>
+                        <p class="aui-col-xs-4 aui-text-center">
+							{{? value.status == 1}}  
+							   <span  class="aui-text-danger">审核中</span>
+							{{?? value.status ==2}}  
+							   <span  class="aui-text-primary">已提现</span>
+							{{?? value.status ==3}} 
+							   <span>提现失败</span>
+							{{?}}  
+                        </p>
+                    </div>
+                </div>
+            </li>
+		{{~}}
+	</script>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+<script type="text/javascript" src="../script/common.js" ></script>
+<script type="text/javascript">
+var api_url = localStorage.getItem('api_url');
+apiready = function () {
+    txjilu();
+}
+function txjilu(){
+	 var withdraw = $api.byId('withdraw');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/txjilu.html',
+				  method: 'get',
+				  data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					withdraw.innerHTML = pagefn(ret.msg);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+</script>
+</html>

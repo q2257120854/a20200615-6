@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>提现</title>
+<link rel="stylesheet" type="text/css" href="../css/apic.css" />
+<style>
+.aui-radio{width:1rem;height:1rem;}
+.aui-btn.aui-btn-outlined{border-radius:50px}
+.aui-list .aui-list-item-right{ position: absolute; right: 0; top: 0.25rem; }
+</style>
+</head>
+<body>
+    <section class="aui-content">
+        <div class="aui-card-list">
+            <div class="aui-card-list-content-padded aui-text-danger">公告：提现后将在24小时内打款</div>
+        </div>
+    </section>
+    <section class="aui-content" id="withdraw">
+        <ul class="aui-list aui-form-list">
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label aui-text-primary">收款姓名</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" name="realname" id="name"  placeholder="请输入收款支付宝真实姓名" >
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label aui-text-primary">收款支付宝</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" name="alipay" id="zhifubao"  placeholder="请输入收款支付宝账号">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-form-list aui-margin-t-10">
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label aui-text-primary">账户余额</div>
+                    <div class="aui-list-item-input">
+                        <input type="text" id="yue" readonly>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-padded-10">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label aui-text-primary">提现金额</div>
+                    <div class="aui-list-item-input">
+                        <input type="number"   id="price" placeholder="请输入提现金额">
+                    </div>
+                </div>
+            </li>  
+           
+            
+        </ul>
+        <div class="aui-content-padded">
+            <div class="aui-btn aui-btn-info aui-btn-block aui-font-size-20" onclick="save()">提现</div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+<script type="text/javascript">
+	minprice= 0;
+
+   var api_url = localStorage.getItem('api_url');
+	apiready = function(){
+		
+		$api.val($api.byId('yue'),localStorage.getItem('money'))
+		
+	}
+	function save(){
+	var price = $api.val($api.byId('price'));
+	var name = $api.val($api.byId('name'));
+	var zhifubao = $api.val($api.byId('zhifubao'));
+	
+		if(name == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 调皮~   收款姓名都没输入',
+					duration: 5000
+				});
+				return;
+			}
+		if(zhifubao == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 调皮~   支付宝都没输入',
+					duration: 5000
+				});
+				return;
+			}
+		if(price == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 调皮~   金额都没输入',
+					duration: 5000
+				});
+				return;
+			}
+			api.toast({
+				msg: 'ヾ(◍°∇°◍)ﾉﾞ 努力提交中……',
+				duration: 5000
+			});
+			
+			api.ajax({
+				 url: api_url+'/App/App/sqtixian.html',
+				method: 'get',
+				data: {
+					values: {
+						uid:localStorage.getItem('user_id'),
+						name: name,
+						zhifubao:zhifubao,
+						price:price
+						
+					}
+				}
+			}, function(ret, err) {
+				if(ret) {
+					if(ret.code == 0) {
+						api.toast({
+							msg: ret.msg,
+							duration: 5000
+						});
+
+						return;
+					} else if(ret.code == 1) {
+						api.alert({
+							msg: ret.msg,  
+							duration: 5000
+						});
+					}
+					
+				}else {
+					api.hideProgress();
+					/*   alert('网络错误！');
+					      原弹窗提示*/
+					api.toast({
+						msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+						duration: 5000
+					});
+
+					//alert( JSON.stringify( err ) );
+					return;
+				}
+			});
+			
+	}
+</script>
+</html>

@@ -1,0 +1,505 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<script src="/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+
+<input type="hidden" id="choose" value="applet">
+
+<div class="content">
+
+    <div class="content_title">小程序开通</div>
+
+    <form class="open_form" action="{:Url('Applet/save_billing')}" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+        {if $usergroup == 3}
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">开通时长<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <select class="open_form_select1" name="pay_time" id="pay_time" onchange="freetime(this)">
+
+                    <option value="-1">--请选择套餐时长--</option>
+
+                    {volist name="time_combo" id="vo"}
+
+                    <option value="{$vo.id}" >{$vo.name}</option>
+
+                    {/volist}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">赠送时长<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <select class="open_form_select1" name="free_time" id="free_time">
+
+                    <option value="-1">--请选择赠送时长--</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        {/if}
+
+        {if $usergroup == 2}
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">时间选择<span>*</span></div>
+
+            <div class="open_form_right fl" style="position: relative;">
+
+                <input class="open_form_text" style="font-family: arial;" id="date1" type="text" name="endtime"  value="" readonly />
+
+                <img class="date_img" src="/image/date.png"/>
+
+            </div>
+
+        </div>
+
+        {/if}
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl" style="margin-top: 0;">平台选择</div>
+
+            <div class="open_form_right fl">
+
+                {if $usergroup == 3}
+
+                {if in_array(0, $type)}
+
+                <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="0" {if in_array(0, $applet['type'])}checked {/if}disabled="true"/>
+
+                    <img src="/image/wx.png"/>
+
+                    <span class="ptxz_span1">微信小程序</span>
+
+                    <span class="ptxz_span2">{$combo.wx_price}/年</span>
+
+                </label>
+
+                {/if}
+
+               <!--  {if in_array(2, $type)}
+
+                <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="2" {if in_array(2, $applet['type'])}checked {/if}disabled="true" />
+
+                    <img src="/image/zfb.png"/>
+
+                    <span class="ptxz_span1">支付宝小程序</span>
+
+                    <span class="ptxz_span2">{$combo.ali_price}/年</span>
+
+                </label>
+
+                {/if} -->
+
+                <!-- {if in_array(1, $type)}
+
+                <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="1"  {if in_array(1, $applet['type'])}checked {/if}disabled="true"/>
+
+                    <img src="/image/bd.png" style="margin:0 1.5px;"/>
+
+                    <span class="ptxz_span1">百度小程序</span>
+
+                    <span class="ptxz_span2">{$combo.baidu_price}/年</span>
+
+                </label>
+
+                {/if} -->
+
+                {elseif $usergroup == 2}
+
+                <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="0"  {if in_array(0, $applet['type'])}checked {/if}disabled="true" />
+
+                    <img src="/image/wx.png"/>
+
+                    <span class="ptxz_span1">微信小程序</span>
+
+                    <span class="ptxz_span2">{$combo.wx_price}/年</span>
+
+                </label>
+
+               <!--  <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="2" {if in_array(2, $applet['type'])}checked {/if}disabled="true" />
+
+                    <img src="/image/zfb.png"/>
+
+                    <span class="ptxz_span1">支付宝小程序</span>
+
+                    <span class="ptxz_span2">{$combo.ali_price}/年</span>
+
+                </label>
+
+                <label class="ptxz hbj">
+
+                    <input class="ptxz_checkbox" type="checkbox" name="type[]"  value="1"  {if in_array(1, $applet['type'])}checked {/if}disabled="true"/>
+
+                    <img src="/image/bd.png" style="margin:0 1.5px;"/>
+
+                    <span class="ptxz_span1">百度小程序</span>
+
+                    <span class="ptxz_span2">{$combo.baidu_price}/年</span>
+
+                </label> -->
+
+                {/if}
+
+                {if $usergroup == 3}
+
+                <div class="clearfix">
+
+                    <input type="hidden" name="price" id="price" value="">
+
+                    <div class="all_money fl" >合计：<span name="price" id="show_price">0</span>元</div>
+
+                    <div class="balance_money fr">您的余额：{:round($jxs.balance, 2)}元</div>
+
+                </div>
+
+                {/if}
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序名称<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <input class="open_form_text" type="text" name="name" id="name" value="{$applet.name}" readonly />
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序Logo<span>*</span></div>
+
+            <div class="open_form_right hbj fl">
+
+                {if $applet.thumb}
+
+                    <img class="upimg" src="{$applet.thumb}"}/>
+
+                {else}
+
+                    <img class="upimg" src="/image/upimg.png"/>
+
+                {/if}
+
+
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序描述<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <textarea class="open_form_textarea" name="comment" rows="" cols="">{$applet.comment}</textarea>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl"></div>
+
+            <div class="open_form_right fl">
+
+                <input type="hidden" name="applet_id" value="{$applet.id}" />
+
+                <input class="open_form_submit" type="submit" name=""  value="开通" />
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+   laydate.render({
+
+        elem: '#date1',
+
+            });
+
+
+
+       //提交检验
+
+       function checkinfo(){
+
+           var usergroup = '<?php echo $usergroup; ?>';
+
+           var pay_time = $("#pay_time").val();
+
+           var free_time = $("#free_time").val();
+
+           var name = $("#name").val();
+
+           var endtime = $("#date1").val();
+
+
+
+           if(usergroup == 2){
+
+               if(!endtime){
+
+                   alert("请选择小程序到期时间");
+
+                   return false;
+
+               }
+
+           }else if(usergroup == 3){
+
+               if(pay_time == -1){
+
+                   alert("请选择套餐时长");
+
+                   return false;
+
+               }
+
+               if(free_time == -1){
+
+                   alert("请选择赠送时长");
+
+                   return false;
+
+               }
+
+
+
+           }else{
+
+               return true;
+
+           }
+
+
+
+           if(!name){
+
+               alert("请输入小程序名称");
+
+               return false;
+
+           }
+
+       }
+
+
+
+       //根据选择的时长套餐改变赠送时长
+
+       function freetime(a){
+
+           var id = a.value;
+
+           if(id < 0){
+
+               var html = "<option value='0'>--无赠送时间--</option>"
+
+               $('#free_time').html(html);
+
+           }else{
+
+               $.ajax({
+
+                   url: 'getfree_time',
+
+                   type: 'post',
+
+                   dataType: 'json',
+
+                   data:{
+
+                       id: id
+
+                   },
+
+                   success :function (res) {
+
+                       var free = "<option value='0'>--无赠送时间--</option>";
+
+                       for(var i=1; i<= res; i++){
+
+                           free += "<option value='"+i+"'>"+i+"个月</option>"
+
+                       }
+
+                       $('#free_time').html(free);
+
+                   }
+
+               })
+
+           }
+
+
+
+           //计算总价
+
+           getprice();
+
+       }
+
+
+
+       function getprice(){
+
+      var month = 0;
+        var usergroup = '<?php echo $usergroup; ?>';
+
+        var combo_id = '<?php echo $combo["id"]; ?>'; //套餐
+
+        var pay_time = $("#pay_time").val(); //时长
+
+        var type = [];
+
+        $('input[name="type[]"]:checked').each(function(){
+
+            type.push($(this).val());//向数组中添加元素
+
+        });
+        
+
+        var price = 0;
+
+        if(pay_time < 0 ){
+
+            $("#price").val(price);
+
+            $("#show_price").html(price);
+
+        }else{
+
+            //根据套餐获取价格  总管理员不需要计算价格
+            if(usergroup != 2){
+
+                //根据套餐ID查找套餐的月份
+                $.post("{:Url('Applet/get_pay_time')}",{"id":pay_time},function(data){
+                    month = data;
+                      if(combo_id != 0){
+
+                      $.ajax({
+
+                          url: 'combo_price',
+
+                          type: 'post',
+
+                          dataType: 'json',
+
+                          data: {
+
+                              combo_id : combo_id
+
+                          },
+
+                          success: function (res) {
+
+                              res = JSON.parse(res);
+
+                              var wx_price = res['wx_price']/12;
+
+                              var baidu_price = res['baidu_price']/12;
+
+                              var ali_price = res['ali_price']/12;
+
+
+
+                              for(var i=0; i<type.length; i++){
+
+                                  if(type[i] == 0){
+
+                                      price += wx_price * month;
+
+                                  }else if(type[i] == 1){
+
+                                      price += baidu_price * month;
+
+                                  }else{
+
+                                      price += ali_price * month;
+
+                                  }
+
+                              }
+
+                              $("#price").val(price.toFixed(2));
+
+                              $("#show_price").html(price.toFixed(2));
+
+                          }
+
+                      });
+
+                  }else {
+
+                      $("#price").val(0);
+
+                      $("#show_price").html(0);
+
+                  }
+                });
+
+
+                
+
+            }
+
+        }
+
+    }
+
+
+       $(":checkbox").on("change",function(){
+
+           getprice();
+
+       });
+
+
+
+</script>
+
+</html>
+

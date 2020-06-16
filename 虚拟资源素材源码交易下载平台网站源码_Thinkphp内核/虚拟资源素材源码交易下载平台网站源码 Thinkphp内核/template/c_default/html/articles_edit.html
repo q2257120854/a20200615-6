@@ -1,0 +1,214 @@
+{extend name="index_base" /} {block name="seo"}
+<title>编辑文章 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="css"}
+
+
+<style type="text/css">
+    
+    .cl {
+        zoom: 1
+    }
+    
+    .cl:after {
+        content: '\20';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden
+    }
+    
+  
+  .add{
+    background: white;
+    box-shadow: 0px 0px 20px #dedede;
+    padding: 20px 26px;
+    margin-top: 20px;}
+	
+	.layui-layedit-iframe{
+	height:500px
+	}
+</style>
+{/block} {block name="body"}
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel add" pad20="" style="padding-top: 5px;">
+        <div class="layui-form layui-form-pane">
+            <div class="layui-tab layui-tab-brief" lay-filter="user">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">修改文章</li>
+                </ul>
+
+                <!-- <div class="fly-none">并无权限</div> -->
+
+                <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                    <div class="layui-tab-item layui-show">
+                        <form action="" method="post">
+                            <input type="hidden" name="id" value="{$tptc.id}">
+
+                            <div class="layui-row layui-col-space15 layui-form-item">
+                                <div class="layui-col-md3">
+                                    <label class="layui-form-label">所在专栏</label>
+                                    <div class="layui-input-block">
+                                        <select name="tid">
+										{volist name="tptcs" id="vo"}
+													<option {if condition="$tptc['tid'] eq $vo['id']"}selected="selected"{/if} value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i
+                                                        <$vo[ 'level'];$i++){echo ' --';}{/php}{/neq} {$vo.name}</option>
+													{/volist}
+										</select>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md9">
+                                    <label for="L_title" class="layui-form-label">标题</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="L_title" name="title" required="" lay-verify="required" value="{$tptc.title}" autocomplete="off" class="layui-input" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+
+                                <label for="L_title" class="layui-form-label layui-bg-blue"  id="image"><i class="layui-icon">&#xe67c;</i>上传封面</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="coverpic" class="layui-input" value="{$tptc.coverpic}" placeholder="如不填可以自动获取内容中的第一张图" >
+                                </div>
+                            </div>
+                         
+                            <div class="layui-upload-list">
+
+                                <img class="layui-upload-img" id="picshow" src="__ROOT__{$tptc.coverpic}" style="max-height: 200px">
+                                <p id="demoText"></p>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                    <textarea name="description" placeholder="内容提要" class="layui-textarea fly-editor" style="height: 60px;">{$tptc.description}</textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                    <textarea id="content" name="content" lay-verify="content" style="height:400px;width: 100%;">{$tptc.content}</textarea>
+                                </div>
+                                <label for="L_content" class="layui-form-label" style="top: -2px;">内容</label>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="L_title" class="layui-form-label">关键词</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="kewords" value="{$tptc.keywords}" autocomplete="off" placeholder="多个关键词之间以逗号（,）分割" class="layui-input" />
+                                </div>
+                            </div>
+                            {:hook('addVideo',array('id'=>$tptc['id'],'type'=>1))}
+                            {:hook('attachlinkadd',array('id'=>$tptc['id'],'type'=>1))}
+
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-submit="" lay-filter="forum_edit">立即发布</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+
+
+<script>
+      var editor;
+    var layedit;
+    layui.use(['layedit','form', 'upload'], function() {
+        var form = layui.form,
+            upload = layui.upload,
+            jq = layui.jquery,
+            layedit = layui.layedit;
+            layedit.set({
+                //暴露layupload参数设置接口 --详细查看layupload参数说明
+                uploadImage: {
+                    url: '{:url("index/upload/upimage")}',
+                    accept: 'image',
+                    acceptMime: 'image/*',
+                    exts: 'jpg|png|gif|bmp|jpeg',
+                    size: '10240'
+                }, calldel: {
+                    url: '/Attachment/DeleteFile'
+                }
+                //开发者模式 --默认为false
+                , devmode: true
+                //插入代码设置
+                , codeConfig: {
+                    hide: true,  //是否显示编码语言选择框
+                    default: 'javascript' //hide为true时的默认语言格式
+                }
+                , tool: [
+                    'code', 'strong', 'italic', 'underline', 'del', 'addhr', '|', 'fontFomatt', 'colorpicker', 'face'
+                    , '|', 'left', 'center', 'right', '|', 'link', 'unlink', 'image_alt', 'anchors','html'
+               
+                ]
+                , height: '90%'
+            });
+             editor = layedit.build('content');
+
+        upload.render({
+            elem: '#image',
+            url: "{:url('index/upload/upimage')}",
+            before: function(obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result) {
+                    jq('#picshow').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function(res) {
+
+                if (res.code == '0') {
+                    jq('input[name=coverpic]').val(res.data.src);
+                    return layer.msg('上传成功');
+                } else {
+
+                    return layer.msg(res.msg);
+                }
+
+            }
+        });
+        form.verify({
+           content: function(value) { 
+            return layedit.sync(editor);
+           },
+            titlea: function(value) {
+                if (value.length < 5) {
+                    return '标题必须大于5位';
+                }
+            },
+            titleb: function(value) {
+                if (value.length > 32) {
+                    return '标题必须小于32位';
+                }
+            }
+        });
+
+        form.on('submit(forum_edit)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            //  data.filed.content=jq('#textarea').val();
+            var param = data.field;
+
+            jq.post('{:url("index/articles/edit",array("id"=>$tptc.id))}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = "{:url('user/index/article')}";
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+    })
+</script>
+{/block}

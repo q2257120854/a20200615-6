@@ -1,0 +1,84 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$cateinfo['catename']} - {$site_config['seo_title']},{$site_config['site_title']}!</title>
+
+<meta name="keywords" content="{:isset($cateinfo['keywords'])?$cateinfo['keywords']:$site_config['seo_keyword']}">
+<meta name="description" content="{:isset($cateinfo['description'])?$cateinfo['description']:$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/lists.css">
+<style type="text/css">
+
+ .nav-ul .hover a {color: #ffd633;}
+</style>
+<div class="serch2">
+</div>
+<div class="container clearfix list_true">
+    <div class="list_left col-md-8 col-xs-12">
+        <div class="cz-title">{$cateinfo['catename']}列表</div>
+        {if $nextcate}
+    
+
+        <ol class="nextcate" style="border-bottom: 1px solid #efefef;">
+            {volist name="nextcate" id="vo"}
+        
+                <a class="layui-btn layui-btn-primary{if $next eq 0 && $cateid eq $vo.id} layui-bg-green{/if}" href="{:url('index/articles/lists',array('cate_alias'=>$vo.alias))}">
+                           {$vo.name}
+                    </a>
+         
+            {/volist}
+        </ol>
+        {/if}
+        <ul class="list_ul clearfix">
+
+            {volist name="article_list" id="vo "}
+            <li class="col-xs-12 clearfix">
+                <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank">
+                    <div class="col-xs-3 lists_left">
+                        <!-- <img src="<?php echo $vo['coverpic']?$vo['coverpic']:WEB_URL.'/public/images/default_cover.png';?>" title="{$vo.title}" /> -->
+                        <img src="{:$vo['coverpic']?$vo['coverpic']:DEF_COVER}" title="{$vo.title}" />
+
+                    </div>
+                    <div class="col-xs-9 lists_right">
+                        <div class="lists_right_title">{if $cateinfo['showall'] eq '0'}[{$vo['name']}]{/if} {$vo.title}</div>
+                        <span class="col-xs-12 col-sm-4">时间：{$vo.time|friendlyDate}</span><span class="hidden-xs col-sm-4">作者：{$vo.username}</span><span class="hidden-xs col-sm-4">热度：<img src="__HOME__/images/s4.gif" /></span>
+                        <p class="hidden-xs col-xs-12">{:msubstr(clearcontent($vo.content),0,220)}</p>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+
+
+        </ul>
+
+        <div id="fanyetools" data-pages="5540">
+            <div style="text-align: center;">
+                {$article_list->render()}
+            </div>
+        </div>
+    </div>
+    <div class="list_right col-md-4 col-xs-12 visible-md visible-lg">
+        <div class="cz-title">阅读排行榜</div>
+        <ul class="list_ph_ul">
+
+            {volist name="artphb" id="vo" key="k"}
+            <li>
+                <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank"> <i>{$k}</i>
+                    <p>{$vo.title}</p>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+
+        <div class="cz-title" style="margin-top:20px;">站长推荐</div>
+        <ul class="list_ph_ul">
+
+            {volist name="artchoice" id="vo" key="k"}
+            <li>
+                <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank"> <i>{$k}</i>
+                    <p>{$vo.title}</p>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+
+{/block}

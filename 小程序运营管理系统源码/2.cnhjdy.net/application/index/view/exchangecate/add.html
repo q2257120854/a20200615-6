@@ -1,0 +1,186 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel3-1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			栏目添加--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Exchangecate/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+					<input type="hidden" name="cateid" value="{$cateid}">
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">栏目基础内容</label>
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $cateinfo}{$cateinfo.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+						<label class="control-label">名称</label>
+						<div class="controls">
+
+							<input name="name" id="name" type="text" class="span3 m-wrap" value="{if $cateinfo}{$cateinfo.name}{/if}" style="height: 35px !important;">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写栏目名称</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">栏目缩略图</label>
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:140px;">
+                                {if $cateinfo}
+									<img src="{$cateinfo.catepic}"/>
+                                {else}
+									<img src="/image/noimage_1.png" alt="" />
+                                {/if}
+								</div>
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:140px;">
+
+									
+
+								</div>
+
+
+
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic" ></span></span>
+
+
+
+								</div>
+
+
+
+								<div class="zphpx"><font color="#999999">宽度200px-750px，高度任意</font></div>
+
+
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+	<script>
+		function checkinfo(){
+			var name = $("#name").val();
+	        if(name==""){
+	            alert("名称不能为空");
+	            return false;
+	        }
+		}	
+	</script>
+
+{include file="public/foot_more" /}

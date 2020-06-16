@@ -1,0 +1,224 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+	.control-group_c{
+		width: 100%;
+		min-height: 35px;
+		margin-bottom: 10px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP1">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			会员充值--{$applet.name}
+		</li>
+	</ul>
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+					<form  action="{:Url('wxuser/cz')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}&op=cz" id="form_sample_2" class="form-horizontal" method="post" class="form-horizontal" onsubmit="return checkinfo();">
+						<div class="control-group chongdingy">
+
+							<label class="control-label chongdingywz">会员充值</label>
+
+						</div>
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">头像昵称</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								<img src="{$item['avatar']}" style="width:50px; height:50px;"/>
+								{$item['nickname']}
+
+							</div>
+
+						</div>
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">会员卡卡号</label>
+
+							<div class="controls" style="line-height:35px;">
+								{if $item['vipid']}{$item['vipid']}{else}尚未开通会员{/if}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">真实姓名</label>
+
+							<div class="controls" style="line-height:35px;">
+								{$item['realname']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">手机号</label>
+
+							<div class="controls" style="line-height:35px;">
+								{$item['mobile']}
+
+							</div>
+
+						</div>
+						<div class="control-group">
+							<label class="control-label">充值类型</label>
+							<div class="controls">
+								<label class="radio">
+								<div class="radio"><input type="radio" name="types" value="1" onclick="changetype(1)" {if $type==1}checked="checked"{/if}></div>
+								充值积分
+								</label>
+								<label class="radio">
+								<div class="radio"><input type="radio" name="types" value="2" onclick="changetype(2)" {if $type==2}checked="checked"{/if}></div>
+								充值余额
+								</label> 
+							</div>
+						</div>
+						<div class="scorebox" style="{if $type==1}display: block{else}display: none{/if}" >
+							<div class="control-group_c">
+
+								<label class="control-label" style="color:#666666">当前积分</label>
+
+								<div class="controls" style="line-height:35px;">
+									{$item['score']}
+								</div>
+
+							</div>
+							<div class="control-group">
+								<label class="control-label">变化</label>
+								<div class="controls">
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czjf_change" value="0" checked="checked"></div>
+									增加
+									</label>
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czjf_change" value="1"></div>
+									减少
+									</label> 
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czjf_change" value="2" ></div>
+									最终积分
+									</label> 
+								</div>
+							</div>
+							<div class="control-group">
+
+								<!--新增的字段-->
+
+								<label class="control-label">充值数目</label>
+								<div class="controls">
+									<input name="scoreNum" type="text" class="span2 m-wrap" value="" style="height: 35px !important;">
+
+								</div>
+
+							</div>
+						</div>
+						<div class="moneybox" style="{if $type==2}display: block{else}display: none{/if}" >
+							<div class="control-group_c">
+
+								<label class="control-label" style="color:#666666">当前余额</label>
+
+								<div class="controls" style="line-height:35px;">
+									{$item['money']}
+								</div>
+
+							</div>
+							<div class="control-group">
+								<label class="control-label">变化</label>
+								<div class="controls">
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czye_change" value="0" checked="checked"></div>
+									增加
+									</label>
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czye_change" value="1"></div>
+									减少
+									</label> 
+									<label class="radio">
+									<div class="radio"><input type="radio" name="czye_change" value="2" ></div>
+									最终余额
+									</label> 
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">充值数目</label>
+								<div class="controls">
+									<input name="yueNum" type="text" class="span2 m-wrap" value="" style="height: 35px !important;">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn green" >
+							确定充值<span class="subtext">{if $type==1}积分{/if}{if $type==2}余额{/if}</span>
+							</button>
+							<a href="{:Url('index')}?appletid=<?php echo $_GET['appletid']?>" class="btn gray">返回</a>
+
+						</div>
+					</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div>
+
+	</div>
+
+	<script>
+		function changetype(i){
+			if(i==1){
+				$(".scorebox").show();
+				$(".moneybox").hide();
+				$(".subtext").html("积分");
+			}
+			if(i==2){
+				$(".scorebox").hide();
+				$(".moneybox").show();
+				$(".subtext").html("余额");
+			}
+		}
+		function checkinfo(){
+			var type = $("input[name='types']:checked").val();
+			if(type==1){
+				var score = $("input[name='scoreNum']").val();
+				if(score == ""){
+					alert("请输入充值数目");
+					return false;
+				}
+			}
+			if(type==2){
+				var yue = $("input[name='yueNum']").val();
+				if(yue == ""){
+					alert("请输入充值数目");
+					return false;
+				}
+			}
+		}
+	</script>
+{include file="public/foot_more" /}

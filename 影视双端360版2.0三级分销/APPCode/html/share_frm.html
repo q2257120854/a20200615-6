@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>分享赚钱</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+     
+	  <link rel="stylesheet" type="text/css" href="../css1/myui.css" />
+      <style>
+      #swiper{margin-top:1.5rem}
+      #swiper .swiper-slide{width:60%;position:relative;}
+      #swiper .swiper-slide .qr{position:absolute;width:40%;left:30%;bottom:5%;}
+      </style>
+  </head>
+  <body>
+  
+  <div class="" style=" background: url('../image/3.png') center center no-repeat fixed;;height:250px;widht:100%;"id="box">
+	<p style="text-align:center;">
+		<img style="width:120px;height:120px;margin:0 auto;" src="../image/qr.png"/>
+	</p>
+	<p style="text-align:center;color:#fff;">
+    邀请码：<b style="color:#F01878;">521</b>
+	</p>
+	<p style="text-align:center;color:#fff;">
+    截屏保存二维码
+	</p>
+  </div>
+   
+      <!--<section id="swiper" class="swiper-container" >
+	    
+	   
+          <div class="swiper-wrapper" style=" background: url('../image/v2/login_bg.png') center center no-repeat fixed;">
+              <div  class="swiper-slide" >
+                  <img  src="../image/qr.png" class="swiper-lazy" />
+                 
+              </div>
+          </div>
+      </section>-->
+      <section class="aui-content-padded aui-margin-b-10">
+          <div class="aui-card-list aui-border-t1">
+              <div class="aui-card-list-header">
+                  规则说明
+              </div>
+              <div class="aui-card-list-content-padded" id="shareinfo">
+			  <p>注册送体验，签到送积分，好礼换不停</p>
+			  <p>分享链接或海报，好友使用你的链接完成注册，即成为你的下线！</p>
+			  <p>三级分销，每级返利50％！</p>
+			    <p>现金收益，随时结算！</p>
+			  </div>
+          </div>
+      </section>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/doT.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+   var api_url = localStorage.getItem('api_url');
+	  apiready = function(){
+			var hongbaoid = $api.byId('box');
+				 api.ajax({
+						url: api_url+'/App/App/config.html',
+						method: 'get'
+					},function(ret, err){
+						if (ret) {
+						var url = ret.xiazai;
+						 localStorage.setItem('xiazai',ret.xiazai);
+						var img = ' <div style="height:13%;width:100%;"></div>	<div style="text-align:center;"><img style="width:150px;height:150px;margin:0 auto;" src="http://qr.topscan.com/api.php?text=http://baidu.com/index/index/qudao.html?share=' + localStorage.getItem('share') + '"/></div><div style="height:4%;width:100%;"></div><p style="text-align:center;color:#fff;">邀请码：<b style="color:#F01878;font-size:18px;">'+localStorage.getItem('share')+'</b></p><p style="text-align:center;color:#fff;">截屏保存二维码</p>';
+						// var img = $api.byId('bpic');
+							 //hongbaoid.src = "http://qr.topscan.com/api.php?&text="+url;	
+
+							//alert(url);
+						hongbaoid.innerHTML = img;
+						}
+				  });
+	  };
+	  
+
+  </script>
+  </html>

@@ -1,0 +1,1 @@
+<div class="caishen">尊敬的卖家，<?=webname?>祝您天天开单，日进斗金</div>

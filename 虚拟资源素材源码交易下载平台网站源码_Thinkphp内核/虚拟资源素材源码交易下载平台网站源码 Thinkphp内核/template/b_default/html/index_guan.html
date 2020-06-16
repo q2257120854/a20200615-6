@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta content="no-siteapp" http-equiv="Cache-Control" />
+    <meta name="description" content="一个旨在快速建立简易社区的开源程序" />
+    <meta name="keywords" content="LaySNS内容社区综合系统开源项目" />
+    <title>LaySNS内容社区综合系统开源项目</title>
+    <link rel="stylesheet" href="__HOME__/css/index.css">
+    <script src="__PUBLIC__/plugins/layui/layui.js"></script>
+    <!--[if lte IE 8]>
+  <script type="text/javascript">
+    (function(elements) {
+      for (var i = 0, l = elements.length; i < l; i++) {
+        document.createElement(elements[i]);
+      }
+    })(['main', 'article', 'section', 'header', 'nav', 'aside', 'time', 'footer']);
+  </script>
+  <![endif]-->
+</head>
+
+<body class="frame_wrap">
+
+
+
+    <header id="head" class="frame_head">
+
+        <h1 class="frame_head_title"><a href="http://laysns.com/default.html">LaySNS内容社区综合系统</a></h1>
+
+
+
+
+
+        <nav class="frame_nav">
+
+            <a class="frame_nav_item " href="http://laysns.com/default.html">进入官网社区</a>
+            <a class="frame_nav_item " href="http://www.kancloud.cn/dragon123960/LaySNS/318415">帮助文档</a>
+        </nav>
+    </header>
+
+
+    <div class="index_banner">
+        <div class="dm_icon dm_icon_BannerLogo"></div>
+        <div class="dm_icon dm_icon_BannerMobileLogo"></div>
+        <div class="index_banner_desc">一个旨在快速帮助站长<br />建立交流社区的开源程序</div>
+        <a class="index_banner_githubBtn" href="http://git.oschina.net/LaySNS/LaySNSjijianshequ" target="_blank">GitOschina</a>
+        <a class="index_banner_startBtn" href="http://laysns.com/default.html">进入社区</a>
+        <div>
+            <a class="index_banner_updateBtn" id="download" href="javascript:;" data-id="{$down.id}" data-url="{:url('index/api/downinfo')}" style="margin-bottom: 0;">下载1.0.8[0522版]  [下载量:{$down.download}]</a>
+        </div>
+        <!-- <div class="index_banner_version">安装版 1.0.8[0522版]</div> -->
+    </div>
+
+    <div class="index_cnt">
+
+        <div class="index_cnt_inside">
+
+            <div class="index_cnt_purpose index_column">
+                <div class="index_column_title">快速建立社区</div>
+                <div class="index_column_desc">
+                    LaySNS内容社区综合系统 是一个专注 Web 社区 开发，帮助站长快速实现搭建交流社区的目的。<br />LaySNS主要由一个强大的 ThinkPHP框架与LAYUI框架组合开发而成。通过 LaySNS，站长可以很轻松地 架设交流社区，同时保持了社区的高可维护性与稳健。<br />如果你需要方便地控制项目的整体功能，或者需要应对频繁的界面变动，<br />那么 LaySNS内容社区综合系统将会是你最好的解决方案。
+                </div>
+                <div class="index_column_mobileDesc">
+                    <p>LaySNS内容社区综合系统 是一个专注 Web 社区 开发，帮助站长快速实现搭建交流社区的目的。</p>
+                    <p>LaySNS主要由一个强大的 ThinkPHP框架与LAYUI框架组合开发而成。通过 LaySNS，站长可以很轻松地 架设交流社区，同时保持了社区的高可维护性与稳健。</p>
+                    <p>如果你需要方便地控制项目的整体功能，或者需要应对频繁的界面变动，那么 LaySNS内容社区综合系统将会是你最好的解决方案。</p>
+                </div>
+            </div>
+
+            <div class="index_cnt_ability index_column">
+
+                <div class="index_cnt_ability_list">
+
+                    <div class="index_ability_item">
+                        <div class="dm_icon dm_icon_Component"></div>
+                        <div class="index_ability_item_title">基础配置与后台</div>
+                        <div class="index_ability_item_cnt">后台继承了众多优秀后台的基础通用功能，包括备份还原数据库、权限管理等，为后台的可重复利用提供可能。</div>
+                    </div>
+
+                    <div class="index_ability_item index_ability_item_Even">
+                        <div class="dm_icon dm_icon_Sass"></div>
+                        <div class="index_ability_item_title">ThinkPHP框架支持</div>
+                        <div class="index_ability_item_cnt">作为国内最好的框架之一，<br />有一定框架基础的开发者站长可以更快的对程序进行二次开发。</div>
+                    </div>
+
+                    <div class="index_ability_item">
+                        <div class="dm_icon dm_icon_Workflow"></div>
+                        <div class="index_ability_item_title">完善的交流机制</div>
+                        <div class="index_ability_item_cnt">官方社区实时会有技术人员负责回复问题和建议帖子，保证您的问题和程序bug第一时间得到修复</div>
+
+                    </div>
+
+                    <div class="index_ability_item index_ability_item_Even">
+                        <div class="dm_icon dm_icon_Extension"></div>
+                        <div class="index_ability_item_title">扩展插件</div>
+                        <div class="index_ability_item_cnt">通过插件机制，可以更快的扩展社区功能，丰富你的社区。</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="index_appIntro index_column">
+                <div class="index_appIntro_title index_column_title">LaySNS内容社区综合系统</div>
+                <div class="index_appIntro_desc index_column_desc">LaySNS内容社区综合系统 是一个专注 Web 社区 开发，帮助站长快速实现搭建交流社区的目的</div>
+
+                <a class="index_downloadBtn" href="http://git.oschina.net/LaySNS/LaySNSjijianshequ" target="_blank">从 GitOschina 下载</a>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="index_foot">
+        <span class="dm_icon dm_icon_BottomLogo"></span>
+        <div>♥ Developed by <a class="qui_txtBold" href="http://laysns.com/" target="_blank">laysns.com</a>
+        </div>
+    </div>
+
+    <div class="index_starWrap">
+        <div class="index_star">
+            <a class="index_star_inner" href="http://git.oschina.net/LaySNS/LaySNSjijianshequ" target="_blank">Star me on GitOschina</a>
+        </div>
+    </div>
+    <script>
+        layui.use('form', function() {
+            var form = layui.form,
+                jq = layui.jquery;
+
+
+            jq('#download').click(function() {
+                var url = jq(this).data('url');
+                var id = jq(this).data('id');
+
+                jq.post(url, {
+                    id: id
+                }, function(data) {
+
+                    if (data.code == 200) {
+
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        }, function() {
+                            location.href = data.url;
+                        });
+                    } else {
+
+                        layer.msg(data.msg, {
+                            icon: 2,
+                            anim: 6,
+                            time: 1000
+                        });
+                    }
+                });
+
+
+
+            });
+
+        })
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+{extend name="base" /} {block name="css"}
+<link rel="stylesheet" href="__ADMIN__/css/form.css"> {/block} {block name="body"}
+<div class="admin-main layui-form">
+    <div class="layui-field-box">
+        <div class="layui-box-searchber" style="overflow: visible;">
+            <a href="{:url('admin/user/add')}" class="layui-btn layui-btn-sm" id="add">
+                <i class="layui-icon">&#xe608;</i> 添加用户
+            </a>
+        
+            <div class="layui-form-pane">   
+                 <form class="layui-form" action="{:url('admin/user/index')}" method="get">
+             
+                <div class="layui-inline">
+                  
+                    <select name="grades" lay-filter="selectgrades">
+                            <option value="">用户组</option>
+                            {volist  name="group_list" id="vo"}
+                              <option {if condition="$grades eq $key"}selected="selected"{/if} value="{$key}">{$vo}</option>
+                            {/volist}
+                  </select>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn  layui-btn-sm">搜索</button>
+                </div>
+            
+            </form>
+
+        </div>
+        </div>
+        <hr>
+        <table class="layui-table admin-table" style="margin-top: 15px;">
+            <thead>
+                <tr>
+                    <th style="width: 30px;">ID</th>
+                    <th>用户名</th>
+                    <th>用户组</th>
+                    <th>手机</th>
+                    <th>状态</th>
+                    <th>发文免审</th>
+                    <th>创建时间</th>
+                    <th>最后登录时间</th>
+                    <th>最后登录IP</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name="user_list" item="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.username}</td>
+                    <td>{$group_list[$vo.grades]}</td>
+                    <td>{$vo.mobile}</td>
+                    <td>{php}echo $vo['status']>=1 ? '启用' : '禁用';{/php}</td>
+                    <td align="center">
+                        <input type="checkbox" lay-skin="switch" lay-text="免审|一般" lay-filter="switchdeveloper" value="{$vo['id']}" {php}echo $vo[ 'developer']==1 ? 'checked' : '';{/php}>
+
+
+                        </a>
+                    </td>
+                    <td>{$vo.regtime|date='Y-m-d H:i:s',###}</td>
+                    <td>{$vo.last_login_time|date='Y-m-d H:i:s',###}</td>
+                    <td>{$vo.last_login_ip}</td>
+                    <td>
+                        <a href="{:url('admin/user/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                        <a href="javascript:;" data-id="{$vo.id}" data-url="{:url('admin/user/delete',['id'=>$vo['id']])}" data-opt="del" class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                    </td>
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+        <!--分页-->
+
+    </div>
+</div>
+{/block} {block name="page"}
+<div class="btable-paged">
+    <div class="layui-main">
+        {$user_list->render()}
+    </div>
+</div>
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+        $form = $('form'),
+            jq = layui.jquery;
+        form.on('select()', function(data) {
+            $form.submit();
+        });
+        form.on('switch(switchdeveloper)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            if (data.elem.checked) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+            var url = "{:url('admin/user/toggle')}?id=" + data.value + '&status=' + status + '&name=developer';
+
+
+            jq.get(url, function(data) {
+
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        //  location.reload();
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+    });
+</script>
+{/block}

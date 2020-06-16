@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>结算佣金明细window</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+    <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">综艺</div>
+    </header>
+    
+  
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/tab.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript">
+
+  apiready = function(){
+      var header = $api.byId('header');
+          var tab = $api.byId('tab');
+          $api.fixStatusBar(header);
+          //加载frame
+          var header_h = $api.offset(header).h;
+          api.openFrame({
+              name: 'zongyi_frm',
+              url: './zongyi_frm.html',
+              rect: {x:0, y:header_h, w:'auto', h:api.frameHeight-header_h},
+          });
+  };
+  
+  
+  </script>
+  </html>

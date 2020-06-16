@@ -1,0 +1,145 @@
+{extend name="index_base" /} {block name="seo"}
+<title>积分充值</title>
+<style type="text/css">
+    .tr_recharge {
+        max-width: 100%;
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .te_retit {
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 40px;
+    }
+    
+    .tr_rechtext {
+        width: 100%;
+        padding: 10px;
+        background: #dedede;
+        color: #333;
+    }
+    
+    .tr_rechtext p {
+        margin-bottom: 10px;
+    }
+    
+    .te_retit img {
+        float: left;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+</style>
+{/block} {block name="body"}
+<div class="layui-container fly-marginTop main">
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief tr_recharge">
+            <div class="tr_rechtext">
+                <p class="te_retit"><img src="__PUBLIC__/images/coin.png" alt="" />充值说明</p>
+                <p>1.{$site_config['jifen_name']}是{$site_config['site_title']}官网唯一交易介质，你可以使用{$site_config['jifen_name']}购买站内的付费内容和打赏作者。</p>
+                <p>2.{$site_config['jifen_name']}与人民币换算为1：{$config['scorenum']}，即1元={$config['scorenum']}{$site_config['jifen_name']}，每次{$config['minnum']}元起充。</p>
+                <p>3.支付过程中请勿关闭扫码付款页面，以免充值失败。</p>
+            </div>
+            <div class="layui-form layui-form-pane" style="padding: 20px 0;">
+                <form method="post">
+
+                    <div class="layui-form-item">
+
+                        <label for="L_title" class="layui-form-label">充值金额</label>
+                        <div class="layui-input-inline">
+                            <input type="number" min="1" name="price" id="czjiage" required lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
+
+                        <div class="layui-form-mid layui-word-aux">最少充值{$config['minnum']} 元</div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_title" class="layui-form-label">{$site_config['jifen_name']}</label>
+                        <div class="layui-input-inline">
+                            <input type="number" name="score" id="czscore" disabled class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_title" class="layui-form-label">付款方式</label>
+                        <div class="layui-input-block">
+                            <div class="layui-input-block" style="margin-left: 10px;">
+                                <input type="radio" name="type" value="alipay" title="" checked />
+                                <div lay-radio="">
+                                    <i class="iconfont icon-alipay" title="支付宝" style="top: -1px;"></i>
+                                </div>
+                                {if $is_thirdpay eq 1}
+                                <input type="radio" name="type" value="alipay" title="" />
+                                <div lay-radio="">
+                                    <i class="iconfont icon-weixinzhifu" title="微信支付" style="font-size:22px;top: -1px;"></i>
+                                </div>
+                                <input type="radio" name="type" value="alipay" title="" />
+                                <div lay-radio="">
+                                    <i class="iconfont icon-qq" title="QQ钱包" style="margin-top:-5px;margin-left:-5px;color:#FF7200"></i>
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button class="layui-btn" lay-submit="" lay-filter="forum_add">确认支付</button>
+                        <button onclick="history.go(-1);" class="layui-btn layui-btn-primary ">返回</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+        var scorenum = "{$config['scorenum']}";
+        jq('#czjiage').on('focusout', function() {
+
+            var jiage = jq(this).val();
+            var score = jiage * scorenum;
+            jq('#czscore').val(score);
+
+        });
+
+        var url = "{:url('user/pay/paysubmit')}";
+
+        form.on('submit(forum_add)', function(data) {
+
+
+            var param = data.field;
+
+            jq.post(url, param, function(data) {
+
+                if (data.code == 1) {
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        anim: 6,
+                        time: 1000
+                    }, function() {
+
+                        jq('.main').append(data.url);
+
+                    });
+
+
+
+
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+
+    })
+</script>
+{/block}

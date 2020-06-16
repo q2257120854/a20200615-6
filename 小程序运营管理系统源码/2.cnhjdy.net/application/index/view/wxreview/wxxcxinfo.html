@@ -1,0 +1,140 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem10">
+
+
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			填写信息并上传代码--{$applet.name}
+		</li>
+	</ul>
+	<div class="row-fluid">
+		<div class="portlet box">
+			<div class="portlet-body form" style="">
+					<div style="display: flex;flex-direction: row;font-size:18px;justify-content:center;text-align:center">
+						<div class="one active">
+							<span style="width:30px;height:30px;line-height:30px;background:#428bca;color:#fff;display: inline-block;border-radius: 30px!important;">1</span> 扫描二维码
+						</div>
+						<img src="/image/btn_jt.png" alt="" style="width:40px;height:40px;margin:0 50px">
+						<div id="two_all">
+							<span style="width:30px;height:30px;line-height:30px;background:#428bca;color:#fff;display: inline-block;border-radius: 30px!important;">2</span> 填写信息并上传代码
+						</div>
+						<img src="/image/btn_jt.png" alt="" style="width:40px;height:40px;margin:0 50px">
+						<div id="three_all">
+							<span style="width:30px;height:30px;line-height:30px;background:#999;color:#fff;display: inline-block;border-radius: 30px!important;">3</span> 上传成功
+						</div>
+					</div>
+					
+
+                    <div style="margin:80px auto 0;width:460px;">
+	                    <div style="display: none;width: 140px;text-align: center;margin: 0px auto 30px;" id="yulanimg">
+		                    <img src="" alt=""  style="width:140px;height:140px;margin:0 auto">
+		                    <div>微信扫码预览小程序</div>
+						</div>
+						<div class="control-group" style="margin-bottom: 30px">
+							<span style="width:100px;text-align: right;display: inline-block;">版本号：<span style="color:#f00">*</span></span>
+							<input name="version" id="version" type="text" class="span3 m-wrap" value=""  style="height: 35px !important;margin-right: 30px;width:314px" />
+							<div style="margin-left: 110px;margin-top:-5px;color:#999999">版本号仅限数字，且不能为空</div>
+						</div>
+						<div class="control-group" style="margin-bottom: 30px">
+							<span style="width:100px;text-align: right;display: inline-block;">版本描述： </span>
+							<textarea name="desc" id="desc" style="width:300px" rows="3"></textarea>
+						</div>
+						<div class="control-group" id="preview" style="margin-bottom: 30px;display: none">
+							<span style="width:100px;text-align: right;display: inline-block;">预览二维码： </span>
+							<img src="" style="width: 200px" alt="">
+						</div>
+						<div style="width:140px;margin:0 auto">
+	                        <a href="javascript:;" class="btn green" onclick="yulan()">预览</a>
+	                        <a href="javascript:;" class="btn green" onclick="upload()">上传代码</a>
+						</div>
+	                    <div style="text-align: center;color:#999;margin-top: 10px">只有上传代码才需要添加版本号和版本描述，预览无需填写</div>
+                    </div>
+
+                	<div id="success" style="display: none;width: 430px;text-align: center;margin: 30px auto 0;">
+						<p>上传代码成功，请到微信开发平台小程序后台预览，提交审核应用</p>
+						<p>微信开发平台小程序后台<a href="https://mp.weixin.qq.com/" target="_blank">https://mp.weixin.qq.com/</a> </p>
+						<a href="https://mp.weixin.qq.com/" target="_blank" class="btn green">去提交审核</a>
+					</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+    <script>
+		var code_uuid = "{$code_uuid}";
+		var scan_token = "{$scan_token}";
+    	function yulan() {
+			$.ajax({
+				url : "{:Url('Wxreview/preview')}?token="+scan_token+"&uuid="+code_uuid,
+				type:"get",
+				success:function (res) {
+					var res = JSON.parse(res);
+					$("#preview").find("img").attr('src',"data:image/jpg;base64,"+res.data.qrcode_img);
+					$("#preview").show();
+                }
+			});
+        }
+        
+        function upload() {
+			var version = $("input[name='version']").val();
+			var desc = $("#desc").val();
+			if(version == ""){
+				alert("版本号不能为空");
+				return false;
+			}
+			$.ajax({
+				url : "{:Url('Wxreview/commitcode')}",
+				type:"post",
+				data:{
+				    token : scan_token,
+					uuid : code_uuid,
+					version:version,
+					desc : desc
+				},
+				success:function (res) {
+					if(res.errno>0){
+						// alert("上传失败，请重试！如一直失败，请过几分钟后再上传！");
+						alert("上传失败!错误描述："+res.message);
+					}else{
+						$("#three_all span").css('background','#428bca');
+						$("#success").show();
+					}
+                }
+			});
+        }
+    </script>
+{include file="public/foot_more" /}

@@ -1,0 +1,249 @@
+{include file="public/head" /}
+
+{include file="public/s_head" /}
+		
+		<div>
+			<div class="wgldxcs">
+				<span>
+					<img src="/image/weixin.png">
+				</span>
+				我管理的小程序
+			</div>
+			<a href="{:Url('Applet/add_admin')}">
+
+			<a href="{:Url('Applet/index')}">
+			<div class="addxcx"> 
+				小程序管理 
+			</div>
+			</a>
+		</div>
+		<div style="margin-top:50px; border-top:1px solid #dedede; padding-top:20px">
+		<form action="{:Url('Applet/save')}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					<input type="hidden" value="{if $applet}{$applet.id}{/if}" name="id">
+
+					<div class="control-group">
+
+						<label class="control-label">小程序名称<font style="color:red">*</font></label>
+
+						<div class="controls" style="line-height:34px;">
+
+							<input name="name" type="text" id="name" class="span3 m-wrap" value="{if $applet}{$applet.name}{/if}"/>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">小程序LOGO<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+
+								<div class="fileupload-new thumbnail" style="width: 100px; height:100px;">
+									{if $applet}
+									<img src="{$applet.thumb}"/>
+									{else}
+									<img src="/image/noimage.jpg" alt="" />
+									{/if}
+								</div>
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:100px; max-height:100px"></div>
+
+								<div>
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+									<span class="fileupload-exists">修改</span>
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="thumb" id="thumb"/></span>
+
+									<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+								</div>
+
+								<font color="#999999">建议上传144*144大小图片</font>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">小程序描述<font style="color:red">*</font></label>
+
+						<div class="controls" style="line-height:34px;">
+							<TEXTAREA name="comment" class="span3 m-wrap" id="comment">{if $applet}{$applet.comment}{/if}</TEXTAREA>
+						</div>
+
+					</div>
+					
+					<div class="control-group">
+
+						<label class="control-label">小程序原始id<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<input name="xcxId" type="text" class="span3 m-wrap" id="xcxId" value="{if $applet}{$applet.xcxId}{/if}" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请在小程序后台查看原始id</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">AppId<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<input name="appID" type="text" class="span3 m-wrap" id="appID" value="{if $applet}{$applet.appID}{/if}" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">应用ID,以wx开头,请正确填写</span>
+						</div>
+
+					</div>
+					
+
+					<div class="control-group">
+
+						<label class="control-label">AppSecret<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<input name="appSecret" type="text" class="span6 m-wrap"  id="appSecret" value="{if $applet}{$applet.appSecret}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">应用密钥,请正确填写</span>
+						</div>
+
+					</div>
+					<div class="control-group">
+						<label class="control-label">身份选择</label>
+						<div class="controls">
+							<label class="radio">
+							<div class="radio"><input type="radio" name="identity" value="1" onclick="identitys(1)" {if $applet}{if $applet.identity==1}checked="checked"{/if}{else}checked="checked"{/if}/"></div>
+							普通商户
+							</label>
+							<label class="radio">
+							<div class="radio"><input type="radio" name="identity" value="2" onclick="identitys(2)" {if $applet}{if $applet.identity==2}checked="checked"{/if}{else}checked="checked"{/if}></div>
+							服务商子商户
+							</label> 
+						</div>
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">普通商户商户号<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<input name="mchid" type="text" class="span6 m-wrap"  id="mchid" value="{if $applet}{$applet.mchid}{/if}" />
+							
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">微信支付秘钥<font style="color:red">*</font></label>
+
+						<div class="controls">
+
+							<input name="signkey" type="text" class="span5 m-wrap"  id="signkey" value="{if $applet}{$applet.signkey}{/if}" />
+							<div class="ssssd" onclick="shenc()">生成新的秘钥</div>
+							
+						</div>
+						<style type="text/css">
+							.ssssd{
+								display: inline-block;
+								border:1px solid #dedede; 
+								text-align:center;
+								line-height: 38px;
+								padding: 0 10px;
+								cursor:pointer;
+								background-color: #efefef;
+							}
+						</style>
+
+					</div>
+					<div class="control-group sub_mchid" style="{if $applet}{if $applet.identity!=1}display: block;{else}display: none{/if}{else}display: none{/if}">
+
+						<label class="control-label">服务商子商户商户号</label>
+
+						<div class="controls">
+
+							<input name="sub_mchid" type="text" class="span6 m-wrap"  id="sub_mchid" value="{if $applet}{$applet.sub_mchid}{/if}" />
+							
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green" id="tijiao" >确定</button>
+
+					</div>
+
+		</form>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+	<script type="text/javascript">
+		function checkinfo(){
+			var name = $("#name").val();
+			var comment = $("#comment").val();
+			var importantID = $("#importantID").val();
+			var xcxId = $("#xcxId").val();
+			var appID = $("#appID").val();
+			var appSecret = $("#appSecret").val();
+			if(!name){
+				alert("请设置小程序的名称！");
+				return false;
+			}else if(!xcxId){
+				alert("请设置小程序原始id！");
+				return false;
+			}else if(!appID){
+				alert("请设置小程序AppId！");
+				return false;
+			}else if(!appSecret){
+				alert("请设置小程序AppSecret！");
+				return false;
+			}else{
+				return true;
+			}
+
+		}
+
+		function shenc(){
+
+
+			len = 32;  
+		    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1  
+		    var maxPos = $chars.length;  
+		    var pwd = '';  
+		    for (i = 0; i < len; i++) {  
+		        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));  
+		    }  
+
+		    $("#signkey").val(pwd);
+
+		}
+
+		function identitys(i){
+			console.log(i)
+			if(i==1){
+				$('.sub_mchid').hide();
+			}
+			if(i==2){
+				$('.sub_mchid').show();
+			}
+		}
+
+
+
+	</script>
+	{include file="public/foot" /}

@@ -1,0 +1,120 @@
+{include file="public/top" /}
+
+<title>{$info.title}</title>
+
+<meta name="keywords" content="{$info.title}">
+
+<meta name="description" content="{$info.title}">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/wnmd.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+    {include file="public/head"}
+
+        <div class="dynamic_banner">
+
+            <div class="main2">
+
+                <div class="contact_banner_div1">ENTERPRISE NEWS</div>
+
+                <div class="contact_banner_div2">企业公告</div>
+
+            </div>
+
+        </div>
+
+        
+
+    <div class="dynamic_content">
+
+            <div class="main clearfix">
+
+                <div class="news_page_left">
+
+                    <div class="fhsj"><img src="/com/img/news_pageimg.png"/>返回上一级</div>
+
+                    <div class="news_page_left_title">{$info.title}</div>
+
+                    <div class="news_page_left_time">{:date('Y.m.d',$info.createtime)}</div>
+
+                    <div class="news_page_left_text">
+
+                        {$info.text}
+
+                    </div>
+
+                    <div class="news_page_left_div">
+                        <div class="news_page_syp">上一篇：
+                        {if $pre}
+                        <a href="{:Url('showgg')}?id={$pre.id}" title="">{$pre.title}</a>
+                        {else}
+                        暂无数据
+                        {/if}
+                        </div>
+
+                        <div class="news_page_syp">下一篇：
+                        {if $next}
+                        <a href="{:Url('showgg')}?id={$next.id}" title="">{$next.title}</a>
+                        {else}
+                        暂无数据
+                        {/if}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="news_page_right">
+
+                    <div class="news_page_right_div1">企业公告</div>
+
+                    {foreach $list as $rs}
+
+                    <div class="news_page_single">
+
+                        <a href="{:Url('show')}?id={$rs.id}" class="news_page_single_title">{$rs.title}</a>
+
+                        <div class="news_page_single_time">{:date("m",$rs.createtime)}-{:date("d",$rs.createtime)} {$rs.title}</div>
+
+                    </div>
+
+                    {/foreach}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {include file="public/foot"}
+
+    
+
+           <script type="text/javascript">
+
+        $('.fhsj').click(function(){
+
+            window.history.back();
+
+        })
+        $(function(){
+            $.ajax({
+                url:"{:Url('News/addHits')}?id=<?php echo $_GET['id']?>",
+                type:"POST",
+                dateType:"json",
+                success:function(res){
+                    if(res == 1){
+                        // alert(res)
+                    }
+                }
+            });
+        })
+    </script>                 
+
+</body>
+
+</html>

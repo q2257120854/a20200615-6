@@ -1,0 +1,52 @@
+{extend name="index_base" /} {block name="seo"}
+<title>
+    <?php echo input('ks');?>的搜索结果 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/search.css">
+<div class="container weizhi_now visible-md visible-lg">
+</div>
+<!-- search -->
+<div class="container searchcon clearfix">
+    <div class="serch2 col-xs-12 visible-xs visible-sm">
+        <form action="{:url('index/index/search')}">
+            <input type="text" name="ks" required="required" value="<?php echo input('ks');?>" class="serch_text2 col-xs-9" placeholder="请输入搜索的关键字" />
+            <input type="submit" class="serch_btn2 layui-icon col-xs-3" value="&#xe615;" />
+        </form>
+    </div>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <div class="layui-tab-content" style="min-height: 730px;">
+            <ul class="col-xs-12 result clearfix layui-tab-item  layui-show">
+                <li class="searchtitle visible-md visible-lg"><div class="cz-title">关键词：
+                    <?php echo input('ks');?> 的搜索结果</div></li>
+                {volist name="tptc" id="vo"}
+                <li>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank" class="clearfix">
+                        <div class="col-xs-3 col-sm-2 lists_left">
+                            <img style="width: 150px;
+    height: 150px;" src="{:$vo['coverpic']?$vo['coverpic']:DEF_COVER}">
+                        </div>
+                        <div class="col-xs-9 col-sm-8 lists_right">
+                            <div href="{:url('index/index/html',array( 'id'=>$vo.id))}" target="_blank" class="lists_right_title">[{$vo.name}] {$vo.title}</div>
+                            <span class="col-xs-12 col-sm-4">时间：{$vo.time|date='Y-m-d',###}</span><span class="hidden-xs col-sm-4">人气：<font color="red">{$vo.view} ℃</font></span><span class="hidden-xs col-sm-4">星级：<img src="__HOME__/images/s4.gif"></span>
+                            <p class="hidden-xs col-xs-12"> {:msubstr(clearcontent($vo.content),0,220)}</p>
+                        </div>
+                        <div class="col-sm-2 lists_rightto hidden-xs">
+                            <span href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank">立即查看</span>
+                        </div>
+                    </a>
+                </li>
+                {/volist}
+            </ul>
+
+        </div>
+        <!-- info -->
+
+    </div>
+    <div style="text-align: center;">
+        {$tptc->render()}
+    </div>
+</div>
+{/block}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+      <style>
+      .aui-border-t1{border-top: 3px solid #ecb780}
+      .aui-border-t2{border-top: 3px solid #be32c7}
+      .aui-border-t3{border-top: 3px solid #232dab}
+      .aui-border-t4{border-top: 3px solid #08a214}
+      </style>
+  </head>
+  <body>
+      <section class="aui-content-padded">
+          <div class="aui-card-list aui-border-t1">
+              <div class="aui-card-list-header">
+                  购买说明
+              </div>
+              <div class="aui-card-list-content-padded" id="viptips">本APP对接第三方支付 提示商户风险属于接口风险 属于正常情况.支付成功会员自动叠加 请放心支付！</div>
+          </div>
+      </section>
+      <section class="aui-content-padded">
+          <div class="aui-card-list aui-border-t2">
+              <div class="aui-card-list-header">
+                  我的账户
+              </div>
+              <div class="aui-card-list-content-padded">
+                  <ul class="aui-list aui-list-in">
+				  <li class="aui-list-item aui-padded-10">
+                          <div class="aui-list-item-inner"> 
+                              <div class="aui-list-item-title">卡密：
+							  </div><input type="text" id="kami" placeholder="在此处输入激活码" style="width:60%;">
+                              <div class="aui-list-item-right"><div class="aui-btn aui-btn-info" onclick="loginOff()"  tapmode>激活</div></div>
+                          </div>
+                      </li>
+                      <!-- <li class="aui-list-item aui-padded-10"> -->
+                          <!-- <div class="aui-list-item-inner"> -->
+                              <!-- <div class="aui-list-item-title">元：<span class="aui-text-info" id="money">0</span></div> -->
+                              <!-- <div class="aui-list-item-right"><div class="aui-btn aui-btn-info" onclick="openWin('buy_win')" tapmode>充值</div></div> -->
+                          <!-- </div> -->
+                      <!-- </li> -->
+                      <li class="aui-list-item">
+                          <div class="aui-list-item-inner">
+                              <div class="aui-list-item-title">VIP到期：<span class="aui-text-info" id="viptime1">未开通</span></div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </section>
+      <section id="vip" class="aui-content-padded">
+          <div class="aui-card-list aui-border-t3">
+              <div class="aui-card-list-header">
+                  VIP资格
+              </div>
+              <div class="aui-card-list-content-padded">
+                  <ul class="aui-list aui-select-list">
+                      <li class="aui-list-item aui-padded-10" onclick="setmoney('day','体验卡');">
+                          <div class="aui-list-item-label">
+                              <input id="day" class="aui-radio" name="active" type="radio" value="day" tapmode>
+                          </div>
+                          <label for="day" class="aui-list-item-inner">
+                            
+                              <div id="day1"></div>
+							  <!-- <div v-text="'体验价：'+it.day*10+'元 / 天'"></div> -->
+                          </label>
+                      </li>
+                      <li class="aui-list-item aui-padded-10" onclick="setmoney('month','一月卡')">
+                          <div class="aui-list-item-label">
+                              <input id="month" class="aui-radio" name="active" type="radio" value="month"  tapmode>
+                          </div>
+                          <label for="month" class="aui-list-item-inner">
+                            
+                              <div id="month1">包月价：50元/天</div>
+                          </label>
+                      </li>
+					  <li class="aui-list-item aui-padded-10" onclick="setmoney('quarter','季度卡')">
+                          <div class="aui-list-item-label">
+                              <input id="quarter" class="aui-radio" name="active" type="radio" value="quarter" tapmode>
+                          </div>
+                          <label class="aui-list-item-inner" for="quarter">
+                       
+                              <div id="quarter1">季度价：2元/年</div>
+                          </label>   
+                      </li>
+					  <li class="aui-list-item aui-padded-10" onclick="setmoney('half','半年卡')">
+                          <div class="aui-list-item-label">
+                              <input id="half" class="aui-radio" name="active" type="radio" value="half" tapmode>
+                          </div>
+                          <label class="aui-list-item-inner" for="half">
+                           
+                              <div id="half1">半年价：2元/年</div>
+                          </label>
+                      </li>
+                      <li class="aui-list-item aui-padded-10" onclick="setmoney('year','一年卡')">
+                          <div class="aui-list-item-label">
+                              <input id="year" class="aui-radio" name="active" type="radio" value="year" tapmode>
+                          </div>
+                          <label class="aui-list-item-inner" for="year">
+                    
+                              <div id="year1">包年价：2元/年</div>
+                          </label>
+                      </li>
+					   <li class="aui-list-item aui-padded-10" onclick="setmoney('yongjiu','永久卡')">
+                          <div class="aui-list-item-label">
+                              <input id="yongjiu" class="aui-radio" name="active" type="radio" value="yongjiu" tapmode>
+                          </div>
+                          <label class="aui-list-item-inner" for="yongjiu">
+                             
+                              <div id="yongjiu1">包年价：2元/年</div>
+                          </label>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </section>
+    
+  </body>
+ <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript">
+   var api_url = localStorage.getItem('api_url');
+  apiready = function(){
+      api.parseTapmode();
+		var viptime = localStorage.getItem('viptime');
+		var s1 = formatDateTime(viptime);
+        var timestamp = Date.parse(new Date())/1000;
+		if (viptime>timestamp) {
+			//hming.innerHTML = ' 超级 VIP';
+			viptime1.innerHTML = ' 将于 '+s1+' 到期';
+		}
+		if (viptime<timestamp) {
+			//hming.innerHTML = ' 已过期';
+			viptime1.innerHTML = '已过期';
+	    	}
+	  
+	  
+      var clipBoard = api.require('clipBoard');
+      clipBoard.get(function(ret, err) {
+          if (ret) {
+
+            if (ret.value.length == 8) {
+              var kami = $api.byId('kami');
+              kami.value = ret.value;
+              api.toast({
+                  msg: '已为您自动粘贴刚才复制的激活码',
+                  duration: 4000,
+                  location: 'middle'
+              });
+            }
+          } else {
+
+          }
+      });
+	  
+	  api.ajax({
+            url: api_url+'/App/App/jiage.html',
+            method: 'get',
+        },function(ret, err){
+            if (ret) {
+          
+				  localStorage.setItem('day',ret.day);
+                  localStorage.setItem('month',ret.month);
+                  localStorage.setItem('quarter',ret.quarter);
+                  localStorage.setItem('half',ret.half);
+				  localStorage.setItem('year',ret.year);
+				  localStorage.setItem('yongjiu',ret.yongjiu);
+				    localStorage.setItem('daili',ret.daili);
+					 var day1 = $api.byId('day1');
+					day1.innerHTML = '体验卡：'+ret.day +'￥/7天';
+					var month1 = $api.byId('month1');
+					month1.innerHTML = '包月卡：'+ret.month +'￥/30天';
+					var quarter1 = $api.byId('quarter1');
+					quarter1.innerHTML = '季度卡：'+ret.quarter +'￥/90天';
+					var half1 = $api.byId('half1');
+					half1.innerHTML = '半年卡：'+ret.half +'￥/180天';
+					var year1 = $api.byId('year1');
+					year1.innerHTML = '一年卡：'+ret.year +'￥/365天';
+					var yongjiu1 = $api.byId('yongjiu1');
+					yongjiu1.innerHTML = '永久卡：'+ret.yongjiu +'￥/999天';
+            } else {
+              api.hideProgress();
+                  api.toast({
+                      msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+                      duration: 5000
+                  });
+              return;
+            }
+        });
+  }  
+ 
+ function  setmoney(id,title){
+  var str="setTotal('"+id+"')";  
+   var str1="setTotal('"+id+"','"+title+"')";  
+  api.execScript({name:"open_vip_win",script:str1});   
+   <!-- api.execScript({name:"open_vip_win",script:str1});                   -->
+  }
+   //充值点卡
+    function loginOff(){
+      var kami = $api.val($api.byId('kami'));
+	  var user_id = localStorage.getItem('user_id');
+      if(kami == ''){
+    /*    api.alert({
+            title: '调皮~',
+            msg: '请输入卡密',
+        });*/
+        api.toast({
+            msg: 'ε=(´ο｀*))) 调皮~   激活码还没输入',
+            duration: 5000
+        });
+        return;
+      }
+      if (user_id<1) {
+        alert('请先登录');
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+        });
+        return;
+      }else {
+        api.showProgress({
+            title: '验证中...',
+            text: '请骚等...',
+            modal: false
+        });
+        api.ajax({
+           url: api_url+'/App/App/dianka.html',
+            method: 'get',
+            data: {
+                values: {
+                    uid: localStorage.getItem('user_id'),
+                    dianka: kami,
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+                if (ret.code == 0) {
+                  api.hideProgress();
+                 api.alert({
+                      title: '哎呀~',
+                      msg: ret.msg,
+                  });
+                  return;
+                }else if (ret.code == 1) {
+                  api.hideProgress();
+                  api.alert({
+                      title: '恭喜!',
+                      msg: '充值成功',
+                  });
+                  localStorage.setItem('viptime',ret.lasttime);
+                  api.sendEvent({
+                    name: 'newLoingdata',
+                    extra: {
+                    }
+                  });
+                  api.closeWin();
+
+                }   
+
+            } else {
+              api.hideProgress();
+              api.alert({
+                  title: '糟糕~',
+                  msg: '网络似乎有点问题',
+              });
+            }
+        });
+
+      }
+    }
+  </script>
+  </html>

@@ -1,0 +1,13 @@
+1、把源码和数据库中2.cnhjdy.net 替换成自己域名
+
+2、导入数据库文件
+
+3、修改\application\database.php数据库配置文件
+
+4、设置运行目录public
+
+用户：admin     密码：admin888
+
+
+
+5G云资源网  www.yunziyuan.com.cn

@@ -1,0 +1,194 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}
+	.cesd{
+		background-color:rgb(53,170,71);
+		border-radius: 4px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon4">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			内容管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+				<div style="float: left;height:32px;line-height: 32px;margin-right: 5px">搜索栏目:</div>
+				<div class="ssinput" style="margin-bottom: 10px; position: relative;width:70%;float:left;">
+					<select name="cid" class="span3 m-wrap" id="cid" style="width:200px;float:left;">
+						<option value="0">请选择栏目</option>
+						{if $cate}
+
+						{foreach $cate as $item}
+
+						<option value="{$item.id}" >{$item.name}</option>
+
+						{if $item.data}
+
+						{foreach $item.data as $res}
+
+						<option value="{$res.id}" ><span style="margin-left:10px;" >|--{$res.name}</span></option>
+
+						{/foreach}
+
+						{/if}
+
+						{/foreach}
+
+						{/if}
+
+
+					</select>
+					<input type="text" placeholder="请输入文章标题关键字" class="skey" id="getnews" style="width:200px;;float:left;margin:0 5px;height:32px;line-height:32px;padding:0 5px;border-color:#e5e5e5">
+					<button  onclick="search()" class="btn green" style="float:left;">
+					搜索 
+					</button>
+				</div>
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('News/add')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						添加文章 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">排序</th>
+
+							<th style="width: 50px;">ID</th>
+
+							<th style="width: 150px;">所属栏目</th>
+
+							<th style="width: 200px;">缩略图</th>
+
+							<th>标题</th>
+							
+							<th width="200px;">操作</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $news}
+						{foreach $newnews as $item}
+							<tr>
+								<td>
+									{$item.num}
+								</td>
+								<td><a href="javascript:;" href="javascript:;" data-clipboard-text="{$item.id}" onclick="copyid({$item.id})" class="label label-success ng-scope js-clip{$item.id}" style="background: #3cc051;min-width:30px;text-align: center;">{$item.id}</a></td>
+								<td>
+									{$item.lanmu}
+								</td>
+								<td>
+									<img src="{$item.thumb}" style="width:50px; height:30px;">
+								</td>
+								<td>
+									{$item.title}
+								</td>
+								<td>
+									<a href="{:Url('News/add')}?appletid=<?php echo $_GET['appletid']?>&newsid={$item.id}"><button class="btn btncolor">编辑</button></a>
+									<form action="{:Url('News/del')}?appletid=<?php echo $_GET['appletid']?>&newsid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+										<button class="btn btncolor" type="submit">删除</button>
+									</form>
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$news->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+    function search(){
+        var cid=$("#cid option:selected").val();
+        var key = $("#getnews").val();
+        if(cid==false&&key==false){
+              alert("请选择栏目或填写标题关键字");
+		}else{
+            location.href = "{:Url('News/index')}?appletid=<?php echo $_GET['appletid']?>&key="+key+"&cid="+cid;
+		}
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

@@ -1,0 +1,106 @@
+<div class="single-comment fly-panel detail-box" id="flyReply" style="padding:10px">
+    <a name="comment"> </a>
+    <fieldset  style="text-align: center;">
+        <p style="margin-left: 20px;padding: 10px 10px;font-size: 20px;font-weight: 300;">评论</p>
+    </fieldset>
+    <div class="layui-form layui-form-pane">
+        <form>
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                    <span id="huifu"></span>
+                    <textarea id="comment" name="content" style="display: none;" placeholder="既然来了，何不留下你的足迹？"></textarea>
+
+                    <input type="hidden" name="tid" value="0" id="tid" />
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align:right">
+                <button class="layui-btn layui-bg-blue" lay-submit="" lay-filter="comment_add">提交评论</button>
+            </div>
+        </form>
+    </div>
+    <ul class="jieda" id="jieda">
+        {volist name="tptc" id="vo"}
+        <li id="tpt{$vo.id}" class="jieda-daan">
+
+            <div class="detail-about detail-about-reply">
+                <a class="fly-avatar" href="{:url('user/index/home',array('id'=>$vo.userid))}">
+                    <img src="__ROOT__{$vo.userhead}" alt="{$vo.username}" /> </a>
+                <div class="fly-detail-user">
+                    <a href="{:url('user/index/home',array('id'=>$vo.userid))}" class="fly-link">
+                        <h3 class="username">{if condition="$vo['uid'] eq session('userid')"}我{else /}{$vo.username}{/if} {if condition="$vo['uid'] eq $t['userid']"} [作者]{/if}</h3>
+                    </a>
+                    <!-- <span style="color:#5FB878">(管理员)</span>  -->
+                </div>
+                <div class="detail-hits">
+                    <span>{$vo.time|friendlyDate}</span>
+                </div>
+                <i class="iconfont icon-caina" style="display:none" title="最佳答案"></i>
+            </div>
+            <div class="detail-body jieda-body">
+                <p>{$vo.content|htmlspecialchars_decode}</p>
+                {if condition="$vo['tid'] gt 0"}
+                <div class="home-dacontent">
+                    {$vo.tid|getcommentbyid}
+                </div>
+
+                {/if}
+
+            </div>
+            <!-- <div class="jieda-reply">
+
+                <span class="jieda-zan {if in_array($vo['id'],$commentzan)}zanok{/if}" data-id="{$vo.id}" type="zan">
+        <i class="iconfont icon-zan"></i>
+        <em>{$vo.zan}</em>
+      </span>
+                <span type="reply" data-id="{$vo.id}">
+        <i class="iconfont icon-svgmoban53"></i>
+        回复</span>
+
+            </div> -->
+        </li>
+        {/volist}
+
+    </ul>
+    <div class="pages">{$tptc->render()}</div>
+    <div style="text-align: center">
+    </div>
+
+</div>
+<script>
+    layui.use(['form', 'layedit'], function() {
+        var form = layui.form,
+            jq = layui.jquery;
+        var layedit = layui.layedit;
+        var index = layedit.build('comment', {
+            height: 100,
+            tool: ['face']
+        });
+        form.on('submit(comment_add)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+
+            var param = data.field;
+            param.content = layedit.getContent(index);
+            jq.post('{:url("index/artcomment/add",array("id"=>$t.id))}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+            return false;
+        });
+    });
+</script>

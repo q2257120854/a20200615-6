@@ -1,0 +1,157 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon10-1">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			多栏目模块管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Multicate/add')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						新增模块 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">排序</th>
+							<th style="width: 50px;">ID</th>
+							<th style="width: 200px;">栏目名称</th>
+
+							<th>状态/参数</th>
+							
+							<th width="200px;">操作</th>
+
+						</tr>
+
+					</thead>
+					<tbody>
+						{if $newcoupon}
+							{foreach $newcoupon as $item}
+								<tr>
+									<td>{$item.num}</td>
+									<td><a href="javascript:;" href="javascript:;" data-clipboard-text="{$item.id}" onclick="copyid({$item.id})" class="label label-success ng-scope js-clip{$item.id}" style="background: #3cc051;min-width:30px;text-align: center;">{$item.id}</a></td>
+									<td style="font-weight:bold">{$item.id}    {$item.name}</td>
+									<td>
+
+										<!-- 启用状态 -->
+										{if $item.statue == 0}
+											<span class="btn red dx" title="是否启用">关</span>
+										{else}
+											<span class="btn green dx" title="是否启用">启</span>
+										{/if}
+										<!-- 栏目类型 -->
+										{if $item.type == "showArt"}
+											<span class="btn green dx" title="栏目类型">文章</span>
+										{elseif $item.type == "showPic"}
+											<span class="btn yellow dx" title="栏目类型">图片</span>
+										{elseif $item.type == "page"}
+											<span class="btn red dx" title="栏目类型">单页</span>
+										{elseif $item.type == "showPro"}
+											<span class="btn blue dx" title="栏目类型">商品</span>
+										{elseif $item.type == "showWxapps"}
+											<span class="btn blue dx" style="background: #605AB0" title="栏目类型">小程序</span>
+										{/if}
+							
+										<!-- 列表类型 -->
+										{if $item.list_type == 0}
+											<span class="btn red dx" title="列表类型">显示子栏目</span>
+										{else}
+											<span class="btn blue dx" title="列表类型">显示内容</span>
+										{/if}
+										<!-- 内容列表样式 -->
+										{if $item.list_style && $item.list_style == 1}
+											<span class="btn red dx" title="内容列表样式">单行大图</span>
+										{elseif $item.list_style && $item.list_style == 2}
+											<span class="btn yellow dx" title="内容列表样式">两列图片</span>
+										{elseif $item.list_style && $item.list_style == 3}
+											<span class="btn green dx" title="内容列表样式">单行图文</span>
+										{elseif $item.list_style && $item.list_style == 4}
+											<span class="btn green dx" title="内容列表样式">文字列表</span>
+										{/if}
+										<!-- 列表标题样式 -->
+										{if $item.list_stylet && $item.list_stylet == "tl"}
+											<span class="btn red dx" title="列表标题样式">标题左对齐</span>
+										{elseif $item.list_stylet && $item.list_stylet == "tc"}
+											<span class="btn yellow dx" title="列表标题样式">标题居中</span>
+										{/if}
+
+									</td>
+									<td>
+										<a href="{:Url('Multicate/add')}?appletid=<?php echo $_GET['appletid']?>&cateid={$item.id}"><button class="btn btncolor">编辑</button></a>
+
+										<form action="{:Url('Multicate/del')}?appletid=<?php echo $_GET['appletid']?>&cateid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del({$item.id})">
+											<button class="btn btncolor" type="submit">删除</button>
+										</form>
+									</td>
+								</tr>
+			
+							{/foreach}
+						{/if}
+						
+					</tbody>
+
+				</table>
+				<!-- 分页 -->
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+	function del(id,count){
+		if(count>0){
+			alert("该栏目中还存在子集栏目，请先删除所有子集栏目后再删除！");
+			return false;
+		}
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+	        return false;
+	    }
+	}
+</script>
+
+
+
+{include file="public/foot_more" /}

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>会员收益</title>
+    <link rel="stylesheet" type="text/css" href="../css/apic.css" />
+	 <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+   
+    <style>
+    .tips{display:inline-block;vertical-align:text-bottom;padding:0 0.3rem 0 0.1rem}
+    .aui-grid .aui-iconfont{height:0.7rem;line-height:0.7rem}
+    .aui-card-list-header{padding:0.3rem 0.75rem;min-height:1.4rem}
+    #commission .aui-list .aui-list-item-title{font-size:0.7rem}
+    .aui-btn{height:1.1rem;line-height:1.1rem;border-radius:1.1rem}
+    .aui-grid .aui-col-xs-6{padding-bottom:0}
+    .aui-grid svg.aui-iconfont{width:1.5rem;height:1.5rem;}
+    </style>
+</head>
+<body>
+<section class="aui-content" id="commission" >
+    <section class="aui-content aui-padded-10 aui-margin-b-10 aui-text-center aui-text-white aui-bg-info">
+      <div style="font-size:1.5rem" id="yue">0</div>
+      <div class="aui-margin-b-5 aui-font-size-12">账户余额(元)</div>
+      <div class="aui-margin-b-5">
+        <div class="aui-btn aui-bg-white aui-text-info" onclick="ti()" >立即提现</div>
+      </div>
+      <p class="aui-text-white aui-font-size-12">平台年度累计结算收益: <span >30万+</span></p>
+    </section>
+    <section class="aui-card-list aui-margin-b-5">
+        <div class="aui-card-list-header aui-font-size-14 aui-border-b">当前分销比例</div>
+        <div class="aui-grid aui-card-list-content aui-padded-0">
+            <div class="aui-row">
+                <div class="aui-col-xs-4 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">一级返利</div>
+                    <big class="aui-text-info" id="yif"></big>
+                </div>
+                <div class="aui-col-xs-4 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">二级返利</div>
+                    <big class="aui-text-info" id="erf"></big>
+                </div>
+                <div class="aui-col-xs-4 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">三级返利</div>
+                    <big class="aui-text-info" id="sanf"></big>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="aui-card-list aui-margin-b-5">
+        <div class="aui-card-list-header aui-font-size-14 aui-border-b">今日</div>
+        <div class="aui-grid aui-card-list-content aui-padded-0">
+            <div class="aui-row">
+                <div class="aui-col-xs-6 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">消费笔数
+                      <div class="tips" onclick="api.alert({title:'今日消费笔数',msg:'所有下级付款的订单数量'})">
+                        <i class="aui-iconfont aui-icon-question aui-text-success aui-font-size-14"></i>
+                      </div>
+                    </div>
+                    <big class="aui-text-info" id="bishu">0</big>
+                </div>
+                <div class="aui-col-xs-6 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">今日佣金
+                      <div class="tips" onclick="api.alert({title:'今日佣金',msg:'今天内创建的有效订单总收益'})">
+                        <i class="aui-iconfont aui-icon-question aui-text-success aui-font-size-14"></i>
+                      </div>
+                    </div>
+                    <big class="aui-text-info" id="zonghe">0</big>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="aui-card-list aui-margin-b-10">
+        <div class="aui-card-list-header aui-font-size-14 aui-border-b">昨日</div>
+        <div class="aui-grid aui-card-list-content aui-padded-0">
+            <div class="aui-row">
+                <div class="aui-col-xs-6 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">消费笔数
+                      <div class="tips" onclick="api.alert({title:'昨日消费笔数',msg:'所有下级付款的订单数量'})">
+                        <i class="aui-iconfont aui-icon-question aui-text-success aui-font-size-14"></i>
+                      </div>
+                    </div>
+                    <big class="aui-text-info" id="zbishu"></big>
+                </div>
+                <div class="aui-col-xs-6 aui-border-r">
+                    <div class="aui-gird-lable aui-font-size-12 aui-margin-b-5">昨日佣金
+                      <div class="tips" onclick="api.alert({title:'昨日佣金',msg:'昨日创建的有效订单总收益'})">
+                        <i class="aui-iconfont aui-icon-question aui-text-success aui-font-size-14"></i>
+                      </div>
+                    </div>
+                    <big class="aui-text-info" id="zzonghe"></big>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<section class="aui-grid orders aui-margin-b-10">
+    <div class="aui-row">
+        <!-- <div class="aui-col-xs-4" onclick="openWin('bind_alipay')" tapmode> -->
+            <!-- <svg class="aui-iconfont" aria-hidden="true"> -->
+                <!-- <use xlink:href="#icon-bind"></use> -->
+            <!-- </svg> -->
+            <!-- <div class="aui-grid-label aui-font-size-14">收款账号</div> -->
+        <!-- </div> -->
+        <!-- <div class="aui-col-xs-4" onclick="openWin('share')" tapmode> -->
+            <!-- <svg class="aui-iconfont" aria-hidden="true"> -->
+               <!-- <use xlink:href="#icon-fenxiang"></use> -->
+            <!-- </svg> -->
+            <!-- <div class="aui-grid-label aui-font-size-14">分享推广</div> -->
+        <!-- </div> -->
+        <div class="aui-col-xs-4" onclick="openWin('fans_win')" tapmode>
+            <svg class="aui-iconfont" aria-hidden="true">
+                <use xlink:href="#icon-yonghu"></use>
+            </svg>
+            <div class="aui-grid-label aui-font-size-14">粉丝列表</div>
+        </div> 
+        <div class="aui-col-xs-4" onclick="openWin('commission_win')" tapmode>
+            <svg class="aui-iconfont" aria-hidden="true">
+                <use xlink:href="#icon-yongjin"></use>
+            </svg>
+            <div class="aui-grid-label aui-font-size-14">佣金明细</div>
+        </div>
+        <div class="aui-col-xs-4" onclick="openWin('withdraw_log_win')" tapmode>
+            <svg class="aui-iconfont" aria-hidden="true">
+               <use xlink:href="#icon-jinzhitixian"></use>
+            </svg>
+            <div class="aui-grid-label aui-font-size-14">提现记录</div>
+        </div>
+    </div>
+</section>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/iconfont_profit.js" ></script>
+  <script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript">
+ var api_url = localStorage.getItem('api_url');
+	apiready = function(){
+		api.parseTapmode();
+		 api.addEventListener({
+          name: 'newLoingdata'
+      }, function(ret, err) {
+        if (ret) {
+
+          jiage();
+          location.reload();
+        }
+      }); 
+		jiage();
+		
+		if (localStorage.getItem('user_id')<1) {
+		  api.toast({
+				msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				duration: 2000
+			});
+		   api.openWin({
+			   name: 'login',
+			   url: './login.html',
+			   delay: 2000
+		   });
+		   return;
+		 }
+	 api.setCustomRefreshHeaderInfo({
+              bgColor : '#fff',
+          }, function() {
+			jiage();	
+				api.toast({
+					msg: '刷新成功',
+					duration: 1000,
+					location: 'middle'
+				});		 
+				setTimeout(function(){
+					api.refreshHeaderLoadDone()
+              }, 3000);				
+               api.refreshHeaderLoadDone();
+          }); 
+		
+	}
+	
+	function  jiage(){
+	
+	 api.ajax({
+            url: api_url+'/App/App/fenxiao.html',
+            method: 'get',
+			data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					} 
+        },function(ret, err){
+            if (ret) {
+			
+				var yif = $api.byId('yif');
+				yif.innerHTML = ret.yi+'%';
+				var erf = $api.byId('erf');
+				erf.innerHTML = ret.er+'%';
+				var sanf = $api.byId('sanf');
+				sanf.innerHTML = ret.san+'%';
+				localStorage.setItem('tixian',ret.tixian);
+				localStorage.setItem('money',ret.money);
+				var bishu = $api.byId('bishu');
+				bishu.innerHTML = ret.bi+'笔';
+				var zonghe = $api.byId('zonghe');
+				zonghe.innerHTML = ret.zong+'元';
+				var zbishu = $api.byId('zbishu');
+				zbishu.innerHTML = ret.zbi+'笔';
+				var zzonghe = $api.byId('zzonghe');
+				zzonghe.innerHTML = ret.zzong+'元';
+				var yue = $api.byId('yue');
+				yue.innerHTML = ret.money;
+            } else {
+              api.hideProgress();
+                  api.toast({
+                      msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+                      duration: 5000
+                  });
+              return;
+            }
+        });
+	
+	}
+	
+	
+	
+	function ti(){
+		var tixian = localStorage.getItem('tixian');
+		var money = localStorage.getItem('money');
+		 if( tixian > money){
+				  api.toast({
+					msg: '最低提现金额'+tixian+'元起',
+					duration: 5000
+				});
+				return;
+              }
+			 
+		  
+		  api.openWin({
+			   name: 'withdraw_win',
+			   url: './withdraw_win.html',
+			   
+			 
+		  });
+	}
+	
+</script>
+</html>

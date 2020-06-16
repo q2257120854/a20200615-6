@@ -1,0 +1,21 @@
+/*模板公用头部1B d3为小图标 d4为文字*/
+.mbtop1{background-color:#ff6600;height:43px;color:#fff;}
+.mbtop1 .d1{margin:11px 0 0 10px;width:30px;}
+.mbtop1 .d2{margin:10px 0 0 0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;font-size:18px;text-align:center;}
+.mbtop1 .d3{margin:9px 10px 0 0;width:30px;text-align:right;}
+.mbtop1 .d3 img{height:25px;}
+.mbtop1 .d4{margin:12px 10px 0 0;width:30px;text-align:right;font-size:14px;}
+.mbtop1 .d4 a{color:#fff;}
+.mbtop1fdv{display:block;height:43px;}
+.mbtop1fd{height:43px;position:fixed;width:100%;z-index:11;}
+
+.bottom{text-align:center;}
+.bottom .d1{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;padding:10px 0 0 0;line-height:21px;margin:10px 0 0 0;border-top:#ddd solid 1px;}
+
+/*底部样式*/
+.bottommain{float:left;width:100%;height:46px;color:#999;}
+.gbottom{position:fixed;bottom:0px;width:100%;height:45px;border-top:#DEDEDE solid 1px;background-color:#F7F7F7;z-index:9;}
+.gbottom .d1{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;height:40px;margin:5px 0 0 0;}
+.gbottom .d1 .dm{float:left;width:20%;text-align:center;}
+.gbottom .d1 .dm img{width:20px;margin:0 0 3px 0;}
+.gbottom .d1 .dm1{color:#ff0000;}

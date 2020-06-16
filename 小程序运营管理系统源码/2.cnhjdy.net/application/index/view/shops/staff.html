@@ -1,0 +1,196 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}
+	.cesd{
+		background-color:rgb(53,170,71);
+		border-radius: 4px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navStore" class="navStore3">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			员工管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+				<div style="float: left;height:32px;line-height: 32px;margin-right: 5px">搜索:</div>
+				<div class="ssinput" style="margin-bottom: 10px; position: relative;width:70%;float:left;">
+		
+					<input type="text" placeholder="请输入姓名关键字" class="skey" id="getnews" value="{$skey}" style="width:200px;;float:left;margin:0 5px;height:32px;line-height:32px;padding:0 5px;border-color:#e5e5e5">
+					<button  onclick="search()" class="btn green" style="float:left;">
+					搜索 
+					</button>
+				</div>
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Shops/staffadd')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						添加员工 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">ID</th>
+							<th style="width: 50px;">姓名</th>
+							<th style="">照片</th>
+							<th style="">头衔</th>
+							<th style="">职务</th>
+							<th style="">手机</th>
+							<th style="">地址</th>
+							<th style="">签约状态</th>
+							<th style="">认证状态</th>
+							<th style="">评分</th>
+							<th style="width:210px">操作</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $staffslist}
+						{foreach $staffslist as $item}
+							<tr>
+								<td><a href="javascript:;" href="javascript:;" data-clipboard-text="{$item.id}" onclick="copyid({$item.id})" class="label label-success ng-scope js-clip{$item.id}" style="background: #3cc051;min-width:30px;text-align: center;">{$item.id}</a></td>
+								<td>
+									{$item.realname}
+								</td>
+								<td>
+									<img src="{if $item.pic}{$item.pic}{else}/image/noimage.jpg{/if}" style="width:50px; height:30px;">
+								</td>
+								<td>
+									{$item.title}
+								</td>
+								<td>
+									{$item.job}
+								</td>
+								<td>
+									{$item.mobile}
+								</td>
+								<td>
+									{$item.province}-{$item.city}-{$item.area}
+								</td>
+								<td>
+								{if $item['contract'] == 0}
+									<button class="btn gray">未签约</button>
+								{else}
+									<button class="btn green">已签约</button>
+								{/if}
+								</td>
+								<td>
+								{if $item['auth'] == 0}
+									<button class="btn gray">未认证</button>
+								{else}
+									<button class="btn green">已认证</button>
+								{/if}
+								</td>
+								<td>
+									{$item.score}
+								</td>
+								<td style="width:210px">
+									<a href="{:Url('shops/staffadd')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}"><button class="btn btncolor">编辑</button></a>
+									<form action="{:Url('shops/staffdel')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+										<button class="btn btncolor" type="submit">删除</button>
+									</form>
+									<a href="{:Url('shops/qrcode')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}"><button class="btn btncolor">生成二维码</button></a>
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+					{if $staffs}
+						{$staffs->render()}
+					{/if}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+    function search(){
+        var key = $("#getnews").val();
+        if(key==false){
+              alert("请填写姓名关键字");
+		}else{
+            location.href = "{:Url('Shops/staff')}?appletid=<?php echo $_GET['appletid']?>&skey="+key;
+		}
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

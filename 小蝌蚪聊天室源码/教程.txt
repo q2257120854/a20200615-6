@@ -1,0 +1,12 @@
+上传至主机或服务器即可
+改名方法：输入name:XXX即可改名
+
+
+5G云源码分享网 ww.yunziyuan.com.cn
+
+
+
+此版本为html版，如需要完整版请前往
+https://github.com/walkor/workerman-todpole
+
+安装教程：https://www.workerman.net/workerman-todpole

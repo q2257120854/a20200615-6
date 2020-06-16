@@ -1,0 +1,66 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 750rpx;
+}
+
+.top {
+    margin-top: 200rpx;
+    font-size: 36rpx;
+}
+
+.jiage {
+    margin-top: 15rpx;
+}
+
+.jiage .chose-txt {
+    border-radius: 6px;
+    font-size: 26rpx;
+    height: 40px;
+    width: 25%;
+    margin: 5px;
+    float: left;
+    padding-top: 5px;
+}
+
+.jiage .chose-p {
+    line-height: 18px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    float: left;
+}
+
+.lin {
+    margin: 15rpx;
+}
+
+.f30 {
+    font-size: 30rpx;
+}
+
+.f26 {
+    font-size: 26rpx;
+}
+
+.f24 {
+    font-size: 24rpx;
+    color: green;
+}
+
+.weixinpay {
+    display: flex;
+    align-items: center;
+}
+
+.weixinpay image {
+    height: 32rpx;
+    width: 32rpx;
+}
+
+button {
+    background-color: #e8580c;
+    color: white;
+}

@@ -1,0 +1,76 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+	<div class="listBoxGen">
+        <div class="listBoxTitleGen"><div class="showTitle">系统设置</div></div>
+            <div class="listBoxContentGen">
+                
+	            
+<fieldset class="fieldset">
+<legend><span class="fieldset_title">设置系统皮肤</span></legend>
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button1" value="使用样式一" id="ctl00_ContentPlaceHolder1_Button1" class="buttom" />
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button2" value="使用样式二" id="ctl00_ContentPlaceHolder1_Button2" class="buttom" />
+</fieldset>
+
+<br />
+
+<fieldset class="fieldset">
+<legend><span class="fieldset_title">委托推荐人担保取回密码功能</span></legend>
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button3" value="关闭此功能" id="ctl00_ContentPlaceHolder1_Button3" disabled="disabled" class="buttom" onclick="return confirm(&#39;温声提示：此功能关闭后不能再开啟，请确保您已认真阅读页面中提示说明。确认提交设置吗？&#39;);" /> 
+    <span id="ctl00_ContentPlaceHolder1_lbldelegatePwdKey" style="color:#FF3300;">為了确保安全，从2014年6月3日起不管玩家是否关闭推荐人担保取密功能，推荐人都不能通过留言担保取回被推荐人密码！</span>
+    <br /><br />
+    
+    说明：
+    <ul>
+        <li>1、委托推荐人担保取回密码功能能够带来方便，但也可能存在风险，為了安全您可以选择关闭此功能。</li>
+        <li>2、关闭此功能前请确保您已绑定安全邮箱或者已设置密保问题，以便在忘记密码时能自行取回。</li>
+        <li>3、关闭此功能后您的直推人将不能留言担保为您取回密码。</li>
+        <li>4、此功能关闭后不能再开启！</li>
+    </ul>
+</fieldset>
+
+<br />
+
+<fieldset class="fieldset">
+<legend><span class="fieldset_title">设置隐藏我的提成收入</span></legend>
+    <input type="submit" name="ctl00$ContentPlaceHolder1$Button4" value="设置隐藏" onclick="return confirm(&#39;温声提示：此功能设置隐藏后不能再手动开啟显示，确认提交设置隐藏吗？&#39;);" id="ctl00_ContentPlaceHolder1_Button4" class="buttom" /> 
+    <span id="ctl00_ContentPlaceHolder1_lblshowTCKey" style="color:#FF3300;"></span>
+    <br /><br />
+    安全码：<input name="ctl00$ContentPlaceHolder1$yzm" type="text" maxlength="5" id="ctl00_ContentPlaceHolder1_yzm" class="text" style="width:80px;" />
+    <img id="ctl00_ContentPlaceHolder1_Image1" title="Click to change verification" src="{:U('Index/Login/verify')}" style="border-width:0px;" />
+    <br /><br />
+    
+    说明：
+    <ul>
+        <li>1、為了安全或个人喜好，您可以设置隐藏显示您的提成收入。</li>
+        <li>2、注意此功能关闭后不能再开启！如果您只是不想让其它普通玩家看到您的收入，那不要告诉他人密码即可，而不是在此设置。</li>
+        <li>3、此功能主要是满足玩家在一些特殊情况下确保帐号帐号相关信息绝对安全的一种措施。</li>
+    </ul>
+</fieldset>
+
+<br /><br /><br />
+
+            </div>
+            <br /><br />
+        </div>
+	</div>
+</div>
+
+<!-- Transparent layer --> 
+<div id="divBox" style="filter:alpha(opacity=40);-moz-opacity:0.3;opacity:0.3;background-color:#000;width:100%;height:100%;z-index:1000;position: absolute;left:0;top:0;display:none;overflow: hidden;">
+</div>
+<!-- message layer --> 
+<div id="divMsg" style="border:solid 5px #339999;background:#fff;padding:10px;width:780px;z-index:1001; position: absolute; display:none;top:50%; left:50%;margin:-200px 0 0 -400px;"> 
+    <div style="padding:3px 15px 3px 15px;text-align:left;vertical-align:middle;" > 
+        <div class="IndexShowMsg"> 
+            <div id="divShowMsg"></div>
+            
+        </div> 
+        <br/>
+        <div id="showbtnCancel" style="text-align:right;"> 
+            <input id="btnCancel" type="button" class="buttom" value=" 关闭 " onclick="ShowNo()" /> 
+        </div> 
+    </div> 
+</div> 
+
+    </form>
+</body>
+</html>

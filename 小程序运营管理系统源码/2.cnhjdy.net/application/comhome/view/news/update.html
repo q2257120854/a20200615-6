@@ -1,0 +1,72 @@
+{include file="public/top" /}
+<title>产品动态</title>
+<meta name="keywords" content="产品动态">
+<meta name="description" content="产品动态">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/wnmd.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+    {include file="public/head"}
+        <div class="dynamic_banner">
+            <div class="main2">
+                <div class="contact_banner_div1">VERSION UPDATE</div>
+                <div class="contact_banner_div2">版本更新</div>
+            </div>
+        </div>
+        <div class="dynamic_nav">
+            <div class="main2 clearfix">
+                <a class="hover" href="{:Url('News/update')}">更新日志</a>
+                <a href="{:Url('News/index')}">产品动态</a>
+                <a href="{:Url('News/gg')}">企业公告</a>
+            </div>
+        </div>
+        <div class="updatebox main2">
+            {foreach $list as $rs}
+            <div class="bbgx_single clearfix">
+                <div class="bbgx_left">
+                    <div class="bbgx_left_date">{:date('d',$rs.createtime)}
+                        <div></div>
+                    </div>
+                    <div class="bbgx_left_div2">{:date('Y',$rs.createtime)}.{:date('m',$rs.createtime)}</div>
+                </div>
+                <div class="bbgx_center">
+                    <img src="/com/img/update_ysj.png"/>
+                </div>
+                <div class="bbgx_right">
+                    <div class="update_single_div1 hbj">
+                        <div class="update_single_div1_left">
+                            <div class="bbgx_right_bbh">版本号：{$rs.title}</div>
+                            <div class="bbgx_rignt_tx">提示：{$rs.tips}</div>
+                        </div>
+                        <div class="update_single_div1_right">
+                            <img class="update_single_div1_right_img1" src="/com/img/update_sjt.png"/>
+                            <img class="update_single_div1_right_img2" src="/com/img/update_xjt.png"/>
+                        </div>
+                    </div>
+                    <div class="update_alert">
+                        <div class="update_content">
+                            {$rs.text}
+                        </div>
+                        <div class="update_line2"></div>
+                        <div class="update_bz">备注：{$rs.remarks}</div>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+            <div class="dynamic_fy">
+                <ul>
+                    {$lists->render()}
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    {include file="public/foot"}
+    
+</body> 
+</html>

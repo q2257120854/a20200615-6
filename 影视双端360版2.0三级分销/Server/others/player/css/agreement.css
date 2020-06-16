@@ -1,0 +1,64 @@
+td {
+	font-size: 12px;
+	color: #666666;
+	line-height: 18px;
+
+}
+
+a:link, a:visited, a:active { text-decoration: none; color: #575757 }
+a:hover { color: #FF0000; text-decoration:underline }
+.myborder {
+	border: 1pt solid #999999;
+}
+.SubClassText {
+	font-size: 12px;
+	font-weight: bold;
+	color: #1E608B;
+}
+.SubClassTextCurrent {
+	font-size: 12px;
+	font-weight: bold;
+	color: #194F71;
+}.loginUser {
+	background-color: #EBF3DF;
+	height: 21px;
+	width:90px;
+	border: none;
+}.loginVerifySerial {
+	background-color: #EBF3DF;
+	height: 21px;
+	width:40px;
+	border: none;
+}.title_text {
+	font-size: 14px;
+	font-weight: bold;
+	color: #4E4E4E;
+}
+}.bbs_title {
+	font-size: 12px;
+	font-weight: bold;
+	color: #33659C;
+}
+.inputbox {
+	border: 1pt solid #CFCFCF;
+}
+.big_text {
+	font-size: 14px;
+	font-weight: bold;
+}
+.color_text_01 {
+	font-size: 12px;
+	color: #46A7CA;
+}.color_text_02 {
+	font-size: 12px;
+	color: #FD7815;
+}.pic_border {
+	border: 2px solid #E1E1E1;
+}
+.news:visited {
+	COLOR: #FFFFFF;  TEXT-DECORATION: none
+}
+.news:hover {
+	COLOR: #CCCCCC;  TEXT-DECORATION: underline
+}
+.color-3 {color: #FFFFFF}

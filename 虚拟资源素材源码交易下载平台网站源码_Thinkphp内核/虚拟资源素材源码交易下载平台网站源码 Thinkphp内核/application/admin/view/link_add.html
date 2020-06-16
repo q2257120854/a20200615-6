@@ -1,0 +1,58 @@
+{extend name="base" /}
+{block name="body"}
+
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" data-url="{:url('admin/link/save')}"  localtion-url="{:url('link/index')}" >
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" value="" required  lay-verify="required" placeholder="请输入名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">图片</label>
+                       
+                            <input type="text" name="image" value="" placeholder="（选填）请上传图片" class="layui-input layui-input-inline" id="thumb">
+                            <input type="file" name="file" class="layui-upload-file" id="uploadfile" lay-type="images" data-id="thumb" data-url="{:url('upload/upimage')}">
+                      
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">链接</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="link" value="" placeholder="（选填）请输入链接" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="status" value="1" title="显示" checked="checked">
+                            <input type="radio" name="status" value="0" title="隐藏">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-inline">
+                            <input type="number" name="sort" value="0" required lay-verify="required" placeholder="请输入排序" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="btable-paged" >
+				<div class="layui-main">
+                    <div class="formbtngroup">
+<button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">添加</button>
+<button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+</div>
+</div>
+        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+{/block}

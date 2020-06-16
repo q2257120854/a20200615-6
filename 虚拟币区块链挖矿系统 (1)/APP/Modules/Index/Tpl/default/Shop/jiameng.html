@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel="stylesheet" href="/Public/home/css/new_file.css" />
+		<script type="text/javascript" src="/Public/home/js/jquery-1.8.2.min.js" ></script>
+		<script type="text/javascript" src="/Public/home/js/new_file.js" ></script>
+		<link rel="stylesheet" href="/Public/home/layer/mobile/need/layer.css" />
+		<script type="text/javascript" src="/Public/home/layer/mobile/layer.js" ></script>
+		<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
+		<link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
+		<link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
+
+	<link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
+		<title>入驻商城</title>
+	</head>
+	<body>
+		<!--头部  star-->
+    <header class="header">
+        <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+        <span class="header_c">入驻商城</span>
+		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+    </header>
+		<!--头部 end-->
+		<div class="banner">
+			<img src="/Public/home/images/banner2.png" width="100%" height="100%"/>
+		</div>
+		<!--充值列表-->
+		<form  method="post" action="{:U('Index/Shop/tijiaojiameng')}" style="margin-bottom:80px;font-size:14px" enctype="multipart/form-data">
+		<div class="person_wallet_recharge">
+		<if condition="!empty($member['username']) || !empty($member['truename']) || !empty($member['mobile'])">
+            <div class="pic">会员编号：&nbsp;&nbsp;&nbsp;{$member['username']}</div>
+            <div class="pic">商家姓名：&nbsp;&nbsp;&nbsp;{$member['truename']}</div>
+            <div class="pic">联系电话：&nbsp;&nbsp;&nbsp;{$member['mobile']}</div>
+		<else/>
+            <div class="pic">会员编号：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+            <div class="pic">商家姓名：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+            <div class="pic">联系电话：&nbsp;&nbsp;&nbsp;<font color='red'>*请先完成实名认证</font></div>
+		</if>
+			<if condition="$member['shopstatus'] eq 2">
+			<div class="pic">商户状态：&nbsp;&nbsp;&nbsp;<font color='red'>违规经营已被封停</font></div>
+			</if>
+			<if condition="($member['shopstatus'] eq 0) or ($member['shopstatus'] eq 1)">
+				<if condition="!empty($member['shopname'])">
+						<div class="pic">店铺名称：&nbsp;&nbsp;&nbsp;{$member['shopname']}</div>
+               		 <else/>
+				<div class="pic">店铺名称：<input type="text" placeholder="请输入店铺名称" name="shopname" style="height: 30px;line-height: 30px;width: 69%;border-radius: 5px;border:none;color:#eee;padding-left: 5px;-webkit-appearance:none;" /></div>
+				</if> 
+				<if condition="$member['shoplevel'] eq 1"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;普通商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
+				<if condition="$member['shoplevel'] eq 2"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;铜牌商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
+				<if condition="$member['shoplevel'] eq 3"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;银牌商家<a href='{:U('Index/Shop/shengji')}'><input type='button' value='我要升级' style='margin-left:5px; padding:3px 7px; border:0px; border-radius:4px; color:#ffffff; background:#09F;'></a><br></div></if>
+				<if condition="$member['shoplevel'] eq 4"><div class="pic">加盟等级：&nbsp;&nbsp;&nbsp;金牌商家</div></if>
+						
+						
+                <if condition="empty($member['shoplevel'])">
+				<div class="pic">加盟等级：
+				<select name="shoplevel" style="height: 30px;line-height: 30px;width: 69%;border-radius: 5px;border:none;color:#eee; background:#ff7387;padding-left: 5px;-webkit-appearance:none;" />
+						<option value="">请选择商户级别</option>
+							<foreach name="shop_group" item="v">
+							<option value="{$v.level}">{$v.price}个PCO{$v.name}可以上传{$v.goosnum}件商品</option>
+							</foreach>
+                </select>
+				</div>
+				<div class="pic">支付密码：<input type="text" placeholder="请输入支付密码" name="password2" style="height: 30px;line-height: 30px;width: 69%;border-radius: 5px;border:none;color:#eee; padding-left: 5px;-webkit-appearance:none;" /></div>
+				
+				</if>	
+				
+
+			</if>
+		<if condition="empty($member['shoplevel']) || empty($member['shopname'])">
+		<button type="submit" class="botton" style="width: 100%;height: 30px;line-height: 30px;border-radius: 5px;border: 0px; background-color:#ff7387;margin-top: 5px;color: #FFFFFF;-webkit-appearance: none;">提 交</button>
+            
+		</if>
+		</form>	
+
+		</div>
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+	</body>
+	
+</html>

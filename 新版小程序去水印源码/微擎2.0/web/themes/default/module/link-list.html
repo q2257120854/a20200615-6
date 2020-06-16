@@ -1,0 +1,50 @@
+{template 'common/header'}
+<div class="module-link-page">
+	<ol class="breadcrumb we7-breadcrumb">
+		<a href=""><i class="wi wi-back-circle"></i> </a>
+		<li><a href="{php echo url('module/welcome', array('m' => $_GPC['m']));}">应用详情</a></li>
+		<li>关联账号列表</li>
+	</ol>
+
+	<div class="user-head-info">
+		<img src="{$module_info['logo']}" class="module-img we7-margin-right-sm" alt="">
+		<div class="info">
+			<h3 class="title">{$module_info['title']}</h3>
+			<div class="type">
+				{if $module_info['wxapp_support'] == 2}<i class="wi wi-wxapp"></i>{/if}
+				{if $module_info['account_support'] == 2}<i class="wi wi-account"></i>{/if}
+				{if $module_info['webapp_support'] == 2}<i class="wi wi-webapp"></i>{/if}
+				{if $module_info['phoneapp_support'] == 2}<i class="wi wi-phoneapp"></i>{/if}
+				{if $module_info['xzapp_support'] == 2}<i class="wi wi-xzapp"></i>{/if}
+				{if $module_info['aliapp_support'] == 2}<i class="wi wi-aliapp"></i>{/if}
+				{if $module_info['baiduapp_support'] == 2}<i class="wi wi-baiduapp"></i>{/if}
+				{if $module_info['toutiaoapp_support'] == 2}<i class="wi wi-toutiaoapp"></i>{/if}
+			</div>
+		</div>
+	</div>
+
+	<div class="module-link-list">
+		{loop $account_list $sub_account}
+		<div class="module-link-item">
+			<a href="{php echo url('module/display/switch', array('module_name' => $_GPC['m'], 'uniacid' => $sub_account['uniacid']));}" class="box">
+				<img src="{$sub_account['logo']}" class="account-img" alt="">
+				<div class="info">
+					<div class="title">{$sub_account['name']}</div>
+					<div class="type">
+						<i class="wi wi-{$sub_account['type_sign']}"></i> {$sub_account['type_name']}
+					</div>
+					<div>
+						{$sub_account['version_id']}
+					</div>
+				</div>	
+				<div class="go-in">
+					<i class="wi wi-angle-right"></i>
+				</div>
+			</a>
+		</div>
+		{/loop}
+
+	</div>
+</div>
+	
+{template 'common/footer'}

@@ -1,0 +1,121 @@
+<style>
+.navlan a{
+      color:#333 !important;
+  }
+  .navlan a:hover{
+      color:green !important;
+  }
+</style>
+<div class="headerbox">
+	<div class="logo clearfix container visible-md visible-lg">
+		<div class="tpt-logo">
+		    <a href="/" title="{$site_config['site_title']}" style="line-height:110px" >
+		    <img src="__ROOT__{$site_config['cmslogo']|default='__PUBLIC__images/logo.png'}" style="margin-top:15px" width="240px" height="65px" alt="LOGO" /></a>
+		</div>
+		<img src="__ROOT__{$site_config['cmsbiaoyu']|default='__PUBLIC__images/biaoyu.png'}" class="col-xs-3 yxcz" alt="爱生活，爱类森" />
+	    <div class="serch  header-important">
+	        <form action="{:url('index/index/search')}"  class="search">
+                <input type="text" name="ks" required="required" value="" class="serch_text2 col-xs-9" placeholder="请输入搜索的关键字">
+                <input type="submit" class="layui-icon layui-icon-search sjsuicon" >
+            </form>
+	    </div>
+	</div>
+</div>
+<nav class="navlan web-nav"> 
+    <div class="container layui-clear">
+        <div class="visible-xs visible-sm nav_phone">
+            <a class="phone_logo_text" href="{:url('index/index/index')}">
+            	<img src="__ROOT__{$site_config['cmslogo']|default='__PUBLIC__images/logo.png'}" width="84px" height="30px" alt="{$site_config['site_title']}"/>
+            </a>
+            <div class="bar bar-header-secondary">
+				<div class="searchbar">
+					<div class="search-input">
+						<span class="layui-icon layui-icon-search sjsuicon"></span>
+						<form action="{:url('index/index/search')}" method="get">
+							<input type="search" id="search" placeholder="这是一个神奇的搜索" required="required"  name="ks" value="<?php echo input('ks');?>">
+						</form>
+					</div>
+				</div>
+			</div>
+            <div class="phone_list_btn">
+                <span class="icon-bar" style="margin:0"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+        </div>
+        <ul class="nav_list clearfix layui-nav" style="background:white;">
+            <div class="clearfix">
+                              {if condition="$Think.session.userid neq ''"}
+                                <li class="phone_touxiang visible-xs visible-sm">
+                    <img src="{$Think.session.userhead|getheadurl}" width="100px" height="100px" alt="用户头像" />
+                </li>
+                <li class="phone_user_login col-md-2 col-sm-12 visible-xs visible-sm"><a href="/usercenter.html">欢迎你，{$Think.session.username}</a></li>
+                              {else /}
+                                              <li class="phone_touxiang visible-xs visible-sm">
+                    <img src="/public/images/default.png" width="100px" height="100px" alt="用户头像" />
+                </li>
+                <li class="phone_user_login col-md-2 col-sm-12 visible-xs visible-sm"><a href="{:url('user/login/index')}">您好，请先登录账号</a></li>
+                              {/if}
+                                <!-- 头像功能 -->
+                <li class="col-md-2 col-sm-12 layui-nav-item"><a href="/"><i class="glyphicon glyphicon-home"></i>网站首页</a></li>
+			  {volist name="cmsnav[1]" id="vo" }
+		
+
+			      <li class="layui-nav-item">
+					<a href="{$vo.link|getnavlink=$vo.sid}" target="{$vo.target}">{$vo.name}</a>
+				
+					{volist name="vo.son" id="voo" }
+					<dl class="layui-nav-child"> <!-- 二级菜单 -->
+					  <dd><a href="{$voo.link|getnavlink=$voo.sid}" target="{$voo.target}">{$voo.name}</a></dd>
+					</dl>
+					{/volist} 
+				
+				  </li>
+
+
+				 {/volist}
+               <span class="border-bottom" hidden="" style="display: none; left: 0px; width: 138px;"></span>
+              {if condition="$Think.session.userid neq ''"}
+                <li class="col-md-2 col-sm-12 visible-xs visible-sm"><a href="/usercenter.html"><i class="glyphicon glyphicon-user"></i>个人中心</a></li>
+                            	
+	           <div class="header-user">
+	                <img class="ico" src="{$Think.session.userhead|getheadurl}" alt="用户头像"/>
+	                <div class="show-data">
+	                    <div class="show">
+	                        <i></i>
+	                        <span>欢迎回来,{$Think.session.username}</span>
+	                        <span class="logined_text share">
+								<b class="hot"></b>
+								您当前级别为<font>{$Think.session.grades||getgradenamebyid}</font>，
+								账户剩余<font>{$Think.session.point}</font>{:JF_NAME}！
+							</span>
+
+	                        <div class="logined_btn layui-clear">
+	                        	<a href="/user/">个人中心</a>
+	                        	<a data-url="/user/login/logout.html" class="logi_logout" location-url="/"  href="javascript:void(0)">退出</a>
+	                        </div>
+	                    </div>
+	                </div>
+	           </div>
+              {else /}        	
+                 <div class="header-user">
+	               <img class="ico" src="/public/images/default.png" alt="用户登录头像" data-bd-imgshare-binded="1">
+	                <div class="show-data layui-anim layui-anim-scaleSpring">
+	                    <div class="show">
+	                        <i></i>
+	                        <span>登录后，享受更多优质服务哦</span>
+	                        <button onclick="openLoginK();">登录</button>
+	                    </div>
+	                </div>
+	           </div>
+                        {/if}      
+	                        	
+	                        </div>
+	           	           
+            </div>
+
+    </div>
+</nav>
+
+
+

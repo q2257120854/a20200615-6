@@ -1,0 +1,88 @@
+<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/home',array('id'=>$uid))}">
+            <i class="layui-icon">&#xe609;</i> 我的主页
+        </a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/index')}">
+            <i class="layui-icon">&#xe612;</i> 个人中心
+        </a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/set')}">
+            <i class="layui-icon">&#xe620;</i> 基本设置
+        </a>
+    </li>
+    {if CBOPEN==3||CBOPEN==2}
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/topic')}">
+            <i class="layui-icon">&#xe705;</i> 我的帖子
+        </a>
+    </li>
+    {/if} {if CBOPEN==3||CBOPEN==1}
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/article')}">
+            <i class="layui-icon">&#xe705;</i> 我的文章
+        </a>
+    </li>
+    {/if}
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/comment')}">
+            <i class="layui-icon">&#xe63c;</i> 我的回复
+        </a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="{:url('user/index/message')}">
+            <i class="layui-icon">&#xe611;</i> 我的消息
+        </a>
+    </li>
+</ul>
+<script>
+    layui.use(['jquery', 'element'], function() {
+        var jq = layui.jquery;
+        var element = layui.element;
+        //显示当前tab
+        if (location.hash) {
+            element.tabChange('user', location.hash.replace(/^#/, ''));
+        }
+
+        element.on('tab(user)', function() {
+            var othis = jq(this),
+                layid = othis.attr('lay-id');
+            if (layid) {
+                location.hash = layid;
+            }
+        });
+
+        var treeMobile = jq('.site-tree-mobile'),
+            shadeMobile = jq('.site-mobile-shade');
+
+        treeMobile.on('click', function() {
+            jq('body').addClass('site-mobile');
+        });
+
+        shadeMobile.on('click', function() {
+            jq('body').removeClass('site-mobile');
+        });
+        //----------动态添加导航active样式--------------
+        var _nava = jq('.layui-nav .layui-nav-item a');
+        var _url = window.location.href;
+        var _host = window.location.host;
+        for (var i = 0; i < _nava.length; i++) {
+            var _astr = _nava.eq(i).attr('href');
+            // alert(_astr);
+            if (_url.indexOf(_astr) != -1) {
+
+                _nava.eq(i).addClass('layui-this').siblings().removeClass('layui-this');
+            } else if (_url == ('http://' + _host + '/')) {
+                _nava.eq(0).addClass('layui-this').siblings().removeClass('layui-this');
+            }
+        }
+        //----------动态添加导航active样式结束------------
+    })
+</script>
+<div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>

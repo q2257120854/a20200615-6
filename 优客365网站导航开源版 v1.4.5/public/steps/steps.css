@@ -1,0 +1,268 @@
+.ui-steps {
+  font-size: 0px;
+  overflow: hidden;
+  line-height: 0px;
+  margin: 18px 0px;
+}
+.ui-steps .wrap {
+  display: inline-block;
+}
+.ui-steps .wrap > div {
+  width: 190px;
+  height: 32px;
+  display: inline-block;
+  line-height: 32px;
+  vertical-align: top;
+  font-size: 12px;
+  position: relative;
+}
+.ui-steps .wrap > div > label {
+  margin-left: 26px;
+  cursor: default;
+}
+.ui-steps .triangle-right {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 16px;
+  position: absolute;
+  right: -31px;
+  z-index: 1;
+}
+.ui-steps .triangle-right-bg {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 16px;
+  position: absolute;
+  right: -31px;
+  z-index: 1;
+  border-width: 20px;
+  right: -40px;
+  border-color: transparent transparent transparent #FFF;
+  top: -4px;
+}
+.ui-steps .round {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 16px;
+}
+.ui-steps .round .ui-icon {
+  vertical-align: -1px;
+}
+.ui-steps .round + span:before {
+  content: '\00a0';
+}
+.ui-steps .finished {
+  background-color: #3DB3F7;
+  color: #ffffff;
+}
+.ui-steps .finished .triangle-right {
+  border-color: transparent transparent transparent #3DB3F7;
+}
+.ui-steps .finished .round {
+  background-color: #ffffff;
+  background-color: transparent\9;
+  color: #3DB3F7;
+}
+.ui-steps .finished .round > i {
+  color: #3DB3F7;
+  font-size: 12px;
+}
+.ui-steps .current {
+  background-color: #4cb9fc;
+  color: #ffffff;
+}
+.ui-steps .current .triangle-right {
+  border-color: transparent transparent transparent #4cb9fc;
+}
+.ui-steps .current .round {
+  background-color: #ffffff;
+  color: #4cb9fc;
+  color: #FFF\9;
+  background-color: transparent\9;
+}
+.ui-steps .todo {
+  background-color: #eeeeee;
+  color: #999999;
+}
+.ui-steps .todo .triangle-right {
+  border-color: transparent transparent transparent #eeeeee;
+}
+.ui-steps .todo .round {
+  background-color: #ffffff;
+  background-color: transparent\9;
+}
+.steps-large .wrap > div {
+  font-size: 14px;
+  width: 243.75px;
+  height: 40px;
+  line-height: 40px;
+}
+.steps-large .wrap > div > label {
+  font-size: 14px;
+  margin-left: 30px;
+}
+.steps-large .triangle-right {
+  border-width: 20px;
+  right: -39px;
+}
+.steps-large .triangle-right-bg {
+  border-width: 24px;
+  right: -48px;
+}
+.steps-large .round {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+.steps-auto {
+  display: table;
+  width: 100%;
+}
+.steps-auto .wrap {
+  display: table-cell;
+}
+.steps-auto .wrap > div {
+  width: 100%;
+}
+.ui-steps-round {
+  font-size: 0px;
+  overflow: hidden;
+  line-height: 0px;
+  margin: 18px 0px;
+  padding: 0px 6px;
+}
+.ui-steps-round > div {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.ui-steps-round > div .wrap:before,
+.ui-steps-round > div .wrap:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.ui-steps-round > div .wrap:after {
+  clear: both;
+}
+.ui-steps-round > div > label {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 12px;
+  height: 12px;
+  margin-top: 6px;
+  color: #3DB3F7;
+  cursor: default;
+  text-align: center;
+  width: 50%;
+  margin-left: -25%;
+  position: relative;
+  left: 15px;
+}
+.ui-steps-round > div:first-child > label {
+  width: auto;
+  max-width: 50%;
+  margin-left: 0;
+  left: 0;
+}
+.ui-steps-round > div:last-child,
+.ui-steps-round > div.last {
+  width: 30px !important;
+}
+.ui-steps-round > div:last-child > label,
+.ui-steps-round > div.last > label {
+  position: absolute;
+  width: auto;
+  margin-left: 0;
+  left: auto;
+  right: 0;
+}
+.ui-steps-round > div .round {
+  width: 22px;
+  height: 22px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  color: #FFF;
+  line-height: 22px;
+  text-align: center;
+  float: left;
+}
+.ui-steps-round > div .bar {
+  margin: 10px 10px 0px 40px;
+  width: 200px;
+  height: 6px;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.ui-steps-round > .finished .round {
+  border: 4px #3DB3F7 solid;
+  background-color: #3DB3F7;
+  color: #ffffff;
+}
+.ui-steps-round > .finished .bar {
+  background-color: #3DB3F7;
+}
+.ui-steps-round > .current .round {
+  border: 4px #4cb9fc solid;
+  background-color: #4cb9fc;
+}
+.ui-steps-round > .current .bar {
+  background-color: #4cb9fc;
+}
+.ui-steps-round > .todo > label {
+  color: #999999;
+}
+.ui-steps-round > .todo .round {
+  border: 4px #d3d3d3 solid;
+  background-color: #FFF;
+  color: #999999;
+}
+.ui-steps-round > .todo .bar {
+  background-color: #eeeeee;
+}
+.steps-round-auto {
+  display: table;
+  width: 100%;
+}
+.steps-round-auto > div {
+  display: table-cell;
+}
+.steps-round-auto > div .bar {
+  width: auto;
+}
+.steps-3 > div {
+  width: 50%;
+}
+.steps-4 > div {
+  width: 33%;
+}
+.steps-5 > div {
+  width: 25%;
+}
+.steps-6 > div {
+  width: 20%;
+}
+.steps-7 > div {
+  width: 16%;
+}

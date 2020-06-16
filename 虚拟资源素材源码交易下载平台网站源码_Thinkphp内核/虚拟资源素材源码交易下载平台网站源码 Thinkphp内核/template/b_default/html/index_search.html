@@ -1,0 +1,118 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}">
+
+<style type="text/css">
+    p {
+        margin: 0px;
+        font-family: Arial;
+        /*定义所有字体*/
+    }
+    
+    p.title {
+        line-height: 1.54;
+        font-family: arial;
+        padding-bottom: 0px;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: auto;
+        text-decoration: underline;
+    }
+    
+    p.title a {
+        color: blue;
+    }
+    
+    p.content {
+        padding-top: 3px;
+        /*标题与内容的距离*/
+        font-size: 13px;
+        /*内容的字体大小*/
+        line-height: 20px;
+    }
+    
+    p.link {
+        font-size: 13px;
+        padding-top: 3px;
+        padding-bottom: 15px;
+        color: #008000/*网址颜色*/
+    }
+    
+    span.search {
+        color: #c60a00;
+        /*关键字颜色*/
+    }
+    
+    span.quick {
+        color: #666;
+        /*快照颜色*/
+        text-decoration: underline;
+        margin-left: 10px;
+    }
+    
+    p.title span.search {
+        text-decoration: underline;
+        /*标题处关键字的下划线*/
+    }
+    
+    .div-a {
+        float: left;
+        max-width: 20%;
+    }
+    
+    .div-b {
+        float: left;
+        min-width: 79%;
+    }
+</style>
+{/block} {block name="body"} {include file="index/menu"}
+<div class="layui-container">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+
+            <div class="fly-panel">
+                <div class="fly-panel-title fly-filter" id='test1'>
+                    <a>关键词：<span style='color:red'>{$keyword}</span> 的搜索结果</a>
+                </div>
+
+                {volist name="tptcss" id="vo"}
+                <div style="padding:10px 15px 0 15px">
+                    <p class="title"><a href="{:url('bbs/index/thread',array('id'=>$vo.id))}">{$vo.title|str_replace=$keyword,"<span style='color:red'>$keyword</span>",###} 
+              </a></p>
+                    <!-- <div class="div-a"></div> -->
+                    <div class="div-b">
+                        <p class="content">
+                            {:msubstr(clearcontent($vo.content),0,120)}
+                        </p>
+                        <p class="link">
+                            <span class="fly-list-hint"> 
+                <i class="iconfont" title="回答">&#xe60c;</i> {$vo.reply}
+                <i class="iconfont" title="人气">&#xe60b;</i> {$vo.view}
+         </span> <span class="quick"><a href="{:url('bbs/index/thread',array('id'=>$vo.id))}">阅读详情</a></span>
+                        </p>
+                    </div>
+                    <div style="clear:both"></div>
+
+                </div>
+                {/volist}
+
+                <div style="border-top: 1px dotted #e2e2e2; text-align: center;">
+                    {$tptcss->render()}
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        {include file="index/cateright"}
+
+
+    </div>
+</div>
+{/block}

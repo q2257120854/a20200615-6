@@ -1,0 +1,21 @@
+<div id="bghui" style="position:absolute;top:0px;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity:0.6;background-color:#777;z-index:199;left:0px;"></div>
+<div id="openw" class="openw" style="display:none;"><div class="kf"><span id="tangts">系统正在处理数据，请稍候……</span></div></div>
+<div class="top">
+<ul class="u1">
+<li class="l1"></li>
+<li class="l2">欢迎您，<?=$_SESSION["SHOPADMIN"]?>
+ [<a href="tohtml.php?admin=0&action=gx" class="a1">清理缓存</a>]
+ [<a class="a1" href="pwd.php">修改密码</a>] 
+ [<a class="a1" href="un.php">退出</a>]
+ [<a class="a1" href="../" target="_blank">返回首页</a>] 
+</li>
+</ul>
+<ul class="u2">
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0302,")){?><li id="menu1" class="l1"><a href="default.php">全局设置</a></li><? }?>
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0102,")){?><li id="menu3" class="l3"><a href="productlist.php">商品管理</a></li><? }?>
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0702,")){?><li id="menu2" class="l2"><a href="userlist.php">会员管理</a></li><? }?>
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0402,")){?><li id="menu6" class="l6"><a href="orderlist.php">订单管理</a></li><? }?>
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0202,")){?><li id="menu4" class="l4"><a href="newslist.php">资讯管理</a></li><? }?>
+<? if(strstr($adminqx,",0,") || strstr($adminqx,",0602,")){?><li id="menu5" class="l5"><a href="tasklist.php">广告互动</a></li><? }?>
+</ul>
+</div>

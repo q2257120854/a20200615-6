@@ -1,0 +1,1 @@
+<?php final class Config{const OSS_ACCESS_ID = '58282';const OSS_ACCESS_KEY = '85858585';const OSS_ENDPOINT = '858585';const OSS_TEST_BUCKET = '85858585';}

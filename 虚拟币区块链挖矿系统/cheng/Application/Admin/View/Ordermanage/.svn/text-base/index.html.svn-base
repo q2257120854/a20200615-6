@@ -1,0 +1,528 @@
+<extend name="Index:base" />
+<block name="content">
+	<!-- 中间部分开始 -->
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="__APP__/admin">首页</a>
+				</li>
+				<li class="active">订单管理</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<!-- 页面导航 -->
+			<div class="page-header">
+				<h1>
+					订单管理
+					<small>
+						<i class="icon-double-angle-right"></i>
+						查看
+					</small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="tabbable">
+						<ul class="nav nav-tabs" id="myTab">
+							<li id="li_1" class="{$active==1?'active':''}">
+								<a data-toggle="tab" href="#home">
+									<i class="green icon-home bigger-110"></i>
+									全部订单
+								</a>
+							</li>
+							<li id="li_2" class="{$active==2?'active':''}">
+								<a data-toggle="tab" href="#profile">
+									<i class="gray  icon-cloud  bigger-110"></i>
+									未发货
+								</a>
+							</li>
+							<li id="li_3" class="{$active==3?'active':''}">
+								<a data-toggle="tab" href="#profile1">
+									<i class="green  icon-cloud-upload   bigger-110"></i>
+									已发货
+								</a>
+							</li>
+							<li id="li_4" class="{$active==4?'active':''}">
+								<a data-toggle="tab" href="#profile2">
+									<i class="pink   icon-cogs  bigger-110"></i>
+									退换货
+								</a>
+							</li>
+							<li id="li_5" class="{$active==5?'active':''}">
+								<a data-toggle="tab" href="#profile3">
+									<i class="blue  icon-check  bigger-110"></i>
+									交易完成
+								</a>
+							</li>
+							<li id="li_6" class="{$active==6?'active':''}">
+								<a data-toggle="tab" href="#profile4">
+									<i class="black  icon-cog bigger-110"></i>	
+									交易取消
+								</a>
+							</li>
+						</ul>
+						<!-- S展示内容 -->
+						<div class="tab-content">
+							<!-- 全部订单 -->
+							<div id="home" class="tab-pane {$active==1?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<!--搜索结束-->
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="350px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center" width="130px">小计</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="details" id="vo">
+												<tr style="height:30px;">
+													<td colspan="6">
+														<i class="green icon-group  bigger-110"></i>
+														订单号：{$orders[$key].onumber}
+														&nbsp;&nbsp;&nbsp;&nbsp;
+														成交时间：{$orders[$key].otime}
+														&nbsp;&nbsp;&nbsp;&nbsp;
+														总价：￥{$orders[$key].total}
+														&nbsp;&nbsp;&nbsp;&nbsp;
+														买家：{$orders[$key].uname}
+														<br />
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														收货地址：{$orders[$key].deliveryaddress|explode='consignee',###|implode='',###}
+													</td>
+												</tr>
+												<volist name="vo" id="v">
+													<tr>
+														<td class="center" >
+															<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+														</td>
+														<td class="center" >{$v.gname}</td>
+														<td class="center" >￥{$v.gprice}</td>
+														<td class="center" >{$v.gnums}</td>
+														<td class="center" >
+															<switch name="v.ostate">
+																<case value="0">交易取消</case>
+																<case value="1">正在出库…</case>
+																<case value="2">已出库</case>
+																<case value="3">换货中…</case>
+																<case value="4">退货中…</case>
+																<case value="5">交易完成</case>
+															</switch>
+														</td>
+														<td class="center" >￥{$v['gprice']*$v['gnums']}</td>
+													</tr>
+												</volist>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="6">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- 未发货 -->
+							<div id="profile" class="tab-pane {$active==2?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="ta1ble-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="180px">订单号</th>
+												<th class="center" width="300px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center" width="100px">操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="deliver" id="v">
+												<tr>
+													<td class="center" >
+														<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+													</td>
+													<td class="center" >{$v.onumber}</td>
+													<td class="center" >{$v.gname}</td>
+													<td class="center" >￥{$v.gprice}</td>
+													<td class="center" >{$v.gnums}</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="0">交易取消</case>
+															<case value="1">正在出库…</case>
+															<case value="2">已出库</case>
+															<case value="3">退货中…</case>
+															<case value="4">交易完成</case>
+														</switch>
+													</td>
+													<td class="center" >
+														<a href="__CONTROLLER__/orderState/id/{$v.id}/ostate/2/jump/1">
+															<i class="green  icon-cloud-upload   bigger-120"></i>
+															发货
+														</a>
+													</td>
+												</tr>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="7">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- 已发货 -->
+							<div id="profile1" class="tab-pane {$active==3?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="ta1ble-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="180px">订单号</th>
+												<th class="center" width="300px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center" width="100px">配送</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="deliver" id="v">
+												<tr>
+													<td class="center" >
+														<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+													</td>
+													<td class="center" >{$v.onumber}</td>
+													<td class="center" >{$v.gname}</td>
+													<td class="center" >￥{$v.gprice}</td>
+													<td class="center" >{$v.gnums}</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="0">交易取消</case>
+															<case value="1">正在出库…</case>
+															<case value="2">已出库</case>
+															<case value="3">退货中…</case>
+															<case value="4">交易完成</case>
+														</switch>
+													</td>
+													<td class="center" >
+														<i class="green icon-fighter-jet bigger-200"></i>
+													</td>
+												</tr>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="7">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- 退换货 -->
+							<div id="profile2" class="tab-pane {$active==4?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="ta1ble-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="180px">订单号</th>
+												<th class="center" width="300px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center">操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="deliver" id="v">
+												<tr>
+													<td class="center" >
+														<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+													</td>
+													<td class="center" >{$v.onumber}</td>
+													<td class="center" >{$v.gname}</td>
+													<td class="center" >￥{$v.gprice}</td>
+													<td class="center" >{$v.gnums}</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="0">交易取消</case>
+															<case value="1">正在出库…</case>
+															<case value="2">已出库</case>
+															<case value="3">换货中…</case>
+															<case value="4">退货中…</case>
+															<case value="5">交易完成</case>
+														</switch>
+													</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="3">
+																<a href="__CONTROLLER__/orderState/id/{$v.id}/ostate/2/jump/0">
+																	<i class="green  icon-cloud-upload   bigger-120"></i>
+																	重新发货
+																</a>
+															</case>
+															<case value="4">
+																<a href="__CONTROLLER__/orderState/id/{$v.id}/ostate/0/jump/0">
+																	<i class="green   icon-check   bigger-120"></i>
+																	同意退货
+																</a>
+																|
+																<a href="__CONTROLLER__/orderState/id/{$v.id}/ostate/2/jump/0">
+																	<i class="red   icon-fire   bigger-120"></i>
+																	拒绝退货
+																</a>
+															</case>
+														</switch>
+													</td>
+												</tr>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="7">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- 交易完成 -->
+							<div id="profile3" class="tab-pane {$active==5?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="ta1ble-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="180px">订单号</th>
+												<th class="center" width="300px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center" width="130px">小计</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="deliver" id="v">
+												<tr>
+													<td class="center" >
+														<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+													</td>
+													<td class="center" >{$v.onumber}</td>
+													<td class="center" >{$v.gname}</td>
+													<td class="center" >￥{$v.gprice}</td>
+													<td class="center" >{$v.gnums}</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="0">交易取消</case>
+															<case value="1">正在出库…</case>
+															<case value="2">已出库</case>
+															<case value="3">换货中…</case>
+															<case value="4">退货中…</case>
+															<case value="5">交易完成</case>
+															<case value="6">已评价</case>
+														</switch>
+													</td>
+													<td class="center" >￥{$v['gprice']*$v['gnums']}</td>
+												</tr>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="7">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- 交易取消 -->
+							<div id="profile4" class="tab-pane {$active==6?'in active':''}">
+								<!--搜索-->
+								<div style="padding:0px;height:auto;overflow:hidden;margin-bottom:10px;" class="row">
+									<div class="col-xs-12 col-sm-8"></div>
+									<div class="col-xs-12 col-sm-4">
+										<form method="get" action="/admin.php/Admin/Ordermanage/search">
+											<div class="input-group pull-right">
+												<input type="text" placeholder="输入搜索内容..." name="uname" value="" class="form-control search-query">
+												<span class="input-group-btn">
+													<button type="submit" class="btn btn-info btn-sm">
+														Search
+														<i class="icon-search icon-on-right bigger-110"></i>
+													</button>
+												</span>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="ta1ble-responsive">
+									<table class="table table-striped table-bordered table-hover" id="sample-table-2">
+										<thead>
+											<tr>
+												<th class="center" width="80px">商品图片</th>
+												<th class="center" width="180px">订单号</th>
+												<th class="center" width="300px">商品名称</th>
+												<th class="center" width="130px">价格</th>
+												<th class="center">数量</th>
+												<th class="center">交易状态</th>
+												<th class="center" width="100px">图示</th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="deliver" id="v">
+												<tr>
+													<td class="center" >
+														<img width="40px" src="__PUBLIC__/Goodsuploads/{$v.gpic|explode='/',###|implode='/30_',###}" >
+													</td>
+													<td class="center" >{$v.onumber}</td>
+													<td class="center" >{$v.gname}</td>
+													<td class="center" >￥{$v.gprice}</td>
+													<td class="center" >{$v.gnums}</td>
+													<td class="center" >
+														<switch name="v.ostate">
+															<case value="0">交易取消</case>
+															<case value="1">正在出库…</case>
+															<case value="2">已出库</case>
+															<case value="3">换货中…</case>
+															<case value="4">退货中…</case>
+															<case value="5">交易完成</case>
+														</switch>
+													</td>
+													<td class="center" >
+														<i class="black icon-cog bigger-200"></i>
+													</td>
+												</tr>
+											</volist>
+											<tr style="height:50px;">
+												<td colspan="7">{$page}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- E展示内容 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="privatejs">
+	<!-- //加载公共js -->
+	<script type="text/javascript">
+		jQuery(function($) {
+			//设置当前页面的菜单高亮显示 开始
+			var nownav = "#sidebar a[href*=Ordermanage]";
+			var parentattr = $(nownav).parent().parent().attr("class");
+			$(nownav).parent().addClass('active');
+			if (parentattr == 'submenu') {
+				$(nownav).parent().parent().parent().addClass('active open');
+			};
+			//设置当前页面的菜单高亮显示 结束
+		});
+		$("#li_1").click(function(){
+			window.location="__CONTROLLER__/index";
+		});
+		$("#li_2").click(function(){
+			window.location="__CONTROLLER__/nonDelivery";
+		});
+		$("#li_3").click(function(){
+			window.location="__CONTROLLER__/deliverGoods";
+		});
+		$("#li_4").click(function(){
+			window.location="__CONTROLLER__/returnGoods";
+		});
+		$("#li_5").click(function(){
+			window.location="__CONTROLLER__/completeDeal";
+		});
+		$("#li_6").click(function(){
+			window.location="__CONTROLLER__/cancleDeal";
+		});
+	</script>
+</block>

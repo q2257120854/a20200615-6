@@ -1,0 +1,72 @@
+.xiaochengxu-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	min-width: 1200px;
+	height: 60px;
+	background: #222222;
+	z-index: 10;
+}
+.xiaochengxu-header .container {
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.xiaochengxu-header .logo-box {
+	float: left;
+	width: 141px;
+	height: 60px;
+}
+.xiaochengxu-header .logo {
+	display: block;
+	margin-top: 14px;
+}
+.xiaochengxu-header .nav-list {
+	margin-top: 14px;
+	float: right;
+}
+.xiaochengxu-header .nav-item {
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 4px;
+	padding: 0 5px;
+	margin-left: 25px;
+}
+.xiaochengxu-header .nav-list .link {
+	display: block;
+	color: #fff;
+}
+
+.xiaochengxu-header .nav-list .linkActive {
+	color: #3194DB;
+}
+.xiaochengxu-header .nav-list .linkWhite {
+	color: #fff!important;
+}
+.xiaochengxu-header .nav-list .index-link {
+	
+}
+.xiaochengxu-header .nav-list .active {
+	background: #3194DB;
+}
+
+
+.server_phone {
+	height: 60px;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+    color: #fa7800;
+    margin-left: 40px;
+    font-size: 20px;
+}
+.server_phone em {
+    display: inline-block;
+    height: 60px;
+    width: 40px;
+    background: url(../image/tel.png) no-repeat center;
+    float: left;
+}

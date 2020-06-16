@@ -1,0 +1,136 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<header id="topbar" class="affix">
+    <div class="topbar-left">
+        <ol class="breadcrumb">
+            <li class="crumb-active">
+                <a href="/">Member</a>
+            </li>
+            <li class="crumb-icon">
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="crumb-trail">
+                <a href="#">
+                   购物商城
+                </a>
+            </li>
+            <li class="crumb-trail">
+                订单支付
+            </li>
+
+        </ol>
+    </div>
+</header>
+
+<div id="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading br-b-n">
+                    <div class="panel-title hidden-xs">
+                        <span class="glyphicon glyphicon-tasks"></span>订单支付
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="">
+							<input type="hidden" name="sid" value="{$product.id}">
+							<input type="hidden" name="stitle" value="{$product.title}">
+					       <div class="form-group">
+                            <label class="col-lg-3 control-label">商品名称：</label>
+                            <div class="col-lg-4">
+                                <label class="control-label text-info-light">{$product.title}</label>
+                            </div>
+                            <div class="col-lg-4">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">电子币余额：</label>
+                            <div class="col-lg-4">
+                                <label class="control-label text-info-light">¥{$jinbi}</label>
+                            </div>
+                            <div class="col-lg-4">
+                            </div>
+                        </div>							
+<div class="form-group">
+                            <label for="type" class="col-lg-3 control-label">支付类型</label>
+                            <div class="col-lg-4">
+								  <select name="type" id="type" class="form-control">
+										<option value="0">选择支付类型</option>
+										<option value="1">电子币(单价：¥{$product.price})</option>
+                                 </select>
+                 
+                            </div>
+</div>						
+						 <div class="form-group">
+                            <label for="email" class="col-lg-3 control-label">购买数量：</label>
+                            <div class="col-lg-4">
+							<input name="num" type="text"  onkeyup="value=value.replace(/[^0-9]/g,'')" value="1"  class="form-control" autocomplete="off" /> 
+							
+                 
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="help-block mt10"></span>
+                            </div>
+                        </div>
+
+								
+                        <div class="form-group">
+                            <label for="realname" class="col-lg-3 control-label">姓名：</label>
+                            <div class="col-lg-4">
+                                <input name="realname" type="text"  value="{$huo.realname}" class="form-control" autocomplete="off" /> 
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="help-block mt10"></span>
+                            </div>
+                        </div>
+						 <div class="form-group">
+                            <label for="mobile" class="col-lg-3 control-label">手机号码：</label>
+                            <div class="col-lg-4">
+							<input name="mobile" type="text" value="{$huo.mobile}" maxlength="11" class="form-control" autocomplete="off" />
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="help-block mt10"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post" class="col-lg-3 control-label">邮编：</label>
+                            <div class="col-lg-4">
+                            <input name="post" type="text" value="{$huo.post}" maxlength="6" class="form-control" autocomplete="off" />
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="help-block mt10"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="col-lg-3 control-label">收货地址：</label>
+                            <div class="col-lg-4">
+                            <input name="addr" type="text" value="{$huo.address}" class="form-control" autocomplete="off" />
+                            </div>
+                            <div class="col-lg-4">
+                                <span class="help-block mt10"></span>
+                            </div>
+                        </div>						
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="col-lg-8">
+                                    <input type="hidden" value="28252" name="id"/>
+                                <button type="submit" class="btn btn-primary btn-submit">提 交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Content -->
+
+    </section>
+</div>
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+

@@ -1,0 +1,491 @@
+{include file="public/head" /}
+
+
+
+{include file="public/s_head" /}
+
+		
+
+		<div>
+
+			<div class="wgldxcs">
+
+				<span>
+
+					<img src="/image/weixin.png">
+
+				</span>
+
+				我管理的代理商
+
+			</div>
+
+			<a href="{:Url('Applet/jxs')}">
+
+			<div class="addxcx">
+
+				代理商管理
+
+			</div>
+
+			</a>
+
+		</div>
+
+
+
+		<div style="margin-top:50px; border-top:1px solid #dedede; padding-top:20px">
+
+
+
+			<form action="{:Url('Applet/save_jxs')}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+						<input type="hidden" value="{if $userinfo}{$userinfo.uid}{/if}" name="uid">
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">用户名<font style="color:red">*</font></label>
+
+
+
+							<div class="controls" style="line-height:34px;">
+
+
+
+								<input name="username" type="text" id="username" class="span3 m-wrap" value="{if $userinfo}{$userinfo.username}{/if}"/>
+
+								<span style="color:#999999; line-height:40px; margin-left:20px;">密码默认为<em style="font-style: normal;color: #fff; background: #c00; padding: 0 5px">123456</em>，请登录帐号修改</span>
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">头像</label>
+
+
+
+							<div class="controls">
+
+
+
+								<div class="fileupload fileupload-new" data-provides="fileupload">
+
+
+
+									<div class="fileupload-new thumbnail" style="width: 100px; height:100px;">
+
+										{if $userinfo && $userinfo.icon}
+
+										<img src="{$userinfo.icon}"/>
+
+										{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+										{/if}
+
+									</div>
+
+
+
+									<div class="fileupload-preview fileupload-exists thumbnail" style="width:100px; height:100px"></div>
+
+
+
+									<div>
+
+
+
+										<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+										<span class="fileupload-exists">修改</span>
+
+
+
+										<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="icon" id="icon"/></span>
+
+
+
+										<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+
+
+									</div>
+
+
+
+									<font color="#999999">建议上传正方形图片</font>
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">姓名<font style="color:red">*</font></label>
+
+
+
+							<div class="controls" style="line-height:34px;">
+
+								<input name="realname" type="text" class="span3 m-wrap" id="realname" value="{if $userinfo}{$userinfo.realname}{/if}">
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">手机号码<font style="color:red">*</font></label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="mobile" type="text" class="span3 m-wrap" id="mobile" value="{if $userinfo}{$userinfo.mobile}{/if}">
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">邮箱</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="email" type="text" class="span3 m-wrap" id="email" value="{if $userinfo}{$userinfo.email}{/if}">
+
+
+
+							</div>
+
+
+
+						</div>
+
+						
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">用户组</label>
+
+
+
+							<div class="controls">
+
+
+
+
+
+								<label class="radio">
+
+
+
+								<input type="radio" name="group" onchange="kkchanges(this)" value="3" checked=checked/>
+
+
+
+								代理商
+
+
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+
+
+						<div class="control-group" id="xzgs">
+
+
+
+							<label class="control-label">小程序限制个数</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="num" type="number" class="span3 m-wrap" id="num" value="{if $userinfo}{$userinfo.num}{/if}">
+
+
+
+							</div>
+
+
+
+						</div>
+
+						
+
+
+
+
+
+						<div class="control-group" >
+
+
+
+							<label class="control-label">账号到期时间</label>
+
+
+
+							<div class="controls">
+
+								
+
+								<input type="text" value="{if $userinfo}{$userinfo.overtime|date='Y-m-d H:i:s',###}{/if}"  name="overtime"  readonly id="datetimepicker" data-date-format="yyyy-mm-dd hh:ii" placeholder="默认周期一年">
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">账号状态</label>
+
+
+
+							<div class="controls">
+
+
+
+
+
+								<label class="radio">
+
+
+
+								<input type="radio" name="flag" onchange="kkchanges(this)" value="1" {if $userinfo}{if $userinfo.flag==1}checked=checked{/if}{else}checked=checked{/if}/>
+
+
+
+								开启
+
+								</label>
+
+								<label class="radio">
+
+
+
+								<input type="radio" name="flag" onchange="kkchanges(this)" value="0" {if $userinfo}{if $userinfo.flag==0}checked=checked{/if}{/if}/>
+
+
+
+								关闭
+
+								</label>
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+
+
+
+
+						<div class="form-actions">
+
+
+
+							<button type="submit" class="btn green" id="tijiao" >确定</button>
+
+
+
+						</div>
+
+
+
+			</form>
+
+
+
+		</div>
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+		function checkinfo(){
+
+			var username = $("#username").val();
+
+			var realname = $("#realname").val();
+
+			var mobile = $("#mobile").val();
+
+
+
+			if(!username){
+
+				alert("请输入用户名！");
+
+				return false;
+
+			}else if(!realname){
+
+				alert("请输入用户真实姓名！");
+
+				return false;
+
+			}else if(!mobile){
+
+				alert("请输入用户手机号");
+
+				return false;
+
+			}else{
+
+				return true;
+
+			}
+
+
+
+		}
+
+
+
+
+
+		$(function(){
+
+
+
+
+
+			$.fn.datetimepicker.dates['zh-CN'] = {  
+
+	            days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],  
+
+	            daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],  
+
+	            daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],  
+
+	            months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+
+	            monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+
+	            today: "今天",  
+
+	            suffix: [],  
+
+	            meridiem: ["上午", "下午"]  
+
+	    	}; 
+
+		   	$('#datetimepicker').datetimepicker({language:  'zh-CN'});
+
+
+
+
+
+		})
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	{include file="public/foot" /}

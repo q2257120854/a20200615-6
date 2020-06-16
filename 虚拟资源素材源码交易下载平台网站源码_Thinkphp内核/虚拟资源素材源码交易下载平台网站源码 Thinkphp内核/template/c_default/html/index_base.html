@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> {block name="seo"}{/block}
+<link rel="shortcut icon" href="<?php echo @$site_config['favicon']?$site_config['favicon']:'__PUBLIC__/images/favicon.ico'; ?>">
+<link rel="stylesheet" href="__PUBLIC__/plugins/layui/css/layui.css">
+<link rel="stylesheet" href="__HOME__/css/public.css" type="text/css" media="all"/>{block name="css"}{/block}
+<script src="__PUBLIC__/plugins/layui/layui.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script src="__PUBLIC__/plugins/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/plugins/bootstrap/css/bootstrap.min.css">
+<script src="__HOME__/js/public.js"></script>
+<script src="__HOME__/js/dropdown.js"></script>
+<script type="text/javascript" src="__HOME__/js/top.js"></script>   
+</head>
+<body style="background: #F6F6F6;">
+{include file="index/header"}  {block name="body"}{/block} {include file="index/footer"}{block name="js"}{/block}
+<!--页面JS脚本-->
+<script src="/public/js/home.js"></script>  
+{block name="script"}{/block}
+</body>
+
+</html>

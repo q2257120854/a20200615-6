@@ -1,0 +1,154 @@
+<block name="index">
+<header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <a href="javascript:;" class="tpl-logo">
+                <img src="__PUBLIC__/assets/img/logo.png" alt="">
+            </a>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                
+               
+                <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+					<li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link">账户余额 <span class="admin-fullText" style="color:red;">{$Think.session.user.price}</span></a></li>
+                <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                    <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                        <span class="tpl-header-list-user-nick">{$Think.session.user.name}</span><span class="tpl-header-list-user-ico"> <img src="__PUBLIC__/assets/img/user01.png"></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                  
+                        <li><a href="{:U('User/add')}"><span class="am-icon-cog"></span> 设置</a></li>
+                        <li><a href="{:U('Login/loginOut')}"><span class="am-icon-power-off"></span> 退出</a></li>
+                    </ul>
+                </li>
+                <li><a href="{:U('Login/loginOut')}" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="__MODULE__/index" class="nav-link active">
+                            <i class="am-icon-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+                  
+				<li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>系统设置</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                               <!-- <a href="__MODULE__/Login/user"> -->
+                                    <!-- <i class="am-icon-angle-right"></i> -->
+                                    <!-- <span>账号信息</span> -->
+                                    <!-- <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i> -->
+                                <!-- </a> -->
+
+                                <a href="__MODULE__/Adver/shouyexiao">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>首页小图</span>
+                                </a>
+								 <a href="__MODULE__/Adver/shouyelun">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>首页轮播</span>
+                                </a>
+								<a href="__MODULE__/Adver/faxianlun">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>发现轮播</span>
+                                </a>
+								 <a href="__MODULE__/Adver/faxianheng">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>发现横图</span>
+                                </a>
+								<a href="__MODULE__/Adver/faxiantui">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>发现推荐</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+				
+                   
+				    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>卡密管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                                <a href="__MODULE__/Login/add">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>生成卡密</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+
+                                <a href="__MODULE__/Login/index">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>有效卡密</span>
+                                </a>
+								 <a href="__MODULE__/Login/jilu">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>使用记录</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+				   
+				   
+				    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>用户管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                                <a href="__MODULE__/Adver/user">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>用户列表</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+
+                                <a href="__MODULE__/Adver/daili">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>代理列表</span>
+                                </a>
+								
+                            </li>
+                        </ul>
+                    </li>
+				  
+				   
+				   
+				   
+                </ul>
+            </div>
+        </div>
+	
+	
+</block>

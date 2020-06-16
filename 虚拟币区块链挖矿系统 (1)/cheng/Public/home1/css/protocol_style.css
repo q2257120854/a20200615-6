@@ -1,0 +1,125 @@
+body {
+        min-width: 1002px;
+    }
+    .grid_m {
+        width: 600px;
+    }
+    .core .grid_m{
+        width:800px;
+    }
+    .grid_s5m25 .grid_m {
+        width: 800px;
+    }
+    .slider {
+        width: 800px;
+    }
+    .slider_img {
+        margin-left: -100px;
+    }
+    .dailybeta_bd {
+        width: 799px;
+    }
+    .dailybeta_goods {
+        width: 800px;
+    }
+    .dailybeta_goods li {
+        width: 179px;
+    }
+    .dailybeta .mod_goods_w100 {
+        height: auto !important;
+        min-height: 80px;
+        padding-left: 90px;
+    }
+    .dailybeta .mod_goods_img {
+        margin-left: -90px;
+        margin-top: 10px;
+    }
+    .dailybeta .mod_goods_img, .dailybeta .mod_goods_img img {
+        height: 80px;
+        width: 80px;
+    }
+    .ulike_r2 .ulike_r2_narrow, .ulike_r2 li {
+        width: 330px;
+    }
+    .ulike_r2 .ulike_r2_item {
+        margin-left: -35px;
+    }
+    .ulike_thh_img, .ulike_tg_img {
+        margin-left: 45px;
+        margin-top: 25px;
+        width: 110px;
+    }
+    .ulike_thh_img img, .ulike_tg_img img {
+        width: 100px;
+    }
+    .sx_mod_rank {
+        width: 799px;
+    }
+    .sx_mod_fgoods_wrap {
+        width: 599px;
+    }
+    .grid_s5m10 .grid_m_2 {
+        width: 200px;
+    }
+    .grid_s5m10 .grid_m_2 .ftwin_goods_wrap {
+        width: 199px;
+    }
+    .ftejia .ftejia_goods_wrap {
+        width: 799px;
+    }
+    .ic_rwd .grid_c1, .ic_rwd .grid_c2a, .ic_rwd .grid_c2b, .ic_rwd .grid_c3a {
+        width: 990px;
+    }
+     .ic_rwd .mod_fbanner {
+        width: 990px;
+    }
+    .ic_rwd .mod_fbanner a {
+        margin-left: -100px;
+    }
+    .ic_rwd .mod_fbanner_close {
+        margin-left: -120px;
+    }
+    .ic_rwd .mod_search_con {
+        width: 240px;
+    }
+    .ic_rwd .mod_skey {
+        width: 250px;
+    }
+.center_main{
+	width:990px;
+	height:700px;
+	margin:0px auto;
+
+    }
+.breadnav{
+	height:45px;
+	line-height:45px;
+}
+/*左边部分*/
+.center_left{
+	float:left;
+	width:143px;
+	height:auto;
+	border:1px solid rgb(215,215,215);
+	background:rgb(243,243,243);
+}
+.center_ul li{
+	list-style:none;
+	line-height:30px;
+	height:30px;
+	padding-left:20px;
+
+}
+/*分类*/
+.center_classify{
+	margin-top:15px; 
+	padding-left:10px;
+	font-size:15px; 
+}
+/*右边部分*/
+.center_right{
+	width:830px;
+	height:auto;	
+	float:left;
+	margin-left:10px; 
+}

@@ -1,0 +1,107 @@
+<extend name="Index:base" />
+
+<block name="content">
+
+				<!-- 中间部分开始 -->
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<!-- 面包屑导航 -->
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="__APP__/admin/index">首页</a>
+							</li>
+							<li class="active">查看会员信息</li>
+						</ul><!-- .breadcrumb -->
+
+					</div>
+
+					<div class="page-content">
+
+						<!-- 页面导航 -->
+						<div class="page-header">
+							<h1>
+								查看会员信息
+								<a class="btn btn-info btn-sm pull-right" href="__CONTROLLER__/index">
+									<i class="icon-reply icon-only"></i>
+								</a>
+							</h1>
+						</div>
+
+						<div class="row" style="margin-top:35px;">
+							<div class="col-xs-12">
+								<form class="form-horizontal" role="form" action="__CONTROLLER__/update" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="adplace" value="1" />
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 用户名 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text"  name="uname" value="{$data.uname}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 邮箱 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="email"  name="email" value="{$data.email}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right"> 会员等级 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text" name="adurl" value="{$data.level}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right" > 积分 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text"  name="scores" value="{$data.scores}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right" > 余额 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text"  name="adurl" value="{$data.balance}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right" > 注册日期 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text"  name="adurl" value="{$data.regtime|date='Y-m-d H:i',###}" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label no-padding-right" > 最后登录时间 </label>
+										<div class="col-sm-10">
+											<input class="col-xs-10 col-sm-5" type="text" name="adurl" value="{$data.logintime|date='Y-m-d H:i',###}" disabled>
+										</div>
+									</div>
+								</form>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+				<!-- 中间部分结束 -->
+
+
+								
+		</block>
+		<block name="privatejs">
+
+		<script type="text/javascript">
+			jQuery(function($) {
+
+				//设置当前页面的菜单高亮显示 开始
+				var nownav = "#sidebar a[href*=Member]";
+				var parentattr = $(nownav).parent().parent().attr("class");
+				$(nownav).parent().addClass('active');
+				if (parentattr == 'submenu') {
+					$(nownav).parent().parent().parent().addClass('active open');
+				};
+				//设置当前页面的菜单高亮显示 结束
+			});
+		</script>
+	</block>
+

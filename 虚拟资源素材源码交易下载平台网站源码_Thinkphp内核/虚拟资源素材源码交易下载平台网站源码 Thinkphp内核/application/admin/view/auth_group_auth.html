@@ -1,0 +1,105 @@
+{extend name="base" /}
+{block name="body"}
+
+                                <div class="layui-field-box auth layui-form">
+                       
+{volist name="auth_rule_list" id="vo"}            
+ <fieldset class="layui-elem-field">
+  <legend><input type="checkbox" class="pcheck" lay-filter="pcheck" name="pcheck"  title="{$vo['title']}"   value="{$vo['id']}"   {eq name="vo['checked'] " value="1"}checked{/eq} ></legend>
+  <div class="layui-field-box">
+<if condition="$vo['subnode'] neq 0">
+{foreach name="vo['subnode']" item="sub"}    
+
+   
+   <input type="checkbox"  lay-filter="subcheck"  name="subcheck" class="subcheck"   title="{$sub['title']}"" lay-skin="primary"  value="{$sub['id']}"  {eq name="sub['checked'] " value="1"}checked{/eq}>
+
+
+ {/foreach}
+</if>
+
+
+  </div>
+  
+</fieldset>
+ {/volist}
+
+    
+        <input type="hidden" id="group_id" name="id" value="{$id}">
+        
+                                 <div class="btable-paged" >
+				<div class="layui-main">
+                    <div class="formbtngroup">
+ <button class="layui-btn layui-btn-sm" id="auth-btn" >授权</button>
+ <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+</div>
+</div>
+        </div>
+       
+    </div>
+
+{/block}
+{block name="script"}
+<script>
+layui.use(['form'],function(){
+	  var form = layui.form
+	  ,jq = layui.jquery;
+	  form.on('checkbox(pcheck)', function(data){
+		    var child = jq(data.elem).parents('.layui-elem-field').find('.subcheck');
+		    child.each(function(index, item){
+		      item.checked = data.elem.checked;
+		    });
+		    form.render('checkbox');
+		   
+		  });
+
+	  form.on('checkbox(subcheck)',function(data){
+			
+		  
+		 // console.log(data);
+		  
+		/* 	 if(data.elem.checked){
+				
+				 jq(data.elem).parents('.layui-elem-field').find('.pcheck').attr('checked','true');
+				if( !jq(data.elem).parents('.layui-elem-field').find('.pcheck').next().hasClass('layui-form-checked')){
+					jq(data.elem).parents('.layui-elem-field').find('.pcheck').next().addClass('layui-form-checked')
+					
+				}
+				
+		
+			 } */
+});	 
+	  jq("#auth-btn").on("click", function () {
+          var auth_rule_ids = [];
+       
+       
+        
+          jq('input[type=checkbox]:checked').each(function () {
+        	 
+             auth_rule_ids.push(jq(this).val());
+          });
+          var _id = jq("#group_id").val();
+           jq.ajax({
+              url: "{:url('admin/auth_group/updateAuthGroupRule')}",
+              type: "post",
+              cache: false,
+              data: {
+                  id: _id,
+                  auth_rule_ids: auth_rule_ids
+              },
+              success: function (data) {
+                  if(data.code === 200){
+                      setTimeout(function () {
+                          location.href = "{:url('admin/auth_group/index')}";
+                      }, 1000);
+                  }
+                  layer.msg(data.msg);
+              }
+          }); 
+      });
+});
+</script>
+
+<script>
+ 
+</script>
+{/block}

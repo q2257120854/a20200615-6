@@ -1,0 +1,54 @@
+
+<!-- Panel popup   提示框开始-->
+<link rel="stylesheet" type="text/css" href="/public/ajaxsubmit/css/zip.css">
+<div id="modal-panel" class="popup-basic bg-none mfp-with-anim mfp-hide" style="max-width:70%"></div>
+<!-- End: Main -->
+<!--<script type="text/javascript" src="/public/ajaxsubmit/js/jquery-1.11.1.min.js"></script>-->
+<script type="text/javascript" src="/public/ajaxsubmit/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/public/ajaxsubmit/js/zip.js"></script>
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        Core.init()
+    });
+
+    $(".btn_submit").on("click", function () {
+
+	    event.preventDefault();
+	    var btn_submit = $(this);
+	    var form = btn_submit.closest("form");
+      var btn_text=btn_submit.text();
+      if(btn_submit.attr('reminder')){
+        if(!confirm(btn_submit.attr('reminder'))){
+          return ;
+        }
+      }
+	 if (form.hasClass("is_submit")) return false;
+      var formData = new FormData(form[0]);
+
+	    $.ajax({
+	        url: this.title,
+	        type: "post",
+	        data: formData,
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+	        beforeSend: function () {
+	            btn_submit.text("处理中...").addClass("disabled");
+	        },
+	        success: function (data) {
+                if(data.url){
+				    $.alert(data.info);
+				    setTimeout(function(){location.href=data.url}, 2000);
+	            }else{
+					$.alert(data.info);
+                }
+                btn_submit.text(btn_text).removeClass('disabled');
+	        }
+	    });
+  	});
+
+
+</script>
+<!-- END: PAGE SCRIPTS 提示框结束-->

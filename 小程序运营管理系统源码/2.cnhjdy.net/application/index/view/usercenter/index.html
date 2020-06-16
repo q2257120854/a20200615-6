@@ -1,0 +1,358 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+<link rel="stylesheet" href="//at.alicdn.com/t/font_626828_yt6kvjqucs.css">
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem3">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			小程序个人中心功能配置--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+		.iconfont{
+			font-size: 30px
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Usercenter/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">个人中心功能配置</label>
+
+
+
+					</div>
+					<style>
+						table td{padding:10px}
+						table td.biaotou{font-weight: bold}
+						table img{width:34px;}
+						.px{width:100px;}
+					</style>
+					<div style="padding:10px">
+			                <table cellpadding="0" cellspacing="0" style="border:1px solid #dedede" border="1px" width="100%" id="tabb"><tbody>
+			                <tr>
+			                <td class="biaotou">菜单名称</td>
+			                <td class="biaotou">排序</td>
+			                <td class="biaotou">老版本图标</td>
+			                <td class="biaotou">新版图标</td>
+			                <td class="biaotou">显示名称</td>
+			                <td class="biaotou">是否启用</td>
+			                </tr>
+			                <tr>
+				                <td class="tds">分销中心</td>
+				                <input type="hidden" name="img1" value="<?php echo ROOT_HOST;?>/image/nifx.png">
+                    			<input type="hidden" name="url1" value="/sudu8_page/fenxiao_center/fenxiao_center">
+				                <td class="tds px"><input type="text" name="num1" value="{if $usercenterset}{$usercenterset.num1}{else}1{/if}"></td>
+				                <input type="hidden" name="icon1" value="icon-x-fenxiao2">
+				                <td class="tds ">
+				                	<img src="/image/nifx.png" alt="">
+				                </td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-fenxiao2"></div>
+				                </td>
+
+				                <td class="tds "><input type="text" name="title1" value="分销中心"></td>
+				                <td class="tds">
+		                            <input type="radio" class="control-label" name="flag1" value="1" {if $usercenterset}{if $usercenterset['flag1']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" class="control-label" name="flag1" value="2" {if $usercenterset}{if $usercenterset['flag1']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">签到中心</td>
+				                <input type="hidden" name="img2" value="<?php echo ROOT_HOST;?>/image/niqd.png">
+                    			<input type="hidden" name="url2" value="/sudu8_page_plugin_sign/index/index">
+                    			<input type="hidden" name="icon2" value="icon-x-qiandao2">
+				                <td class="tds"><input type="text" name="num2" value="2"></td>
+				                <td class="tds "><img src="/image/niqd.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-qiandao2"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title2" value="签到中心"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag2" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag2']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag2" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag2']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">积分兑换中心</td>
+				                <input type="hidden" name="img3" value="<?php echo ROOT_HOST;?>/image/nijf.png">
+                    			<input type="hidden" name="url3" value="/sudu8_page_plugin_exchange/list/list">
+                    			<input type="hidden" name="icon3" value="icon-x-jifen">
+				                <td class="tds"><input type="text" name="num3" value="3"></td>
+				                <td class="tds "><img src="/image/nijf.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-jifen"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title3" value="积分兑换中心"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag3" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag3']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;" ></span>
+		                            <input type="radio" name="flag3" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag3']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">我的餐饮订单</td>
+				                <input type="hidden" name="img4" value="<?php echo ROOT_HOST;?>/image/nicy.png">
+                    			<input type="hidden" name="url4" value="/sudu8_page_plugin_food/food_my/food_my">
+                    			<input type="hidden" name="icon4" value="icon-x-diancan">
+				                <td class="tds"><input type="text" name="num4" value="4"></td>
+				                <td class="tds "><img src="/image/nicy.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-diancan"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title4" value="我的餐饮订单"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag4" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag4']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag4" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag4']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">我的多规格订单</td>
+				                <input type="hidden" name="img5" value="<?php echo ROOT_HOST;?>/image/nidd.png">
+                    			<input type="hidden" name="url5" value="/sudu8_page/order_more_list/order_more_list">
+                    			<input type="hidden" name="icon5" value="icon-x-gouwu">
+				                <td class="tds"><input type="text" name="num5" value="5"></td>
+				                <td class="tds "><img src="/image/nidd.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-gouwu"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title5" value="我的多规格订单"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag5" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag5']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag5" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag5']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">我的付费视频</td>
+				                <input type="hidden" name="img6" value="<?php echo ROOT_HOST;?>/image/nisp.png">
+                    			<input type="hidden" name="url6" value="/sudu8_page/order_v/order_v">
+                    			<input type="hidden" name="icon6" value="icon-x-shipin">
+				                <td class="tds"><input type="text" name="num6" value="6"></td>
+				                <td class="tds "><img src="/image/nisp.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-shipin"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title6" value="我的付费视频"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag6" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag6']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag6" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag6']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">我的优惠券</td>
+				                <input type="hidden" name="img7" value="<?php echo ROOT_HOST;?>/image/niyh.png">
+                    			<input type="hidden" name="url7" value="/sudu8_page/mycoupon/mycoupon">
+                    			<input type="hidden" name="icon7" value="icon-x-youhuiquan2">
+				                <td class="tds"><input type="text" name="num7" value="7"></td>
+				                <td class="tds "><img src="/image/niyh.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-youhuiquan2"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title7" value="我的优惠券"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag7" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag7']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag7" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag7']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+
+							<tr>
+				                <td class="tds">我的收藏</td>
+				                <input type="hidden" name="img8" value="<?php echo ROOT_HOST;?>/image/nisc.png">
+                    			<input type="hidden" name="url8" value="/sudu8_page/collect/collect">
+                    			<input type="hidden" name="icon8" value="icon-c-xing1">
+				                <td class="tds"><input type="text" name="num8" value="8"></td>
+				                <td class="tds "><img src="/image/nisc.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-c-xing1"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title8" value="我的收藏"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag8" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag8']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag8" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag8']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                <tr>
+				                <td class="tds">我的地址</td>
+				                <input type="hidden" name="img9" value="<?php echo ROOT_HOST;?>/image/nidz.png">
+                    			<input type="hidden" name="url9" value="/sudu8_page/address/address">
+                    			<input type="hidden" name="icon9" value="icon-x-dizhi">
+				                <td class="tds"><input type="text" name="num9" value="9"></td>
+				                <td class="tds "><img src="/image/nidz.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-dizhi"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title9" value="我的地址"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag9" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag9']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag9" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag9']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                <tr>
+				                <td class="tds">流水记录</td>
+				                <input type="hidden" name="img10" value="<?php echo ROOT_HOST;?>/image/nijf.png">
+                    			<input type="hidden" name="url10" value="/sudu8_page/scorelist/scorelist">
+                    			<input type="hidden" name="icon10" value="icon-x-liushui">
+				                <td class="tds"><input type="text" name="num10" value="10"></td>
+				                <td class="tds "><img src="/image/nijf.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-liushui"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title10" value="流水记录"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag10" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag10']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag10" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag10']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                <tr>
+				                <td class="tds">拼团订单</td>
+				                <input type="hidden" name="img11" value="<?php echo ROOT_HOST;?>/image/ptdd.png">
+                    			<input type="hidden" name="url11" value="/sudu8_page_plugin_pt/orderlist/orderlist">
+                    			<input type="hidden" name="icon11" value="icon-x-pintuan">
+				                <td class="tds"><input type="text" name="num11" value="11"></td>
+				                <td class="tds "><img src="/image/ptdd.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-pintuan"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title11" value="拼团订单"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag11" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag11']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag11" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag11']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                <tr>
+				                <td class="tds">预约订单</td>
+				                <input type="hidden" name="img12" value="<?php echo ROOT_HOST;?>/image/yydd.png">
+                    			<input type="hidden" name="url12" value="/sudu8_page/order/order">
+                    			<input type="hidden" name="icon12" value="icon-x-qiandao3">
+				                <td class="tds"><input type="text" name="num12" value="12"></td>
+				                <td class="tds "><img src="/image/yydd.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-qiandao3"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title12" readonly="readonly" value="预约订单"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag12" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag12']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag12" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag12']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                <tr>
+				                <td class="tds">秒杀订单</td>
+				                <input type="hidden" name="img13" value="<?php echo ROOT_HOST;?>/image/ptdd.png">
+                    			<input type="hidden" name="url13" value="/sudu8_page/orderlist_dan/orderlist_dan">
+                    			<input type="hidden" name="icon13" value="icon-x-miaosha">
+				                <td class="tds"><input type="text" name="num13" value="13"></td>
+				                <td class="tds "><img src="/image/ptdd.png" alt=""></td>
+				                <td class="tds" style="margin-left: 70px">
+				                	<div class="iconfont icon-x-miaosha"></div>
+				                </td>
+				                <td class="tds"><input type="text" name="title13" value="秒杀订单"></td>
+				                <td class="tds">
+		                            <input type="radio" name="flag13" class="control-label" value="1" {if $usercenterset}{if $usercenterset['flag13']==1}checked="checked"{/if}{else}checked="checked"{/if}/>不启用 
+		                            <span style="width:10px;display: inline-block;"></span>
+		                            <input type="radio" name="flag13" class="control-label" value="2" {if $usercenterset}{if $usercenterset['flag13']==2}checked="checked"{/if}{/if}/>启用
+				                </td>
+			                </tr>
+			                </tbody></table>       
+			            </div>
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+{include file="public/foot_more" /}

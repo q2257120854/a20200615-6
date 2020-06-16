@@ -1,0 +1,95 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$t.title|strip_tags} - {$site_config['site_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<!--<link rel="stylesheet" href="__HOME__/css/soft.css">-->
+<div class="main" style="transform: none;">
+    <div class="container" style="transform: none;">
+        <div class="breadcrumbs">当前位置：<span><a href="{:url('index/index/index')}" itemprop="url"><span itemprop="title">首页</span></a></span> <span class="sep"><i class="dripicons dripicons-chevron-right"></i></span> <span><a href="{:url('index/articles/lists',array('cate_alias'=>$t['alias']))}" itemprop="url"><span itemprop="title">{$t.name}</span></a></span> <span class="sep"><i class="dripicons dripicons-chevron-right"></i></span> <span class="current">正文</span></div>
+        <div class="content-wrap">
+            <div class="content">
+                <article class="single-content">
+                    <header class="article-header">
+                        <h1 class="article-title">{$t.title}</h1>
+                        <div class="article-meta">
+                            <span class="item"><i class="dripicons dripicons-view-thumb"></i> <a href="{:url('index/articles/lists',array('cate_alias'=>$t['alias']))}" rel="category tag">{$t.name}</a></span>
+                            <span class="item"><i class="dripicons dripicons-preview"></i> {$t.view}</span><span class="item"></span>
+                        </div>
+                    </header>
+                    <!--正文开始-->
+                    <div class="article-content">
+                        {$t.content|htmlspecialchars_decode}
+                    </div>
+                    <!--正文结束-->
+                    <!--软件下载（手机端显示）-->
+                    <div class="erphpdown-box">
+                        <div class="item price"><t>下载价格：</t><span>免费</span></div>
+                         {:hook('attachlinkshow',array('id'=>$t.id,'type'=>1))}
+                        <div class="meta">下载量：269</div><div class="item tips2">感谢您对本站的支持！</div>
+                    </div>
+                    <div class="article-act">
+                        <a href="javascript:;" class="article-zan" data-id="839" title="赞"><i class="dripicons dripicons-thumbs-up"></i> <span>0</span></a>
+                        <div class="article-shares">
+                            <a data-share="qzone" class="share-qzone" title="分享到QQ空间"><i class="fa"></i></a><a data-share="weibo" class="share-tsina" title="分享到新浪微博"><i class="fa"></i></a><a data-share="qq" class="share-sqq" title="分享到QQ好友"><i class="fa"></i></a><a data-share="douban" class="share-douban" title="分享到豆瓣网"><i class="fa"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <!--广告2-->
+                <div class="modown-ad"><div style="border:2px dashed #2d3757;text-align:center;font-size:18px;height60px;line-height:60px;width:100%;">广告位招租</div></div>
+                <!--随机推荐-->
+                <div class="single-related">
+                    <h3 class="related-title">猜你喜欢</h3>
+                    <ul class="clearfix">
+                        {volist name="article_random" id="vo"}
+                        <li><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}"><img data-src="{$vo.coverpic}" alt="{$vo.title}" src="__HOME__/picture/thumbnail.png""><h4>{$vo.title}</h4></a>
+                            <div class="meta">
+                                <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <!--评论-->
+                {include file="index/comment"}
+                <!--广告3-->
+                <div class="modown-ad"><div style="border:2px dashed #2d3757;text-align:center;font-size:18px;height60px;line-height:60px;width:100%;">广告位招租</div></div>
+            </div>
+        </div>
+
+        <aside class="sidebar" style="transform: none;">
+            <div>
+                <div>
+                    <!--资源下载-->
+                    <div class="widget widget-erphpdown">
+                        <div class="item price"><t>下载价格：</t>
+                            <span>0</span> 积分</div>
+                        {:hook('attachlinkshow',array('id'=>$t.id,'type'=>1))}
+                        <div class="custom-metas"><div class="meta"><span>更新时间：</span>{$t.updatetime|friendlyDate}</div>
+                            <div class="meta"><span>更新版本：</span>v1.4.1</div>
+                            <div class="meta"><span>资源大小：</span>未知</div>
+                            <div class="meta"><span>所需类别：</span>{$t.name}</div>
+                        </div>
+                        <div class="meta"><i class="dripicons dripicons-anchor"></i>浏览统计：{$t.view}</div>
+                        <div class="tips">感谢您支持本站！</div>
+                    </div>
+                    <!--最新文章-->
+                    <div class="widget widget-postlist">
+                        <h3>最新文章</h3>
+                        <ul>
+                            {volist name="article_new" id="vo"}
+                            <li>
+                                <h4><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}">{$vo.title}</a></h4>
+                                <p class="meta">
+                                    <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span>
+                                    <span class="price"><i class="dripicons dripicons-ticket"></i> VIP专享</span>
+                                </p>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>

@@ -1,0 +1,129 @@
+{extend name="base" /}
+{block name="body"}
+<div class="admin-main">
+<div class="layui-field-box layui-form">
+                
+                <table class="layui-table admin-table layui-elem-field" >
+                    <thead>
+                    <tr>
+                       
+                        <th>备份名称</th>
+                        <th>卷数</th>
+                        <th>压缩</th>
+                        <th>数据大小</th>
+                        <th>备份时间</th>
+                        <th>状态</th>     
+                        <th>操作</th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {volist name='list' id='vo'}
+                    <tr align="center">
+                        
+                        <td>{$vo.name}</td>
+                        <td>{$vo.part}</td>
+                        <td>{$vo.compress}</td>
+                        <td>{$vo.size|format_bytes}</td>
+                        <td>{$key}</td>
+                        <td id="{$vo['time']}">未恢复</td>
+                        <td>
+                            <a href="javascript:;" data-id="{$vo['time']}" data-url="{:url('Database/import',['time'=>$vo['time']])}"  class="elementedit layui-btn layui-btn-normal layui-btn-sm">还原</a>
+                            <a  data-url="{:url('Database/delete',array('time'=>$vo['time']))}" href="javascript:;"   class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+
+                    </table>
+                   
+                </div>
+           
+        </div>
+ {/block}
+  {block name="script"}
+ <script>
+ layui.use(['form'],function(){
+	  var form = layui.form
+	  ,jq = layui.jquery;
+	  jq('.elementdel').click(function(){
+		  var url= jq(this).data('url');
+	 	  layer.confirm('你确定要删除该备份吗?', {icon: 3, title:'删除提示'}, function(index){
+			    loading = layer.load(2, {
+				      shade: [0.2,'#000']
+				    });
+			 
+				  
+				    jq.getJSON(url,function(data){
+				      if(data.code == 200){
+				        layer.close(loading);
+				        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+				        
+				        
+				        		 location.reload();
+				        
+				        });
+				      }else{
+				        layer.close(loading);
+				        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+				      }
+				    });
+			 
+			}); 
+	  });
+	  
+	  var name;
+	  function getall(url){
+		 
+	 	   jq.get(url,function(data){
+	 		  if(data.code == 200){
+	 			 jq('#'+name).html(data.msg);
+	 		
+	 		
+	 		  if(data.url!=undefined){
+				   
+	 			 getall(data.url);
+		      } else{
+		    	
+		    	  layer.msg(data.msg, {icon: 1, time: 1000});
+		    	
+		    	 
+		      }
+	 		  }else{
+	 			  
+		    	  layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+		      }
+		      }); 
+	  }
+	  
+	  
+	  jq('.elementedit').click(function(){
+		  var url= jq(this).data('url');
+		 //  var tables=[];
+		  name= jq(this).data('id');
+		
+			    jq.get(url,{'time':name},function(data){
+			      if(data.code == 200){
+			    
+			    	  jq('#'+name).html(data.msg);
+			      if(data.url!=undefined){
+			    	
+			    	  getall(data.url);
+			      } else{
+			    	  layer.msg(data.msg, {icon: 1, time: 1000});
+			      }
+			        
+			        
+			      }else{
+			   
+			        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+			      }
+			    });
+			    return false;
+		  });
+	
+	  
+ });
+ 
+ </script>
+ 
+  {/block}

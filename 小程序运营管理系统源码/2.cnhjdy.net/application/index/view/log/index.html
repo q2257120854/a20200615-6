@@ -1,0 +1,49 @@
+{include file="public/new_left" /}
+{include file="public/new_head" /}
+<input type="hidden" id="choose" value="log">
+<div class="content">
+	<div class="clearfix">
+		<div class="content_title_journal fl agent_list_title">系统日志</div>
+		
+	</div>
+	<div class="overview_center clearfix" style="padding-left: 80px;">
+			<div class="overview_all fl" id="type0"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="index">全部记录</a></div>
+			<div class="overview_all fl " id="type2"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="index?show=2">充值记录</a></div>
+			<div class="overview_all fl" id="type1"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="index?show=1">操作记录</a></div>
+	</div>
+	<div class="content_journalbox clearfix">
+		{volist name="log" id="vo"}
+		<div class="journal_single fl hbj2">
+			<div class="journal_date">{:date('Y.m.d', $vo.time) }</div>
+			<div class="journal_center">
+				<div class="journal_yuan">
+					<div></div>
+				</div>
+				<div class="journal_line"></div>
+			</div>
+			<div class="journal_right">{$vo.text}</div>
+		</div>
+		{/volist}
+	</div>
+	<div class="list_page">
+		{$page}
+	</div>
+</div>
+</body>
+<script>
+    //判断显示类型
+    $(function () {
+        var show = '<?php echo input('show'); ?>';
+        if(show){
+            if(show == 1){
+                $("#type1").addClass('on');
+            }else {
+                $("#type2").addClass('on');
+            }
+
+        }else{
+            $("#type0").addClass('on');
+        }
+    });
+</script>
+</html>

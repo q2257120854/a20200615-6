@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link href="css/css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/v2/api.css"/>
+        <link rel="stylesheet" type="text/css" href="css/aui.css" />
+        <link rel="stylesheet" type="text/css" href="css/auislide.css" />
+        <style type="text/css">
+            body {
+                background-color: black;
+            }
+            .guide-img {
+                width: 100%;
+                height: auto;
+            }
+            #start {
+                position: absolute;
+                bottom: 40px;
+                width: 60%;
+                left: 20%;
+				        background-color:rgba(99, 99, 99, 0.5);
+				        border-radius:1rem;
+            }
+            #time {
+                position: absolute;
+                top: 1rem;
+                width: 2rem;
+                right:0.6rem;
+				        background-color:rgba(99, 99, 99, 0.5);
+				        border-radius:1rem;
+            }
+        </style>
+    <script type="text/javascript">
+      localStorage.setItem('api_url',"http://baidu.com");
+    </script>
+    </head>
+    <body>
+        <div class="mui-content">
+            <div class="mui-slider mui-fullscreen">
+                <div class="mui-slider-group">
+                    <div class="mui-slider-item">
+                        <a href="javascript:;">
+                            <div class="guide-img" id="lrbox">
+                            </div>
+							              <div class="mui-slide-page-wrap"><!--分页容器--></div>
+                            <button class="mui-btn  mui-btn-outlined" type="button" id="time" style="color:#ffffff">
+                              <div id="errorfrm" style="color:#ffffff">
+                              <div id="error">
+                              <span  id="mes">10</span>s
+                              </div>
+                              </div>
+                            </button>
+                            <button class="mui-btn mui-btn-outlined" type="button" id="start"  style="color:#ffffff" onclick="location.href='main.html'">开始体验</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+ 
+  
+  <script type="text/x-dot-template" id="lrtpl">
+		{{~ it : value : index }}
+				 
+				<img src="{{= value. picname }}" onclick="openurl('{{= value. link }}')">
+		{{~}}
+	</script>
+  <script type="text/javascript" src="script/api.js"></script>
+  <script type="text/javascript" src="script/doT.js"></script>
+  <script type="text/javascript" src="script/auipullrefresh.js"></script>
+  <script type="text/javascript" src="script/auislide.js"></script>
+  <script type="text/javascript" src="script/auilazyload.js" ></script>
+  <script type="text/javascript">
+  var i = 5;
+  var intervalid;
+  intervalid = setInterval("fun()", 1000);
+  function fun() {
+  if (i == 0) {
+  window.location.href = "main.html";
+  clearInterval(intervalid);
+  }
+  document.getElementById("mes").innerHTML = i;
+  i--;
+  }
+    var api_url = localStorage.getItem('api_url');
+    apiready = function(){
+      getNav();
+	  loadApi();
+      api.parseTapmode();
+    }
+
+    //轮播图获取
+    function getNav(){
+  	  var lrid = $api.byId('lrbox');
+      var lrtpl = $api.byId('lrtpl');
+      api.ajax({
+          url: api_url+'/App/App/lunbo',
+          method: 'get',
+      },function(ret, err){
+          if (ret) {
+            //渲染模板
+            var fn = doT.template(lrtpl.text);
+              lrid.innerHTML = fn(ret.qidong);
+          //alert(JSON.stringify(ret.qidong));
+          } else {
+              alert( '连接到服务器失败' );
+              api.hideProgress();
+          }
+      });  
+    }
+
+    function openurl(url) {
+       api.openApp({
+       androidPkg : 'android.intent.action.VIEW',
+       mimeType : 'text/html',
+       uri : url,
+       }, function(ret, err) {
+        var msg = JSON.stringify(ret);
+        api.openApp({
+        iosUrl: url
+      });
+      });
+   }
+   
+function loadApi(){
+  api.ajax({
+      url: api_url+'/App/Index/config.html',
+      method: 'get',
+      data: {
+          values: {
+              uid: user_id
+          }
+      }
+  },function(ret, err){
+      if(ret){
+        localStorage.setItem('jx1',ret.jx1);
+        localStorage.setItem('jx2',ret.jx2);
+        localStorage.setItem('jx3',ret.jx3);
+        localStorage.setItem('jx4',ret.jx4);
+        localStorage.setItem('jx5',ret.jx5);
+          <!-- if (ret.msg.imei!=api.deviceId) { -->
+            <!-- localStorage.setItem('user_id',''); -->
+            <!-- localStorage.setItem('user_name',''); -->
+            <!-- localStorage.setItem('viptime',''); -->
+            <!-- api.sendEvent({ -->
+              <!-- name: 'newLoingdata', -->
+              <!-- extra: { -->
+              <!-- } -->
+            <!-- }); -->
+
+            <!-- api.closeWin({ -->
+            <!-- }); -->
+
+            <!-- api.alert({ -->
+                <!-- title: '您已在其他设备登陆！账号已强制下线', -->
+                <!-- msg: '请重新登陆', -->
+            <!-- }); -->
+            <!-- return; -->
+          <!-- } -->
+      } else {
+		
+      }
+  });
+}
+  </script>
+
+</html>

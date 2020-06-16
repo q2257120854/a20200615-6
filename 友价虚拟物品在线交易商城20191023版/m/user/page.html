@@ -1,0 +1,14 @@
+<?
+$pageall=$page_count;
+?>
+<?
+if($page_count>1){
+?>
+<div id="page" class="page box">
+ <div class="onext"><a href="<?=$nowurl?>?<?=$nowwd?>">首页</a></div>
+ <? if($page>1){?><div class="oprev"><a href="<?=$nowurl?>?<?=$nowwd?>&page=<?=$page-1?>">上一页</a></div><?}?>
+ <div class="ohave"><?=$page."/".$pageall?></div>
+ <? if($page<$page_count){?><div class="onext"><a href="<?=$nowurl?>?<?=$nowwd?>&page=<?=$page+1?>">下一页</a></div><?}?>
+ <div class="onext"><a href="<?=$nowurl?>?<?=$nowwd?>&page=<?=$page_count?>">末页</a></div>
+</div>
+<?}?>

@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="h1">可通过卡密兑换VIP会员及次数</view>
+    <view class="duihuan">
+        <input bindinput="invalue" placeholder="输入卡密" value=""></input>
+        <view bindtap="duihuan" bindtouchend="end" bindtouchstart="start" class="txt" style="background-color:{{color}}">
+            <text>兑换</text>
+        </view>
+    </view>
+    <view class="help">
+        <text class="title">兑换说明：</text>
+        <text space="ensp">
+		1、如何使用卡密？
+		答：粘贴卡密到上方的卡密输入框点击兑换即可。
+
+		2、如何获取卡密？
+		答：1、可购买 2、活动获取。
+		<text selectable="true" style="color: red;">{{weixin}}</text>
+
+		3、卡密会过期吗？
+		答：未使用的卡密长期有效，一个卡密只能兑换一次。
+		</text>
+    </view>
+</view>
+<view class="service">
+    <button class="service-img-button" openType="contact">联系客服</button>
+</view>

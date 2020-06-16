@@ -1,0 +1,14 @@
+备份数据库解压到网站数据库目录
+
+
+数据库修改地址：APP\Conf\config.php
+
+后台地址:http://你的域名/admin.php
+
+后台账号：admin
+
+密码：123456（如果密码不对，自己查看程序修改数据库密码）
+
+
+
+5G云源码分享网  www.yunziyuan.com.cn

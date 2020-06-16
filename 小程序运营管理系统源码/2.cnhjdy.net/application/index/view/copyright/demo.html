@@ -1,0 +1,360 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:13px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+.moban_list img{display: block;box-shadow: 0px 0px 5px 1px #ccc;}
+
+.moban_list input{margin: 22px 0 0 55px;}
+
+.phone-div{
+
+    width: 200px;
+
+    height: 355px;
+
+    padding-top: 30px;
+
+    display: block;
+
+    position: relative;
+
+    background: url(/image/bg_img.png) no-repeat 0 0;
+
+    background-size: 100% 100%;
+
+    }
+
+.phone-div .show-view-div {
+
+    width: 188px;
+
+    height: 315px;
+
+    display: block;
+
+    margin: 0 0 0 8px;
+
+    overflow-y: scroll;
+
+    overflow-x: hidden;
+
+    position: relative;
+
+}
+
+::-webkit-scrollbar{width:4px;}
+
+::-webkit-scrollbar-track{background-color:#ddd;}
+
+::-webkit-scrollbar-thumb{background-color:#aaa;}
+
+::-webkit-scrollbar-thumb:hover {background-color:#9c3}
+
+::-webkit-scrollbar-thumb:active {background-color:#00aff0}
+
+.mb-20{margin-bottom: 20px}
+</style>
+
+<input type="hidden" id="nowhtml" value="navDIY"  class="navDIY2-9">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			一键模板--{$applet.name}
+		</li>
+	</ul>
+	
+
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+			<div class="portlet box ">
+
+				<div class="portlet-body">
+
+					<!-- <a href="{:Url('Copyright/demo')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					一键模板 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/mail')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					邮箱配置 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/comment')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					版权内容 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/index')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					版权管理 <i class="icon-plus"></i>
+					</button>
+					</a> -->
+
+
+					<div class="chongdingy">
+						<label class="control-label chongdingywz">一键模板</label>
+					</div>
+
+				</div>
+
+<!-- 
+				<div class="control-group chongdingy" style="text-align:center">
+					一键模版会导致该小程序原内容丢失，请谨慎操作！请点击此处<a href="http://7xns9l.com1.z0.glb.clouddn.com/template.zip">[下载素材包]</a>，解压并把<font color="#f60">template文件夹</font>放至站点<font color="#f60">/public/image/</font>目录中,一键创建模版成功后，请在“ 底部菜单栏”选择一下按钮内容，并提交！！<font color="red">必须操作！！</font>
+				</div>
+ -->
+				<div>
+					<form form action="{:Url('Copyright/demosave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+						<div style="width:100%; min-height:400px;overflow: hidden;">
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/1.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio" name="making_tmp" style="margin-left:0" value="0">通用模板
+								</div>
+							</div>
+
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/2.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="1">婚纱摄影版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">	
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/3.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>				
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="2">官网/招商加盟版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_jiaju.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="3">商城版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_car.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="4">汽车4S版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_fangchan.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="5">房产门户版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_lvxingshe.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="6">旅行社版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_peixun.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="7">教育培训版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_huadian.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="8">花店行业版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_jiance.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="9">汽修汽配版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_zxzs.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="10">装修装饰版
+								</div>
+							</div>
+							<div style="float:left;margin-left:20px;margin-bottom: 20px">					
+								<div class="phone-div">
+
+		                             <div class="show-view-div">
+
+		                                <img src="/image/m_jshs.jpg" alt="" style="width: 185px;">
+
+		                             </div>
+
+		                         </div>
+								<div style="margin-top:10px">
+									<input type="radio"  name="making_tmp" style="margin-left:0" value="11">健身会所版
+								</div>
+							</div>
+
+
+
+						</div>
+						<div>
+							<input type="submit" value="提交" style="margin-left:20px;border:0px; background-color:#428bca; color:#ffffff; padding:10px 20px;">
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+		function checkinfo(){
+
+			var val = $("input[name='making_tmp']:checked").val();
+			if(!val){
+				alert("请选择模板！");
+				return false;
+			}
+
+		}
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

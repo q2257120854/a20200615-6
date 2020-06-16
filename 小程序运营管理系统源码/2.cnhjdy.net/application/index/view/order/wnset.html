@@ -1,0 +1,551 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<link rel="stylesheet" href="/css/drag.css">
+<script src="/js/drag.js"></script>
+<input type="hidden" id="nowhtml" value="navSale" class="navSale8-2">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			自定义表单管理--{$applet.name}
+		</li>
+	</ul>
+	<style type="text/css">
+		.leix1{
+			display: inline-block;
+			width: 100px;
+		}
+		.leix2{
+			display: inline-block;
+			width: 100px;
+		}
+		.leix3{
+			display: inline-block;
+			width: 100px;
+		}
+		.leix4{
+			display: inline-block;
+		}
+		.leix5{
+			display: inline-block;
+			border: 1px solid red;
+			width: 14px;
+			height: 14px;
+			text-align: center;
+			line-height: 14px;
+			border-radius: 14px;
+			cursor:pointer;
+			margin-left: 40px;
+			position: absolute;
+			left: 700px;
+			top: 50%;
+			margin-top: -7px;
+		}
+		.xizn{
+			display: inline-block;
+		}
+		.zjzdun{
+			display: inline-block;
+			color: #ffffff;
+			background-color: #44abf7  !important;
+			border: none;
+			font-size: 14px;
+			vertical-align: top;
+			padding: 5px 10px;
+		}
+		.dhwbsrk{
+			width: 80px;
+		}
+		.xuanzhc{
+			margin-left: 15px;
+		}
+		.czys{
+			color: #aaaaaa;
+		}
+		.sdk1{
+			margin-left: 5px;
+		}
+		.span3{
+			width: 115px !important;
+		}
+	</style>
+	
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			<div class="portlet-body form">
+				
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+					
+					<form action="{:Url('Order/wnsave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+						<input type="hidden" id="formid" name="formid" value="{$formid}">
+						<div class="control-group">
+
+							<label class="control-label">模板名称</label>
+
+							<div class="controls">
+
+								<input name="formname" value="{if $forms}{$forms['formname']}{/if}" type="text" id="formname" class="span5 m-wrap" value=""  style="height: 35px !important;" />
+
+							</div>
+
+						</div>
+
+						<div class="control-group" style="border-top:1px solid #dedede">
+
+						</div>
+
+						<div class="control-group" style="margin-bottom:20px !important;">
+
+							<label class="control-label" style="font-weight:bold">字段设置</label>
+
+						</div>
+
+						<div class="control-group" style="margin-bottom:20px !important;">
+							
+							<div class="controls" style="margin-left:110px;">
+								<div class="leix1">类型</div>
+								<div class="leix2">字段名称</div>
+								<div class="leix3">必填</div>
+								<div class="leix4">选项值</div>
+							</div>
+
+						</div>
+
+						<div id="biaod" style="margin-bottom:40px !important;">
+							{if $forms}
+								{foreach $forms['tp_text'] as $key=>$item}
+									{if $item.type==0}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="0">
+											<div class="leix3">单行文本</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+								<!-- 			<div class="leix4 czys">
+												<input type="hidden" name="tp_text[{$key}]">
+											</div> -->
+											<div class="leix4 czys">
+
+			                                    <input type="hidden" name="df_val[{$key}]">
+
+			                                    <input type="hidden" name="prompt[{$key}]">
+
+			                                    <input type="hidden" >
+
+			                                    <select name="tp_text[{$key}]">
+			                                        
+			                                        <option value="0" {if $item['tp_text'] == 0}selected{/if}>不选择</option>
+			                                        <option value="1" {if $item['tp_text'] == 1}selected{/if}>手机号</option>
+			                                        <option value="2" {if $item['tp_text'] == 2}selected{/if}>微信姓名</option>
+			                                        <option value="3" {if $item['tp_text'] == 3}selected{/if}>微信手机号</option>   
+			                                        <option value="4" {if $item['tp_text'] == 4}selected{/if}>微信地址</option>
+
+			                                    </select>
+
+
+			                                </div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+
+									{if $item.type==1}
+
+			                            <div class="controls" style="margin-left:110px;margin-bottom:20px;position: relative;">
+
+			                                <input type="hidden" name="types[{$key}]" value="1">
+
+			                                <div class="leix3">多行文本</div>
+
+			                                <div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+
+			                                <div class="leix2" style="padding-left:26px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+
+			                                <div class="leix4 czys">
+
+			                                    <input type="hidden" name="df_val[{$key}]">
+
+			                                    <input type="hidden" name="prompt[{$key}]">
+
+			                                    <input type="hidden" name="tp_text[{$key}]">
+
+			                                </div>
+
+			                                <div class="leix5 wi wi-delete" onclick="del(this)">x</div>
+
+			                            </div>
+
+			                        {/if}
+
+									{if $item.type==2}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="2">
+											<div class="leix3">下拉框</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<textarea style="margin-right:10px" name="tp_text[{$key}]">{$item.tp_text}</textarea>
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item.type==3}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="3">
+											<div class="leix3">多选框</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<textarea style="margin-right:10px" name="tp_text[{$key}]">{$item.tp_text}</textarea>
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item.type==4}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="4">
+											<div class="leix3">单选框</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<textarea style="margin-right:10px" name="tp_text[{$key}]">{$item.tp_text}</textarea>
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item.type==5}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="5">
+											<div class="leix3">图片</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<textarea style="margin-right:10px" name="tp_text[{$key}]">{$item.tp_text}</textarea>
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item.type==7}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="7">
+											<div class="leix3">日期</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<input type="hidden" name="tp_text[{$key}]">
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item.type==11}
+
+										<div class="controls" style="margin-left:110px;margin-bottom:20px">
+											<input type="hidden" name="types[{$key}]" value="11">
+											<div class="leix3">时间</div>
+											<div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item.name}"></div>
+											<div class="leix2" style="padding-left:15px"><input type="hidden" value="{$item.ismust}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+											<div class="leix4 czys">
+												<input type="hidden" name="tp_text[{$key}]">
+											</div>
+											<div class="leix5" onclick="del(this)">x</div>
+										</div>
+
+									{/if}
+									{if $item['type']==14}
+
+			                            <div class="controls" style="margin-left:110px;margin-bottom:20px;position: relative;">
+
+			                                <input type="hidden" name="types[{$key}]" value="14">
+
+			                                <div class="leix3">独占单选</div>
+
+			                                <div class="leix1"><input type="text" class="dhwbsrk" name="zd_name[{$key}]" value="{$item['name']}"></div>
+
+			                                <div class="leix2" style="padding-left:26px"><input type="hidden" value="{$item['ismust']}" id="ck{$key}" name="ck_box[{$key}]"><input type="checkbox" onclick="cag({$key})" {if $item.ismust == 1}checked{/if}></div>
+
+			                                <div class="leix4 czys">
+
+			                                    <input type="hidden" name="df_val[{$key}]">
+
+			                                    <input type="hidden" name="prompt[{$key}]">
+			                                    
+			                                    <textarea style="margin-right:10px;vertical-align: bottom;" name="tp_text[{$key}]">{$item.tp_text}</textarea>
+
+			                                </div>
+
+			                                <div class="leix5 wi wi-delete" onclick="del(this)">x</div>
+
+			                            </div>
+
+			                        {/if}
+								{/foreach}
+							{/if}
+						</div>
+						
+						
+						<div class="control-group">
+
+							<label class="control-label">
+								
+								<button type="submit" class="btn green">确定</button>
+
+							</label>
+
+						</div>
+
+					</form>
+
+					<div style="margin-left:100px">
+						
+						<select class="xizn" id="shenm">
+							{foreach $formlet as $item}
+								<option value="{$item.val}">{$item.name}</option>
+							{/foreach}
+						</select>
+						
+						<input type="button" value="增加一个字段" class="zjzdun" onclick="zjzd()">
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	
+	<script type="text/javascript"> 
+
+	var str = "";
+	var a = 1000;
+	var formid = "{$formid}";
+
+	function zjzd(){
+		
+		var shenm = $("#shenm").val();
+		if(shenm==0){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='0'>"+
+						"<div class='leix3'>单行文本</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+                            "<select name='tp_text["+a+"]'>"+
+                                "<option value='0'>不选择</option>"+
+                                "<option value='1'>手机号</option>"+
+                                "<option value='2'>微信姓名</option>"+ 
+                                "<option value='3'>微信手机号</option>"+
+                                "<option value='4'>微信地址</option>"+
+                            "</select>"+ 
+
+                            "<input type='hidden' name='df_val["+a+"]'>"+
+
+                            "<input type='hidden' name='prompt["+a+"]'>"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+
+		if(shenm==1){
+
+            str =   "<div class='controls' style='margin-left:110px;margin-bottom:20px;position: relative;'>"+
+
+                        "<input type='hidden' name='types["+a+"]' value='1'>"+
+
+                        "<div class='leix3'>多行文本</div>"+
+
+                        "<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+
+                        "<div class='leix2' style='padding-left:26px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+
+                        "<div class='leix4 czys'>"+
+
+
+                            "<input type='hidden' name='df_val["+a+"]'>"+
+
+                            "<input type='hidden' name='tp_text["+a+"]'>"+
+
+                            "<input type='hidden' name='prompt["+a+"]'>"+
+
+
+                        "</div>"+
+
+                        "<div class='leix5 wi wi-delete' onclick='del(this)'>x</div>"+
+
+                    "</div>";
+
+            $("#biaod").append(str);
+
+        }
+
+		if(shenm==2){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='2'>"+
+						"<div class='leix3'>下拉框</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<textarea style='margin-right:10px' name='tp_text["+a+"]'></textarea>"+
+							"多个选项请用英文,隔开[,]"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==3){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='3'>"+
+						"<div class='leix3'>多选框</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<textarea style='margin-right:10px' name='tp_text["+a+"]'></textarea>"+
+							"多个选项请用英文,隔开[,]"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==4){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='4'>"+
+						"<div class='leix3'>单选框</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<textarea style='margin-right:10px' name='tp_text["+a+"]'></textarea>"+
+							"多个选项请用英文,隔开[,]"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==5){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='5'>"+
+						"<div class='leix3'>图片</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<textarea style='margin-right:10px' name='tp_text["+a+"]'></textarea>"+
+							"设置图片数量"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==7){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='7'>"+
+						"<div class='leix3'>日期</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<input type='hidden' name='tp_text["+a+"]'>"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==11){
+			str =	"<div class='controls' style='margin-left:110px;margin-bottom:20px'>"+
+						"<input type='hidden' name='types["+a+"]' value='11'>"+
+						"<div class='leix3'>时间</div>"+
+						"<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+						"<div class='leix2' style='padding-left:15px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+						"<div class='leix4 czys'>"+
+							"<input type='hidden' name='tp_text["+a+"]'>"+
+						"</div>"+
+						"<div class='leix5' onclick='del(this)'>x</div>"+
+					"</div>";
+			$("#biaod").append(str);
+		}
+		if(shenm==14){
+
+            str =   "<div class='controls' style='margin-left:110px;margin-bottom:20px;position: relative;'>"+
+
+                        "<input type='hidden' name='types["+a+"]' value='14'>"+
+
+                        "<div class='leix3'>独占单选</div>"+
+
+                        "<div class='leix1'><input type='text' class='dhwbsrk' name='zd_name["+a+"]'></div>"+
+
+                        "<div class='leix2' style='padding-left:26px'><input type='hidden' value='0' id='ck"+a+"' name='ck_box["+a+"]'><input type='checkbox' onclick='cag("+a+")'></div>"+
+
+                        "<div class='leix4 czys'>"+
+
+                            "<input type='hidden' name='df_val["+a+"]'>"+
+
+                            "<input type='hidden' name='prompt["+a+"]'>"+
+
+                            "<textarea style='margin-right:10px;vertical-align: bottom;' name='tp_text["+a+"]'></textarea>"+
+
+                        "</div>"+
+
+                        "<div class='leix5 wi wi-delete' onclick='del(this)'>x</div>"+
+
+                    "</div>";
+
+            $("#biaod").append(str);
+
+        }
+
+
+	a+=1;
+
+	}
+
+	function cag(val){
+		var nowval = $("#ck"+val).val();
+		if(nowval==0){
+			$("#ck"+val).val(1);
+		}else{
+			$("#ck"+val).val(0);
+		}
+	}
+
+	function checkinfo(){
+
+		var formname  = $("#formname").val();
+		if(!formname){
+			alert("请输入表单名称");
+			return false;
+		}
+	}
+
+
+
+	function del(me){
+
+		var divs = $(me).parent();
+		$(divs).remove();
+
+	}
+
+
+
+
+
+	</script>
+<script type="text/javascript">
+     $( "#biaod" ).sortable({
+      revert: true
+    });
+</script>
+	
+
+{include file="public/foot_more" /}

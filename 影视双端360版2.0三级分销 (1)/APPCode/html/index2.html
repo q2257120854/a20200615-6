@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>开发</title>
+
+	  <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <style>
+        .empty{ text-align: center; padding: 120px 0; }
+		html,body{
+			color:#000;
+		}
+    </style>
+	 <style>
+                                          
+      /*新加空提示信息*/
+
+      .m-noRecord {
+        padding: .395rem 0 0;
+        text-align: center;
+    }
+
+    .m-noRecord .c-icon-noRecord {
+        background: url(../image/app/Loading2.gif) no-repeat;
+        background-size: cover;
+      width: 15rem;
+      height: 10rem;
+      /* margin: .485rem auto 0; */
+      margin: 0 auto;
+    }
+    .m-noRecord .c-info {
+        background: linear-gradient(to right, #ffd74c, #c7752e);
+        -webkit-background-clip: text;
+        color: transparent;
+        /* color: #cecfce;  */
+        line-height: 4rem;
+        padding: .25rem 0;
+        font-size: .8rem;
+    }
+
+
+
+
+
+/*TV列表样式*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a, label, button, input, select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    border: 0;
+}
+
+
+html, body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, button, fieldset, form, input, legend, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #08acee;
+}
+
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #666;
+}
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+}
+
+/* 蹇呰甯冨眬鏍峰紡css */
+.aui-flexView {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.aui-navBar {
+    height: 50px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    background-size: contain;
+}
+
+.aui-navBar-bg {
+    height: 44px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    background-size: contain;
+    width: 100%;
+    /* margin-top: 60px; */
+    z-index: 1002;
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+.aui-scrollView {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    margin-bottom: 54px;
+    margin-bottom: 54px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 50px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.aui-center-title {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.aui-tabBar {
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 54px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -11px 32px rgba(0,0,0,.08);
+}
+
+.aui-tabBar:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    height: 1px;
+    width: 100%;
+    background: rgba(0,0,0,.08);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(.66667);
+    transform: scaleY(.66667);
+}
+
+.aui-tabBar-item {
+    background: #fff;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #979797;
+    height: 54px;
+}
+
+.aui-tabBar-item a {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    height: 54px;
+}
+
+.aui-tabBar-item a img {
+    display: block;
+    margin: 9px auto 4px;
+    width: 20px;
+}
+
+.aui-tabBar-item a h4 {
+    color: #9a9a9a;
+    font-size: 27px;
+    height: 40px;
+    position: relative;
+    width: 300%;
+    left: -100%;
+    line-height: 40px;
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scale(.33333);
+    transform: scale(.33333);
+}
+
+.aui-tabBar ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.active {
+    background: linear-gradient(0deg,hsla(0,0%,100%,.05),rgba(0,0,0,.05));
+    position: relative;
+    box-shadow: inset 5px 0 3px -3px rgba(0,0,0,.01), inset -5px 0 3px -3px rgba(0,0,0,.01);
+}
+
+.active:before {
+    content: "";
+    width: 1px;
+    position: absolute;
+    top: -25%;
+    height: 150%;
+    left: 0;
+    -webkit-transform: scale(.66667);
+    transform: scale(.66667);
+    background: linear-gradient(0deg,hsla(0,0%,100%,.03),rgba(0,0,0,.03));
+}
+
+.active:after {
+    content: "";
+    width: 1px;
+    position: absolute;
+    top: -25%;
+    height: 150%;
+    right: 0;
+    -webkit-transform: scale(.66667);
+    transform: scale(.66667);
+    background: linear-gradient(0deg,hsla(0,0%,100%,.03),rgba(0,0,0,.03));
+}
+
+.aui-tabBar-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 49;
+}
+
+.aui-class-list-title {
+    padding: 5px 15px;
+    background: #f2efee;
+    width: 100%;
+    position: relative;
+    font-size: 0.7rem;
+}
+
+.aui-class-list-title:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #e1e0de;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.aui-class-list-title:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #e1e0de;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.aui-class-list-item {
+    padding: 0 15px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 50%;
+    float: left;
+    position: relative;
+    z-index: 0;
+    font-size: 0.28rem;
+    height: 62px;
+}
+
+.aui-class-list-item:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-right: 1px solid #D9D9D9;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+
+.aui-class-list-item:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #e1e0de;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.aui-class-list-box {
+    background: #fff;
+    overflow: hidden;
+}
+
+.aui-cell-fl img {
+    width: 40px;
+    margin-right: 15px;
+    display: block;
+    border: none;
+}
+
+.aui-cell-fr {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    color: #333;
+    font-size: 0.85rem;
+}
+
+.aui-cell-tr {
+    padding-right: 13px;
+    position: relative;
+}
+
+.aui-cell-tr:after {
+    content: " ";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 0;
+    border-radius: 1px;
+}
+
+    </style>
+</head>
+<body style="background:#fff;">
+<section class="aui-content aui-margin-5" id="dianying">
+		<div class="v-list-wrap" >
+		<input type="hidden" value="1" id="nextrow" />
+			<ul class="clearfix">
+				<li style='margin-bottom: 12px;'  v-for="v in it" @click="openWind(v.coverpage)">
+			 <div class="video-mask-box">
+			 <img :src="v.cover" style="width: 98%;max-height: 155px;height: 155px;min-height: 155px;border-radius:5px 5px 0px 0px;">
+			<span class="pay" style="    position: absolute;top: 4px;left: 4px;display: block;width: 39px;height: 19px;line-height: 19px;background: #cd1919;color: #fff;text-align: center;border-radius: 2px;">推荐</span>
+			 </div> 
+			 <div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+			 <span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;    width: 100%; color:#000;">{{v.title}}</span>
+			 <span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  color:#000;  width: 100%;color:#A3A3A3;margin-top:-20px;">{{v.desc}}</span>
+			 </div>
+			 </li>
+			 
+			</ul>
+		<div class="aui-card-list-footer aui-text-center" style="clear:both" v-text="loader"></div>
+		</div>
+		 
+		</section>
+</body>
+
+<script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/echo.js"></script>
+    <script type="text/javascript">
+	 var api_url = localStorage.getItem('api_url');
+      apiready = function(){
+	
+		dianyings();    
+
+		}
+		
+		
+		  
+		  function dianyings(){
+			var dianying = new Vue({
+              el: '#dianying',
+              data: {
+                  it: [],
+                  offset: 0,
+                  loader: '正在加载更多...'
+              },
+              mounted: function(){
+                  this.add(); //初始化
+                  loadMore(function(){dianying.add()}); //下拉加载
+              },
+              updated: function(){
+                  echo.init({offset: 500, throttle: 0}); //图片懒加载
+              },
+              methods: {
+                  add: function(){
+                   var nextrow=$("#nextrow").val(); 
+                       api.ajax({
+					  url: api_url+'/App/Api/sdianyingx.html',
+					  method: 'get',
+					   data: {
+									values: {
+										nextrow: nextrow,
+
+									}
+								}
+						  },function(ret, err){
+							  if (ret) {
+								//console.log(JSON.stringify(ret))
+								 dianying.offset += nextrow;
+                          dianying.it = dianying.it.concat(ret);
+						$("#nextrow").val(parseInt(nextrow)+1);
+						
+                          if(ret.length < nextrow) dianying.loader = '已到底部'
+						  api.refreshHeaderLoadDone();
+							  } else {
+								alert( '加载失败！' );
+								api.hideProgress();
+							}      
+						  });
+                  },
+              }
+          });
+		  }
+		  //上拉加载更多
+			function loadMore(fn){
+				api.addEventListener({
+					name: 'scrolltobottom'
+				}, function(){
+					fn();
+				});
+			}
+			
+			
+			function openWind(url){
+			
+			var url = 'http://www.360kan.com'+url
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+			 if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'play_win',
+					url: 'play_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						url:api_url+'/others/player/play.php?play='+url
+					}
+				});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		}
+		function VipExpiredHint() {
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' 
+                },
+                content:{              //（可选项）JSON 
+                    marginT: 20,       
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'open_vip_win',
+                            url: './open_vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+		}
+	</script>
+
+</html>

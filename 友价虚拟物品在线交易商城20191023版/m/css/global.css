@@ -1,0 +1,76 @@
+/*这里是调用友价商城系统手机版全站的样式，不受模板等影响，就是不管哪个模板，都是需要这些共用样式的 www.yj99.cn 请勿修改，否则影响全站*/
+@charset "gb2312";
+body{margin:0;font-size:12px;text-align:center;}
+p{margin:2pt 0 0 0;}
+*{margin:0 auto;padding:0;}
+ul{list-style-type:none;margin:0;padding:0;}
+form{margin:0;}
+table{font-size:12px;}
+input,select{outline: medium none;}
+.tjinput{-webkit-appearance:none;border-radius:0;}
+a{color:#000;text-decoration:none;}
+.red{color:#ff0000;}
+.feng{color:#ff6600;}
+.green{color:green;}
+.blue{color:blue;}
+.hui{color:#999;}
+.ggbox{margin:10px 0 0 0;}
+.ggnei{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;margin:0;}
+.ggnei .ad1 img{width:calc(100%);}
+
+.flex{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;}
+.clear{width:100%;display:-webkit-box;display:-moz-box;display:box;}
+.clear10{margin-top:10px;}
+.clear15{margin-top:15px;}
+
+.yjcode{max-width:600px;}
+
+pre{white-space:pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}
+
+.box{display:-webkit-box;display:-moz-box;display:box;text-align:left;}
+
+#zhezhao{left:0;right:0;top:0;bottom:0;background-color:#000;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;position:fixed;display:none;z-index:8;} 
+
+.glotop{background-color:#FBFBFB;height:43px;color:#333;border-bottom:#DDDDDD solid 1px;}
+.glotop .d1{margin:11px 0 0 10px;width:30px;}
+.glotop .d2{margin:10px 0 0 0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;font-size:18px;text-align:center;}
+.glotop .d3{margin:9px 10px 0 0;width:30px;text-align:right;}
+.glotop .d3 img{height:25px;}
+.glotop .d4{margin:12px 10px 0 0;width:30px;text-align:right;font-size:14px;}
+.glotop .d4 a{color:#333;}
+
+/*返回头部*/
+.return-top{position:fixed;bottom: 4rem;right: 1rem;width: 2rem;height: 2rem;border-radius: 50%;color: #fff;background:url(../img/new-top.png) no-repeat rgba(51,51,51,.8);background-size: .7rem,.7rem;background-position: 50%;z-index: 999;}
+
+/*图片切换*/
+.addWrap{ position:relative; width:100%;}
+.addWrap img{width:100%;}
+.addWrap .swipe{overflow: hidden;visibility: hidden;position:relative;}
+.addWrap .swipe-wrap{overflow:hidden;position:relative;}
+.addWrap .swipe-wrap div {float: left;width: 100%;position:relative;}
+#position{ position:absolute; bottom:0; right:0; padding-right:8px; margin:0; background:#000; opacity: 0.4; width:100%; filter: alpha(opacity=50);text-align:right;}
+#position li{width:10px;height:10px;margin:0 2px;display:inline-block;-webkit-border-radius:5px;border-radius:5px;background-color:#AFAFAF;}
+#position li.cur{background-color:#FF0000;}
+.img-responsive {display: block; max-width: 100%;  height: auto;}
+
+/*分页*/
+.page{margin:10px 0 0 0;padding:0;border-top:#E1E6EB solid 1px;border-bottom:#E1E6EB solid 1px;height:40px;text-align:center;background-color:#fff;}
+.page div{margin:0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;font-size:14px;padding:12px 0 0 0;border-right:#E1E6EB solid 1px;}
+.page div a{float:left;width:100%;color:#FF4A00;}
+.page .ohave{color:#ff6600;font-size:16px;}
+
+/*QQ弹窗*/
+.qqtang{background-color:#F5F8FE;line-height:none;padding:10px 0;text-align:left;float:left;border-radius:10px;font-size:12px;}
+.qqtang .qqtang1{float:left;margin:2px 0 0 10px;font-size:14px;}
+.qqtang .qqtang2{float:right;width:58px;padding:2px 0 0 0;height:23px;text-align:center;margin-right:10px;border:#E5E5E5 solid 1px;background-color:#fff;}
+.qqtang .qqtang4{float:left;margin:10px 10px 0 10px;width:calc(100% - 20px);padding:7px 0 0 0;line-height:20px;border-top:#BCCCED dotted 1px;}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+﻿1.解压压缩包后，使用notepad++批量替换所有文件(包括前后端)中的URL【http://baidu.com】为你的URL，替换名称【聚影VIP】【蝶影VIP】为你的应用名称；
+服务端
+1.将替换好的源码Server打包上传至站点根目录后解压；
+2.配置网站伪静态为ThinkPHP；
+3.访问站点域名，填写数据库信息进入安装；
+4.安装完成后留意成功界面将提示默认用户名与密码，根据向导进入后台；
+5.配置好你的APP信息，监控服务器资源占用是否正常，如不正常请更换为标准环境；
+6.后台地址为域名+“/houtai”；
+
+APP端
+1.Apicloud新建APP，选配模块webBrowser、dialogBox、clipBoard、mcm、NVTabBar、 NVNavigationBar、UIPullRefresh、UISearchBar；
+2.使用TortoiseSVN上传前端代码；Ps.如不会上传代码，请联系站点客服发送视频教程！.
+3.Apicloud上传签名证书后云编译中设置版本编译后下载APP，并上传至分发站生成下载链接后填写到后台【APP下载地址】即可；
+服务端360kan独立解析播放器
+1.取消独立播放器，直接配置others/player/play.php中的解析接口即可
+
+修改 Server\Public\static\index\images
+        Server\Public\static\index\picture
+里面的宣传图片图片
+
+
+5G云源码分享网
+
+www.yunziyuan.com.cn

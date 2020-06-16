@@ -1,0 +1,183 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:13px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+
+</style>
+
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem7">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			版权管理--{$applet.name}
+		</li>
+	</ul>
+	
+
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+			<div class="portlet box ">
+
+				<div class="portlet-body">
+
+<!-- 					<a href="{:Url('Copyright/demo')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					一键模板 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/mail')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					邮箱配置 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/comment')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					版权内容 <i class="icon-plus"></i>
+					</button>
+					</a>
+
+					<a href="{:Url('Copyright/index')}?appletid=<?php echo $_GET['appletid']?>" >
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+					版权管理 <i class="icon-plus"></i>
+					</button>
+					</a> -->
+					
+
+					
+					<form action="{:Url('Copyright/savemail')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+						
+
+						<div class="control-group chongdingy">
+							<label class="control-label chongdingywz">邮箱配置</label>
+						</div>
+
+						
+						<div class="control-group chongdingy">
+							<label class="chongdingywz" style="margin-bottom:0;">发件箱请使用“个人QQ邮箱”，<a href="http://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28"  target="_blank">点击此处查看授权码获取教程</a></label>
+						</div>
+
+
+						<div class="control-group">
+
+							<label class="control-label">发件人邮箱</label>
+
+							<div class="controls">
+
+								<input name="mail_user" type="text" class="span3 m-wrap"  style="height: 35px !important;" value="{if $forminfo && $forminfo.mail_user}{$forminfo.mail_user}{/if}" />
+
+							</div>
+
+						</div>
+						
+						<div class="control-group">
+
+							<label class="control-label">授权码</label>
+
+							<div class="controls">
+
+								<input name="mail_password" type="text" class="span3 m-wrap"  style="height: 35px !important;" value="{if $forminfo && $forminfo.mail_password}{$forminfo.mail_password}{/if}"/>
+								<span style="color:#999999; line-height:40px; margin-left:20px;"><a href="http://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28" target="_blank">点击此处查看授权码获取教程</a></span>
+							</div>
+
+						</div>
+
+						<div class="control-group">
+
+							<label class="control-label">发件平台名称</label>
+
+							<div class="controls">
+
+								<input name="mail_user_name" type="text" class="span3 m-wrap"  style="height: 35px !important;" value="{if $forminfo && $forminfo.mail_user_name}{$forminfo.mail_user_name}{/if}"/>
+								<span style="color:#999999; line-height:40px; margin-left:20px;">可写”XX公司小程序提醒系统“</span>
+
+							</div>
+
+						</div>
+
+						<div class="control-group">
+
+							<label class="control-label">收件人邮箱</label>
+
+							<div class="controls">
+
+								<input name="mail_sendto" type="text" class="span3 m-wrap"  style="height: 35px !important;" value="{if $forminfo && $forminfo.mail_sendto}{$forminfo.mail_sendto}{/if}"/>
+								<span style="color:#999999; line-height:40px; margin-left:20px;">多个请用英文,隔开</span>
+
+							</div>
+
+						</div>
+
+
+
+
+						
+						<div class="weiz" style="margin-left: 460px;">
+							<input type="submit" value="提交" class="btn green" >
+						</div>
+
+					</form>
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

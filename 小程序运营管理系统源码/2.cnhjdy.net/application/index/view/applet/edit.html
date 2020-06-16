@@ -1,0 +1,164 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<input type="hidden" id="choose" value="applet">
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script src="/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+<form id='my_upload' action="{:Url('Applet/upimg')}" method='post' enctype='multipart/form-data'>
+    <input type="file" id="upload_photo" name="uploadfile" value="请点击上传图片"   style="display:none" />
+</form>
+<div class="content">
+
+    <div class="content_title">编辑小程序</div>
+
+    <form class="open_form" action="{:Url('Applet/save_edit_applet')}" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序名称<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <input class="open_form_text" type="text" name="name" id="name" value="{$applet.name}" />
+
+            </div>
+
+        </div>
+
+        {if $usergroup == 2}
+            <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序套餐<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <select class="open_form_select1" name="combo_id" id="combo_id" >
+
+                    <option value="-1">--选择功能套餐--</option>
+
+                    {volist name="combo" id="vo"}
+
+                        <option value="{$vo.id}" {if $applet.combo_id == $vo.id}selected='selected'{/if} >{$vo.name}</option>
+
+                    {/volist}
+
+                </select>
+
+            </div>
+
+        </div>
+        {/if}
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序Logo<span>*</span></div>
+
+            <div class="open_form_right hbj fl">
+
+                {if $applet.thumb}
+
+                <img class="upimg" src="{$applet.thumb}"/>
+
+                {else}
+
+                    <img class="upimg" src="/image/upimg.png"/>
+
+                {/if}
+                
+                <div class="up_imgbox">
+
+                    <div class="up_img_btn" onClick="upload_photo.click();">上传图片
+
+                        <input type="hidden" name="thumb" id="thumb" value=""/>
+
+                    </div>
+
+                    <div class="up_img_bz">建议上传144*144大小图片</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl">小程序描述<span>*</span></div>
+
+            <div class="open_form_right fl">
+
+                <textarea class="open_form_textarea" name="comment" rows="" cols="">{$applet.comment}</textarea>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix mb-30">
+
+            <div class="open_form_title fl"></div>
+
+            <div class="open_form_right fl">
+
+                <input type="hidden" name="id" value="{$applet.id}" />
+
+                <input class="open_form_submit" type="submit" name=""  value="保存修改" />
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+
+    //提交检验
+
+    function checkinfo(){
+
+        var name = $("#name").val();
+        var usergroup = '<?php echo $usergroup; ?>';
+
+        if(!name){
+
+            alert("请输入小程序名称");
+
+            return false;
+
+        }
+
+        if(usergroup == 2){
+            var combo_id = $("#combo_id").val();
+            if(combo_id == -1){
+                alert("请选择功能套餐!!");
+                return false;
+            }
+        }
+
+    }
+
+
+    $("#upload_photo").change(function(){
+        $("#my_upload").ajaxSubmit({ 
+          dataType:  'json', //数据格式为json 
+          success: function(data) {
+            $("#thumb").val(data);
+            $(".upimg").attr("src",data);
+          }
+        }); 
+    });
+
+
+
+
+</script>
+
+</html>
+

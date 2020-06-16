@@ -1,0 +1,104 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<body>
+	<!--顶部开始-->
+	<header class="header">
+		<span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+		<span class="header_c">超市</span>
+			<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+	</header>
+<!-- 	<div class="height40"></div> -->
+	<!--顶部结束-->
+<style>
+      .hh_btn{
+          float: right !important;
+          padding: 0 !important;
+          display: block;
+          height: 20px;
+          margin: 5px;
+          width: 60px;
+          background-color: #ff7387;
+          border: 0;
+          border-radius: 5px;
+          color: #FFF;
+      }
+      .zz_btn{
+          height: 20px;
+          width: 150px;
+          margin:5px;
+          background-color: #ff7387;
+          border: 0;
+          border-radius: 5px;
+          color: #fff;
+      }
+      .level_btn{
+          height: 20px;
+          width: 40px;
+          margin-left:5px;
+          background-color: #23D66B;
+          border: 0;
+          border-radius: 5px;
+          color: #fff;
+      }
+    #content{
+        height: 100px;
+        width: 200px;
+        border:2px solid #FF6B4B;
+    }
+</style>
+	<!--会员中心开始-->
+		
+		
+         <?php
+        	if(C('recharge_is') ==1){
+        
+        ?>
+    
+        <div style="width:80%; border-radius:4px; margin:0 auto;"><a href="{:U('Index/Index/recharge')}" style="width:100%; padding:3px 5px; color:#ffffff; background:#00CD00; display:inline-block; border-radius:4px; text-align:center; font-size:14px;">矿&nbsp;&nbsp;机&nbsp;&nbsp;限&nbsp;&nbsp;时&nbsp;&nbsp;抢&nbsp;&nbsp;购</a></div>
+         <?php }else{?>
+         
+         	<div style=" width:100%; height:35px;"></div>
+         
+         <?php }?>
+        				
+                        
+                        
+                        
+                        
+                        <!--<span style="font-size:12px;margin-left:1%;text-align:;center;color:red;">新会员完善银行信息后可在此免费购买微型矿机一台</span>-->
+        <ul class="dd_list"；style="margin-bottom:80px;">
+		
+		
+		<foreach name="goods_list" item="ty">
+			<li style="position:relative;">
+				<img src="/Public/Goodsuploads/{$ty['gpic']}" />                                                                                       
+				<div style="width:60%;display:inline-block;">
+					<p><b>{$ty['gname']}</b>
+                    <p>兑换单价：{$ty['goldprice']}PCO</p>
+					<P>销量：{$ty['gsellnums']}</P>
+					<!--<P>矿机算力：{$ty.gonglv}GH/s</P>
+					<P>运行周期：{$ty.yszq}小时</P>-->
+				</div>
+					 <a href="{:U('Index/Shop/gouwuche',array('gid'=>$ty['gid']))}" style="color: #fff;margin-top: 0px;display:block;position:absolute;right:10px;top:50%;margin-top: -15px;font-size: 16px;padding: 5px;background-color: #ff7387;border: 0px solid #fff;border-radius: 4px;">兑换</a>
+				</button>
+				</foreach>	
+				
+				
+					 
+
+				
+				</ul>
+	<!--会员中心结束-->
+
+	<div class="height55"></div>
+<!--底部开始-->
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+
+</body>
+</html>
+
+
+
+
+
+

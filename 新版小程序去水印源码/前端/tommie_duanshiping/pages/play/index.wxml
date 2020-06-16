@@ -1,0 +1,35 @@
+<video autoplay="false" class="container" src="{{src}}" wx:if="{{play}}">
+    <cover-view class="sidebar">
+        <cover-view bindtap="favourite" class="item" wx:if="{{loginState==1}}">
+            <cover-image src="{{favouriteImg}}"></cover-image>
+            <cover-view class="text">收藏</cover-view>
+        </cover-view>
+        <cover-view class="item" wx:else>
+            <button bindgetuserinfo="updateUserInfo" class="share-img-button" openType="getUserInfo">
+                <cover-image src="{{favouriteImg}}"></cover-image>
+                <cover-view class="text">收藏</cover-view>
+            </button>
+        </cover-view>
+        <cover-view class="item">
+            <button class="share-img-button" openType="share">
+                <cover-image src="../../resource/image/fenxiang.png"></cover-image>
+                <cover-view class="text">分享</cover-view>
+            </button>
+        </cover-view>
+        <cover-view bindtap="download" class="item" wx:if="{{loginState==1}}">
+            <cover-image src="../../resource/image/xiazai.png"></cover-image>
+            <cover-view class="text">下载</cover-view>
+        </cover-view>
+        <cover-view class="item" wx:else>
+            <button bindgetuserinfo="updateUserInfo" class="share-img-button" openType="getUserInfo">
+                <cover-image src="../../resource/image/xiazai.png"></cover-image>
+                <cover-view class="text">下载</cover-view>
+            </button>
+        </cover-view>
+        <cover-view bindtap="back" class="item">
+            <cover-image src="../../resource/image/fanhui.png"></cover-image>
+            <cover-view class="text">返回</cover-view>
+        </cover-view>
+    </cover-view>
+    <cover-view class="title"> {{title}}</cover-view>
+</video>

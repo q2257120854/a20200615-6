@@ -1,0 +1,195 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navModel" class="navModel5-5">
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        成团管理--{$applet.name}
+    </li>
+</ul>
+
+<style type="text/css">
+    .shuk{
+        outline: none;
+        border: 1px solid #dedede;
+        width: 300px;
+    }
+    .cesd{
+        height: 28px;
+        line-height: 28px;
+        width: 28px;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+        border:1px solid #dedede;
+        padding: 0 10px;
+    }
+    .zzcc{
+        position: fixed;
+        top: 0; 
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.4;
+        z-index: 100000;
+
+    }
+    .bbdd{
+        position: fixed;
+        z-index: 100001;
+        background-color: #ffffff;
+        width: 400px;
+        height: 220px;
+        top: 50%;
+        left: 50%;
+        margin-top: -200px;
+        margin-left: -110px;
+        padding: 10px;
+        border:1px solid #e7e7e7;
+    }
+    .ddhh{
+        line-height: 30px;
+        position: relative;
+    }
+    .ddxx{
+        position: absolute;
+        right: 0;
+        top:0;
+        cursor:pointer
+    }
+</style>
+
+    <div class="row-fluid">
+        <div class="span12">
+
+            <div class="portlet box ">
+
+
+                <div class="portlet-body">
+<!--                 <div class="control-group chongdingy">
+
+                    <label class="control-label chongdingywz">成团管理</label>
+
+                </div> -->
+
+    <table class="table table-striped table-hover table-bordered" id="sample_editable_1" >
+
+    <tbody>
+    {foreach $plist as $item}
+        <tr class="trorder">
+
+        <td colspan="2" style="border-left:1px solid #dedede;">
+            拼团编号:  {$item['shareid']}                               
+        </td>
+
+        <td colspan="1" style="text-align:center">              
+            团队进度
+        </td>
+        <td colspan="1" style="text-align:center">
+            开团时间
+        </td>
+
+        <td colspan="1" style="text-align:center">
+            结束时间
+        </td>
+
+        <td colspan="1" style="text-align:center;font-size:12px;border-right:1px solid #dedede" class="aops">
+            状态                       
+        </td>
+
+    </tr>
+
+    <tr class="trbody">
+
+        <td style="overflow:hidden;border-left:1px solid #dedede;" >
+            <img src="{$item['pro']['thumb']}" style="width:50px;height:50px;border:1px solid #ccc; padding:1px;" onerror="">
+        </td>
+
+        <td style="text-align: left;overflow:hidden;border-left:none;"> 
+            {if isset($item['pro']['title'])}{$item['pro']['title']}{/if}
+        </td>
+
+        <td style="text-align:center;border-left:none;">
+           {if isset($item['pro']['pt_max'])}
+            {if isset($item['pro']['pt_min'])}
+            {$item['join_count']}/{$item['pt_min']}-{$item['pt_max']}
+            {/if}
+            {/if}
+        </td>
+
+        <td style="text-align:center;border-left:none;" >
+            {$item['creattime']}
+        </td>
+
+        <td style="text-align:center;border-left:none;" >
+            {$item['overtime']}
+        </td>
+
+        <td style="text-align:center;border-left:none;border-right:1px solid #dedede;" >
+            {if $item['flag']==1}
+                进行中
+            {/if}
+            {if $item['flag']==2||$item['flag']==4}
+                已成团
+            {/if}
+            {if $item['flag']==3}
+                已失败
+            {/if}
+            <a class="btn btn-success" style="background:#0d638f;color:#fff" href="{:Url('Pt/order')}?appletid=<?php echo $_GET['appletid']?>&ptorder={$item['shareid']}">拼团订单></a>
+        </td>
+   
+    </tr>
+
+        <style type="text/css">
+        .ssdd{
+            width: 200px;
+            border: 1px solid #dedede;
+            padding: 20px 10px;
+        }
+    </style>
+
+
+    <tr style="border-bottom:none;background:#f9f9f9;">
+        <td colspan="6" style="border-left:1px solid #dedede;text-align:center;border-right:1px solid #dedede;">
+            参与的成员
+        </td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #dedede;background:#f9f9f9;border-right:1px solid #dedede;">
+        <td colspan="6" style="text-align:left;border-left:1px solid #dedede;">
+            {foreach $item['team'] as $tlist}
+                <img src="{$tlist['team']['avatar']}" style="width:50px; height:50px;">
+            {/foreach}
+        </td>
+    </tr>
+    
+
+    <tr>
+        <td colspan="6" style="height:20px;padding:0;border-top:none;">&nbsp;</td>
+    </tr>
+
+
+   {/foreach}
+
+
+        </tbody></table>
+
+            <!-- 分页 -->
+                <div>
+                    <div class="fenye_left">
+                        一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+                    </div>
+                    <div class="fenye_right">
+                        {$orders->render()}
+                    </div>
+                </div>
+
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{include file="public/foot_more" /}

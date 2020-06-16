@@ -1,0 +1,723 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+</style>
+ 
+<input type="hidden" id="nowhtml" value="navSale" class="navSale8-4">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			预约管理--{$applet.name}
+		</li>
+	</ul>
+
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Order/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+					<input type="hidden" name="cateid" value="{$cateid}">
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">表单样式</label>
+
+					</div>
+
+
+					<div class="control-group">
+
+						<label class="control-label">全局表单样式</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="forms_style" value="1" {if $configform}{if $configform.forms_style==1}checked=checked{/if}{/if}/>
+
+							上下结构
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="forms_style" value="2" {if $configform}{if $configform.forms_style==2}checked=checked{/if}{/if}/>
+
+							横排紧凑
+
+							</label> 
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">输入框提示语</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="forms_inps" value="1"  {if $configform}{if $configform.forms_inps==1}checked=checked{/if}{/if}/>
+
+							显示
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="forms_inps" value="0" {if $configform}{if $configform.forms_inps==0}checked=checked{/if}{/if}/>
+
+							隐藏
+
+							</label> 
+						</div>
+
+					</div>
+					
+					<div class="control-group">
+
+						<label class="control-label">表单页面顶部样式</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="forms_head" value="header"  {if $configform}{if $configform.forms_head=="header"}checked=checked{/if}{/if}/>
+
+							默认样式
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="forms_head" value="slide" {if $configform}{if $configform.forms_head=="slide"}checked=checked{/if}{/if}/>
+
+							幻灯片[纯图]
+
+							</label> 
+							
+							<label class="radio">
+
+							<input type="radio" name="forms_head" value="newslide" {if $configform}{if $configform.forms_head=="slide"}checked=checked{/if}{/if}/>
+
+							幻灯片[带链接]
+
+							</label> 
+
+							<label class="radio">
+
+							<input type="radio" name="forms_head" value="none" {if $configform}{if $configform.forms_head=="none"}checked=checked{/if}{/if}/>
+
+							不显示
+
+							</label> 
+						</div>
+
+					</div>
+
+	
+					
+					<div class="control-group">
+
+						<label class="control-label">表单中文名称</label>
+
+						<div class="controls">
+							<input name="forms_name" type="text" class="span2 m-wrap" value="{if $configform}{$configform.forms_name}{/if}"  style="height: 35px !important;" />
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								表单英文名称
+							</span>
+
+							<input name="forms_ename" type="text" class="span2 m-wrap" value="{if $configform}{$configform.forms_ename}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">表单版本标题样式</label>
+
+						<div class="controls">
+							<label class="radio">
+
+							<input type="radio" name="forms_title_s" value="title1"  {if $configform}{if $configform.forms_title_s=="title1"}checked=checked{/if}{/if}/>
+
+							上下结构
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="forms_title_s" value="title2" {if $configform}{if $configform.forms_title_s=="title2"}checked=checked{/if}{/if}/>
+
+							左右结构
+
+							</label> 
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								提交间隔[0为不限]
+							</span>
+
+							<input name="subtime" type="number" class="span1 m-wrap" value="{if $configform}{$configform.subtime}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">按钮文字</label>
+
+						<div class="controls">
+							<input name="forms_btn" type="text" class="span2 m-wrap" value="{if $configform}{$configform.forms_btn}{/if}"  style="height: 35px !important;" />
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								提交成功提示
+							</span>
+
+							<input name="success" type="text" class="span2 m-wrap" value="{if $configform}{$configform.success}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">表单内容</label>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">文本框1</label>
+
+						<div class="controls">
+
+							<input name="name" type="text" class="span2 m-wrap" value="{if $configform}{$configform.name}{else}姓名{/if}"  style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="name_must" value="1" {if $configform}{if $configform.name_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">文本框2</label>
+
+						<div class="controls">
+
+							<input  type="text" class="span2 m-wrap" name="tel" value="{if $configform}{$configform.tel}{/if}"  style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="tel_use" value="1" {if $configform}{if $configform.tel_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="tel_must" value="1" {if $configform}{if $configform.tel_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="tel_i" value="1" {if $configform}{if $configform.tel_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">文本框3</label>
+
+						<div class="controls">
+
+							<input type="text" class="span2 m-wrap" name="wechat" value="{if $configform}{$configform.wechat}{/if}"  style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="wechat_use" value="1" {if $configform}{if $configform.wechat_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="wechat_must" value="1" {if $configform}{if $configform.wechat_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="wechat_i" value="1" {if $configform}{if $configform.wechat_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">文本框4</label>
+
+						<div class="controls">
+
+							<input type="text" class="span2 m-wrap" name="address" value="{if $configform}{$configform.address}{/if}"   style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="address_use" value="1" {if $configform}{if $configform.address_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="address_must" value="1" {if $configform}{if $configform.address_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="address_i" value="1" {if $configform}{if $configform.address_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+
+					
+					<div class="control-group">
+
+						<label class="control-label">文本框5</label>
+
+						<div class="controls">
+
+							<input type="text" class="span2 m-wrap" name="t5n" value="{if $configform}{$configform.t5.t5n}{/if}"   style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t5u" value="1" {if $configform}{if $configform.t5.t5u==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t5m" value="1" {if $configform}{if $configform.t5.t5m==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t5i" value="1" {if $configform}{if $configform.t5.t5i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">文本框6</label>
+
+						<div class="controls">
+
+							<input type="text" class="span2 m-wrap" name="t6n" value="{if $configform}{$configform.t6.t6n}{/if}"   style="height: 35px !important;" />
+
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t6u" value="1" {if $configform}{if $configform.t6.t6u==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t6m" value="1" {if $configform}{if $configform.t6.t6m==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="t6i" value="1" {if $configform}{if $configform.t6.t6i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+
+
+					<div class="control-group" style="border-bottom:1px solid #dedede;">
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">日期选择</label>
+
+						<div class="controls">
+
+							<input name="date" type="text" class="span2 m-wrap" value="{if $configform}{$configform.date}{/if}"  style="height: 35px !important;" />
+							
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="date_use" value="1" {if $configform}{if $configform.date_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="date_must" value="1" {if $configform}{if $configform.date_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="date_i" value="1" {if $configform}{if $configform.date_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">时间选择</label>
+
+						<div class="controls">
+
+							<input name="time" type="text" class="span2 m-wrap" value="{if $configform}{$configform.time}{/if}"  style="height: 35px !important;" />
+							
+							<span style="margin-left:20px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="time_use" value="1" {if $configform}{if $configform.time_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="time_must" value="1" {if $configform}{if $configform.time_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="time_i" value="1" {if $configform}{if $configform.time_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					
+					<div class="control-group" style="border-bottom:1px solid #dedede;">
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">单选1</label>
+
+						<div class="controls">
+
+							<input name="single_n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.single_n}{/if}"  style="height: 35px !important;" />
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								每排
+							</span>
+							<input name="single_num" type="number" class="span1 m-wrap" value="{if $configform}{$configform.single_num}{/if}"  style="height: 35px !important;" />
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+								列
+							</span>
+
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="single_use" value="1" {if $configform}{if $configform.single_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="single_must" value="1" {if $configform}{if $configform.single_must==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="single_i" value="1" {if $configform}{if $configform.single_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">单选值1</label>
+
+						<div class="controls">
+
+							<input name="single_v" type="text" class="span5 m-wrap" value="{if $configform}{$configform.single_v}{/if}"  style="height: 35px !important;" />
+							
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请用英文,隔开</span>
+						</div>
+
+					</div>
+
+					<div class="control-group" style="border-bottom:1px solid #dedede;">
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">单选2</label>
+
+						<div class="controls">
+
+							<input name="s2n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.s2.s2n}{/if}"  style="height: 35px !important;" />
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								每排
+							</span>
+							<input name="s2num" type="number" class="span1 m-wrap" value="{if $configform}{$configform.s2.s2num}{/if}"  style="height: 35px !important;" />
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+								列
+							</span>
+
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="s2u" value="1" {if $configform}{if $configform.s2.s2u==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="s2m" value="1" {if $configform}{if $configform.s2.s2m==1}checked=checked{/if}{/if}>必填
+							</span>
+
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="s2i" value="1" {if $configform}{if $configform.s2.s2i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">单选值2</label>
+
+						<div class="controls">
+
+							<input name="s2v" type="text" class="span5 m-wrap" value="{if $configform}{$configform.s2.s2v}{/if}"  style="height: 35px !important;" />
+							
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请用英文,隔开</span>
+						</div>
+
+					</div>
+
+					<div class="control-group" style="border-bottom:1px solid #dedede;">
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">复选1</label>
+
+						<div class="controls">
+
+							<input name="checkbox_n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.checkbox_n}{/if}"  style="height: 35px !important;" />
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								每排
+							</span>
+							<input name="checkbox_num" type="number" class="span1 m-wrap" value="{if $configform}{$configform.checkbox_num}{/if}"  style="height: 35px !important;" />
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+								列
+							</span>
+
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="checkbox_use" value="1" {if $configform}{if $configform.checkbox_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="checkbox_must" value="1" {if $configform}{if $configform.checkbox_must==1}checked=checked{/if}{/if}>必填
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="checkbox_i" value="1" {if $configform}{if $configform.checkbox_i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">复选值1</label>
+
+						<div class="controls">
+
+							<input name="checkbox_v" type="text" class="span5 m-wrap" value="{if $configform}{$configform.checkbox_v}{/if}"  style="height: 35px !important;" />
+							
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请用英文,隔开</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">复选2</label>
+
+						<div class="controls">
+
+							<input name="c2n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.c2.c2n}{/if}"  style="height: 35px !important;" />
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								每排
+							</span>
+							<input name="c2num" type="number" class="span1 m-wrap" value="{if $configform}{$configform.c2.c2num}{/if}"  style="height: 35px !important;" />
+							<span style=" line-height:30px; margin-left:5px; margin-right:20px;">
+								列
+							</span>
+
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="c2u" value="1" {if $configform}{if $configform.c2.c2u==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="c2m" value="1" {if $configform}{if $configform.c2.c2m==1}checked=checked{/if}{/if}>必填
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="c2i" value="1" {if $configform}{if $configform.c2.c2i==1}checked=checked{/if}{/if}>首页
+							</span>
+
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">复选值2</label>
+
+						<div class="controls">
+
+							<input name="c2v" type="text" class="span5 m-wrap" value="{if $configform}{$configform.c2.c2v}{/if}"  style="height: 35px !important;" />
+							
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请用英文,隔开</span>
+						</div>
+
+					</div>
+
+					<div class="control-group" style="border-bottom:1px solid #dedede;">
+					</div>
+					
+
+
+					<div class="control-group">
+
+						<label class="control-label">多行文本1</label>
+
+						<div class="controls">
+
+							<input name="content_n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.content_n}{/if}"  style="height: 35px !important;" />
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="content_use" value="1" {if $configform}{if $configform.content_use==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="content_must" value="1" {if $configform}{if $configform.content_must==1}checked=checked{/if}{/if}>必填
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="content_i" value="1" {if $configform}{if $configform.content_i==1}checked=checked{/if}{/if}>首页
+							</span>
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">多行文本2</label>
+
+						<div class="controls">
+
+							<input name="con2n" type="text" class="span2 m-wrap" value="{if $configform}{$configform.con2.con2n}{/if}"  style="height: 35px !important;" />
+							<span style="margin-left:20px; margin-top:10px;">
+								<input type="checkbox" name="con2u" value="1" {if $configform}{if $configform.con2.con2u==1}checked=checked{/if}{/if}>启用
+							</span>
+							<span style="margin-left:10px; margin-top:10px;">
+								<input type="checkbox" name="con2m" value="1" {if $configform}{if $configform.con2.con2m==1}checked=checked{/if}{/if}>必填
+							</span>
+							<span style="margin-left:10px; margin-top:10px;line-height:30px;">
+								<input type="checkbox" name="con2i" value="1" {if $configform}{if $configform.con2.con2i==1}checked=checked{/if}{/if}>首页
+							</span>
+						</div>
+
+					</div>
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">邮件通知</label>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">发件人邮箱</label>
+
+						<div class="controls">
+
+							<input name="mail_user" type="text" class="span2 m-wrap" value="{if $configform}{$configform.mail_user}{/if}"  style="height: 35px !important;" />
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+								授权码
+							</span>
+							<input name="mail_password" type="text" class="span2 m-wrap" value="{if $configform}{$configform.mail_password}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+					</div>
+						
+					<div class="control-group">
+
+						<label class="control-label">发件平台名称</label>
+
+						<div class="controls">
+
+							<input name="mail_user_name" type="text" class="span4 m-wrap" value="{if $configform}{$configform.mail_user_name}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">可写”XX公司小程序提醒系统“</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">收件人邮箱</label>
+
+						<div class="controls">
+
+							<input name="mail_sendto" type="text" class="span4 m-wrap" value="{if $configform}{$configform.mail_sendto}{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">多个请用英文,隔开</span>
+
+						</div>
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

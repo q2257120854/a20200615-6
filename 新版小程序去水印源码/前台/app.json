@@ -1,0 +1,88 @@
+{
+  "pages": [
+    "tommie_duanshiping/pages/index/index",
+    "tommie_duanshiping/pages/member/index",
+    "tommie_duanshiping/pages/play/index",
+    "tommie_duanshiping/pages/video/index",
+    "tommie_duanshiping/pages/favorite/index",
+    "tommie_duanshiping/pages/help/index",
+    "tommie_duanshiping/pages/pay/index",
+    "tommie_duanshiping/pages/keypay/keypay",
+    "tommie_duanshiping/pages/web/index",
+    "tommie_duanshiping/pages/md5/index",
+    "tommie_duanshiping/pages/shibai/index",
+    "tommie_duanshiping/pages/invite/index",
+    "tommie_duanshiping/pages/cishu/index",
+    "tommie_duanshiping/pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#090722",
+    "backgroundColor": "#f8f8f9"
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#4d4d4d",
+    "selectedColor": "#ffca00",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "tommie_duanshiping/pages/index/index",
+        "text": "首页",
+        "iconPath": "tommie_duanshiping/resource/image/index.png",
+        "selectedIconPath": "tommie_duanshiping/resource/image/indexs.png"
+      },
+      {
+        "pagePath": "tommie_duanshiping/pages/video/index",
+        "text": "推荐",
+        "iconPath": "tommie_duanshiping/resource/image/new.png",
+        "selectedIconPath": "tommie_duanshiping/resource/image/news.png"
+      },
+      {
+        "pagePath": "tommie_duanshiping/pages/md5/index",
+        "text": "修改md5",
+        "iconPath": "tommie_duanshiping/resource/image/md5.png",
+        "selectedIconPath": "tommie_duanshiping/resource/image/md5s.png"
+      },
+      {
+        "pagePath": "tommie_duanshiping/pages/member/index",
+        "text": "我的",
+        "iconPath": "tommie_duanshiping/resource/image/my.png",
+        "selectedIconPath": "tommie_duanshiping/resource/image/mys.png"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "packageA/",
+      "pages": [
+        "tommie_duanshiping/pages/shibai/index",
+        "tommie_duanshiping/pages/invite/index",
+        "tommie_duanshiping/pages/cishu/index",
+        "tommie_duanshiping/pages/user/user"
+      ]
+    },
+    {
+      "root": "packageB/",
+      "pages": [
+        "tommie_duanshiping/pages/pay/index",
+        "tommie_duanshiping/pages/keypay/keypay"
+      ]
+    }
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wx0b40c33d0414f686",
+    "wx028a103c6b3c6119",
+    "wx96a76705157aee91",
+    "wx640c40cb69244bd3",
+    "wx712f3a8c95d23014",
+    "wx98fe572ffdf15cf5",
+    "wx072e12830b80e3c9",
+    "wx40b7d8e3ccfbe9c8",
+    "wxcc70ff0f9939a31f",
+    "wx958174897dc1861e"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

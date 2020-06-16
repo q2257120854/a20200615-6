@@ -1,0 +1,161 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+</style>
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<input type="hidden" id="nowhtml" value="navSale" class="navSale3-1">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			充值管理--{$applet.name}
+		</li>
+	</ul>
+
+	<style type="text/css">
+		.sss{
+			display: inline-block;
+		}
+	</style>
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Cz/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					
+				
+					<div class="control-group">
+
+						<label class="control-label">充值活动名称</label>
+
+						<div class="controls">
+
+							<input name="title" id="title" type="text" class="span3 m-wrap"  style="height: 35px !important;"  value="{if $rechargeconf}{$rechargeconf.title}{/if}" />
+
+						</div>
+
+					</div>
+	
+					<div class="control-group">
+
+						<label class="control-label">兑换规则</label>
+						<div style="float:left; margin-left:20px">
+							<input name="score" id="score" type="number" class="span1 m-wrap"  style="height: 35px !important; width:100px" value="{if $rechargeconf}{$rechargeconf.score}{/if}"/>
+						</div>
+						<div style="float:left; margin-left:20px;height: 35px !important; line-height:35px">
+							积分兑换
+						</div>
+						<div style="float:left; margin-left:20px">
+							<input name="money" id="money" type="number" class="span1 m-wrap" min="0" style="height: 35px !important; width:100px" value="{if $rechargeconf}{$rechargeconf.money}{/if}"/>
+						</div>
+						<div style="float:left; margin-left:20px;height: 35px !important; line-height:35px">
+							元
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">店内支付最大抵用积分</label>
+
+						<div class="controls">
+
+							<input name="score_shoppay" id="score_shoppay" type="text" class="span3 m-wrap"  style="height: 35px !important;"  value="{if $rechargeconf}{$rechargeconf.score_shoppay}{/if}" />
+
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+{include file="public/foot_more" /}
+
+
+<script type="text/javascript">
+
+
+   	function checkinfo(){
+
+   		var title = $("#title").val();
+   		var score = $("#score").val();
+   		var money = $("#money").val();
+   		var score_shoppay = $("#score_shoppay").val();
+
+   		if(!title){
+   			alert("充值活动名称不能为空！");
+   			return false;
+   		}
+
+   		if(!score){
+   			alert("兑换规则积分不能为空！");
+   			return false;
+   		}
+
+   		if(!money){
+   			alert("兑换规则金钱不能为空！");
+   			return false;
+   		}
+
+   		if(!score_shoppay){
+   			alert("店内支付最大抵用积分不能为空！");
+   			return false;
+   		}
+   	}
+
+
+
+
+
+</script>

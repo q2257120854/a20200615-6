@@ -1,0 +1,365 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navModel">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			客服自动回复--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+			
+
+			<div class="portlet-body form">
+
+
+
+				<form action="{:Url('Customers/savereply')}?appletid=<?php echo $_GET['appletid']?>&id={$cid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					<div class="control-group">
+
+						<label class="control-label">是否启用</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="1"  {if $nav}{if $nav.flag==1}checked=checked{/if}{else}checked=checked{/if}>
+
+							启用
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="flag" value="2"  {if $nav}{if $nav.flag==2}checked=checked{/if}{/if}/>
+
+							不启用
+
+							</label> 
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">默认启用</span>
+
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">类型</label>
+						<div class="controls">
+							<select name="type" class="span3 m-wrap" id="type" onchange="xiansshu(this)">
+								<option value="1" {if $nav}{if $nav.type==1}selected=selected{/if}{/if}>文本</option>
+		                        <option value="2" {if $nav}{if $nav.type==2}selected=selected{/if}{/if}>图片</option>
+		                        <option value="3" {if $nav}{if $nav.type==3}selected=selected{/if}{/if}>小程序卡片</option>
+		                        <option value="4" {if $nav}{if $nav.type==4}selected=selected{/if}{/if}>图文链接</option>
+							</select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不同选择回复信息不同</span>
+						</div>
+					</div>
+
+
+					
+					<div id="jutxs">
+							<div class='control-group'>
+								<label class='control-label'>文本回复内容</label>
+								<div class='controls'>
+									<textarea name='content' id='content' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.content}{/if}</textarea>
+									<span style='color:#999999; line-height:40px; margin-left:20px;'>纯文本</span>
+
+								</div>
+							</div>
+					</div>
+
+					<div class="form-actions">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+	$(function(){
+		var vals = "{if $nav}{$nav.type}{/if}";
+		if(vals ==1){
+			$("#jutxs").html();
+			var str = 	"<div class='control-group'>"+
+								"<label class='control-label'>文本回复内容</label>"+
+								"<div class='controls'>"+
+									"<textarea name='content' id='content' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.content}{/if}</textarea>"+
+									"<span style='color:#999999; line-height:40px; margin-left:20px;'>纯文本</span>"+
+								"</div>"+
+							"</div>";
+		}
+		if(vals ==2){
+			$("#jutxs").html();
+
+			var str = 	"<div class='control-group'>"+
+								"<label class='control-label'>图片MediaId</label>"+
+								"<div class='controls'>"+
+									"<textarea name='picurl' id='picurl1' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.content}{/if}</textarea>"+
+
+								"</div>"+
+							"</div>";
+		}
+		if(vals ==3){
+			$("#jutxs").html();
+
+				var str = "<div class='control-group'>"+
+								"<label class='control-label'>标题</label>"+
+								"<div class='controls'>"+
+									"<input name='title' id='title1' style='padding-left:10px' class='span3 m-wrap' value='{if $nav}{$nav.title}{/if}'></input>"+
+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>小程序页面路径</label>"+
+								"<div class='controls'>"+
+									"<input name='pagepath' id='pagepath' style='padding-left:10px' class='span3 m-wrap' value='{if $nav}{$nav.pagepath}{/if}'></input>"+
+									"<span style='color:#999999; line-height:40px; margin-left:20px;'>小程序的页面路径，跟app.json对齐，支持参数，比如pages/index/index?foo=bar</span>"+
+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>卡片封面图片MediaId</label>"+
+								"<div class='controls'>"+
+									"<textarea name='picurl' id='picurl1' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.picurl}{/if}</textarea>"+
+								"</div>"+
+							"</div>";
+			}
+		if(vals ==4){
+			$("#jutxs").html();
+
+				var str = "<div class='control-group'>"+
+								"<label class='control-label'>标题</label>"+
+								"<div class='controls'>"+
+									"<input name='title' id='title2' style='padding-left:10px' class='span3 m-wrap' value='{if $nav}{$nav.title}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>描述</label>"+
+								"<div class='controls'>"+
+									"<textarea name='desc' id='desc'  class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.desc}{/if}</textarea>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>图文链接</label>"+
+								"<div class='controls'>"+
+									"<input name='url' id='url' style='padding-left:10px' class='span3 m-wrap' value='{if $nav}{$nav.url}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>图片链接地址</label>"+
+								"<div class='controls'>"+
+									"<input name='thumb_url' style='padding-left:10px' id='thumb_url' class='span3 m-wrap'  value='{if $nav}{$nav.thumb_url}{/if}'></input>"+
+								"</div>"+
+							"</div>";
+
+			}
+		$("#jutxs").html(str);
+	});
+
+
+
+		function xiansshu(me){
+
+			var val = $(me).val();
+			if(val ==1){
+				var str = 	"<div class='control-group'>"+
+								"<label class='control-label'>文本回复内容</label>"+
+								"<div class='controls'>"+
+									"<textarea name='content' id='content' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.content}{/if}</textarea>"+
+									"<span style='color:#999999; line-height:40px; margin-left:20px;'>纯文本</span>"+
+
+								"</div>"+
+							"</div>";
+
+			}
+
+			if(val ==2){
+
+				var str ="<div class='control-group'>"+
+							"<label class='control-label'>图片MediaId</label>"+
+							"<div class='controls'>"+
+								"<textarea name='picurl' id='picurl1' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.content}{/if}</textarea>"+
+							"</div>"+
+						"</div>";
+			}
+
+			if(val ==3){
+
+				var str = "<div class='control-group'>"+
+								"<label class='control-label'>标题</label>"+
+								"<div class='controls'>"+
+									"<input name='title' id='title1' class='span3 m-wrap' style='padding-left:10px' value='{if $nav}{$nav.title}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>小程序页面路径</label>"+
+								"<div class='controls'>"+
+									"<input name='pagepath' id='pagepath' class='span3 m-wrap' style='padding-left:10px' value='{if $nav}{$nav.pagepath}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>卡片封面图片MediaId</label>"+
+								"<div class='controls'>"+
+									"<textarea name='picurl' id='picurl1' class='span3 m-wrap' cols='30' rows='5'>{if $nav}{$nav.picurl}{/if}</textarea>"+
+								"</div>"+
+							"</div>";
+			}
+
+			if(val ==4){
+				var str = "<div class='control-group'>"+
+								"<label class='control-label'>标题</label>"+
+								"<div class='controls'>"+
+									"<input name='title' id='title2' class='span3 m-wrap' style='padding-left:10px' value='{if $nav}{$nav.title}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>描述</label>"+
+								"<div class='controls'>"+
+									"<textarea name='desc' id='desc' class='span3 m-wrap'  cols='30' rows='5'>{if $nav}{$nav.desc}{/if}</textarea>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>图文链接</label>"+
+								"<div class='controls'>"+
+									"<input name='url' id='url' class='span3 m-wrap' style='padding-left:10px' value='{if $nav}{$nav.url}{/if}'></input>"+
+								"</div>"+
+							"</div>"+
+							"<div class='control-group'>"+
+								"<label class='control-label'>图片链接地址</label>"+
+								"<div class='controls'>"+
+									"<input name='thumb_url' id='thumb_url' class='span3 m-wrap'  style='padding-left:10px' value='{if $nav}{$nav.thumb_url}{/if}'></input>"+
+								"</div>"+
+							"</div>";
+
+			}
+
+			
+			$("#jutxs").html(str);
+
+
+
+		}
+		function checkinfo(){
+			$type = $("select option:selected").val();
+			if($type == 1){
+				$content = $("#content").val();
+				if($content == ""){
+					alert("请输入回复内容！");
+					return false;
+				}
+			}
+			if($type == 2){
+				$content = $("#picurl1").val();
+				if($content == ""){
+					alert("请输入图片MediaId！");
+					return false;
+				}
+			}
+			if($type == 3){
+				$title1 = $("#title1").val();
+				if($title1 == ""){
+					alert("请输入标题！");
+					return false;
+				}
+				$pagepath = $("#pagepath").val();
+				if($pagepath == ""){
+					alert("请输入小程序页面路径！");
+					return false;
+				}
+				$picurl1 = $("#picurl1").val();
+				if($picurl1 == ""){
+					alert("请输入卡片封面图片MediaId！");
+					return false;
+				}
+			}
+			if($type == 4){
+				$title2 = $("#title2").val();
+				if($title2 == ""){
+					alert("请输入标题！");
+					return false;
+				}
+				$desc = $("#desc").val();
+				if($desc == ""){
+					alert("请输入图文描述！");
+					return false;
+				}
+				$url = $("#url").val();
+				if($url == ""){
+					alert("请输入图文链接！");
+					return false;
+				}
+				$thumb_url = $("#thumb_url").val();
+				if($thumb_url == ""){
+					alert("请输入图片链接地址！");
+					return false;
+				}
+			}
+		}
+
+
+
+
+
+	</script>
+
+
+
+
+
+{include file="public/foot_more" /}

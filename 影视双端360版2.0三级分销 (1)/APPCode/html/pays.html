@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+
+	<body>
+
+		<header class="aui-navBar aui-navBar-fixed" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);;position: relative;padding-top:25px;" id="header">
+
+
+        <a onclick="closeWin()" class="aui-navBar-item-db">
+            <i class="icon icon-back"></i>
+
+        </a>
+
+        <a onclick="ios_inwin('tuichu')" class="aui-navBar-item-s" style="color: #c4c4c4;">
+            <i class="icon icon-Close-b"></i>关闭
+        </a>
+  
+        <div class="aui-center">
+            <span class="aui-center-title" id="title">在线支付</span>
+        </div>
+
+        <a onclick="ios_inwin('shuaxin')" tapmode class="aui-navBar-item" style="color: #010101;">
+            <i class="icon icon-blackRefresh"></i> 刷新
+        </a>
+
+    </header>
+
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	  <script type="text/javascript" src="../script/doT.js"></script>
+	<script type="text/javascript">
+	 var user_id = localStorage.getItem('user_id');
+	//alert(user_id);
+    var api_url = localStorage.getItem('api_url');
+		apiready = function() {
+
+        api.parseTapmode();
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
+        var body_h = $api.offset($api.dom('body')).h;
+
+			api.openFrame({
+	            name: 'pay_frame',
+	            url: api.pageParam.url,
+	            progress: {
+	                type: "page",
+	                color: "#6dd26d"
+	            },
+	            bgColor: 'widget://icon/an.png',
+	            softInputMode: 'pan',
+	            rect: {
+	                x: 0,
+	                y: $api.offset($api.byId('header')).h,
+	                w: 'auto',
+	                h: 'auto'
+	            }
+	        });
+
+
+			api.setFrameClient({
+			    frameName: 'pay_frame'
+			}, function(ret, err) {
+				console.log("9900##" + JSON.stringify(ret));
+			    switch (ret.state) {
+			        case 0:
+			            break;
+			        case 1:
+			            break;
+			        case 2:
+				        dataurl = ret.url;
+						//alert(dataurl)
+			        	console.log();
+			        	//if(dataurl.indexOf("notify_url")!= -1){
+						if(dataurl.indexOf("notify_url")!= -1){
+			        		scene();
+							getTime()
+			        	//}else if(dataurl.indexOf("return_url")!= -1){
+						}else if(dataurl.indexOf("return_url")!= -1){
+			        		scene();
+							getTime()
+			        	}
+			            break;
+			        case 3:
+			            break;
+			        case 4:
+			            break;
+			        default:
+			            break;
+			    }
+			});
+
+
+			        ios_inwin = function(n) {
+			            if (n == 'closeWin') {
+			                api.historyBack({
+			                    frameName: 'video_frame'
+			                }, function(ret, err) {
+			                    if (!ret.status) {
+			                        api.closeWin({
+			                            name: 'video_win'
+			                        });
+			                    }
+			                });
+			            } else if (n == 'shuaxin') {
+			                var jsfuns = 'history.go(0);';
+			                api.execScript({
+			                    frameName: 'pay',
+			                    script: jsfuns
+			                });
+			            } else if (n == 'tuichu') {
+			                api.closeWin({
+			                    name: 'pay'
+			                });
+			            }
+			        };
+
+
+
+		}
+
+		function scene(){
+	　　　　var dialogBox = api.require('dialogBox');
+			dialogBox.taskPlan({
+			    rect: {
+			        w: 300
+			    },
+			    texts: {
+			        mainTitle: '蝶影VIP贵宾会员',
+			        subTitle: '',
+			        content: [{
+			            text: '恭喜您！充值成功'
+			        }],
+			        btnTitle: '朕知道了'
+			    },
+			    styles: {
+			        bg: '#fff',
+			        main: {
+			            marginT: 20,
+			            color: '#636363',
+			            size: 13,
+			            bold: true,
+			        },
+			        sub: {
+			            marginT: 8,
+			            color: '#999999',
+			            size: 12,
+			        },
+			        content: [{
+			            bg: '#fff',
+			            marginT: 10,
+			            w: 280,
+			            h: 30,
+			            align: 'center',
+			            color: '#666',
+			            size: 12
+			        }],
+			        ok: {
+			            marginB: 10, //（可选项）数字类型；右边按钮的下边距；默认：7
+						marginL: 10, //（可选项）数字类型；右边按钮左边距；默认：10
+						w: 280, //（可选项）数字类型；右边按钮的宽；默认：130
+						h: 40, //（可选项）数字类型；右边按钮的高；默认：35
+						corner: 10, //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+						bg: '#ff0072', //（可选项）字符串类型；右边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+						color: '#fff', //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+						size: 16 //（可选项）数字类型；右边按钮标题字体大小；默认：12
+			        }
+			    }
+			}, function(ret) {
+			    //alert(JSON.stringify(ret));
+			    if (ret.eventType == 'ok') {
+			        var dialogBox = api.require('dialogBox');
+			        dialogBox.close({
+			            dialogName: 'taskPlan'
+			        });
+			        api.closeFrame({
+					    name: 'pay_frame'
+					});
+			        //关闭当前window，使用默认动画
+
+					api.closeWin();
+			    }
+			});
+	　　}
+
+
+   function getTime(){
+    api.ajax({
+        url: api_url+'/App/App/shuaxin.html',
+        method: 'get',
+        data: {
+            values: {
+                uid: localStorage.getItem('user_id'),
+               
+            }
+        }
+    },function(ret, err){
+        if (ret) {
+         
+              localStorage.setItem('viptime',ret.viptime);
+              api.sendEvent({
+                name: 'newLoingdata',
+                extra: {
+                }
+              });
+          
+        } else {
+          api.hideProgress();
+          alert('网络错误！');
+        }
+    });
+  }
+function closeWin() {
+			var browser = api.require('webBrowser');
+			browser.historyBack(
+				function(ret, err) {
+					if(!ret.status) {
+						api.closeWin();
+					}
+				}
+			);
+		}
+	</script>
+
+</html>

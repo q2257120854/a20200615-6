@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>分享赚钱window</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+    <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">邀请好友</div>
+    </header>
+    <footer id="footer" class="aui-bar aui-bar-tab">
+        <div class="aui-bar-tab-item aui-padded-10">
+            <div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm" onclick="copySet()" tapmode>复制推广链接</div>
+        </div>
+       
+        <div class="aui-bar-tab-item aui-padded-10">
+            <div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm" onclick="erweima()" tapmode>查看专属海报</div>
+        </div>
+    </footer>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+    <script type="text/javascript" src="../script/doT.js"></script>
+  <script type="text/javascript">
+  apiready = function(){
+      api.parseTapmode();
+      var header = $api.byId('header');
+      $api.fixStatusBar(header);
+      var footer = $api.byId('footer');
+      //加载frame
+      var header_h = $api.offset(header).h;
+      var footer_h = $api.offset(footer).h;
+      api.openFrame({
+          name: 'share_frm',
+          url: './share_frm.html',
+          pageParam: api.pageParam,
+          bounces: false,
+          rect: {x:0, y:header_h, w:'auto', h:api.frameHeight-header_h-footer_h}
+      });
+  }
+  function erweima(){
+    var dialogBox = api.require('dialogBox');
+    dialogBox.webView({
+        tapClose: false,
+        path: 'http://qr.liantu.com/api.php?text=http://baidu.com/index/index/qudao.html?share=' +localStorage.getItem('share'),
+        texts: {
+            title: '专属二维码',
+            leftBtnTitle: '关闭',
+            rightBtnTitle: '分享'
+        },
+        styles: {
+            bg: '#fff',
+            corner: 5,
+            w: 300,
+            h: 380,
+            title: {
+                h: 44,
+                size: 14,
+                color: '#000'
+            },
+            upDividingLine: {
+                width: 0.2,
+                color: '#696969'
+            },
+            webView: {
+                h: 300,
+                bg: '#fff',
+            },
+            downDividingLine: {
+                width: 0.2,
+                color: '#696969'
+            },
+            left: {
+                bg: 'rgba(0,0,0,0)',
+                color: '#007FFF',
+                size: 12
+            },
+            right: {
+                bg: 'rgba(0,0,0,0)',
+                color: '#007FFF',
+                size: 12
+            }
+        }
+    }, function(ret) {
+        if (ret.eventType == 'left') {
+            var dialogBox = api.require('dialogBox');
+            dialogBox.close({
+                dialogName: 'webView'
+            });
+        }else {
+
+          alert('请截屏后分享');
+        }
+    });
+  }
+  
+  
+  //////////复制分享链接 //////////
+  function copySet(){
+    
+  var clipBoard = api.require('clipBoard');
+  clipBoard.set({
+      value: '【聚合影视APP】全网VIP视频免费看，高清无广告，一个APP看遍天下所有收费视频，最新活动：邀请好友加入可以奖励160元现金，并且可以当场到账，我已经到账了，特来分享，注册地址：http://baidu.com/index/index/qudao.html?share=' +localStorage.getItem('share')
+  }, function(ret, err) {
+      if (ret) {
+        api.toast({
+            msg: '已复制到剪切板',
+            duration: 4000
+        });
+      } else {
+
+      }
+  });
+
+  }
+  
+  </script>
+  </html>

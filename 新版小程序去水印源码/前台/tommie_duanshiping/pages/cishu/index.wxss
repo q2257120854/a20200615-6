@@ -1,0 +1,301 @@
+page {
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 30rpx 0;
+}
+
+.gonggao {
+    width: 750rpx;
+    position: fixed;
+    top: 0;
+}
+
+.head_img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-bottom: 2rpx;
+    background: #eee;
+}
+
+.head_imgs {
+    width: 100vw;
+    height: auto;
+}
+
+.head_close {
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    top: 14rpx;
+    right: 30rpx;
+}
+
+.head_closeimg {
+    width: 36rpx;
+    height: 36rpx;
+    margin: 14rpx;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.text_color {
+    color: #555;
+}
+
+.top {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20rpx;
+    margin-top: 30rpx;
+}
+
+.top .help {
+    position: absolute;
+    right: 20rpx;
+    bottom: 1rpx;
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.inputmain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 750rpx;
+    background-color: #ef4e22;
+}
+
+.jiexibut {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 180rpx;
+    height: 79rpx;
+    background-color: #ef4e22;
+    color: white;
+    font-size: 36rpx;
+    border-radius: 0rpx 10rpx 10rpx 0rpx;
+    border: 1px solid #fff!important;
+}
+
+.login-button {
+    width: 145rpx;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 36rpx;
+}
+
+.login-button::after {
+    border: none;
+    background: none;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.videos {
+    display: flex;
+    justify-content: center;
+    margin-top: 20rpx;
+}
+
+video {
+    width: 720rpx;
+    height: 480rpx;
+}
+
+.listbut {
+    display: flex;
+    justify-content: center;
+}
+
+.qq_group {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-size: 28rpx;
+    color: #ed3f14;
+    height: 80rpx;
+    width: 500rpx;
+    border: #dbd9d9 1px solid;
+    border-radius: 50rpx;
+    line-height: 80rpx;
+}
+
+.qq_group image {
+    height: 50rpx;
+    width: 55rpx;
+    padding: 15rpx;
+}
+
+.tuijian {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: center;
+    width: 620rpx;
+    margin: 40rpx;
+}
+
+.tuijian .itme {
+    display: inline-flex;
+    align-items: center;
+    width: 280rpx;
+    height: 60rpx;
+    background-color: white;
+    box-shadow: 4rpx 4rpx 5rpx #cecdcd;
+    margin: 6rpx 5rpx;
+    padding: 0 10rpx;
+}
+
+.tuijian .itme image {
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+}
+
+.tuijian text {
+    font-size: 32rpx;
+    width: 250rpx;
+    color: #f90;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.zhifubao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ef4e22;
+}
+
+.zhifubao .wenzi {
+    display: inline-flex;
+    justify-content: center;
+    font-size: 30rpx;
+    width: 720rpx;
+    margin-top: 20rpx;
+}
+
+.zhifubao .left {
+    color: #ed3f14;
+}
+
+.zhifubao .fuzhi {
+    margin-left: 15rpx;
+    color: #00adf9;
+}
+
+.zhifubao image {
+    width: 720rpx;
+    height: 340rpx;
+    border-radius: 15rpx;
+}
+
+.share {
+    position: fixed;
+    right: -10rpx;
+    bottom: 3%;
+    display: flex;
+    justify-content: center;
+    width: 220rpx;
+    background-color: #f90;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+}
+
+.share-img-button {
+    line-height: 80rpx;
+    height: 80rpx;
+    width: 220rpx;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 32rpx;
+}
+
+.share-img-button::after {
+    border: none;
+    background: none;
+}
+
+.ad {
+    margin: 15rpx auto;
+    width: 92%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 750rpx;
+    padding-bottom: 20rpx;
+}
+
+image {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 0 15rpx;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700rpx;
+    background-color: white;
+    margin-top: 40rpx;
+    border-radius: 20rpx;
+}
+
+.t {
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+    width: 690rpx;
+    font-weight: bold;
+    color: #495060;
+    margin-top: 30rpx;
+}
+
+.c {
+    font-size: 28rpx;
+    color: #80848f;
+    margin: 25rpx;
+}
+
+.line {
+    background-color: #bbbec4;
+    height: 2rpx;
+    width: 680rpx;
+    margin-top: 15rpx;
+}
+
+.lines {
+    height: 20rpx;
+}
+
+.img {
+    text-align: center;
+}
+.ad {
+    margin: 15rpx auto;
+    width: 92%;
+}

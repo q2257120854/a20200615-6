@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>忘记密码</title>
+	<link href="/Public/kj/css/layer.css" type="text/css" rel="stylesheet">
+	<link href="/Public/kj/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/Public/kj/js/jquery.min.js"></script>
+	<script src="/Public/kj/js/rem.js"></script>
+	<script src="/Public/kj/js/safari.js"></script>
+	<script src="/Public/kj/js/layer.js"></script>
+	<script src="/Public/kj/js/login/ForgetPassword.js?1"></script>
+</head>
+<body>
+<!--登录头部-->
+<div class="loginbg">
+    <div class="title"><span><img src="/Public/kj/img/icon1.png"></span></div>
+</div>
+<!--edn-->
+<!--登录框-->
+<div class="loginbord">
+    <div class="loginbox">
+        <form class="formpot" method="post" id="formpot">
+            <div class="login-inpt ForgetPassword">
+                <ul>
+                    <li>
+                        <label>会员账号</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="mobile" id="mobile" placeholder="请输入账户名">
+                        </div>
+                    </li>
+                    <li>
+                        <label>验证码</label>
+                        <div class="inpt-lit Veroficationcode">
+                            <input type="text" name="code" id="code" placeholder="请输入验证码">
+                            <input type="button" class="getcode" id="getcode" value="获取验证码" onclick="send_sms_reg_code()">
+                        </div>
+                    </li>
+                    <li>
+                        <label>新交易密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password" id="password" placeholder="请输入新密码">
+                        </div>
+                    </li>
+                    <li>
+                        <label>确认交易密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password1" id="password1" placeholder="请再次输入密码">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <div class="loginbtn">
+            <button id="Submission">提交</button>
+        </div>
+    </div>
+</div>
+<!--edn-->
+</body>
+</html>

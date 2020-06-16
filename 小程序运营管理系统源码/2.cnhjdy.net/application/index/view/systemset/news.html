@@ -1,0 +1,97 @@
+{include file="public/head" /}
+
+{include file="public/s_head" /}
+		
+	<div>
+		<div class="wgldxcs">
+			<a href="{:Url('Systemset/index')}">
+				<span>
+					<img src="/image/weixin.png">
+				</span>
+				系统设置
+			</a>
+		</div>
+
+
+		<a href="{:Url('Systemset/addnews')}">
+		<div class="addxcx"> 
+			添加资讯
+		</div>
+		</a>
+	</div>
+
+	<div style="margin-top:50px; border-top:1px solid #dedede; padding-top:20px">
+		
+		<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+			<thead>
+
+				<tr>
+					
+					<th style="width: 50px;">排序</th>
+
+					<th style="width: 150px;">所属栏目</th>
+
+					<th style="width: 200px;">缩略图</th>
+
+					<th>标题</th>
+					
+					<th width="200px;">操作</th>
+
+				</tr>
+
+			</thead>
+
+			<tbody>
+			{if $news}
+				{foreach $newnews as $item}
+					<tr>
+						<td>
+							{$item.num}
+						</td>
+						<td>
+							{$item.lanmu}
+						</td>
+						<td>
+							<img src="{$item.thumb}" style="width:50px; height:30px;">
+						</td>
+						<td>
+							{$item.title}
+						</td>
+						<td>
+							<a href="{:Url('Systemset/addnews')}?id={$item.id}" style="float:left"><button class="btn green">编辑</button></a>
+							<form action="{:Url('Systemset/del')}?id={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+								<button class="btn red" type="submit">删除</button>
+							</form>
+						</td>
+					</tr>
+				{/foreach}
+			{/if}
+			</tbody>
+
+		</table>
+		
+		<!-- 分页 -->
+		<div>
+			<div class="fenye_left">
+				一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+			</div>
+			<div class="fenye_right">
+				{$news->render()}
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+		function del(){
+			if(confirm('该删除操作不可逆，请谨慎操作?')){
+				return true;
+			}
+		}
+	</script>
+	
+
+
+{include file="public/foot" /}

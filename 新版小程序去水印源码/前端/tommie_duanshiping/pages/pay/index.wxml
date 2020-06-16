@@ -1,0 +1,17 @@
+<view class="box">
+    <text class="top">次数充值</text>
+    <view class="jiage">
+        <view bindtap="choseTxtColor" class="chose-txt" data-id="{{index}}" data-price="{{item.price}}" style="{{index==id?'background:url(../../resource/image/on_chose.png) right no-repeat; border:1rpx solid #e8580c; color: #e8580c':'baciground:url();border:1rpx solid gainsboro;color:gray'}}" wx:for="{{array}}" wx:key="key">
+            <text class="chose-p">{{item.name}}次</text>
+            <text class="chose-p">{{item.price}}元</text>
+        </view>
+    </view>
+    <text class="lin f30">充值金额(元)</text>
+    <text class="lin">{{price}}</text>
+    <view class="weixinpay">
+        <image src="../../resource/image/weixinpay.png"></image>
+        <text class="lin f24">微信支付</text>
+    </view>
+    <button bindtap="weixinpay" class="lin f30">立即充值</button>
+    <text class="f26">充值如有任何疑问请联系管理员</text>
+</view>

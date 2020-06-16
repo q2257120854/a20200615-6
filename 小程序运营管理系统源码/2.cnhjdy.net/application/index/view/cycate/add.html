@@ -1,0 +1,295 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel2-2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			点菜分类管理--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Cycate/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+					<input type="hidden" name="cateid" value="{$cateid}">
+
+
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">分类基础内容</label>
+
+
+
+					</div>
+
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $cateinfo}{$cateinfo.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">名称</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="title" id="title" type="text" class="span3 m-wrap" value="{if $cateinfo}{$cateinfo.title}{/if}" style="height: 35px !important;">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写分类名称</span>
+
+						</div>
+
+
+
+					</div>
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+	
+
+    <script type="text/javascript">
+
+
+
+        $(function() {
+
+	    	var ue = UE.getEditor('editor');
+
+		});
+
+
+
+    	function checkinfo(){
+
+
+
+    		var title = $("#title").val();
+
+	    	if(title==""){
+
+	    		alert("名称不能为空");
+
+	    		return false;
+
+	    	}
+
+
+
+	    }
+
+
+
+	    function changq(me){
+
+
+
+		var val = $(me).val();
+
+
+
+		if(val == "showArt" || val == "showWxapps"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").show();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPro"){
+
+			$("#type1").hide();
+
+			$("#type2").show();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPic"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").show();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "page"){
+
+			$("#type1").hide();
+
+			$("#type2").hide();
+
+			$("#type3").hide();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").show();
+
+		}
+
+
+
+	}
+
+
+
+     </script>
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

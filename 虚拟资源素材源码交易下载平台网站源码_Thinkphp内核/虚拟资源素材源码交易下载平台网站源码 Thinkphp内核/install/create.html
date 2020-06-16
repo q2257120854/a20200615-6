@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LaySNS安装程序</title>
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<link rel="stylesheet" href="../public/css/install.css"> 
+<link rel="stylesheet" href="../public/plugins/layui/css/layui.css">
+<script src="../public/plugins/layui/layui.js"></script>  
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+欢迎使用 LAYSNS <?php echo VERSION;?>！
+</div>  <section class="section">
+    <div class="blank30"></div>
+    <div class="go go3"></div>
+    <div class="blank30"></div>
+    <form action="./index.php?c=success" method="post">
+      <input type="hidden" name="force" value="0" />
+      <div class="server">
+        <table width="100%" id="table" border="0" cellspacing="1" cellpadding="4">
+          <tr>
+            <td class="td1" colspan="2">数据库信息</td>
+          </tr>
+      <tr>
+            <td class="tar">数据库地址</td>
+            <td><input type="text" name="DB_HOST" value="localhost" required lay-verify="required" autocomplete="off" class="input"><div id="J_install_tip_dbhost"><span class="gray">一般为 localhost 或 127.0.0.1</span></div></td>
+          </tr>
+     
+          <tr>
+              <td class="tar">数据库名</td>
+              <td><input type="text" type="text" name="DB_NAME" required lay-verify="required" autocomplete="off" class="input" ><div id="J_install_tip_dbname"></div></td>
+            </tr>
+          <tr>
+            <td class="tar">数据库账号</td>
+            <td><input type="text" name="DB_USER" required lay-verify="required" autocomplete="off" class="input"><div id="J_install_tip_dbuser"></div></td>
+          </tr>
+          <tr>
+            <td class="tar">数据库密码</td>
+            <td><input type="text" name="DB_PWD" required lay-verify="required" autocomplete="off" class="input"><div id="J_install_tip_dbpw"></div></td>
+          </tr>
+          <tr>
+              <td class="tar">数据库端口</td>
+              <td><input type="text" name="DB_PORT" value="3306" autocomplete="off" class="input"><div id="J_install_tip_dbport"><span class="gray">一般为3306</span></div></td>
+            </tr>
+          <tr>
+            <td class="tar">数据库表前缀</td>
+            <td><input type="text" name="DB_PREFIX" value="ls_" required lay-verify="required" autocomplete="off"  class="input" ><div id="J_install_tip_dbprefix"><span class="gray">推荐使用&nbsp;ls_</span></div></td>
+          </tr>
+        </table>
+       
+        <table width="100%" id="table" border="0" cellspacing="1" cellpadding="4">
+          <tr>
+            <td class="td1" colspan="2">管理员信息</td>
+          </tr>
+          <tr>
+            <td class="tar">管理员帐号</td>
+            <td><input type="text" name="admin_user" required lay-verify="required" autocomplete="off" class="input"><div id="J_install_tip_manager"><span class="gray">至少包含4个字符，需以字母开头</span></div></td>
+          </tr>
+          <tr>
+            <td class="tar">管理员密码</td>
+            <td><input type="password" name="admin_pass"  required lay-verify="required" autocomplete="off"  class="input"><div id="J_install_tip_manager_pwd"></div></td>
+          </tr>
+          <tr>
+            <td class="tar">请确认密码</td>
+            <td><input type="password" name="admin_pass2" required lay-verify="required" autocomplete="off" class="input" ><div id="J_install_tip_manager_ckpwd"></div></td>
+          </tr>
+          <tr>
+            <td class="tar">安全验证码</td>
+            <td><input type="text" name="code"  required lay-verify="required" autocomplete="off" class="input" ><div id="J_install_tip_manager_ckpwd"><span class="gray">后台登录安全码。与验证码搭配可有效阻止试探登录者。最多8位</span></div></td>
+          </tr>          
+        </table>
+        <div id="J_response_tips" style="display:none;"></div>
+      </div>
+      <div class="blank20"></div>
+      <div class="bottom tac">
+        <center>
+        <a href="./index.php?c=test" class="btn_b">上一步</a>
+		<input class="btn btn_submit J_install_btn" type="submit" lay-submit lay-filter="formDemo" value="确认安装">
+        </center>
+      </div>
+      <div class="blank20"></div>
+    </form>
+  </section>
+  <div  style="width:0;height:0;overflow:hidden;"> <img src="./images/pop_loading.gif"> </div>
+</div>
+<div class="footer"> Powered by  <a href="http://www.laysns.com" target="_blank">LAYSNS <?php echo VERSION;?></a></div>
+<script>
+layui.use('form', function() {
+var form = layui.form;});
+</script>
+</body>
+
+</html>

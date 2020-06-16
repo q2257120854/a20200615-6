@@ -1,0 +1,340 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navDIY"  class="navDIY1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			样式DIY--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Stylediy/diysetsave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">选择首页</label>
+
+
+
+					</div>
+					<div class="control-group">
+
+						<!--新增的字段-->
+
+						<label class="control-label">设置首页</label>
+
+						<div class="controls">
+
+							<label class="radio">
+
+							<input type="radio" name="homepage" value="1" {if $bases}{if $bases.homepage==1}checked=checked{/if}{/if}/>
+
+							默认首页
+
+							</label>
+
+							<label class="radio">
+
+							<input type="radio" name="homepage" value="2" {if $bases}{if $bases.homepage==2}checked=checked{/if}{/if}/>
+
+							DIY首页
+
+							</label> 
+
+
+						</div>
+
+					</div>
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">全局DIY样式管理</label>
+
+
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">小程序头底主色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value" value="{if $bases}{$bases.base_color}{else}74dbd4{/if}" class="span2 m-wrap" name="base_color">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">包含顶部底色，底部TAB上线的颜色</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">小程序头底文字色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="base_tcolor" value="#ffffff" {if $bases}{if $bases.base_tcolor=="#ffffff"}checked=checked{/if}{/if}/>
+
+
+
+							白色
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="base_tcolor" value="#000000" {if $bases}{if $bases.base_tcolor=="#000000"}checked=checked{/if}{/if}/>
+
+
+
+							黑色
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">顶部的文字颜色，建议与背景色相反</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">小程序突出颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_t', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_t" value="{if $bases}{$bases.base_color2}{else}ffcf3d{/if}" class="span2 m-wrap" name="base_color2">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">点击拨号、栏目中文标题的颜色</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">默认样式标题颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_r', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_r" value="{if $bases}{$bases.base_color_t}{else}ffcf3d{/if}" class="span2 m-wrap" name="base_color_t">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">头部为默认样式时生效，建议颜色#ffcf3d</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+					
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

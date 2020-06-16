@@ -1,0 +1,83 @@
+body{margin:0;font-size:12px;text-align:center;color:#333;word-wrap:break-word;}
+p{margin:2pt 0 0 0;}
+*{margin:0 auto;padding:0;}
+ul{list-style-type:none;margin:0;padding:0;float:left;width:100%;text-align:center;}
+ul li{float:left;width:100%;}
+ul .l1{font-size:20px;font-weight:700;padding:20px 0 20px 0;}
+ul .l3{padding:20px 0 0 0;border-top:#C5C5C5 solid 1px;}
+
+
+/*ͼƬչʾ*/
+#imageFlow {
+position: absolute;
+width: 100%;
+height: 80%;
+left: 0%;
+top: 10%;
+background: #000;
+}
+#imageFlow .diapo {
+position: absolute;
+left: -1000px;
+cursor: pointer;
+-ms-interpolation-mode: nearest-neighbor;
+}
+#imageFlow .link {
+border: dotted #fff 1px;
+margin-left: -1px;
+margin-bottom: -1px;
+}
+#imageFlow .bank {
+visibility: hidden;
+}
+#imageFlow .top {
+position: absolute;
+width: 100%;
+height: 40%;
+}
+#imageFlow .text {
+position: absolute;
+left: 0px;
+width: 100%;
+bottom: 16%;
+text-align: center;
+color: #FFF;
+font-family: verdana, arial, Helvetica, sans-serif;
+z-index: 1000;
+}
+#imageFlow .title {
+font-size: 0.9em;
+font-weight: bold;
+}
+#imageFlow .legend {
+font-size: 0.8em;
+}
+#imageFlow .scrollbar {
+position: absolute;
+
+left: 10%;
+bottom: 10%;
+width: 80%;
+height: 16px;
+z-index: 1000;
+}
+#imageFlow .track {
+position: absolute;
+left: 1%;
+width: 98%;
+height: 16px;
+filter: alpha(opacity=30);
+opacity: 0.3;
+}
+#imageFlow .arrow-left {
+position: absolute;
+}
+#imageFlow .arrow-right {
+position: absolute;
+right: 0px;
+}
+#imageFlow .bar {
+position: absolute;
+height: 16px;
+left: 25px;
+}

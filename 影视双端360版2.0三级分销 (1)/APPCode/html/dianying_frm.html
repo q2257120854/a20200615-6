@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>开发</title>
+
+	  <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <style>
+        .empty{ text-align: center; padding: 120px 0; }
+		html,body{
+			color:#000;
+		}
+    </style>
+	 
+</head>
+<body style="background:#fff;">
+<section class="aui-content aui-margin-5" id="dongman">
+		<div class="v-list-wrap" >
+		<input type="hidden" value="1" id="nextrow" />
+			<ul class="clearfix" >
+				<li style="margin-bottom:2px;height:200px;" v-for="v in it" @click="openWind(v.coverpage)">
+			
+			<div class="video-mask-box">
+			<img :src="v.cover" style="width:98%;max-height: 155px;height: 155px;min-height: 155px;border-radius:5px 5px 0px 0px;">
+			<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 50px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">{{v.tag}}</span>
+			</div>
+			<div style="border-radius: 1px 1px 1px 1px; box-shadow: 0.12rem 0.12rem 0.12rem rgba(0, 0, 0, 0.3);width:98%;">
+			<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;    width: 100%; color:#000; ">{{v.title}}</span>
+			
+			
+			</div>
+			</li>
+			</ul>
+			<div class="aui-card-list-footer aui-text-center" style="clear:both" v-text="loader"></div>
+		</div>
+		 
+		</section>
+</body>
+
+	
+<script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/echo.js"></script>
+<script type="text/javascript">
+var api_url = localStorage.getItem('api_url');
+var jx1 = localStorage.getItem('jx1');
+var jx2 = localStorage.getItem('jx2');
+      apiready = function(){
+	
+		dongman();    
+				
+		api.setRefreshHeaderInfo({
+			visible: true,
+			loadingImg: 'widget://image/loading1.png',
+			bgColor: '#fff',
+			textColor: '#333',
+			textDown: '下拉刷新...',
+			textUp: '松开刷新...',
+			showTime: true
+		}, function(ret, err){
+		  if (err) {
+			api.toast({
+				msg: '加载数据失败',
+				duration: 2000,
+				location: 'middle'
+			});
+			api.refreshHeaderLoadDone();
+		  }else {
+    dongman(); 
+			api.toast({
+				msg: '刷新成功',
+				duration: 1000,
+				location: 'middle'
+			});
+			api.refreshHeaderLoadDone();
+		  }
+		});
+		
+		
+		}
+		
+		
+		  
+		  function dongman(){
+			var dongman = new Vue({
+              el: '#dongman',
+              data: {
+                  it: [],
+                  offset: 0,
+                  loader: '正在加载更多...'
+              },
+              mounted: function(){
+                  this.add(); //初始化
+                  loadMore(function(){dongman.add()}); //下拉加载
+              },
+              updated: function(){
+                  echo.init({offset: 500, throttle: 0}); //图片懒加载
+              },
+              methods: {
+                  add: function(){
+                   var nextrow=$("#nextrow").val(); 
+                       api.ajax({
+					  url: api_url+'/App/Api/sdianyingx.html',
+					  method: 'get',
+					   data: {
+									values: {
+										nextrow3: nextrow,
+
+									}
+								}
+						  },function(ret, err){
+							  if (ret) {
+								//console.log(JSON.stringify(ret))
+								 dongman.offset += nextrow;
+                          dongman.it = dongman.it.concat(ret);
+						$("#nextrow").val(parseInt(nextrow)+1);
+						
+                          if(ret.length < nextrow) dongman.loader = '已到底部'
+						  api.refreshHeaderLoadDone();
+							  } else {
+								alert( '加载失败！' );
+								api.hideProgress();
+							}      
+						  });
+                  },
+              }
+          });
+		  }
+		  //上拉加载更多
+			function loadMore(fn){
+				api.addEventListener({
+					name: 'scrolltobottom'
+				}, function(){
+					fn();
+				});
+			}
+			
+			function openWind(url){
+			var url = 'http://www.360kan.com'+url
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+			 if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'play_win',
+					url: 'play_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						url:api_url+'/others/player/play.php?play='+url
+					}
+				});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		}
+		function VipExpiredHint() {
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' 
+                },
+                content:{              //（可选项）JSON 
+                    marginT: 20,       
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'open_vip_win',
+                            url: './open_vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+		}
+	</script>
+
+
+</html>

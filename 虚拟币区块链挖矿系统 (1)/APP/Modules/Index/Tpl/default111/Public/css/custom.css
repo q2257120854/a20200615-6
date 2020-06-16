@@ -1,0 +1,16 @@
+/*****jQuery Validate ´íÎóĞÅÏ¢*****/
+input.error{
+	border:1px solid red;
+}
+input.valid {
+	border:1px solid #1d95f6;
+}
+span.error{
+	background : url(../image/unchecked.gif) no-repeat 0 0;
+	padding-left: 16px;
+	color: #f00;
+}
+span.success{
+	background : url(../image/checked.gif) no-repeat 0 0;
+	padding-left: 16px;
+}

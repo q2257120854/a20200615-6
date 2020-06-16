@@ -1,0 +1,152 @@
+<div class="youqing col-xs-12">
+
+    <div class="clearfix">
+
+        <div class="cz-title">友情链接        <a class="youqing_more" id="apply_link" href="javascript:;">申请友链</a ></div>
+
+  </div>
+
+  <!-- 友情链接，网站SEO必经之路 -->
+
+  <ul class="clearfix" id="app_url">
+
+
+
+      {volist name="superlinks" id="vo"}  
+
+      {if condition="$vo['type'] eq 2"}
+
+      <li><a href="{$vo.link}" target="_blank">{$vo.title}</a></li>
+
+        {else /}
+
+        <dd>
+
+            <li>
+
+                <a href="{$vo.link}" title="{$vo.title}" {if @$vo['nofollow']}rel="nofollow"{/if} target="_blank"><img src={$vo.savepath} width="88" height="31" /></a>
+
+            </li>
+
+            {/if} {/volist}
+
+            </ul>
+
+    </div>
+
+    <script>
+
+        layui.use(['form', 'upload'], function() {
+
+            var form = layui.form,
+
+                upload = layui.upload,
+
+                $ = layui.jquery;
+
+            var device = layui.device();
+            var uid="{$Think.session.userid}";
+            $("#apply_link").on('click', function() {
+
+                if(uid==''){
+                    layer.msg('没有登录');
+                    return false;
+                }
+                layer.open({
+
+                    type: 1,
+
+                    id: 'LAY_pushcase',
+
+                    title: '申请友情链接',
+
+                    shadeClose: true,
+
+                    area: (device.ios || device.android) ? ($(window).width() + 'px') : '400px',
+
+                    content: ['<ul class="layui-form" style="margin: 20px;">', '<li class="layui-form-item">', '<label class="layui-form-label">名称</label>', '<div class="layui-input-block">', '<input  name="title" required lay-verify="required" placeholder="一般为网站名称" value="" class="layui-input">', '</div>', '</li>', '<li class="layui-form-item">', '<label class="layui-form-label">网址</label>', '<div class="layui-input-block">', '<input required name="link" lay-verify="url" placeholder="http://开头" value="" class="layui-input">',
+
+                        '</div>', '</li>',
+
+                        '<li class="layui-form-item">', '<label class="layui-form-label" style="width:110px">联系方式</label>', '<div class="layui-input-block">', '<input required name="contacts" lay-verify="required" placeholder="QQ号或者手机号" value="" class="layui-input">',
+
+                        '</div>', '</li>',
+
+                        '<li class="layui-form-item">',
+
+                        '<label class="layui-form-label">类型</label>',
+
+                        '<div class="layui-input-block">', '<input type="radio" name="type" lay-filter="linktype" value="2" title="文字连接" checked="checked">', '<input type="radio" name="type" lay-filter="linktype" value="1" title="图片连接" >', '</div>', '</li>', '<li class="layui-form-item" id="img_area" style="display:none">', '<label class="layui-form-label">站点Logo</label>', '<div class="layui-input-block" style="width:auto;">', '<input type="hidden" name="cover_id" class="layui-input fly-case-image">', '<button type="button" class="layui-btn layui-btn-primary" id="caseUpload">', '<i class="layui-icon">&#xe67c;</i>上传图片', '</button>', '<div class="layui-form-mid layui-word-aux" style="clear:both;text-align: center;" id="preview">推荐尺寸：478*300</div>', '</div>', '</li>', '<li class="layui-form-item">', '<div class="layui-input-block">', '<button type="button" lay-submit lay-filter="pushCase" class="layui-btn">提交申请</button>', '</div>', '</li>', '<input type="hidden" name="onwhere" value="cms"> <div style="text-align:center;color:#666">申请前请先将本站设为您的友链，且百度权重>=1！</div></ul>'
+
+                    ].join(''),
+
+                    success: function(layero, index) {
+
+                        var image = layero.find('.fly-case-image'),
+
+                            preview = $('#preview');
+
+                        upload.render({
+
+                            url: '{:url("index/upload/upimage")}',
+
+                            elem: '#caseUpload',
+
+                            size: 30,
+
+                            done: function(res) {
+
+                                if (res.code == 200) {
+
+                                    image.val(res.data.id);
+
+                                    preview.html('<a href="' + res.data.headpath + '" target="_blank" style="color: #5FB878;"><img src="' + res.headpath + '" width="120" height="90" /></a>');
+
+                                } else {
+
+                                    layer.msg(res.msg, {
+
+                                        icon: 5
+
+                                    });
+
+                                }
+                            }
+                        });
+                        form.on('radio(linktype)', function(data) {
+                            if (data.value == 1) {
+                                $("#img_area").show();
+                            } else {
+                                $("#img_area").hide();
+                            } 
+                        });
+
+                        form.render('radio').on('submit(pushCase)', function(data) {
+
+                            var param = data.field;
+
+                            var url = '{:url("index/api/applySuperlink")}';
+
+                            $.post(url, param, function(res) {
+
+                                layer.close(index);
+
+                                layer.alert(res.msg, {
+
+                                    icon: 1
+
+                                });
+
+                            });
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>

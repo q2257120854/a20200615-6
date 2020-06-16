@@ -1,0 +1,200 @@
+<extend name="Index:base" />
+<block name="content">
+	<!-- 中间部分开始 -->
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="__APP__/admin">首页</a>
+				</li>
+				<li>
+					<a href="__APP__/admin/goodsdown">仓库商品</a>
+				</li>
+				<li class="active">商品修改</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<!-- 页面导航 -->
+			<div class="page-header">
+				<h1>
+					商品修改
+					<a href="__APP__/admin/Goodsdown" class="btn btn-info btn-sm pull-right">
+						<i class="icon-reply icon-only"></i>
+					</a>
+				</h1>
+			</div>
+		</div>
+	</div>
+	<!-- ================================= -->
+	<div class="main-container">
+		<div class="col-xs-9">
+			<form class="form-horizontal" role="form" action="__CONTROLLER__/updategoods" method="post" enctype="multipart/form-data">
+				<!-- 商品编号 -->
+				<input type="hidden" name="gid" value="{$goodsdata.gid}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品类别：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" name="gclassification" value="{$goodsdata.gclassification}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品名称：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" name="gname" value="{$goodsdata.gname}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品属性：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" name="gattribute" value="{$goodsdata.gattribute}" disabled>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品价格：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" name="goldprice" value="{$goodsdata.goldprice}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品数量：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" value="{$goodsdata.goodnums}" name="goodnums">
+					</div>
+				</div>
+				<div class="form-group" style="margin-bottom:0px;">
+					<label class="col-sm-2 control-label no-padding-right">商品图片：</label>
+					<div class="col-sm-10">
+						<div class="ace-file-input no-padding col-xs-10 col-sm-5" style="height:220px;">
+							<input type="file" class="class-input-file-2" name="gpic[]"  style="height:30px;"/>
+							<input type="file" class="class-input-file-2" name="gpic[]"  style="height:30px;"/>
+							<input type="file" class="class-input-file-2" name="gpic[]"  style="height:30px;"/>
+							<input type="file" class="class-input-file-2" name="gpic[]"  style="height:30px;"/>
+							<input type="file" class="class-input-file-2" name="gpic[]"  style="height:30px;"/>
+						</div>
+						<foreach name="goodsdata.gpic" item="vo">
+							<div class="col-sm-5" style="height:47px;">
+								<img width="40" src="__PUBLIC__/Goodsuploads/{$vo|explode='/',###|implode='/60_',###}" >
+							</div>
+						</foreach>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">商品介绍：</label>
+					<div class="col-sm-10">
+						<!-- resize设置样式不能拖拽了 -->
+						<textarea rows="20" class="col-sm-10" placeholder="商品介绍" name="gintroduce" style="resize:none;" id="content">{$goodsdata.gintroduce}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">参数规格：</label>
+					<div class="col-sm-10">
+						<textarea rows="20" class="col-sm-10" placeholder="参数规格" name="gspecifications" style="resize:none;" id="content1">{$goodsdata.gspecifications}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">是否上架：</label>
+					<div class="col-sm-2" style="margin-top:3px;">
+						<input type="radio" name="issale" value="1" {$goodsdata['issale']?'checked':''}> 是
+						&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="issale" value="0"  {$goodsdata['issale']?'':'checked'}> 否
+					</div>
+				</div>
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button type="submit" class="btn btn-info">
+							<i class="icon-ok bigger-110"></i>
+							发布
+						</button>
+						&nbsp; &nbsp; &nbsp;
+						<button type="reset" class="btn">
+							<i class="icon-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+<!-- =========================================== -->
+<block name="privatejs">
+	<!-- //加载公共js -->
+	<script type="text/javascript">
+		jQuery(function($) {
+			//设置当前页面的菜单高亮显示 开始
+			var nownav = "ul li a[href*=goodsdown]";
+			var parentattr = $(nownav).parent().parent().attr("class");
+			$(nownav).parent().addClass('active');
+			if (parentattr == 'submenu') {
+				$(nownav).parent().parent().parent().addClass('active open');
+			};
+			//设置当前页面的菜单高亮显示 结束
+			$('.class-input-file-2').ace_file_input({
+				no_file:'选择图片 ...',
+				btn_choose:'上传',
+				btn_change:'修改',
+				droppable:false,
+				onchange:null,
+				thumbnail:false 
+			});				
+		
+			//文件上传
+			$('#id-file-format').removeAttr('checked').on('change', function() {
+				var before_change
+				var btn_choose
+				var no_icon
+				if(this.checked) {
+					btn_choose = "Drop images here or click to choose";
+					no_icon = "icon-picture";
+					before_change = function(files, dropped) {
+						var allowed_files = [];
+						for(var i = 0 ; i < files.length; i++) {
+							var file = files[i];
+							if(typeof file === "string") {									
+								if(! (/\.(jpe?g|png|gif|bmp)$/i).test(file) ) return false;
+							}
+							else {
+								var type = $.trim(file.type);
+								if( ( type.length > 0 && ! (/^image\/(jpe?g|png|gif|bmp)$/i).test(type) )
+										|| ( type.length == 0 && ! (/\.(jpe?g|png|gif|bmp)$/i).test(file.name) )
+									) continue;
+							}								
+							allowed_files.push(file);
+						}
+						if(allowed_files.length == 0) return false;
+		
+						return allowed_files;
+					}
+				}
+				else {
+					btn_choose = "Drop files here or click to choose";
+					no_icon = "icon-cloud-upload";
+					before_change = function(files, dropped) {
+						return files;
+					}
+				}
+				var file_input = $('#id-input-file-3');
+				file_input.ace_file_input('update_settings', {'before_change':before_change, 'btn_choose': btn_choose, 'no_icon':no_icon})
+				file_input.ace_file_input('reset_input');
+			});
+			$('.date-picker').datepicker({autoclose:true}).prev().on(ace.click_event, function(){
+				$(this).next().focus();
+			});
+		});
+	</script>
+	<!-- 加载配置文件 2-->
+	<script type="text/javascript" src="__PUBLIC__/admin/js/ueditor/ueditor.config.js"></script>
+	<!-- 加载编辑器源码文件3 -->
+	<script type="text/javascript" src="__PUBLIC__/admin/js/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript">
+	//初始化编辑器，设定显示的按钮
+	UE.getEditor('content',{initialFrameHeight:330,initialFrameWidth:650,toolbars:[['bold', 'insertimage', 'emotion','date','undo','redo','paragraph','fontfamily','forecolor','justify','lineheight','cleardoc']]});
+	UE.getEditor('content1',{initialFrameHeight:330,initialFrameWidth:650,toolbars:[['bold', 'insertimage', 'emotion','date','undo','redo','paragraph','fontfamily','forecolor','justify','lineheight','cleardoc']]});
+	</script>
+</block>
+

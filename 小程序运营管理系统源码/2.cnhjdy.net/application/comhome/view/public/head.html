@@ -1,0 +1,52 @@
+
+<link rel="stylesheet" type="text/css" href="/com/css/head_foot.css">
+
+<div class="navbox">
+
+			<div class="nav clearfix main3">
+
+				<a href="/"><img class="nav_left block fl" src="{$sbase.logo}" style="width:331px;height:74px"/></a>
+
+				<div class="nav_right fr">
+
+					<ul class="clearfix">
+
+						<li style="margin-left: 0">
+
+							<a href="/">首页</a>
+
+						</li>
+
+				       	<li class="{if $page==1}hover{/if}">
+
+						  <a href="{:Url('Functionshow/index')}" title="功能展示">功能展示</a></li>
+
+						<li class="{if $page==2}hover{/if}">
+
+						  <a href="{:Url('News/index')}" title="最新动态">最新动态</a></li>
+
+						<li class="{if $page==3}hover{/if}">
+
+						  <a href="{:Url('Cases/index')}" title="小程序案例">小程序案例</a></li>
+
+						<li class="{if $page==4}hover{/if}">
+
+						  <a href="{:Url('Solution/index')}" title="解决方案">解决方案</a></li>
+
+						<li class="{if $page==5}hover{/if}">
+
+						  <a href="{:Url('About/index')}" title="关于我们">关于我们</a></li>
+
+						<li class="top_landing">
+
+							<a href="{:Url('Index/login/index')}">管理登陆</a>
+
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div> 
+
+		</div>

@@ -1,0 +1,386 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navOrder" class="navOrder1">
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		限时秒杀订单管理--{$applet.name}
+	</li>
+</ul>
+
+<style type="text/css">
+	.shuk{
+		outline: none;
+		border: 1px solid #dedede;
+		width: 300px;
+	}
+	.cesd{
+		height: 28px;
+		line-height: 28px;
+	    width: 28px;
+	    display: inline-block;
+	    vertical-align: top;
+	    cursor: pointer;
+	    border:1px solid #dedede;
+	    padding: 0 10px;
+	}
+	.zzcc{
+        position: fixed;
+        top: 0; 
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.4;
+        z-index: 100000;
+
+    }
+	.bbdd{
+        position: fixed;
+        z-index: 100001;
+        background-color: #ffffff;
+        width: 400px;
+        height: 220px;
+        top: 50%;
+        left: 50%;
+        margin-top: -200px;
+        margin-left: -110px;
+        padding: 10px;
+        border:1px solid #e7e7e7;
+    }
+    .ddhh{
+        line-height: 30px;
+        position: relative;
+    }
+    .ddxx{
+        position: absolute;
+        right: 0;
+        top:0;
+        cursor:pointer
+    }
+
+
+</style>
+
+<script type="text/javascript">
+    function shoscc(id){
+        $("#orderfh").val(id);
+        $(".loader").show();
+        $(".la-ball-clip-rotate").hide();
+        //$('body').append('<div class="zzcc" id="zzcc" style="display:none"></div>');
+        $("#bbdd").show();
+    }
+    function ycc(){
+        $(".loader").hide();
+        $("#bbdd").hide();
+    }
+    function tijiao(){
+        var kuaidihao = $("#kuaidihao").val();
+        if(kuaidihao == 0){
+            alert("快递单号不能为空！");
+            return false;
+        }
+        var order = $("#orderfh").val();
+        var kuaidi = $("#kuaidi").val();
+
+        location.href = "{:Url('Orderlist/order')}?appletid=<?php echo $_GET['appletid']?>&op=fahuo&orderid="+order+"&kuaidi="+kuaidi+"&kuaidihao="+kuaidihao;
+
+    }
+    function hexiao(id){
+    	var orderid = id; 
+    	location.href = "{:Url('Orderlist/order')}?appletid=<?php echo $_GET['appletid']?>&op=hx&orderid="+orderid;
+
+    }
+
+    function quxiao(id){
+    	var orderid = id;
+    	if(confirm('确定允许客户取消该笔订单？退款将直接到账?')){
+			location.href = "{:Url('Orderlist/order')}?appletid=<?php echo $_GET['appletid']?>&op=confirmtk&orderid="+orderid;
+		}else{
+			return false;
+		}
+    }
+
+</script>
+
+<div class="row-fluid">
+	<div class="span12">
+		<div class="portlet box ">
+			<div class="portlet-body">
+				   <div class="bbdd" id="bbdd" style="display:none">
+                        <div class="ddhh">
+                            <span>请填写快递单号</span>
+                            <div class="ddxx" onclick="ycc()">[关闭]</div>
+                        </div>
+                   
+                        <form class="form-horizontal" action="" method="post">
+                            <input type="hidden" id="orderfh" name="orderfh">
+                            <table class="table we7-table  vertical-middle" style="border:0">
+
+                                <tr>
+                                    <td style="width:110px">快递：</td>
+                                    <td >
+                                        <select style="width:200px" id="kuaidi" name="kuaidi">
+                                            <option value="圆通">圆通</option>
+                                            <option value="申通">申通</option>
+                                            <option value="韵达">韵达</option>
+                                            <option value="中通">中通</option>
+                                            <option value="顺丰">顺丰</option>
+                                            <option value="天天">天天</option>
+                                            <option value="EMS">EMS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:95px">快递号：</td>
+                                    <td >
+                                        <input type="text" id="kuaidihao" name="kuaidihao" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:95px"></td>
+                                    <td >
+                                        <a onclick="tijiao()" class="btn btn-success btn-sm">提交</a>
+                                    </td>
+                                </tr>
+                           
+                            </table>
+                        </form>
+                </div>
+				
+				<div class="input-box" style="margin-bottom: 10px; position: relative; text-align:center; margin-top:20px; margin-bottom:40px; ">
+
+					请输入订单号：
+
+					<input type="text" placeholder="请输入搜索订单号" class="shuk" id="getorder">
+					
+					<div class="cesd" onclick="search()">
+						搜索
+					</div> 
+
+				</div>
+				<div class="btn-group" style="float:right">
+					<a href="{:Url('Orderlist/orderdown')}?appletid=<?php echo $_GET['appletid']?>&is_more=0">
+						<button id="sample_editable_1_new" class="btn green">
+						导出订单列表 
+						</button>
+					</a>
+
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th>商品</th>
+				            <th>单价/数量</th>
+				            <th>营销活动</th>     <!--优惠券-->
+				            <th>运费</th>
+				            <th>实付金额</th>
+				            <th>联系方式</th>
+				            <th>状态</th>
+				            
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $neworder}
+						{foreach $neworder['data'] as $item}
+							<tr>
+								<td colspan="4">订单编号: {$item.order_id}</td>
+								<td colspan="3" style="text-align:right">下单时间：{$item.creattime}</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="{$item.thumb}" onerror="this.src='/image/noimage.jpg'" style="width:50px; height:50px; ">      {$item.product}
+								</td>
+								<td>
+									{if $item.is_more==0}
+				                    {$item.price}  x  {$item.num}
+									{/if}
+
+									{if $item.is_more==1}
+				                    	{foreach $item['order_duo'] as $ikm}
+				                    		{if $ikm[4] != 0}
+				                    			{$ikm[0]} : {$ikm[1]}  X {$ikm[4]} </br>
+				                    		{/if}
+				                    	{/foreach}
+									{/if}
+
+				                </td>
+								<td>
+									{if $item['yhInfo_msg']['yhInfo_mj']['msg']}
+							        <span class="textbg textbg2">减</span>{$item['yhInfo_msg']['yhInfo_mj']['msg']} - ￥{$item['yhInfo_msg']['yhInfo_mj']['money']}<br>
+							        {/if}
+							        {if $item['yhInfo_msg']['yhInfo_yhq']['msg'] != "未使用优惠券"}
+							        <span class="textbg">券</span>{$item['yhInfo_msg']['yhInfo_yhq']['msg']} - ￥{$item['yhInfo_msg']['yhInfo_yhq']['money']}<br>
+							        {/if}
+							        {if $item['yhInfo_msg']['yhInfo_score']['money'] > 0}
+							        <span class="textbg" style="background: #00c4ff">分</span>{$item['yhInfo_msg']['yhInfo_score']['msg']} - ￥{$item['yhInfo_msg']['yhInfo_score']['money']}
+							        {/if}
+								</td>
+								<td style="width:100px;">
+									￥{$item.yhInfo_msg.yhInfo_yunfei}
+								</td>
+								<td>
+									{$item.true_price}
+								</td>
+								<td>
+									{if $item.addressinfo}
+										{$item.addressinfo.name}<br/>
+										{$item.addressinfo.mobile}<br/>
+										{$item.addressinfo.address} {$item.addressinfo.more_address}<br/>
+									{/if}
+								</td>
+								
+								<td style="width:250px;">
+									<!-- {if $item.flag==-2}
+									<font color="red">无效订单</font>
+									{elseif $item.flag==-1}
+									<font color="#f0ad4e">已关闭</font>
+									{elseif $item.flag==0}
+									未支付
+									{elseif $item.flag==1}
+									<form action="{:Url('Orderlist/hexiao')}?appletid=<?php echo $_GET['appletid']?>&order={$item.order_id}"  method="post" enctype="multipart/form-data" onsubmit = "return heixiao()">
+										<button style="background-color: #ca4242;border: 1px solid #d43f3a;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;">立即核销</button>
+									</form>
+									{elseif $item.flag==2}
+									<font color="#5cb85c">已完成</font>
+									{elseif $item.flag==3}
+									<form action="{:Url('Orderlist/queren')}?appletid=<?php echo $_GET['appletid']?>&order={$item.order_id}"  method="post" enctype="multipart/form-data" onsubmit = "return queren()">
+										<button style="background-color: green;border: 1px solid green;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;">确认订单</button>
+									</form>
+									{/if} -->
+									{if $item['flag'] ==0}<span class="btn btn-default btn-sm">未支付</span>{/if}
+										{if $item['flag'] ==1 && $item['nav'] == 1}
+							<button class="btn green" onclick="shoscc({$item['id']})"  >立即发货</button><!-- href="{php echo $this->createWebUrl('Orderset', array('opt' => 'hx','op'=>'display','cateid'=>$_GPC['cateid'],'chid'=>$_GPC['chid'],'order'=>$item['id']))}" -->
+							
+							<a style="background-color: #ca4242;border: 1px solid #d43f3a;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;" onclick="quxiao({$item['id']})">取消订单</a>
+				                        {/if}
+				                        {if $item['flag'] ==1 && $item['nav'] == 2}
+							<button class="btn green" onclick="hexiao({$item['id']})"  >立即核销</button>
+							<a style="background-color: #ca4242;border: 1px solid #d43f3a; color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5; " onclick="quxiao({$item['id']})">取消订单</a>
+				                        {/if}
+				                        {if $item['flag'] ==2} 
+							<font color="#5cb85c">已完成</font>
+											
+										{/if}
+				                        {if $item['flag'] ==-1} 
+							<font color="#f0ad4e">已关闭</font>{/if}
+				                        {if $item['flag'] ==-2} 
+							<span class="btn btn-warning btn-sm">订单无效</span>{/if}
+										{if $item['flag'] == 4}
+							<span class="btn btn-default btn-sm">待收货</span>
+											{if $item['kuaidihao']}
+												<br>{$item['kuaidi']}
+												<br>{$item['kuaidihao']}
+											{/if}{/if}
+										{if $item['flag'] == 5}
+							<span class="btn btn-warning btn-sm">已取消</span>{/if}
+										{if $item['flag'] == 6}
+					                <button class="btn green" onclick="quxiao({$item['id']})"  >同意取消</button>
+					                <a style="background-color: #ca4242;border: 1px solid #d43f3a;color: #fff;border-radius: 3px;font-size: 12px;padding: 5px 10px;line-height: 1.5;" onclick="quxiao({$item['id']})" onclick="return confirm('确定拒绝该客户的退款请求？'); return false;" href="{php echo $this->createWebUrl('Orderset', array('opt' => 'refuseqx','op'=>'display','cateid'=>$_GPC['cateid'],'chid'=>$_GPC['chid'],'orderid'=>$item['id']))}" >拒绝取消</a>
+					            		{/if}
+					            		{if $item['flag'] ==8} <span class="btn btn-default btn-sm">已退货</span> {/if}
+					            		{if $item['flag'] ==9} <span class="btn btn-default btn-sm">已拒绝退货</span> {/if}
+					            	<br>
+									{if $item['flag']==1 || $item['flag']==2}
+						             {$item['custime']}
+						            {/if}
+						            {if $item['flag']==5}
+						            	{if $item['qxbeizhu']}
+						             		取消原因：{$item['qxbeizhu']}
+						            	{/if}
+						            {/if}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8" style="height:30px">
+									备注：   {$item.beizhu} {if $item['beizhu_val'] != 'undefined'}{$item['beizhu_val']}{/if}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8" style="height:30px"></td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$order->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	
+function heixiao(){
+
+	if(confirm('你确定要核销该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function queren(){
+
+	if(confirm('你确定要确认该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function search(){
+
+	var order = $("#getorder").val();
+	if(!order){
+		alert("请输入订单号");
+		return;
+	}
+	if(isNaN(order)){
+		alert("请输入正确的订单号格式");
+		return;
+	}
+
+	location.href = "{:Url('Orderlist/index')}?appletid=<?php echo $_GET['appletid']?>&order="+order;
+
+}
+
+</script>
+
+
+
+
+
+
+{include file="public/foot_more" /}

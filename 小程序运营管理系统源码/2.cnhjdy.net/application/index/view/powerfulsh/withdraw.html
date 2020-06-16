@@ -1,0 +1,112 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+		margin: 0 !important;
+		display: inline-block !important;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel6-5">
+
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		提现记录--{$applet.name}
+	</li>
+</ul>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+					<tr>
+
+						<th style="width: 50px;">ID</th>
+						<th style="width: 50px;">商户名</th>
+						<th style="width: 100px;">申请金额</th>
+						<th style="width: 50px;">申请时间</th>
+						<th style="width: 100px;">提现方式</th>
+						<th style="width: 100px;">支付到</th>
+						<th style="width: 100px;">备注</th>
+						<th style="width: 100px;">状态</th>
+					</tr>
+
+					</thead>
+
+					<tbody>
+
+					{if $records}
+						{foreach $records as $item}
+							<tr>
+								<td>{$item.id}</td>
+								<td>{$item.name}</td>
+								<td>{$item.money}</td>
+								<td>{"Y-m-d H:i:s",$item.createtime}</td>
+								<td>
+									{if $item.type == 1}
+									微信
+									{/if}
+									{if $item.type == 2}
+									支付宝
+									{/if}
+									{if $item.type == 3}
+									银行卡
+									{/if}
+								</td>
+								<td>{item.account}</td>
+								<td>{item.beizhu}</td>
+								<td>
+									
+									{if $item.flag == 1}
+									已通过
+									{/if}
+									{if $item.flag != 1}
+									已拒绝
+									{/if}
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+
+					</tbody>
+
+				</table>
+				<!-- 分页 -->
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+	function tongguo(id,val){
+		if(window.confirm('确定要审核该提现记录嘛？')){
+			location.href = "{:Url('Powerfulsh/withdrawpass')}?appletid=<?php echo $_GET['appletid']?>&op=shenhe&id="+id+"&val="+val;
+
+		}else{
+			return false;
+		}
+	}
+</script>
+
+
+
+{include file="public/foot_more" /}

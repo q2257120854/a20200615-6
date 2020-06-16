@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>超市</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="icon" type="image/png" href="/theme/default/images/favicon.png">
+		<link href="__PUBLIC__/home/css/amazeui.min.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+		<script src="__PUBLIC__/home/js/jquery-1.10.2.min.js"></script>
+		<script src="__PUBLIC__/home/js/time.js"></script>
+		<script src="__PUBLIC__/home/js/search.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/home/js/lazyload.js"></script>
+		<style>
+			.shop-list-mid .tit a{color: #909090;
+    font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;}
+		</style>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default sq-head ">
+			<div class="am-header-left am-header-nav">
+				<a href="javascript:history.back()" class="">
+					<i class="am-icon-chevron-left"></i>
+				</a>
+			</div>
+		    <div class="cate-search">
+		    	<input type="text" class="cate-input" placeholder="请输入您要的搜索的产品关键词" />
+		    	<input type="button" class="cate-btn" />
+	        </div>
+	    </header>
+	    <div style="height: 49px;"></div>
+	    <ul class="list-nav">
+	    	<li class="current"><a href="">综合</a></li>
+	    	<li><a href="">销量</a></li>
+	    	<li><a href=""><i class="list-price">价格</i></li>
+	    	<li><a href="">新品</a></li>
+	    </ul>
+	    <div class="content-list">
+	    	<div class="list-left">
+				<foreach name="classdata" item="vo">
+	    		<li class="current"><a href="/index.php/Home/Search/index/cid/{$vo['cid']}">{$vo['cname']}</a></li>
+				</foreach>
+	    	</div>
+	    	<div class="list-right">
+	    		<ul class="list-pro">
+				<volist name="goods" id="goodsvo">
+	    	<li>
+	    		<a href="__APP__/Home/Goods/index/gid/{$goodsvo['gid']}"><img src="__PUBLIC__/Goodsuploads/{$goodsvo['gpic']}" class="list-pic" /></a>
+	    		<div class="shop-list-mid" style="width: 65%;">
+                	<div class="tit"><a href="__APP__/Home/Goods/index/gid/{$goodsvo['gid']}">{$goodsvo['gname']}</a></div>
+                	<div class="am-gallery-desc">MHC：{$goodsvo['goldprice']}</div>
+                	<p>销量：{$goodsvo['gsellnums']}件</p>
+                </div>
+
+                <a href="__APP__/Home/Goods/index/gid/{$goodsvo['gid']}" class="list-cart"><img src="__PUBLIC__/home/images/xiang.png" width="30"/></a>
+	    	</li>
+	    	 </volist>
+	    </ul>
+	    	</div>
+	    </div>
+	    
+	    <!--底部-->
+ <div style="height: 55px;"></div>
+ 
+ 
+ 
+ 
+ 
+ 
+<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+<script src="__PUBLIC__/home/js/amazeui.min.js"></script>
+<script>
+//购物数量加减
+$(function(){
+		$('.increase').click(function(){
+			var self = $(this);
+			var current_num = parseInt(self.siblings('input').val());
+			current_num += 1;
+			if(current_num > 0){
+				self.siblings(".decrease").fadeIn();
+				self.siblings(".text_box").fadeIn();
+			}
+			self.siblings('input').val(current_num);
+			update_item(self.siblings('input').data('item-id'));
+		})		
+		$('.decrease').click(function(){
+			var self = $(this);
+			var current_num = parseInt(self.siblings('input').val());
+			if(current_num > 0){
+				current_num -= 1;
+                if(current_num < 1){
+	                self.fadeOut();
+					self.siblings(".text_box").fadeOut();
+                }
+				self.siblings('input').val(current_num);
+				update_item(self.siblings('input').data('item-id'));
+			}
+		})
+	})
+
+</script>
+	</body>
+</html>

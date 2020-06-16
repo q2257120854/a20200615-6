@@ -1,0 +1,49 @@
+<header class="header">
+    <div class="container clearfix">
+        <div class="logo"><a href="{:url('index/index/index')}" title="{$site_config['site_title']}">{$site_config['site_title']}</a></div>
+        <ul class="nav-main">
+            <li id="menu-item-650" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-650"><a href="{:url('index/index/index')}">首页</a></li>
+            
+  {volist name="cmsnav[1]" id="vo" }
+            <li id="menu-item-651" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-651">         
+            <a href="{$vo.link|getnavlink=$vo.sid}">{$vo.name}<i class="dripicons dripicons-chevron-down"></i></a>
+             {/volist}
+
+                <ul class="sub-menu">
+             
+                    {volist name="vo.son" id="voo" }
+                 {eq name="vo.pid" value="1"}
+                 <li id="menu-item-652" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-652"><a href="{$voo.link|getnavlink=$voo.sid}">{$voo.name}</a></li>
+              
+                    {/eq}{/volist}
+
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav-right">
+            <li class="nav-vip">
+                <a href="#">VIP特权</a>
+            </li>
+            <li id="upload123" class="nav-tougao">
+                <a href="/artadd.html" title="投稿"><i class="dripicons dripicons-upload"></i></a>
+            </li>
+            <li class="nav-search">
+                <a href="javascript:;" class="search-loader" title="搜索"><i class="dripicons dripicons-search"></i></a>
+            </li>
+            {if condition="$Think.session.userid neq ''"}
+            <li><a href="{:url('user/index/index')}"><i class="dripicons dripicons-user"></i> <span>个人中心</span></a></li>
+            {else /}
+            <li class="nav-login"><a href="/logining.html" class="signin-loader"><i class="dripicons dripicons-user"></i> <span>登录</span></a></li>
+            {/if}
+            <li class="nav-button"><a href="javascript:;" class="nav-loader"><i class="dripicons dripicons-dots-3"></i></a></li>
+        </ul>
+    </div>
+</header>
+<div class="search-wrap">
+    <div class="container">
+        <form action="{:url('index/index/search')}" class="search-form">
+            <input required="required" name="ks" value="<?php echo input('ks');?>" autocomplete="off" class="search-input" placeholder="输入关键字回车" type="text">
+            <i class="dripicons dripicons-cross"></i>
+        </form>
+    </div>
+</div>

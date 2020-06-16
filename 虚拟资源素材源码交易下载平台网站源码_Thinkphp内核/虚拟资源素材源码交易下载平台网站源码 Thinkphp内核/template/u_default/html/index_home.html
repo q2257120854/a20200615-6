@@ -1,0 +1,164 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$m.username}的主页 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/tp5page.css">
+<div class="fly-home" style="background-image: url();">
+    <img src="{$m.userhead|getheadurl}" alt="{$m.username}">
+    <h1>
+        {$m.username} {if condition="$m.sex eq 1"} <i class="iconfont icon-nan"></i>{else /} <i class="iconfont icon-nv"></i>{/if}
+    </h1>
+    <p class="fly-home-info">
+        <i class="iconfont icon-zuichun" title="积分"></i><span style="color: #FF7200;">{$m.point}</span>
+        <i class="iconfont icon-shijian"></i><span>{$m.regtime|friendlyDate} 加入</span>
+        <i class="iconfont icon-chengshi"></i><span>{if condition="$m.userhome neq ''"}{$m.userhome}{else /}中国{/if}</span>
+    </p>
+    <p class="fly-home-sign">{if condition="$m.description neq ''"}（{$m.description}）{else /}（这个人懒得留下签名）{/if}</p>
+</div>
+<div class="layui-container">
+
+    <div class="layui-tab layui-tab-brief">
+
+
+        <ul class="layui-tab-title">
+            <li style="padding:0 20px;" {if $type eq 'art'||$type eq ''}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'art','id'=>$id))}"> {$self?"我":"Ta"}发表的文章 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'post'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'post','id'=>$id))}"> {$self?"我":"Ta"}发表的帖子 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'reply'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'reply','id'=>$id))}"> {$self?"我":"Ta"}回复的帖子 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'zan'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'zan','id'=>$id))}"> {$self?"我":"Ta"}点赞的帖子 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'guanzhu'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'guanzhu','id'=>$id))}"> {$self?"我":"Ta"}关注的用户 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'shang'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'shang','id'=>$id))}"> {$self?"我":"Ta"}被打赏记录 </a></li>
+            <li style="padding:0 20px;" {if $type eq 'shangother'}class="layui-this layui-bg-gray" {/if}><a href="{:url('user/index/home',array('type'=>'shangother','id'=>$id))}"> {$self?"我":"Ta"}的打赏记录 </a></li>
+        </ul>
+
+
+        <div class="fly-panel leifeng-rank" style="padding: 20px;min-height:100px">
+            {if $type eq 'art'||$type eq ''}
+            <ul class="jie-row">
+                {volist name="tptcs" id="vo"}
+                <li>
+                    <a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" class="jie-title">{$vo.title}</a>
+                    <i></i>
+                    <em>{$vo.time|friendlyDate}</em>
+                </li>
+                {/volist}
+            </ul>
+            {elseif $type eq 'post'||$type eq ''}
+            <ul class="jie-row">
+                {volist name="tptcs" id="vo"}
+                <li>
+                    <a href="{:url('bbs/index/thread',array('id'=>$vo.id))}" class="jie-title">{$vo.title}</a>
+                    <i></i>
+                    <em>{$vo.time|friendlyDate}</em>
+                </li>
+                {/volist}
+            </ul>
+            {elseif $type eq 'reply' /}
+            <ul class="home-jieda">
+                {volist name="tptcs" id="vo"}
+                <li>
+                    <p>
+                        <span>{$vo.time|friendlyDate}</span> 在
+                        <a href="{:url('bbs/index/thread',array('id'=>$vo.fid))}">{$vo.title}</a>中回复：
+                    </p>
+                    <div class="home-dacontent">
+                        {$vo['content']|clearcontent|msubstr=0,50}...
+
+                    </div>
+
+                </li>
+                {/volist}
+            </ul>
+            {elseif $type eq 'zan' /}
+            <ul class="jie-row">
+                {volist name="tptcs" id="vo"}
+                <li>
+                    <a href="{:url('bbs/index/thread',array('id'=>$vo.fid))}" class="jie-title">{$vo.title}</a>
+                    <i></i> {if $self} <span data-id="{$vo.fid}" data-type="zan" style="background:#999;padding: 0 5px;cursor:pointer;" class="quxiao"><a class="jie-user" style="color:#fff;padding:0px">取消赞</a></span>{/if}
+                    <em><a href="{:url('user/index/home',array('id'=>$vo['id']))}">{$vo.username}</a>{$vo.time|friendlyDate}</em>
+                </li>
+                {/volist}
+            </ul>
+
+
+            {elseif $type eq 'guanzhu' /}
+
+            <dl class="fly-rank">
+
+                {volist name="tptcs" id="vo"}
+                <dd style="text-align:center">
+                    <a title="{$vo.collect}粉丝" href="{:url('user/index/home',array('id'=>$vo['id']))}">
+                        <img src="{$vo.userhead|getheadurl}" style="120px">
+                        <cite>{$vo.username}</cite>
+                    </a>
+                    {if $self}
+                    <span data-id="{$vo.id}" data-type="guanzhu" class="layui-btn layui-btn-xs layui-bg-gray quxiao">取消关注</span> {else /}
+                    <i style="display:block;text-align: center;">{$vo.collect}粉丝</i> {/if}
+                </dd>
+                {/volist}
+            </dl>
+
+            {elseif $type eq 'shang' /}
+            <ul class="jie-row">
+                {volist name="tptcs" id="vo"}
+                <li>
+
+                    <a href="{:url('bbs/index/thread',array('id'=>$vo.id))}" class="home-jieda">{$vo.username} 在<span style="color:#4F99CF;background:#FFF">{$vo.title}</span></a>
+                    <i>打赏给{$self?"我":"Ta"} {$vo.score|abs} {:JF_NAME}</i>
+                    <em>{$vo.add_time|friendlyDate}</em>
+                </li>
+                {/volist}
+            </ul>
+            {else /}
+            <ul class="jie-row">
+                {volist name="tptcs" id="vo"}
+                <li>
+
+                    <a href="{:url('bbs/index/thread',array('id'=>$vo.id))}" class="home-jieda">{$self?'我':'Ta'} 在<span style="color:#4F99CF;background:#FFF">{$vo.title}</span></a>
+                    <i>打赏给发帖者 {$vo.username} {$vo.score|abs} {:JF_NAME}</i>
+                    <em>{$vo.add_time|friendlyDate}</em>
+                </li>
+                {/volist}
+            </ul>
+            {/if}
+
+            <div style="text-align: center;">{$tptcs->render()}</div>
+
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+        jq('.quxiao').click(function() {
+            var obj = jq(this);
+            var idnum = obj.data('id');
+            var zan_collect = obj.data('type');
+            var type = 1;
+            if (zan_collect == 'guanzhu') {
+                zan_collect = 'collect';
+                type = 0;
+            }
+            jq.post("{:url('index/api/zan_collect')}", {
+                'zan_collect': zan_collect,
+                'id': idnum,
+                'type': type
+            }, function(data) {
+                if (data.code == 200) {
+                    layer.msg('操作成功');
+                    obj.parent().remove();
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        });
+    });
+</script>
+{/block}

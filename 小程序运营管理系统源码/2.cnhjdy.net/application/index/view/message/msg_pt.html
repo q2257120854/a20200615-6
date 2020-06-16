@@ -1,0 +1,172 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+		box-sizing: border-box;
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navSystem"  class="navSystem8-5">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			拼团通知设置--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	<div class="row-fluid">
+
+
+
+		<div class="span12">
+
+
+
+			<div class="portlet box ">
+
+
+
+				<div class="portlet-body">
+	
+					<form action="{:Url('Message/save_pt')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+<!-- 
+
+						<div class="control-group chongdingy">
+
+
+
+							<label class="control-label chongdingywz">消息设置</label>
+
+
+
+						</div> -->
+						<div class="control-group chongdingy" style="background-color:#fcf8e3; margin-bottom:20px !important">
+
+							<label class="chongdingywz" style="background-color:#fcf8e3; color:#8a6d3b;">模板消息相关设置，操作步骤，点击链接<a href="{:Url('message/help')}?appletid=<?php echo $_GET['appletid']?>"  target="_blank">[模板消息设置操作步骤]</a>查看</label>
+
+
+						</div>
+						<div class="control-group chongdingy" style="background-color:#fcf8e3; margin-bottom:20px !important">
+
+
+
+							<label class="control-label chongdingywz" style="background-color:#fcf8e3; color:#8a6d3b;width:100%">注：如不需要发送模板消息的请留空。</label>
+
+
+
+						</div>
+
+						
+						<div class="control-group">
+
+
+
+							<label class="control-label">拼团通知模板消息id</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="pay_id" type="text" class="span4 m-wrap" value="{if $base}{$base.mid}{/if}"  style="height: 35px !important;" />
+
+
+
+							</div>
+
+
+
+						</div>
+						<div class="control-group">
+
+
+
+							<label class="control-label">模板消息跳转页面路径</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="url" type="text" class="span4 m-wrap" value="{if $base}{$base.url}{/if}"  style="height: 35px !important;" />
+
+								<span style="color:#999999; line-height:40px; margin-left:20px;">例：sudu8_page_plugin_pt/orderlist/orderlist 跳转拼团订单页，可带参数</span>
+
+							</div>
+
+
+
+						</div>
+						<div class="form-actions">
+
+							<button type="submit" class="btn green">确定</button>
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{include file="public/foot_more" /}

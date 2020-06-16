@@ -1,0 +1,140 @@
+{extend name="base" /} {block name="body"}
+<link rel="stylesheet" href="__ADMIN__/css/template.css">
+<div class="admin-main">
+    <div class="layui-field-box layui-form">
+
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">管理模板</li>
+                <li><a href="{:url('system/temponline')}">在线模板</a></li>
+            </ul>
+        </div>
+
+        <div id="theme" style="padding:0 20px">
+            <div class="enable">
+                <h2>当前启用的模板</h2>
+
+                <dl>
+                    <p><img src="__ROOT__{$cms_tpl.image}"></p>
+                    <dt>{$cms_tpl.name}</dt>
+                    <dd>版本：{$cms_tpl.version}</dd>
+                    <dd>作者：<a href="http://www.laysns.com/home/{$cms_tpl.userid|default=47}.html" target="_blank">{$cms_tpl.author}</a></dd>
+                    <dd>简介：{$cms_tpl.description}</dd>
+                </dl>
+
+                <dl>
+                    <p><img src="__ROOT__{$bbs_tpl.image}"></p>
+                    <dt>{$bbs_tpl.name}</dt>
+                    <dd>版本：{$bbs_tpl.version}</dd>
+                    <dd>作者：<a href="http://www.laysns.com/home/{$bbs_tpl.userid|default=47}.html" target="_blank">{$bbs_tpl.author}</a></dd>
+                    <dd>简介：{$bbs_tpl.description}</dd>
+                </dl>
+                <dl>
+                    <p><img src="__ROOT__{$user_tpl.image}"></p>
+                    <dt>{$user_tpl.name}</dt>
+                    <dd>版本：{$user_tpl.version}</dd>
+                    <dd>作者：<a href="http://www.laysns.com/home/{$user_tpl.userid|default=47}.html" target="_blank">{$user_tpl.author}</a></dd>
+                    <dd>简介：{$user_tpl.description}</dd>
+                </dl>
+
+            </div>
+
+            <div class="themeList">
+                <h2>可用模板</h2>
+                {foreach name="theme_list" item="vo"}
+                <dl>
+                    <p>
+                        <a target="_blank" href="http://www.laysns.com/plinfo/{$vo.pid}.html"><img src="__ROOT__{$vo.image}"></a>
+                    </p>
+                    <dt>{$vo.name} {$vo.version}</dt>
+                    <dd>作者：<a href="http://www.laysns.com/home/{$vo.userid|default=47}.html" target="_blank">{$vo.author}</a></dd>
+                    <dd class="btnList"><a href="javascript:;" data-url="{:url('system/deltpl',array('tpl_name'=>$vo.tpl_name))}" class="del">删除</a> <span><a href="javascript:;" data-url="{:url('system/usetpl',array('tpl_name'=>$vo.tpl_name))}" class='usetpl'>启用</a> <a target="_blank" href="http://www.laysns.com/plinfo/{$vo.pid}.html">预览模板</a></span></dd>
+                </dl>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['layer', 'jquery', 'form'], function() {
+        var layer = layui.layer,
+            form = layui.form,
+            jq = layui.jquery;
+
+        jq('.anzhuang').click(function() {
+            var url = jq(this).data('url');
+            jq.getJSON(url, function(data) {
+                if (data.code == 200) {
+
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+
+        });
+        jq('.usetpl').click(function() {
+
+            var url = jq(this).data('url');
+            jq.getJSON(url, function(data) {
+                if (data.code == 200) {
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+        });
+        jq('.del').click(function() {
+
+            var url = jq(this).data('url');
+            jq.getJSON(url, function(data) {
+                if (data.code == 200) {
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+
+        });
+
+
+
+    });
+</script>
+{/block}

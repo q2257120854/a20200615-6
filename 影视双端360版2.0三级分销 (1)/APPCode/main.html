@@ -1,0 +1,635 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>底部导航</title>  
+     <link rel="stylesheet" type="text/css" href="css/v2/api.css"/>
+    <style>
+        .aui-searchbar { background: transparent; }
+        .aui-searchbar input::-webkit-input-placeholder { color: #666; }
+        .aui-bar-light .aui-searchbar-input { background-color: #eee; }
+        .aui-bar-tab-label{margin-top: 1.4rem;}
+        .aui-bar-tab-item{background-size:1.2rem 1.2rem;background-repeat:no-repeat;background-position:50% 20%;}
+        .aui-bar-tab-item div{color: #808080}
+
+
+		#footer{background-color:#FFFFFF}
+        #footer .footer1{background-image: url(./image/app/shouye1.png);}
+        #footer .footer2{background-image: url(./image/app/dating1.png);}
+        #footer .footer3{background-image: url(./image/app/faxian1.png);}
+        #footer .footer4{background-image: url(./image/app/tuiguang1.png);}
+        #footer .footer5{background-image: url(./image/app/wode1.png);}
+        #footer .footer1.aui-active{background-image: url(./image/app/shouye.png);}
+        #footer .footer2.aui-active{background-image: url(./image/app/dating.png);}
+        #footer .footer3.aui-active{background-image: url(./image/app/faxian.png);}
+        #footer .footer4.aui-active{background-image: url(./image/app/tuiguang.png);}
+        #footer .footer5.aui-active{background-image: url(./image/app/wode.png);}
+		#header{background:#FFFFFF;} 
+
+		/*文字渐变动画*/
+        .masked{
+              text-align: center;
+              background-image: -webkit-linear-gradient(left, #ff5e3e, #c00e59 25%, #ff1679 50%, #c00e59 75%, #ff5e3e);
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              -webkit-background-size: 200% 100%;
+              -webkit-animation: masked-animation 5s infinite linear;
+            }
+          @-webkit-keyframes masked-animation {
+               0%{ background-position: 0 0;}
+               100% { background-position: -100% 0;}
+          }
+
+		  /*文字渐变动画*/
+        .maskedtitle{
+              text-align: center;
+              background-image: -webkit-linear-gradient(left, #ffe4b1, #ffffff 25%, #ffcb67 50%, #ffffff 75%, #ffe4b1);
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              -webkit-background-size: 200% 100%;
+              -webkit-animation: masked-animation 4s infinite linear;
+            }
+          @-webkit-keyframes masked-animation {
+               0%{ background-position: 0 0;}
+               100% { background-position: -100% 0;}
+          }
+    </style>
+    <script type="text/javascript">
+
+     localStorage.setItem('api_url',"http://baidu.com");
+	
+    </script>
+</head>
+<body>
+<div id="wrap" class="flex-wrap flex-vertical">
+
+<header class="aui-bar aui-bar-nav" id="header" >
+   <div class="aui-searchbar " tapmode onclick="search()" id="w" style="width:98%;">
+        <div class="aui-searchbar-input aui-border-radius" style="background-color:#F0F0F0;margin-top: 10px;">
+            <img src="image/v2/search.png">
+            <input  type="search" placeholder="输入关键字查找片源" readonly>
+        </div>
+		
+    </div>  
+	<div class="aui-hide" id="w">大厅</div>
+	<div class="aui-hide" id="w">发现</div>
+	<div class="aui-hide" id="w">推广</div>
+	<div class="aui-hide" id="w">我的</div>
+</header>
+
+
+     
+
+
+
+    <div id="main" class="flex-con">
+
+    </div>
+
+
+
+  <footer class="aui-bar aui-bar-tab" id="footer">
+    <div  id="q" tapmode="hover" onclick="randomSwitchBtn( this );" class="aui-bar-tab-item footer1 aui-active">
+        <div class="aui-bar-tab-label" style="color:#000;">首页</div>
+    </div>
+    <div  id="q"  tapmode="hover" onclick="randomSwitchBtn( this );" class="aui-bar-tab-item footer2" >
+        <div class="aui-bar-tab-label" style="color:#000;">大厅</div>
+    </div>
+   
+	<div  id="q"  tapmode="hover" onclick="randomSwitchBtn( this );" class="aui-bar-tab-item footer3" >
+        <div class="aui-bar-tab-label" style="color:#000;">发现</div>
+    </div>
+	<div  id="q"  tapmode="hover" onclick="randomSwitchBtn( this );" class="aui-bar-tab-item footer4" >
+        <div class="aui-bar-tab-label" style="color:#000;">推广</div>
+    </div>
+    <div   id="q" tapmode="hover" onclick="randomSwitchBtn( this );" class="aui-bar-tab-item footer5">
+        <div class="aui-bar-tab-label" style="color:#000;">我的</div>
+    </div>
+</footer>
+
+
+     
+</div>
+</body>
+</html>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/aui-tab.js" ></script>
+<script type="text/javascript" src="./script/common.js" ></script>
+<script type="text/javascript" src="./script/doT.js" ></script>
+<script type="text/javascript">
+      var api_url = localStorage.getItem('api_url');
+
+    apiready = function () {
+        $api.fixStatusBar( $api.dom('header') );
+api.setStatusBarStyle({
+            style: 'white',
+            color: '#000'
+        });
+		var header = $api.dom('header'); // 获取 header 标签元素
+        headerH = $api.fixStatusBar(header);
+		var footer = $api.byId('footer');
+		  footerH = $api.fixStatusBar(footer);
+		funIniGroup();
+
+		api.ajax({
+		url: api_url+'/App/App/tanchuang',
+		method: 'get',
+		},function(ret, err){
+			if (ret) {
+			  //渲染模板
+			 // alert( JSON.stringify(ret.msg['title']) );
+			 if(ret.msg['kai'] == 1 ){
+				showMessage(ret.msg['nei'],ret.msg['title']);
+			 }
+				
+				
+			}
+
+		});
+		
+		 api.ajax({
+			 url: api_url+'/App/Index/config.html',
+			  method: 'get'
+		  },function(ret, err){
+			  if (ret) {
+				localStorage.setItem('jx1',ret.jx1);
+				localStorage.setItem('jx2',ret.jx2);
+				localStorage.setItem('jx3',ret.jx3);
+				localStorage.setItem('jx4',ret.jx4);
+				localStorage.setItem('jx5',ret.jx5);
+				localStorage.setItem('kefu',ret.kefu);
+				localStorage.setItem('day',ret.day);
+                  localStorage.setItem('month',ret.month);
+                  localStorage.setItem('quarter',ret.quarter);
+                  localStorage.setItem('half',ret.half);
+				  localStorage.setItem('year',ret.year);
+				  localStorage.setItem('yongjiu',ret.yongjiu);
+				    localStorage.setItem('daili',ret.daili);
+			  } else {
+				api.toast({
+					msg: '请检查网络是否畅通'
+				});
+				}
+			});
+		   
+		
+		
+		
+		var user_id = localStorage.getItem('user_id');
+          if (user_id>1) {
+			//单点登录定时检测
+			var ddtimer = setInterval(function(){
+				Onepersonlogin();
+			},1000)	
+			function Onepersonlogin() {
+            api.ajax({
+                url: api_url+'/App/App/imei.html',
+                method: 'get',
+                data: {
+                    values: {
+                        uid: user_id
+                    }
+                }
+            },function(ret, err){
+                if (ret) {
+                    if (ret.msg.imei!=api.deviceId) {
+                      localStorage.setItem('user_id','');
+                      localStorage.setItem('user_name','');
+                      localStorage.setItem('viptime','');
+                      api.sendEvent({
+                        name: 'newLoingdata',
+                        extra: {
+                        }
+                      });
+                      var dialogBox = api.require('dialogBox');
+                      dialogBox.alert({
+                          tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  默认值：false
+                          texts: {
+                              content: '您已在其他设备登录',
+                          },
+                          styles:{
+                    bg: '#fff',            //（可选项）字符串类型；对话框整体背景配置，支持#、rgb、rgba、img；默认：#fff
+                    corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                    w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                    title:{                //（可选项）JSON对象；弹窗标题栏样式配置，不传则不显示标题区域
+                        marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                        icon: 'widget://image/app/dialogBoxTisi.jpg',          //（可选项）字符串类型；标题前面的图标路径，要求本地路径（widget://、fs://）；图片为正方形的，如：50*50、100*100，建议开发者传大小合适的图片以适配高分辨率手机屏幕，不传则不显示
+                        iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 不存在则此参数无效；默认：24
+                        titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                        titleColor: '#000' //（可选项）字符串类型；标题字体颜色，支持#、rgb、rgba；默认：#fff
+                    },
+                    content:{              //（可选项）JSON 对象；文本内容配置，若不传则不显示该区域
+                        marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
+                        marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
+                        color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 rgb、rgba、#；默认：#eee
+                        size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                    },
+
+                }
+                      });
+                      clearInterval(ddtimer); //清除定时器
+                      return;
+                    }
+                }else{
+				
+                }
+            });
+          }
+		}
+		
+		api.addEventListener({
+            name : 'keyback'
+        }, function(ret, err) {
+            api.toast({
+                msg : '再点一下退出应用',
+                duration : 2000,
+                location : 'bottom'
+            });
+            api.addEventListener({
+                name : 'keyback'
+            }, function(ret, err) {
+                api.closeWidget({
+                    silent : true
+                });
+            });
+                
+        });
+		
+		
+		
+		
+		
+		
+    }
+
+
+function showMessage(content,title,url){
+        var dialogBox = api.require('dialogBox');
+        var  te  = {
+            content: content,
+            title: title,
+            leftBtnTitle: '朕已阅',
+
+        }
+        var st = {
+            bg: '#d3cbcb',
+            w: 300,
+            title:{                //（可选项）JSON对象；弹窗标题栏样式配置，不传则不显示标题区域
+                marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                // icon: 'widget://image/ggtp.png',          //（可选项）字符串类型；标题前面的图标路径，要求本地路径（widget://、fs://）；图片为正方形的，如：50*50、100*100，建议开发者传大小合适的图片以适配高分辨率手机屏幕，不传则不显示
+                iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 不存在则此参数无效；默认：24
+                titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                titleColor: '#000' //（可选项）字符串类型；标题字体颜色，支持#、rgb、rgba；默认：#fff
+            },
+            content: {
+                color: '#000',
+                size: 16
+            },
+            left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                w: 150,            //（可选项）数字类型；左边按钮的宽；默认：130
+                h: 50,             //（可选项）数字类型；左边按钮的高；默认：35
+                corner: 15,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                bg: '#3b1c3d',        //（可选项）字符串类型；左边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+                color: '#fff',  //（可选项）字符串类型；左边按钮标题字体颜色，支持rgb，rgba、#；默认：'#007FFF'
+                size: 14           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+            },
+
+        }
+        // if(url!=undefined ){
+        if(false){
+            te.rightBtnTitle= '朕去看看';
+            st. right= {               //（可选项）JSON 对象；右边按钮样式配置，不传则不显示右边按钮
+                marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                bg: '#ff0103',        //（可选项）字符串类型；右边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+                color: '#fff',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+                size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+            };
+        }else{
+            st.left.w=240;
+        }
+        dialogBox.alert({
+            texts:te,
+            styles: st
+        }, function(ret) {
+            if (ret.eventType == 'left') {
+                var dialogBox = api.require('dialogBox');
+                dialogBox.close({
+                    dialogName: 'alert'
+                });
+            }else if (ret.eventType == 'right') {
+                //自己定的地址
+                if(url!=undefined){
+                    api.openWin({
+                        name: 'h5',
+                        url:url
+                    });
+                }
+                var dialogBox = api.require('dialogBox');
+                dialogBox.close({
+                    dialogName: 'alert'
+                });
+
+            }
+        });
+    }
+
+    function funIniGroup(){
+	var header_h = $api.offset(header).h;
+        var footer_h = $api.offset(footer).h;
+        var eHeaderLis = $api.domAll('header #w'),
+            frames = [];
+        for (var i = 0,len = eHeaderLis.length; i < len; i++) {
+                frames.push( {
+                    name: 'frame'+i,
+                    url: './html/frame'+i+'.html',
+                    bgColor : 'rgba(0,0,0,.2)',
+                    bounces:true
+                } )
+
+        }
+        api.openFrameGroup({
+            name: 'group',
+            scrollEnabled: false,
+            rect: {
+                x: 0,
+                y: $api.dom('header').offsetHeight,
+                w: api.winWidth,
+                h: api.frameHeight-header_h-footer_h+20
+            },
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
+
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+  function randomSwitchBtn( tag ) {
+        if( tag == $api.dom('#footer #q.aui-active') )return;
+        var eFootLis = $api.domAll('#footer #q'),
+            eHeaderLis = $api.domAll('header #w'),
+            index = 0;
+        for (var i = 0,len = eFootLis.length; i < len; i++) {
+            if( tag == eFootLis[i] ){
+                index = i;
+            }else{
+                $api.removeCls(eFootLis[i], 'aui-active');
+               $api.addCls(eHeaderLis[i], 'aui-hide');
+            }
+        }
+		if(index==0){
+			
+			fnOpenwodeFrame()
+			
+		}
+		if(index==1){
+			
+			index1();
+			index2();
+			index3();
+			index4();
+			index5();
+		}
+		if(index==2){
+			
+			index1();
+			index2();
+			index3();
+			index4();
+			index5();
+			
+		}
+		if(index==3){
+			
+			index1();
+			index2();
+			index3();
+			index4();
+			index5();
+			
+		}
+		if(index==4){
+			
+			index1();
+			index2();
+			index3();
+			index4();
+			index5();
+			
+		}
+		
+	//alert(index)
+        $api.addCls( eFootLis[index], 'aui-active');
+       $api.removeCls( eHeaderLis[index], 'aui-hide');
+        api.setFrameGroupIndex({
+            name: 'group',
+            index: index
+        });
+    }
+	//记录
+
+	function fnOpenwodeFrame() {
+        api.openFrame({
+            name: 'index1',
+            url: './html/index1.html',
+            rect: {
+                x: 0,
+               y: headerH+55,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+	
+	
+	function index1(){
+      api.setFrameAttr({
+          name: 'index1',
+          hidden: true
+      });
+    }
+	function index2(){
+      api.setFrameAttr({
+          name: 'index2',
+          hidden: true
+      });
+    }
+	
+	function index3(){
+      api.setFrameAttr({
+          name: 'index3',
+          hidden: true
+      });
+    }
+	function index4(){
+      api.setFrameAttr({
+          name: 'index4',
+          hidden: true
+      });
+    }
+	function index5(){
+      api.setFrameAttr({
+          name: 'index5',
+          hidden: true
+      });
+    }
+	
+	
+	
+	
+	
+	
+
+		 function search(){
+        var UISearchBar = api.require('UISearchBar');
+        UISearchBar.open({
+            placeholder: '搜索视频...',
+            showRecordBtn: false,
+            styles: {
+                navBar: { bgColor: '#484848' },
+                searchBox: { marginL: 20, width: api.winWidth-80, height: 40 },
+                cancel: { width: 30, marginR: 10, color: '#fff', size: 14 },
+                clear: { color: '#ccc' }
+            }
+        }, function(ret, err) {
+            if (ret && ret.text) {
+			
+			
+			var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './html/login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+			 if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				   api.openWin({
+						name: 'play_win',
+						url: './html/play_win.html',
+						bounces: false,
+						delay: delay,
+						slidBackEnabled: true,
+						vScrollBarEnabled: false,
+						pageParam: {
+							url: 'http://vip.winds.fun/index.php/vod/search.html?wd=' + ret.text
+						}
+					});
+					
+					
+					}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+					
+            }
+        });
+    }
+
+function VipExpiredHint() {
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' 
+                },
+                content:{              //（可选项）JSON 
+                    marginT: 20,       
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'vip_win',
+                            url: './html/vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+		}
+
+		new auiLazyload({
+            errorImage: './image/error-img.jpg'
+        });
+</script>

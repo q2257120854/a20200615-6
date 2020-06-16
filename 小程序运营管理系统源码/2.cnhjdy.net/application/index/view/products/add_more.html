@@ -1,0 +1,3011 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+</style>
+
+<link rel="stylesheet" href="/css/select2.css">
+<script type="text/javascript">
+    var a = {
+        "themeCss": ".select2-container--krajee",
+        "sizeCss": "",
+        "doReset": true,
+        "doToggle": true,
+        "doOrder": false
+    };
+    window.b = {
+        "theme": "krajee",
+        "width": "30%",
+        "placeholder": "请选择所属门店，可多选",
+        "language": "zh-CN"
+    };
+</script>
+<input type="hidden" id="nowhtml" value="navCon" class="navCon2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			预约预定商品添加--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Products/save_more')}?appletid=<?php echo $_GET['appletid']?>&newsid={$newsid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					
+
+					<input type="hidden" id="onlyid" name="onlyid" value="{if $newsinfo}{$newsinfo.onlyid}{/if}">
+
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.num}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">所属栏目</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="cid" class="span3 m-wrap" id="cid">
+
+								<option value="0">请选择所属栏目</option>
+
+								{if $cate}
+
+									{foreach $cate as $item}
+
+										<option value="{$item.0.id}" {if $item.0.type !=="showPro"}disabled="disabled"{/if} {if $newsinfo}{if $newsinfo.cid==$item.0.id}selected=selected{/if}{/if}>{$item.0.name}</option>
+
+										{if $item.data}
+
+											{foreach $item.data as $res}
+
+												<option value="{$res.id}" {if $res.type !=="showPro"}disabled="disabled"{/if} {if $newsinfo}{if $newsinfo.cid==$res.id}selected=selected{/if}{/if}><span style="margin-left:10px;" >|--{$res.name}</span></option>
+
+											{/foreach}
+
+										{/if}
+
+									{/foreach}
+
+								{/if}
+
+							</select>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择所属栏目</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group" style="display: none">
+						<label class="control-label">是否属于多栏目</label>
+						<div class="controls">
+							<select name="muiltcate" class="span3 m-wrap" id="multi" onchange="catecheck(this)" >
+								<option value="0" {if $newsinfo}{if $newsinfo.multi==1}style="display:none"{/if} {if $newsinfo.multi==0}selected="selected"{/if}{/if}>不属于多栏目</option>
+								{if $newsinfo}
+									{if $cates}
+										{foreach $cates as $item}
+											<option value="{$item.id}" {if $item.flag==1}selected="selected"{else}style="display:none"{/if} >{$item.name}</option>
+										{/foreach}
+									{/if}
+								{else}
+									{if $cates}
+										{foreach $cates as $item}
+											<option value="{$item.id}">{$item.name}</option>
+										{/foreach}
+									{/if}
+								{/if}
+							</select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择所属栏目</span>
+						</div>
+					</div>
+					{if $multipro}
+						{if $newsinfo}
+							{if $newsinfo.multi==1}
+							<div class="control-group" id="catelists_i" style="display: none;">
+								<label class="control-label">选择多栏目</label>
+								<div class="controls">
+								{foreach $multipro as $k => $item}
+									<select name="catearr[]" class="span3 m-wrap">
+										{volist name="$item" id="vo"} 
+										<option value="{$vo['id']}" {if $vo['flag']==1}selected="selected"{else}style="display:none"{/if} >{$vo['name']}</option>
+										{/volist}
+									</select>
+								{/foreach}
+								</div>
+							</div>
+							{/if}
+						{/if}
+					{else}
+						<div class="control-group" id="catelists_i" style="display: none;">
+							<label class="control-label">选择多栏目</label>
+							<div class="controls" id="catelists">
+
+							</div>
+						</div>
+					{/if}
+
+					<div class="control-group" id="shops_list" style="display: block;">
+						<label class="control-label" style="margin-right:15px">所属门店</label>
+						<div class="controls" id="shops">
+							<span id="parent-s2-togall-w1" style="display:none">
+	            	           <span id="s2-togall-w1" class="s2-togall-button s2-togall-select">
+	            		          <span class="s2-select-label"><i class="glyphicon glyphicon-unchecked"></i>全选</span>
+				                  <span class="s2-unselect-label"><i class="glyphicon glyphicon-check"></i>全不选</span>
+				                </span>
+				            </span>
+							<input id="mengdian" name="stores" type="hidden"/>
+						       	<div class="kv-plugin-loading loading-w1">&nbsp;</div>
+							    <select id="w1" class="form-control"  multiple size="4" placeholder="请选择所属门店，可多选" data-s2-options="a" data-krajee-select2="b" style="display:none">
+									{if $stores}
+									{foreach $stores as $items}
+									    <?php
+											$storeid = $items['id'];
+											$storetitle = $items['title'];
+
+											if($newsinfo && $newsinfo['stores']){
+											    $stores = explode(",",$newsinfo['stores']);
+												if(in_array($items['id'],$stores)){
+													echo '<option value="'.$storeid.'" selected="selected">'.$storetitle.'</option>';
+													}else{
+														echo '<option value="'.$storeid.'">'.$storetitle.'</option>';
+													}
+											}else{
+											   echo '<option value="'.$storeid.'">'.$storetitle.'</option>';
+											}
+									    ?>
+									{/foreach}
+									{/if}
+								 </select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">订单可用选择门店员工核销、可不选</span>
+								 
+						</div>
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">推荐到横排</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_x" value="0" {if $newsinfo}{if $newsinfo.type_x==0}checked=checked{/if}{/if}/>
+
+
+
+							不推荐
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_x" value="1" {if $newsinfo}{if $newsinfo.type_x==1}checked=checked{/if}{/if}/>
+
+
+
+							推荐
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页横排区块显示</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">推荐到竖排</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_y" value="0" {if $newsinfo}{if $newsinfo.type_y==0}checked=checked{/if}{/if}/>
+
+
+
+							不推荐
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_y" value="1" {if $newsinfo}{if $newsinfo.type_y==1}checked=checked{/if}{/if}/>
+
+
+
+							推荐
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页竖排区块显示</span>
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">推荐到首页栏目</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_i" value="0" {if $newsinfo}{if $newsinfo.type_i==0}checked=checked{/if}{/if}/>
+
+
+
+							不推荐
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_i" value="1" {if $newsinfo}{if $newsinfo.type_i==1}checked=checked{/if}{/if}/>
+
+
+
+							推荐
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页该栏目块显示</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">积分抵扣</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="is_score" value="0" {if $newsinfo}{if $newsinfo.is_score==0}checked=checked{/if}{/if} />
+
+
+
+							不启用
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="is_score" value="1" {if $newsinfo}{if $newsinfo.is_score==1}checked=checked{/if}{/if} />
+
+
+
+							启用
+
+
+
+							</label> 
+
+
+
+							<label style="display: inline-block;">
+
+		                        最多使用积分
+
+		                    </label>
+
+
+
+		                    <label style="display: inline-block;">
+
+		                        <input type="text" style="width:120px;" maxlength="6" name="score_num" class="form-control ng-pristine ng-untouched ng-valid ng-empty" value="{if $newsinfo}{$newsinfo.score_num}{/if}"/>
+
+		                    </label>
+
+
+
+
+
+
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">是否确认订单</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="pro_flag_ding" value="0" {if $newsinfo}{if $newsinfo.pro_flag_ding==0}checked=checked{/if}{/if} />
+
+
+
+							不启用
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="pro_flag_ding" value="1" {if $newsinfo}{if $newsinfo.pro_flag_ding==1}checked=checked{/if}{/if} />
+
+
+
+							启用
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">启用后下单后需要确定订单</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">是否上架</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="0" {if $newsinfo}{if $newsinfo.flag==0}checked=checked{/if}{/if} />
+
+
+
+							下架
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="flag" value="1" {if $newsinfo}{if $newsinfo.flag==1}checked=checked{/if}{/if} />
+
+
+
+							上架
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">配置提交信息</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="formset">
+
+								<option value="0">===请选择===</option>
+
+								{if $forms}
+
+									{foreach $forms as $val}
+
+										{if $newsid>0}
+
+										<option value="{$val.id}" {if $val.id == $newsinfo.formset}selected=selected{/if}>{$val.formname}</option>
+
+										{else}
+
+										<option value="{$val.id}">{$val.formname}</option>
+
+										{/if}
+
+									{/foreach}
+
+								{/if}
+
+							</select>
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">标题</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="title" type="text" class="span5 m-wrap" value="{if $newsinfo}{$newsinfo.title}{/if}"  style="height: 35px !important;" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写文章标题</span>
+
+						</div>
+
+
+
+					</div>					
+
+
+
+
+
+					<!-- 标签 -->
+
+					<style type="text/css">
+
+						.dikai{
+
+							margin-bottom: 10px;
+
+						}
+
+						.pianli{
+
+							width: 250px;
+
+							display: inline-block;
+
+						}
+
+						.xpds{
+
+							margin-left: 180px;
+
+							margin-bottom: 20px;
+
+						}
+
+						.shancsd{
+
+							border: 1px solid #dedede;
+
+							padding: 4px 15px;
+
+						}
+
+					</style>
+
+					<input type="hidden" name="labels" id="labels" >
+
+
+
+		            <div class="dikai" id="biaoqz">
+
+
+
+		                <label for="" class="control-label col-sm-2" style="loat:left">标签</label>
+
+
+
+		                <div class="xpds" style="font-size:0">
+
+
+
+			                <div class="form-controls col-sm-3 pianli">
+
+			                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty lab_name" value="{if $newsinfo}<?php echo array_keys($newsinfo['labels'])[0];?>{/if}" placeholder="标签名称">
+
+			                </div>
+
+
+
+			                <div class="form-controls col-sm-3 pianli">
+
+			                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty lab_val" value="{if $newsinfo}<?php $keys = array_keys($newsinfo['labels'])[0]; echo $newsinfo['labels'][$keys];?>{/if}"  placeholder="值">
+
+			                </div>
+
+		                </div>
+
+		                <?php
+
+		                	if($newsinfo){
+
+		                		$keys = array_keys($newsinfo['labels'])[0];
+
+		                		foreach ($newsinfo['labels'] as $key => $rec) {
+
+				                    if($key==$keys){
+
+				                        continue;
+
+				                    }
+
+				                    echo  "<div class='xpds'>";
+
+				                    echo  "<div class='form-controls col-sm-3 pianli'>";
+
+				                    echo  "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty lab_name'  value='".$key."' placeholder='标签名称'>";
+
+				                    echo  "</div>";
+
+				                    echo  "<div class='form-controls col-sm-3 pianli'>";
+
+				                    echo  "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty lab_val' value='".$rec."' placeholder='值'>";
+
+				                    echo  "</div>";
+
+				                    echo  "<div class='form-controls col-sm-3 pianli'>";
+
+				                    echo  "<input type='button' class='shancsd' value='删除' onclick='dellabel(this)'>";
+
+				                    echo  "</div>";
+
+				                    echo  "</div>";
+
+				                }
+
+		                	}
+
+		                ?>
+
+
+
+		            </div>
+
+
+
+		            <div class="control-group">
+
+
+
+						<label class="control-label"></label>
+
+
+
+						<div class="xpds" style="text-align:center; border:1px solid #dedede; padding:5px 0px; cursor:pointer; width:472px" onclick="addlabel()">
+
+		                    +新增标签+
+
+		                </div>
+
+
+
+					</div>
+
+
+
+					<script type="text/javascript">
+
+		                function addlabel(){
+
+		                    var alllables = $(".xpds");
+
+		                    var i = alllables.length+1;
+
+		                    var str =   "<div class='xpds'>"+
+
+		                                    "<div class='form-controls col-sm-3 pianli'>"+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty lab_name' placeholder='标签名称'>"+
+
+		                                    "</div>"+
+
+		                                    "<div class='form-controls col-sm-3 pianli'>"+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty lab_val' placeholder='值'>"+
+
+		                                    "</div>"+
+
+		                                    "<div class='form-controls col-sm-3 pianli'>"+
+
+		                                        "<input type='button' class='shancsd' value='删除' onclick='dellabel(this)'>"+
+
+		                                    "</div>"+
+
+		                                "</div>";
+
+
+
+		                    $("#biaoqz").append(str);
+
+		                }
+
+
+
+		                function dellabel(me){
+
+
+
+		                	var trs = $(me).parent().parent();
+
+                    		$(trs).remove();
+
+
+
+		                }
+
+
+
+
+
+		            </script>
+
+
+
+		            
+
+
+
+
+
+
+
+
+
+					<div class="control-group">
+
+		                <label class="control-label">购买方式</label>
+
+		                <div  style="float:left; margin-left:20px">
+
+		                    <select  class="form-control" id="gmfs">
+
+		                        <option value="购买" {if $newsinfo}{if $newsinfo['buy_type'] == "购买"}selected{/if}{/if}>购买</option>
+
+		                        <option value="预约"  {if $newsinfo}{if $newsinfo['buy_type'] == "预约"}selected{/if}{/if}>预约</option>
+
+		                        <option value="自定义"  {if $newsinfo}{if $newsinfo['buy_type'] != "购买" &&  $newsinfo['buy_type'] != "预约" &&  $newsinfo['buy_type']}selected{/if}{/if}>自定义</option>
+
+		                    </select>
+
+		                </div>
+
+		                <div class="form-controls col-sm-2"  {if $newsinfo}{if $newsinfo['buy_type'] != "购买" &&  $newsinfo['buy_type'] != "预约" &&  $newsinfo['buy_type']} style="margin-left:10px;float:left" {else} style=" margin-left:10px; float:left" {/if}{else} style="display:none;  margin-left:10px; float:left"{/if} id="jutsz">
+
+		                    <input type="text" name="buy_type" id="buy_type" value="{if $newsinfo}{if $newsinfo['buy_type']}{$newsinfo['buy_type']}{else}购买{/if}{/if}" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+
+		                </div>
+
+		            </div>
+
+		            <script type="text/javascript">
+
+		                $("#gmfs").change(function(){
+
+		                    var val = $(this).val();
+
+		                    if(val=="自定义"){
+
+		                        $("#jutsz").show();
+
+		                    }else{
+
+		                        $("#jutsz").hide();
+
+		                        $("#buy_type").val(val);
+
+		                    }
+
+		                })
+
+		            </script>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">访问量</label>
+
+
+
+						<input name="hits" type="number" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.hits}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+
+
+
+						<label class="control-label">已售数量</label>
+
+
+
+						<input name="sale_num" type="number" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.sale_num}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+
+
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">门店价</label>
+
+
+
+						<input name="price" type="text" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.price}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+
+
+
+						<label class="control-label">市场价</label>
+
+
+
+						<input name="market_price" type="text" class="span1 m-wrap" value="{if $newsinfo}{$newsinfo.market_price}{/if}"  style="height: 35px !important; float:left; margin-left:20px;" />
+
+
+
+					</div>
+
+
+
+
+
+					
+
+
+
+
+
+
+
+					<div class="control-group">
+
+		                <input type="hidden" id="duogg" name="duogg">
+
+		                <label for="" class="control-label col-sm-2" style="margin-right:19px">规格</label>
+
+
+
+		                <div class="form-controls col-sm-8">
+
+
+
+		                    <table style="border:0px solid #e7e7eb">
+
+
+
+		                        <tbody id="tbod">
+
+		                        <style type="text/css">
+
+		                            .fleft{
+
+		                                float: left;
+
+		                            }
+
+		                            .rleft{
+
+		                                float: right;
+
+		                            }
+
+		                            .f1{
+
+		                                width: 50%;
+
+		                            }
+
+		                            .f2{
+
+		                                width: 80px;
+
+		                            }
+
+		                            .f3{
+
+		                                width: 80px;
+
+		                            }
+
+		                            .f4{
+
+		                                width: 50px;
+
+		                                background-color: #ffffff;
+
+		                                border: 1px solid #dedede;
+
+		                            }
+
+		                            .xfg{
+
+		                            	margin-top: 10px;
+
+		                                width: 98%;
+
+		                                height: 50px !important;
+
+		                            }
+
+		                        </style>
+
+		                            
+
+		                           <?php
+
+
+
+		                           		if($newsinfo){
+
+
+
+		                           			$rows = count($newsinfo['more_type'])/4;
+
+			                                $cols = 4;
+
+			                                $n = 0;
+
+
+
+			                                for($i=1;$i<=$rows;$i++){
+
+			                                    echo "<tr><td>";
+
+			                                    echo "<input type='button' class='form-control rleft f4' value='删除' onclick='deltr_k(this)'>";
+
+			                                    for($j=1; $j<=$cols; $j++){
+
+
+
+			                                        $k=$newsinfo['more_type'][$n];
+
+			                                        if($j==1){
+
+			                                            echo "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f1' placeholder='规格名称' value='".$k."'>";
+
+			                                        }
+
+			                                        if($j==2){
+
+			                                            echo "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f2' placeholder='价格' value='".$k."'>";
+
+			                                        }
+
+			                                        if($j==3){
+
+			                                            echo "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f3' placeholder='库存' value='".$k."'>";
+
+			                                        }
+
+			                                        if($j==4){
+
+			                                            echo "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty xfg' placeholder='简介' value='".$k."'>";
+
+			                                        }
+
+			                                        $n++;
+
+			                                    }
+
+
+
+
+
+			                                    echo "<div style='height:20px; width:100%'></div></td></tr>";
+
+			                                }
+
+
+
+		                           		}else{
+
+
+
+		                           			echo "<tr>".
+
+				                                    "<td colspan='4' class='xfg'>".
+
+				                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f1' placeholder='规格名称'>".
+
+
+
+				                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f2' placeholder='价格'>".
+
+
+
+				                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f3' placeholder='库存'>".
+
+
+
+				                                        "<input type='button' class='form-control rleft f4' value='删除' onclick='deltr_k(this)'>".
+
+
+
+				                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty xfg' placeholder='简介'>".
+
+
+
+				                                        "<div style='height:20px; width:100%'></div>".
+
+				                                    "</td>".
+
+				                                "</tr>";
+
+		                           		}
+
+
+
+		                            ?>
+
+
+
+		                        
+
+		                        <tbody>
+
+		                        <tr id="jiaf" style="border:1px solid #dedede; margin-top:20px">
+
+		                            <td colspan="4" style="text-align:center;line-height:40px; color:#333333; cursor:pointer; min-width:50px" onclick="jia()">+</td>
+
+		                        </tr>
+
+		                    </table>
+
+		                    
+
+		                </div>
+
+		                
+
+		            </div>
+
+
+
+		            <script type="text/javascript">
+
+		                var i=1;
+
+		                function jia(){
+
+		                    i++;
+
+		                    var str =   "<tr>"+
+
+		                                    "<td colspan='4' class='xfg'>"+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f1' placeholder='规格名称'>"+
+
+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f2' placeholder='价格'>"+
+
+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty fleft f3' placeholder='库存'>"+
+
+
+
+		                                        "<input type='button' class='form-control rleft f4' value='删除' onclick='deltr_k(this)'>"+
+
+
+
+		                                        "<input type='text' class='form-control ng-pristine ng-untouched ng-valid ng-empty xfg' placeholder='简介'>"+
+
+
+
+		                                        "<div style='height:20px; width:100%'></div>"+
+
+		                                    "</td>"+
+
+		                                "</tr>";
+
+		                                
+
+		                    $("#tbod").append(str);
+
+		                }
+
+
+
+		                function deltr_k(me){
+
+		                    var trs = $(me).parent().parent();
+
+		                    $(trs).remove();
+
+		                }
+
+
+
+
+
+		            </script>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">缩略图</label>
+
+
+
+						<div class="controls">
+							<div class="fileupload fileupload-new " data-provides="fileupload">
+								<div class="fileupload-new thumbnail commonuploadpic1" style="width: 140px; height:90px;">
+									{if $newsinfo && $newsinfo.thumb}
+									<img src="{$newsinfo.thumb}"/>
+									{else}
+									<img src="/image/noimage.jpg" alt="" />
+									{/if}
+								</div>
+								<div>
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic1" ></span></span>
+								</div>
+								<font color="#999999">最宽750px，高度随意</font>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">分享图</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new " data-provides="fileupload">
+
+
+
+								<div class="fileupload-new thumbnail commonuploadpic2" style="width: 140px; height:90px;">
+
+									{if $newsinfo && $newsinfo.shareimg}
+
+									<img src="{$newsinfo.shareimg}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic2" ></span></span>
+
+								</div>
+
+
+
+								<font color="#999999">不设置将使用缩略图</font>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">简介</label>
+
+
+
+						<div class="controls">
+
+
+
+							<textarea class="span3 m-wrap" style="height:150px;" name="desc">{if $newsinfo}{$newsinfo.desc}{/if}</textarea>
+
+						</div>
+
+
+
+					</div>
+
+					
+
+					<div class="control-group" style="margin-bottom:20px !important">
+
+
+
+						<label class="control-label">幻灯片</label>
+
+
+
+						<div class="controls">
+
+							<div id="xztpan" class="btn commonchangepic" style="background-color:#e5e5e5; color:#333333" data-type="2">
+							选择图片
+							<input type="hidden" name="commonuploadslide">
+							</div>
+							<span style="color:#999999; line-height:40px; margin-left:20px;"最宽750px，高度随意</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group" style="padding-top:10px">
+
+
+
+						<label class="control-label"></label>
+
+						<div class="controls commonuploadslide" id="imgzs" style="font-size:0">
+
+							{if $allimg}
+
+							{foreach  $allimg as $res}
+
+								<div class="paiwei" onmousemove="xians(this)" onmouseout="gb(this)" id="li{$res.id}">
+
+									<img src="{$res.url}" style="width: 140px; height:90px;">
+
+									<div class="beijingys">
+
+							
+
+									</div>
+
+									<div class="sancann" onclick="del({$res.id})">
+
+										<span class="cancel">删除</span>
+
+									</div>
+
+								</div>
+
+							{/foreach}
+
+							{/if}
+
+
+
+
+
+						</div>
+
+						
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">商品详情</label>
+
+
+
+						<div class="controls">
+
+													
+
+							<div class="editors">
+
+								<script id="editor" name="product_txt" type="text/plain">{if $newsinfo}{$newsinfo.product_txt}{/if}</script>
+
+						    </div>
+
+							
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">会员购买设置</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">开启单独会员购买设置</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="set1" value="1" {if $newsinfo}{if $newsinfo['vipconfig']}{if $newsinfo['vipconfig']['set1']==1}checked=checked{/if}{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="set1" value="0" {if $newsinfo}{if $newsinfo['vipconfig']}{if $newsinfo['vipconfig']['set1']==0}checked=checked{/if}{else}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">开启后启用当前商品自身设置</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">会员购买设置</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="set2" value="1" {if $newsinfo}{if $newsinfo['vipconfig']}{if $newsinfo['vipconfig']['set2']==1}checked=checked{/if}{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="set2" value="0" {if $newsinfo}{if $newsinfo['vipconfig']}{if $newsinfo['vipconfig']['set2']==0}checked=checked{/if}{else}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">开启后必须开通会员才可购买该商品</span>
+						</div>
+					</div>
+
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">每日他人点击分享获取积分设置</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">是否启用规则</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="get_share_gz" value="1" {if $newsinfo}{if $newsinfo.get_share_gz==1}checked=checked{/if}{/if}/>
+							开启
+							</label>
+							<label class="radio">
+							<input type="radio" name="get_share_gz" value="2" {if $newsinfo}{if $newsinfo.get_share_gz==2}checked=checked{/if}{else}checked=checked{/if}/>
+							关闭
+							</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">分享获得积分的类型</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">获取积分</label>
+						<div class="controls">
+							<input name="get_share_score" type="text" class="span2 m-wrap" value="{if $newsinfo}{$newsinfo.get_share_score}{else}0{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">他人点击分享一次获得的积分 </span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">获取积分限制</label>
+						<div class="controls">
+							<input name="get_share_num" type="text" class="span2 m-wrap" value="{if $newsinfo}{$newsinfo.get_share_num}{else}0{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">他人每日点击分享获取积分次数限制</span>
+						</div>
+					</div>
+
+
+
+				
+
+
+
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+	
+
+	<style type="text/css">
+
+		.modal{
+
+			width: 795px !important;
+
+			margin-left: -397px !important;
+
+			min-height: 290px !important;
+
+		}
+
+	</style>
+
+	<div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first" style="width:795px !important; margin-left:-400px;">
+
+
+
+		<div class="modal-header">
+
+
+
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+
+
+			<h3>图片上传</h3>
+
+
+
+		</div>
+
+
+
+
+
+		
+
+		<div class="controls">
+
+			<div class="uploader-list-container" >
+
+				<div class="queueList">
+
+					<div id="dndArea" class="placeholder">
+
+						<div id="filePicker-2"></div>
+
+					</div>
+
+				</div>
+
+				<div class="statusBar" style="display:none;">
+
+					<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+
+					<div class="info"></div>
+
+					<div class="btns">
+
+						<div id="filePicker2"></div>
+
+						<div class="uploadBtn">开始上传</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/jquery.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/select2.full.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/select2-krajee.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+	<script type="text/javascript" src="/webuploader/js/webuploader.min.js"></script>
+
+
+    <script>
+        if(jQuery('#w1').data('select2')) {
+            jQuery('#w1').select2('destroy');
+        }
+        jQuery.when(jQuery('#w1').select2(b)).done(initS2Loading('w1', 'a'));
+
+	</script>
+
+
+    <script type="text/javascript">
+
+    	function catecheck(me){
+    		var id = $(me).val();
+    		if(id !=0){
+	        	$.ajax({
+	        		url:"{:Url('Products/getcates')}",type:"post",dataType:'json',
+	        		data:{
+	        			id:id
+	        		},success:function(res){
+	        			$("#catelists_i").show();
+	        			var con1 = "";
+	        			var con2 = "";
+	        			var con3 = "";
+						for(var i=0;i<res.length;i++){
+							for(var j=0;j<res[i].length;j++){
+								con= "<option value='"+res[i][j]['id']+"'>"+res[i][j]['name']+"</option>"
+								con1 = con1+con;
+							}
+							con2="<select name='catearr[]' class='span3 m-wrap'><option value='0'>选择多栏目</option>"+con1+"</select>";
+							con1 = "";
+							con3 = con3+con2;
+						}
+						$("#catelists").html(con3);
+	        		}
+	        	})
+    		}else{
+    			$("#catelists_i").hide();
+    			$("#catelists").html("");
+    		}
+        }
+
+
+        $(function() {
+
+	    	var ue = UE.getEditor('editor');
+
+		});
+
+
+
+        function checkinfo(){
+
+
+
+        	$("#mengdian").val($("#w1").val());
+
+        	var obj = "";
+
+	        $("#tbod tr").each(function(){
+
+	    
+
+	            var val = $(this).find("input[type='text']");
+
+	            for(var i=0; i<val.length; i++){
+
+	                obj+=$(val[i]).val()+",";
+
+	            }
+
+
+
+	            
+
+
+
+	        });
+
+
+
+
+
+	        $("#duogg").val(obj);
+
+
+
+
+
+	        // 获得所有便签的名称
+
+
+
+	        var lab_name = $(".lab_name");
+
+	        // 获得所有便签的值
+
+	        var lab_val = $(".lab_val");
+
+
+
+	        var lab_str="";
+
+	        for(var i=0; i<lab_name.length; i++){
+
+	            if(!$(lab_name[i]).val() || !$(lab_val[i]).val()){
+
+	                alert("请填写标签对应内容");
+
+	                return false;
+
+	            }
+
+	            lab_str+= $(lab_name[i]).val()+":"+$(lab_val[i]).val()+",";
+
+	        }
+
+
+
+	        //alert(lab_str);
+
+	        $("#labels").val(lab_str);
+
+
+
+
+
+
+
+
+
+        	var lanmu = $("#cid").val();
+
+        	if(lanmu==0){
+
+        		alert("请选择所属栏目");
+
+        		return false;
+
+        	}
+
+
+
+	    	
+
+    		val = $("#ueditor_textarea_product_txt").val();
+
+    		if(!val){
+
+        		alert("请输入内容");
+
+        		return false;
+
+        	}else{
+
+        		$("#text").val(val);
+
+        	}
+
+
+
+        	
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // 多图上传
+
+        var date = new Date();
+
+    	var stronly = String(date.getFullYear())+String(date.getMonth())+String(date.getDate())+String(date.getHours())+String(date.getMinutes())+String(date.getSeconds())+String(Math.floor(Math.random()*1000+1));
+
+    	//判断URL中有没有栏目ID
+
+    	var newsid = {$newsid};
+
+    	if(newsid==0){
+
+    		$("#onlyid").val(stronly);
+
+    	}else{
+    		var onlyid_is = $("#onlyid").val();
+    		if(onlyid_is == ""){
+    			$("#onlyid").val(stronly);
+    		}
+    	}
+
+
+
+        function del(id){
+
+			if(confirm('你确定要删除这张图片嘛?')){
+
+
+
+				$("#li"+id).remove();
+
+				$.post("{:Url('Pictures/del_img')}",{"id":id},function(data){
+
+				})
+
+			}else{
+		        return false;
+		    }
+
+
+
+		}
+
+		function xians(me){
+
+			var b = $(me).find("div[class='beijingys']");
+
+			var s = $(me).find("div[class='sancann']");
+
+			$(b).show();
+
+			$(s).show();
+
+		}
+
+		function gb(me){
+
+			var b = $(me).find("div[class='beijingys']");
+
+			var s = $(me).find("div[class='sancann']");
+
+			$(b).hide();
+
+			$(s).hide();
+
+		}
+
+
+
+
+
+
+
+
+
+    (function( $ ){
+
+    // 当domReady的时候开始初始化
+
+    $(function(){
+
+    	jzsc();
+
+    })
+
+
+
+	})( jQuery );
+
+
+
+
+
+	function jzsc(){
+
+
+
+        var $wrap = $('.uploader-list-container'),
+
+
+
+            // 图片容器
+
+            $queue = $( '<ul class="filelist" id="filelist"></ul>' )
+
+                .appendTo( $wrap.find( '.queueList' ) ),
+
+
+
+            // 状态栏，包括进度和控制按钮
+
+            $statusBar = $wrap.find( '.statusBar' ),
+
+
+
+            // 文件总体选择信息。
+
+            $info = $statusBar.find( '.info' ),
+
+
+
+            // 上传按钮
+
+            $upload = $wrap.find( '.uploadBtn' ),
+
+
+
+            // 没选择文件之前的内容。
+
+            $placeHolder = $wrap.find( '.placeholder' ),
+
+
+
+            $progress = $statusBar.find( '.progress' ).hide(),
+
+
+
+            // 添加的文件数量
+
+            fileCount = 0,
+
+
+
+            // 添加的文件总大小
+
+            fileSize = 0,
+
+
+
+            // 优化retina, 在retina下这个值是2
+
+            ratio = window.devicePixelRatio || 1,
+
+
+
+            // 缩略图大小
+
+            thumbnailWidth = 180 * ratio,
+
+            thumbnailHeight = 120 * ratio,
+
+
+
+            // 可能有pedding, ready, uploading, confirm, done.
+
+            state = 'pedding',
+
+
+
+            // 所有文件的进度信息，key为file id
+
+            percentages = {},
+
+            // 判断浏览器是否支持图片的base64
+
+            isSupportBase64 = ( function() {
+
+                var data = new Image();
+
+                var support = true;
+
+                data.onload = data.onerror = function() {
+
+                    if( this.width != 1 || this.height != 1 ) {
+
+                        support = false;
+
+                    }
+
+                }
+
+                data.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+
+                return support;
+
+            } )(),
+
+
+
+            // 检测是否已经安装flash，检测flash的版本
+
+            flashVersion = ( function() {
+
+                var version;
+
+
+
+                try {
+
+                    version = navigator.plugins[ 'Shockwave Flash' ];
+
+                    version = version.description;
+
+                } catch ( ex ) {
+
+                    try {
+
+                        version = new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
+
+                                .GetVariable('$version');
+
+                    } catch ( ex2 ) {
+
+                        version = '0.0';
+
+                    }
+
+                }
+
+                version = version.match( /\d+/g );
+
+                return parseFloat( version[ 0 ] + '.' + version[ 1 ], 10 );
+
+            } )(),
+
+
+
+            supportTransition = (function(){
+
+                var s = document.createElement('p').style,
+
+                    r = 'transition' in s ||
+
+                            'WebkitTransition' in s ||
+
+                            'MozTransition' in s ||
+
+                            'msTransition' in s ||
+
+                            'OTransition' in s;
+
+                s = null;
+
+                return r;
+
+            })(),
+
+
+
+            // WebUploader实例
+
+            uploader;
+
+
+
+
+
+
+
+        // 实例化
+
+        uploader = WebUploader.create({
+
+            pick: {
+
+                id: '#filePicker-2',
+
+                label: '点击选择图片'
+
+            },
+
+            formData: {
+
+                uid: 123
+
+            },
+
+            dnd: '#dndArea',
+
+            paste: '#uploader',
+
+            swf: '/webuploader/Uploader.swf',
+
+            chunked: false,
+
+            chunkSize: 512 * 1024,
+
+            server: '{:Url('Products/imgupload_duo')}?randid='+$("#onlyid").val(),
+
+
+            // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
+
+            disableGlobalDnd: false,
+
+            fileNumLimit: 8,
+
+            fileSizeLimit: 200 * 1024 * 1024,    // 200 M
+
+            fileSingleSizeLimit: 50 * 1024 * 1024    // 50 M
+
+        });
+
+
+
+        // 拖拽时不接受 js, txt 文件。
+
+        uploader.on( 'dndAccept', function( items ) {
+
+            var denied = false,
+
+                len = items.length,
+
+                i = 0,
+
+                // 修改js类型
+
+                unAllowed = 'text/plain;application/javascript ';
+
+
+
+            for ( ; i < len; i++ ) {
+
+                // 如果在列表里面
+
+                if ( ~unAllowed.indexOf( items[ i ].type ) ) {
+
+                    denied = true;
+
+                    break;
+
+                }
+
+            }
+
+
+
+            return !denied;
+
+        });
+
+
+
+        uploader.on('dialogOpen', function() {
+
+            console.log('here');
+
+        });
+
+        // 添加“添加文件”的按钮，
+
+        uploader.addButton({
+
+            id: '#filePicker2',
+
+            label: '继续添加'
+
+        });
+
+
+
+        uploader.on('ready', function() {
+
+            window.uploader = uploader;
+
+        });
+
+
+
+        // 当有文件添加进来时执行，负责view的创建
+
+        function addFile( file ) {
+
+            var $li = $( '<li id="' + file.id + '">' +
+
+                    '<p class="imgWrap"></p>'+                
+
+                    '</li>' ),
+
+
+
+                $btns = $('<div class="file-panel">' +
+
+                    '<span class="cancel">删除</span>' +
+
+					'</div>').appendTo( $li ),
+
+                $prgress = $li.find('p.progress span'),
+
+                $wrap = $li.find( 'p.imgWrap' ),
+
+                $info = $('<p class="error"></p>'),
+
+
+
+                showError = function( code ) {
+
+                    switch( code ) {
+
+                        case 'exceed_size':
+
+                            text = '文件大小超出';
+
+                            break;
+
+
+
+                        case 'interrupt':
+
+                            text = '上传暂停';
+
+                            break;
+
+
+
+                        default:
+
+                            text = '上传失败，请重试';
+
+                            break;
+
+                    }
+
+
+
+                    $info.text( text ).appendTo( $li );
+
+                };
+
+
+
+            if ( file.getStatus() === 'invalid' ) {
+
+                showError( file.statusText );
+
+            } else {
+
+                // @todo lazyload
+
+                $wrap.text( '预览中' );
+
+                uploader.makeThumb( file, function( error, src ) {
+
+                    var img;
+
+
+
+                    if ( error ) {
+
+                        $wrap.text( '不能预览' );
+
+                        return;
+
+                    }
+
+
+
+                    if( isSupportBase64 ) {
+
+                        img = $('<img src="'+src+'">');
+
+                        $wrap.empty().append( img );
+
+                    } else {
+
+                        $.ajax('/webuploader/server/preview.php', {
+
+                            method: 'POST',
+
+                            data: src,
+
+                            dataType:'json'
+
+                        }).done(function( response ) {
+
+                            if (response.result) {
+
+                                img = $('<img src="'+response.result+'">');
+
+                                $wrap.empty().append( img );
+
+
+
+                            } else {
+
+                                $wrap.text("预览出错");
+
+                            }
+
+                        });
+
+                    }
+
+                }, thumbnailWidth, thumbnailHeight );
+
+
+
+                percentages[ file.id ] = [ file.size, 0 ];
+
+                file.rotation = 0;
+
+            }
+
+
+
+            file.on('statuschange', function( cur, prev ) {
+
+                if ( prev === 'progress' ) {
+
+                    $prgress.hide().width(0);
+
+                } else if ( prev === 'queued' ) {
+
+                    $li.off( 'mouseenter mouseleave' );
+
+                    $btns.remove();
+
+                }
+
+
+
+                // 成功
+
+                if ( cur === 'error' || cur === 'invalid' ) {
+
+                    console.log( file.statusText );
+
+                    showError( file.statusText );
+
+                    percentages[ file.id ][ 1 ] = 1;
+
+                } else if ( cur === 'interrupt' ) {
+
+                    showError( 'interrupt' );
+
+                } else if ( cur === 'queued' ) {
+
+                    percentages[ file.id ][ 1 ] = 0;
+
+                } else if ( cur === 'progress' ) {
+
+                    $info.remove();
+
+                    $prgress.css('display', 'block');
+
+                } else if ( cur === 'complete' ) {
+
+                    $li.append( '<span class="success"></span>' );
+
+                }
+
+
+
+                $li.removeClass( 'state-' + prev ).addClass( 'state-' + cur );
+
+            });
+
+
+
+            $li.on( 'mouseenter', function() {
+
+                $btns.stop().animate({height: 30});
+
+            });
+
+
+
+            $li.on( 'mouseleave', function() {
+
+                $btns.stop().animate({height: 0});
+
+            });
+
+
+
+            $btns.on( 'click', 'span', function() {
+
+                var index = $(this).index(),
+
+                    deg;
+
+
+
+                switch ( index ) {
+
+                    case 0:
+
+                        uploader.removeFile( file );
+
+                        return;
+
+
+
+                    case 1:
+
+                        file.rotation += 90;
+
+                        break;
+
+
+
+                    case 2:
+
+                        file.rotation -= 90;
+
+                        break;
+
+                }
+
+
+
+                if ( supportTransition ) {
+
+                    deg = 'rotate(' + file.rotation + 'deg)';
+
+                    $wrap.css({
+
+                        '-webkit-transform': deg,
+
+                        '-mos-transform': deg,
+
+                        '-o-transform': deg,
+
+                        'transform': deg
+
+                    });
+
+                } else {
+
+                    $wrap.css( 'filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+ (~~((file.rotation/90)%4 + 4)%4) +')');
+
+                    // use jquery animate to rotation
+
+                    // $({
+
+                    //     rotation: rotation
+
+                    // }).animate({
+
+                    //     rotation: file.rotation
+
+                    // }, {
+
+                    //     easing: 'linear',
+
+                    //     step: function( now ) {
+
+                    //         now = now * Math.PI / 180;
+
+
+
+                    //         var cos = Math.cos( now ),
+
+                    //             sin = Math.sin( now );
+
+
+
+                    //         $wrap.css( 'filter', "progid:DXImageTransform.Microsoft.Matrix(M11=" + cos + ",M12=" + (-sin) + ",M21=" + sin + ",M22=" + cos + ",SizingMethod='auto expand')");
+
+                    //     }
+
+                    // });
+
+                }
+
+
+
+
+
+            });
+
+
+
+            $li.appendTo( $queue );
+
+        }
+
+
+
+        // 负责view的销毁
+
+        function removeFile( file ) {
+
+            var $li = $('#'+file.id);
+
+
+
+            delete percentages[ file.id ];
+
+            updateTotalProgress();
+
+            $li.off().find('.file-panel').off().end().remove();
+
+        }
+
+
+
+        function updateTotalProgress() {
+
+            var loaded = 0,
+
+                total = 0,
+
+                spans = $progress.children(),
+
+                percent;
+
+
+
+            $.each( percentages, function( k, v ) {
+
+                total += v[ 0 ];
+
+                loaded += v[ 0 ] * v[ 1 ];
+
+            } );
+
+
+
+            percent = total ? loaded / total : 0;
+
+
+
+
+
+            spans.eq( 0 ).text( Math.round( percent * 100 ) + '%' );
+
+            spans.eq( 1 ).css( 'width', Math.round( percent * 100 ) + '%' );
+
+            updateStatus();
+
+        }
+
+
+
+        function updateStatus() {
+
+            var text = '', stats;
+
+
+
+            if ( state === 'ready' ) {
+
+                text = '选中' + fileCount + '张图片，共' +
+
+                        WebUploader.formatSize( fileSize ) + '。';
+
+            } else if ( state === 'confirm' ) {
+
+                stats = uploader.getStats();
+
+                if ( stats.uploadFailNum ) {
+
+                    text = '已成功上传' + stats.successNum+ '张照片至XX相册，'+
+
+                        stats.uploadFailNum + '张照片上传失败，<a class="retry" href="#">重新上传</a>失败图片或<a class="ignore" href="#">忽略</a>'
+
+                }
+
+
+
+            } else {
+
+                stats = uploader.getStats();
+
+                text = '共' + fileCount + '张（' +
+
+                        WebUploader.formatSize( fileSize )  +
+
+                        '），已上传' + stats.successNum + '张';
+
+
+
+                if ( stats.uploadFailNum ) {
+
+                    text += '，失败' + stats.uploadFailNum + '张';
+
+                }
+
+            }
+
+
+
+            $info.html( text );
+
+        }
+
+
+
+        function setState( val ) {
+
+            var file, stats;
+
+
+
+            if ( val === state ) {
+
+                return;
+
+            }
+
+
+
+            $upload.removeClass( 'state-' + state );
+
+            $upload.addClass( 'state-' + val );
+
+            state = val;
+
+
+
+            switch ( state ) {
+
+                case 'pedding':
+
+                    $placeHolder.removeClass( 'element-invisible' );
+
+                    $queue.hide();
+
+                    $statusBar.addClass( 'element-invisible' );
+
+                    uploader.refresh();
+
+                    break;
+
+
+
+                case 'ready':
+
+                    $placeHolder.addClass( 'element-invisible' );
+
+                    $( '#filePicker2' ).removeClass( 'element-invisible');
+
+                    $queue.show();
+
+                    $statusBar.removeClass('element-invisible');
+
+                    uploader.refresh();
+
+                    break;
+
+
+
+                case 'uploading':
+
+                    $( '#filePicker2' ).addClass( 'element-invisible' );
+
+                    $progress.show();
+
+                    $upload.text( '暂停上传' );
+
+                    break;
+
+
+
+                case 'paused':
+
+                    $progress.show();
+
+                    $upload.text( '继续上传' );
+
+                    break;
+
+
+
+                case 'confirm':
+
+                    $progress.hide();
+
+                    $( '#filePicker2' ).removeClass( 'element-invisible' );
+
+                    $upload.text( '开始上传' );
+
+
+
+                    stats = uploader.getStats();
+
+                    if ( stats.successNum && !stats.uploadFailNum ) {
+
+                        setState( 'finish' );
+
+                        return;
+
+                    }
+
+                    break;
+
+                case 'finish':
+
+                    stats = uploader.getStats();
+
+                    if ( stats.successNum ) {
+
+
+
+                    	$.post("{:Url('Pictures/getimg')}",{"id":$("#onlyid").val()},function(data){
+
+                        	var str="";
+
+                        	if(data){
+
+
+
+                        		for(var i=0; i<data.length; i++){
+
+
+
+                        			str+=	"<div class='paiwei' onmousemove='xians(this)' onmouseout='gb(this)' id='li"+data[i].id+"'>"+
+
+												"<img src='"+data[i].url+"' style='width: 140px; height:90px;'>"+
+
+												"<div class='beijingys'>"+
+
+										
+
+												"</div>"+
+
+												"<div class='sancann' onclick='del("+data[i].id+")'>"+
+
+													"<span class='cancel'>删除</span>"+
+
+												"</div>"+
+
+											"</div>"
+
+                        		}
+
+                        		$("#imgzs").html(str);
+
+                        		jzsc();
+
+                        	}
+
+                        })
+
+
+
+                        alert( '上传成功' );
+
+                    } else {
+
+                        // 没有成功的图片，重设
+
+                        state = 'done';
+
+                    }
+
+                    break;
+
+            }
+
+
+
+            updateStatus();
+
+        }
+
+
+
+        uploader.onUploadProgress = function( file, percentage ) {
+
+            var $li = $('#'+file.id),
+
+                $percent = $li.find('.progress span');
+
+
+
+            $percent.css( 'width', percentage * 100 + '%' );
+
+            percentages[ file.id ][ 1 ] = percentage;
+
+            updateTotalProgress();
+
+        };
+
+
+
+        uploader.onFileQueued = function( file ) {
+
+            fileCount++;
+
+            fileSize += file.size;
+
+
+
+            if ( fileCount === 1 ) {
+
+                $placeHolder.addClass( 'element-invisible' );
+
+                $statusBar.show();
+
+            }
+
+
+
+            addFile( file );
+
+            setState( 'ready' );
+
+            updateTotalProgress();
+
+        };
+
+
+
+        uploader.onFileDequeued = function( file ) {
+
+            fileCount--;
+
+            fileSize -= file.size;
+
+
+
+            if ( !fileCount ) {
+
+                setState( 'pedding' );
+
+            }
+
+
+
+            removeFile( file );
+
+            updateTotalProgress();
+
+
+
+        };
+
+
+
+        uploader.on( 'all', function( type ) {
+
+            var stats;
+
+            switch( type ) {
+
+                case 'uploadFinished':
+
+                    setState( 'confirm' );
+
+                    break;
+
+
+
+                case 'startUpload':
+
+                    setState( 'uploading' );
+
+                    break;
+
+
+
+                case 'stopUpload':
+
+                    setState( 'paused' );
+
+                    break;
+
+
+
+            }
+
+        });
+
+
+
+        uploader.onError = function( code ) {
+
+            alert( 'Eroor: ' + code );
+
+        };
+
+
+
+        $upload.on('click', function() {
+
+            if ( $(this).hasClass( 'disabled' ) ) {
+
+                return false;
+
+            }
+
+
+
+            if ( state === 'ready' ) {
+
+                uploader.upload();
+
+            } else if ( state === 'paused' ) {
+
+                uploader.upload();
+
+            } else if ( state === 'uploading' ) {
+
+                uploader.stop();
+
+            }
+
+        });
+
+
+
+        $info.on( 'click', '.retry', function() {
+
+            uploader.retry();
+
+        } );
+
+
+
+        $info.on( 'click', '.ignore', function() {
+
+            alert( 'todo' );
+
+        } );
+
+
+
+        $upload.addClass( 'state-' + state );
+
+        updateTotalProgress();
+
+
+
+	}
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

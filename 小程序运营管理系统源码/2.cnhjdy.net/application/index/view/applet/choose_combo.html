@@ -1,0 +1,45 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<div class="content clearfix">
+    {if !$combo}
+            <p style="font-size: 25px; color: #e9322d">您还没有功能套餐,请先设置功能套餐!</p>
+    {else}
+
+        {volist name="combo" id="vo"}
+
+        <div class="meal_single fl">
+
+            <div class="meal_single_div">
+
+                <div class="meal_bg iconfont icon-taocan1" style="background-color: #565295;"></div>
+
+                <img class="meal_bg_img" src="/image/meal_bg.png"/>
+
+                <div class="meal_title">{$vo.name}</div>
+
+                <div class="meal_des">{$vo.combo_desc}</div>
+
+                <div class="meal_price"><span style="color: #565295;">{$vo.wx_price}</span>元/年</div>
+
+                <a href="{:Url('Applet/base')}?combo_id={$vo.id}"><div class="meal_btn">立即开通</div></a>
+
+            </div>
+
+        </div>
+
+        {/volist}
+
+    {/if}
+
+
+
+</div>
+
+</body>
+
+
+
+</html>
+

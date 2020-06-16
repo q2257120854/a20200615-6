@@ -1,0 +1,29 @@
+<br/>
+<div id="footerid"></div>
+<div id="position">
+  <dd><a href="/"><img src="__HOME__/images/sy.png" width="25" height="25"> <font>首页</font></a></dd>
+  <dd><a href="/all.html"><img src="__HOME__/images/zx.png" width="25" height="25"><font>最新</font></a></dd>
+  <dd><a href="/artadd.html"><img src="__HOME__/images/tg.png" width="25" height="25"><font>投稿</font></a></dd>
+  <dd><a href="/choice.html"><img src="__HOME__/images/jx.png" width="25" height="25"><font>精选</font></a></dd>
+  <dd><a href="/usercenter.html"><img src="__HOME__/images/wd.png" width="25" height="25"><font>我的</font></a></dd>
+</div>
+<div class="footer">
+    <div class="container clearfix">
+        <a href="/" class="footer_shuiyin visible-md visible-lg col-sm-3"><img src="{if $site_config['cmslogo']} __ROOT__{$site_config['cmslogo']} {else /}__PUBLIC__images/logocms.png{/if}" /></a>
+        <ul class="footer_list clearfix col-sm-9 col-xs-12">
+            {volist name="cmsnav[0]" id="vo" } 
+            <li class="col-sm-2 col-xs-2">
+                <a href="{$vo.link|getnavlink=$vo.sid}" target="{$vo.target}" title="{$vo.alias}">
+                    <i class="layui-icon">{$vo.icon}</i>{$vo.name}<span class="hidden-xs">{$vo.alias}</span>
+            </li>
+            {/volist}
+            <li class="col-xs-12"><a>Copyright <span class="hidden-xs"> {:$_SERVER['SERVER_NAME']}</span> {$site_config['site_title']} {$site_config['site_copyright']} {$site_config['site_icp']}<span class="hidden-xs"> 
+               {$site_config['site_tongji']}
+            </li>
+            <li class="col-xs-12">
+                <!-- 个人用户保留下面一句，谢谢 -->
+                Powered by<a target="_blank" href="http://www.laysns.com/"> LaySNS</span></a>
+            </li>
+        </ul>
+    </div>
+</div>

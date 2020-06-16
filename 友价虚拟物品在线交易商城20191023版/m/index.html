@@ -1,0 +1,626 @@
+<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="keywords" content="商城源码站长交易,源码交易,程序交易,域名交易,链接买卖,任务交易,网站交易,广告买卖,站长培训,建站美工任务">
+<meta name="description" content="站长交易服务中心；网站交易、源码交易、域名交易、链接交易、广告买卖、建站美工任务；安全快捷的站长交易、出售、求购、交流分享平台">
+<title>商城源码 - 商城源码交易源码交易域名交易服务中心</title>
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<link href="css/basic.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="js/global.js"></script>
+<script language="javascript" src="js/basic.js"></script>
+<script language="javascript" src="js/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="js/layer.js"></script>
+<script language="javascript" src="js/index.js"></script>
+<script language="javascript" src="js/jQuery.textSlider.js"></script>
+</head>
+<body>
+<div style="display:none;" id="webhttp">http://localhost/</div>
+<div class="indextop box">
+ <div class="d1 flex"><a href="./"><img src="homeimg/logo.png" /></a></div>
+ <div class="d2"><a href="user/qiandao.php"><img src="homeimg/qian.png" /></a></div>
+</div>
+
+<!--图片B-->
+<div class="addWrap">
+ <div class="swipe" id="mySwipe">
+   <div class="swipe-wrap">
+      <div><a href=""><img class="img-responsive" src="../gg/1488458132ad92.jpg" /></a></div>
+      <div><a href=""><img class="img-responsive" src="../gg/1488458257ad65.png" /></a></div>
+      </div>
+  </div>
+  <ul id="position" style="display:none;"><li class="cur"></li><li class=""></li></ul>
+</div>
+<script src="js/swipe.js"></script> 
+<script type="text/javascript">
+var bullets = document.getElementById('position').getElementsByTagName('li');
+var banner = Swipe(document.getElementById('mySwipe'), {
+auto: 2000,
+continuous: true,
+disableScroll:false,
+callback: function(pos) {
+var i = bullets.length;
+while (i--) {
+bullets[i].className = ' ';
+}
+bullets[pos].className = 'cur';
+}});
+</script>
+<!--图片E-->
+
+<!--图标滑屏B-->
+<div class="menuhp">
+
+<div class="swiper-container">
+ <div class="swiper-wrapper">
+    <div class="swiper-slide">
+  <span class="d1"><a href="alltype/"><img src="img/tb5.png" /><br>全部分类</a></span>
+  <span class="d1"><a href="user/order.php"><img src="img/tb2.png" /><br>我的订单</a></span>
+  <span class="d1"><a href="task/"><img src="img/tb9.png" /><br>任务大厅</a></span>
+  <span class="d1"><a href="user/"><img src="img/tb8.png" /><br>个人中心</a></span>
+  <span class="d1"><a href="user/favpro.php"><img src="img/tb3.png" /><br>我的收藏</a></span>
+  <span class="d1"><a href="news/newslist.html"><img src="img/tb6.png" /><br>行业资讯</a></span>
+  <span class="d1"><a href="user/paylog.php"><img src="img/tb4.png" /><br>资金管理</a></span>
+  <span class="d1"><a href="user/car.php"><img border="0" src="img/tb1.png" /><br>购物车</a></span>
+  <span class="d1"><a href="contact/"><img border="0" src="img/tb7.png" /><br>联系我们</a></span>
+  </div>
+   </div>
+ <div class="swiper-pagination" style="display:none;"></div>
+</div>
+
+</div>
+<link rel="stylesheet" href="swiper/css/swiper.min.css">
+<script src="swiper/js/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container', {
+pagination: '.swiper-pagination',
+paginationClickable: true,
+spaceBetween: 30,
+});
+</script>
+<!--图标滑屏E-->
+
+<!--公告B-->
+<div class="indexgg box">
+ <div class="d1"><img src="homeimg/ggicon.png" /><span></span></div>
+ <div class="d2 flex">
+
+  <div class="divm">
+   <div class="scrollDiv" id="scrollDiv1">
+   <div class="scrollText">
+    <ul>
+        <li onClick="gourl('help/ggview13.html')">系统补丁2019年10月23号</li>
+        <li onClick="gourl('help/ggview10.html')">仿Nan源码下载站源码最新版友价t5内核php</li>
+        <li onClick="gourl('help/ggview9.html')">二开版仿互站网源码最新版友价T5</li>
+        <li onClick="gourl('help/ggview8.html')">友价商城源码20170917补丁</li>
+        <li onClick="gourl('help/ggview7.html')">友价商城源码20170430升级补丁</li>
+        <li onClick="gourl('help/ggview4.html')">友价商城20170108补丁</li>
+        <li onClick="gourl('help/ggview3.html')">友价T5商城20170117补丁（主要拓展实物交易功能内核）</li>
+        <li onClick="gourl('help/ggview2.html')">友价商城20170208补丁（主要优化任务大厅功能）</li>
+        </ul>
+   </div>
+   </div>
+  </div>
+
+ </div>
+</div>
+<script language="javascript">
+$(document).ready(function(){
+$(".scrollDiv").textSlider({
+line:1,
+speed:500,
+timer:4000
+});
+});
+</script>
+<!--公告E-->
+
+<div class="clear clear10"></div>
+<div class="indexcap box">
+ <div class="d1 flex">限时促销</div>
+ <div class="d2"><a href="product/">更多 ></a></div>
+</div>
+<!--限时B-->
+<div class="swiper-container1">
+ <div class="swiper-wrapper">
+  <div class="swiper-slide" onClick="gourl('product/view204.html')">
+  <div class="dmain">      
+   <span id="dqsj1" style="display:none;">2019/12/01 20:51:03</span>
+   <div class="d1"><img src="http://localhost/upload/15/1554036580-15/201903310849492082-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">网商之家直销进人系统四站合一自动营销系统2018版</div>
+   <div class="d3">￥3600.00</div>
+   <div class="d4"><span class="djs" id="djs1">正在加载</span></div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view203.html')">
+  <div class="dmain">      
+   <span id="dqsj2" style="display:none;">2019/12/01 20:51:22</span>
+   <div class="d1"><img src="http://localhost/upload/15/1554036529-15/201903310848536353-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">整站带数据网络工作室个人博客资源下载商城系统源码...</div>
+   <div class="d3">￥600.00</div>
+   <div class="d4"><span class="djs" id="djs2">正在加载</span></div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view184.html')">
+  <div class="dmain">      
+   <span id="dqsj3" style="display:none;">2019/12/01 20:52:09</span>
+   <div class="d1"><img src="http://localhost/upload/15/1554034828-15/201903310821421606-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">新站网，友价源码商城带数据打包出售3月份打包的</div>
+   <div class="d3">￥400.00</div>
+   <div class="d4"><span class="djs" id="djs3">正在加载</span></div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view202.html')">
+  <div class="dmain">      
+   <span id="dqsj4" style="display:none;">2019/12/31 20:51:43</span>
+   <div class="d1"><img src="http://localhost/upload/15/1554036494-15/201903310848249566-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">ve云创直销进人系统自动化营销云计划源网商系统201...</div>
+   <div class="d3">￥3600.00</div>
+   <div class="d4"><span class="djs" id="djs4">正在加载</span></div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view185.html')">
+  <div class="dmain">      
+   <span id="dqsj5" style="display:none;">2019/12/31 20:53:08</span>
+   <div class="d1"><img src="http://localhost/upload/15/1554035421-15/201903310830241806-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">软件销售宝，好友宝，微商软件销售商城系统，支持发...</div>
+   <div class="d3">￥6000.00</div>
+   <div class="d4"><span class="djs" id="djs5">正在加载</span></div>
+  </div>
+ </div>
+  </div>
+ <div class="swiper-pagination1"></div>
+</div>
+<script>
+swiper1 = new Swiper('.swiper-container1', {
+slidesPerView: 2.7,
+spaceBetween:20,
+freeMode: true,
+pagination: {
+el: '.swiper-pagination1',
+clickable: true,
+},
+});
+userChecksj();
+</script>
+<!--限时E-->
+
+<div class="indexcap box">
+ <div class="d1 flex">最近更新</div>
+ <div class="d2"><a href="product/">更多 ></a></div>
+</div>
+<div class="prolist box">
+<div class="dmain flex">
+  <a href="product/view184.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/15/1554034828-15/201903310821421606-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">新站网，友价源码商城带数据打包出售3月份打包的</div>
+  <div class="b2">
+   <div class="sb1">
+      <span> 其他 </span>
+      <span> PHP </span>
+      <span>Mysql </span>
+      <span>无 </span>
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥400</span>
+    <span class="s2">销量 11</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view203.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/15/1554036529-15/201903310848536353-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">整站带数据网络工作室个人博客资源下载商城系统源码自适应手机</div>
+  <div class="b2">
+   <div class="sb1">
+      <span>帝国 </span>
+      <span> PHP </span>
+      <span>Mysql </span>
+      <span>无 </span>
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥600</span>
+    <span class="s2">销量 4</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view256.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094352-14/201906091132384098-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">企业发卡网源码发卡平台源码全开源运营版</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥16800</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view255.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094323-14/201906091132109048-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">易经风水网站模板 八字算命 测字易经协会培训 带移动端 高端大气</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥60</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view254.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094233-14/201906091130460206-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">ID201：中/英语【自适应】建材/卫浴/五金配件Php源码SEO结构</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥38</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view253.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094186-14/201906091130004544-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">Thinkphp5+layui开源中文响应式后台源码【原创】-533</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥30</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view252.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094132-14/201906091128586533-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">织梦自适应瀑布流图片站模板</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥38</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view251.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094093-14/201906091128212584-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">新品ASP演艺模特企业网站源码程序后台管理 文化传媒网站建设源码</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥30</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view250.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094057-14/201906091127494164-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">装修环保站群/装修公司/企业模版 / 极速企业站群系统</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥298</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+  <a href="product/view249.html">
+ <div class="dm">
+ <div class="d1"><div><img src="http://localhost/upload/14/1560094030-14/201906091127180999-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div></div>
+ <div class="d2">
+  <div class="b1">极速独立站群,cms独立站群,跨服务器站群,门户网站群系统</div>
+  <div class="b2">
+   <div class="sb1">
+       
+   </div>
+   <div class="sb2">
+    <span class="s1">￥18000</span>
+    <span class="s2">销量 0</span>
+   </div>
+  </div>
+  <div class="b3"><span>购买</span></div>
+ </div>
+ </div>
+ </a>
+ </div>
+</div>
+
+<div class="indexcap box">
+ <div class="d1 flex">源码/集市</div>
+ <div class="d2"><a href="product/search_j37v.html">更多 ></a></div>
+</div>
+
+<div class="ggboxN box">
+<div class="ggnei"><div class="ad1">
+<a href="" target=_blank><img border=0 src=http://localhost/gg/1488458359ad61.jpg></a></div></div>
+</div>
+
+<div class="swiper-containerpp">
+<div class="swiper-containerp37">
+ <div class="swiper-wrapper">
+  <div class="swiper-slide" onClick="gourl('product/view184.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554034828-15/201903310821421606-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">新站网，友价源码商城带数据打包出售3月份打包的</div>
+   <div class="d3">￥400.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view203.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554036529-15/201903310848536353-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">整站带数据网络工作室个人博客资源下载商城系统源码...</div>
+   <div class="d3">￥600.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view189.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554035561-15/201903310832444475-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">多城市房产程序 开源房产源码Thinkphp多城市版站群版</div>
+   <div class="d3">￥150.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view210.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554700535-15/201904080115391648-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">友价源码t5抢先更新买程序赠送会员生成插件3月7日增...</div>
+   <div class="d3">￥200.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view221.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1557221794-15/201905070537197373-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">discuz克米设计APP手机版v3.5送15套配套插件教程分...</div>
+   <div class="d3">￥30.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view214.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554703664-15/201904080207475615-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">新版v9视频系统视频系统程序</div>
+   <div class="d3">￥60.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view212.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554701587-15/201904080133211016-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">自动发卡系统,个人在线发卡，自动发卡密系统</div>
+   <div class="d3">￥99.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view213.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554701775-15/201904080136188598-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">淘宝客程序卷皮程序模板源码自动采集卷皮粉色2016V...</div>
+   <div class="d3">￥60.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view211.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554700598-15/201904080117029578-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">hi9.0系统云计划系统自动化分销系统hi9.0源码</div>
+   <div class="d3">￥60.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view205.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/15/1554037652-15/201903310907350304-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">优站网源码，程序,整站打包出售安装即可运营</div>
+   <div class="d3">￥400.00</div>
+  </div>
+ </div>
+  </div>
+ <div class="swiper-paginationp37"></div>
+</div>
+</div>
+<script>
+swiperp37 = new Swiper('.swiper-containerp37', {
+slidesPerView: 2.7,
+spaceBetween:20,
+freeMode: true,
+pagination: {
+el: '.swiper-paginationp37',
+clickable: true,
+},
+});
+</script>
+<div class="indexcap box">
+ <div class="d1 flex">企业/网站</div>
+ <div class="d2"><a href="product/search_j38v.html">更多 ></a></div>
+</div>
+
+
+<div class="swiper-containerpp">
+<div class="swiper-containerp38">
+ <div class="swiper-wrapper">
+  <div class="swiper-slide" onClick="gourl('product/view256.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094352-14/201906091132384098-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">企业发卡网源码发卡平台源码全开源运营版</div>
+   <div class="d3">￥16800.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view255.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094323-14/201906091132109048-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">易经风水网站模板 八字算命 测字易经协会培训 带移...</div>
+   <div class="d3">￥60.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view254.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094233-14/201906091130460206-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">ID201：中/英语【自适应】建材/卫浴/五金配件Php源...</div>
+   <div class="d3">￥38.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view253.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094186-14/201906091130004544-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">Thinkphp5+layui开源中文响应式后台源码【原创】-533</div>
+   <div class="d3">￥30.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view252.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094132-14/201906091128586533-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">织梦自适应瀑布流图片站模板</div>
+   <div class="d3">￥38.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view251.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094093-14/201906091128212584-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">新品ASP演艺模特企业网站源码程序后台管理 文化传媒...</div>
+   <div class="d3">￥30.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view250.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094057-14/201906091127494164-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">装修环保站群/装修公司/企业模版 / 极速企业站群系统</div>
+   <div class="d3">￥298.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view249.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560094030-14/201906091127180999-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">极速独立站群,cms独立站群,跨服务器站群,门户网站群...</div>
+   <div class="d3">￥18000.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view248.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560093985-14/201906091126312399-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">装修环保站群/装修公司/企业模版 / 极速企业站群系统</div>
+   <div class="d3">￥298.00</div>
+  </div>
+ </div>
+  <div class="swiper-slide" onClick="gourl('product/view247.html')">
+  <div class="dmain">      
+   <div class="d1"><img src="http://localhost/upload/14/1560093952-14/201906091125584589-1.jpg" onerror="this.src='../img/none200x200.gif'" /></div>
+   <div class="d2">企业多城市地区目录站群企业分站站群系统程序源码二...</div>
+   <div class="d3">￥2000.00</div>
+  </div>
+ </div>
+  </div>
+ <div class="swiper-paginationp38"></div>
+</div>
+</div>
+<script>
+swiperp38 = new Swiper('.swiper-containerp38', {
+slidesPerView: 2.7,
+spaceBetween:20,
+freeMode: true,
+pagination: {
+el: '.swiper-paginationp38',
+clickable: true,
+},
+});
+</script>
+
+<div class="indexcap box">
+ <div class="d1 flex">资讯动态</div>
+ <div class="d2"><a href="news/newslist.html">更多 ></a></div>
+</div>
+<a href="news/txtlist_i14v.html">
+<div class="newslist box">
+ <div class="d1 flex">
+ <span class="s1">如何满足女人30分钟，男人们都应该看看！</span>
+ <span class="s2">官方公告</span>
+ <span class="s3">2017-03-27 16:52:46</span>
+ </div>
+ <div class="d2"><img src="http://localhost/upload/news/20170327/1490604766n56/1515341016-1.jpg" onerror="this.src='../../img/none180x180.gif'" /></div>
+</div>
+</a>
+<a href="news/txtlist_i13v.html">
+<div class="newslist box">
+ <div class="d1 flex">
+ <span class="s1">忘穿内衣出门！日本女生竟这样解决</span>
+ <span class="s2">官方公告</span>
+ <span class="s3">2017-03-27 16:51:32</span>
+ </div>
+ <div class="d2"><img src="http://localhost/upload/news/20170327/1490604692n44/1515340942-1.jpg" onerror="this.src='../../img/none180x180.gif'" /></div>
+</div>
+</a>
+<a href="news/txtlist_i11v.html">
+<div class="newslist box">
+ <div class="d1 flex">
+ <span class="s1">跟着大佬让你一天全面了解VR-AR－MR发展趋势</span>
+ <span class="s2">技术文档</span>
+ <span class="s3">2017-03-27 16:47:50</span>
+ </div>
+ <div class="d2"><img src="http://localhost/upload/news/20170327/1490604470n21/1515340951-1.jpg" onerror="this.src='../../img/none180x180.gif'" /></div>
+</div>
+</a>
+
+<div class="bottommain"></div>
+<div class="gbottom box">
+<div class="d1">
+ <div class="dm" onclick="gourl('http://localhost/m/')" id="bottom1"><img src="http://localhost/m/homeimg/bottom1.png" id="bottom1img" /><br>首页</div>
+ <div class="dm" onclick="gourl('http://localhost/m/search/main.php')" id="bottom5"><img src="http://localhost/m/homeimg/bottom5.png" id="bottom5img" /><br>搜索</div>
+ <div class="dm" onclick="gourl('http://localhost/m/user/order.php')" id="bottom2"><img src="http://localhost/m/homeimg/bottom2.png" id="bottom2img" /><br>订单</div>
+ <div class="dm" onclick="gourl('http://localhost/m/user/car.php')" id="bottom3"><img src="http://localhost/m/homeimg/bottom3.png" id="bottom3img" /><br>购物车</div>
+ <div class="dm" onclick="gourl('http://localhost/m/user/')" id="bottom4"><img src="http://localhost/m/homeimg/bottom4.png" id="bottom4img" /><br>我的</div>
+</div>
+</div>
+<div style="display:none;"></div></body>
+</html>

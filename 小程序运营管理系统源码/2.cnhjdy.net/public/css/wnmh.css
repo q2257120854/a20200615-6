@@ -1,0 +1,143 @@
+.table th, .table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: middle !important; 
+    border-top: 1px solid #ddd;
+}
+.divdk{
+	width: 214px;
+	height: 214px;
+	border: 1px solid #dedede;
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	vertical-align: top;
+	position: relative;
+}
+.zzzzc{
+	width: 214px;
+	height: 214px;
+	cursor:pointer;
+	display: none;
+}
+.zzzzc_y{
+	width: 214px;
+	height: 214px;
+	background-color: #000000;
+	z-index: 99;
+	opacity: 0.7;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor:pointer
+}
+.zzzzc_z{
+	width: 214px;
+	height: 214px;
+	text-align: center;
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 214px;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor:pointer
+}
+.xcxtb{
+	width: 100%;
+	height: 170px;
+	background-color: #dedede;
+	position: relative;
+}
+.xcxmz{
+	font-size: 14px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #333333;
+	padding: 0 20px;
+	overflow: hidden;
+}
+.xcxlogo{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -50px;
+	margin-left: -50px;
+}
+.sydfyxs{
+	text-align: center;
+}
+.sydfyxs ul{
+	margin:  0 0 0 0 !important;
+}
+.meiyxcs{
+	font-size: 16px;
+	color: #dedede;
+	width: 1400px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 150px;
+}
+
+.thumbnail img{
+	width: 100%;
+	height: 100%;
+}
+.zphpx{
+	position: absolute;
+	top: 50px;
+	left: 200px;
+}
+.controls{
+	position: relative;
+}
+.paiwei{
+	position: relative;
+	width: 140px; 
+	height:90px;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+.sancann{
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 20000;
+		display: none;
+	}
+.beijingys{
+	background-color: #000000;
+	height: 24px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	opacity: 0.5;
+	z-index: 10000;
+	display: none;
+}
+.sancann span{
+	width: 24px;
+    height: 24px;
+    display: inline;
+    float: right;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(/webuploader/css/images/icons.png) no-repeat;
+    background-position: -45px -20px;
+    cursor: pointer;
+    
+}
+.dx{
+	padding: 0px 8px !important;
+	border-radius: 3px !important;
+	font-size: 12px !important;
+}

@@ -1,0 +1,246 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navFx" class="navFx3">
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		分销商订单管理--{$applet.name}
+	</li>
+</ul>
+
+<style type="text/css">
+	.shuk{
+		outline: none;
+		border: 1px solid #dedede;
+		width: 300px;
+	}
+	.cesd{
+		height: 28px;
+		line-height: 28px;
+	    width: 28px;
+	    display: inline-block;
+	    vertical-align: top;
+	    cursor: pointer;
+	    border:1px solid #dedede;
+	    padding: 0 10px;
+	}
+</style>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th>商品</th>
+				            <th>单价/数量</th>
+				            <th>价格</th>
+				            <th>核销时间</th>
+				            <th>状态</th>
+				            
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $orders}
+					{foreach $orders as $item}
+						
+							<tr>
+								<td colspan="4">订单编号: {$item.order_id}</td>
+								<td colspan="3" style="text-align:right">下单时间：{$item.creattime}</td>
+							</tr>
+							{foreach $item['datas'] as $index => $val}
+    <tr class="trbody">
+
+        <td style="overflow:hidden;border-left:1px solid #dedede;" >
+        	<img src="{$val['proinfo']['thumb']}" style="width:50px;height:50px;border:1px solid #ccc; padding:1px;" onerror="">
+        </td>
+
+        <td style="text-align: left;overflow:hidden;border-left:none;"> 
+        	{$val['baseinfo']['title']} <br> {$val['proinfo']['ggz']}
+        </td>
+
+        <td style="text-align:center;border-left:none; border-right:1px solid #dedede">
+        	{$val['proinfo']['price']}x{$val['num']}
+        </td>
+		
+		{if $index == 0}
+		<td style="text-align:center;border-left:none;" rowspan="{$item['counts']}">
+        	总价：{$item['order']['price']}
+        </td>
+
+		<td style="text-align:right;border-left:none;" rowspan="{$item['counts']}">
+        	{$item['order']['hxtime']}
+        </td>
+
+        <td style="text-align:center;border-left:none;border-right:1px solid #dedede;" rowspan="{$item['counts']}">
+
+        	{if $item['order']['flag'] ==0}未支付{/if}
+
+            {if $item['order']['flag'] ==1 && $item['order']['nav'] == 2}
+                <a class="btn btn-danger btn-sm" >未提货</a>
+            {/if}
+
+            {if $item['order']['flag'] ==1 && $item['order']['nav'] == 1}
+                <a class="btn btn-danger btn-sm" >未发货</a>
+
+            {/if}
+
+            {if $item['order']['flag'] ==2} <span class="btn btn-success btn-sm">已完成</span>{/if}
+
+            {if $item['order']['flag'] ==3} <span class="btn btn-success btn-sm">已过期</span>{/if}
+
+            {if $item['order']['flag'] ==4} <span class="btn btn-danger btn-sm">已发货</span>{/if}
+
+        </td>
+        {/if}
+        
+   	</tr> 
+	{/foreach}
+
+	<style type="text/css">
+        .ssdd{
+            width: 200px;
+            border: 1px solid #dedede;
+            padding: 20px 10px;
+        }
+    </style>
+
+	<tr style="border-bottom:1px solid #dedede;background:#f9f9f9;">
+		<td colspan="3" style="text-align:left;border-left:1px solid #dedede;">
+			<div  style="margin-bottom:10px;">
+				该商品购买：
+				<img src="{$item['gmz']['avatar']}" style="width:50px; height:50px;">
+				{$item['gmz']['nickname']}
+			</div>
+			{if $item['v1']}
+				<div style="margin-bottom:10px;">
+				一级分销商：
+				<img src="{$item['v1']['avatar']}" style="width:50px; height:50px;">
+				{$item['v1']['nickname']}
+				{if $item['order']['flag'] == 0 || $item['order']['flag'] == 1}
+					预计获得分成： {$item['v1']['hmoney']}
+				{/if}
+				{if $item['order']['flag'] == 2 || $item['order']['flag'] == 4}
+					已经获得分成： {$item['v1']['hmoney']}
+				{/if}
+				</div>
+			{/if}
+			{if $item['v2']}
+				<div style="margin-bottom:10px;">
+				二级分销商：
+				<img src="{$item['v2']['avatar']}" style="width:50px; height:50px;">
+				{$item['v2']['nickname']}
+				{if $item['order']['flag'] == 0 || $item['order']['flag'] == 1}
+					预计获得分成： {$item['v2']['hmoney']}
+				{/if}
+				{if $item['order']['flag'] == 2 || $item['order']['flag'] == 4}
+					已经获得分成： {$item['v2']['hmoney']}
+				{/if}
+				</div>
+			{/if}
+			{if $item['v3']}
+				<div style="margin-bottom:10px;">
+				三级分销商：
+				<img src="{$item['v3']['avatar']}" style="width:50px; height:50px;">
+				{$item['v3']['nickname']}
+
+				{if $item['order']['flag'] == 0 || $item['order']['flag'] == 1}
+					预计获得分成： {$item['v3']['hmoney']}
+				{/if}
+				{if $item['order']['flag'] == 2 || $item['order']['flag'] == 4}
+					已经获得分成： {$item['v3']['hmoney']}
+				{/if}
+
+				</div>
+			{/if}
+		</td>
+        <td colspan="3" style="text-align:right;border-right:1px solid #dedede;">
+            
+        </td>
+    </tr>
+
+        
+    <tr>
+    	<td colspan="6" style="height:20px;padding:0;border-top:none;">&nbsp;</td>
+    </tr>
+
+   {/foreach}
+   {/if}
+					</tbody>
+
+				</table>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	
+function heixiao(){
+
+	if(confirm('你确定要核销该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function queren(){
+
+	if(confirm('你确定要确认该订单嘛?')){
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function search(){
+
+	var order = $("#getorder").val();
+	if(!order){
+		alert("请输入订单号");
+		return;
+	}
+	if(isNaN(order)){
+		alert("请输入正确的订单号格式");
+		return;
+	}
+	location.href = "{:Url('Orderlist/index')}?appletid=<?php echo $_GET['appletid']?>&order="+order;
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+{include file="public/foot_more" /}

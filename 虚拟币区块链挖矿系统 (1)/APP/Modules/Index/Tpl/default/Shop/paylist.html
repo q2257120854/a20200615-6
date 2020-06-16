@@ -1,0 +1,137 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+
+
+<!-- Start: Topbar -->
+<header id="topbar" class="affix">
+    <div class="topbar-left">
+        <ol class="breadcrumb">
+            <li class="crumb-active">
+                <a href="/">Member</a>
+            </li>
+            <li class="crumb-icon">
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="crumb-trail">
+                <a href="#">
+                   零售管理
+                </a>
+            </li>
+            <li class="crumb-trail">
+                零售申请记录
+            </li>
+
+        </ol>
+    </div>
+</header>
+<!-- End: Topbar -->
+
+<!-- Begin: Content -->
+<section id="content" class="table-layout " style="padding-top: 50px;">
+    <div class="row" style="padding: 10px 0px 40px !important;">
+        <div class="col-md-12" style="padding: 0px 8px !important;">
+            <div class="panel panel-visible">
+                <div class="panel-heading br-b-n">
+                    <div class="panel-title hidden-xs">
+                        <span class="glyphicon glyphicon-tasks"></span>充值申请记录
+                    </div>
+                </div>
+                <div class="panel-body pn">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer admin-form" id="datatable_wrapper">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+							
+							
+                                <table style="width: 100%;" aria-describedby="datatable_info" role="grid"
+                                       class="table table-striped table-bordered table-hover dataTable no-footer text-center"
+                                       id="datatable" cellspacing="0" width="100%">
+                                    <thead>
+                                    <!--<tr>-->
+                                    <!--<td class="w200">类型</td>-->
+                                    <!--<td class="w200">金额</td>-->
+                                    <!--<td>描述</td>-->
+                                    <!--<td class="w175">操作时间</td>-->
+                                    <!--</tr>-->
+                                    <tr>
+                                        <td class="w200">申请日期</td>
+                                        <td class="w200">零售金额</td>
+                                        <td class="w200">状态</td>
+                                        <td class="w200">开户银行</td>
+                                        <td class="w200">银行户名</td>
+                                        <td class="w200">银行账号</td>
+										<td class="w200">零售备注</td>
+                                        <td class="w200">系统回复</td>
+                                      
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      <foreach name="data" item="v">
+                                         <tr>   
+                                            <td> <span>{$v.addtime|date='Y-m-d H:i',###}</span></td>
+											<td><span>{$v.amount}</span></td>
+											<td> <span><if condition='$v["status"] eq 0'>
+													待审核
+												<elseif condition='$v["status"] eq 1'/>
+												    未通过
+												<else/>
+													已通过
+												</if></span></td>
+											<td><span>{$v.type}</span></td>
+											<td><span>{$v.name}</span></td>
+											<td><span>{$v.account}</span></td>
+											<td><span>{$v.content}</span></td>
+											<td><span>{$v.remark}</span></td>
+                                        </tr>
+									 </foreach>   
+										
+										
+                                </table>
+                            </div>
+                        </div>
+						
+			
+
+						
+
+
+</div>
+
+		
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End: Content -->
+
+
+</div>
+
+
+
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

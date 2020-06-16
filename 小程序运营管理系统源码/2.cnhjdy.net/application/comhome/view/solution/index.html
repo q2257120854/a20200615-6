@@ -1,0 +1,88 @@
+{include file="public/top" /}
+<title>解决方案</title>
+<meta name="keywords" content="解决方案">
+<meta name="description" content="解决方案">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/wnmd.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+    {include file="public/head"}
+
+    <div class="solution_banner">
+
+            <div class="main2">
+
+                <div class="contact_banner_div1">SOLUTION</div>
+
+                <div class="contact_banner_div2">解决方案</div>
+
+            </div>
+
+        </div>
+
+        <div class="dynamic_nav">
+
+            <div class="main2 clearfix">
+
+                <a href="{:Url('Functionshow/index')}">功能展示</a>
+
+                <a class="hover" href="{:Url('Soulution/index')}">行业解决方案</a>
+
+            </div>
+
+        </div>
+
+        <div class="solutionbox">
+
+            <div class="solution main2">
+
+                <div class="solution_div clearfix">
+
+                    {foreach $list as $res}
+
+                    <a class="solution_single" href="{:Url('show')}?id={$res.id}" style="background-color: {$res.listbg};">
+
+                        <div class="solution_single_div1 iconfont {$res.icon}"></div>
+
+                        <div class="solution_single_div2">
+
+                            <div class="solution_title clearfix">
+
+                                <div class="solution_title_left">{$res.title}</div>
+
+                                <div class="solution_title_right">more  &gt;</div>
+
+                            </div>
+
+                            <div class="solution_content">
+
+                                {$res.descs}                            
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    {/foreach}
+
+                    <div class="dynamic_fy" style="margin-top: 0;margin-bottom: 120px;">
+
+                        {$lists->render()}
+
+                    </div>
+
+            </div>
+
+        </div>
+
+    {include file="public/foot"}
+
+</body>
+
+</html>

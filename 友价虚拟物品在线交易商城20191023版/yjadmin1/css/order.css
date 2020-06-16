@@ -1,0 +1,30 @@
+.ordercap{float:left;border:#CACACA solid 1px;border-left:0;margin:10px 0 0 0;height:38px;width:-moz-calc(100% - 1px);width:-webkit-calc(100% - 1px);width:calc(100% - 1px);background-color:#E8E8E8;font-weight:700;}
+.ordercap li{float:left;padding-top:10px;border-left:#CACACA solid 1px;height:28px;}
+.ordercap .l1{width:27px;height:26px;text-align:left;padding:12px 0 0 8px;}
+.ordercap .l1 input{float:left;width:16px;height:16px;}
+.ordercap .l2{width:-moz-calc(100% - 607px);width:-webkit-calc(100% - 607px);width:calc(100% - 607px);text-align:left;padding-left:10px;}
+.ordercap .l2 .a1:hover{color:#ff6600;text-decoration:underline;}
+.ordercap .l3{width:108px;padding-left:10px;}
+.ordercap .l4{width:100px;}
+.ordercap .l5{width:98px;}
+.ordercap .l6{width:99px;}
+.ordercap .l7{width:140px;}
+.orderlist{float:left;border:#CACACA solid 1px;border-left:0;border-top:0;height:80px;width:-moz-calc(100% - 1px);width:-webkit-calc(100% - 1px);width:calc(100% - 1px);background-color:#fff;}
+.orderlist li{float:left;padding-top:10px;border-left:#CACACA solid 1px;height:70px;}
+.orderlist .l1{width:27px;height:68px;text-align:left;padding:12px 0 0 8px;background-color:#F1F1F1;}
+.orderlist .l1 input{float:left;width:16px;height:16px;}
+.orderlist .l2{width:-moz-calc(100% - 607px);width:-webkit-calc(100% - 607px);width:calc(100% - 607px);text-align:left;padding-left:10px;line-height:18px;}
+.orderlist .l2 img{margin:0 10px 0 0;}
+.orderlist .l3{width:108px;padding-left:10px;}
+.orderlist .l4{width:100px;}
+.orderlist .l5{width:98px;}
+.orderlist .l6{width:99px;}
+.orderlist .l7{width:140px;}
+.orderlist:hover{background:rgba(249,249,249,1);-webkit-transition:background-color 0.3s linear;-moz-transition:background-color 0.3s linear;-o-transition:background-color 0.3s linear;transition:background-color 0.3s linear;}
+
+.right .gdhflist{float:left;width:100%;background-color:#fff;}
+.right .gdhflist .u1{float:left;padding:17px 0 13px 0;margin:0 20px;width:-moz-calc(100% - 40px);width:-webkit-calc(100% - 40px);width:calc(100% - 40px);border-bottom:#BCBCBC dotted 1px;}
+.right .gdhflist .u1 li{float:left;}
+.right .gdhflist .u1 .l1{width:75px;text-align:center;}
+.right .gdhflist .u1 .l2{width:-moz-calc(100% - 75px);width:-webkit-calc(100% - 75px);width:calc(100% - 75px);line-height:18px;}
+.right .gdhflist .u1 .l2 img{max-width:933px;}

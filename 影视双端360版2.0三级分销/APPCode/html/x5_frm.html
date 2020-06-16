@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+    <style>
+    #videoinfo{margin-top:10rem}
+    .aui-grid img{ height:1.4rem; display:inline }
+    .aui-grid [class*=aui-col-]{padding:0.5rem 0}
+    .aui-grid .aui-grid-label{margin-top:0}
+    </style>
+</head>
+<body>
+    <section id="videoinfo" class="aui-content" >
+        <div class="aui-card-list aui-margin-b-0">
+            <div class="aui-card-list-header aui-card-list-user">
+                <div class="aui-card-list-user-name" id="title"></div>
+                <div class="aui-card-list-user-info">
+                    <div class="aui-row">
+                        <div class="aui-col-xs-9 aui-font-size-14">
+                            <marquee  class="aui-text-danger" id="ggg">111</marquee>
+                        </div>
+						<!-- <div v-else class="aui-col-xs-3 aui-text-right" @click="addfavor(it.id)" tapmode> -->
+                            <!-- <i class="aui-iconfont aui-font-size-18 aui-icon-favorfill"></i>收藏 -->
+                        <!-- </div> -->
+                        <!-- <div v-if="it.favor" class="aui-col-xs-3 aui-text-right aui-text-info" @click="addfavor(it.id)" tapmode> -->
+                            <!-- <i class="aui-iconfont aui-font-size-18 aui-icon-favorfill"></i>已收藏 -->
+                        <!-- </div> -->
+                        <!-- <div v-else class="aui-col-xs-3 aui-text-right" @click="addfavor(it.id)" tapmode> -->
+                            <!-- <i class="aui-iconfont aui-font-size-18 aui-icon-favorfill"></i>收藏 -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>       
+    <section id="swiper" class="swiper-container">
+       <div id="aui-slide">
+			<div class="aui-slide-wrap" >
+			  <div id="slidebox" class="aui-slide-wrap">
+			  </div>
+			  <div class="aui-slide-page-wrap"><!--分页容器--></div>
+			</div>
+		</div>
+    </section>
+    <div class="aui-tab aui-margin-t-10">
+        <div class="aui-tab-item aui-active">
+            <i class="aui-iconfont aui-icon-hotfill aui-font-size-18"></i> 推荐视频
+        </div>
+    </div>
+    <section class="aui-content aui-margin-5" id="videolist">
+        <div class="aui-row-padded" id="tuijian">
+           
+        </div>
+        
+    </section>
+</body>
+<script type="text/x-dot-template" id="tuijian1">
+		{{~ it : value : index }}
+				 
+				 <div class="aui-col-xs-6" onclick="openPlayer1('{{= value. url }}','{{= value. title }}','{{= value. img }}')"  >
+                        <div class="aui-card-list aui-border-t aui-border-b aui-margin-b-5">
+                    <div class="aui-card-list-content">
+                        <img src="{{= value. img }}" />
+                    </div>
+                    <div class="aui-card-list-header">
+                        <div class="aui-ellipsis-2" >{{= value. title }}</div>
+                    </div>
+                </div>
+            </div>
+		{{~}}
+	</script>  
+	 <script type="text/x-dot-template" id="template">
+		{{~ it : value : index }}
+				 <div class="aui-slide-node bg-dark" tapmode onclick="openApp('{{= value. link }}')">
+					<img src="{{= value. picname }}" />
+				</div>
+		{{~}}
+	</script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/auipullrefresh.js"></script>
+	<script type="text/javascript" src="../script/auislide.js"></script>
+	<script type="text/javascript" src="../script/auilazyload.js" ></script>
+<script type="text/javascript">
+ var api_url = localStorage.getItem('api_url');
+apiready = function(){
+get();
+lunbo()
+ var title = $api.byId('title');
+ title.innerHTML = api.pageParam.title;
+ 
+  var ggg = $api.byId('ggg');
+ ggg.innerHTML = localStorage.getItem('bg')
+ 	record_play_history();
+var videoPlayer = api.require('videoPlayer');
+videoPlayer.close();
+		videoPlayer.openPlay({
+		  rect:
+			{   x: 0,
+				y : 0,
+				w : api.frameWidth,
+				h: 200
+			},
+			texts: { head: {title:api.pageParam.title} },
+			styles: {
+				head: { bg: '', height: 30, titleSize: 16, backSize: 25, backImg: 'widget://image/back.png' },
+				foot: { playSize: 25, playImg: 'widget://image/play.png', pauseImg: 'widget://image/pause.png', progressColor: '#fff', progressSelected: '#f26c85', rotationSize: 25, verticalImg: 'widget://image/isfullscreen.png', horizontalImg: 'widget://image/nofullscreen.png' }
+			},
+			path: api.pageParam.url, 
+			autoPlay: true,
+			fixedOn: api.frameName,
+			fixed: true,
+			coverImg:'widget://image/TV.png'
+		}, function(ret){
+            if(ret.eventType === 'back' && ret.value === false){
+                api.closeWin();
+            }
+        });
+
+};
+
+function get(){
+	   var tuijian = $api.byId('tuijian');
+	   var tuijian1 = $api.byId('tuijian1');
+			api.ajax({
+				  url: api_url+'/App/App/faxian.html',
+				  method: 'get',
+			  },function(ret, err){
+					limit=10;
+				  if (ret) {
+					//alert(JSON.stringify(ret))
+					var pagefn = doT.template(tuijian1.text);
+					tuijian.innerHTML = pagefn(ret);
+					
+				  } else {
+					alert( '视频加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+			}
+			
+			function lunbo(){
+	   var bannerid = $api.byId('slidebox');
+		var template = $api.byId('template');
+			api.ajax({
+				  url: api_url+'/App/App/lunbo.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret.slun))
+					var pagefn = doT.template(template.text);
+					bannerid.innerHTML = pagefn(ret.blun);
+					
+					banNer();
+				  } else {
+				  alert( '导航加载失败！' );
+				  api.hideProgress();
+				}      
+			  });
+			}
+			
+			function banNer(){
+		  var slide = new auiSlide({
+			  container:document.getElementById("aui-slide"),
+			  // "width":300,
+			  "height":150,
+			  "speed":300,
+			  "pageShow":true,
+			  "autoPlay": 5000,
+			  "pageStyle":'dot',
+			  "loop":true,
+			  'dotPosition':'center',
+		  });
+		}
+		
+		
+		function record_play_history(){
+	  //alert(api.pageParam.title);
+	  api.ajax({
+	      url: api_url+'/App/Index/jilu.html',
+		  method: 'get',
+	      data:{
+	      	values:{
+	      		uid: localStorage.getItem('user_id'),
+	      		title: api.pageParam.title,
+	      		url: api.pageParam.url,
+				img: api.pageParam.img,
+
+	      	}
+	      }
+      },function(ret,err){
+      });
+	}
+	
+	 function openApp(url){
+				if(api.systemType == 'android'){
+					api.openApp({
+						androidPkg: 'android.intent.action.VIEW',
+						mimeType: 'text/html',
+						uri: url
+					}, function(ret, err) {});
+				}else{
+					api.openApp({
+						iosUrl: url
+				   });
+				} 
+			}
+</script>
+</html>

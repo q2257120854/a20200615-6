@@ -1,0 +1,91 @@
+<div class="fly-header layui-bg-cyan" style="border-bottom: 1px solid #01AAED;">
+    <div class="layui-container">
+        <a class="fly-logo" href="{:url((CBOPEN==2?'bbs':'index').'/index/index')}" style="top: 0;">
+            <img src="__ROOT__{$site_config['uclogo']|default='__PUBLIC__images/logo.png'}" alt="laysns" style="height:60px" /></a>
+        <ul class="layui-nav fly-nav layui-hide-xs">
+            {if CBOPEN==3||CBOPEN==1}
+            <li class="layui-nav-item">
+                <a href="{:url('index/index/index')}" target="_self" title="">
+                    <i class="layui-icon"></i>首页 </a>
+            </li>{/if} 
+        </ul>
+        <ul class="layui-nav fly-nav-user">
+            {if condition="$Think.session.userid neq ''"}
+            <!-- 登录后的状态 -->
+            <li class="layui-nav-item">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs">{$Think.session.username}</cite>
+
+                    <img src="{$Think.session.userhead|getheadurl}"></a>
+
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="{:url('user/index/index')}">
+                            <i class="layui-icon">&#xe612;</i>个人中心</a>
+
+                    </dd>{if CBOPEN==3||CBOPEN==1}
+                    <dd>
+                        <a href="{:url('index/index/index')}">
+                            <i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>CMS首页</a>
+                    </dd>{/if}{if CBOPEN==3||CBOPEN==2}
+                    <dd>
+                        <a href="{:url('bbs/index/index')}">
+                            <i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>进入社区</a>
+                    </dd>{/if}
+
+                    <hr style="margin: 5px 0;">
+                    <dd>
+                        <a data-url="{:url('user/login/logout')}" location-url="{:url('index/index/index')}" href="javascript:void(0)" class="logi_logout" style="text-align: center;">退出</a></dd>
+                </dl>
+            </li>
+            <script>
+                layui.use(['jquery', 'layer'], function() {
+                    var $ = layui.jquery;
+                    var layer = layui.layer;
+
+                    function getmsgnum() {
+                        var elemUser = $('.fly-nav-user');
+                        $.getJSON("{:url('user/message/getUnreadMsg')}?", {
+                            _: new Date().getTime()
+                        }, function(res) {
+
+                            if (res.code == 200 && res.count > 0) {
+                                var msgurl = "{:url('user/index/message')}";
+                                var msg = $('<a class="fly-nav-msg" href="' + msgurl + '">' + res.count + '</a>');
+                                elemUser.append(msg);
+                                msg.on('mouseenter', function() {
+                                    layer.closeAll('tips');
+                                });
+                                layer.tips('你有 ' + res.count + ' 条未读消息，点击可查看', msg, {
+                                    tips: 3,
+                                    // tipsMore: true,
+                                    fixed: true,
+                                    time: 3000
+                                });
+                                msg.on('click', function() {
+                                    $.post("{:url('user/message/readmsg')}", {}, function(res) {
+                                        if (res.status == 0) {
+                                            location.href = "{:url('user/index/message')}";
+                                        }
+                                    });
+                                });
+                            }
+
+                        });
+                    }
+                    getmsgnum();
+                    //1分钟执行一次
+                    setInterval(getmsgnum, 60000);
+
+                });
+            </script>
+            {else /}
+            <li class="layui-nav-item">
+                <a class="iconfont icon-touxiang layui-hide-xs" href="{:url('user/login/index')}"></a>
+            </li>
+            <li class="layui-nav-item"><a href="{:url('user/login/index')}">登录</a></li>
+            <li class="layui-nav-item"><a href="{:url('user/login/reg')}">注册</a></li>
+            {/if}
+        </ul>
+    </div>
+</div>

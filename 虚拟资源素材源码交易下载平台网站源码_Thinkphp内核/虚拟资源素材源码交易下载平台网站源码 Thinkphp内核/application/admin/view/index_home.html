@@ -1,0 +1,207 @@
+{extend name="base" /} {block name="body"}
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                           <blockquote style="padding: 10px;border-left: 5px solid #009688;" class="layui-elem-quote">
+                             欢迎使用LaySNS内容社区综合系统 
+                             <span style="color:#FF5722;">{$shouquanname}</span>
+                          </blockquote>
+                      <table width="100%">
+                    <tr>
+                  <td width="50%">{if $domaininfo['sqstatus'] eq 0}个人(免费版)用户请保留我们版权；如需去除，请点击
+                <a href="http://www.laysns.com/apps/auth/index.html" target="_blank">购买商业授权</a>{elseif $domaininfo['sqstatus'] eq 1}授权编号：{$domaininfo['sqid']} 有效期至：{$domaininfo['endtime']}{else /}续费{/if}
+                  </td>
+                        </tr>
+                          </table>   
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据统计</div>
+                        <div class="layui-card-body ">
+                            <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="{:url('admin/articles/index')}" class="x-admin-backlog-body">
+                                        <h3>待审文章</h3>
+                                        <p>
+                                            <cite>{$tongji.artWaitCheck}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="{:url('admin/articles/index')}" class="x-admin-backlog-body">
+                                        <h3>文章总数</h3>
+                                        <p>
+                                            <cite>{$tongji.artCount}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="{:url('admin/forum/index')}" class="x-admin-backlog-body">
+                                        <h3>待审帖子</h3>
+                                        <p>
+                                            <cite>{$tongji.forumWaitCheck}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6 ">
+                                    <a href="{:url('admin/forum/index')}" class="x-admin-backlog-body">
+                                        <h3>帖子总数</h3>
+                                        <p>
+                                            <cite>{$tongji.forumCount}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="{:url('admin/user/index')}" class="x-admin-backlog-body">
+                                        <h3>今日注册</h3>
+                                        <p>
+                                            <cite>{$tongji.userRegToday}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="{:url('admin/user/index')}" target="" class="x-admin-backlog-body">
+                                        <h3>会员总数</h3>
+                                        <p>
+                                            <cite>{$tongji.userCount}</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">系统信息</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <th>程序版本</th>
+                                        <td>LaySNS内容社区综合系统 V{$oldver} {if isset($versioninfo['version'])}【发现新版本{$versioninfo['version']}<a href="javascript:;" data-key="{$updatekey}" data-url="{:url('index/handle',array('type'=>'downmain','verid'=>$versioninfo['id']))}" id="update"
+                    style="color:#FF5722;" target="_blank">点击升级</a> <a class="layui-btn layui-btn-xs" target="_blank" href="http://www.laysns.com/plinfo/33.html">升级日志</a>】{/if}</td></tr>
+                                    <tr>
+                                        <th>操作系统</th>
+                                        <td>{:php_uname('s')}</td></tr>
+                                    <tr>
+                                        <th>PHP版本</th>
+                                        <td>{:PHP_VERSION}</td></tr>
+                                    <tr>
+                                        <th>Zend版本</th>
+                                        <td>{:Zend_Version()}</td></tr>
+                                    <tr>
+                                        <th>服务器解译引擎</th>
+                                        <td>{:$_SERVER['SERVER_SOFTWARE']}</td></tr>
+                                    <tr>
+                                        <th>服务器语言</th>
+                                        <td>{:$_SERVER['HTTP_ACCEPT_LANGUAGE']}</td></tr>
+                                    <tr>
+                                        <th>服务器Web端口</th>
+                                        <td>{:$_SERVER['SERVER_PORT']}</td></tr>
+                                    <tr>
+                                        <th>服务器上传文件大小限制</th>
+                                        <td>upload_max_files：{:ini_get('post_max_size')} / post_max_size：{:ini_get('upload_max_filesize')}</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">开发团队</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <th>版权所有</th>
+                                        <td>武汉类森科技有限公司
+                                            <a href="http://www.laysns.com/" target="_blank">访问官网</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>项目经理</th>
+                                        <td>捧在手心(QQ 278198348)</td></tr>
+                                    <tr>
+                                        <th>特别鸣谢</th>
+                                        <td>张先生(QQ 896683945) / 日辰大表哥（QQ 439560） / 梦雨(QQ 50361804) / 0d(QQ 1834833515) / 狮(QQ 2950918980)</td></tr>
+                             
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <style id="welcome_style"></style>
+                <div class="layui-col-md12">
+                    <blockquote class="layui-elem-quote layui-quote-nm">
+                        感谢 <a href="https://www.changxingyun.com?from=laysns" target="_blank" rel="nofollow" upyun="">畅行云</a>
+                         提供服务器赞助</blockquote></div>
+            </div>
+        </div>
+{/block} {block name="script"}
+<script>
+    layui.use(['layer', 'jquery'], function() {
+        var jq = layui.jquery;
+
+        jq('#hiddenbq').on('click', function() {
+            var url = jq(this).data('url');
+            var loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            jq.getJSON(url, function(data) {
+                layer.close(loading);
+
+                if (data.code == 200) {
+
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+        });
+        jq('#update').click(function() {
+            var url = jq(this).data('url');
+            layer.confirm('升级之前请先备份好自己修改过的模板文件？', {
+                btn: ['已备份好', '没有'] //按钮
+            }, function(index) {
+                layer.close(index);
+                var loading = layer.load(2, {
+                    shade: [0.2, '#000']
+                });
+                jq.getJSON(url, function(data) {
+                    layer.close(loading);
+
+                    if (data.code == 200) {
+
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        }, function() {
+                            location.reload();
+                        });
+                    } else {
+
+                        layer.msg(data.msg, {
+                            icon: 2,
+                            anim: 6,
+                            time: 1000
+                        });
+                    }
+                });
+                return false;
+            }, function(index) {
+                layer.close(index);
+            });
+
+        });
+    });
+    console.log('采集秘钥为：<?php echo session_id();?>');
+</script>
+{/block}

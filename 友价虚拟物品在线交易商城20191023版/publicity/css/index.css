@@ -1,0 +1,64 @@
+html{overflow-x:hidden;overflow-y:scroll}
+body{color:#333;font:12px/1.4 '\5FAE\8F6F\96C5\9ED1','microsoft yahei',"ËÎÌו",Arial,sans-serif;background:#f5f5f5;-webkit-font-smoothing:antialiased}
+cite,em,i{font-style:normal}
+.main{width:1190px}
+.help_top{height:80px;padding:35px 0 8px 0}
+.help_top .main{position:relative}
+.help_top .logo{float:left;width:190px;height:80px;background:url(/img/logo.png) no-repeat}
+.help_top cite{position:absolute;top:18px;right:0;font-size:14px;height:40px}
+.help_top cite a{float:left;padding:0 18px;line-height:50px;height:50px;font-size:16px}
+.help_top cite a.curr{color:#fff;background-color:#ff9422}
+.help_top cite a.first{background-image:none!important}
+.help_top h1{float:left;line-height:63px;padding:0 10px;font-size:20px;font-weight:700}
+.pubtop{width:100%;height:340px;background:url(../images/pubtop.jpg) center center no-repeat}
+.pub-main{height:180px;padding:110px 0 70px;display:block}
+.pubtop-item{width:33%;float:left;height:100%}
+.pubtop .my{color:#6d757a;display:block;overflow:hidden;padding:5px 0 0 95px}
+.pubtop .my dt{display:block;overflow:hidden;height:65px}
+.pubtop .my dt img{border:3px solid #fafafa;box-shadow:1px 2px 3px #aaa;float:left;width:54px;height:54px;border-radius:50%;overflow:hidden}
+.pubtop .my dt span{display:block;margin:0 20px 0 70px;font-size:13px}
+.pubtop .my dt p{color:#333;font-size:18px;line-height:18px;padding:8px 0 6px 0;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap}
+.pubtop .my dt cite{display:block;font-size:12px;height:26px;margin:18px 0 0 70px}
+.pubtop .my dt em{float:left;height:26px;line-height:26px}
+.pubtop .my dt a{float:left;padding:5px 10px;color:#fff;background:#00a1d6;-webkit-transition:all .3s;-o-transition:all .3s;transition:all .3s;border-radius:4px;margin-right:4px}
+.pubtop .my dt a:hover{background:#00b5e5}
+.pubtop .my dd{text-align:center;display:block;overflow:hidden;padding:28px 0 0 0}
+.pubtop .my dd a{color:#6d757a;display:inline-block;width:100%;height:100%}
+.pubtop .my dd a:hover{color:#6d757a}
+.pubtop .my dd cite{float:left;width:110px;margin-right:25px}
+.pubtop .my dd em{display:block;font-size:28px;font-weight:bolder;line-height:40px;font-family:arial}
+.pubtop .link{position:relative;height:100%}
+.pubtop .link dt{float:left;padding:12px 0 0 50px;width:130px}
+.pubtop .link dt a{float:left;width:100%;font-size:15px;font-weight:700;height:35px;line-height:35px;-webkit-transform:rotate(3.5deg);-ms-transform:rotate(3.5deg);transform:rotate(3.5deg);color:#4a4b6c;text-align:center}
+.pubtop .link dd{position:absolute;bottom:-36px;right:1px;width:220px;height:53px}
+.pubtop .link dd a{display:block;height:100%}
+
+
+.tjsj{float:left;width:1150px;text-align:left;height:52px;background-color:#fff;margin:10px 0 0 0;}
+.tjsj li{float:left;}
+.tjsj .l1{width:220px;border-bottom:#FF6600 solid 2px;padding:14px 0 0 15px;background-position:10px 12px;color:#FF6600;font-size:19px;height:36px;}
+.tjsjleft{float:left;width:1150px;height:100%;background-color:#fff;text-align:left;}
+.tjsjleft .u1{float:left;width:367px;height:215px;border:#E2E2E2 solid 1px;margin:10px 0 0 10px;}
+.tjsjleft .u1 li{float:left;}
+.tjsjleft .u1 .l1{width:90px}
+.tjsjleft .u1 .l1 .a1{float:left;width:75px;height:75px;margin:10px 0 0 10px;}
+.tjsjleft .u1 .l1 .a1 img{width:75px;height:75px;border-radius:3px;}
+.tjsjleft .u1 .a2{float:left;width:108px;height:18px;margin:10px 10px 0 10px;font-size:14px;font-weight:700;color: #6d757a;overflow:hidden;}
+.tjsjleft .u1 .a2:hover{text-decoration:none;color:#ff6600;}
+.tjsjleft .u1 .s1{float:left;width:230px;height:18px;margin:10px 10px 0 10px;font-size:14px;font-weight:700;color: #6d757a;overflow:hidden;}
+.tjsjleft .u1 .a3{float:right;width:58px;height:16px;background-color:#5AB0EA;border:#5AB0EA solid 1px;text-align:center;color:#fff;border-radius:2px;margin: 20px 10px 0 10px;}
+
+.tjsjleft .u1 .l2{margin:20px 10px 0 10px;width:350px;color:#666;height:30px;border-bottom: #ebeff4 dashed 2px;}
+.tjsjleft .u1 .l2 strong{float:left;background-color:#fff;padding:0 10px 0 0;}
+.tjsjleft .u1 .l2 i{color:#336699;}
+.tjsjleft .u1 .l3{margin:10px 10px 0 10px;width:350px;color:#666;height:17px;}
+.tjsjleft .u1 .l3 i{color:#f00;}
+.tjsjleft .u1 .l4{float:left;width:155px;height:18px;margin:20px 10px 0 10px;overflow:hidden;}
+
+
+#pagee{margin:10px 0 0 0;width:740px;padding:0;clear:both;}
+#pagee ul{float:right;margin: 15px 0 15px 0;}
+#pagee ul li{font-size:14px;float:left;margin:0 3px 0 0;font-family:Verdana, Geneva, sans-serif;}
+#pagee ul li a{float:left;border:#DDDDDD solid 1px;padding:8px 12px 9px 11px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+#pagee ul li a:hover{text-decoration:none;background-color:#ff6600;color:#fff;}
+#pagee ul .ohave{padding:8px 12px 9px 11px;color:#ff6600;}

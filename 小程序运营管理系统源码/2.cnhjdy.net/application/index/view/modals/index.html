@@ -1,0 +1,102 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}
+	a{color:inherit;}
+	.yyzx_list a{height:auto;}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel100">
+
+		<div style="height:55px">
+			<h3 style="float: left;margin-top: 0;">应用列表</h3>
+		</div>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+				<div class="yyzx_list clearfix">
+			<!-- 	  <a href="./index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=sudu8_page_plugin_shop&amp;version_id=4">
+				    <img src="https://wxkf2.nttrip.cn/addons/sudu8_page_plugin_shop/icon.jpg?v=1532886168">
+				    <div>全能小程序多商户</div></a> -->
+				    <?php
+			            $node_id = $_SESSION['node_id'];
+			         ?>
+				    {if in_array('106', $node_id)}
+					<a href="{:Url('Pt/set')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_pt.jpg?v=1532886168">
+						<div>拼团小程序</div>
+					</a>
+					{/if}	
+					{if in_array('113', $node_id)}		  
+					<a href="{:Url('Cyindex/index')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_food.jpg?v=1532886168">
+						<div>餐饮小程序</div>
+					</a>
+					{/if}	
+					{if in_array('121', $node_id)}
+					<a href="{:Url('Exchangecate/index')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_exchange.jpg?v=1532886168">
+						<div>积分兑换商城</div>
+					</a>
+					{/if}	
+					{if in_array('126', $node_id)}
+					<a href="{:Url('Signbase/index')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_score.png?v=1532886168">
+						<div>积分签到小程序</div>
+					</a>
+					{/if}	
+					{if in_array('129', $node_id)}
+					<a href="{:Url('Customers/index')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_customer.jpg?v=1532886168">
+						<div>小程序手机客服</div>
+					</a>
+					{/if}	
+					{if in_array('130', $node_id)}
+					<a href="{:Url('Powerfulsh/cate')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_shop.jpg?v=1532886168">
+						<div>全能小程序多商户</div>
+					</a>
+					{/if}	
+					{if in_array('139', $node_id)}
+					<a href="{:Url('Forum/func')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon_forum.png?v=1532886168">
+						<div>微同城</div>
+					</a>
+					{/if}
+					{if in_array('145', $node_id)}
+					<a href="{:Url('Shake/index')}?appletid=<?php echo $_GET['appletid']?>">
+						<img src="/image/modals/icon.jpg?v=1532886168">
+						<div>摇一摇抽奖全能小程序</div>
+					</a>
+					{/if}
+<!-- 				  <a href="./index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=sudu8_page_plugin_travel&amp;version_id=4">
+				    <img src="https://wxkf2.nttrip.cn/addons/sudu8_page_plugin_travel/icon.jpg?v=1532886168">
+				    <div>预约预订</div></a> -->
+		<!-- 		  <a href="./index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=sudu8_page_plugin_food&amp;version_id=4">
+				    <img src="https://wxkf2.nttrip.cn/addons/sudu8_page_plugin_food/icon.jpg?v=1532886168">
+				    <div>餐饮小程序</div></a> -->
+				  
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+{include file="public/foot_more" /}

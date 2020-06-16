@@ -1,0 +1,125 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navDIY" class="navDIY2-4">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			弹窗广告管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Adv/add')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						添加图片 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">排序</th>
+
+							<th style="width: 200px;">缩略图</th>
+
+							<th style="width: 200px;">状态</th>
+
+							<th>链接</th>
+							
+							<th width="200px;">操作</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+						{if $list}
+							{foreach $list as $item}
+								<tr>
+									<td>
+										{$item.num}
+									</td>
+									<td>
+										<img src="{$item.pic}" style="width:50px; height:30px;">
+									</td>
+									<td>
+										{if $item.flag ==0}
+											<font color="red">关闭</font>
+										{else}
+											<font color="green">开启</font>
+										{/if}
+									</td>
+									<td>
+										{$item.url}
+									</td>
+									<td>
+										<a href="{:Url('Adv/add')}?appletid=<?php echo $_GET['appletid']?>&picid={$item.id}"><button class="btn btncolor">编辑</button></a>
+										<form action="{:Url('Adv/del')}?appletid=<?php echo $_GET['appletid']?>&picid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+											<button class="btn btncolor" type="submit">删除</button>
+										</form>
+									</td>
+								</tr>
+							{/foreach}
+						{/if}
+					</tbody>
+
+				</table>
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$adv->render()}
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+
+{include file="public/foot_more" /}

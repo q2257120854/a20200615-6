@@ -1,0 +1,16 @@
+<view class="container">
+    <scroll-view bindscrolltolower="loadMore" class="content" enableBackToTop="true" scrollY="true">
+        <view class="main" wx:for="{{list}}" wx:key="key">
+            <view class="user">
+                <image class="touxiang" src="{{item.headimg}}"></image>
+                <text class="fnleft">{{item.nickname}}</text>
+            </view>
+            <view class="fnright">{{item.regtime}}</view>
+        </view>
+        <view class="weui-footer">
+            <view class="weui-footer__text text_color" style="margin-top:20rpx;">
+                <text>----------------到底了----------------</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>

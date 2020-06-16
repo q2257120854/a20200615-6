@@ -1,0 +1,20 @@
+<scroll-view bindscrolltolower="loadMore" class="container" enableBackToTop="true" scrollY="true">
+    <view class="content">
+        <view wx:for="{{videolist}}" wx:key="key">
+            <navigator class="item" openType="navigateTo" url="../play/index?vid={{item.video_id}}&title={{item.title}}">
+                <image lazyLoad="true" mode="aspectFill" src="{{item.img_url}}"></image>
+                <view class="title">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="play_main">
+                    <image class="play" src="../../resource/image/bofang.png"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="weui-footer" wx:if="{{show}}">
+        <view class="weui-footer__text text_color">
+            <text>----------------我也是有底线的----------------</text>
+        </view>
+    </view>
+</scroll-view>

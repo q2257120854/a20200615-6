@@ -1,0 +1,111 @@
+{extend name="base" /} {block name="body"}<div class="layui-tab layui-tab-brief">    <ul class="layui-tab-title">        <li><a target="_self" href="{:url('admin/system/siteConfig')}">SEO配置</a></li>           <li href="{:url('admin/system/ota')}">基本配置</li>        <li>显示配置</li>        <li>邮箱配置</li>        <li>积分规则</li>        <li class="layui-this">服务配置</li>        <li><a target="_self" href="{:url('admin/system/ota')}">OTA配置</a></li>       </ul>
+<form class="layui-form form-container" data-url="{:url('admin/system/updatepay')}" localtion-url="{:url('admin/system/siteConfig#type=6')}">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:150px">支付方式</label>
+        <div class="layui-input-block">
+            <input type="radio" name="paytype" value="1" title="第三方易支付" {if condition="@$pay_info.paytype eq 1" }checked{/if}>            <input type="radio" name="paytype" value="2" title="支付宝" {if condition="@$pay_info.paytype eq 2" }checked{/if}>          
+        </div>
+    </div>
+    <div class="layui-form-item" >
+        <div>
+            <label style="width:150px" class="layui-form-label">支付接口地址：</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:350px" name="apiurl" class="layui-input" value="{$pay_info.apiurl}">
+
+            </div>
+        </div>
+        <div class="label-tint">
+            第三方易支付平台支付接口地址 如：http://www.xxxx.com/ </div>
+    </div>
+
+    <div class="layui-form-item">
+
+
+
+        <div>
+            <label style="width:150px" class="layui-form-label">ID：</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:450px" name="partner" class="layui-input" value="{$pay_info.partner|default=''}">
+
+            </div>
+        </div>
+        <div class="label-tint">
+            第三方易支付请填 商户ID
+            <br /> 支付宝用户请填 合作身份者ID，签约账号，以2088开头（点击<a href="https://b.alipay.com/signing/productSet.htm" target="_blank">支付宝商家中心申请</a>）
+        </div>
+
+
+    </div>
+
+    <div class="layui-form-item">
+        <div>
+            <label style="width:150px" class="layui-form-label">Key：</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:350px" name="key" class="layui-input" value="{$pay_info.key|default=''}">
+
+            </div>
+        </div>
+        <div class="label-tint">
+            由数字和字母组成的32位字符串 </div>
+
+    </div>
+
+    <div class="layui-form-item">
+        <div>
+            <label style="width:150px" class="layui-form-label">网站名称</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:350px" name="sitename" class="layui-input" value="{$pay_info.sitename|default=''}">
+            </div>
+        </div>
+        <div class="label-tint">
+            您在柚子支付平台填写的商户名称（支付宝支付的不必填） </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div>
+            <label style="width:150px" class="layui-form-label">兑换比例：</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:350px" name="scorenum" class="layui-input" value="{$pay_info.scorenum|default='10'}">
+
+            </div>
+        </div>
+        <div class="label-tint">
+            例如填写10表示1元人民币兑换10积分 </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div>
+            <label style="width:150px" class="layui-form-label">最少充值限制：</label>
+            <div class="layui-input-block">
+
+                <input type="text" style="width:350px" name="minnum" class="layui-input" value="{$pay_info.minnum|default='1'}">
+
+            </div>
+        </div>
+        <div class="label-tint">
+            例如填写1表示最少充值1元 </div>
+
+
+    </div>
+
+
+    <div class="btable-paged">
+        <div class="layui-main">
+            <div class="formbtngroup">
+                <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">提交</button>
+                <a href="{:url('admin/system/siteConfig#type=6')}" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

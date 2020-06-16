@@ -1,0 +1,52 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$t.title|strip_tags} - {$site_config['site_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="main">
+    <div class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <article class="single-content">
+                    <header class="article-header">
+                        <h1 class="article-title center">VIP介绍</h1>
+                        <div class="vip-desc"><p>升级VIP，享受更好的下载体验！</p></div>
+                    </header>
+                    <div class="vip-content clearfix">
+                        <div class="vip-item">
+                            <h6>普通会员</h6>
+                            <p>VIP</p>
+                            <span class="price">50<small>积分</small></span>
+                            <p class="border-decor">1个月</p>
+                            <ul><li>每天可下载5个VIP资源</li><li><del>原价80积分</del></li><li>部分资源免费下载</li></ul>		                    		                    <a href="http://demo.mobantu.com/modown/user?action=vip&amp;type=7" class="btn btn-small">立即升级</a>
+                        </div>
+
+                        <div class="vip-item">
+                            <h6>普通会员</h6>
+                            <p>VIP</p>
+                            <span class="price">100<small>积分</small></span>
+                            <p class="border-decor">3个月</p>
+                            <ul><li>每天可下载10个VIP资源</li><li><del>原价120积分</del></li><li>部分资源免费下载</li></ul>		                    		                    <a href="http://demo.mobantu.com/modown/user?action=vip&amp;type=8" class="btn btn-small">立即升级</a>
+                        </div>
+
+                        <div class="vip-item">
+                            <h6>高级会员</h6>
+                            <p>VIP</p>
+                            <span class="price">200<small>积分</small></span>
+                            <p class="border-decor">12个月</p>
+                            <ul><li>每天可下载15个VIP资源</li><li><del>原价300积分</del></li><li>部分资源免费下载</li></ul>		                    		                    <a href="http://demo.mobantu.com/modown/user?action=vip&amp;type=9" class="btn btn-small">立即升级</a>
+                        </div>
+
+                        <div class="vip-item">
+                            <h6>超级会员</h6>
+                            <p>SVIP</p>
+                            <span class="price">500<small>积分</small></span>
+                            <p class="border-decor">终身</p>
+                            <ul><li>每天无限制下载VIP资源</li><li><del>原价650积分</del></li><li>全站免费下载</li></ul>		                    		                    <a href="http://demo.mobantu.com/modown/user?action=vip&amp;type=10" class="btn btn-small">立即升级</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

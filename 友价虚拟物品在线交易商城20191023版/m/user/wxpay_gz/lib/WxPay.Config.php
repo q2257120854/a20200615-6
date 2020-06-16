@@ -1,0 +1,1 @@
+<? class WxPayConfig{const APPID = 'wxae1b979eb5441b94';const MCHID = '1358045602';const KEY = 'wx8ad1pm87wsxdkyes5k0q1kqc7szigr';const APPSECRET = '7ccc8f213810dad5ae85dc5c19adb6f8';const SSLCERT_PATH = '../cert/apiclient_cert.pem';const SSLKEY_PATH = '../cert/apiclient_key.pem';const CURL_PROXY_HOST = '0.0.0.0';const CURL_PROXY_PORT = 0;const REPORT_LEVENL = 1;}?>

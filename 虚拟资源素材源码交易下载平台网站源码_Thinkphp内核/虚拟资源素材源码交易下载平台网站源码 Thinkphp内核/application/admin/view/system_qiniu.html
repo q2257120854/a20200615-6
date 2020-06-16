@@ -1,0 +1,63 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updateqiniu')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item">
+                <label class="layui-form-label">AccessKey</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[AccessKey]" value="{$qiniu.AccessKey|default=''}" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SecretKey</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[SecretKey]" value="{$qiniu.SecretKey|default=''}" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">存储空间（bucket）</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[bucket]" value="{$qiniu.bucket|default=''}" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">域名（domain）</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[domain]" value="{$qiniu.domain|default=''}" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">空间性质</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="qiniu[global]" value="1" title="公有空间" {if condition="$qiniu.global eq 1" }checked{/if}>
+                    <input type="radio" name="qiniu[global]" value="0" title="私有空间" {if condition="$qiniu.global eq 0" }checked{/if}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">允许的后缀</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[allowExt]" value="{$qiniu.allowExt|default=''}" placeholder="逗号分隔如：rar,zip" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">允许上传大小</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qiniu[maxSize]" value="{$qiniu.maxSize|default=''}" placeholder="单位：字节" autocomplete="off" class="layui-input">
+                </div>
+                <div class="label-tint">字节数，1M=1*1024*1024 （必须
+                    <=服 务器的参数配置 upload_max_files：{:ini_get( 'post_max_size')} post_max_size：{:ini_get( 'upload_max_filesize')}）</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="formbtngroup">
+            <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+            <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+        </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

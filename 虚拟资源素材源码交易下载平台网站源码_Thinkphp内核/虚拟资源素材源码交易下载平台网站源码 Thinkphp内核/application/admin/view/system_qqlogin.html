@@ -1,0 +1,37 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updateqqlogin')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item">
+                <label class="layui-form-label">APP ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="qqlogin[appid]" value="{$qqlogin.appid|default=''}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">APP Key</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qqlogin[appkey]" value="{$qqlogin.appkey|default=''}" autocomplete="off" class="layui-input">
+                </div>
+                <div class="label-tint">点击 <a href="https://connect.qq.com" target="_blank">https://connect.qq.com</a> 申请</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站回调域</label>
+                <div class="layui-input-block">
+                    <input type="text" name="qqlogin[callback]" value="{$qqlogin.callback|default=''}" placeholder="填写与申请时一致的网站回调地址" autocomplete="off" class="layui-input">
+                </div>
+                <div class="label-tint"> 格式：http://你的网站地址/user/applogin/qqcb.html</div>
+            </div>
+        </div>
+    </div>
+    <div class="formbtngroup">
+        <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+        <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+    </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

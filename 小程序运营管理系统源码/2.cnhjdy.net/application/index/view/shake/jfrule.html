@@ -1,0 +1,132 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navSale" class="navSale10">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			积分规则--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Shake/addrule')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						添加积分规则 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+					<thead>
+						<tr>
+							<th style="width: 150px;">标题</th>
+
+							<th style="width: 100px;">积分</th>
+
+							<th style="width: 200px;">链接</th>
+
+							<th style="width: 150px;">是否开启</th>
+							
+							<th width="200px;">操作</th>
+
+						</tr>
+
+					</thead>
+					{volist name="rules" id="vo"}
+						<tr>
+
+							<td style="width: 150px;">{$vo.title}</td>
+
+							<td style="width: 100px;">{$vo.score}</td>
+
+							<td style="width: 200px;">{$vo.link}</td>
+
+							<td style="width: 150px;">
+								{if $vo.flag == 1}已开启{else}已关闭{/if}
+							</td>
+							
+							<td width="200px;">
+								<a href="{:Url('shake/editrule')}?appletid=<?php echo $_GET['appletid']?>&id={$vo.id}"><button class="btn btncolor">编辑</button></a>
+									<form action="{:Url('shake/delrule')}?appletid=<?php echo $_GET['appletid']?>&id={$vo.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+										<button class="btn btncolor" type="submit">删除</button>
+									</form>
+							</td>
+
+						</tr>
+					{/volist}
+
+				</table>
+
+
+				<!-- 分页 -->
+
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

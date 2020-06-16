@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	
+	<application setting='false'>
+		<name><![CDATA[短视频去水印下载]]></name>
+
+		<identifie><![CDATA[tommie_duanshiping]]></identifie>
+
+		<version><![CDATA[3.1.2]]></version>
+
+		<ability><![CDATA[短视频去水印]]></ability>
+
+		<type><![CDATA[services]]></type>
+
+		<description><![CDATA[抖音等短视频去水印]]></description>
+
+		<author><![CDATA[tommie]]></author>
+
+		<url><![CDATA[]]></url>
+
+		<setting><![CDATA[短视频去水印]]></setting>
+
+	</application>
+
+	
+	<platform>
+		<rule embed="false" />
+
+		<rule embed="false" />
+
+	<supports>
+
+			<item type="wxapp" />
+	</supports>
+
+	</platform>
+
+	
+	<bindings>
+		<menu>
+			<entry title="配置" do="config" state="" direct="false"/>
+			<entry title="充值" do="payconfig" state="" direct="false"/>
+			<entry title="卡密" do="card" state="" direct="false"/>
+			<entry title="推荐" do="tuijian" state="" direct="false"/>
+			<entry title="会员" do="member" state="" direct="false"/>
+			<entry title="用户" do="user" state="" direct="false"/>
+			<entry title="订单" do="order" state="" direct="false"/>
+			<entry title="视频" do="video" state="" direct="false"/>	
+		</menu>
+
+	</bindings>
+
+	<install><![CDATA[
+		CREATE TABLE `ims_tommie_douyin_config` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`uniacid` varchar(16) NOT NULL,
+		`app_name` varchar(32) DEFAULT NULL COMMENT '小程序名字',
+		`client` varchar(128) DEFAULT NULL COMMENT '解析接口client',
+		`clientKey` varchar(128) DEFAULT NULL COMMENT '解析接口clientkey',
+		`help_url` varchar(512) DEFAULT NULL COMMENT '帮助中心链接',
+		`isaudit` int(11) DEFAULT '0',
+		`invite_award` int(11) DEFAULT '1' COMMENT '邀请奖励次数',
+		`api_url` varchar(255) DEFAULT NULL COMMENT '第三方api下载',
+		`title` varchar(258) DEFAULT NULL COMMENT '首页顶部标题',
+		`description` varchar(255) DEFAULT NULL COMMENT '首页介绍',
+		`qq_group` varchar(16) DEFAULT NULL COMMENT 'QQ群',
+		`share_title` varchar(32) DEFAULT NULL COMMENT '分享标题',
+		`qq_num` varchar(16) DEFAULT NULL COMMENT 'QQ号',
+		`ad_id` varchar(128) DEFAULT NULL,
+		`contact` varchar(255) DEFAULT NULL COMMENT '联系二维码',
+		`share_img` varchar(255) NOT NULL,
+		`mix_num` int(11) DEFAULT '0',
+		`is_member` int(11) DEFAULT '0' COMMENT '是不是会员',
+		`copytext` varchar(255) DEFAULT NULL,
+		`adimg` varchar(255) DEFAULT NULL,
+		`adtext` varchar(255) DEFAULT NULL,
+		`is_pay` int(11) DEFAULT '0' COMMENT '是否开启支付',
+		`onpayenter` int(11) DEFAULT '0' COMMENT '开启支付入口，默认关闭',
+		`progress` int(11) DEFAULT '0' COMMENT '开启下载进度显示',
+		`regtime` int(10) DEFAULT NULL COMMENT '修改时间',
+		PRIMARY KEY (`id`)
+		) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+	
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_member` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`uniacid` varchar(16) NOT NULL,
+		`openid` varchar(64) NOT NULL,
+		`invite_openid` varchar(64) NOT NULL COMMENT '邀请人openid',
+		`given` int(11) DEFAULT '0' COMMENT '是否已经赠送，0没赠送，1已赠送',
+		`maximum` int(11) DEFAULT '0' COMMENT '可使用查询的次数',
+		`nickname` varchar(32) NOT NULL,
+		`headimg` varchar(255) COMMENT '头像地址',
+		`sex` int(11) DEFAULT 0 COMMENT '性别',
+		`province` varchar(16) COMMENT '省份',
+		`city` varchar(255) COMMENT '城市',
+		`regtime` int(10) DEFAULT NULL COMMENT '时间',
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `id` (`id`),
+		UNIQUE KEY `openid` (`openid`)
+		) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+		
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_video` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`uniacid` varchar(16) NOT NULL,
+		`openid` varchar(64) COMMENT '提交者的openid',
+		`title` varchar(32) COMMENT '标题',
+		`page_view` int(11) COMMENT '浏览量',
+		`like` int(11) COMMENT '获赞数',
+		`img_url` varchar(255) COMMENT '图片地址',
+		`video_id` varchar(64) COMMENT '视频ID',
+		`regtime` int(10) DEFAULT NULL COMMENT '时间',
+		PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+		
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_favorite` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`uniacid` varchar(16) NOT NULL,
+		`favorite_openid` varchar(64) NOT NULL,
+		`video_id` varchar(64) COMMENT '视频ID',
+		`regtime` int(10) DEFAULT NULL COMMENT '时间',
+		PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_tuijian` (
+		`id` INT(11) NOT NULL AUTO_INCREMENT, 
+		`uniacid` VARCHAR(16) NOT NULL,
+		`img` VARCHAR(255),
+		`app_id` VARCHAR(64),
+		`app_name` VARCHAR(255),
+		`path` VARCHAR(512),
+		`regtime` int(11) NOT NULL COMMENT'时间', 
+		PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_order` (
+		`id` INT(11) NOT NULL AUTO_INCREMENT, 
+		`uniacid` VARCHAR(16) NOT NULL,
+		`openid` varchar(64) NOT NULL,
+		`orderid` VARCHAR(64),
+		`money` float NOT NULL,
+		`num` int(11) NOT NULL,
+		`paystate` int(11) DEFAULT '0' COMMENT '订单状态',
+		`regtime` int(11) NOT NULL COMMENT'时间', 
+		PRIMARY KEY (`id`)
+		) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_payconfig` (
+		`id` INT(11) NOT NULL AUTO_INCREMENT, 
+		`uniacid` VARCHAR(16) NOT NULL,
+		`money_a` float NOT NULL,
+		`num_a` int(11) NOT NULL,
+		`money_b` float NOT NULL,
+		`num_b` int(11) NOT NULL,
+		`money_c` float NOT NULL,
+		`num_c` int(11) NOT NULL,
+		`regtime` int(11) NOT NULL COMMENT'时间', 
+		PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+		
+		 CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_keyword` (
+		`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+		`uniacid` int(11) NOT NULL,
+		`title` varchar(25) NOT NULL,
+		`card_id` varchar(64) NOT NULL,
+		`num` int(11) NOT NULL,
+		`day` int(11) NOT NULL,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `id` (`id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+		CREATE TABLE IF NOT EXISTS `ims_tommie_douyin_keyword_id` (
+		`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+		`openid` varchar(64) NOT NULL,
+		`uniacid` int(11) NOT NULL,
+		`pwd` varchar(25) NOT NULL,
+		`card_id` varchar(25) NOT NULL,
+		`day` int(11) NOT NULL,
+		`status` int(2) NOT NULL,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `id` (`id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+		
+		CREATE TABLE `ims_tommie_douyin_vipmember` (
+		`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+		`uniacid` int(10) NOT NULL,
+		`password` varchar(50) NOT NULL,
+		`openid` varchar(255) NOT NULL,
+		`end_time` int(11) NOT NULL,
+		`regtime` int(11) NOT NULL,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `id` (`id`),
+		UNIQUE KEY `openid` (`openid`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+		CREATE TABLE `ims_tommie_douyin_viporder` (
+		`id` INT(11) NOT NULL AUTO_INCREMENT, 
+		`uniacid` VARCHAR(16) NOT NULL,
+		`openid` varchar(64) NOT NULL,
+		`key` VARCHAR(64),
+		`day` int(11) NOT NULL,
+		`regtime` int(11) NOT NULL COMMENT'时间', 
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `id` (`id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+	]]></install>
+	<uninstall><![CDATA[DROP TABLE IF EXISTS `ims_tommie_douyin_config`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_member`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_video`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_favorite`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_tuijian`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_order`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_payconfig`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_keyword`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_keyword_id`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_vipmember`;
+	DROP TABLE IF EXISTS `ims_tommie_douyin_viporder`;
+	]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

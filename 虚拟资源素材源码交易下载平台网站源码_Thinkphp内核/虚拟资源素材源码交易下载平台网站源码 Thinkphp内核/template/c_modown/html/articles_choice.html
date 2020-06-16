@@ -1,0 +1,28 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$site_config['site_title']} - {$site_config['seo_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="banner">
+    <div class="container">
+        <h2>站内新闻</h2>
+    </div>
+</div>
+<div class="main">
+    <div class="container">
+        <div id="posts" class="posts grids  clearfix">
+            {volist name="artchoice" id="vo "}
+            <div class="post grid grid-tj">
+                    <div class="img"><a href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank" rel="bookmark">
+                        <img data-src="{$vo.coverpic}" alt="{$vo.title}" src="__HOME__/picture/thumbnail.png"  style="display: inline;">
+                    </a></div>
+                    <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="{:url( 'index/index/'.$vo.template,array( 'id'=>$vo.id))}" title="{$vo.title}" target="_blank">{$vo.title}</a></h3>
+                    <div class="cats">{$vo.time|friendlyDate}</div>
+                    <div class="grid-meta">
+                        <span><i class="dripicons dripicons-preview"></i> {$vo.view}</span>    <span class="price"><i class="dripicons dripicons-ticket"></i> VIP专享</span>  </div>
+                </div>
+            {/volist}
+            </div>
+            {$artchoice->render()}
+        </div>
+    </div>
+{/block}

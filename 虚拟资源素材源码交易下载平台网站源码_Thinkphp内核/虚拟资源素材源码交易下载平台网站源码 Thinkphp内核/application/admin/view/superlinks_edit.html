@@ -1,0 +1,135 @@
+{extend name="base" /} {block name="body"}
+
+<!--tab标签-->
+<div class="layui-tab-brief">
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form form-container" data-url="{:url('admin/superlinks/update')}"  method="post" localtion-url="{:url('admin/superlinks/index')}">
+                <input type="hidden" name="id" value="{$info['id']}" />
+
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">站点名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" placeholder="请输入友情连接站点名称" required lay-verify="required" autocomplete="off" class="layui-input" value="{$info.title}">
+                        </div>
+                    </div>
+                    <div class="label-tint">请输入友情连接站点名称</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">连接类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="type" lay-filter="linktype" value="2" title="文字" {if condition="$info['type'] eq 2" }checked="checked" {/if}>
+
+                        <input type="radio" name="type" lay-filter="linktype" value="1" title="图片" {if condition="$info['type'] eq 1" }checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">友情位置</label>
+                    <div class="layui-input-block">
+
+                        <input type="radio" name="onwhere" value="cms" title="CMS" {if condition="$info['onwhere'] eq 'cms'" }checked="checked" {/if}>
+                        <input type="radio" name="onwhere" value="default" title="BBS" {if condition="$info['onwhere'] eq 'default'" }checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">nofollow</label>
+                    <div class="layui-input-block">
+
+                        <input type="radio" name="nofollow" value="0" title="默认" {if condition="$info['nofollow'] eq 0" }checked="checked" {/if}>
+                        <input type="radio" name="nofollow" value="1" title="nofollow" {if condition="$info['nofollow'] eq 1" }checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">外链地址</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="link" placeholder="请填写带http://的全路径" required lay-verify="required" autocomplete="off" class="layui-input" value="{$info.link}">
+                        </div>
+                    </div>
+                    <div class="label-tint">请填写带http://的全路径</div>
+                </div>				 <div class="layui-form-item">                    <label class="layui-form-label">排序</label>                    <div class="layui-input-inline">                        <input type="text" name="level"  autocomplete="off" class="layui-input"  value="{$info.level}">						                    </div> <div class="label-tint">数值越大越靠前</div>                </div>
+                <div class="layui-form-item">
+
+                    <label class="layui-form-label">联系人信息</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="contacts" placeholder="QQ或者手机号" autocomplete="off" class="layui-input" value="{$info.contacts}">
+                    </div>
+
+
+                </div>
+                <div class="layui-form-item" id="img_area">
+                    <label class="layui-form-label">站点图片</label>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn layui-btn-primary" id="image2">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                        <input type="hidden" id="cover_id" name="cover_id" value="" />
+                        <div id="upload-img-box" style="padding:10px 0;height:110px">
+                            <img src="{$info.cover_id|get_cover='savepath'}" width="200" height="100" />
+                        </div>
+                    </div>
+                </div>
+                <div class="btable-paged">
+                    <div class="layui-main">
+                        <div class="formbtngroup">
+                            <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">更新</button>
+                            <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block} {block name="script"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+<script>
+    layui.use(['form', 'upload'], function() {
+        var form = layui.form,
+            jq = layui.jquery;
+        var upload = layui.upload;
+        var $radio = jq('input[name="type"]');
+
+        form.on('radio(linktype)', function(data) {
+
+            if (data.value == 1) {
+                jq("#img_area").show();
+            } else {
+                jq("#img_area").hide();
+            } //被点击的radio的value值
+
+
+
+
+
+        });
+
+        var uploadInst = upload.render({
+            elem: '#image2' //绑定元素
+                ,
+            url: '{:url("upload/upimage")}' //上传接口
+                ,
+            done: function(res) {
+                layer.msg(res.msg, {
+                    icon: 1,
+                    time: 1000
+                });
+                jq("#cover_id").val(res.data.id);
+                jq('#upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + res.data.headpath + '" width="120" height="90" /></div>'
+                );
+            },
+            error: function() {
+                layer.msg(res.msg, {
+                    icon: 2,
+                    time: 1000
+                });
+            }
+        });
+        
+
+    })
+</script>
+{/block}

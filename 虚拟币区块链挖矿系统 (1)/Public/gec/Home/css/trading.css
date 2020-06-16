@@ -1,0 +1,164 @@
+body{
+	font-size: 10px;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+	color: #444;
+	background: #EFEFF4;
+	overflow-y: auto;
+}
+div,p,h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
+ul,li,dl,dt,dd{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	color: #fff;
+	text-decoration: none;
+}
+a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.fc{
+	clear: both;
+}
+.myimg{
+	width: 100%;
+}
+#content2{
+	width: 100%;
+	padding-bottom: 75px;
+}
+#content2>li{
+	background: #fff;
+	margin-bottom: 10px;
+	width: 100%;
+	height: auto;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px 1px #444;
+}
+#content2 .top{
+    margin-left: 10px;
+    padding-top: 10px;
+	height: 45px;
+}
+#content2 .top .hn{
+    font-size: 24px;
+    color: #444;
+}
+#content2 .top .hn i{
+	font-style:normal;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	font-size: 16px;
+	background: #4CAF50;
+	color: #fff;
+	text-align: center;
+	line-height: 24px; 
+	border-radius: 2px;
+	position:relative;
+	top:-3px;
+}
+#content2 .countDown{
+	padding: 2px 10px;
+	background: #0067AC;
+	color: #fff;
+	margin-right:10px;
+	border-radius: 5px;
+}
+#content2 .top .hx{
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 34px;
+	color: #0067AC;
+}
+#content2 .top .fr{
+	margin-right: 10px;
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 30px;
+}
+#content2 .content{
+   overflow: hidden;
+   width: 100%;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   height: 63px;
+}
+#content2 .content>div{
+	width: 33.3%;
+	text-align: center;
+	font-size: 16px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+}
+#content2 .content>div>i{
+	position: absolute;
+	right: 0;
+	width: 1px;
+	height: 63px;
+	top: 0;
+	background: #ddd;
+}
+#content2 .price1{
+	color: #0067AC;
+}
+#content2 .price3{
+	color: #0067AC;
+}
+#content2 .price2{
+	color: red;
+}
+#content2 .bottom{
+	line-height: 30px;
+}
+#content2 .bottom .fl{
+	margin-left: 5px;
+}
+#content2 .bottom .fr{
+	margin-right: 5px;
+}
+/* footer */
+#footer{
+	height: 50px;
+	width: 100%;
+	background: #131224;
+	position: fixed;
+	bottom: 0;
+}
+#footer ul>li{
+   width: 25%;
+   text-align:  center;
+   height: 50px;
+   color: #999;
+}
+#footer ul>li>a{
+	display: block;
+    line-height: 20px;
+    width: 100%;
+    color: #999;
+}
+#footer ul>li>p{
+    margin:0;
+	margin-top: 10px;
+}
+#footer ul> .active{
+	color: #0067AC;
+}
+#footer ul> .active>a{
+	color: #0067AC;
+}

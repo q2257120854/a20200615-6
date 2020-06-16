@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Language" content="zh-CN" />
+                <title>帮助中心</title>
+                <link rel="stylesheet" rev="stylesheet" href="__PUBLIC__/css/iconfont.css" type="text/css" media="all"/>
+        <link rel="stylesheet" rev="stylesheet" href="__PUBLIC__/css/txcstx.css" type="text/css" media="all"/>
+                
+                <style type="text/css">#nav,.ss input[type="submit"],.right3 #divSearchPanel input[type="submit"],#divTags dd ul li a,.pagebar a:hover,.pagebar .now-page,#frmSumbit .button,.banner .hd ul .on,.bx-wrapper .bx-pager.bx-default-pager a,.index-list-tu li a:hover p,.info-tag a,.zse,.scroll p,.banner .prev, .banner .next,#nav li a,#nav li ul a:hover,.top-login a:last-child,.user-menu li.on a,.user-gn>ul,.useron{background-color:#0793E5;}.user-gn>ul::before{border-color:#0793E5;}#nav li a:hover,#nav li.on a,#nav>ul>li.hover>a,.pagebar a,#nav li ul li a,.user-bg{background-color:#C90000;}.right3 #divSearchPanel dd form,.ss form,.info-lb li a:hover,.top ul li a:hover,.txdidasl li a:hover,.top-login a{border:1px solid #0793E5;}#divCalendar td a,.notice .tab-hd li.on a,a:hover,.yanse,.tags a{color:#0793E5;}.info-zi h2,.info-zi h3,.tx-title1{border-left:3px solid #0793E5;}</style>
+            </head>
+
+<body>
+        <div class="tops sjwu">
+            <div class="zh">
+                <span class="fr">
+                    顶部右侧的文字                                    </span>
+                            </div>
+        </div>
+      
+<div class="main zh">
+    
+    
+    <div class="left3 fl mt18">
+
+        <div class="list bgb ">
+            <h2 class="plcae ybbt1"><i class="iconfont icon-shouye"></i> <a href="#">帮助中心</a>                
+                            </h2>
+            <ul>
+               <foreach name="mod" item="vo">
+            <li>
+					<a href="__MODULE__/Login/shownews?id={$vo.id}" title="{$vo.title}" target="_blank"  class="list-tu img-box-slt1"><img src="__PUBLIC__/bang.jpg"  alt="{$vo.title}" /></a>  
+					<h2><a href="__MODULE__/Login/shownews?id={$vo.id}" title="{$vo.title}" target="_blank">{$vo.title}</a></h2>
+					<p>{$vo.jian}..</p> 
+					
+					<div class="clear"></div>
+			</li>                                                                                              
+               </foreach> 
+                                
+                <div class="clear"></div>
+            </ul>
+
+     
+        </div>
+    </div>
+
+    <!--23.85 ms , 7 query , 1767kb memory , 0 error-->

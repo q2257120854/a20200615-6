@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>端API</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+  <style>
+        .empty{ text-align: center; padding: 120px 0; }
+    </style>
+
+    <style>
+	html,body{
+		color:#000;
+	}
+      /*新加空提示信息*/
+
+      .m-noRecord {
+        padding: .395rem 0 0;
+        text-align: center;
+    }
+
+    .m-noRecord .c-icon-noRecord {
+        background: url(../image/app/Loading2.gif) no-repeat;
+        background-size: cover;
+      width: 15rem;
+      height: 10rem;
+      /* margin: .485rem auto 0; */
+      margin: 0 auto;
+    }
+	.aui-col-xs-3 {
+    width: 25%;
+}
+    </style>
+</head>
+<body>
+
+		
+ <div id="aui-slide" class="fx-box">
+				<div id="slidebox" class="aui-slide-wrap" >
+                <!--顶部横幅未加载完成时的提示-->
+                  <img id="bpic" src="../image/TV.png">
+				  
+                <!--顶部横幅未加载完成时的提示-->
+			    </div>
+				
+				<div class="aui-slide-page-wrap"><!--分页容器--></div>
+		  </div>
+   
+				  <div class="br"></div>
+			<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:17px;"><i class="iconfont icon-zuirehotchunse" style="color:#ff7600;"></i>影视VIP</span>
+					</div>
+					
+			 </div>				
+								
+					<section class="aui-grid aui-margin-b-15">
+      <div class="aui-row" id="div_list_f"> 
+							  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                    <i class="aui-iconfont"><img src="../image/default_picture/iqiyi.png"/></i>
+                    <div class="aui-grid-label">爱奇艺</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/tengxun.png"/></i>
+                  <div class="aui-grid-label">腾讯视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/youku.png"/></i>
+                  <div class="aui-grid-label">优酷视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/souhu.png"/></i>
+                  <div class="aui-grid-label">搜狐视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/mgtv.png"/></i>
+                  <div class="aui-grid-label">芒果TV</div>
+                  </div>
+					  </div>
+				<div class="aui-row" id="div_list_f1"> 
+							  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                    <i class="aui-iconfont"><img src="../image/default_picture/iqiyi.png"/></i>
+                    <div class="aui-grid-label">爱奇艺</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/tengxun.png"/></i>
+                  <div class="aui-grid-label">腾讯视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/youku.png"/></i>
+                  <div class="aui-grid-label">优酷视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/souhu.png"/></i>
+                  <div class="aui-grid-label">搜狐视频</div>
+                  </div>
+
+                  <div class="aui-col-xs-3 pt-list" tapmode onClick="UnloadedCompleted()">
+                  <i class="aui-iconfont"><img src="../image/default_picture/mgtv.png"/></i>
+                  <div class="aui-grid-label">芒果TV</div>
+                  </div>
+					  </div>
+  </section>   
+					
+					
+					
+	          
+			  
+			  
+			
+
+	
+
+</body>
+<script type="text/x-dot-template" id="template">
+		{{~ it : value : index }}
+				 <div class="aui-slide-node bg-dark" tapmode onclick="openApp('{{= value. link }}')">
+					<img src="{{= value. picname }}" />
+				</div>
+		{{~}}
+	</script>
+	
+	
+	
+	<script type="text/x-dot-template" id="navcattpl">
+  {{~ it : value : index }}
+  		<div class="aui-col-xs-3 pt-list" tapmode onclick="openLive('{{= value. link }}')">
+          <i class="aui-iconfont"><img src="{{= value. picname }}"/></i>
+          <div class="aui-grid-label">{{= value. title }}</div>
+        </div>
+
+  {{~}}
+
+</script>
+<script type="text/x-dot-template" id="navcattp2">
+  {{~ it : value : index }}
+  		<div class="aui-col-xs-3 pt-list" tapmode onclick="openPlayer('{{= value. link }}','{{= value. title }}')">
+          <i class="aui-iconfont"><img src="{{= value. picname }}"/></i>
+          <div class="aui-grid-label">{{= value. title }}</div>
+        </div>
+
+  {{~}}
+
+</script>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../script/auipullrefresh.js"></script>
+<script type="text/javascript" src="../script/auislide.js"></script>
+<script type="text/javascript" src="../script/auilazyload.js" ></script>
+  <script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+      apiready = function(){
+		
+      
+		
+
+		getBanner();
+	zhibo();
+		vip()
+			api.setCustomRefreshHeaderInfo({
+				  bgColor : '#fff',
+				}, function() {
+              //下拉刷新被触发，自动进入加载状态，使用 api.refreshHeaderLoadDone() 手动结束加载中状态
+			
+				getBanner();
+				vip();
+				zhibo();
+					api.toast({
+				msg: '刷新成功',
+				duration: 1000,
+				location: 'middle'
+				});	
+						  setTimeout(function(){
+								api.refreshHeaderLoadDone()
+						  }, 1000);
+					  });
+				
+				}
+		
+		 function vip(){
+	   var bannerid = $api.byId('div_list_f');
+		var template = $api.byId('navcattpl');
+			api.ajax({
+				  url: api_url+'/App/App/lunbo.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret.vip))
+					var pagefn = doT.template(template.text);
+					bannerid.innerHTML = pagefn(ret.vip);
+					
+					banNer();
+				  } else {
+				 // alert( '导航加载失败！' );
+				  api.hideProgress();
+				}      
+			  });
+			}
+			
+			 function zhibo(){
+	   var bannerid = $api.byId('div_list_f1');
+		var template = $api.byId('navcattp2');
+			api.ajax({
+				  url: api_url+'/App/App/lunbo.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret.vip))
+					var pagefn = doT.template(template.text);
+					bannerid.innerHTML = pagefn(ret.zhibo);
+					
+					banNer();
+				  } else {
+				 // alert( '导航加载失败！' );
+				  api.hideProgress();
+				}      
+			  });
+			}
+		//轮播开始//
+	  function getBanner(){
+	   var bannerid = $api.byId('slidebox');
+		var template = $api.byId('template');
+			api.ajax({
+				  url: api_url+'/App/App/lunbo.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret.slun))
+					var pagefn = doT.template(template.text);
+					bannerid.innerHTML = pagefn(ret.zlun);
+					
+					banNer();
+				  } else {
+				 // alert( '导航加载失败！' );
+				  api.hideProgress();
+				}      
+			  });
+			}
+		
+		
+		 function openLive(url){
+				 var time = localStorage.getItem('viptime');
+				var user_id = localStorage.getItem('user_id');
+				var username = localStorage.getItem('user_name');
+				var timestamp = Date.parse(new Date())/1000;
+					if(user_id<1){
+					  api.toast({
+						  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+						  duration: 2000
+					  });
+					  api.openWin({
+						  name: 'login',
+						  url: './login.html',
+						  delay: 2000
+					  });
+					  return;
+					}
+		 
+			if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'video_win',
+					url: 'video_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						url: url
+					}
+				});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		 
+		 
+		 
+		 }
+		 
+		 
+		 function openPlayer(url,title){
+	
+	 	var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+	 if (localStorage.getItem('user_id')<1) {
+			  api.toast({
+				msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				duration: 2000
+			});
+				api.openWin({
+				   name: 'login',
+				   url: './login.html',
+				   delay: 2000
+			   });
+			   return;
+			 }
+			 
+		 if (time>timestamp) {
+		
+			api.openWin({
+           name: 'x5_win',
+           url: './x5_win.html',
+           delay: 300,
+           pageParam: {
+					url: url,
+					title:title,
+				},
+           //pageParam:{url:dataurl2},
+           bgColor: '#000000'
+       });
+		 }else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+	   
+	 
+ }
+		 
+		 
+		function VipExpiredHint() {
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' 
+                },
+                content:{              //（可选项）JSON 
+                    marginT: 20,       
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        
+                    color: '#fff',  
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'open_vip_win',
+                            url: './open_vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+		}
+		 
+	 function openApp(url){
+				if(api.systemType == 'android'){
+					api.openApp({
+						androidPkg: 'android.intent.action.VIEW',
+						mimeType: 'text/html',
+						uri: url
+					}, function(ret, err) {});
+				}else{
+					api.openApp({
+						iosUrl: url
+				   });
+				} 
+			}
+	  	function banNer(){
+		  var slide = new auiSlide({
+			  container:document.getElementById("aui-slide"),
+			  // "width":300,
+			  "height":150,
+			  "speed":300,
+			  "pageShow":true,
+			  "autoPlay": 5000,
+			  "pageStyle":'dot',
+			  "loop":true,
+			  'dotPosition':'center',
+			  
+		  });
+		}
+   
+  </script>
+  </html>

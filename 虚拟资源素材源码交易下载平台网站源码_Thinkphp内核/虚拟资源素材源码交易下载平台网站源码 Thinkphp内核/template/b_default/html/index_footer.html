@@ -1,0 +1,34 @@
+<div class="fly-footer">
+    <p>
+        <!-- 底部导航 -->
+        {volist name="nav" id="vo" } {eq name="vo.pid" value="0"}
+        <a class="nav-this" href="{$vo.link}" target="{$vo.target}" title="{$vo.alias}">
+            <i class="iconfont icon-{$vo.icon}"></i>{$vo.name}
+        </a>
+        {/eq} {/volist}
+    </p>
+
+    <p>
+        <a href="http://{:$_SERVER['SERVER_NAME']}/">{$site_config['site_title']}</a> {:date('Y')} &copy; {if condition="$site_config['site_copyright'] neq ''"} Copyright:{$site_config['site_copyright']} {/if} {$site_config['site_icp']} {if condition="$site_config['site_tongji']
+        neq ''"} {$site_config['site_tongji']} {/if}
+
+    </p>
+    <p>
+        <!-- 个人用户保留下面一句，谢谢 -->
+        Powered by <a target="_blank" href="http://www.laysns.com/">LaySNS</a>
+    </p>
+</div>
+<script>
+    //百度推送代码
+    (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>

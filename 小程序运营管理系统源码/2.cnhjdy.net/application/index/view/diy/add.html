@@ -1,0 +1,127 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="diy">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			页面新建--{$applet.name}
+		</li>
+	</ul>
+
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Diy/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+					
+					<div class="control-group">
+
+						<label class="control-label">页面名称</label>
+
+						<div class="controls">
+
+							<input name="title" type="text" class="span4 m-wrap"  style="height: 35px !important;" maxlength="10"  id="title" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">最多10个字</span>
+						</div>
+
+					</div>
+
+					
+					<div class="control-group">
+
+						<label class="control-label">简介</label>
+
+						<div class="controls">
+
+							<textarea class="span4 m-wrap" style="height:150px;" name="desc"></textarea>
+						</div>
+
+					</div>
+					
+					
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+    <script type="text/javascript">
+
+
+        function checkinfo(){
+
+        	var title = $("#title").val();
+
+        	if(!title){
+        		alert("请填写页面名称！");
+        		return false;
+        	}else{
+        		reutrn true;
+        	}
+        	
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

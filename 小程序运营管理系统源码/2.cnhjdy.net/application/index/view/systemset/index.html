@@ -1,0 +1,497 @@
+{include file="public/head" /}
+
+
+
+{include file="public/s_head" /}
+
+		
+
+	<div>
+
+		<div class="wgldxcs">
+
+			<a href="{:Url('Systemset/index')}">
+
+			<span>
+
+				<img src="/image/weixin.png">
+
+			</span>
+
+			系统设置
+
+			</a>
+
+		</div>
+
+
+
+
+
+		<a href="{:Url('Systemset/news')}">
+
+		<div class="addxcx"> 
+
+			资讯管理
+
+		</div>
+
+		</a>
+
+	</div>
+
+
+
+	<div style="margin-top:50px; border-top:1px solid #dedede; padding-top:20px">
+
+
+
+		<form action="{:Url('Systemset/add')}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">系统名称<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="name" type="text" class="span3 m-wrap" id="name" value="{if $sbase}{$sbase.name}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">系统LOGO</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width: 100px; height:100px;">
+
+
+
+							{if $sbase}
+
+							<img src="{$sbase.logo}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+	
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:100px; height:100px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="logo" id="logo" value="{$sbase.logo}" /></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传141x31长方形logo</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">banner图</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width: 100px; height:100px;">
+
+
+
+							{if $sbase}
+
+							<img src="{$sbase.banner}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+	
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:120px; height:70px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="banner" id="banner" value="{$sbase.banner}"/></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传1920x429</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">内页头部LOGO</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width: 512px; height:60px;">
+
+
+
+							{if $sbase}
+
+							<img src="{$sbase.top_banner}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+	
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:512px; height:60px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="top_banner" id="top_banner" value="{$sbase.top_banner}"/></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传512x60</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">底部LOGO</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width: 289px; height:105px;">
+
+
+
+							{if $sbase}
+
+							<img src="{$sbase.foot_logo}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+	
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:289px; height:105px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="foot_logo" id="foot_logo" value="{$sbase.foot_logo}"/></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传512x60</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">400电话<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="ptel" type="text" class="span3 m-wrap" id="ptel" value="{if $sbase}{$sbase.ptel}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+			
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">手机号码<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="tel" type="text" class="span3 m-wrap" id="tel" value="{if $sbase}{$sbase.tel}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">服务时间<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="ftime" type="text" class="span3 m-wrap" id="ftime" value="{if $sbase}{$sbase.ftime}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">地址<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="address" type="text" class="span3 m-wrap" id="address" value="{if $sbase}{$sbase.address}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">QQ号<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="qq" type="text" class="span3 m-wrap" id="qq" value="{if $sbase}{$sbase.qq}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+			
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">企业邮箱<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<input name="email" type="text" class="span3 m-wrap" id="email" value="{if $sbase}{$sbase.email}{/if}">
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+
+
+				<label class="control-label">备案信息<font style="color:red">*</font></label>
+
+
+
+				<div class="controls" style="line-height:34px;">
+
+					<textarea name="beianxx">{if $sbase}{$sbase.beianxx}{/if}</textarea>
+
+				</div>
+
+
+
+			</div>
+
+
+
+			<div class="control-group">
+
+				<label class="control-label">微信二维码</label>
+
+				<div class="controls">
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+
+						<div class="fileupload-new thumbnail" style="width: 100px; height:100px;">
+
+
+
+							{if $sbase}
+
+							<img src="{$sbase.erweima}"/>
+
+							{else}
+
+							<img src="/image/noimage.jpg" alt="" />
+
+							{/if}
+
+	
+
+						</div>
+
+						<div class="fileupload-preview fileupload-exists thumbnail" style="width:100px; height:100px"></div>
+
+						<div>
+
+							<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+							<span class="fileupload-exists">修改</span>
+
+							<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="erweima" id="erweima" value="{$sbase.erweima}"/></span>
+
+							<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+
+						</div>
+
+						<font color="#999999">建议上传正方形logo</font>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+
+
+
+
+			<div class="form-actions">
+
+
+
+				<button type="submit" class="btn green" id="tijiao" >确定</button>
+
+
+
+			</div>
+
+
+
+		</form>
+
+
+
+	</div>
+
+	
+
+
+
+
+
+{include file="public/foot" /}

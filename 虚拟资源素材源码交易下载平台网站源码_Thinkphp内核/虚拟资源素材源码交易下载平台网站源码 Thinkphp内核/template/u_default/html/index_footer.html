@@ -1,0 +1,20 @@
+<div class="fly-footer">
+    <p>
+        <a href="http://{:$_SERVER['SERVER_NAME']}/">{$site_config['site_title']}</a> {:date('Y')} &copy;
+        <!-- 个人用户保留下面一句，谢谢 -->
+        <a target="_blank" href="http://www.laysns.com/">LaySNS</a>
+    </p>
+    <!-- 底部导航 -->
+    {volist name="nav" id="vo" }
+    <p>
+        {eq name="vo.pid" value="0"}
+        <a class="nav-this" href="{$vo.link}" target="{$vo.target}" title="{$vo.alias}">
+            <i class="iconfont icon-{$vo.icon}"></i>{$vo.name}
+        </a>
+        {/eq} {/volist}
+    </p>
+    <!-- 底部导航结束 -->
+    <p>
+        {if condition="$site_config['site_copyright'] neq ''"} Copyright:{$site_config['site_copyright']} {/if} {$site_config['site_icp']} {if condition="$site_config['site_tongji'] neq ''"} {$site_config['site_tongji']} {/if}
+    </p>
+</div>

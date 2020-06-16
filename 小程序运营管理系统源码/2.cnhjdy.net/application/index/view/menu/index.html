@@ -1,0 +1,2162 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+	.fileupload-exists-new{
+
+	}
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem4-2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			菜单栏DIY--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+				<div class="control-group chongdingy" style="background-color:#fcf8e3; margin-bottom:20px !important">
+
+
+
+					<label class="control-label chongdingywz" style="background-color:#fcf8e3; color:#8a6d3b">菜单不启用的则不显示，样式会根据数量自动调整。</label>
+
+
+
+				</div>
+
+
+
+				<form action="{:Url('Menu/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+
+
+					
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">新老共用DIY</label>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">启用底部菜单</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="tabbar_t" value="0" {if $bases}{if $bases.tabbar_t==0}checked=checked{/if}{/if}/>
+
+
+
+							不启用
+
+
+
+							</label> 
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="tabbar_t" value="1" {if $bases}{if $bases.tabbar_t==1}checked=checked{/if}{/if}/>
+
+
+
+							启用
+
+
+
+							</label> 
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">推荐后会在首页横排区块显示</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">菜单栏背景色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value" value="{if $bases}{$bases.tabbar_bg}{else}#ffffff{/if}" class="span2 m-wrap" name="tabbar_bg">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">菜单栏背景颜色，建议设置成#fff</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">菜单栏横线颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_t', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_t" value="{if $bases}{$bases.color_bar}{else}#cccccc{/if}" class="span2 m-wrap" name="color_bar">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">白色背景建议设置为#ccc，其他颜色背景自选，不填则不显示</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">菜单栏文字颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_r', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_r" value="{if $bases}{$bases.tabbar_tc}{else}#222222{/if}" class="span2 m-wrap" name="tabbar_tc">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">建议设置成#222</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">选中文字颜色</label>
+
+
+
+						<div class="controls">
+
+
+
+							<button class="jscolor {valueElement:'chosen-value_ra', onFineChange:'setTextColor(this)'}">
+
+							</button>
+
+							<input id="chosen-value_ra" value="{if $bases}{$bases.tabbar_tca}{/if}" class="span2 m-wrap" name="tabbar_tca">
+
+
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">尽量与样式DIY中“突出色”保持一致，防止杂乱</span>
+
+
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group chongdingy">
+
+
+
+						<label class="control-label chongdingywz">老版底部菜单</label>
+
+
+
+					</div>
+
+
+					
+
+					<div class="control-group" id="tab1">
+
+
+
+						<label class="control-label">按钮①内容</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="tabbar1_l" class="span2 m-wrap"  onchange="val1(this)">
+
+								<option value="none" {if $count>0}{if $tabbar[0]['tabbar_l'] == "none"}selected{/if}{/if}>不启用</option>
+
+		                        <option value="index" {if $count>0}{if $tabbar[0]['tabbar_l'] == "index"}selected{/if}{/if}>首页</option>
+
+		                        <option value="about" {if $count>0}{if $tabbar[0]['tabbar_l'] == "about"}selected{/if}{/if}>公司介绍</option>
+
+		                        <option value="book" {if $count>0}{if $tabbar[0]['tabbar_l'] == "book"}selected{/if}{/if}>预约界面</option>
+
+		                        <option value="tel" {if $count>0}{if $tabbar[0]['tabbar_l'] == "tel"}selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="map" {if $count>0}{if $tabbar[0]['tabbar_l'] == "map"}selected{/if}{/if}>打开导航</option>
+
+		                        <option value="wechat" {if $count>0}{if $tabbar[0]['tabbar_l'] == "wechat"}selected{/if}{/if}>微信客服</option>
+
+								<option value="coupon" {if $count>0}{if $tabbar[0]['tabbar_l'] == "coupon"}selected{/if}{/if}>优惠券列表</option>
+
+		                        <option value="usercenter" {if $count>0}{if $tabbar[0]['tabbar_l'] == "usercenter"}selected{/if}{/if}>个人中心</option>
+
+		                        <option value="order" {if $count>0}{if $tabbar[0]['tabbar_l'] == "order"}selected{/if}{/if}>订单列表</option>
+
+		                        <option value="store" {if $count>0}{if $tabbar[0]['tabbar_l'] == "store"}selected{/if}{/if}>店铺列表</option>
+
+		                        <option value="shoppay" {if $count>0}{if $tabbar[0]['tabbar_l'] == "shoppay"}selected{/if}{/if}>店内支付</option>
+
+		                        <option value="food" {if $count>0}{if $tabbar[0]['tabbar_l'] == "food"}selected{/if}{/if}>点餐外卖</option>
+
+		                        <option value="webpage" {if $count>0}{if $tabbar[0]['tabbar_l'] == "webpage"}selected{/if}{/if}>打开网页</option>
+
+		                        <option value="xcxurl" {if $count>0}{if $tabbar[0]['tabbar_l'] == "xcxurl"}selected{/if}{/if}>小程序页面</option>
+
+		                        <option value="sign" {if $count>0}{if $tabbar[0]['tabbar_l'] == "sign"}selected{/if}{/if}>积分签到</option>
+
+		                        <option value="exchange" {if $count>0}{if $tabbar[0]['tabbar_l'] == "exchange"}selected{/if}{/if}>积分兑换</option>
+
+		                        <option value="gwc" {if $count>0}{if $tabbar[0]['tabbar_l'] == "gwc"}selected{/if}{/if}>购物车</option>
+
+		                        <option value="fenxiao" {if $count>0}{if $tabbar[0]['tabbar_l'] == "fenxiao"}selected{/if}{/if}>分销中心</option>
+
+		                        <option value="goodsorder" {if $count>0}{if $tabbar[0]['tabbar_l'] == "goodsorder"}selected{/if}{/if}>商品订单</option>
+
+		                        <option value="pintuan" {if $count>0}{if $tabbar[0]['tabbar_l'] == "pintuan"}selected{/if}{/if}>拼团商品</option>
+
+
+
+
+
+		                        <option value="" disabled="disabled">--请选择栏目--</option>
+
+		                        {foreach $cate as $item}
+
+		                        	<option value="{$item.id}" {if $count>0}{if $tabbar[0]['tabbar_l'] == $item.id}selected{/if}{/if}>{$item.name}</option>
+
+		                        {/foreach}
+
+							</select>
+
+		
+
+							<script type="text/javascript">
+
+
+								function val1(me){
+
+									var val = $(me).val();
+
+									if(val=="webpage"){
+
+										$("#tabinp1").remove();
+
+										var str = 	"<div class='control-group' id='tabinp1'>"+
+
+														"<label class='control-label'>网址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar1_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[0]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab1").after(str);
+
+
+
+									}else if(val=="xcxurl"){
+
+										$("#tabinp1").remove();
+
+										var str = 	"<div class='control-group' id='tabinp1'>"+
+
+														"<label class='control-label'>页面地址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar1_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[0]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										$("#tab1").after(str);
+
+									}else{
+										$("#tabinp1").remove();
+									}
+
+								}
+
+
+
+							</script>
+
+							
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								按钮①名称
+
+							</span>
+
+							<input name="tabbar1_t" type="text" class="span2 m-wrap" value="{if $count>0}{$tabbar[0]['tabbar_t']}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+
+
+					</div>
+
+					
+
+					{if $count>0}
+
+					{if $tabbar[0]['tabbar_l']=="webpage" || $tabbar[0]['tabbar_l']=="xcxurl"}
+
+					<div class="control-group" id="tabinp1">
+						{if $count>0 && $tabbar[0]['tabbar_l']=="webpage"}
+						<label class="control-label">网址</label>
+						{/if}
+						{if $count>0 && $tabbar[0]['tabbar_l']=="xcxurl"}
+						<label class="control-label">页面地址</label>
+						{/if}
+						<div class="controls">
+
+							<input name='tabbar1_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[0]["tabbar_url"]}{/if}'  style='height: 35px !important;' />
+
+							{if $count>0 && $tabbar[0]['tabbar_l']=="webpage"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>
+
+							{/if}
+
+							{if $count>0 && $tabbar[0]['tabbar_l']=="xcxurl"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>
+
+							{/if}
+
+						</div>
+
+					</div>
+
+					{/if}
+
+					{/if}
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">按钮①图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left">
+
+
+								<input type="hidden" value="0" id="isyc11" name="isyc11">
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct11">
+
+
+									{if $count>0 && $tabbar[0]['tabbar_p1']}
+
+										<img src="{$tabbar[0]['tabbar_p1']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl11">
+
+								</div>
+
+								<div>
+
+									<span class="btn btn-file">
+										<span class="fileupload-new">选择图片</span>
+										<span class="fileupload-exists">修改</span>
+										<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar1_p1" id="c_b_bg"/>
+									</span>
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc11" name="isyc11">
+										<span  onclick="yct11()">移除图片</span>
+									</span>
+
+								</div>
+								
+								<script type="text/javascript">
+
+									function yct11(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct11").html(ychtm);
+										$("#isyc11").val(1)
+										$("#yl11").html("")
+										$("input[name='tabbar1_p1']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+							<label class="control-label" style="float:left">按钮①选中图标</label>
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left;margin-left:20px;">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct12">
+
+
+
+									{if $count>0 && $tabbar[0]['tabbar_p2']}
+
+										<img src="{$tabbar[0]['tabbar_p2']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl12">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar1_p2" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc12" name="isyc12">
+										<span  onclick="yct12()">移除图片</span>
+									</span>
+
+
+
+								</div>
+								<script type="text/javascript">
+
+									function yct12(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct12").html(ychtm);
+										$("#isyc12").val(1)
+										$("#yl12").html("")
+										$("input[name='tabbar1_p2']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group" id="tab2">
+
+
+
+						<label class="control-label">按钮②内容</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="tabbar2_l" class="span2 m-wrap" onchange="val2(this)">
+
+								<option value="none" {if $count>1}{if $tabbar[1]['tabbar_l'] == "none"}selected{/if}{/if}>不启用</option>
+
+		                        <option value="index" {if $count>1}{if $tabbar[1]['tabbar_l'] == "index"}selected{/if}{/if}>首页</option>
+
+		                        <option value="about" {if $count>1}{if $tabbar[1]['tabbar_l'] == "about"}selected{/if}{/if}>公司介绍</option>
+
+		                        <option value="book" {if $count>1}{if $tabbar[1]['tabbar_l'] == "book"}selected{/if}{/if}>预约界面</option>
+
+		                        <option value="tel" {if $count>1}{if $tabbar[1]['tabbar_l'] == "tel"}selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="map" {if $count>1}{if $tabbar[1]['tabbar_l'] == "map"}selected{/if}{/if}>打开导航</option>
+
+		                        <option value="wechat" {if $count>1}{if $tabbar[1]['tabbar_l'] == "wechat"}selected{/if}{/if}>微信客服</option>
+
+								<option value="coupon" {if $count>1}{if $tabbar[1]['tabbar_l'] == "coupon"}selected{/if}{/if}>优惠券列表</option>
+
+		                        <option value="usercenter" {if $count>1}{if $tabbar[1]['tabbar_l'] == "usercenter"}selected{/if}{/if}>个人中心</option>
+
+		                        <option value="order" {if $count>1}{if $tabbar[1]['tabbar_l'] == "order"}selected{/if}{/if}>订单列表</option>
+
+		                        <option value="store" {if $count>1}{if $tabbar[1]['tabbar_l'] == "store"}selected{/if}{/if}>店铺列表</option>
+
+		                        <option value="shoppay" {if $count>1}{if $tabbar[1]['tabbar_l'] == "shoppay"}selected{/if}{/if}>店内支付</option>
+
+		                        <option value="food" {if $count>1}{if $tabbar[1]['tabbar_l'] == "food"}selected{/if}{/if}>点餐外卖</option>
+
+		                        <option value="webpage" {if $count>1}{if $tabbar[1]['tabbar_l'] == "webpage"}selected{/if}{/if}>打开网页</option>
+
+		                        <option value="xcxurl" {if $count>1}{if $tabbar[1]['tabbar_l'] == "xcxurl"}selected{/if}{/if}>小程序页面</option>
+
+								<option value="sign" {if $count>1}{if $tabbar[1]['tabbar_l'] == "sign"}selected{/if}{/if}>积分签到</option>
+
+		                        <option value="exchange" {if $count>1}{if $tabbar[1]['tabbar_l'] == "exchange"}selected{/if}{/if}>积分兑换</option>
+
+		                        <option value="gwc" {if $count>1}{if $tabbar[1]['tabbar_l'] == "gwc"}selected{/if}{/if}>购物车</option>
+
+		                        <option value="fenxiao" {if $count>1}{if $tabbar[1]['tabbar_l'] == "fenxiao"}selected{/if}{/if}>分销中心</option>
+
+		                        <option value="goodsorder" {if $count>1}{if $tabbar[1]['tabbar_l'] == "goodsorder"}selected{/if}{/if}>商品订单</option>
+
+								<option value="pintuan" {if $count>1}{if $tabbar[1]['tabbar_l'] == "pintuan"}selected{/if}{/if}>拼团商品</option>
+
+		                        <option value="" disabled="disabled">--请选择栏目--</option>
+
+		                        {foreach $cate as $item}
+
+		                        	<option value="{$item.id}" {if $count>1}{if $tabbar[1]['tabbar_l'] == $item.id}selected{/if}{/if}>{$item.name}</option>
+
+		                        {/foreach}
+
+							</select>
+
+
+
+							<script type="text/javascript">
+
+
+
+								function val2(me){
+
+									var val = $(me).val();
+
+									if(val=="webpage"){
+
+										$("#tabinp2").remove();
+
+										var str = 	"<div class='control-group' id='tabinp2'>"+
+
+														"<label class='control-label'>网址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar2_url' type='text' class='span3 m-wrap' value='{if $count>1}{$tabbar[1]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab2").after(str);
+
+
+
+									}else if(val=="xcxurl"){
+
+										$("#tabinp2").remove();
+
+										var str = 	"<div class='control-group' id='tabinp2'>"+
+
+														"<label class='control-label'>页面地址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar2_url' type='text' class='span3 m-wrap' value='{if $count>1}{$tabbar[1]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab2").after(str);
+
+									}else{
+
+										$("#tabinp2").remove();
+
+									}
+
+								}
+
+
+
+							</script>
+					
+
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								按钮②名称
+
+							</span>
+
+							<input name="tabbar2_t" type="text" class="span2 m-wrap" value="{if $count>1}{$tabbar[1]['tabbar_t']}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+
+
+					</div>
+
+					{if $count>1}
+
+					{if $tabbar[1]['tabbar_l']=="webpage" || $tabbar[1]['tabbar_l']=="xcxurl"}
+
+					<div class="control-group" id="tabinp2">
+						{if $count>1 && $tabbar[1]['tabbar_l']=="webpage"}
+						<label class="control-label">网址</label>
+						{/if}
+						{if $count>1 && $tabbar[1]['tabbar_l']=="xcxurl"}
+						<label class="control-label">页面地址</label>
+						{/if}
+						<div class="controls">
+
+							<input name='tabbar2_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[1]['tabbar_url']}{/if}'  style='height: 35px !important;' />
+
+							{if $count>1 && $tabbar[1]['tabbar_l']=="webpage"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>
+
+							{/if}
+
+							{if $count>1 && $tabbar[1]['tabbar_l']=="xcxurl"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>
+
+							{/if}
+
+						</div>
+
+					</div>
+
+					{/if}
+
+					{/if}
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">按钮②图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct21">
+
+
+
+									{if $count>1 && $tabbar[1]['tabbar_p1']}
+
+										<img src="{$tabbar[1]['tabbar_p1']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl21">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar2_p1" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc21" name="isyc21">
+										<span  onclick="yct21()">移除图片</span>
+									</span>
+
+
+
+								</div>
+
+								<script type="text/javascript">
+
+									function yct21(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct21").html(ychtm);
+										$("#isyc21").val(1)
+										$("#yl21").html("")
+										$("input[name='tabbar2_p1']").val("")
+									}
+
+								</script>
+
+							</div>
+
+
+
+							<label class="control-label" style="float:left">按钮②选中图标</label>
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left;margin-left:20px;">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct22">
+
+
+
+									{if $count>1 && $tabbar[1]['tabbar_p2']}
+
+										<img src="{$tabbar[1]['tabbar_p2']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl22">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar2_p2" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc22" name="isyc22">
+										<span onclick="yct22()">移除图片</span>
+									</span>
+
+
+
+								</div>
+								<script type="text/javascript">
+
+									function yct22(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct22").html(ychtm);
+										$("#isyc22").val(1)
+										$("#yl22").html("")
+										$("input[name='tabbar2_p2']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group" id="tab3">
+
+
+
+						<label class="control-label">按钮③内容</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="tabbar3_l" class="span2 m-wrap"  onchange="val3(this)">
+
+								<option value="none" {if $count>2}{if $tabbar[2]['tabbar_l'] == "none"}selected{/if}{/if}>不启用</option>
+
+		                        <option value="index" {if $count>2}{if $tabbar[2]['tabbar_l'] == "index"}selected{/if}{/if}>首页</option>
+
+		                        <option value="about" {if $count>2}{if $tabbar[2]['tabbar_l'] == "about"}selected{/if}{/if}>公司介绍</option>
+
+		                        <option value="book" {if $count>2}{if $tabbar[2]['tabbar_l'] == "book"}selected{/if}{/if}>预约界面</option>
+
+		                        <option value="tel" {if $count>2}{if $tabbar[2]['tabbar_l'] == "tel"}selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="map" {if $count>2}{if $tabbar[2]['tabbar_l'] == "map"}selected{/if}{/if}>打开导航</option>
+
+		                        <option value="wechat" {if $count>2}{if $tabbar[2]['tabbar_l'] == "wechat"}selected{/if}{/if}>微信客服</option>
+
+								<option value="coupon" {if $count>2}{if $tabbar[2]['tabbar_l'] == "coupon"}selected{/if}{/if}>优惠券列表</option>
+
+		                        <option value="usercenter" {if $count>2}{if $tabbar[2]['tabbar_l'] == "usercenter"}selected{/if}{/if}>个人中心</option>
+
+		                        <option value="order" {if $count>2}{if $tabbar[2]['tabbar_l'] == "order"}selected{/if}{/if}>订单列表</option>
+
+		                        <option value="store" {if $count>2}{if $tabbar[2]['tabbar_l'] == "store"}selected{/if}{/if}>店铺列表</option>
+
+		                        <option value="shoppay" {if $count>2}{if $tabbar[2]['tabbar_l'] == "shoppay"}selected{/if}{/if}>店内支付</option>
+
+		                        <option value="food" {if $count>2}{if $tabbar[2]['tabbar_l'] == "food"}selected{/if}{/if}>点餐外卖</option>
+
+		                        <option value="webpage" {if $count>2}{if $tabbar[2]['tabbar_l'] == "webpage"}selected{/if}{/if}>打开网页</option>
+
+		                        <option value="xcxurl" {if $count>2}{if $tabbar[2]['tabbar_l'] == "xcxurl"}selected{/if}{/if}>小程序页面</option>
+
+		                        <option value="sign" {if $count>2}{if $tabbar[2]['tabbar_l'] == "sign"}selected{/if}{/if}>积分签到</option>
+
+		                        <option value="exchange" {if $count>2}{if $tabbar[2]['tabbar_l'] == "exchange"}selected{/if}{/if}>积分兑换</option>
+
+		                        <option value="gwc" {if $count>2}{if $tabbar[2]['tabbar_l'] == "gwc"}selected{/if}{/if}>购物车</option>
+
+		                        <option value="fenxiao" {if $count>2}{if $tabbar[2]['tabbar_l'] == "fenxiao"}selected{/if}{/if}>分销中心</option>
+
+		                        <option value="goodsorder" {if $count>2}{if $tabbar[2]['tabbar_l'] == "goodsorder"}selected{/if}{/if}>商品订单</option>
+
+								<option value="pintuan" {if $count>2}{if $tabbar[2]['tabbar_l'] == "pintuan"}selected{/if}{/if}>拼团商品</option>
+
+
+
+		                        <option value="" disabled="disabled">--请选择栏目--</option>
+
+		                        {foreach $cate as $item}
+
+		                        	<option value="{$item.id}" {if $count>2}{if $tabbar[2]['tabbar_l'] == $item.id}selected{/if}{/if}>{$item.name}</option>
+
+		                        {/foreach}
+
+							</select>
+		
+							
+
+							<script type="text/javascript">
+
+
+
+								function val3(me){
+
+									var val = $(me).val();
+
+									if(val=="webpage"){
+
+										$("#tabinp3").remove();
+
+										var str = 	"<div class='control-group' id='tabinp3'>"+
+
+														"<label class='control-label'>网址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar3_url' type='text' class='span3 m-wrap' value='{if $count>2}{$tabbar[2]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab3").after(str);
+
+
+
+									}else if(val=="xcxurl"){
+
+										$("#tabinp3").remove();
+
+										var str = 	"<div class='control-group' id='tabinp3'>"+
+
+														"<label class='control-label'>页面地址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar3_url' type='text' class='span3 m-wrap' value='{if $count>2}{$tabbar[2]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab3").after(str);
+
+									}else{
+
+										$("#tabinp3").remove();
+
+									}
+
+								}
+
+
+
+							</script>
+						
+
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								按钮③名称
+
+							</span>
+
+							<input name="tabbar3_t" type="text" class="span2 m-wrap" value="{if $count>2}{$tabbar[2]['tabbar_t']}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+
+
+					</div>
+
+					{if $count>2}
+
+					{if $tabbar[2]['tabbar_l']=="webpage" || $tabbar[2]['tabbar_l']=="xcxurl"}
+
+					<div class="control-group" id="tabinp3">
+
+						{if $count>2 && $tabbar[2]['tabbar_l']=="webpage"}
+						<label class="control-label">网址</label>
+						{/if}
+						{if $count>2 && $tabbar[2]['tabbar_l']=="xcxurl"}
+						<label class="control-label">页面地址</label>
+						{/if}
+						<div class="controls">
+
+							<input name='tabbar3_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[2]['tabbar_url']}{/if}'  style='height: 35px !important;' />
+
+							{if $count>2 && $tabbar[2]['tabbar_l']=="webpage"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>
+
+							{/if}
+
+							{if $count>2 && $tabbar[2]['tabbar_l']=="xcxurl"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>
+
+							{/if}
+
+						</div>
+
+					</div>
+
+					{/if}
+
+					{/if}
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">按钮③图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload"  style="float:left">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct31">
+
+
+
+									{if $count>2 && $tabbar[2]['tabbar_p1']}
+
+										<img src="{$tabbar[2]['tabbar_p1']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl31">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar3_p1" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc31" name="isyc31">
+										<span  onclick="yct31()">移除图片</span>
+									</span>
+
+
+
+								</div>
+									<script type="text/javascript">
+
+									function yct31(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct31").html(ychtm);
+										$("#isyc31").val(1)
+										$("#yl31").html("")
+										$("input[name='tabbar3_p1']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+							<label class="control-label" style="float:left">按钮③选中图标</label>
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload"  style="float:left;margin-left:20px;">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct32">
+
+
+
+									{if $count>2 && $tabbar[2]['tabbar_p2']}
+
+										<img src="{$tabbar[2]['tabbar_p2']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl32">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+									<span class="fileupload-exists">修改</span>
+									
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar3_p2" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc32" name="isyc32">
+										<span  onclick="yct32()">移除图片</span>
+									</span>
+
+
+
+								</div>
+
+								<script type="text/javascript">
+
+									function yct32(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct32").html(ychtm);
+										$("#isyc32").val(1)
+										$("#yl32").html("")
+										$("input[name='tabbar3_p2']").val("")
+									}
+
+								</script>
+
+							</div>
+
+
+
+
+
+
+
+						</div>
+
+					</div>
+
+					
+
+					<div class="control-group" id="tab4">
+
+
+
+						<label class="control-label">按钮④内容</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="tabbar4_l" class="span2 m-wrap" onchange="val4(this)">
+
+								<option value="none" {if $count>3}{if $tabbar[3]['tabbar_l'] == "none"}selected{/if}{/if}>不启用</option>
+
+		                        <option value="index" {if $count>3}{if $tabbar[3]['tabbar_l'] == "index"}selected{/if}{/if}>首页</option>
+
+		                        <option value="about" {if $count>3}{if $tabbar[3]['tabbar_l'] == "about"}selected{/if}{/if}>公司介绍</option>
+
+		                        <option value="book" {if $count>3}{if $tabbar[3]['tabbar_l'] == "book"}selected{/if}{/if}>预约界面</option>
+
+		                        <option value="tel" {if $count>3}{if $tabbar[3]['tabbar_l'] == "tel"}selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="map" {if $count>3}{if $tabbar[3]['tabbar_l'] == "map"}selected{/if}{/if}>打开导航</option>
+
+		                        <option value="wechat" {if $count>3}{if $tabbar[3]['tabbar_l'] == "wechat"}selected{/if}{/if}>微信客服</option>
+
+								<option value="coupon" {if $count>3}{if $tabbar[3]['tabbar_l'] == "coupon"}selected{/if}{/if}>优惠券列表</option>
+
+		                        <option value="usercenter" {if $count>3}{if $tabbar[3]['tabbar_l'] == "usercenter"}selected{/if}{/if}>个人中心</option>
+
+		                        <option value="order" {if $count>3}{if $tabbar[3]['tabbar_l'] == "order"}selected{/if}{/if}>订单列表</option>
+
+		                        <option value="store" {if $count>3}{if $tabbar[3]['tabbar_l'] == "store"}selected{/if}{/if}>店铺列表</option>
+
+		                        <option value="shoppay" {if $count>3}{if $tabbar[3]['tabbar_l'] == "shoppay"}selected{/if}{/if}>店内支付</option>
+
+		                        <option value="food" {if $count>3}{if $tabbar[3]['tabbar_l'] == "food"}selected{/if}{/if}>点餐外卖</option>
+
+		                        <option value="webpage" {if $count>3}{if $tabbar[3]['tabbar_l'] == "webpage"}selected{/if}{/if}>打开网页</option>
+
+		                        <option value="xcxurl" {if $count>3}{if $tabbar[3]['tabbar_l'] == "xcxurl"}selected{/if}{/if}>小程序页面</option>
+
+		                        <option value="sign" {if $count>3}{if $tabbar[3]['tabbar_l'] == "sign"}selected{/if}{/if}>积分签到</option>
+
+		                        <option value="exchange" {if $count>3}{if $tabbar[3]['tabbar_l'] == "exchange"}selected{/if}{/if}>积分兑换</option>
+
+		                        <option value="gwc" {if $count>3}{if $tabbar[3]['tabbar_l'] == "gwc"}selected{/if}{/if}>购物车</option>
+
+		                        <option value="fenxiao" {if $count>3}{if $tabbar[3]['tabbar_l'] == "fenxiao"}selected{/if}{/if}>分销中心</option>
+
+		                        <option value="goodsorder" {if $count>3}{if $tabbar[3]['tabbar_l'] == "goodsorder"}selected{/if}{/if}>商品订单</option>
+
+
+								<option value="pintuan" {if $count>3}{if $tabbar[3]['tabbar_l'] == "pintuan"}selected{/if}{/if}>拼团商品</option>
+
+
+
+
+		                        <option value="" disabled="disabled">--请选择栏目--</option>
+
+		                        {foreach $cate as $item}
+
+		                        	<option value="{$item.id}" {if $count>3}{if $tabbar[3]['tabbar_l'] == $item.id}selected{/if}{/if}>{$item.name}</option>
+
+		                        {/foreach}
+
+							</select>
+
+
+							<script type="text/javascript">
+
+
+
+								function val4(me){
+
+									var val = $(me).val();
+
+									if(val=="webpage"){
+
+										$("#tabinp4").remove();
+
+										var str = 	"<div class='control-group' id='tabinp4'>"+
+
+														"<label class='control-label'>网址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar4_url' type='text' class='span3 m-wrap' value='{if $count>3}{$tabbar[3]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab4").after(str);
+
+
+
+									}else if(val=="xcxurl"){
+
+										$("#tabinp4").remove();
+
+										var str = 	"<div class='control-group' id='tabinp4'>"+
+
+														"<label class='control-label'>页面地址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar4_url' type='text' class='span3 m-wrap' value='{if $count>3}{$tabbar[3]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab4").after(str);
+
+									}else{
+
+										$("#tabinp4").remove();
+
+									}
+
+								}
+
+
+
+							</script>
+					
+
+
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								按钮④名称
+
+							</span>
+
+							<input name="tabbar4_t" type="text" class="span2 m-wrap" value="{if $count>3}{$tabbar[3]['tabbar_t']}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+
+
+					</div>
+
+					{if $count>3}
+
+					{if $tabbar[3]['tabbar_l']=="webpage" || $tabbar[3]['tabbar_l']=="xcxurl"}
+
+					<div class="control-group" id="tabinp4">
+
+						{if $count>3 && $tabbar[3]['tabbar_l']=="webpage"}
+						<label class="control-label">网址</label>
+						{/if}
+						{if $count>3 && $tabbar[3]['tabbar_l']=="xcxurl"}
+						<label class="control-label">页面地址</label>
+						{/if}
+						<div class="controls">
+
+							<input name='tabbar4_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[3]['tabbar_url']}{/if}'  style='height: 35px !important;' />
+
+							{if $count>3 && $tabbar[3]['tabbar_l']=="webpage"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>
+
+							{/if}
+
+							{if $count>3 && $tabbar[3]['tabbar_l']=="xcxurl"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>
+
+							{/if}
+
+						</div>
+
+					</div>
+
+					{/if}
+
+					{/if}
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">按钮④图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct41">
+
+
+
+									{if $count>3 && $tabbar[3]['tabbar_p1']}
+
+										<img src="{$tabbar[3]['tabbar_p1']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl41">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar4_p1" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc41" name="isyc41">
+										<span onclick="yct41()">移除图片</span>
+									</span>
+
+
+
+								</div>
+								<script type="text/javascript">
+
+									function yct41(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct41").html(ychtm);
+										$("#isyc41").val(1)
+										$("#yl41").html("")
+										$("input[name='tabbar4_p1']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+							<label class="control-label" style="float:left">按钮④选中图标</label>
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left;margin-left:20px">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct42">
+
+
+
+									{if $count>3 && $tabbar[3]['tabbar_p2']}
+
+										<img src="{$tabbar[3]['tabbar_p2']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl42">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									<span class="fileupload-exists">修改</span>
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar4_p2" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc42" name="isyc42">
+										<span  onclick="yct42()">移除图片</span>
+									</span>
+							
+
+
+								</div>
+
+								<script type="text/javascript">
+
+									function yct42(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct42").html(ychtm);
+										$("#isyc42").val(1)
+										$("#yl42").html("")
+										$("input[name='tabbar4_p2']").val("")
+									}
+
+								</script>
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+
+
+					<div class="control-group" id="tab5">
+
+
+
+						<label class="control-label">按钮⑤内容</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="tabbar5_l" class="span2 m-wrap" onchange="val5(this)">
+
+								<option value="none" {if $count>4}{if $tabbar[4]['tabbar_l'] == "none"}selected{/if}{/if}>不启用</option>
+
+		                        <option value="index" {if $count>4}{if $tabbar[4]['tabbar_l'] == "index"}selected{/if}{/if}>首页</option>
+
+		                        <option value="about" {if $count>4}{if $tabbar[4]['tabbar_l'] == "about"}selected{/if}{/if}>公司介绍</option>
+
+		                        <option value="book" {if $count>4}{if $tabbar[4]['tabbar_l'] == "book"}selected{/if}{/if}>预约界面</option>
+
+		                        <option value="tel" {if $count>4}{if $tabbar[4]['tabbar_l'] == "tel"}selected{/if}{/if}>拨打电话</option>
+
+		                        <option value="map" {if $count>4}{if $tabbar[4]['tabbar_l'] == "map"}selected{/if}{/if}>打开导航</option>
+
+		                        <option value="wechat" {if $count>4}{if $tabbar[4]['tabbar_l'] == "wechat"}selected{/if}{/if}>微信客服</option>
+
+								<option value="coupon" {if $count>4}{if $tabbar[4]['tabbar_l'] == "coupon"}selected{/if}{/if}>优惠券列表</option>
+
+		                        <option value="usercenter" {if $count>4}{if $tabbar[4]['tabbar_l'] == "usercenter"}selected{/if}{/if}>个人中心</option>
+
+		                        <option value="order" {if $count>4}{if $tabbar[4]['tabbar_l'] == "order"}selected{/if}{/if}>订单列表</option>
+
+		                        <option value="store" {if $count>4}{if $tabbar[4]['tabbar_l'] == "store"}selected{/if}{/if}>店铺列表</option>
+
+		                        <option value="shoppay" {if $count>4}{if $tabbar[4]['tabbar_l'] == "shoppay"}selected{/if}{/if}>店内支付</option>
+
+		                        <option value="food" {if $count>4}{if $tabbar[4]['tabbar_l'] == "food"}selected{/if}{/if}>点餐外卖</option>
+
+		                        <option value="webpage" {if $count>4}{if $tabbar[4]['tabbar_l'] == "webpage"}selected{/if}{/if}>打开网页</option>
+
+		                        <option value="xcxurl" {if $count>4}{if $tabbar[4]['tabbar_l'] == "xcxurl"}selected{/if}{/if}>小程序页面</option>
+
+		                        <option value="sign" {if $count>4}{if $tabbar[4]['tabbar_l'] == "sign"}selected{/if}{/if}>积分签到</option>
+
+		                        <option value="exchange" {if $count>4}{if $tabbar[4]['tabbar_l'] == "exchange"}selected{/if}{/if}>积分兑换</option>
+
+
+								<option value="pintuan" {if $count>4}{if $tabbar[4]['tabbar_l'] == "pintuan"}selected{/if}{/if}>拼团商品</option>
+
+
+								
+
+		                        <option value="" disabled="disabled">--请选择栏目--</option>
+
+		                        {foreach $cate as $item}
+
+		                        	<option value="{$item.id}" {if $count>4}{if $tabbar[4]['tabbar_l'] == $item.id}selected{/if}{/if}>{$item.name}</option>
+
+		                        {/foreach}
+
+							</select>
+
+							
+
+							<script type="text/javascript">
+
+
+
+								function val5(me){
+
+									var val = $(me).val();
+
+									if(val=="webpage"){
+
+										$("#tabinp5").remove();
+
+										var str = 	"<div class='control-group' id='tabinp5'>"+
+
+														"<label class='control-label'>网址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar5_url' type='text' class='span3 m-wrap' value='{if $count>4}{$tabbar[4]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab5").after(str);
+
+
+
+									}else if(val=="xcxurl"){
+
+										$("#tabinp5").remove();
+
+										var str = 	"<div class='control-group' id='tabinp5'>"+
+
+														"<label class='control-label'>页面地址</label>"+
+
+														"<div class='controls'>"+
+
+															"<input name='tabbar5_url' type='text' class='span3 m-wrap' value='{if $count>4}{$tabbar[4]['tabbar_url']}{/if}'  style='height: 35px !important;' />"+
+
+															"<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>"+
+
+														"</div>"+
+
+													"</div>";
+
+										
+
+										$("#tab5").after(str);
+
+									}else{
+
+										$("#tabinp5").remove();
+
+									}
+
+								}
+
+
+
+							</script>
+							<span style=" line-height:30px; margin-left:20px; margin-right:20px;">
+
+								按钮⑤名称
+
+							</span>
+
+							<input name="tabbar5_t" type="text" class="span2 m-wrap" value="{if $count>4}{$tabbar[4]['tabbar_t']}{/if}"  style="height: 35px !important;" />
+
+						</div>
+
+
+
+					</div>
+
+					{if $count>4}
+
+					{if $tabbar[4]['tabbar_l']=="webpage" || $tabbar[4]['tabbar_l']=="xcxurl"}
+
+					<div class="control-group" id="tabinp5">
+
+						{if $count>4 && $tabbar[4]['tabbar_l']=="webpage"}
+						<label class="control-label">网址</label>
+						{/if}
+						{if $count>4 && $tabbar[4]['tabbar_l']=="xcxurl"}
+						<label class="control-label">页面地址</label>
+						{/if}
+						<div class="controls">
+
+							<input name='tabbar5_url' type='text' class='span3 m-wrap' value='{if $count>0}{$tabbar[4]['tabbar_url']}{/if}'  style='height: 35px !important;' />
+
+							{if $count>4 && $tabbar[4]['tabbar_l']=="webpage"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>必须为https，并添加至业务域名</span>
+
+							{/if}
+
+							{if $count>4 && $tabbar[4]['tabbar_l']=="xcxurl"}
+
+							<span style='color:#999999; line-height:40px; margin-left:20px;'>请填写小程序页面地址</span>
+
+							{/if}
+
+						</div>
+
+					</div>
+
+					{/if}
+
+					{/if}
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">按钮⑤图标</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct51">
+
+
+
+									{if $count>4 && $tabbar[4]['tabbar_p1']}
+
+										<img src="{$tabbar[4]['tabbar_p1']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl51">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+									<span class="fileupload-exists">修改</span>
+									
+
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar5_p1" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc51" name="isyc51">
+										<span  onclick="yct51()">移除图片</span>
+									</span>
+
+
+
+								</div>
+								<script type="text/javascript">
+
+									function yct51(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct51").html(ychtm);
+										$("#isyc51").val(1)
+										$("#yl51").html("")
+										$("input[name='tabbar5_p1']").val("")
+									}
+
+								</script>
+
+
+							</div>
+
+
+
+							<label class="control-label" style="float:left">按钮⑤选中图标</label>
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left;margin-left:20px;">
+
+
+
+								<div class="fileupload-new thumbnail" style="width: 50px; height:50px;" id="yct52">
+
+
+
+									{if $count>4 && $tabbar[4]['tabbar_p2']}
+
+										<img src="{$tabbar[4]['tabbar_p2']}" alt="" />
+
+									{else}
+
+										<img src="/image/noimage_1.png" alt="" />
+
+									{/if}
+
+
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:50px; height:50px;" id="yl52">
+
+									
+
+								</div>
+
+								<div>
+
+
+
+									<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
+
+
+
+									
+									<span class="fileupload-exists">修改</span>
+
+
+									<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" class="default" name="tabbar5_p2" id="c_b_bg"/></span>
+
+
+
+									<span class="btn">
+										<input type="hidden" value="0" id="isyc52" name="isyc52">
+										<span  onclick="yct52()">移除图片</span>
+									</span>
+
+
+
+								</div>
+
+								<script type="text/javascript">
+
+									function yct52(){
+										var ychtm ="<img src='/image/noimage_1.png' alt='' />";
+										$("#yct52").html(ychtm);
+										$("#isyc52").val(1)
+										$("#yl52").html("")
+										$("input[name='tabbar5_p2']").val("")
+									}
+
+								</script>
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+		            
+
+
+
+		            
+
+						
+
+					
+
+					
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

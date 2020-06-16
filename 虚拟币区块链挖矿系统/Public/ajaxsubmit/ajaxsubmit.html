@@ -1,0 +1,77 @@
+
+<!-- Panel popup   提示框开始-->
+<link rel="stylesheet" type="text/css" href="/public/ajaxsubmit/css/zip.css">
+<div id="mw_modal" class="popup-basic bg-none mfp-with-anim mfp-hide">
+    <div class="panel">
+        <div class="panel-heading">
+                            <span class="panel-icon"><i class="fa fa-pencil"></i>
+                            </span>
+            <span class="panel-title"> 提示信息</span>
+        </div>
+        <div class="panel-body">
+            <h3 class="content"> 信息异常，请稍后重试</h3>
+        </div>
+        <div class="panel-footer text-right">
+            <button class="btn btn-sm btn-info btn_ok" type="button">确认</button>
+            <button class="btn btn-sm btn-info btn_cancel" type="button">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modal-panel" class="popup-basic bg-none mfp-with-anim mfp-hide" style="max-width:70%"></div>
+<button type="hidden" id="my_alert" ></button>
+<!-- End: Main -->
+<script type="text/javascript" src="/public/ajaxsubmit/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/public/ajaxsubmit/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/public/ajaxsubmit/js/zip.js"></script>
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+
+        "use strict";
+        // Init Theme Core
+        Core.init()
+    });
+
+    function my_alert(message){
+      var btn_submit = $("#my_alert");
+      btn_submit.MW_modal_alert({content: message});
+    }
+
+
+    $(".btn_submit").on("click", function () {
+
+	    event.preventDefault();
+	    var btn_submit = $(this);
+	    var form = btn_submit.closest("form");
+      var btn_text=btn_submit.text();
+      if(btn_submit.attr('reminder')){
+        if(!confirm(btn_submit.attr('reminder'))){
+          return ;
+        }
+      }
+	    if (form.hasClass("is_submit")) return false;
+      var formData = new FormData(form[0]);
+
+	    $.ajax({
+	        url: this.title,
+	        type: "post",
+	        data: formData,
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+	        beforeSend: function () {
+	            form.addClass("is_submit");
+	            btn_submit.text("处理中...").addClass("disabled");
+	        },
+	        success: function (data) {
+
+            form.removeClass("is_submit").MW_modal_alert({content: data.info, url: data.url});
+            btn_submit.text(btn_text).removeClass('disabled');
+	        }
+	    });
+  	});
+
+
+</script>
+<!-- END: PAGE SCRIPTS 提示框结束-->

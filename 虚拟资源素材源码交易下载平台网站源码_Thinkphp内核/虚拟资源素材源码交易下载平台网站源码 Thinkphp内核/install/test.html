@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>安装程序</title>
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<link rel="stylesheet" href="../public/css/install.css">   
+    <script src="../public/plugins/layui/layui.js"></script>
+    <script>
+        function testClick() {
+            if ($('.yes').length != 6) {
+                alert('您的配置或权限不符合要求');
+            } else {
+                location.href = './index.php?c=create';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+欢迎使用 LAYSNS <?php echo VERSION;?>！
+</div>  
+<section class="section">
+    <div class="blank30"></div>
+    <div class="go go2"></div>
+    <div class="blank30"></div>
+    <div class="server">
+      <table width="100%" id="table" cellspacing="1">
+        <tr>
+          <td class="td1">环境检测</td>
+          <td class="td1" width="25%">推荐配置</td>
+          <td class="td1" width="25%">当前状态</td>
+          <td class="td1" width="25%">是否可用</td>
+        </tr>
+        <tr>
+          <td class="first">服务器环境</td>
+          <td>Apache/2.4.23</td>
+          <td><?php echo php_uname('s'); ?></td>
+		  <td><font color="#46be8a">当前配置正确</font></td>
+        </tr>
+        <tr>
+          <td class="first">PHP版本</td>
+          <td>&gt;5.6 (支持php7)</td>
+          <td><?php echo PHP_VERSION ?></td>
+          <?php $php_version=explode('.', PHP_VERSION); ?>
+          <td class="<?php if(($php_version['0']>=7) || ($php_version['0']>=5 && $php_version['1']>=6))echo 'yes'; ?>">
+          <?php if (($php_version['0']>=7) || ($php_version['0']>=5 && $php_version['1']>=3)): ?> <font color="#46be8a">当前配置正确</font>
+          <?php else: ?> <font color="red">当前配置错误</font>
+          <?php endif ?></td>
+        </tr>
+		</table>
+      <table width="100%" id="table" cellspacing="1">
+        <tr>
+          <td class="td1">目录权限</td>
+          <td class="td1" width="25%">推荐配置</td>
+          <td class="td1" width="25%">当前状态</td>
+          <td class="td1" width="25%">当前权限</td>
+        </tr>
+        <tr>
+          <td class="first">./runtime</td>
+          <td>读写</td>
+                    <td>
+                        <?php if (is_writable('../runtime')): ?> 可写
+                        <?php else: ?> 不可写
+                        <?php endif ?>
+                    </td>
+                    <td class="<?php if(is_writable('../runtime'))echo 'yes'; ?>">
+                        <?php if (is_writable('../runtime')): ?> <font color="#46be8a">当前权限可写</font>
+                        <?php else: ?> <font color="red">当前权限错误</font>
+                        <?php endif ?>
+                    </td>
+        </tr>
+        <tr>
+          <td class="first">./install</td>
+                    <td>读写</td>
+                    <td>
+                        <?php if (is_writable('../install')): ?> 可写
+                        <?php else: ?> 不可写
+                        <?php endif ?>
+                    </td>
+                    <td class="<?php if(is_writable('../install'))echo 'yes'; ?>">
+                        <?php if (is_writable('../install')): ?> <font color="#46be8a">当前权限可写</font>
+                        <?php else: ?> <font color="red">当前权限错误</font>
+                        <?php endif ?>
+                    </td>
+        </tr>
+        <tr>
+          <td class="first">./application</td>
+                    <td>读写</td>
+                    <td>
+                        <?php if (is_writable('../application')): ?> 可写
+                        <?php else: ?> 不可写
+                        <?php endif ?>
+                    </td>
+                    <td class="<?php if(is_writable('../application'))echo 'yes'; ?>">
+                        <?php if (is_writable('../application')): ?> <font color="#46be8a">当前权限可写</font>
+                        <?php else: ?> <font color="red">当前权限错误</font>
+                        <?php endif ?>
+                    </td>
+        </tr>
+        <tr>
+          <td class="first">./data</td>
+                    <td>读写</td>
+                    <td>
+                        <?php if (is_writable('../data')): ?> 可写
+                        <?php else: ?> 不可写
+                        <?php endif ?>
+                    </td>
+                    <td class="<?php if(is_writable('../data'))echo 'yes'; ?>">
+                        <?php if (is_writable('../data')): ?> <font color="#46be8a">当前权限可写</font>
+                        <?php else: ?> <font color="red">当前权限错误</font>
+                        <?php endif ?>
+                    </td>
+        </tr>
+      </table>
+
+      
+    </div>
+    <div class="bottom tac"> 
+      <div class="blank20"></div>
+      <center>
+        <a href="./index.php?c=agreement" class="btn_b">上一步</a>
+               <a href="./index.php?c=create"  class="btn_a">下一步</a>
+              </center>
+    </div>
+  </section>
+</div>
+ <div class="blank20"></div>
+<div class="footer"> Powered by  <a href="http://www.laysns.com" target="_blank">LAYSNS <?php echo VERSION;?></a></div>
+</body>
+</html>

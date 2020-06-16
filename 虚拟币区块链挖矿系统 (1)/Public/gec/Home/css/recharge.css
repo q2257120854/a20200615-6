@@ -1,0 +1,126 @@
+body{
+	font-size: 10px;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+	color: #444;
+	background: #EFEFF4;
+	overflow-y: auto;
+}
+div,p,h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
+ul,li,dl,dt,dd{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	color: #fff;
+	text-decoration: none;
+}
+a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.fc{
+	clear: both;
+}
+.myimg{
+	width: 100%;
+}
+/* footer */
+#footer{
+	height: 50px;
+	width: 100%;
+	background: #131224;
+	position: fixed;
+	bottom: 0;
+}
+#footer ul>li{
+   width: 25%;
+   text-align:  center;
+   height: 50px;
+   color: #999;
+}
+#footer ul>li>a{
+	display: block;
+    line-height: 20px;
+    width: 100%;
+    color: #999;
+}
+#footer ul>li>p{
+	margin-top: 10px;
+}
+#footer ul> .active{
+	color: #0067AC;
+}
+#footer ul> .active>a{
+	color: #0067AC;
+}
+/* myform */
+#myform{
+	width: 100%;
+}
+#myform .input-group{
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	width: 270px;
+	height: 30px;
+	margin-top: 10px;
+	border-bottom-left-radius: 50px;
+	border-top-left-radius: 50px;
+	background: #fff;
+	}
+#myform .input-group>span{
+float:left;
+margin:0;
+vertical-align:top;
+	display: inline-block;
+	height: 100%;
+	line-height: 30px;
+	padding: 0 10px;
+	color: #fff;
+	padding-left: 20px;
+	border-bottom-left-radius: 50px;
+	border-top-left-radius: 50px;
+}
+#myform .input-group .group1{
+     background: #CF4646;
+}
+#myform .input-group .group2{
+     background: #3498DB;
+}
+#myform .input-group .group3{
+     background: #1FA67A;
+}
+#myform .input-group>input{
+float:right;
+margin:0;
+    vertical-align:top;
+	border: none;
+	outline: none;
+	background: none;
+	line-height: 27px;
+	background: #fff;
+	padding-left: 5px;
+}
+#submit{
+	width: 250px;
+	margin:  0 auto;
+	display: block;
+	margin-top: 20px;
+	border: 1px solid #fff;
+	line-height: 25px;
+	background: #337AB7;
+	color: #fff;
+	border-radius: 10px;
+	font-size: 12px;
+}

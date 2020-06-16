@@ -1,0 +1,49 @@
+{extend name="base" /}
+{block name="body"}
+
+    <!--tab标签-->
+    <div class="layui-tab-brief">
+
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" data-url="{:url('admin/hooks/update')}"  localtion-url="{:url('hooks/index')}">
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钩子名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" value="{$auth_group.name}" required  lay-verify="required" placeholder="请输入钩子名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钩子描述</label>
+                        <div class="layui-input-inline">
+                            <textarea name="description" placeholder="请输入钩子描述" class="layui-textarea">{$auth_group.description}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钩子类型</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="type" value="1" title="视图" {if condition="$auth_group.type==1"} checked="checked"{/if}>
+                            <input type="radio" name="type" value="2" title="控制器" {if condition="$auth_group.type==2"} checked="checked"{/if}>
+                        </div>
+                    </div>
+                   
+                  
+                            <input type="hidden" name="id" value="{$auth_group.id}">
+                         <div class="btable-paged" >
+				<div class="layui-main">
+                    <div class="formbtngroup">
+<button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">更新</button>
+<button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+</div>
+</div>
+        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

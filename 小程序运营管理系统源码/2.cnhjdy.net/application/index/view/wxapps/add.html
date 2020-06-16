@@ -1,0 +1,547 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navCon"  class="navCon7">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			小程序管理--{$applet.name}
+
+		</li>
+
+	</ul>
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Wxapps/save')}?appletid=<?php echo $_GET['appletid']?>&wxappsid={$wxappsid}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					
+
+				
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">排序</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="num" type="text" class="span1 m-wrap"  style="height: 35px !important;"  value="{if $wxappsinfo && $wxappsinfo['num']}{$wxappsinfo['num']}{else}0{/if}" />
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+
+						</div>
+
+
+
+					</div>
+
+	
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">所属栏目</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="cid" class="span3 m-wrap" id="cid">
+
+								<option value="0">请选择所属栏目</option>
+
+								{if $cate}
+
+									{foreach $cate as $item}
+
+										<option value="{$item.0.id}"  {if $wxappsinfo}{if $wxappsinfo.cid==$item.0.id}selected=selected{/if}{/if}>{$item.0.name}</option>
+
+										{if $item.data}
+
+											{foreach $item.data as $res}
+
+												<option value="{$res.id}"  {if $wxappsinfo}{if $wxappsinfo.cid==$res.id}selected=selected{/if}{/if}><span style="margin-left:10px;" >|--{$res.name}</span></option>
+
+											{/foreach}
+
+										{/if}
+
+									{/foreach}
+
+								{/if}
+
+							</select>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">推荐到首页栏目</label>
+
+
+
+						<div class="controls">
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_i" value="0" {if $wxappsinfo && $wxappsinfo['type_i']==0}checked{/if}/>
+
+
+
+							不推荐
+
+
+
+							</label>
+
+
+
+							<label class="radio">
+
+
+
+							<input type="radio" name="type_i" value="1" {if $wxappsinfo && $wxappsinfo['type_i']==1}checked{/if}/>
+
+
+
+							推荐
+
+
+
+							</label> 
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">小程序名称</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="title" id="title" type="text" class="span4 m-wrap"  style="height: 35px !important;"  value="{if $wxappsinfo && $wxappsinfo['title']}{$wxappsinfo['title']}{/if}"/>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请填写小程序名称</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">缩略图</label>
+
+
+
+						<div class="controls">
+
+
+
+
+
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+
+
+
+								<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:90px;">
+
+									{if $wxappsinfo && $wxappsinfo.thumb}
+
+									<img src="{$wxappsinfo.thumb}"/>
+
+									{else}
+
+									<img src="/image/noimage.jpg" alt="" />
+
+									{/if}
+
+								</div>
+
+
+
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:90px;">
+
+									
+
+								</div>
+
+								<div>
+
+									<span class="btn btn-file"><span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic"></span></span>
+
+								</div>
+
+
+
+								<font color="#999999">最宽750px，高度随意</font>
+
+							</div>
+
+
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">appId</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="appId" type="text" class="span3 m-wrap"  style="height: 35px !important;"  value="{if $wxappsinfo && $wxappsinfo['appId']}{$wxappsinfo['appId']}{/if}"/>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">要打开的小程序 appId</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">打开路径</label>
+
+
+
+						<div class="controls">
+
+
+
+							<input name="path" type="text" class="span3 m-wrap"  style="height: 35px !important;"  value="{if $wxappsinfo && $wxappsinfo['path']}{$wxappsinfo['path']}{/if}"/>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">打开的页面路径，如果为空则打开首页</span>
+
+						</div>
+
+
+
+					</div>
+
+
+
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">简介</label>
+
+
+
+						<div class="controls">
+
+
+
+							<textarea class="span3 m-wrap" style="height:150px;" name="desc">{if $wxappsinfo}{$wxappsinfo.desc}{/if}</textarea>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">请设置每人限领数,0不限制</span>
+
+						</div>
+
+
+
+					</div>
+
+					
+
+
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+{include file="public/foot_more" /}
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+	$.fn.datetimepicker.dates['zh-CN'] = {  
+
+        days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],  
+
+        daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],  
+
+        daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],  
+
+        months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+
+        monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],  
+
+        today: "今天",  
+
+        suffix: [],  
+
+        meridiem: ["上午", "下午"]  
+
+	}; 
+
+   	$('#btimes').datetimepicker({
+
+   		language:  'zh-CN',
+
+   		minView: "month",
+
+   		autoclose:true,
+
+   		startDate: new Date()
+
+   	});
+
+
+
+   	$('#etimes').datetimepicker({
+
+   		language:  'zh-CN',
+
+   		minView: "month",
+
+   		autoclose:true,
+
+   		startDate: new Date()
+
+   	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+   	function checkinfo(){
+
+
+
+   		var cid = $("#cid").val();
+
+   		var title = $("#title").val();
+
+
+
+
+
+
+
+   		if(cid == 0){
+
+   			alert("请选择栏目！");
+
+   			return false;
+
+   		}
+
+
+
+   		if(!title){
+
+   			alert("请填写小程序名称！");
+
+   			return false;
+
+   		}
+
+
+
+
+
+   	}
+
+
+
+
+
+
+
+
+
+
+
+</script>

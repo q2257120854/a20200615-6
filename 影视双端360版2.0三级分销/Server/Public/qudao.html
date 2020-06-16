@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.ddddmi.com/app/index/qudao.html?uid=NTE4 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>猫眼VIP，影视VIP全聚合！</title>
+  <script src="/public/qudao_files/jquery-3.2.1.min.js"></script>
+  <style type="text/css">
+ 	body{
+ 		margin: 0px;
+ 		padding: 0px;
+ 	}
+ 	.head{
+
+ 	}
+ 	.head img{
+ 		width: 100%
+ 	}
+ 	.vipImg{
+ 		text-align: center;
+ 		position: absolute;
+ 		top: 185px;
+ 		margin-left: 20px;
+ 		z-index: 10;
+ 	}
+ 	.VIP{
+ 		width: 80%
+ 	}
+ 	.input{
+ 		margin-top: 8px;
+ 		text-align: center;
+ 		width: 100%;
+ 		z-index: 12;
+ 	}
+ 	.input input{
+ 		width: 55%;
+ 		margin-right: right;
+ 		height: 50px;
+ 		border-radius: 10px;
+ 		border:0px;
+ 	}
+ 	.password{
+ 		margin-top: 5px; 	
+ 	}
+ 	.phone{
+ 		background-image: url(/images/qudao/mobile.png);/*设置小图标*/
+		background-size: 15px 20px;/*小图标的大小*/
+		background-position: 15px 15px;/*小图标在input的位置*/
+		background-repeat: no-repeat;/*背景小图标不重复*/
+		padding: 0px 10px 0px 40px;
+		font-size: 16px
+ 	}
+ 	.password{
+ 		background-image: url(/images/qudao/anquan.png);/*设置小图标*/
+		background-size: 15px 20px;/*小图标的大小*/
+		background-position: 15px 15px;/*小图标在input的位置*/
+		background-repeat: no-repeat;/*背景小图标不重复*/
+		padding: 0px 10px 0px 40px;
+		font-size: 16px
+ 	}
+ 	.register{
+ 		text-align: center
+ 	}
+ 	.register button{
+ 		background: #FFF438;
+ 		width: 68%;
+ 		border-radius: 20px;
+ 		font-size: 20px;
+ 		border:0px;
+ 		padding: 10px 0px;
+ 		margin-top: 20px;
+ 		color:#CB4D32;
+ 		font-weight: bold;
+ 	}
+ 	.damai{
+ 		text-align: center;
+ 		font-size: 16	px;
+ 		color: #ffffff;
+ 		margin-top: 20px;
+ 	}
+ 	.small_img{
+ 		text-align: center;
+ 		position: fixed;
+ 		bottom: 10px;
+ 		width: 100%
+ 	}
+ 	.small_img img{
+ 		display: inline-block;
+ 		height: 20px
+ 	}
+  </style>
+  <script type="text/javascript">
+         $(function () {
+			var len = 11
+			   mobile = /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+			   baseURL='http://www.ddddmi.com';
+			   
+			var windowWidth = window.screen.availWidth;
+			if(windowWidth <= 320){
+			    var div = document.getElementById("vipImgcss");
+			     div.style.top = "165px";
+			}
+			if(windowWidth >= 640){
+			    
+			}
+              
+            $('.download-appBtn').on('click',function () {
+                   var phoneNum = $('.enter-number').val();
+                   var vcode = $('.enter-vcode').val();
+                 	var pass = $('.enter-pass').val();
+                   if ( phoneNum == '') {
+                   	alert("请输入手机号");
+                   	return false;
+                   } else if ( phoneNum.length < len) {
+                       alert('请输入11位正确手机号');
+                       return false;
+                   } else if ( pass == '') {
+                       alert('请设置密码');
+                       return false;
+                   }  else {
+                       $.ajax({
+                           type:'GET',
+                           async:false,
+                           url:baseURL+'/app/index/validcode2?phone='+phoneNum+'&uid=518&sid=518&passwd='+pass,
+   						dataType: "jsonp",
+                           success:function (data) {
+                           	if ( data.code == 1 ) {
+                           		alert('注册成功！！');
+                                   setTimeout(function () {
+                                       window.location.href='http://www.ddddmi.com'
+                                   },2000);
+                               }else {
+                               	alert('手机号码已经注册！！');
+                                   setTimeout(function () {
+                                       window.location.href='http://www.ddddmi.com'
+                                   },2000);
+                               }
+                           }
+                       })
+                       return false;
+                   }
+               });        	 
+         });
+   </script>
+ </head> 
+<body bgcolor="#6896F6">
+
+	<div id="main">
+		<div class="head">
+			<img src="/public/qudao_files/group.png">
+		</div>
+		<div class="content">
+			<div class="vipImg" id="vipImgcss">
+				<img src="/public/qudao_files/VIP.png" class="VIP">
+			</div>
+			<div class="input">
+				<input type="text" class="phone enter-number" name="phone-num" placeholder="请输入手机号" maxlength="11" onkeyup="this.value=this.value.replace(/^\d{12}$/)">
+				<input type="password" class="password enter-pass" name="phone-pass" placeholder="设置账号登陆密码">
+			</div>
+			<div class="register">
+				<button type="button" class="download-appBtn">立即注册</button>
+				<button type="button" onclick="javascript:location.href=&#39;http://www.ddddmi.com&#39;;">已注册,立即下载</button>
+			</div>
+			<div class="damai">
+				copyright@2017-2019猫眼VIP
+			</div>
+			<div class="small_img">
+				<img src="/public/qudao_files/timg.png">
+				<img src="/public/qudao_files/fk.png">
+				<img src="/public/qudao_files/sa.png">
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+
+</body></html>

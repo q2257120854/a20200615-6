@@ -1,0 +1,293 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon10-2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			筛选条件--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('multicate/keysave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz">筛选条件</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">排序</label>
+						<div class="controls">
+							<input type="text" name="sort" value=""/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">名称</label>
+						<div class="controls">
+							<input type="text" name="name" id="name" value=""/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">启用</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="status" value="1"/>
+							启用
+							</label>
+							<label class="radio">
+							<input type="radio" name="status" value="0"/>不启用</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">启用后，方可生效</span>
+
+						</div>
+
+
+
+					</div>
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">筛选条件</label>
+
+
+
+						<div class="controls">
+
+
+
+							<textarea  name="content" type="text" class="span3 m-wrap"></textarea> 
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">如：写字楼,商铺,住房（请用英文,隔开）</span>
+
+						</div>
+
+
+
+					</div>
+
+				
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+	
+
+    <script type="text/javascript">
+
+
+
+        $(function() {
+
+	    	var ue = UE.getEditor('editor');
+
+		});
+
+
+
+    	function checkinfo(){
+
+
+
+    		// var typsdi = $("#typsdi").val();
+
+	    	// if(typsdi==0){
+
+	    	// 	alert("选择所属栏目");
+
+	    	// 	return false;
+
+	    	// }
+	    	var name = $("#name").val();
+
+	    	if(name==""){
+
+	    		alert("名称不能为空");
+
+	    		return false;
+
+	    	}
+
+    		val = $("#ueditor_textarea_content").val();
+
+    		$("#content").val(val);
+
+	    }
+
+
+
+	    function changq(me){
+		var val = $(me).val();
+
+		
+		if(val == "showArt" || val == "showWxapps"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").show();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPro"){
+
+			$("#type1").hide();
+
+			$("#type2").show();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPic"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").show();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "page"){
+
+			$("#type1").hide();
+
+			$("#type2").hide();
+
+			$("#type3").hide();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").show();
+
+		}
+
+
+
+	}
+
+
+
+     </script>
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

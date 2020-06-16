@@ -1,0 +1,90 @@
+{extend name="base" /} {block name="body"}
+
+<!--tab标签-->
+<div class="layui-tab-brief">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form form-container" data-url="{:url('admin/user/update')}" localtion-url="{:url('admin/user/index')}">
+              
+                <div class="layui-form-item">
+                        <label class="layui-form-label">用户组</label>
+                        <div class="layui-input-inline">
+                     <select name="grades" lay-filter="selectgrades">
+                    
+                        {volist  name="group_list" id="vo"}
+                          <option  {if condition="$user.grades eq $key"}selected="selected"{/if} value="{$key}">{$vo}</option>
+                        {/volist}
+                   </select>
+                </div>
+                </div>
+              
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" value="{$user.username}" required lay-verify="required" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" value="" placeholder="（选填）如不修改则留空" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重复密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="confirm_password" value="" placeholder="（选填）如不修改则留空" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="mobile" value="{$user.mobile}" placeholder="（选填）请输入手机" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">积分</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="point" value="{$user.point}" placeholder="（选填）请输入整数" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="email" name="email" value="{$user.usermail}" required lay-verify="required" placeholder="请输入邮箱" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发文免审</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="developer" value="1" title="启用" {if condition="$user.developer gt 0" } checked="checked" {/if}>
+                        <input type="radio" name="developer" value="0" title="禁用" {if condition="$user.developer elt 0" } checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="status" value="1" title="启用" {if condition="$user.status gt 0" } checked="checked" {/if}>
+                        <input type="radio" name="status" value="0" title="禁用" {if condition="$user.status elt 0" } checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="btable-paged">
+                    <div class="layui-main">
+                        <div class="formbtngroup">
+                            <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">更新</button>
+                            <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="{$user.id}">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

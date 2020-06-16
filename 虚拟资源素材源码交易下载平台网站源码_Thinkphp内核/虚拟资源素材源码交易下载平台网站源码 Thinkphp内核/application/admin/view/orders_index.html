@@ -1,0 +1,101 @@
+{extend name="base" /} {block name="css"}
+<link rel="stylesheet" href="__ADMIN__/css/form.css"> {/block} {block name="body"}
+<div class="admin-main layui-form">
+    <div class="layui-field-box">
+
+        <div class="layui-box-searchber">
+            <a href="javascript:;" class="layui-btn layui-btn-danger layui-btn-sm" id="deluseless">
+                <i class="layui-icon">&#xe608;</i> 删除无效订单
+            </a>
+            <form class="layui-form layui-form-pane" action="{:url('admin/orders/index')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{:session('orderskeyword')}" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn  layui-btn-sm">搜索</button>
+                </div>
+            </form>
+        </div>
+        <hr>
+
+        <table class="layui-table admin-table">
+            <thead>
+                <tr>
+                    <th align="center">ID</th>
+                    <th align="center">用户</th>
+                    <th align="center">积分</th>
+                    <th align="center">金额</th>
+                    <th align="center">状态</th>
+                    <th align="center"></th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                {volist name="tptc" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.score}</td>
+                    <td>{$vo.price}</td>
+                    <td>{if $vo.status eq 1}成功{/if}</td>
+                    <td>{$vo.add_time|friendlyDate}</td>
+
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+{/block} {block name="page"}
+<div class="btable-paged">
+    <div class="layui-main">
+        {$tptc->render()}
+    </div>
+</div>
+{/block} {block name="js"}
+<script>
+    layui.use('form', function() {
+        var form = layui.form;
+        var jq = layui.jquery;
+        jq('#deluseless').on('click', function() {
+
+            layer.confirm('删除1小时前的无效订单？', {
+                icon: 3,
+                btn: ['确定', '取消'] //按钮
+            }, function() {
+                var url = "{:url('admin/orders/deluseless')}";
+
+
+                jq.post(url, {},
+                    function(data) {
+
+                        if (data.code == 200) {
+
+                            layer.msg(data.msg, {
+                                icon: 1,
+                                time: 1000
+                            }, function() {
+                                location.reload();
+                            });
+                        } else {
+
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                anim: 6,
+                                time: 1000
+                            });
+                        }
+                        layer.close(index);
+                    });
+            });
+
+        });
+
+
+    });
+</script>
+{/block}

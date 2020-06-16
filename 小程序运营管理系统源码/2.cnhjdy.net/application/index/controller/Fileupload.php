@@ -1,0 +1,86 @@
+<?php  require('../e/class/connect.php');
+require('../e/class/db_sql.php');
+require('../e/member/class/user.php');
+require('../e/data/dbcache/class.php');
+require('../e/class/functions.php');
+include_once('../e/class/gd.php');
+$link=db_connect();
+$empire=new mysqlquery();
+$editor=1;
+$j=array();
+$file=$_FILES[file]['tmp_name'];
+$file_name=$_FILES[file]['name'];
+$file_type=$_FILES[file]['type'];
+$file_size=$_FILES[file]['size'];
+$mrnd=$_POST['mrnd'];
+$muserid=$_POST['userid'];
+$musername=$_POST['username'];
+uploadfile($_POST,$file,$file_name,$file_type,$file_size,$muserid,$musername,$mrnd,1);
+function uploadfile($var_994,$var_67,$v_1,$v_2,$v_3,$v_4,$v_5,$v_6,$v_7=0)
+{
+	global$empire,$dbtbpre,$public_r,$tranpicturetype,$tranflashtype;
+	$var_6022=(int)$var_994['filepass'];
+	$var_6023=(int)$var_994['classid'];
+	$var_6024=(int)$var_994['id'];
+	if(!$v_1||!$var_6022||!$var_6023)
+	{
+		exit(1);
+	}
+	$v_4=(int)$v_4;
+	$v_5=RepPostVar($v_5);
+	$v_6=RepPostVar($v_6);
+	$var_1212=GetFiletype($v_1);
+	if(CheckSaveTranFiletype($var_1212))
+	{
+		exit(1);
+	}
+	$var_6025=1;
+	$var_6026=$empire->fetch1("select qaddtran,qaddtransize,qaddtranimgtype,qaddtranfile,qaddtranfilesize,qaddtranfiletype from {$dbtbpre}
+enewspublic limit 1");
+$var_6027=DoTranFile($var_67,$v_1,$v_2,$v_3,$var_6023);
+if(empty($var_6027['tran']))
+{
+	continue;
+}
+$var_6028['thumb']=$var_6027['url'];
+$var_6028['img']=$var_6027['url'];
+$var_6023=(int)$var_6023;
+$var_6025=(int)$var_6025;
+$var_6029=0;
+$var_6030=1;
+$var_2586=(int)$var_6027[filesize];
+$var_45=$var_6027['filename'];
+$var_6031=GetMySmallImg($var_6023,$var_6027['filename'],$var_6027['insertfile'],$var_6027['filepath'],$var_6027['yname'],$public_r['spicwidth'],$public_r['spicheight'],$var_6027['name'],$var_6022,$var_6022,$v_4,$v_5,$var_6029,$var_6030);
+$var_6028['thumb']=str_replace('/'.$var_6027['filename'],'/small'.$var_6027['insertfile'].$var_6031[filetype],$var_6027['url']);
+$var_416=$var_6027['yname'];
+$var_6032=getimagesize($var_416);
+if($var_6032[0]>1024)
+{
+	$var_6033=1024;
+	$var_23=1024*$var_6032[1]/$var_6032[0];
+	$var_130=$var_6027['savepath'].'s'.$var_6027['insertfile'];
+	$var_416=$var_130.$var_6027[filetype];
+	$var_6034=ResizeImage($var_6027['yname'],$var_130,$var_6033,$var_23,1);
+	if($var_6034[file])
+	{
+		$var_2586=@filesize($var_6034[file]);
+		$var_2586=(int)$var_2586;
+		$var_45='s'.$var_6027['filename'];
+		$var_6028['img']=str_replace('/'.$var_6027['filename'],'/s'.$var_6027['insertfile'].$var_6027[filetype],$var_6027['url']);
+		DelFiletext($var_6027['yname']);
+	}
+}
+else[]eInsertFileTable($var_45,$var_2586,$var_6027['filepath'],$v_5,$var_6023,$var_45,$var_6025,$var_6022,$var_6022,$public_r['fpath'],0,$var_6029,$var_6030);
+if($v_7==1)
+{
+	die(json_encode($var_6028));
+}
+else
+{
+	exit(1);
+}
+db_close();
+$empire=null;
+exit();
+}
+?>

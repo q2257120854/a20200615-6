@@ -1,0 +1,357 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<script type="text/javascript" src="/js/jscolor.js"></script>
+
+<style type="text/css">
+
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+
+
+	.jscolor{
+
+		width: 30px;
+
+		height: 30px;
+
+		border: 1px solid #dedede;
+
+		outline: none;
+
+	}
+
+	.m-wrap{
+
+		outline: none;
+
+		padding-left: 10px;
+
+	}
+
+
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem5">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			版权管理--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="span12">
+
+
+
+			<div class="portlet box ">
+
+
+
+				<div class="portlet-body">
+
+
+
+					<!-- <a href="{:Url('Copyright/demo')}?appletid=<?php echo $_GET['appletid']?>" >
+
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+
+					一键模板 <i class="icon-plus"></i>
+
+					</button>
+
+					</a>
+
+
+
+					<a href="{:Url('Copyright/mail')}?appletid=<?php echo $_GET['appletid']?>" >
+
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+
+					邮箱配置 <i class="icon-plus"></i>
+
+					</button>
+
+					</a>
+
+
+
+					<a href="{:Url('Copyright/comment')}?appletid=<?php echo $_GET['appletid']?>" >
+
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+
+					版权内容 <i class="icon-plus"></i>
+
+					</button>
+
+					</a>
+
+
+
+					<a href="{:Url('Copyright/index')}?appletid=<?php echo $_GET['appletid']?>" >
+
+					<button id="sample_editable_1_new" class="btn green" style="float:right; margin-right:20px;margin-top:10px;">
+
+					版权管理 <i class="icon-plus"></i>
+
+					</button>
+
+					</a> -->
+
+
+
+					<form action="{:Url('Copyright/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+
+
+						<div class="control-group chongdingy">
+
+
+
+							<label class="control-label chongdingywz">版权管理</label>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">版权打开方式</label>
+
+
+
+							<div class="controls">
+
+
+
+								<label class="radio">
+
+
+
+								<input type="radio" name="copy_do" value="0"  {if $bases}{if $bases.copy_do=="0"}checked=checked{/if}{else}checked{/if}/>
+
+
+
+								拨打电话
+
+
+
+								</label>
+
+
+
+								<label class="radio">
+
+
+
+								<input type="radio" name="copy_do" value="1" {if $bases}{if $bases.copy_do=="1"}checked=checked{/if}{/if}/>
+
+
+
+								跳转单页
+
+
+
+								</label> 
+
+								<span style="color:#999999; line-height:40px; margin-left:20px;">请选择跳转方式</span>
+
+							</div>
+
+
+
+						</div>
+
+
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">版权图片</label>
+
+
+
+							<div class="controls">
+
+
+
+								<div class="fileupload fileupload-new" data-provides="fileupload">
+
+
+
+									<div class="fileupload-new thumbnail commonuploadpic" style="width: 140px; height:90px;">
+
+
+
+										{if $bases && $bases.copyimg}
+
+										<img src="{$bases.copyimg}"/>
+
+										{else}
+
+										<img src="/image/noimage.jpg" alt="" />
+
+										{/if}
+
+	
+
+									</div>
+
+
+
+									<div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:90px;">
+
+										
+
+									</div>
+
+									<div>
+										<span class="btn btn-file">
+											<span class="fileupload-new commonchangepic" data-type="1">
+												选择图片
+												
+												<input type="hidden" name="commonuploadpic" >
+											</span>
+											
+										</span>	
+										{if $bases && $bases.copyimg}
+											<span class="btn"  onclick="delimg()">移除</span>
+										{/if}
+
+									</div>
+
+									
+
+									<div class="zphpx"><font color="#999999">不传则不显示 <a href="/upfiles/copyright.png" download="copyright">下载模板</a></font></div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">版权名称</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="copyright" type="text" class="span3 m-wrap" value="{if $bases}{$bases.copyright}{/if}"  style="height: 35px !important;" />
+
+
+
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="control-group">
+
+
+
+							<label class="control-label">版权电话</label>
+
+
+
+							<div class="controls">
+
+
+
+								<input name="tel_b" type="text" class="span3 m-wrap" value="{if $bases}{$bases.tel_b}{/if}"  style="height: 35px !important;" />
+
+
+
+							</div>
+
+
+
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn green">确定</button>
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<script>
+	function delimg(){
+		var uniacid = <?php echo $_GET['appletid']?>;
+		$.ajax({
+			url:"{:Url('Copyright/delimg')}",type:"post",dataType:'json',
+			data:{
+				uniacid:uniacid
+			},
+			success:function(res){
+				if(res == 1){
+					alert("图片删除成功")
+					location.reload();
+				}
+			}
+		})
+	}
+	</script>
+
+{include file="public/foot_more" /}

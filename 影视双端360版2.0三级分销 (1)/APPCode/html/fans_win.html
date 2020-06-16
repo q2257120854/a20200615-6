@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>列表</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+    <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">粉丝列表</div>
+    </header>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript">
+  apiready = function(){
+      var header = $api.byId('header');
+      $api.fixStatusBar(header);
+      var header_h = $api.offset(header).h;
+      if(api.pageParam.level === 2){
+          $api.text($api.dom(header, '.aui-title'), '间推二级粉丝');
+      }else
+      if(api.pageParam.level === 3){
+          $api.text($api.dom(header, '.aui-title'), '间推三级粉丝');
+      }
+      api.openFrame({
+    		  name: 'fans_frm',
+        	url: './fans_frm.html',
+          pageParam: api.pageParam,
+        	rect: {x:0, y:header_h, w:'auto', h:api.frameHeight-header_h}
+    	});
+  };
+  </script>
+  </html>

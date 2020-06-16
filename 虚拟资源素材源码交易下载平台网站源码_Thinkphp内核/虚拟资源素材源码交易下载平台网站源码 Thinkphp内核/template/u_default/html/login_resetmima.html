@@ -1,0 +1,94 @@
+{extend name="index_base" /} {block name="seo"}
+<title>找回密码 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <li class="layui-this">找回密码</li>
+            </ul>
+            <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+
+
+                    <div class="fly-msg">{$username}，请重置您的密码</div>
+                    <div class="layui-form layui-form-pane" style="margin-top: 30px;">
+                        <form action="/user/repass" method="post">
+                            <div class="layui-form-item">
+                                <label for="L_pass" class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="L_pass" name="pass" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="L_repass" class="layui-form-label">确认密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="L_repass" name="repass" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            {if condition="$forgetyzm eq 1"}
+                            <div class="layui-form-item">
+                                <label for="L_vercode" class="layui-form-label">验证码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="code" required lay-verify="required" placeholder="请填写验证码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="" style="float: left;">
+                                    <img src="{:url('login/captcha')}" onclick="this.src='{:url('login/captcha')}?'+Math.random();" style="float:left; cursor:pointer;" id="captcha" alt="captcha" />
+                                </div>
+                            </div>
+                            {/if}
+
+                            <div class="layui-form-item">
+
+                                <input type="hidden" name="token" value="{$token}">
+                                <button class="layui-btn" alert="1" lay-filter="forget" lay-submit>提交</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+
+        form.on('submit(forget)', function(data) {
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            var param = data.field;
+            jq.post('{:url("login/resetpass")}', param, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.href = '{:url("user/login/index")}';
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                    jq('#captcha').attr('src', "{:url('login/captcha')}?" + Math.random());
+                }
+            });
+            return false;
+        });
+
+    })
+</script>{/block}

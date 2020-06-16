@@ -1,0 +1,3094 @@
+[ 2018-06-12T00:57:25+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:29+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:31+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:33+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:36+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:37+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:39+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:40+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:42+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:45+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:48+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:51+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:52+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:53+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:54+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:56+08:00 ] 36.102.208.97 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:57:56+08:00 ] 36.102.208.97 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:12+08:00 ] 36.102.208.97 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:13+08:00 ] 36.102.208.97 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:18+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:46+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:53+08:00 ] 36.102.208.97 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:58:59+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T00:59:03+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:05:45+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:05:50+08:00 ] 36.102.208.97 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.015600s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T01:05:51+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T01:05:52+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:06:20+08:00 ] 36.102.208.97 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '69' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:06:21+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 69 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T01:06:25+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:07:27+08:00 ] 125.88.144.104 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:19:59+08:00 ] 36.102.208.97 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:20:15+08:00 ] 36.102.208.97 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:20:20+08:00 ] 36.102.208.97 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:20:29+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:20:33+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:20:40+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:21:20+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:21:45+08:00 ] 36.102.208.97 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:21:46+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.015601s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:21:48+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:09+08:00 ] 36.102.208.97 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '69' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:10+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 69 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:11+08:00 ] 36.102.208.97 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:25+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:38+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:28:40+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:13+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:14+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:15+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:22+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/modgoods/gid/59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:28+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:32:58+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:33:08+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:33:18+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/delgoods?gid=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_goods` [ RunTime:0.000000s ]
+SQL: SELECT `gpic` FROM `ds_goods` WHERE ( `gid` = 59 ) AND ( `username` = '15811566454' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: DELETE FROM `ds_goods` WHERE ( `gid` = 59 ) AND ( `username` = '15811566454' ) [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:33:22+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:33:28+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsdown/modgoods/gid/58
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:34:03+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsdown/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:34:05+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsdown/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:34:09+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:34:13+08:00 ] 36.102.208.97 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T01:46:16+08:00 ] 36.102.208.97 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T03:18:53+08:00 ] 101.199.110.114 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:43:20+08:00 ] 61.151.178.174 /admin.php/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:43:20+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:43:25+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:43:29+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:54:33+08:00 ] 61.151.178.174 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:54:34+08:00 ] 61.151.178.174 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:54:44+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:11+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:33+08:00 ] 101.226.79.235 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:33+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:49+08:00 ] 58.246.221.74 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:58+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:55:59+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:01+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:02+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:03+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:04+08:00 ] 58.246.221.74 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:05+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T06:56:59+08:00 ] 61.151.226.151 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:42:43+08:00 ] 36.102.220.12 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:42:43+08:00 ] 36.102.220.12 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:42:43+08:00 ] 58.251.121.186 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:01+08:00 ] 36.102.220.12 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:02+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:03+08:00 ] 36.102.220.12 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:05+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:06+08:00 ] 36.102.220.12 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:07+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:34+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:41+08:00 ] 36.102.220.12 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.062400s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '73' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:43:43+08:00 ] 36.102.220.12 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 73 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '73' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '73' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T08:43:44+08:00 ] 36.102.220.12 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '73' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '73' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:49:26+08:00 ] 36.102.220.12 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:03+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:12+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:31+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:45+08:00 ] 36.102.220.12 /admin.php/admin/goodsissue
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:54+08:00 ] 36.102.220.12 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '73' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:55+08:00 ] 36.102.220.12 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 73 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '73' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '73' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T08:50:56+08:00 ] 36.102.220.12 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.062400s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '73' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '73' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:06+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:09+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T09:02:10+08:00 ] 59.36.119.226 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:14+08:00 ] 36.102.220.12 /admin.php/admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:36+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/search?uname=
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:44+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/search?uname=
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:55+08:00 ] 58.251.121.185 /admin.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:55+08:00 ] 58.251.121.185 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:02:56+08:00 ] 36.102.220.12 /admin.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:03:52+08:00 ] 117.135.173.78 /admin.php/Admin/Goodsdown/search?uname=
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:03:54+08:00 ] 101.226.79.223 /admin.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:06:33+08:00 ] 111.42.140.235 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:06:33+08:00 ] 111.42.140.235 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:07:10+08:00 ] 111.42.140.235 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:07:13+08:00 ] 111.42.140.235 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:07:13+08:00 ] 111.42.140.235 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:08:05+08:00 ] 36.102.220.12 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:08:06+08:00 ] 36.102.220.12 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:08:22+08:00 ] 36.102.220.12 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:08:23+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T09:08:35+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:08:41+08:00 ] 36.102.220.12 /admin.php/admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T09:09:02+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:09:10+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:09:21+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:09:30+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:09:42+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/modgoods/gid/60
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:16:17+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:16:19+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:17:23+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:17:27+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:17:32+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/modgoods/gid/60
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T09:34:48+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:36:12+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:36:18+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/modgoods/gid/60
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:40:01+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:40:03+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:41:34+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T09:41:43+08:00 ] 36.102.220.12 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T09:41:51+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:28:54+08:00 ] 113.5.7.120 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:28:54+08:00 ] 113.5.7.120 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:29:12+08:00 ] 113.5.7.120 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:43:37+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:43:37+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:19+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:21+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:29+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:43+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:44+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '69' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:48+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 69 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:49+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.046800s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.140400s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:44:53+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:50+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.109201s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '70' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:52+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.280800s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 70 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.249601s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.202800s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '70' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '70' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:53+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '70' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '70' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:54+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.078000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '69' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:56+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.031200s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:45:57+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.062400s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 69 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.358801s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.031200s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:58:54+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:58:57+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:59:04+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T10:59:38+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:01:52+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '69' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:01:53+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 69 ) LIMIT 1   [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '69' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:01:54+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '69' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:06:30+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:06:39+08:00 ] 61.151.178.174 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:06:41+08:00 ] 61.151.178.174 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:06:51+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:06:58+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:07:34+08:00 ] 61.151.178.174 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:07:39+08:00 ] 61.151.226.62 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:07:58+08:00 ] 61.151.226.85 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:08:45+08:00 ] 120.204.200.83 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:09:36+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:09:38+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:09:45+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:10:02+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:10:03+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:10:07+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:10:09+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:10:14+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:15:55+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '71' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:15:56+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 71 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:15:57+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015601s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:20:43+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:20:46+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:25:13+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:25:26+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.015600s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '71' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:25:27+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.062400s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 71 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:25:28+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:31:55+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:31:58+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:32:07+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.078000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '71' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:32:08+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 71 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:32:09+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:47:44+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:47:46+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:47:53+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.390000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '71' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T11:47:54+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 71 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '71' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:47:55+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '71' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:57:11+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:57:13+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T11:57:43+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:13+08:00 ] 123.151.77.72 /admin.php/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:13+08:00 ] 123.151.77.72 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:14+08:00 ] 123.151.77.72 /admin.php/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:14+08:00 ] 123.151.77.72 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:54+08:00 ] 123.151.77.72 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:57+08:00 ] 123.151.77.72 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:15:58+08:00 ] 123.151.77.72 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:16:50+08:00 ] 123.151.77.72 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:16:54+08:00 ] 123.151.77.72 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:16:54+08:00 ] 123.151.77.91 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:17:16+08:00 ] 123.151.77.72 /admin.php/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T12:17:16+08:00 ] 123.151.77.72 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:37+08:00 ] 36.102.220.12 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:37+08:00 ] 36.102.220.12 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:56+08:00 ] 36.102.220.12 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:57+08:00 ] 58.251.121.186 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:57+08:00 ] 58.251.121.186 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:32:58+08:00 ] 36.102.220.12 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:33:10+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:33:25+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:34:22+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:34:36+08:00 ] 36.102.220.12 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T13:35:22+08:00 ] 61.151.226.85 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:21:38+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:21:41+08:00 ] 61.151.178.174 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:21:42+08:00 ] 61.151.178.174 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:21:51+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:25+08:00 ] 117.151.192.117 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:25+08:00 ] 117.151.192.117 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:52+08:00 ] 117.151.192.117 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:52+08:00 ] 58.251.121.184 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:56+08:00 ] 117.151.192.117 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T14:47:56+08:00 ] 117.151.192.117 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:16:43+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:16:48+08:00 ] 222.32.91.8 /admin.php/admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:16:55+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:00+08:00 ] 222.32.91.8 /admin.php/admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:11+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:12+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:16+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:18+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:32+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:52+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:54+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.124801s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.046800s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:17:55+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.031200s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.031200s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:35:35+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:35:38+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:35:42+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:42:45+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:42:49+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:43:45+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:45:15+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:45:29+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:45:34+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:45:35+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:45:36+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015601s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:14+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:16+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:30+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:31+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:33+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:34+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:35+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:53+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:56:57+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:57:25+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:57:49+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T15:57:51+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T15:57:52+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:05:31+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:05:34+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:06:18+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:06:20+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:06:21+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015601s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015601s ]
+
+[ 2018-06-12T16:19:45+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:19:47+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:20:46+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:20:47+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.015600s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:20:48+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:23:20+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:23:23+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:23:27+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:23:32+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:24:03+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:24:06+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T16:24:11+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T16:24:56+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:24:59+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:05+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/71
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:17+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T16:25:19+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:24+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/70
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:35+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:38+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:25:42+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/68
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:26:46+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:26:49+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:27:10+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/68
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:27:19+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:27:30+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:27:39+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:27:44+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:28:00+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:28:12+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:28:17+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:28:23+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/67
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:28:32+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:29:32+08:00 ] 222.32.91.8 /admin.php/admin/goodsclass/viewclassid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cid`,`cname` FROM `ds_classify` WHERE ( `parentid` = '75' )  [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:29:33+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsAttr
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_classify` [ RunTime:0.000000s ]
+SQL: SELECT `cpath` FROM `ds_classify` WHERE ( `cid` = 75 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_attribute` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_attribute`
+SQL: SHOW COLUMNS FROM `ds_goodstoattr` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_goodstoattr' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_goodstoattr`
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '0' ) 
+SQL: SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_attribute' doesn't exist
+ [ SQL语句 ] : SELECT `attrid`,`attrname` FROM `ds_attribute` WHERE ( `cid` = '75' ) 
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:29:34+08:00 ] 222.32.91.8 /admin.php/admin/Goodsissue/goodsBrand
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ds_brandtoclass` [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brandtoclass`
+SQL: SHOW COLUMNS FROM `ds_brand` [ RunTime:0.015600s ]
+ERR: 1146:Table 'mhc.ds_brand' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `ds_brand`
+SQL: SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'mhc.ds_brandtoclass' doesn't exist
+ [ SQL语句 ] : SELECT `bid` FROM `ds_brandtoclass` WHERE ( `cid` = '75' ) 
+NOTIC: [2] Invalid argument supplied for foreach() E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 176 行.
+NOTIC: [8] Undefined variable: brand_data E:\mhc\cheng\Application\Admin\Controller\GoodsissueController.class.php 第 182 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:33:32+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/insertGd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:33:35+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsissue/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:35:30+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:36:02+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:36:11+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:36:22+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:36:30+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:36:56+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T16:52:13+08:00 ] 36.102.208.97 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:51:53+08:00 ] 61.151.178.174 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:51:59+08:00 ] 61.151.178.174 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:52:00+08:00 ] 61.151.178.174 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:52:08+08:00 ] 58.246.221.74 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:52:35+08:00 ] 61.151.178.174 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:53:35+08:00 ] 101.226.79.226 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:56:03+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:56:04+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:56:47+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:56:50+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:56:50+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:57:46+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:57:48+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:57:49+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:57:50+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:58:18+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:59:27+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:59:30+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:59:32+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:59:42+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T17:59:58+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:00:02+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:00:42+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:00:47+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:01:01+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsdown/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:01:06+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:01:25+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:01:41+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:01:51+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:02:05+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:13:52+08:00 ] 123.174.22.75 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:13:52+08:00 ] 123.174.22.75 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:14:27+08:00 ] 123.174.22.75 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:14:28+08:00 ] 123.174.22.75 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:14:32+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:14:37+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:14:39+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/orderState/onumber/2018061111574388
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:14:45+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/orderState/onumber/2018061123481484
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:08+08:00 ] 123.174.22.75 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:08+08:00 ] 123.174.22.75 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:18+08:00 ] 123.174.22.75 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:19+08:00 ] 123.174.22.75 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:22+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:15:28+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:15:31+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:32+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/completeDeal
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:33+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:37+08:00 ] 123.174.22.75 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:15:46+08:00 ] 61.151.226.156 /admin.php/Admin/Ordermanage/orderState/onumber/2018061123481484
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:08+08:00 ] 101.226.93.198 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:10+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:10+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:30+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:31+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:35+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:36+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:37+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:39+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:40+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:41+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:16:50+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:17:01+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:17:06+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:17:16+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/orderState/onumber/2018061123481484
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:18:28+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/postorderState
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:18:30+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:18:37+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:19:06+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:19:18+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:19:28+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:19:34+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:19:38+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:21:58+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:22:23+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T18:22:51+08:00 ] 36.102.208.97 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:22:54+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T18:23:16+08:00 ] 36.102.208.97 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T19:35:25+08:00 ] 106.38.241.177 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T19:35:35+08:00 ] 106.38.241.177 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T20:04:52+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T20:05:26+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T20:05:27+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T20:05:31+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T20:05:32+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T20:05:36+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:16+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:22+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:30+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:34+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:38+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/deliverGoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:39+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T21:02:41+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:42+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:45+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:46+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:50+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:54+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/nonDelivery
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:02:59+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:20:33+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:20:34+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.015600s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2018-06-12T21:20:50+08:00 ] 222.32.91.8 /admin.php/Admin/Login/loginOut.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:20:53+08:00 ] 222.32.91.8 /admin.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:12+08:00 ] 222.32.91.8 /admin.php/admin/login/checklogin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:14+08:00 ] 222.32.91.8 /admin.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:22+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:33+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/modgoods/gid/34
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:54+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/updategoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:21:56+08:00 ] 222.32.91.8 /admin.php/Admin/Goodsup/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-06-12T21:22:10+08:00 ] 222.32.91.8 /admin.php/Admin/Ordermanage/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+

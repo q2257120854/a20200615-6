@@ -1,0 +1,162 @@
+/*任务大厅专属样式*/
+.taskcap{float:left;width:940px;margin:10px 0 0 10px;height:50px;text-align:center;font-size:14px;color:#8194A1;background-color:#FCFDFE;}
+.taskcap li{float:left;padding:15px 0 0 0;}
+.taskcap .l0{width:27px;text-align:left;padding:16px 0 0 8px;}
+.taskcap .l0 input{float:left;width:16px;height:16px;}
+.taskcap .l1{width:387px;text-align:left;}
+.taskcap .l2{width:120px;}
+.taskcap .l3{width:80px;}
+.taskcap .l4{width:110px;}
+.taskcap .l5{width:110px;}
+.taskcap .l6{width:98px;text-align:center;}
+.taskcap .l7{width:220px;}
+.tasklist{float:left;width:940px;margin:0 0 0 10px;padding:10px 0 0 0;height:93px;text-align:center;color:#8194A1;border-bottom:#F5F6FA solid 1px;}
+.tasklist li{float:left;}
+.tasklist .l0{width:27px;text-align:left;padding:2px 0 0 8px;}
+.tasklist .l0 input{float:left;width:16px;height:16px;}
+.tasklist .l1{width:357px;text-align:left;padding-right:30px;}
+.tasklist .l1 a{color:#000;font-size:15px;float:left;width:350px;height:18px;overflow:hidden;}
+.tasklist .l1 a:hover{color:#ff6600;}
+.tasklist .l1 .zt{float:left;clear:both;margin:15px 0 0 0;}
+.tasklist .l1 .zt span{padding:1px 10px 2px 10px;border-radius:10px;}
+.tasklist .l1 .zt .zt0{color:#fff;background-color:#5D9CEC;}
+.tasklist .l1 .zt .zt2{color:#fff;background-color:#FF0000;}
+.tasklist .l1 .zt .zt1{color:#fff;background-color:#ff6600;}
+.tasklist .l1 .zt .zt3{color:#fff;background-color:#008800;}
+.tasklist .l1 .zt .zt4{color:#fff;background-color:#FF6838;}
+.tasklist .l1 .zt .zt5{color:#fff;background-color:#2255DD;}
+.tasklist .l1 .zt .zt8{color:#fff;background-color:#FF0000;}
+.tasklist .l1 .zt .zt100{color:#fff;background-color:#FF0000;}
+.tasklist .l1 .zt .zt101{color:#fff;background-color:#008800;}
+.tasklist .l1 .zt .zt105{color:#fff;background-color:#ff6600;}
+.tasklist .l1 .sj{float:left;clear:both;margin:15px 0 0 0;color:#BFBFC0;background:url(../img/sj.png) no-repeat;background-position:0 1px;padding:0 0 0 20px;}
+.tasklist .l2{width:120px;color:#FB6E52;}
+.tasklist .l2 strong{font-size:22px;font-weight:100;}
+.tasklist .l2 .zb{float:left;width:118px;font-size:14px;margin:10px 0 0 0;padding:5px 0 4px 0;text-align:center;border:#FF6838 dotted 1px;}
+.tasklist .l3{width:80px;}
+.tasklist .l3 strong{font-size:22px;font-weight:100;}
+.tasklist .l4{width:110px;}
+.tasklist .l4 strong{font-size:22px;font-weight:100;}
+.tasklist .l5{width:110px;}
+.tasklist .l5 strong{font-size:22px;font-weight:100;}
+.tasklist .l6{width:98px;padding:3px 0 0 0;}
+.tasklist .l6 .btna{float:left;margin:0 0 5px 9px;width:80px;color:#fff;padding:3px 0 0 0;height:19px;}
+.tasklist .l6 .btna:hover{text-decoration:none;}
+.tasklist .l6 .btna1{background-color:#FF6838;}
+.tasklist .l6 .btna2{background-color:#F7BF3A;}
+.tasklist .l6 .btna3{background-color:#1AA094;}
+.tasklist:hover{background:rgba(252,253,254,1);-webkit-transition:background-color 0.3s linear;-moz-transition:background-color 0.3s linear;-o-transition:background-color 0.3s linear;transition:background-color 0.3s linear;}
+.tasklist .l7{width:220px;}
+.tasklist .l7 .s1{float:left;width:220px;text-align:center;}
+.tasklist .l7 .s1 strong{font-size:22px;font-weight:100;color:#FB6E52;}
+.tasklist .l7 .s2{float:left;width:100px;height:5px;background-color:#EEEEF4;margin:15px 55px 0 55px;}
+.tasklist .l7 .s3{float:left;height:5px;background-color:#00AFEB;clear:both;margin:-5px 0 0 55px;}
+.tasklist .l7 .s4{float:left;width:220px;text-align:center;margin:10px 0 0 0;}
+
+.taskhfcap{float:left;width:940px;margin:10px 0 0 10px;height:50px;text-align:center;font-size:14px;color:#8194A1;background-color:#FCFDFE;}
+.taskhfcap li{float:left;padding:15px 0 0 0;}
+.taskhfcap .l0{width:27px;text-align:left;padding:16px 0 0 8px;}
+.taskhfcap .l0 input{float:left;width:16px;height:16px;}
+.taskhfcap .l1{width:372px;text-align:left;}
+.taskhfcap .l2{width:120px;}
+.taskhfcap .l3{width:120px;}
+.taskhfcap .l4{width:160px;}
+.taskhfcap .l5{width:118px;text-align:center;}
+.taskhflist{float:left;width:940px;margin:0 0 0 10px;padding:10px 0 0 0;height:93px;text-align:center;color:#8194A1;border-bottom:#F5F6FA solid 1px;}
+.taskhflist li{float:left;}
+.taskhflist .l0{width:27px;text-align:left;padding:2px 0 0 8px;}
+.taskhflist .l0 input{float:left;width:16px;height:16px;}
+.taskhflist .l1{width:344px;text-align:left;padding-right:30px;}
+.taskhflist .l1 a{color:#000;font-size:15px;float:left;width:350px;height:18px;overflow:hidden;}
+.taskhflist .l1 a:hover{color:#ff6600;}
+.taskhflist .l1 .sj{float:left;clear:both;margin:15px 0 0 0;color:#BFBFC0;background:url(../img/sj.png) no-repeat;background-position:0 1px;padding:0 0 0 20px;}
+.taskhflist .l2{width:120px;}
+.taskhflist .l2 strong{font-size:22px;font-weight:100;}
+.taskhflist .l3{width:120px;color:#FB6E52;}
+.taskhflist .l3 strong{font-size:22px;font-weight:100;}
+.taskhflist .l4{width:160px;}
+.taskhflist .l4 .s1{float:left;width:88px;font-size:14px;margin:0 0 0 35px;padding:5px 0 4px 0;text-align:center;border:#FF6838 dotted 1px;color:#FF6838;}
+.taskhflist .l4 .s2{float:left;width:160px;margin:10px 0 0 0;}
+.taskhflist .l4 .zt{float:left;width:128px;font-size:14px;margin:0 0 0 15px;padding:5px 0 4px 0;text-align:center;border:#CECECE dotted 1px;}
+.taskhflist .l5{width:118px;padding:3px 0 0 0;}
+.taskhflist .l5 .btna{float:left;margin:0 0 5px 19px;width:80px;color:#fff;padding:3px 0 0 0;height:19px;}
+.taskhflist .l5 .btna:hover{text-decoration:none;}
+.taskhflist .l5 .btna1{background-color:#FF6838;}
+.taskhflist .l5 .btna2{background-color:#F7BF3A;}
+.taskhflist .l5 .btna3{background-color:#1AA094;}
+.taskhflist:hover{background:rgba(252,253,254,1);-webkit-transition:background-color 0.3s linear;-moz-transition:background-color 0.3s linear;-o-transition:background-color 0.3s linear;transition:background-color 0.3s linear;}
+
+.taskmain{float:left;margin:20px 0 0 10px;width:936px;text-align:left;border-bottom:#E3E3E4 solid 1px;border-right:#E3E3E4 solid 1px;}
+.taskmain li{float:left;padding-top:10px;height:27px;border-top:#E3E3E4 solid 1px;border-left:#E3E3E4 solid 1px;}
+.taskmain .l1{width:100px;text-align:center;background-color:#F3F6FB;}
+.taskmain .l2{width:824px;padding-left:10px;}
+.taskmain .l3{width:200px;padding-left:10px;}
+.taskmain .l4{width:100px;text-align:center;background-color:#F3F6FB;height:auto;padding:10px 0;}
+.taskmain .l5{width:814px;padding:10px;height:auto;}
+.taskbjcap{float:left;width:940px;margin:10px 0 0 10px;height:40px;text-align:center;font-size:14px;color:#8194A1;background-color:#F0F4FC;}
+.taskbjcap li{float:left;padding:10px 0 0 0;}
+.taskbjcap .l1{width:210px;text-align:left;padding-left:10px;}
+.taskbjcap .l2{width:120px;}
+.taskbjcap .l3{width:100px;}
+.taskbjcap .l4{width:100px;}
+.taskbjcap .l5{width:150px;}
+.taskbjcap .l6{width:150px;}
+.taskbjcap .l7{width:100px;text-align:center;}
+.taskbj{float:left;width:940px;margin:0 0 0 10px;height:40px;text-align:center;font-size:14px;}
+.taskbj li{float:left;padding:10px 0 0 0;}
+.taskbj .l1{width:210px;text-align:left;padding-left:10px;color:#000;}
+.taskbj .l2{width:120px;color:#FB6E52;padding-top:7px;}
+.taskbj .l2 strong{font-size:17px;font-weight:100;}
+.taskbj .l3{width:100px;color:green;padding-top:7px;}
+.taskbj .l3 strong{font-size:17px;font-weight:100;}
+.taskbj .l4{width:100px;color:red;padding-top:7px;}
+.taskbj .l4 strong{font-size:17px;font-weight:100;}
+.taskbj .l5{width:150px;}
+.taskbj .l6{width:150px;}
+.taskbj .l7{width:100px;text-align:center;padding-top:8px;}
+.taskbj .l7 .btna1{float:left;margin:0 0 5px 9px;width:80px;padding:1px 0 0 0;height:20px;border:#E8E8E8 solid 1px;border-radius:10px;}
+.taskbj .l7 .btna1:hover{color:#ff6600;text-decoration:none;border:#ff6600 solid 1px;}
+.taskbj .l7 .btna2{float:left;margin:0 0 5px 9px;width:80px;padding:2px 0 0 0;height:21px;color:#fff;background-color:#34A8FF;border-radius:10px;}
+.taskbj .l7 .btna2:hover{text-decoration:none;}
+.taskbjsm{float:left;margin:0 0 0 10px;padding:9px;width:922px;background-color:#FCFDFE;border-radius:5px;color:#999;}
+.taskxx{float:left;width:940px;margin:10px 0 0 10px;border-bottom:#F5F6FA solid 1px;}
+
+/*多人任务接手列表*/
+.taskbjcap1{float:left;width:940px;margin:10px 0 0 10px;height:40px;text-align:center;font-size:14px;color:#8194A1;background-color:#F0F4FC;}
+.taskbjcap1 li{float:left;padding:10px 0 0 0;}
+.taskbjcap1 .l1{width:210px;text-align:left;padding-left:10px;}
+.taskbjcap1 .l2{width:120px;}
+.taskbjcap1 .l3{width:150px;}
+.taskbjcap1 .l4{width:150px;}
+.taskbjcap1 .l5{width:150px;}
+.taskbjcap1 .l6{width:150px;text-align:center;}
+.taskbj1{float:left;width:940px;margin:0 0 0 10px;height:40px;text-align:center;font-size:14px;}
+.taskbj1 li{float:left;padding:10px 0 0 0;}
+.taskbj1 .l1{width:210px;text-align:left;padding-left:10px;color:#000;}
+.taskbj1 .l2{width:120px;color:#FB6E52;padding-top:7px;}
+.taskbj1 .l2 strong{font-size:17px;font-weight:100;}
+.taskbj1 .l3{width:150px;}
+.taskbj1 .l4{width:150px;}
+.taskbj1 .l5{width:150px;}
+.taskbj1 .l6{width:150px;text-align:center;padding-top:11px;}
+.taskbj1 .l6 .btna1{padding:1px 10px 0 10px;height:20px;border:#E8E8E8 solid 1px;border-radius:10px;}
+.taskbj1 .l6 .btna1:hover{color:#ff6600;text-decoration:none;border:#ff6600 solid 1px;}
+.taskbj1 .l6 .btna2{float:left;margin:0 0 5px 0;width:80px;padding:2px 0 0 0;height:21px;color:#fff;background-color:#34A8FF;border-radius:10px;}
+.taskbj1 .l6 .btna2:hover{text-decoration:none;}
+.taskbjsm{float:left;margin:0 0 0 10px;padding:9px;width:922px;background-color:#FCFDFE;border-radius:5px;color:#999;}
+.taskxx{float:left;width:940px;margin:10px 0 0 10px;border-bottom:#F5F6FA solid 1px;}
+
+.taskgtlist{float:left;width:938px;margin:10px 0 0 10px;border:#9ABCE9 solid 1px;background-color:#fff;}
+.taskgtlist .cap{float:left;padding-top:6px;height:21px;font-weight:700;width:938px;font-size:14px;background-color:#F5F6FA;border-bottom:#E1E6EB solid 1px;}
+.taskgtlist .u1{float:left;padding:17px 0 13px 0;margin:0 20px;width:898px;border-bottom:#BCBCBC dotted 1px;}
+.taskgtlist .u1 li{float:left;}
+.taskgtlist .u1 .l1{width:75px;text-align:center;}
+.taskgtlist .u1 .l2{width:823px;line-height:18px;}
+.taskgtlist .u2{float:left;margin:20px 0 0 0;width:938px;font-size:14px;}
+.taskgtlist .u2 li{float:left;}
+.taskgtlist .u2 .l1{width:98px;text-align:right;padding:13px 10px 0 0;height:465px;}
+.taskgtlist .u2 .l2{width:810px;height:465px;padding:13px 20px 0 0;}
+.taskgtlist .u2 .l2 li{float:none;}
+.taskgtlist .u2 .l3{width:830px;height:60px;padding:10px 0 0 108px;}
+
+.ftjbtn{float:left;margin:20px 0 0 303px;clear:both;width:657px;}

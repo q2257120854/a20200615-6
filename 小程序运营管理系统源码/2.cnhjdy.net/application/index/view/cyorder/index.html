@@ -1,0 +1,195 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+	.btn-success{color: #fff;background-color: #5cb85c;border-color: #4cae4c;}
+	.btn-success:hover{color: #fff;background-color: #449d44;border-color: #398439;}
+	.btn-warning{color: #fff;background-color: #f0ad4e;border-color: #eea236;}
+	.btn-warning:hover{color: #fff;background-color: #ec971f;border-color: #d58512;}
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel2-5">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			订单管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+		<div class="form-horizontal">
+			<div style="margin-bottom: 15px; height: 50px;">
+	            <form class="form-horizontal" action="{:Url('Cyorder/index')}?appletid=<?php echo $_GET['appletid']?>" method="post" onsubmit = "return search();">
+		        <div class="control-group">
+
+						<label class="control-label">请输入订单号</label>
+
+						<div class="controls" >
+
+							<input name="order_id" id="order_id" type="text" class="span3 m-wrap" style="height: 35px !important;width:400px" value="{if $order_id}{$order_id}{/if}">
+
+							<input type="submit" value="搜索" class="btn btn-default btn-sm" style="padding:7px 20px;">
+						</div>
+
+					</div>
+	            </form>
+		    </div>
+        <script type="text/javascript">
+        function search(){
+            var val = $("#order_id").val();
+            if(!val){
+                alert("定单号不能为空，请输入订单号！");
+                return;
+            }
+        }
+
+      
+        function xiaofei(id){
+
+            if(window.confirm('确定核销该订单？')){
+                var newurl = document.URL+"&op=hx&order="+id;
+                location.href = newurl;
+            }else{
+            	return false;
+            }
+
+        }
+
+        function queren(id){
+            if(window.confirm('确定该订单？')){
+                var newurl = document.URL+"&op=qr&order="+id;
+                location.href = newurl;
+            }else{
+            	return false;
+            }
+        }
+
+        </script>
+    </div>
+	
+	        <div class="btn-group" style="float:right">
+		        <a href="{:Url('Cyorder/orderdown')}?appletid=<?php echo $_GET['appletid']?>">
+		            <button id="sample_editable_1_new" class="btn green">
+		            导出订单列表 
+		            </button>
+		        </a>
+
+		    </div>
+			<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th width="200px;">商品</th>
+							<th style="width: 50px;">支付金额</th>
+							<th style="width: 50px;">姓名</th>
+							<th style="width: 50px;">联系方式</th>
+							<th style="width: 50px;">状态</th>
+							
+
+						</tr>
+
+					</thead>
+					<tbody">
+					{volist name="$cates" id="vo"}
+								<tr class="trorder">
+									
+									<td colspan="2">
+
+					                订单编号: {$vo['order_id']}                              
+
+					                </td>
+					                <td colspan="3" style="text-align:right;font-size:12px;" class="aops">                     
+						                <span style="float: right;">下单时间：{:date("Y-m-d H:i:s",$vo['creattime'])} </span>
+						            </td>
+								</tr>
+								{volist name="$vo['val']" id="vi"}
+								<tr>
+									<td><img src="{if $vi['thumb']}{$vi['thumb']}{/if}" alt="" style="width:60px;margin-right: 10px">{$vi['title']}</td>
+									<td>{$vi['price']}</td>
+									<td>{$vo['username']}</td>
+									<td>{$vo['usertel']}</td>
+									<td>
+									
+				                		{if $vo['flag'] ==0}未支付{/if}
+
+				                        {if $vo['flag'] ==1}
+
+				                            <span class="btn btn-success btn-sm">已支付</span>
+
+				                        {/if}
+
+				                        {if $vo['flag'] ==2} <span class="btn btn-success btn-sm">已完成</span>{/if}
+
+				                        {if $vo['flag'] ==-1} <span class="btn btn-warning btn-sm">已关闭</span>{/if}
+
+				                        {if $vo['flag'] ==-2} <span class="btn btn-warning btn-sm">订单无效</span>{/if}
+									</td>
+								</tr>
+								{/volist}
+								<tr style="border-bottom:none;background:#f9f9f9;">
+       								<td colspan="5" style="text-align:right">
+                       					预约时间：{$vo['usertime']}<span style="padding: 0 20px"></span>地址：{$vo['address']}<span style="padding: 0 20px"></span>备注：{if $vo['userbeiz']}{$vo['userbeiz']}{else}暂无备注{/if}
+		                       		</td>
+		                       </tr>
+		                       <tr style="width: 100%;height: 40px">
+									<td style="border:none;border-top:1px solid #ddd;border-left:1px solid #ddd"></td>
+									<td style="border:none;border-top:1px solid #ddd"></td>
+									<td style="border:none;border-top:1px solid #ddd"></td>
+									<td style="border:none;border-top:1px solid #ddd"></td>
+									<td style="border:none;border-top:1px solid #ddd"></td>
+		                       </tr>
+					{/volist}
+					</tbody>
+				</table>
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$page}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+	function del(id,count){
+		if(count>0){
+			alert("该栏目中还存在子集栏目，请先删除所有子集栏目后再删除！");
+			return false;
+		}
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+
+
+
+{include file="public/foot_more" /}

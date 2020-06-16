@@ -1,0 +1,148 @@
+{extend name="base" /} {block name="body"}
+<div class="admin-main">
+    <div class="layui-field-box layui-form">
+
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li><a href="{:url('addons/index')}">本地插件</a></li>
+                <li class="layui-this">在线插件</li>
+            </ul>
+        </div>
+        {if is_array($info)}
+        <table class="layui-table admin-table">
+            <thead>
+                <tr>
+                    <th width="150">名称</th>
+                    <th width="100">标识</th>
+                    <th>描述</th>
+                    <th width="60">价格</th>
+                    <th width="80">作者</th>
+                    <th width="50">版本</th>
+                    <th width="120">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="info" id="vo"}
+                <tr>
+                    <td>{$vo.title}</td>
+                    <td>{$vo.addonname}</td>
+                    <td>{$vo.description}</td>
+                    <td align="center">{if $vo.score gt 0}¥{$vo.price} {else /}免费{/if}</td>
+                    <td><a target="_blank" href="{$vo.url|default='http://www.laysns.com'}">{$vo.username}</a></td>
+                    <td>{$vo.version}</td>
+                    <td>
+                        <a class="layui-btn layui-btn-normal layui-btn-sm" target="_blank" href="http://www.laysns.com/plinfo/{$vo.pid}.html">详情</a> {if $vo.is_down eq 1}<a class="layui-btn layui-btn-disabled layui-btn-sm">已下载</a> {elseif $vo.is_down
+                        eq 2}
+                        <a data-title="{$vo.title}" data-fufei="{$vo.fufei}" class="layui-btn layui-btn-warm layui-btn-sm  downaddon" href="javascript:;" data-url="{:url('index/handle',array('type'=>'downaddon','verid'=>$vo.id))}">
+                            <span class="button-content">升级</span></a>{else /}
+                        <a data-price="{$vo.price}" data-score="{$vo.score}" data-fufei="{$vo.fufei}" data-zhekou="{$vo.zhekou}" data-id="{$vo.id}" data-title="{$vo.title}" class="layui-btn layui-btn-sm  {if $vo.fufei}layui-btn-warm{/if} downaddon" href="javascript:;" data-url="{:url('index/handle',array('type'=>'downaddon','verid'=>$vo.id))}">
+                            <span class="button-content">{if $vo.fufei}购买{else /}下载{/if}</span></a>
+                        {/if}
+                    </td>
+
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+
+        {else /} {$info} {/if}
+    </div>
+
+
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['layer', 'jquery', 'form'], function() {
+        var layer = layui.layer,
+            form = layui.form,
+            jq = layui.jquery;
+        var device = layui.device();
+        jq('.downaddon').click(function() {
+            var verid = jq(this).data('id');
+            var url = jq(this).data('url');
+            var isfufei = jq(this).data('fufei');
+            var zhekou = jq(this).data('zhekou');
+            var price = jq(this).data('price');
+            var score = jq(this).data('score');
+            var titles = jq(this).data('title');
+            var text = jq(this).text();
+            if (isfufei == 1) {
+                layer.open({
+                    type: 1,
+                    id: 'LAY_pushcase',
+                    title: '下载【' + titles + '】',
+                    shadeClose: true,
+                    area: (device.ios || device.android) ? ($(window).width() + 'px') : '400px',
+                    content: '<div style="margin:10px;text-align:center"><p style="line-height:30px">该插件售价<span style="color:red;font-size:25px"> ¥' + price + ' </span>元</p><button type="button" lay-submit lay-filter="buy" class="layui-btn layui-btn-danger">购买(¥' + price * zhekou + ')</button><button type="button" lay-submit lay-filter="duihuan" class="layui-btn">兑换(' + score * zhekou + '金币)</button></div>',
+                    success: function(layero, index) {
+
+                        form.render('radio').on('submit(buy)', function(data) {
+                            var a = $("<a href='http://www.laysns.com/api/order/buyplugin.html?upkey={$keyvalue}&verid=" + verid + "' target='_blank'>Apple</a>").get(0);
+                            var e = document.createEvent('MouseEvents');
+                            e.initEvent('click', true, true);
+                            a.dispatchEvent(e);
+                            layer.close(index);
+                            layer.msg('', {
+                                time: false,
+                                btn: ['已完成支付', '支付遇到问题']
+                            }, function() {
+                                location.reload();
+                            });
+                        });
+                        form.render('radio').on('submit(duihuan)', function(data) {
+                            var loading = layer.load(2, {
+                                shade: [0.2, '#000']
+                            });
+                            jq.getJSON(url, function(data) {
+                                layer.close(loading);
+                                if (data.code == 200) {
+                                    layer.msg('兑换下载成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    }, function() {
+                                        location.reload();
+                                    });
+                                } else {
+                                    layer.msg(data.msg, {
+                                        icon: 2,
+                                        anim: 6,
+                                        time: 1000
+                                    });
+                                    layer.close(index);
+                                }
+                            });
+                        });
+                    }
+                });
+            } else {
+                layer.confirm('您可以免费下载：' + titles, {
+                    title: '下载提示',
+                    btn: ['确定', '取消'] //按钮
+                }, function(index) {
+                    var loading = layer.load(2, {
+                        shade: [0.2, '#000']
+                    });
+                    jq.getJSON(url, function(data) {
+                        layer.close(loading);
+                        if (data.code == 200) {
+                            layer.msg(text + '成功', {
+                                icon: 1,
+                                time: 1000
+                            }, function() {
+                                location.reload();
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                icon: 2,
+                                anim: 6,
+                                time: 1000
+                            });
+                        }
+                    });
+                });
+            }
+        });
+
+    });
+</script>
+{/block}

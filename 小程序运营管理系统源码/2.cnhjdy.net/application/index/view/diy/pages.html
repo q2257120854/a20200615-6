@@ -1,0 +1,619 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+	.zjk{
+		border-right: 1px solid #dedede;
+		width: 340px;
+
+	}
+	.beijsd{
+		background-color: #f1f1f1;
+		background-image: url("/image/iphonebg.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+	}
+	.szzj{
+
+		width: 560px;
+		border-left: 1px solid #dedede;
+	}
+	.bjq{
+		width: 320px;
+		height: 564px;
+		position: absolute;
+		left: 50.4%;
+		margin-left: -160px;
+		top: 50%;
+		margin-top: -282px;
+		overflow-y:auto;
+	}
+	.zjk_tit{
+		line-height: 40px;
+		border-bottom: 1px solid #dedede;
+		color: #333333;
+		background-color: #e8e8e8;
+		font-size: 14px;
+		padding-left: 10px;
+	}
+	.zjk_biaoq{
+		display: inline-block;
+		margin-left: 15px;
+		margin-bottom: 10px;
+		position: relative;
+		width: 92px;
+		height: 92px;
+	}
+	.zutpt{
+		text-align: center;
+		font-size: 12px;
+		color: #999999;
+		background-color: #ffffff;
+	}
+	.bqtp{
+		width: 90px;
+		height: 70px;
+	}
+	.bqtp img{
+		width: 100%;
+		height: 100%;
+	}
+	.ldwz{
+		border: 1px solid #dedede;
+	}
+	.xianswz{
+		width: 99%;
+		border: 1px dashed red;
+		height: 40px;
+		display: none;
+	}
+	.pbkj{
+		width: 98.3%;
+		margin-bottom: 10px;
+		border: 1px solid #dedede;
+		min-height: 40px;
+		line-height: 40px;
+	}
+	.abc{
+		background-color: red;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="diy">
+
+
+
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box" style="margin-bottom:0; position: relative;">
+			
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" id="kj">
+				
+				<tr>
+					
+					<td class="zjk" valign="top">
+						<div class="zjk_tit">
+							组件库
+						</div>
+						
+						<div style="font-size:0;margin-top:20px; ">
+
+							<div class="zjk_biaoq" >
+								<div id="jdt" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (7).png">
+									</div>
+									<div class="zutpt">
+										焦点图模块
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="gnq" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (1).png">
+									</div>
+									<div class="zutpt">
+										功能区模块
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="zdydh" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (1).png">
+									</div>
+									<div class="zutpt">
+										自定义导航
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="spmk" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (2).png">
+									</div>
+									<div class="zutpt">
+										商品模块
+									</div>
+                                </div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="btl" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (9).png">
+									</div>
+									<div class="zutpt">
+										标题栏
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="ss" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (6).png">
+									</div>
+									<div class="zutpt">
+										搜索
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="wbmk" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (8).png">
+									</div>
+									<div class="zutpt">
+										文本模块
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="fgf" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (3).png">
+									</div>
+									<div class="zutpt">
+										分隔符
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="zytw" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (10).png">
+									</div>
+									<div class="zutpt">
+										左右图文
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="dtmk" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (4).png">
+									</div>
+									<div class="zutpt">
+										单图模块
+									</div>
+								</div>
+							</div>
+
+							<div class="zjk_biaoq">
+								<div id="stmk" class="ldwz">
+									<div class="bqtp">
+										<img src="/image/biaoq (5).png">
+									</div>
+									<div class="zutpt">
+										双图模块
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</td>
+					<td class="beijsd">
+
+						<div class="bjq" id="phonediv">
+							
+							<div class='xianswz' id="xianswz">
+								
+							</div>
+							
+
+
+						</div>
+
+					</td>
+					<td class="szzj" valign="top">
+						<div class="zjk_tit">
+							组件设置
+						</div>
+					</td>
+
+				</tr>
+
+			</table>
+			
+
+		</div>
+
+	</div>
+
+
+	
+
+
+
+<!-- <div class="zjk" id="zjk">
+				123
+			</div>
+			
+			<div class="beijsd" id="beijsd">
+					
+			</div>
+			
+			<div class="szzj" id="szzj">
+				
+			</div> -->
+
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/Tdrag.js"></script>
+
+
+<script type="text/javascript">
+	
+	$(function(){
+		//整个编辑区高度
+		var newtotal = document.documentElement.clientHeight-42;
+		$("#kj").css("height",newtotal);
+
+
+
+		//左侧案例库拖拽
+		// 获得显示区块的位置
+		var lx = $('#phonediv').offset().left;
+		var ly = $('#phonediv').offset().top;
+		var rx = lx+320;
+		var ry = ly+564;
+
+
+		//$("#phonediv").html(lx+":"+ly+":"+rx+":"+ry)
+
+		//焦点图
+		$("#jdt").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#jdt').offset().left;
+	        	var dy = $('#jdt').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){  //判断是不是在对应显示区域
+	        		$("#xianswz").show();				
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#jdt').offset().left;
+	        	var dy = $('#jdt').offset().top;
+	        	var allhid = $(".pbkj");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加焦点图模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='jdt' data-fg='xianswz"+(count+1)+"'>焦点图模块</div>");
+	        		}
+	        	}
+	 			$("#xianswz").hide();
+	        }
+	    });
+
+
+
+	    //功能区
+	    $("#gnq").Tdrag({
+	    	pos:true,
+	        cbMove:function(){
+	        	var dx = $('#gnq').offset().left;
+	        	var dy = $('#gnq').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#gnq').offset().left;
+	        	var dy = $('#gnq').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加功能区模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='gnq' data-fg='xianswz"+(count+1)+"'>功能区模块</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+
+	    //自定义导航
+	    $("#zdydh").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#zdydh').offset().left;
+	        	var dy = $('#zdydh').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#zdydh').offset().left;
+	        	var dy = $('#zdydh').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加自定义导航模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='zdydh' data-fg='xianswz"+(count+1)+"'>自定义导航</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+	    //商品模块
+	    $("#spmk").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#spmk').offset().left;
+	        	var dy = $('#spmk').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#spmk').offset().left;
+	        	var dy = $('#spmk').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加商品模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='spmk' data-fg='xianswz"+(count+1)+"'>商品模块</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+
+	    //标题栏
+	    $("#btl").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#btl').offset().left;
+	        	var dy = $('#btl').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#btl').offset().left;
+	        	var dy = $('#btl').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加标题栏模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='btl' data-fg='xianswz"+(count+1)+"'>标题栏</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+	    //搜索
+	    $("#ss").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#ss').offset().left;
+	        	var dy = $('#ss').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#ss').offset().left;
+	        	var dy = $('#ss').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加搜索模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='ss' data-fg='xianswz"+(count+1)+"'>搜索</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+	    //文本模块
+	    $("#wbmk").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#wbmk').offset().left;
+	        	var dy = $('#wbmk').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#wbmk').offset().left;
+	        	var dy = $('#wbmk').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加文本模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='wbmk' data-fg='xianswz"+(count+1)+"'>文本模块</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+	    //分隔符
+	    $("#fgf").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#fgf').offset().left;
+	        	var dy = $('#fgf').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#fgf').offset().left;
+	        	var dy = $('#fgf').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加分隔符模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='fgf' data-fg='xianswz"+(count+1)+"'>分隔符</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+	    //左右图文
+	    $("#zytw").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#zytw').offset().left;
+	        	var dy = $('#zytw').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#zytw').offset().left;
+	        	var dy = $('#zytw').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加左右图文模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='zytw' data-fg='xianswz"+(count+1)+"'>左右图文</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+	    //单图模块
+	    $("#dtmk").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#dtmk').offset().left;
+	        	var dy = $('#dtmk').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#dtmk').offset().left;
+	        	var dy = $('#dtmk').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加单图模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='dtmk' data-fg='xianswz"+(count+1)+"'>单图模块</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+	    //双图模块
+	    $("#stmk").Tdrag({
+	        pos:true,
+	        cbMove:function(){
+	        	var dx = $('#stmk').offset().left;
+	        	var dy = $('#stmk').offset().top;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		$("#xianswz").show();
+	        	}else{
+	        		$("#xianswz").hide();
+	        	}
+	        },
+	        cbEnd:function(){
+	        	var dx = $('#stmk').offset().left;
+	        	var dy = $('#stmk').offset().top;
+	        	var allhid = $(".xianswz");
+	        	var count = allhid.length;
+	        	if(dx>lx && dx<rx && dy>ly && dy<ry){
+	        		if(confirm('您确定添加双图模块?')){
+	        			$("#xianswz").before("<div class='pbkj' data-name='stmk' data-fg='xianswz"+(count+1)+"'>双图模块</div>");
+	        		}
+	        	}
+	        	$("#xianswz").hide();
+	        }
+	    });
+
+
+
+	})
+
+</script>
+
+
+
+
+{include file="public/foot_more" /}

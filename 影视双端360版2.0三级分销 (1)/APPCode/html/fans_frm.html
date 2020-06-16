@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+      <section id="fanslist" class="aui-content aui-margin-b-15">
+	  <input type="hidden" value="10" id="nextrow" />
+          <ul class="aui-list aui-media-list" id="fensi">
+              
+          </ul>
+          <div class="aui-card-list-footer aui-text-center" style="clear:both" ></div>
+      </section>
+  </body>
+    <script type="text/x-dot-template" id="xiaoxi">
+		{{~ it : value : index }}
+				 
+				 <li  class="aui-list-item" >
+                  <div class="aui-media-list-item-inner"> 
+                      <div class="aui-list-item-media" style="width: 3rem;">
+                          <img src="../image/logo.png" class="aui-img-round aui-list-img-sm">
+                      </div>
+                      <div class="aui-list-item-inner">
+                          <div class="aui-list-item-text">
+                              <div class="aui-list-item-title">
+                                  <span>{{= value. uname }}</span>
+                                  <div class="aui-label aui-label-primary aui-margin-l-5">级别:{{= value. lv }}</div>
+                              </div>
+                              <div class="aui-list-item-right aui-font-size-14 aui-margin-r-15">
+                                  <span class="aui-text-danger">推荐人{{= value. pname }}</span>
+                              </div>
+                          </div>
+                          <div class="aui-list-item-text" >{{= value. shijian }}</div>
+                      </div>
+                  </div>
+              </li>
+		{{~}}
+	</script>
+  <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+  apiready = function(){
+      api.parseTapmode();
+      fans();
+	  api.addEventListener({ 
+			name:'scrolltobottom',  
+			extra:{      
+			threshold:0    
+			//设置距离底部多少距离时触发，默认值为0，数字类型  
+			}}, function(ret, err){     
+
+			fanss();
+			});
+  };
+  function fans(){
+	 var fensi = $api.byId('fensi');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/fans.html',
+				  method: 'get',
+				  data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					fensi.innerHTML = pagefn(ret.msg);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '粉丝加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+	function fanss(){
+	 var fensi = $api.byId('fensi');
+		var xiaoxi = $api.byId('xiaoxi');
+			api.ajax({
+				  url: api_url+'/App/App/fanss.html',
+				  method: 'get',
+				  data: {
+					values: {
+							uid: localStorage.getItem('user_id'),
+							nextrow: nextrow,
+							}
+					}  
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret)) 
+					if (ret.code == 1) {
+					var pagefn = doT.template(xiaoxi.text);
+					fensi.innerHTML = pagefn(ret.msg);
+					$("#nextrow").val(parseInt(nextrow)+10);
+					}else if (ret.code == 0){
+					api.toast({
+						msg: ret.msg,
+						duration: 2000
+					});
+					}
+				  } else {
+					alert( '粉丝加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+	}
+  </script>
+  </html>

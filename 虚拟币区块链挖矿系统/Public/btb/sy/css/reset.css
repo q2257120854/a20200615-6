@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+  font-family: 'Microsoft YaHei';
+  /* 1 */
+  font-size: 312.5%;
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  overflow-x: hidden;
+  color: #333;
+
+}
+img{max-width: 100%;border: 0;}
+body, html {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  background: url(../images/bg.png) repeat-y center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-size: 0.28rem; }
+/* Links ========================================================================== */
+a {
+  background: transparent;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: #333; }
+
+/* HTML5 display definitions
+   ========================================================================== */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/* Text-level semantics
+   ========================================================================== */
+b,
+strong {
+  font-weight: bold; }
+
+/* Forms
+   ========================================================================== */
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+button {
+  overflow: visible; }
+button,
+select {
+  text-transform: none; }
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+input {
+  line-height: normal; }
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+textarea {
+  overflow: auto; }
+
+button,
+input {
+  padding: 0;
+  border: 0; }
+
+/* Tables
+   ========================================================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+ul,
+ol {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
+p {
+  padding: 0;
+  margin: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+dt,
+dd,
+dl {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal; }
+
+em, i {
+  font-style: normal; }
+/* 布局 */
+.out {
+    font-size: 0px;
+    letter-spacing: -5px;
+}
+
+.n {
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: normal;
+}
+
+.in {
+    *display: inline;
+    *zoom: 1;
+
+}
+.in li, .in dt, .in dd {
+         display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align:top;
+    }
+
+input{outline:none;}
+input[type="text"]{-webkit-appearance: none;-moz-appearance: none;appearance: none;outline:none;boder:none;-webkit-box-shadow:none;}
+input[type="password"]{-webkit-appearance: none;-moz-appearance: none;appearance: none;outline:none;boder:none;-webkit-box-shadow:none;-webkit-tap-highlight-color: transparent;
+}
+input{-webkit-tap-highlight-color: transparent;}
+a{-webkit-tap-highlight-color:rgba(0,0,0,0); }
+.border_line_top{position: relative;}
+.border_line_top:before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            border-bottom:#dfdfdf 1px solid;
+            -webkit-transform-origin: 0 0;
+            -moz-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scale(0.5, 0.5);
+            -ms-transform: scale(0.5, 0.5);
+            -o-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}

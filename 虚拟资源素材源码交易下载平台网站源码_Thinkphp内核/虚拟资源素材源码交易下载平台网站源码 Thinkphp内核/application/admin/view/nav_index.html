@@ -1,0 +1,92 @@
+{extend name="base" /}
+{block name="body"}
+<div class="admin-main">
+    <!--tab标签-->
+    <div class="layui-field-box layui-form">
+    <a href="{:url('admin/nav/add')}" class="layui-btn layui-btn-sm" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加导航
+				</a>
+    <table class="layui-table admin-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th style="width: 30px;">排序</th>
+                        <th>导航名称</th>
+                        <th>链接</th>
+                         <th>位置</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="nav_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.sort}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.link|getnavlink=$vo.sid}</td>
+                        <td>{php}echo $vo['pid']==1 ? '顶部' : '底部';{/php}</td>
+                        <td><input type="checkbox" name="status" lay-skin="switch" lay-text="显示|隐藏" lay-filter="switchTest"  value="{$vo['id']}" {php}echo $vo['status']==1 ? 'checked' : '';{/php}></td>
+                        <td>
+                            
+                            <a href="{:url('admin/nav/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                            <a  href="javascript:;" data-id="{$vo.id}" data-url="{:url('admin/nav/delete',array('id'=>$vo['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+{/block}
+
+ {block name="page"}
+<div class="btable-paged" >
+<div class="layui-main">
+	{$nav_list->render()}
+</div>
+</div>
+ {/block}
+     {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+ {/block}
+    {block name="script"}
+    <script>
+layui.use(['form'],function(){
+  var form = layui.form
+  ,jq = layui.jquery;
+
+
+ //jq('.btable-paged').eq(1).hide();
+ var status=0;
+ form.on('switch(switchTest)', function(data){
+	  loading = layer.load(2, {
+	      shade: [0.2,'#000']
+	    });
+	    if(data.elem.checked){
+	    	status=1;
+	    }else{
+	    	status=0;
+	    }
+	    var url="{:url('admin/nav/updatestatus')}?id="+data.value+'&status='+status ;
+	   
+	    
+	    jq.get(url,function(data){
+	    	
+	      if(data.code == 200){
+	        layer.close(loading);
+	        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+	        //  location.reload();
+	        });
+	      }else{
+	        layer.close(loading);
+	        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+	      }
+	    });
+	    return false;
+	  });
+
+})
+</script>
+ {/block}

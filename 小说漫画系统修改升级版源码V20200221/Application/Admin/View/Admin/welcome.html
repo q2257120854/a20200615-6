@@ -1,0 +1,112 @@
+
+        <div class="pageheader notab">
+            <h1 class="pagetitle">欢迎界面</h1>
+            <span class="pagedesc">欢迎使用源代码社区漫画小说分销系统管理后台</span>
+            
+        </div><!--pageheader-->
+        
+        <div id="contentwrapper" class="contentwrapper lineheight21">
+			
+			<!--table cellpadding="0" cellspacing="0" border="0" class="stdtable" >
+				<colgroup>
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+				</colgroup>
+				<tbody>				
+					<tr>
+						<td>今日订单数</td>
+						<td>{$info.orders_total}</td>
+					</tr>
+					<tr>
+						<td>今日销售额</td>
+						<td>{$info.total_today}</td>
+					</tr>
+					<tr>
+						<td>今日余额支付总额</td>
+						<td>{$info.money_pay}</td>
+					</tr>
+					<tr>
+						<td>今日积分支付总额</td>
+						<td>{$info.points_pay}</td>
+					</tr>
+					<tr>
+						<td>今日微信支付总额</td>
+						<td>{$info.wxpay_pay}</td>
+					</tr>
+					<tr>
+						<td>待结算佣金</td>
+						<td>{$info.expense1}</td>
+					</tr>
+					<tr>
+						<td>已结算佣金</td>
+						<td>{$info.expense4}</td>
+					</tr>
+					<tr>
+						<td>会员积分总额</td>
+						<td>{$info.points_total}</td>
+					</tr>
+					<tr>
+						<td>会员余额总额</td>
+						<td>{$info.money_total}</td>
+					</tr>
+				</tbody>
+			</table-->
+
+
+          
+          
+      <table cellpadding="0" cellspacing="0" border="0" class="stdtable"  style="background:#fff">
+        <thead>
+        <tr>
+            <th colspan="4" scope="col">源代码社区正版--服务器当前日期【<?php echo date('Y-m-d'); ?>】
+              <if condition="$_SERVER['SCRIPT_NAME'] eq '/admin.php'">
+            <a style="color:red; line-height:40px; padding:30px 0;">	您使用的是默认后台入口文件，强烈将以您将网站根目录下的admin.php修改为其他不容易被猜到的名字，比如xing{:mt_rand(1000,9999)}.php</a>
+                </if>
+             </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="15%">操作系统</td>
+            <td width="30%"><?php echo PHP_OS ?></td>
+            <td width="15%">脚本解释引擎</td>
+            <td width="30%"><?php echo $_SERVER['SERVER_SOFTWARE'] ?></td>
+        </tr>
+        <tr>
+            <td>安装目录</td>
+            <td><?php echo $_SERVER['DOCUMENT_ROOT'] ?></td>
+            <td>服务器 (IP/端口) </td>
+            <td><?php echo $_SERVER['HTTP_HOST'] ?></td>
+        </tr>
+        <tr>
+            <td>PHP版本</td>
+            <td><?php echo PHP_VERSION ?></td>
+            <td>允许最大上传文件</td>
+            <td><?php echo get_cfg_var("file_uploads") ? get_cfg_var("upload_max_filesize") : $error;?></td>
+        </tr>
+        <tr>
+            <td>CURL支持</td>
+            <td><?php $curl = @curl_version();echo $curl['version'] ? $curl['version'] : $error; ?></td>
+            <td>GD图形处理扩展库版本</td>
+            <td><?php $gd = @gd_info(); echo $gd['GD Version'] ? $gd['GD Version'] : $error;?></td>
+        </tr>
+        <tr>
+            <td>ThinkPHP框架版本</td>
+            <td><?php echo THINK_VERSION; ?></td>
+            <td>脚本超时时间</td>
+            <td><?php $t = ini_get("max_execution_time"); echo $t;?>秒</td>
+        </tr>
+        <tr>
+            <td colspan="4">当前版本：<span class="layui-badge">10.6版    </span> 授权类型：<span class="layui-badge">开源版</span></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+
+     
+        

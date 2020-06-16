@@ -1,0 +1,633 @@
+<?php  namespace app\index\controller;
+use think\Controller;
+use think\Db;
+use think\Request;
+use think\Session;
+use think\View;
+class Shops extends Base
+{
+	public function index()
+	{
+		if(check_login())
+		{
+			if(powerget())
+			{
+				$var_7532=input('appletid');
+				$var_7533=Db::table('applet')->where('id',$var_7532)->find();
+				if(!$var_7533)
+				{
+					$this->error('找不到对应的小程序！');
+				}
+				$this->assign('applet',$var_7533);
+				$var_254=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7532)->paginate(10,false,['query' =>array('appletid'=>input('appletid'))]);
+				$var_3930=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7532)->count();
+				$this->assign('counts',$var_3930);
+				$this->assign('store',$var_254);
+			}
+			else
+			{
+				$var_253=Session::get('usergroup');
+				if($var_253==1)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/applet');
+				}
+				if($var_253==2)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+				if($var_253==3)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+			}
+			return $this->fetch(index);
+		}
+		else
+		{
+			$this->redirect('Login/index');
+		}
+	}
+	public function baseset()
+	{
+		if(check_login())
+		{
+			if(powerget())
+			{
+				$var_809=input('appletid');
+				$var_7535=Db::table('applet')->where('id',$var_809)->find();
+				if(!$var_7535)
+				{
+					$this->error('找不到对应的小程序！');
+				}
+				$this->assign('applet',$var_7535);
+				$var_7536=Db::table('ims_sudu8_page_storeconf')->where('uniacid',$var_809)->find();
+				$this->assign('bases',$var_7536);
+			}
+			else
+			{
+				$var_7537=Session::get('usergroup');
+				if($var_7537==1)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/applet');
+				}
+				if($var_7537==2)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+				if($var_7537==3)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+			}
+			return $this->fetch(baseset);
+		}
+		else
+		{
+			$this->redirect('Login/index');
+		}
+	}
+	public function basesave()
+	{
+		$var_7539=input('appletid');
+		$var_7540['uniacid']=$var_7539;
+		$var_7541=input('search');
+		if($var_7541!==null)
+		{
+			$var_7540['search']=$var_7541;
+		}
+		$var_7542=input('title');
+		if($var_7542)
+		{
+			$var_7540['title']=$var_7542;
+		}
+		$var_7543=input('flag');
+		if($var_7543>=0)
+		{
+			$var_7540['flag']=intval($var_7543);
+		}
+		$var_7544=input('mapkey');
+		if($var_7544)
+		{
+			$var_7540['mapkey']=$var_7544;
+		}
+		$var_7540['ctime']=time();
+		$var_7545=Db::table('ims_sudu8_page_storeconf')->where('uniacid',$var_7539)->count();
+		if($var_7545>0)
+		{
+			$var_1126=Db::table('ims_sudu8_page_storeconf')->where('uniacid',$var_7539)->update($var_7540);
+		}
+		else
+		{
+			$var_1126=Db::table('ims_sudu8_page_storeconf')->insert($var_7540);
+		}
+		if($var_1126)
+		{
+			$this->success('多门店信息更新成功！');
+		}
+		else
+		{
+			$this->error('多门店信息更新失败，没有修改项！');
+			exit;
+		}
+	}
+	public function add()
+	{
+		if(check_login())
+		{
+			if(powerget())
+			{
+				$var_7547=input('appletid');
+				$var_7548=Db::table('applet')->where('id',$var_7547)->find();
+				if(!$var_7548)
+				{
+					$this->error('找不到对应的小程序！');
+				}
+				$this->assign('applet',$var_7548);
+				$var_7549='';
+				$var_2267=input('cid');
+				$var_7550=array();
+				if($var_2267)
+				{
+					$var_7550=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7547)->where('id',$var_2267)->find();
+					$var_7549=Db::table('products_url')->where('randid',$var_7550['onlyid'])->select();
+					foreach($var_7549 as $var_7551=>&$var_7552)
+					{
+						$var_7549[$var_7551]['url']=remote($var_7547,$var_7552['url'],1);
+					}
+				}
+				else
+				{
+					$var_2267=0;
+				}
+				$this->assign('cid',$var_2267);
+				$this->assign('allimg',$var_7549);
+				$this->assign('store',$var_7550);
+			}
+			else
+			{
+				$var_7553=Session::get('usergroup');
+				if($var_7553==1)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/applet');
+				}
+				if($var_7553==2)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+				if($var_7553==3)
+				{
+					$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+				}
+			}
+			return $this->fetch(add);
+		}
+		else
+		{
+			$this->redirect('Login/index');
+		}
+	}
+	public function del()
+	{
+		$var_7555=input('appletid');
+		$var_7556=input('cid');
+		$var_7557=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7555)->where('id',$var_7556)->delete();
+		if($var_7557)
+		{
+			$this->success('删除成功');
+		}
+		else
+		{
+			$this->success('删除失败');
+		}
+	}
+	public function save()
+	{
+		$var_7559=input('appletid');
+		$var_7560['uniacid']=$var_7559;
+		$var_7561=input('commonuploadpic1');
+		if($var_7561)
+		{
+			$var_7560['logo']=remote($var_7560['uniacid'],$var_7561,2);
+		}
+		$v_4=input('commonuploadpic2');
+		if($v_4)
+		{
+			$var_7560['thumb']=remote($var_7560['uniacid'],$v_4,2);
+		}
+		$var_7562=input('title');
+		if($var_7562)
+		{
+			$var_7560['title']=$var_7562;
+		}
+		$var_68=input('descp');
+		if($var_68)
+		{
+			$var_7560['descp']=$var_68;
+		}
+		$var_7563=input('text');
+		if($var_7563)
+		{
+			$var_7560['desc2']=$var_7563;
+		}
+		$var_7564=input('lat');
+		if($var_7564)
+		{
+			$var_7560['lat']=$var_7564;
+		}
+		$var_7565=input('lon');
+		if($var_7565)
+		{
+			$var_7560['lon']=$var_7565;
+		}
+		$var_7566=input('tel');
+		if($var_7566)
+		{
+			$var_7560['tel']=$var_7566;
+		}
+		$var_7567=input('times');
+		if($var_7567)
+		{
+			$var_7560['times']=$var_7567;
+		}
+		$var_7568=input('province');
+		if($var_7568)
+		{
+			$var_7560['proid']=$var_7568;
+		}
+		$var_7569=input('pro');
+		if($var_7569)
+		{
+			$var_7560['province']=$var_7569;
+		}
+		$var_7570=input('city');
+		if($var_7570)
+		{
+			$var_7560['cityid']=$var_7570;
+		}
+		$var_7571=input('cit');
+		if($var_7571)
+		{
+			$var_7560['city']=$var_7571;
+		}
+		$var_7572=input('country');
+		if($var_7572)
+		{
+			$var_7560['country']=$var_7572;
+		}
+		$var_7573=input('title1');
+		if($var_7573)
+		{
+			$var_7560['title1']=$var_7573;
+		}
+		$var_962=input('title2');
+		if($var_962)
+		{
+			$var_7560['title2']=$var_962;
+		}
+		$var_7560['dateline']=time();
+		$var_7574=input('onlyid');
+		if($var_7574)
+		{
+			$var_7560['onlyid']=$var_7574;
+		}
+		$var_7574=input('onlyid');
+		if($var_7574)
+		{
+			$var_7575=input('imgsrcs/a');
+			if($var_7575)
+			{
+				$var_130=array();
+				foreach($var_7575 as $var_7576=>$var_7577)
+				{
+					$var_130['randid']=$var_7574;
+					$var_130['appletid']=$var_7560['uniacid'];
+					$var_130['url']=remote($var_7560['uniacid'],$var_7577,2);
+					$var_130['dateline']=time();
+					$var_7578=Db::table('products_url')->insert($var_130);
+				}
+			}
+			else
+			{
+				$var_7578=1;
+			}
+			$var_7560['onlyid']=$var_7574;
+		}
+		$var_7579=Db::table('products_url')->where('randid',$var_7574)->select();
+		$var_7580=array();
+		if($var_7579)
+		{
+			foreach($var_7579 as $var_7581)
+			{
+				$var_7580[]=$var_7581['url'];
+			}
+			$var_7560['text']=serialize($var_7580);
+		}
+		else
+		{
+			$var_7560['text']='';
+		}
+		$var_7582=input('cid');
+		if($var_7582)
+		{
+			$var_7583=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7559)->where('id',$var_7582)->update($var_7560);
+		}
+		else
+		{
+			$var_7583=Db::table('ims_sudu8_page_store')->insert($var_7560);
+		}
+		if($var_7583)
+		{
+			$this->success('门店信息更新成功！',Url('Shops/index').'?appletid='.$var_7559);
+		}
+		else
+		{
+			$this->error('门店信息更新失败，没有修改项！');
+			exit;
+		}
+	}
+	function onepic_uploade($v_1)
+	{
+		$var_341=request()->file($v_1);
+		if(isset($var_341))
+		{
+			$var_7585=upload_img();
+			$var_7586=$var_341->validate(['ext'=>'jpg,png,gif,jpeg'])->move($var_7585);
+			if($var_7586)
+			{
+				$var_7587=ROOT_HOST.'/upimages/'.date('Ymd',time()).'/'.$var_7586->getFilename();
+				return $var_7587;
+			}
+		}
+	}
+	public function imgupload_duo()
+	{
+		$var_7589['randid']=input('randid');
+		$var_7590=request()->file('');
+		foreach($var_7590 as $var_7591)
+		{
+			$var_912=$var_7591->validate(['ext'=>'jpg,png,gif,jpeg'])->move(ROOT_PATH.'public' .DS.'upimages');
+			if($var_912)
+			{
+				$var_7589['url']=ROOT_HOST.'/upimages/'.date('Ymd',time()).'/'.$var_912->getFilename();
+				$var_7589['dateline']=time();
+				$var_7592=Db::table('products_url')->insert($var_7589);
+			}
+			else
+			{
+				return $this->error($var_7591->getError());
+			}
+		}
+	}
+	public function getimg()
+	{
+		$var_994=$_POST['id'];
+		$var_7594=Db::table('products_url')->where('randid',$var_994)->select();
+		if($var_7594)
+		{
+			return $var_7594;
+		}
+	}
+	public function staff()
+	{
+		if(check_login())
+		{
+			if(powerget())
+			{
+				$var_175=input('appletid');
+				$var_7595=Db::table('applet')->where('id',$var_175)->find();
+				if(!$var_7595)
+				{
+					$this->error('找不到对应的小程序！');
+				}
+				$this->assign('applet',$var_7595);
+				$var_7596='';
+				$var_408=input('skey');
+				if(!empty($var_408))
+				{
+					$var_7596=' and realname like \'%'.$var_408.'%\'';
+					$var_7597=Db::query("SELECT * FROM ims_sudu8_page_staff WHERE `uniacid` = {$var_175}
+				{$var_7596}
+			");
+			$var_7598=count($var_7597);
+			$var_286='';
+		}
+		else
+		{
+			$var_7598=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_175)->where($var_7596)->count();
+			$var_286=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_175)->where($var_7596)->paginate(10,false,['query' =>array('appletid'=>input('appletid'))]);
+			$var_7597=$var_286->toArray()['data'];
+		}
+		if($var_7597)
+		{
+			foreach($var_7597 as $var_7599=>&$var_7600)
+			{
+				if($var_7600['pic'])
+				{
+					$var_7600['pic']=remote($var_175,$var_7600['pic'],1);
+				}
+			}
+		}
+		$this->assign('counts',$var_7598);
+		$this->assign('staffslist',$var_7597);
+		$this->assign('staffs',$var_286);
+		$this->assign('skey',$var_408);
+	}
+	else
+	{
+		$var_7601=Session::get('usergroup');
+		if($var_7601==1)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/applet');
+		}
+		if($var_7601==2)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+		}
+		if($var_7601==3)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+		}
+	}
+	return $this->fetch(staff);
+}
+else
+{
+	$this->redirect('Login/index');
+}
+}
+public function staffadd()
+{
+if(check_login())
+{
+	if(powerget())
+	{
+		$var_7603=input('appletid');
+		$var_7604=Db::table('applet')->where('id',$var_7603)->find();
+		if(!$var_7604)
+		{
+			$this->error('找不到对应的小程序！');
+		}
+		$this->assign('applet',$var_7604);
+		$var_7605='';
+		$var_363=input('id');
+		$var_7606=Db::table('ims_sudu8_page_store')->where('uniacid',$var_7603)->select();
+		$this->assign('stores',$var_7606);
+		$var_7607=array();
+		if($var_363)
+		{
+			$var_7607=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_7603)->where('id',$var_363)->find();
+			if(!empty($var_7607['expand']))
+			{
+				$var_7607['expand']=unserialize($var_7607['expand']);
+			}
+			if(!empty($var_7607['pic']))
+			{
+				$var_7607['pic']=remote($var_7603,$var_7607['pic'],1);
+			}
+		}
+		else
+		{
+			$var_363=0;
+		}
+		$this->assign('id',$var_363);
+		$this->assign(staff,$var_7607);
+	}
+	else
+	{
+		$var_7608=Session::get('usergroup');
+		if($var_7608==1)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/applet');
+		}
+		if($var_7608==2)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+		}
+		if($var_7608==3)
+		{
+			$this->error('您没有权限操作该小程序或找不到相应小程序！','Applet/index');
+		}
+	}
+	return $this->fetch(staffadd);
+}
+else
+{
+	$this->redirect('Login/index');
+}
+}
+public function staffsave()
+{
+$var_7609=input('appletid');
+$var_7610=intval(input('id'));
+$var_352=input('duogg');
+$var_7611=explode(',',substr($var_352,0,strlen($var_352)-1));
+$var_7612=serialize($var_7611);
+$var_7613=input('mobile');
+if(!preg_match('/^1[3456789]{1}\\d{9}$/',$var_7613))
+{
+	$this->error('手机号格式错误！');
+}
+$v_6=input('score');
+if(!$v_6)
+{
+	$v_6=0;
+}
+if(!is_numeric($v_6))
+{
+	$this->error('评分为数值,请输入数字');
+}
+else
+{
+	if($v_6<0|| $v_6>5)
+	{
+		$this->error('评分数值为0-5分,请输入正确的数字');
+	}
+}
+$var_7614=strlen($v_6);
+if($var_7614>3)
+{
+	$v_6=substr($v_6,0,3);
+}
+$var_7615=input('province');
+$var_7616=input('city');
+$v_7=input('area');
+$var_7617=input('pro')?input('pro'):'';
+$var_357=input('cit')?input('cit'):'';
+$var_7618=input('store')?input('store'):'';
+$var_7619=input('are')?input('are'):'';
+$var_7620=input('descp');
+$var_7621=input('commonuploadpic1');
+if($var_7621)
+{
+	$var_7621=remote($var_7609,$var_7621,2);
+}
+$var_7622=input('hxmm');
+$var_7623=array();
+$var_7624=Db::table('ims_sudu8_page_base')->where('uniacid',$var_7609)->find();
+if($var_7622==$var_7624['hxmm'])
+{
+	$this->error('员工核销密码与系统相同，请重新设置');
+}
+else
+{
+	if(empty($var_7610))
+	{
+		$var_7625=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_7609)->select();
+		$var_7623=array();
+		foreach($var_7625 as $var_7626=>$var_7627)
+		{
+			array_push($var_7623,$var_7627['hxmm']);
+		}
+		if(in_array($var_7622,$var_7623))
+		{
+			$this->error('员工核销密码与其他员工的相同，请重新设置');
+		}
+	}
+	else
+	{
+		$var_7625=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_7609)->where('id','neq',$var_7610)->select();
+		$var_7623=array();
+		foreach($var_7625 as $var_7626=>$var_7627)
+		{
+			array_push($var_7623,$var_7627['hxmm']);
+		}
+		if(in_array($var_7622,$var_7623))
+		{
+			$this->error('员工核销密码与其他员工的相同，请重新设置');
+		}
+	}
+}
+$var_7628=array('uniacid' =>$var_7609,'realname' =>input('realname'),'mobile' =>$var_7613,'wxnumber' =>input('wxnumber'),'email' =>input('email'),'company' =>input('company'),'province' =>$var_7617,'city' =>$var_357,'area' =>$var_7619,'address' =>input('address'),'title' =>input('title'),'job' =>input('job'),'pic' =>$var_7621,'contract' =>input('contract'),'auth' =>input('auth'),'score' =>$v_6,'visit' =>input('visit'),'zan' =>input('zan'),'forward' =>input('forward'),'price' =>input('price'),'descp' =>$var_7620,'expand' =>$var_7612,'proid' =>$var_7615,'cityid' =>$var_7616,'areaid' =>$v_7,'voice' =>input('voice'),'hxmm' =>input('hxmm'),'autovoice' =>input('autovoice'),'store'=>$var_7618);
+if(empty($var_7610))
+{
+	$var_7629=Db::table('ims_sudu8_page_staff')->insert($var_7628);
+}
+else
+{
+	$var_7629=Db::table('ims_sudu8_page_staff')->where('id',$var_7610)->where('uniacid',$var_7609)->update($var_7628);
+}
+if($var_7629)
+{
+	$this->success('员工修改成功',Url('Shops/staff').'?appletid='.$var_7609);
+}
+else
+{
+	$this->error('员工修改失败');
+}
+}
+public function staffdel()
+{
+$var_7631=input('appletid');
+$var_7632=input('id');
+$var_7633=Db::table('ims_sudu8_page_staff')->where('uniacid',$var_7631)->where('id',$var_7632)->delete();
+if($var_7633)
+{
+	$this->success('删除成功');
+}
+else
+{
+	$this->success('删除失败');
+}
+}
+}
+?>

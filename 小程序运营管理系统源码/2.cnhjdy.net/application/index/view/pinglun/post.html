@@ -1,0 +1,378 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navCon"  class="navCon8">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			评论审核--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+
+
+
+
+				<form action="{:Url('Pinglun/plsave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+					<input type="hidden" name="id" value="{$list.id}">
+
+			
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">ID</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{$list.id}</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">文章ID</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{$list.aid}</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">文章标题</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{$list.title}</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">文章类型</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{if $list.type == "showArt"}文章{else}商品{/if}</span>
+
+						</div>
+
+
+
+					</div>
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">评论内容</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{$list.text}</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">评论时间</label>
+
+
+
+						<div class="controls">
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">{$list.createtime}</span>
+
+						</div>
+
+
+
+					</div>
+					<div class="control-group">
+
+
+
+						<label class="control-label">所属栏目</label>
+
+
+
+						<div class="controls">
+
+
+
+							<select name="flag" class="span3 m-wrap" id="cid">
+
+							<option value="1" {if $list['flag'] == 1} selected="selected" {/if}>通过</option>
+		                        <option value="2" {if $list['flag'] == 2} selected="selected" {/if}>不通过</option>
+
+											
+							</select>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择审核结果，默认审核通过</span>
+
+						</div>
+
+
+
+					</div>
+	
+
+
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+	
+
+    <script type="text/javascript">
+
+
+
+        $(function() {
+
+	    	var ue = UE.getEditor('editor');
+
+		});
+
+
+
+    	function checkinfo(){
+
+
+
+    		var typsdi = $("#typsdi").val();
+
+	    	if(typsdi==0){
+
+	    		alert("选择所属栏目");
+
+	    		return false;
+
+	    	}
+
+
+
+	    	
+
+    		val = $("#ueditor_textarea_content").val();
+
+    		$("#content").val(val);
+
+	    }
+
+
+
+	    function changq(me){
+
+
+
+		var val = $(me).val();
+
+
+
+		if(val == "showArt" || val == "showWxapps"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").show();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPro"){
+
+			$("#type1").hide();
+
+			$("#type2").show();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "showPic"){
+
+			$("#type1").show();
+
+			$("#type2").hide();
+
+			$("#type3").show();
+
+			$("#type4").hide();
+
+			$("#type5").show();
+
+			$("#type6").hide();
+
+		}
+
+
+
+		if(val == "page"){
+
+			$("#type1").hide();
+
+			$("#type2").hide();
+
+			$("#type3").hide();
+
+			$("#type4").hide();
+
+			$("#type5").hide();
+
+			$("#type6").show();
+
+		}
+
+
+
+	}
+
+
+
+     </script>
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

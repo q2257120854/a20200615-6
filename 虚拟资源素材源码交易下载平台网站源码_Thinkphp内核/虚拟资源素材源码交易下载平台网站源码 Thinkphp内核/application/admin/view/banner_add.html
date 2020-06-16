@@ -1,0 +1,84 @@
+{include file="index/header"}
+<body>
+<div class="fly-panel fly-panel-user">
+<div class="tpt—admin">
+<fieldset class="layui-elem-field layui-field-title">
+<legend>添加图片</legend>
+</fieldset>
+<form class="layui-form">
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required lay-verify="required" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">图片</label>
+    <div class="layui-input-block">
+	  <input type="file" name="file" class="layui-upload-file" id="image" style="float: left;">
+	  <input type="text" name="pic" class="layui-input" style="position: absolute;left: 111px;top: 0px;width: 500px">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">连接</label>
+    <div class="layui-input-block">
+	  <input type="text" name="links" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit="" lay-filter="banner_add">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1);return false;">返回</button>
+    </div>
+  </div>
+
+</form>
+<script>
+layui.use(['form', 'upload'],function(){
+  var form = layui.form
+  ,jq = layui.jquery;
+  
+  layui.upload({
+    url: '{:url("upload/upimage")}'
+    ,elem:'#image'
+    ,before: function(input){
+      loading = layer.load(2, {
+        shade: [0.2,'#000']
+      });
+    }
+    ,success: function(res){
+      layer.close(loading);
+      jq('input[name=pic]').val(res.path);
+      layer.msg(res.msg, {icon: 1, time: 1000});
+    }
+  }); 
+  
+  form.on('submit(banner_add)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("banner/add")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("banner/index")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<meta name="author" content="xiaopi UED Team" />
+		<title>{$config['webname']}APP下载官网</title>
+		<meta name="keywords" content="{$config['webname']}APP下载官网">
+		<meta name="description" content="{$config['webname']}，聚合全网爱奇艺、腾讯、芒果、优酷等VIP视频免费看">
+		<link rel="stylesheet" href="/Public/static/index/css/animate.css">
+		<link rel="stylesheet" href="/Public/static/index/css/style.css">
+		<script src="/Public/static/index/js/jquery.min.js"></script>
+		<script src="/Public/static/index/js/fullpage.js"></script>
+
+		<script type="text/javascript">
+			if (isMobile) {
+				window.location.href = "/Application/Index/qudao.html?uid={$sid}";
+			}
+		</script>
+		<script language="javascript">
+			//平台、设备和操作系统    
+			var system = {
+				win: false,
+				mac: false,
+				xll: false
+			};
+			//检测平台    
+			var p = navigator.platform;
+			system.win = p.indexOf("Win") == 0;
+			system.mac = p.indexOf("Mac") == 0;
+			system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+			//跳转语句，如果是手机访问就自动跳转到wap页面    
+			if (system.win || system.mac || system.xll) {} else {
+				window.location.href = "/Application/Index/qudao.html?uid={$sid}";
+			}
+		</script>
+
+	</head>
+	<body>
+		<!-- header -->
+		<div class="header">
+			<div class="wrapper">
+				<a href="#" class="logo"></a>
+				<div class="topbar">
+					<a class="btn btn-blue" href="{$config['xiazai']}"><i class="ico ico-android"></i> 安卓APP
+						<i class="icon icon-code"></i>
+						<span class="code">
+							<img src="http://qr.liantu.com/api.php?text={$config['xiazai']}" width="112" height="112" alt="" />
+							<em></em>
+							<i></i>
+						</span>
+					</a>
+					<a class="btn btn-blue" href="{$config['xiazai']}"><i class="ico ico-iso"></i> 苹果APP
+						<i class="icon icon-code"></i>
+						<span class="code">
+							<img src="http://qr.liantu.com/api.php?text={$config['xiazai']}" width="112" height="112" alt="" />
+							<em></em>
+							<i></i>
+						</span>
+					</a>
+					<a class="btn btn-blue" href="{$config['xiazai']}"><i class="ico ico-pc"></i> 电视APP
+						<i class="icon icon-code"></i>
+						<span class="code">
+							<img src="http://qr.liantu.com/api.php?text={$config['xiazai']}" width="112" height="112" alt="" />
+							<em></em>
+							<i></i>
+						</span>
+					</a>
+					<a class="btn btn-blue" href="{$config['xiazai']}"><i class="ico ico-pc"></i> PC应用
+						<i class="icon icon-code"></i>
+						<span class="code">
+							<img src="http://qr.liantu.com/api.php?text={$config['xiazai']}" width="112" height="112" alt="" />
+							<em></em>
+							<i></i>
+						</span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+		<!-- pages -->
+		<div class="pages" id="pages">
+			<div class="page page1">
+				<div class="page-inner">
+					<div class="download">
+						<!-- <div class="name">
+                        <i class="icon icon-logo"></i>
+                        <h1>微吧社区APP</h1>
+                        <h4>年轻人的兴趣资源社区。</h4>
+                    </div> -->
+						<div class="logo-version"><span class="num">v3.0</span></div>
+						<a href="{$config['xiazai']}" class="btn-download">立即下载</a>
+					</div>
+					<div class="caselist">
+						<ul>
+							<li class="item1"><img src="/Public/static/index/picture/case5.jpg"></li>
+							<li class="item2"><img src="/Public/static/index/picture/case4.jpg"></li>
+							<li class="item3"><img src="/Public/static/index/picture/case3.jpg"></li>
+							<li class="item4"><img src="/Public/static/index/picture/case2.jpg"></li>
+							<li class="item5"><img src="/Public/static/index/picture/case1.jpg"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="page page4">
+				<div class="page-inner">
+					<div class="textbox fl">
+						<h2>独家用户UI</h2>
+						<h3>界面美观，功能强大。</h3>
+						<ul class="ani">
+							<li class="ani-logo"></li>
+							<li class="ani-1"></li>
+							<li class="ani-2"></li>
+							<li class="ani-3"></li>
+							<li class="ani-4"></li>
+							<li class="ani-5"></li>
+						</ul>
+					</div>
+					<div class="showbox fr">
+						<div class="pic"><img src="/Public/static/index/picture/case5.jpg"></div>
+						<i class="icon icon-book"></i>
+						<span class="cloud"></span>
+					</div>
+				</div>
+			</div>
+			<div class="page page2">
+				<div class="page-inner">
+					<div class="textbox fl">
+						<h2>电视直播也能看</h2>
+						<h3>不止网络电影，电视直播也能看。</h3>
+						<ul class="ani">
+							<li class="ani-logo"></li>
+							<li class="ani-1"></li>
+							<li class="ani-2"></li>
+							<li class="ani-3"></li>
+							<li class="ani-4"></li>
+							<li class="ani-5"></li>
+						</ul>
+					</div>
+					<div class="showbox fr">
+						<div class="pic"><img src="/Public/static/index/picture/p1.jpg"></div>
+						<i class="icon icon-rocket"></i>
+						<span class="cloud"></span>
+					</div>
+				</div>
+			</div>
+			<div class="page page3">
+				<div class="page-inner">
+					<div class="textbox fr">
+						<h2>全网最火游戏直播</h2>
+						<h3>聚合各种游戏直播，去除打赏，观看不乱花钱。</h3>
+						<ul class="ani">
+							<li class="ani-logo"></li>
+							<li class="ani-1"></li>
+							<li class="ani-2"></li>
+							<li class="ani-3"></li>
+							<li class="ani-4"></li>
+							<li class="ani-5"></li>
+						</ul>
+					</div>
+					<div class="showbox">
+						<div class="pic"><img src="/Public/static/index/picture/p2.jpg"></div>
+						<i class="icon icon-gift"></i>
+						<span class="cloud"></span>
+					</div>
+				</div>
+			</div>
+			<div class="page page4">
+				<div class="page-inner">
+					<div class="textbox fl">
+						<h2>每一次签到，都是一次支持和鼓励</h2>
+						<h3>每日签到、积分商城，更多福利更多精彩</h3>
+						<ul class="ani">
+							<li class="ani-logo"></li>
+							<li class="ani-1"></li>
+							<li class="ani-2"></li>
+							<li class="ani-3"></li>
+							<li class="ani-4"></li>
+							<li class="ani-5"></li>
+						</ul>
+					</div>
+					<div class="showbox fr">
+						<div class="pic"><img src="/Public/static/index/picture/p3.jpg"></div>
+						<i class="icon icon-book"></i>
+						<span class="cloud"></span>
+					</div>
+				</div>
+			</div>
+			<!-- footer -->
+			<div class="page-footer">
+				<div class="download">
+					<p><i class="icon icon-logo"></i></p>
+					<h2>{$config['webname']}</h2>
+					<h3>再一次为了“你”升级</h3>
+					<p><a href="{$config['xiazai']}" class="btn-download">立即下载</a></p>
+				</div>
+				<!--
+            <div class="friendlink">
+                <span>友情链接：</span>
+                                       <a href="//div800.com" title="盒子云" >盒子云</a>
+                            </div>
+            <div class="copyright">
+                <p>Powered by 盒子云|Div800.com</p>
+                <p>浙ICP备15007923号-1</p>
+            </div>-->
+			</div>
+		</div>
+
+		<!-- 焦点导航 -->
+		<ul class="navbar" id="navbar">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<br><br><br><br><br><br>
+	</body>
+</html>

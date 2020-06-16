@@ -1,0 +1,116 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$t.title|strip_tags} - {$site_config['site_title']}</title>
+
+<meta name="keywords" content="{:isset($t['keywords'])?$t['keywords']:$site_config['seo_keyword']}">
+<meta name="description" content="{:isset($t['description'])?strip_tags(htmlspecialchars_decode($t['description'])):$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__HOME__/css/article.css">
+<div class="container weizhi_now visible-md visible-lg" style="margin-top: 5px;">
+</div>
+<div class="container clearfix" style="padding:0px 8px;">
+    <div class="article-left col-xs-12 col-md-9">
+
+        <div class="col-md-12">
+            <h3 class="article_title">{if condition="session('userid') eq 1"}
+                <a href="{:url('index/articles/edit',array('id'=>$t['id']))}" target="_blank">【编辑】</a>{/if} {$t.title}
+            </h3>
+            <div class="article_ini clearfix">
+                <a class="hidden-xs">时间：</a> <span class="ar_time">{$t.time|date='Y-m-d H:i:s',###}</span>
+                <a>作者：</a>
+                <a class="ar_author" href="{:url('user/index/home',array('id'=>$t.userid))}" target="_blank">{$t.username}</a>
+                <a>浏览：</a>
+                <span class="ar_person">{$t.view}</span> {if $t['userid'] neq session('userid') && session('userid') neq ''}
+                <a href="javaScript:void(0)" data-id="{$t.id}" class="shoucang" style="border:1px solid #CAE1FF;padding:5px">{if condition="$iscollect eq 1"}取消收藏{else /}收藏本文{/if}</a> {/if}
+            </div>
+            <hr class="hx" />
+            <input type="hidden" value="{$t.tid}" id="cateid" />
+
+            <div class="article_wenz">
+                <!-- 开始文章内容-->
+                <!-- <p>
+                <img src="{$t.coverpic}" title="{$t.title}" />
+            </p> -->
+
+                <p>{$t.content|htmlspecialchars_decode}</p>
+                {:hook('viewVideo',array('id'=>$t.id,'type'=>1))}
+                {if condition="$t['keywords'] neq ''"}
+                <p> {volist name="$t.keyword_arr" id="vo"}
+            
+                    <a class="layui-btn layui-btn-primary layui-btn-xs"  href="{:url('index/index/search',array( 'ks'=>$vo))}" target="_blank">{$vo}</a>
+               
+                  {/volist}
+                  </p>
+                {/if}
+                <!--文章内容结束-->
+                {:hook('copyright')}  
+                {:hook('attachlinkshow',array('id'=>$t.id,'type'=>1))}
+                
+            </div>
+        </div>
+        <div class="col-md-12">
+            {include file="index/comment"}
+        </div>
+    </div>
+
+    <div class="article-right1 col-xs-12 col-md-3">
+        <div class="article-right">
+            <span class="ar_rtitle">
+				<i class="glyphicon glyphicon-user"></i>本文作者</span>
+            <div class="ar_athuor">
+                <a href="{:url('user/index/home',array('id'=>$t.userid))}" target="_blank">
+                    <img src="{$t.userhead|getheadurl}" />
+                </a>
+            </div>
+
+            <span class="ar_rtitle">
+				<i class="glyphicon glyphicon-signal"></i>阅读排行</span>
+            <ul class="arph_list clearfix">
+                {volist name="artphb" id="vo"}
+                <li>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank">{$vo.title}</a>
+                </li>
+                {/volist}
+            </ul>
+
+
+            <span class="ar_rtitle">
+				<i class="glyphicon glyphicon-th-list"></i>文章推荐</span>
+            <ul class="arph_list tuijian clearfix">
+                {volist name="artchoice" id="vo"}
+                <li>
+                    <a href="{:url( 'index/index/html',array( 'id'=>$vo.id))}" target="_blank">{$vo.title}</a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script>
+    layui.use('form', function() {
+        var form = layui.form,
+            jq = layui.jquery;
+
+        //收藏
+        jq('.shoucang').click(function() {
+            var idnum = jq(this).data('id');
+            var obj = jq(this);
+            jq.post('{:url("index/api/zan_collect")}', {
+                'zan_collect': 'collect',
+                'id': idnum,
+                'type': 3
+            }, function(data) {
+                if (data.code == 200) {
+                    if (data.res == '减') {
+                        //  jq(obj).removeClass('layui-btn-danger');
+                        obj.html("收藏本文");
+                    } else {
+                        //  jq(obj).addClass('layui-btn-danger');
+                        obj.html('<e>取消收藏</e>');
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+{/block}

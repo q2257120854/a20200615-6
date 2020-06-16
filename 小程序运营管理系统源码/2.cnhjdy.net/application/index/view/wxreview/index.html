@@ -1,0 +1,69 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem10">
+<script src="/js/layer/layer.js"></script>
+<style>
+.layui-layer-loading .layui-layer-loading1{background-size: 80px 80px}
+</style>
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			上传微信审核--{$applet.name}
+		</li>
+	</ul>
+
+
+		<div class="row-fluid">
+		<div class="portlet box">
+			<div class="portlet-body form">
+					<div style="text-align:center">
+						<div style="display: flex;flex-direction: row;font-size:18px;justify-content:center;">
+							<div class="one active">
+								<span style="width:30px;height:30px;line-height:30px;background:#428bca;color:#fff;display: inline-block;border-radius: 30px!important;">1</span> 扫描二维码
+							</div>
+							<img src="/image/btn_jt.png" alt="" style="width:40px;height:40px;margin:0 50px">
+							<div class="two">
+								<span style="width:30px;height:30px;line-height:30px;background:#999;color:#fff;display: inline-block;border-radius: 30px!important;">2</span> 填写信息并上传代码
+							</div>
+							<img src="/image/btn_jt.png" alt="" style="width:40px;height:40px;margin:0 50px">
+							<div class="three">
+								<span style="width:30px;height:30px;line-height:30px;background:#999;color:#fff;display: inline-block;border-radius: 30px!important;">3</span> 上传成功
+							</div>
+						</div>
+						<img src="http://wx.hdewm.com/uploadApi.php?do=qrcode&code_token={$code_token}" alt="" style="width:140px;background:#f7f7f7;padding:10px;margin:50px auto 10px">
+						<p>请先扫描以上二维码，成功后再填写版本信息</p>
+					</div>
+			</div>
+		</div>
+	</div>
+<script>
+	var token = "{$code_token}";
+	var id = "{$id}";
+	var code_uuid = "{$code_uuid}";
+	/*检查是否登录*/
+	var last = 408;
+	var request = true;
+	var set = setInterval(function () {
+	    if(request == true){
+	        $.ajax({
+				url : "{:Url('Wxreview/checkscan')}?token="+token+"&last="+last,
+				beforeSend:function () {
+					request = false;
+                },
+				success:function (res) {
+				    var res = JSON.parse(res);
+                    if(res.errno == 0 && res.data.errcode == 405){
+                        request = false;
+                        var scan_token = res.data.code_token;
+                        window.location.href = "{:Url('Wxreview/wxxcxinfo')}?appletid="+id+"&status=1&token="+token+"&scan_token="+scan_token+"&code_uuid="+code_uuid;
+					}else{
+                        request =true;
+					}
+                }
+			});
+		}
+    },2000);
+</script>
+
+
+{include file="public/foot_more" /}

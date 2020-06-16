@@ -1,0 +1,289 @@
+/**xiaochengxu_index.css**/
+.xiaochengxu-header ~ .xiaochengxu-index {
+	margin-top: 60px;
+}
+.xiaochengxu-index .container {
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.xiaochengxu-index .banner {
+	width: 100%;
+	height: 429px;
+	background: url('../../images/xiaochengxu/index/banner_index.jpg') no-repeat center top #7338EC;
+	background: url('../../images/xiaochengxu/index/banner_index.jpg') no-repeat center top, linear-gradient(left, rgb(105,65,210),rgb(104,175,255));
+	background: url('../../images/xiaochengxu/index/banner_index.jpg') no-repeat center top,-webkit-linear-gradient(left, rgb(105,65,210),rgb(104,175,255));
+}
+.xiaochengxu-index .banner .banner-btn {
+	position: absolute;
+	display: block;
+	width: 165px;
+	height: 46px;
+	top: 302px;
+	left: 0;
+}
+
+.xiaochengxu-index .title-box {
+	padding-top: 57px;
+}
+.xiaochengxu-index .col-title {
+	text-align: center;
+	font-size: 30px;
+	color: #333;
+}
+.xiaochengxu-index .title-desc {
+	text-align: center;
+	margin-top: 14px;
+	font-size: 16px;
+	color: #999;
+}
+
+.col1 {
+	padding-bottom: 90px;
+	background: #fafafa;
+}
+.col1 .point-group {
+	margin-top: 92px;
+}
+.col1 .point-item {
+	width: 226px;
+	float: left;
+	margin-right: 16px;
+}
+.col1 .point5 {
+	margin-right: 0;
+}
+.col1 .point-item .icon-box {
+	width: 43px;
+	height: 43px;
+	margin: 0 auto;
+	background: url('../image/col1-icons.png') no-repeat;
+	background-position: 2px 0;
+}
+.col1 .point-item .icon1 {
+	background-position: 2px 0;
+}
+.col1 .point-item .icon2 {
+	background-position: -54px 0;
+}
+.col1 .point-item .icon3 {
+	background-position: -112px 0;
+}
+.col1 .point-item .icon4 {
+	background-position: -168px 0;
+}
+.col1 .point-item .icon5 {
+	background-position: -234px 0;
+}
+.col1 .point-item .point-name {
+	text-align: center;
+	font-size: 19px;
+	color: #333;
+	margin-top: 44px;
+}
+.col1 .point-item .point-desc {
+	margin-top: 16px;
+	padding-left: 10px;
+}
+.col1 .point-item .desc3 {
+	padding-left: 0;
+}
+.col1 .point-item .point-desc .txt {
+	font-size: 14px;
+	color: #999;
+	line-height: 22px;
+}
+
+.col2 {
+	background: #fff;
+	padding-bottom: 75px;
+}
+.col2 .title-desc {
+	margin-top: 24px;
+	font-size: 17px;
+	color: #777;
+}
+.col2 .app-list {
+	margin-top: 23px;
+}
+.col2 .app-item {
+	margin-top: 45px;
+	float: left;
+	margin-left: 107px;
+}
+.col2 .app-item .icon-box {
+	width: 76px;
+	height: 76px;
+	background: url('../image/col2-icons.png') no-repeat;
+	background-position: 0 0;
+}
+.col2 .app-item .icon1 {
+	background-position: 0 0;
+}
+.col2 .app-item .icon2 {
+	background-position: -176px 0;
+}
+.col2 .app-item .icon3 {
+	background-position: -356px 0;
+}
+.col2 .app-item .icon4 {
+	background-position: -537px 0;
+}
+.col2 .app-item .icon5 {
+	background-position: -715px 0;
+}
+.col2 .app-item .icon6 {
+	background-position: -895px 0;
+}
+.col2 .app-item .icon7 {
+	background-position: 0 -160px;
+}
+.col2 .app-item .icon8 {
+	background-position: -176px -160px;
+}
+.col2 .app-item .icon9 {
+	background-position: -356px -160px;
+}
+.col2 .app-item .icon10 {
+	background-position: -537px -160px;
+}
+.col2 .app-item .icon11 {
+	background-position: -715px -160px;
+}
+.col2 .app-item .icon12 {
+	background-position: -895px -160px;
+}
+.col2 .app-item .app-name {
+	font-size: 18px;
+	color: #666;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.col3 {
+	padding-bottom: 70px;
+	background: #FAFAFA;
+}
+.col3 .title-box {
+	padding-top: 66px;
+}
+.col3 .program-group {
+	margin-top: 55px;
+}
+.col3 .program-item {
+	float: left;
+	width: 238px;
+	height: 70px;
+	line-height: 70px;
+	margin: 2px 1px;
+	background: url('../image/col3-img.png') no-repeat;
+	background-position: 0 0;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+}
+.col3 .program1 {
+	background-position: 0 0;
+}
+.col3 .program2 {
+	background-position: -240px 0;
+}
+.col3 .program3 {
+	background-position: -480px 0;
+}
+.col3 .program4 {
+	background-position: -720px 0;
+}
+.col3 .program5 {
+	background-position: -960px 0;
+}
+.col3 .program6 {
+	background-position: 0 -74px;
+}
+.col3 .program7 {
+	background-position: -240px -74px;
+}
+.col3 .program8 {
+	background-position: -480px -74px;
+}
+.col3 .program9 {
+	background-position: -720px -74px;
+}
+.col3 .program10 {
+	background-position: -960px -74px;
+}
+
+.col4 {
+	padding-bottom: 8px;
+	background: #fff;
+}
+.col4 .advantage-group {
+	margin-top: 60px;
+}
+.col4 .adv-item {
+	float: left;
+	width: 152px;
+	height: 152px;
+	margin: 0 72px;
+	margin-bottom: 80px;
+	border: 1px solid #bbb;
+	border-radius: 50%;
+	text-align: center;
+}
+.col4 .adv-item .digit {
+	margin-top: 10px;
+	font-size: 40px;
+	color: #1083F8;
+	font-family: 'arial';
+	font-weight: bold;
+}
+.col4 .adv-item .txt {
+	font-size: 18px;
+	color: #666;
+	line-height: 30px;
+}
+
+.col5 {
+	height: 120px;
+	background: #1083F8;
+	color: #fff;
+}
+.col5 .text-box {
+	padding-top: 40px;
+}
+.col5 .text-box .txt {
+	font-size: 30px;
+	font-weight: bold;
+	float: left;
+	margin-left: 230px;
+}
+.col5 .text-box .phone-icon {
+	float: left;
+	width: 33px;
+	height: 33px;
+	margin-left: 34px;
+	margin-top: 3px;
+	background: url('../image/col5-icon.png') no-repeat center center #fff;
+	border-radius: 50%;
+}
+.col5 .text-box .phone-num {
+	float: left;
+	font-size: 30px;
+	line-height: 40px;
+	margin-left: 8px;
+	font-family: 'KaiTi';
+}
+.col5 .text-box .col5-btn {
+	display: block;
+	width: 132px;
+	height: 36px;
+	line-height: 36px;
+	margin-left: 36px;
+	float: left;
+	color: #1083F8;
+	font-size: 21px;
+	background: #fff;
+	text-align: center;
+	border-radius: 50px;
+}

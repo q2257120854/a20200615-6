@@ -1,0 +1,136 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel7-2">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			发布管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+						<tr>
+							<th style="width: 50px;">ID</th>
+							<th style="width: 100px;">发布人昵称</th>
+							<th>发布人头像</th>
+							<th>发布内容</th>
+							<th>所属分类</th>
+							<th>发布价格</th>
+							<th>是否置顶</th>
+							<th>是否推荐</th>
+							<th>发布时间</th>
+							
+							<th style="width:200px">操作</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+					
+					{if $releaseList}
+						{foreach $releaseList as $item}
+							<tr>
+								<td>
+									{$item.id}
+								</td>
+								<td>
+									{$item.nickname}
+								</td>
+								<td>
+									<img src="{$item.avatar}" style="width:50px;">
+								</td>
+								<td style="width:450px">
+									{$item.content}
+								</td>
+								<td>
+									{$item.func_title}
+								</td>
+								<td>
+									{$item.release_money}
+								</td>
+								<td>
+									{if $item.stick == 1} <span class="btn green">已置顶</span> {else} <span class="btn gray">未置顶</span> {/if}
+								</td>
+								<td>
+									{if $item.hot == 1} <span class="btn green">已推荐</span> {else} <span class="btn gray">未推荐</span> {/if}
+								</td>
+								<td>
+									{$item.createtime}
+								</td>
+								<td>
+									<a href="{:Url('Forum/releaseCon')}?appletid=<?php echo $_GET['appletid']?>&release_id={$item.id}"><button class="btn btncolor" type="submit">详情</button></a>
+									<form action="{:Url('Forum/releaseHot')}?appletid=<?php echo $_GET['appletid']?>&release_id={$item.id}" method="post" enctype="multipart/form-data">
+										<button class="btn btncolor" type="submit">
+										{if $item.hot != 1}
+											推荐
+										{else}
+											取消推荐
+										{/if}
+										</button>
+									</form>
+									<form action="{:Url('Forum/releaseDel')}?appletid=<?php echo $_GET['appletid']?>&release_id={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+										<button class="btn btncolor" type="submit">删除</button>
+									</form>
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+						
+					</tbody>
+
+				</table>
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$release->render()}
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+</script>
+
+
+
+{include file="public/foot_more" /}

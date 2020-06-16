@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+  <body>
+		<div class="aui-tab" id="tab">
+    <div class="aui-tab-item aui-active" style="">推荐</div>
+    <div class="aui-tab-item">电影</div>
+    <div class="aui-tab-item">剧集</div>
+    <div class="aui-tab-item">综艺</div>
+	<div class="aui-tab-item">动漫</div>
+	</div>
+	
+  </body>
+     
+  
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/aui-tab.js" ></script>
+  <script type="text/javascript">
+  apiready = function(){
+	
+	var header = $api.dom('header'); // 获取 header 标签元素
+        headerH = $api.fixStatusBar(header);
+		
+			daohang()
+	    	fnOpenwodeFrame();
+	  
+	
+	}
+  function daohang(){
+    var tab = new auiTab({
+        element:document.getElementById("tab"),
+        index:1,
+        repeatClick:false
+    },function(ret){
+      // alert(ret.index)
+		// fnOpenwodeFrame();
+		 if (ret.index == 1 ) {
+				fnOpenwodeFrame();
+				index2()
+				  index3()
+				  index4()
+				  index5()
+			}
+			
+			 if ( ret.index == 2) {
+				fnOpenNvnBar2();
+				 index1()
+				  index3()
+				  index4()
+				  index5()
+				}
+		 if ( ret.index == 3) {
+				fnOpenNvnBar3();
+				 index1()
+				  index2()
+				  index4()
+				  index5()
+				}
+	   
+	   
+	    if ( ret.index == 4) {
+				fnOpenNvnBar4();
+				 index1()
+				  index3()
+				  index2()
+				  index5()
+				}
+	   
+	    if ( ret.index == 5) {
+				fnOpenNvnBar5();
+				 index1()
+				  index3()
+				  index4()
+				  index2()
+				}
+	   
+    });
+  
+  }
+  
+  function index1(){
+      api.setFrameAttr({
+          name: 'index1',
+          hidden: true
+      });
+    }
+	function index2(){
+      api.setFrameAttr({
+          name: 'index2',
+          hidden: true
+      });
+    }
+	
+	function index3(){
+      api.setFrameAttr({
+          name: 'index3',
+          hidden: true
+      });
+    }
+	function index4(){
+      api.setFrameAttr({
+          name: 'index4',
+          hidden: true
+      });
+    }
+	function index5(){
+      api.setFrameAttr({
+          name: 'index5',
+          hidden: true
+      });
+    }
+	
+	    
+     function fnOpenNvnBar5() {
+        api.openFrame({
+            name: 'index5',
+            url: './index5.html',
+            rect: {
+                x: 0,
+               y: headerH+125,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+	 function fnOpenNvnBar4() {
+        api.openFrame({
+            name: 'index4',
+            url: './index4.html',
+            rect: {
+                x: 0,
+                y: headerH+125,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+	 function fnOpenNvnBar3() {
+        api.openFrame({
+            name: 'index3',
+            url: './index3.html',
+            rect: {
+                x: 0,
+             y: headerH+125,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+  function fnOpenNvnBar2() {
+        api.openFrame({
+            name: 'index2',
+            url: './index2.html',
+            rect: {
+                x: 0,
+              y: headerH+125,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+   function fnOpenwodeFrame() {
+        api.openFrame({
+            name: 'index1',
+            url: './index1.html',
+            rect: {
+                x: 0,
+                y: headerH+125,
+                w: 'auto',
+                marginBottom: 45
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+  </script>
+  </html>

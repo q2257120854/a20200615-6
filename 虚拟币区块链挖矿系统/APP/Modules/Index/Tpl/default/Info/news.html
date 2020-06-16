@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<title>EFD</title>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<link media="screen" rel="stylesheet" type="text/css" href="__PUBLIC__/css/general.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css"  />
+<link href="__PUBLIC__/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css" />
+<style type="text/css">
+	#view {
+	/* SET THE WIDTH OF THE MODAL 设置Modal的宽度*/
+	width: 900px;
+	/* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
+	margin: -250px 0 0 -450px;
+	}
+</style>
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 6]><link media="screen" rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin-ie.css" /><![endif]-->
+<script src="__PUBLIC__/js/jquery-1.7.2.min.js"></script>
+<script src="__PUBLIC__/js/jquery.dataTables.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.js"></script>
+<script src="__PUBLIC__/js/jquery.dataTables.bootstrap.js"></script>
+<script src="__PUBLIC__/js/custom.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		
+		var method = '{$Think.server.path_info}';
+		var end = method.split('/')[3];
+		$('a[sid]').removeClass('selected');
+		$('a[sid*='+ end +']').attr('class','selected');
+		$('a[sid*='+ end +']').click();
+
+
+		$('a[href="#view"]').click(function(){
+			//异步加载信息内容
+			$.post(
+				"{:U(GROUP_NAME.'/Index/ajaxAnn')}",
+				{"id":$(this).attr('aid')},
+				function(data){	
+					$('#anntitle').html(data['title']);
+					$('#anncontent').html(data['content']);		
+				}
+			);
+		});
+
+		$('#tnews').dataTable({
+			"bFilter": false,
+			"bInfo": false,
+			"bLengthChange": false,
+			"bSort": false,
+			"oLanguage" :{
+					"sLengthMenu": "每页显示 _MENU_ 条记录",
+					"sZeroRecords": "抱歉， 没有找到",
+					"sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+					"sInfoEmpty": "没有数据",
+					"sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+					"sZeroRecords": "没有检索到数据",
+					"sSearch": "搜索:",
+					"oPaginate": {
+					"sFirst": "首页",
+					"sPrevious": "前一页",
+					"sNext": "后一页",
+					"sLast": "尾页"
+					}
+				}
+		});
+	});
+</script>
+</head>
+ 
+<body>
+	<!--[if !IE]>start wrapper<![endif]-->
+	<div id="wrapper">
+		<!--[if !IE]>start head<![endif]-->
+		<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+		<!--[if !IE]>end head<![endif]-->
+		
+		<!--[if !IE]>start content<![endif]-->
+		<div id="content">
+			<div id="wrapper">
+		<!--[if !IE]>start content<![endif]-->
+			<!--[if !IE]>start page<![endif]-->
+			<div id="page">
+				<div class="inner">
+				
+					<!--[if !IE]>start section<![endif]-->	
+					<div class="section table_section">
+						<!--[if !IE]>start title wrapper<![endif]-->
+					  <div class="title_wrapper">
+							<h2>公司最新公告</h2>
+							<span class="title_wrapper_left"></span>
+							<span class="title_wrapper_right"></span>					  </div>
+						<!--[if !IE]>end title wrapper<![endif]-->
+						<!--[if !IE]>start section content<![endif]-->
+					  <div class="section_content">
+							<!--[if !IE]>start section content top<![endif]-->
+							<div class="sct">
+								<div class="sct_left">
+									<div class="sct_right">
+										<div class="sct_left">
+											<div class="sct_right">
+    											<table class="table table-striped table-bordered table-hover" cellspacing="1" cellpadding="3" id="tnews">
+													<thead>
+														<th>公告主题</th>
+														<th>日期</th>
+														<th>查看</th>
+													</thead>
+													<tbody>
+														<foreach name="ann" item="v">
+															<tr>
+																<td><a href="#view" data-toggle="modal" aid="{$v.id}">{$v.title}</a></td>
+																<td align="center">{$v.addtime|date='Y-m-d',###}</td>
+																<td align="center"><a href="#view" data-toggle="modal" aid="{$v.id}">查看</a></td>
+															</tr>
+														</foreach>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						  <!--[if !IE]>end section content top<![endif]-->
+						  <!--[if !IE]>start section content bottom<![endif]-->
+						  <span class="scb"><span class="scb_left"></span><span class="scb_right"></span></span>
+						  <!--[if !IE]>end section content bottom<![endif]-->
+						</div>
+						<!--[if !IE]>end section content<![endif]-->
+					</div>
+					<!--[if !IE]>end section<![endif]-->
+						
+				</div>
+			</div>
+			<!--[if !IE]>end page<![endif]-->
+			<!--[if !IE]>start sidebar<![endif]-->
+			<include file="Public:left" />
+			<!--[if !IE]>end sidebar<![endif]-->
+		</div>
+		<!--[if !IE]>end content<![endif]-->
+	</div>
+		</div>
+		<!--[if !IE]>end content<![endif]-->
+
+	<!--[if !IE]>end wrapper<![endif]-->
+	<!--[if !IE]>start footer<![endif]-->
+	<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+	<!--[if !IE]>end footer<![endif]-->
+	<!--模式窗口-->
+	<div class="modal hide fade" id="view">
+	    <div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">×</a>
+			<h4 id="anntitle"></h4>
+	    </div>
+	    <div class="modal-body" id="anncontent">
+			
+	    </div>
+	    <div class="modal-footer">
+	    	<button type="button" class="close" data-dismiss="modal">关闭</button>
+	    </div>
+  	</div>
+  <!--模式窗口-->
+	<!--[if !IE]>end wrapper<![endif]-->
+
+</body>
+</html>

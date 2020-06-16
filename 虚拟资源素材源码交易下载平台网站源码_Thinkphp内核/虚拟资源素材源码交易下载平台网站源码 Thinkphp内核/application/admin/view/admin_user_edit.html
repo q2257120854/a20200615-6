@@ -1,0 +1,67 @@
+{extend name="base" /} {block name="body"}
+
+<!--tab标签-->
+<div class="layui-tab-brief">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form form-container" data-url="{:url('admin/admin_user/update')}" localtion-url="{:url('admin/admin_user/index')}">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" value="{$admin_user.username}" required lay-verify="required" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" value="" placeholder="（选填）如不修改则留空" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重复密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="confirm_password" value="" placeholder="（选填）如不修改则留空" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">安全码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="security_code" value="{$admin_user.security_code}" required lay-verify="required" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="status" value="1" title="启用" {if condition="$admin_user.status==1" } checked="checked" {/if}>
+                        <input type="radio" name="status" value="0" title="禁用" {if condition="$admin_user.status==0" } checked="checked" {/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属权限组</label>
+                    <div class="layui-input-inline">
+                        <select name="group_id" lay-verify="required">
+                                {foreach name="auth_group_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$admin_user.group_id==$vo.id"} selected="selected"{/if}>{$vo.title}</option>
+                                {/foreach}
+                            </select>
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="{$admin_user.id}">
+                <div class="btable-paged">
+                    <div class="layui-main">
+                        <div class="formbtngroup">
+                            <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">更新</button>
+                            <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

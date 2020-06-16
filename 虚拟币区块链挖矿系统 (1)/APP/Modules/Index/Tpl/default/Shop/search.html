@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>超市</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="icon" type="image/png" href="/theme/default/images/favicon.png">
+		<link href="/Public/home/css/amazeui.min.css" rel="stylesheet" type="text/css" />
+		<link href="/Public/home/css/style.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="stylesheet" href="/Public/btb/css/lib.css?2">
+		<link href="/Public/gec/web/fonts/iconfont.css" rel="stylesheet">
+		<link rel="stylesheet" href="/Public/gec/web/css/weui.min.css"/>
+	<link href="/Public/gec/web/css/font-awesome.min.css" rel="stylesheet">
+	    <script src="/Public/btb/js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="/Public/btb/css/weui.min.css"/>
+    <link rel="stylesheet" href="/Public/btb/css/jquery-weui.min.css">
+    <link href="/Public/btb/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Public/btb/fonts/iconfont.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/Public/btb/css/styles.css"/>
+		<script src="/Public/home/js/jquery-1.10.2.min.js"></script>
+		<script src="/Public/home/js/time.js"></script>
+		<script src="/Public/home/js/search.js"></script>
+		<script type="text/javascript" src="/Public/home/js/lazyload.js"></script>
+		<style>
+			.shop-list-mid .tit a{color: #909090;
+    font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;}
+		</style>
+	</head>
+	<body>
+    <header class="header">
+        <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+        <span class="header_c">PCO商城</span>
+		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+    </header>
+	    <div style="height: 40px;"></div>
+	    <ul class="list-nav">
+	    	<li class="current"><a href="">综合</a></li>
+	    	<li><a href="">销量</a></li>
+	    	<li><a href=""><i class="list-price">价格</i></li>
+	    	<li><a href="">新品</a></li>
+	    </ul>
+	    <div class="content-list">
+	    	<div class="list-left">
+				<empty name="cid">
+					<li><a href="{:U('Shop/search')}"><font color='#3663F3'>全部</font></a></li>
+				<else />
+					<li><a href="{:U('Shop/search')}"><font color='#BBB'>全部</font></a></li>
+				</empty>
+				
+				<foreach name="classdata" item="vo">
+				<if condition="$cid eq $vo['cid']">
+					<li><a href="{:U('Shop/search',['cid'=>$vo['cid']])}"><font color='#3663F3'>{$vo['cname']}</font></a></li>
+				<else/>
+					<li><a href="{:U('Shop/search',['cid'=>$vo['cid']])}"><font color='#BBB'>{$vo['cname']}</font></a></li>
+				</if>
+				</foreach>
+	    	</div>
+	    	<div class="list-right">
+	    		<ul class="list-pro">
+				<foreach name="goods_list" item="ty">
+	    	<li>
+	    		<a href="__APP__/index/Shop/index/gid/{$ty['gid']}"><img src="/cheng/Public/Goodsuploads/{$ty['gpic']}" class="list-pic" /></a>
+	    		<div class="shop-list-mid" style="width: 65%;">
+                	<div class="tit"><a href="__APP__/index/Shop/index/gid/{$ty['gid']}">{$ty['gname']}</a></div>
+                	<div class="am-gallery-desc">PCO币：{$ty['spjiage']}</div>
+                	<p>人民币参考价：{$ty['goldprice']}</p>
+                </div>
+
+	    	</li>
+	    	 	</foreach>
+	    </ul>
+	    	</div>
+	    </div>
+	    
+	    <!--底部-->
+ <div style="height: 55px;"></div>
+
+ 
+    <link href="/Public/kj/css/styles.css" type="text/css" rel="stylesheet">
+<style>
+	.footer ul li{
+		width: 25%;
+	}
+</style>
+<div class="footer">
+    <ul>
+        <li><a href="{:U('Index/Emoney/shouye')}"> <span class="icn1"></span>
+            <p>首页</p></a></li>
+        <li><a href="{:U('Index/Shop/plist')}"> <span class="icn2"></span>
+            <p>矿机商场</p></a></li>
+        <li><a href="{:U('Index/Emoney/index')}"> <span class="icn3"></span>
+            <p>交易中心</p></a></li>
+        <li><a href="{:U('Index/Index/index')}"> <span class="icn4"></span>
+            <p>个人中心</p></a></li>
+    </ul>
+</div>
+
+<script src="/Public/home/js/jquery.min.js"></script>
+<script src="/Public/home/js/amazeui.min.js"></script>
+	</body>
+</html>

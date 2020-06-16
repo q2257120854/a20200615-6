@@ -1,0 +1,72 @@
+<extend name="Index:base" />
+<block name="content">
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<!-- 面包屑导航 -->
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="__APP__/admin">首页</a>
+				</li>
+				<li class="active">商品发货</li>
+			</ul><!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<!-- 页面导航 -->
+			<div class="page-header">
+				<h1>
+					商品发货
+
+				</h1>
+			</div>
+		</div>
+	</div>
+	<!-- =================================================== -->
+	<div class="main-container">
+		<div class="col-xs-9">
+			<form class="form-horizontal" role="form" action="__CONTROLLER__/postorderState" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="onumber" value="{$onumber}"/>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">快递名称：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" placeholder="请输入快递名称" name="kuaidiname">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right">快递单号：</label>
+					<div class="col-sm-10">
+						<input type="text" class="col-xs-10 col-sm-5" placeholder="请输入快递单号" name="expressnum">
+					</div>
+				</div>
+
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button type="submit" class="btn btn-info">
+							<i class="icon-ok bigger-110"></i>
+							发货
+						</button>
+						&nbsp; &nbsp; &nbsp;
+						<button type="reset" class="btn">
+							<i class="icon-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+	<!-- ======================================= -->
+	<!-- //加载公共js -->
+<block name="privatejs">
+	<!-- 加载配置文件 2-->
+	<script type="text/javascript" src="__PUBLIC__/admin/js/ueditor/ueditor.config.js"></script>
+	<!-- 加载编辑器源码文件3 -->
+	<script type="text/javascript" src="__PUBLIC__/admin/js/ueditor/ueditor.all.js"></script>
+
+</block>
+
+

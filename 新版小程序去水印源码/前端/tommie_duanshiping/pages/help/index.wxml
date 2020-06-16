@@ -1,0 +1,40 @@
+<view class="container">
+    <view class="main">
+        <view class="t">
+            <image src="/tommie_duanshiping/resource/image/bangzhu.png "></image> 如何去水印？
+        </view>
+        <view class="line"></view>
+        <view class="c">
+			1.打开需要去水印的APP，找到分享按钮点击分享选择“复制链接”。
+			<view class="lines"></view>
+			2.打开本程序会自动获取到复制的链接，点击粘贴，然后再点击解析就可以获取到去除水印的视频了。
+		</view>
+        <view class="t">
+            <image src="/tommie_duanshiping/resource/image/bangzhu.png "></image> 为什么我解析了视频还有水印？
+        </view>
+        <view class="line"></view>
+        <view class="c">
+			请检查AAP中原作者上传的视频本身是否有水印，如果视频本身有水印暂时是无法去除的，抱歉!
+		</view>
+        <view class="t">
+            <image src="/tommie_duanshiping/resource/image/bangzhu.png "></image> 为什么无法下载视频？
+        </view>
+        <view class="line"></view>
+        <view class="c">
+			如果视频大于10M，小程序是无法直接下载的，可以复制下载链接通过其他方法下载:
+			<view class="lines"></view>
+			ios用户建议使用[Docunments]或者[捷径]下载视频(App store下载即可);
+			<view class="lines"></view>
+			安卓用户建议使用QQ浏览器下载视频;
+		</view>
+        <view class="t">
+            <image src="/tommie_duanshiping/resource/image/bangzhu.png "></image> 解析失败会扣次数吗？
+        </view>
+        <view class="line"></view>
+        <view class="c">
+			不会的，请放心使用。
+			<view class="lines"></view>
+			如果由于系统异常导致的错误扣次数，您可联系管理员为您补偿解析次数。
+		</view>
+    </view>
+</view>

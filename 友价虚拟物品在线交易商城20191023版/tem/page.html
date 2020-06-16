@@ -1,0 +1,52 @@
+
+<?
+$pageall=$page_count;
+?>
+<?
+if($page_count>1){
+?>
+<div id="page">
+<ul>
+<li class="oprev"><a href="<?=rentser('p',1,'','',$nowurl)?>">首页</a></li>
+<?
+if($page>1){
+?>
+<li class="oprev"><a href="<?=rentser('p',$page-1,'','',$nowurl)?>">上一页</a></li>
+<?}?>
+<?
+if($page>1){
+?>
+<li class="onone"><a href="<?=rentser('p',1,'','',$nowurl)?>">1</a></li>
+<?
+if($page>2){
+?>
+<li class="dott">...</li>
+<?}?>
+<?}?>
+<?
+for($i=$page-2;$i<$page;$i++){
+	if($i>1){
+?>
+<li class="onone"><a href="<?=rentser('p',$i,'','',$nowurl)?>"><?=$i?></a></li>
+<?}}?>
+<li class="ohave"><?=$page?></li>
+<?
+for($i=$page+1;$i<=$page+6;$i++){
+	if($i<=$pageall){
+?>
+<li class="onone"><a href="<?=rentser('p',$i,'','',$nowurl)?>"><?=$i?></a></li>
+<?}}?>
+<?
+if($i<$pageall){
+?>
+<li class="dott">...</li>
+<?}?>
+<?
+if($page<$page_count){
+?>
+<li class="onext"><a href="<?=rentser('p',$page+1,'','',$nowurl)?>">下一页</a></li>
+<?}?>
+<li class="onext"><a href="<?=rentser('p',$page_count,'','',$nowurl)?>">末页</a></li>
+</ul>
+</div>
+<?}?>

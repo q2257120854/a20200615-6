@@ -1,0 +1,130 @@
+{include file="public/head" /}
+
+<body class="page-header-fixed">
+
+<div class="page-container">
+{include file="public/left" /}
+<div style="margin:25px">
+<div class="page-content" id="container">
+
+<style type="text/css">
+
+	.editors{
+
+		max-width: 770px;
+
+		min-height: 600px;
+
+	}
+
+	.w-e-text-container{
+
+		min-height: 600px !important;
+
+	}
+	.weiz{
+
+		margin-left:20px;
+
+		margin-top: 40px;
+
+		margin-bottom: 20px;
+
+	}
+
+</style>
+
+
+
+<input type="hidden" id="nowhtml" value="navAbout" class="navAbout1">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			公司信息
+
+		</li>
+
+	</ul>
+
+
+
+<style>
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+
+</style>
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('About/save')}" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz">公司信息</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">公司介绍</label>
+						<div class="controls">
+							<script id="descs" name="descs" type="text/plain">{if $newsinfo}{$newsinfo.descs}{/if}</script>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">团队介绍</label>
+						<div class="controls">
+							<script id="teamdesc" name="teamdesc" type="text/plain">{if $newsinfo}{$newsinfo.teamdesc}{/if}</script>
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+	    $(function() {
+
+	    	var ue = UE.getEditor('descs');
+	    	var ue = UE.getEditor('teamdesc');
+
+		});
+    </script>
+
+{include file="public/foot_more" /}

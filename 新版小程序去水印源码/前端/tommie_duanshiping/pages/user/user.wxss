@@ -1,0 +1,57 @@
+.content {
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("http://img.qushuiyin.top/xcx/md5/bg_main.png");
+}
+
+.content_top {
+    margin-left: 5vw;
+    margin-top: 2vh;
+    height: 5vh;
+    width: 90vw;
+    color: white;
+    font-size: 30rpx;
+    line-height: 5vh;
+}
+
+.content_img {
+    margin-left: 5vw;
+    margin-top: 2vh;
+    height: 30vh;
+    width: 90vw;
+}
+
+.content_img image {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.content_kami_shuoming {
+    width: 90vw;
+    height: 20vh;
+    margin-top: 3vh;
+    margin-left: 5vw;
+}
+
+.content_shuoming_li {
+    margin-top: 0.5vh;
+    font-size: 30rpx;
+    color: white;
+    margin-left: 1vw;
+}
+
+.content_shuoming_li_t {
+    margin-top: 2vh;
+    font-size: 35rpx;
+    color: #95ece6;
+    margin-left: 1vw;
+}
+
+.kongbaibottom {
+    height: 5vh;
+}

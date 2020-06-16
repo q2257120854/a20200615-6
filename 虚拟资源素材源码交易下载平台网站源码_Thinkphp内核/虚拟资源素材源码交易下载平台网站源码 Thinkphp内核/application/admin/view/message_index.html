@@ -1,0 +1,52 @@
+{extend name="base" /}
+{block name="body"}
+<div class="admin-main">
+<div class="layui-field-box layui-form">
+				<a href="{:url('admin/message/add')}" class="layui-btn layui-btn-sm" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加系统消息
+				</a>
+				<table class="layui-table admin-table">
+				<thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>时间</th>
+                        <th>发送者</th>
+                         <th>发送对象</th>
+                        <th>类型</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="$slide_category_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.time|friendlyDate}</td>
+                        <td>{$vo.uid|getusernamebyid}</td>
+                         <td>{$vo.touid|getusernamebyid}</td>
+                          <td>{php}echo $vo['type']==1 ? '系统消息' : '帖子动态';{/php}</td>
+                          <td>{$vo.content}</td>
+                        <td>
+                          
+                            <a href="{:url('admin/message/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-sm">编辑</a>
+                            <a href="javascript:;" data-id="{$vo.id}" data-url="{:url('admin/message/delete',array('id'=>$vo['id']))}" data-opt="del"  class="elementdel layui-btn layui-btn-danger layui-btn-sm ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+	</div>
+		
+			
+		</div>				
+{/block}
+ {block name="page"}
+<div class="btable-paged" >
+<div class="layui-main">
+	{$slide_category_list->render()}
+</div>
+</div>
+ {/block}
+    {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/delelement.js"></script>
+ {/block}

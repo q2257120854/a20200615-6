@@ -1,0 +1,22 @@
+body{background-color:#F8F8F8;}
+/*Í·²¿*/
+.ntop{height:40px;text-align:left;font-size:18px;}
+.ntop .d1{margin:10px 0 0 10px;width:50px;}
+.ntop .d2{margin:9px 0 0 0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;text-align:center;}
+.ntop .d3{margin:0;width:60px;}
+
+.reg{display:block;font-size:14px;text-align:left;padding:10px 0 0 0;}
+.reg .inpbox{margin:20px 20px 0 20px;border-bottom:#eeeeee solid 1px;height:33px;}
+.reg .inpbox .d1{margin:0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;}
+.reg .inpbox .d1 input{width:100%;border:0;font-size:16px;background-color:#F8F8F8;color:#B3B3B3;height:20px;}
+.reg .inpbox .d1 select{border:0;width:100%;background-color:transparent;color:#B3B3B3;margin-left:-4px;}
+.reg .inpbox .d2{margin:0;width:100px;font-size:16px;color:#666;text-align:right;}
+.reg .inpbox .d2 #fsid2{color:#999;}
+.reg .d1{margin:20px;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;}
+.reg .d1 input{width:100%;border:0;color:#fff;height:40px;background-color:#ff6600;font-size:16px;border-radius:1px;}
+.qh{display:block;margin:5px 0 0 0;text-align:center;color:#999;}
+.qh a{color:#666;}
+
+.regty{font-size:14px;text-align:center;border-bottom:#ddd solid 1px;margin:30px 10px 0 10px;border-top:#ddd solid 1px;}
+.regty .d1{margin:0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;padding:8px 0 0 0;height:28px;}
+.regty .d11{color:#000;background-color:#ddd;}

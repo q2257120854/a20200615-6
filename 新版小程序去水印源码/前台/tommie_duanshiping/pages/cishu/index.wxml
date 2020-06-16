@@ -1,0 +1,21 @@
+<view class="container">
+    <view style="text-align: center;margin: 0 auto;">
+        <view class="main">
+            <view class="t">
+                <image src="/tommie_duanshiping/resource/image/guanyu.png "></image> 转发邀请好友获得次数
+      </view>
+            <view class="line"></view>
+            <view class="c" style="text-align: left;">
+        转发小程序给微信好友或微信群，好友点击使用(登录授权)后即算邀请成功；
+        <view class="lines"></view>
+        成功邀请1位好友可免费获得{{invite_award}}次解析下载次数，邀请好友及获赠次数无上限；
+      </view>
+            <i-button openType="share" shape="circle" size="small" style="width: 100%;padding-bottom: 15px;" type="info">
+                <i-icon color="" size="20" type="share_fill"></i-icon>分享给好友/微信群
+      </i-button>
+        </view>
+    </view>
+    <view class="ad" wx:if="{{adId.length>0}}">
+        <ad unit-id="adunit-586a025009c51ecf" ad-type="video" ad-theme="white"></ad>
+    </view>
+</view>

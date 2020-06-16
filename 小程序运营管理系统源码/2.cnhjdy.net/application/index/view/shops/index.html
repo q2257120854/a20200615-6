@@ -1,0 +1,150 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navStore" class="navStore2">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			多门店管理--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Shops/add')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						添加门店 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+
+							<th style="width: 200px;">店铺LOGO</th>
+
+							<th style="width: 200px;">门店名称</th>
+							
+							<th width="200px;">操作</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+						{if $store}
+							{foreach $store as $item}
+								<tr>
+									<td>
+										<img src="{$item.logo}" style="width:50px; height:30px;">
+									</td>
+									<td>
+										{$item.title}
+									</td>
+									<td>
+										<a href="{:Url('Shops/add')}?appletid=<?php echo $_GET['appletid']?>&cid={$item.id}"><button class="btn btncolor">编辑</button></a>
+										<form action="{:Url('Shops/del')}?appletid=<?php echo $_GET['appletid']?>&cid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+											<button class="btn btncolor" type="submit">删除</button>
+										</form>
+									</td>
+								</tr>
+							{/foreach}
+						{/if}
+					</tbody>
+
+				</table>
+
+				
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$store->render()}
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+<style type="text/css">
+	.modal{
+		width: 795px !important;
+		margin-left: -397px !important;
+		min-height: 290px !important;
+	}
+</style>
+<div id="stack2" class="modal fade" tabindex="-1" data-focus-on="input:first" style="width:795px !important; margin-left:-400px;">
+
+	<div class="modal-header">
+
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+		<h3>图片上传</h3>
+
+	</div>
+	
+	<div class="controls">
+		<div class="uploader-list-container" >
+			<div class="queueList">
+				<div id="dndArea" class="placeholder">
+					<div id="filePicker-2"></div>
+				</div>
+			</div>
+			<div class="statusBar" style="display:none;">
+				<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
+				<div class="info"></div>
+				<div class="btns">
+					<div id="filePicker2"></div>
+					<div class="uploadBtn">开始上传</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	function del(){
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+	        return false;
+	    }
+	}
+</script>
+
+{include file="public/foot_more" /}

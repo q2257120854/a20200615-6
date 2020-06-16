@@ -1,0 +1,606 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<input type="hidden" id="choose" value="timecombo">
+
+<div class="content">
+
+    <div class="clearfix">
+
+        <div class="content_title fl agent_list_title">我管理的时长套餐</div>
+
+        <div class="overview_right fr">
+
+            <div class="add_agent fl" onclick="add_timecombo()" style="cursor: pointer">添加时长套餐</div>
+
+            <div class="agent_search hbj fl">
+
+                <input class="agent_search_input flex1" type="" name="" id="keyworld" value="" placeholder="输入关键词" />
+
+                <div class="agent_search_icon iconfont icon-sousuo" onclick="search()"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <table class="time_meal_table" border="0" cellspacing="0" cellpadding="0">
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>套餐名称</th>
+
+            <th>套餐类型</th>
+
+            <th>套餐时长(月)</th>
+
+            <th>赠送时长(月)</th>
+
+            <th>创建时间</th>
+
+            <th>操作</th>
+
+        </tr>
+
+        {volist name="time_combo" id="vo"}
+
+        <tr>
+
+            <td class="fontfamily-a">{$vo.id}</td>
+
+            <td>{$vo.name}</td>
+
+            <td>{eq name="$vo.type" value="0"}试用{/eq}
+
+                {eq name="$vo.type" value="1"}正式使用{/eq}
+
+            </td>
+
+            <td class="fontfamily-a">{$vo.pay_time}</td>
+
+            <td class="fontfamily-a">{$vo.free_time}</td>
+
+            <td class="fontfamily-a">{:date('Y-m-d ', $vo.createtime)}</td>
+
+            <td>
+
+                <div class="newbtn" style="cursor: pointer;display: inline-block;" onclick="edit_timecombo({$vo.id})">修改套餐</div>
+                <span class="linetd"></span>
+                <div class="newbtn" style="margin-right: 0; cursor: pointer;display: inline-block;" onclick="del_combo({$vo.id})">删除套餐</div>
+
+            </td>
+
+        </tr>
+
+        {/volist}
+
+        </thead>
+
+    </table>
+
+    <div class="list_page">
+
+        {$time_combo->render()}
+
+    </div>
+
+</div>
+
+<!--添加套餐-->
+
+<div class="alertbox" style="display: none" id="add">
+
+    <div class="time_meal_alert">
+
+        <div class="alert2_head">添加时长套餐
+
+            <img src="/image/close_alert.png" onclick="close_add()"/>
+
+        </div>
+
+        <div class="time_meal_alert_content">
+
+            <form action="{:Url('Timecombo/save_add')}"  method="post"  onsubmit = "return checkinfo();">
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">套餐名称<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <input class="open_form_text" type="text" name="name" id="name" value="" />
+
+                    </div>
+
+                </div>
+
+                <!--<div class="clearfix mb-30">-->
+
+                    <!--<div class="time_meal_alert_title fl" style="margin-top: 0;">套餐类型<span>*</span></div>-->
+
+                    <!--<div class="time_meal_alert_right fl">-->
+
+                        <!--<label class="alert_form_label">-->
+
+                            <!--<input class="alert_checkbox" type="radio" name="type" id="" value="0" />试用-->
+
+                        <!--</label>-->
+
+                        <!--<label class="alert_form_label">-->
+
+                            <!--<input class="alert_checkbox" type="radio" name="type" id="" value="1" checked/>正式使用-->
+
+                        <!--</label>-->
+
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">套餐时长<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <select class="open_form_select1" name="pay_time" id="pay_time">
+
+                            <option value="">--请选择套餐时长--</option>
+
+                            <?php for($i=1; $i<61; $i++): ?>
+
+                            <option value="<?php echo $i; ?>" ><?php echo $i; ?> 个月</option>
+
+                            <?php endfor ?>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">赠送时长<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <select class="open_form_select1" name="free_time" id="free_time">
+
+                            <option value="">--请选择赠送时长--</option>
+
+                            <?php for($i=0; $i<61; $i++): ?>
+
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?> 个月</option>
+
+                            <?php endfor ?>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix">
+
+                    <div class="time_meal_alert_title fl"></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <input class="open_form_submit" style="background-color: #6D7187;" type="submit"  value="确定" />
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--添加套餐-->
+
+<!--编辑套餐-->
+
+<div class="alertbox" style="display: none" id="edit">
+
+    <div class="time_meal_alert">
+
+        <div class="alert2_head">添加时长套餐
+
+            <img src="/image/close_alert.png" onclick="close_edit()"/>
+
+        </div>
+
+        <div class="time_meal_alert_content">
+
+            <form action="{:Url('Timecombo/save_edit')}"  method="post"  onsubmit = "return checkeditinfo();">
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">套餐名称<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <input class="open_form_text" type="text" name="name" id="e_name" value="" />
+
+                    </div>
+
+                </div>
+
+                <!--<div class="clearfix mb-30">-->
+
+                    <!--<div class="time_meal_alert_title fl" style="margin-top: 0;">套餐类型<span>*</span></div>-->
+
+                    <!--<div class="time_meal_alert_right fl" id="type">-->
+
+
+
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">套餐时长<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl" >
+
+                        <select class="open_form_select1" name="pay_time" id="e_pay_time">
+
+                            <option value="">--请选择套餐时长--</option>
+
+                            <?php for($i=1; $i<61; $i++): ?>
+
+                            <option value="<?php echo $i; ?>" id="p<?php echo $i; ?>" ><?php echo $i; ?> 个月</option>
+
+                            <?php endfor ?>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix mb-30">
+
+                    <div class="time_meal_alert_title fl">赠送时长<span>*</span></div>
+
+                    <div class="time_meal_alert_right fl" id="e_free">
+
+                        <select class="open_form_select1" name="free_time" id="e_free_time">
+
+                            <option value="">--请选择赠送时长--</option>
+
+                            <?php for($i=0; $i<61; $i++): ?>
+
+                            <option value="<?php echo $i; ?>" id="f<?php echo $i; ?>"><?php echo $i; ?> 个月</option>
+
+                            <?php endfor ?>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix">
+
+                    <div class="time_meal_alert_title fl"></div>
+
+                    <div class="time_meal_alert_right fl">
+
+                        <input type="hidden" name="id" id="e_id">
+
+                        <input class="open_form_submit" style="background-color: #6D7187;" type="submit"  value="确定" />
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--编辑套餐-->
+
+<!--删除提示-->
+
+<div class="alertbox" style="display: none;" id="show_del">
+
+    <div class="alert2" style="height: 160px">
+
+        <div class="alert2_head">删除套餐
+
+            <img src="/image/close_alert.png" onclick="close_del()"/>
+
+        </div>
+
+        <div class="alert2_content hbj">
+
+            <div class="alert2_content_text">确定要删除名为<span id="combo_name" style="color: #f73e4c;">王美丽</span>的套餐吗？</div>
+
+            <input type="hidden" value="" name="id" id="id">
+
+            <div class="alert2_content_btn1" onclick="del_ex()" style="cursor: pointer">确定</div>
+
+            <div class="alert2_content_btn2" onclick="close_del()" style="cursor: pointer">取消</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--删除提示-->
+
+<!--删除成功-->
+
+<div class="alertbox" style="display: none;"  id="del_success">
+
+    <div class="alert3">
+
+        <div class="alert2_head">提示
+
+            <img src="/image/close_alert.png" onclick="close_success()"/>
+
+        </div>
+
+        <div class="alert3_content">
+
+            <div class="alert3_content_icon iconfont icon-chenggong"></div>
+
+            <div class="alert3_content_text">删除成功！</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--删除成功-->
+
+
+
+</body>
+
+<script>
+
+    // 搜索功能
+
+    function search(){
+
+        var val = $("#keyworld").val();
+
+        if(!val){
+
+            alert("请输入搜索用户姓名");
+
+        }else{
+
+            location.href="{:Url('Timecombo/index')}"+"?keyworld="+val;
+
+        }
+
+    }
+
+
+    //添加时长套餐
+
+    function add_timecombo() {
+
+        $("#add").show();
+
+    }
+
+
+
+    //关闭添加时长套餐
+
+    function close_add() {
+
+        $("#add").hide();
+
+    }
+
+
+
+    function checkinfo(){
+
+        var name = $("#name").val();
+
+
+
+        var pay_time = $("#pay_time").val();
+
+        var free_time = $("#free_time").val();
+
+
+
+        if(!name){
+
+            alert("请输入套餐名称！");
+
+            return false;
+
+        }else if(!pay_time){
+
+            alert("请选择套餐时长！");
+
+            return false;
+
+        }else if(!free_time){
+
+            alert("请选择赠送时长！");
+
+            return false;
+
+        }else{
+
+            return true;
+
+        }
+
+    }
+
+
+
+    //删除套餐
+
+    function del_combo(id) {
+
+        var id = id;
+
+        //获取管理员名称
+
+        $.post("{:Url('Timecombo/combo_name')}",{"id":id},function(data){
+
+            $("#combo_name").html(data);
+
+        });
+
+        $("#id").val(id);
+
+        $("#show_del").show();
+
+    }
+
+
+
+    //执行删除
+
+    function del_ex() {
+
+        $("#show_del").hide();
+
+        var id = $("#id").val();
+
+        $.post("{:Url('Timecombo/del')}",{"id":id},function(data){
+
+            if(data == 1){
+
+                $("#del_success").show();
+
+                setInterval(g, 2000);
+
+
+
+            }else{
+
+                return false;
+
+            }
+
+        })
+
+    }
+
+
+
+    //关闭删除提示
+
+    function close_del() {
+
+        $("#show_del").hide();
+
+    }
+
+
+
+    // //手动关闭成功提示框
+
+    // function close_success() {
+
+    //     $("#del_success").hide();
+
+    // }
+
+
+
+    function g() {
+
+        location.reload();
+
+    }
+
+
+
+    //编辑
+
+    function edit_timecombo(id) {
+
+        var id = id;
+
+        $.post("{:Url('Timecombo/timecombo_info')}",{"id":id},function(data){
+
+            $("#e_id").val(data['id']);
+
+            $("#e_name").val(data['name']);
+
+            var s = "";
+
+            var z = "";
+
+            if(data['type'] == 0){
+
+                s = "checked";
+
+            }else{
+
+                z = "checked";
+
+            }
+
+            // var type = '<label class="alert_form_label">\n' +
+
+            //     '                            <input class="alert_checkbox" type="radio" name="type"  value="0" '+s+' />试用\n' +
+
+            //     '                        </label>\n' +
+
+            //     '                        <label class="alert_form_label">\n' +
+
+            //     '                            <input class="alert_checkbox" type="radio" name="type"  value="1" '+z+' />正式使用\n' +
+
+            //     '                        </label>';
+
+            // $("#type").html(type);
+
+            $("#p"+data['pay_time']+"").attr('selected', true);
+
+
+
+            $("#f"+data['free_time']+"").attr('selected', true);
+
+        });
+
+        $("#edit").show();
+
+    }
+
+
+
+    //关闭编辑
+
+    function close_edit() {
+
+        $("#edit").hide();
+
+    }
+
+
+
+</script>
+
+</html>

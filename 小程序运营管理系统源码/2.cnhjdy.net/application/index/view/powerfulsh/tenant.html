@@ -1,0 +1,124 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+    form{
+        margin: 0 !important;
+        display: inline-block !important;
+    }
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel6-2">
+
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        商户列表--{applet.name}
+    </li>
+</ul>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="portlet box">
+            <div class="portlet-box">
+                <div class="input-box" style="margin-bottom: 10px; position: relative;">
+                    <div class="btn-group" style="float: right;">
+                        <a href="{:Url('Powerfulsh/tenantadd')}?appletid=<?php echo $_GET['appletid']?>" >
+                            <button id="sample_editable_1_new" class="btn green">
+                                添加商户<i class="icon-plus"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                    <thead>
+                    <tr>
+
+                        <th style="width: 50px;">商户id</th>
+                        <th style="width: 50px;">商户分类</th>
+                        <th style="width: 100px;">商户logo</th>
+                        <th style="width: 50px;">商户名称</th>
+                        <th style="width: 50px;">推荐</th>
+                        <th style="width: 50px;">状态</th>
+                        <th style="width: 50px;">营业执照</th>
+                        <th width="100px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {if $shoplist}
+                    {foreach $shoplist as $item}
+                    <tr>
+                        <td><a href="javascript:;" href="javascript:;" data-clipboard-text="{$item.id}" onclick="copyid({$item.id})" class="label label-success ng-scope js-clip{$item.id}" style="background: #3cc051;min-width:30px;text-align: center;">{$item.id}</a></td>
+                        <td>{$item.cate}</td>
+                        <td>
+                        <img src="{$item.logo}" alt="" style="width:80px;height:80px">
+                        
+                        </td>
+                        <td>{$item.name}</td>
+                        <td>
+                            {if $item.hot == 1}
+                            启用
+                            {/if}
+
+                            {if $item.hot == 2}
+                            不启用
+                            {/if}
+                        </td>
+                        <td>
+                            {if $item.flag == 1}
+                            上架
+                            {/if}
+
+                            {if $item.flag == 2}
+                            下架
+                            {/if}
+                        </td>
+                        <td>
+                            <img src="{$item.yyzz}" alt="" style="width:80px">
+                        </td>
+                        <td>
+                            {if $item.status == 0}
+                            <a href="{:Url('Powerfulsh/tenant')}?appletid=<?php echo $_GET['appletid']?>&shopid={$item.id}&op=tenantshenhe"><button class="btn btncolor">审核</button></a>
+                            <a href="{:Url('Powerfulsh/tenant')}?appletid=<?php echo $_GET['appletid']?>&shopid={$item.id}&op=tenantcancel"><button class="btn btncolor">拒绝</button></a>
+                            {elseif $item.status == 1}
+                            <a href="{:Url('Powerfulsh/tenantadd')}?appletid=<?php echo $_GET['appletid']?>&shopid={$item.id}"><button class="btn btncolor">编辑</button></a>
+                            <form action="{:Url('Powerfulsh/tenantdel')}?appletid=<?php echo $_GET['appletid']?>&shopid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del({$item.id})">
+                                <button class="btn btncolor" type="submit">删除</button>
+                            </form>
+                            {else}
+                            <label class="label label-danger">已拒绝</label>
+                            {/if}
+                        </td>
+                    </tr>
+                    {/foreach}
+                    {/if}
+                    </tbody>
+                </table>
+                <!--分页-->
+                <div>
+                    <div class="fenye_left">
+                        一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+                    </div>
+                    <div class="fenye_right">
+                        {$shops->render()}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function del(id,count){
+        if(count>0){
+            alert("该栏目中还存在子集栏目，请先删除所有子集栏目后再删除！");
+            return false;
+        }
+        if(confirm('该删除操作不可逆，请谨慎操作?')){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
+{include file="public/foot_more" /}

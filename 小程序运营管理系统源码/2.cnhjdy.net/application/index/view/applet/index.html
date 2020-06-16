@@ -1,0 +1,667 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<input type="hidden" id="choose" value="applet">
+
+		<div class="content">
+
+			<div class="clearfix">
+
+				<div class="content_title fl agent_list_title">小程序管理</div>
+
+				
+				<div class="overview_right fr">
+
+					<a href="{:Url('Applet/choose_combo')}"><div class="add_agent fl">新增小程序</div></a>
+
+					<div class="agent_search hbj fl">
+
+						<input class="agent_search_input flex1" type="" name="" id="keyworld" value="" placeholder="输入关键词" />
+
+						<div class="agent_search_icon iconfont icon-sousuo" onclick="searchapp()"></div>
+
+					</div>
+
+				</div>
+
+			</div>
+<div class="overview_center clearfix" id="select_change">
+
+                    <div class="overview_all fl" id="type1"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}">全部：{$all_count}</a></div>
+                    {if $usergroup == 2}
+                    <div class="overview_all fl" id="type6"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=5"> 管理员添加: {$admin_add_count}</a></div>
+
+                    <div class="overview_all fl" id="type7"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=6"> 代理商购买：{$jxs_add_count}</a></div>
+                    {/if}
+                    <div class="overview_all fl" id="type2"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=1"> 试用中：{$try_applet}</a></div>
+
+                    <div class="overview_all fl" id="type3"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=2">已购买：{$pay_applet}</a></div>
+
+                    <div class="overview_all fl" id="type4"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=3">购买将过期：{$littertime_applet}</a></div>
+
+                    <div class="overview_all fl" id="type5"><img class="img1" src="/image/list_ysj.png" /><img class="img2" src="/image/list_xjt.png" /><a href="{:Url('Applet/index')}?show=4">购买过期：{$endtime_applet}</a></div>
+
+                    <input type="hidden" value="id1" id="commonID">
+
+                </div>
+
+			<table class="agent_list_table small_program_tabel" border="0" cellspacing="0" cellpadding="0">
+
+				<thead>
+
+					<tr style="width: 100%">
+
+						<th width="4%">ID</th>
+
+						<th width="14%">名称</th>
+
+						<th width="10%">管理员</th>
+
+						<th width="8%">电话</th>
+
+						<th width="8%">类型</th>
+
+						<th width="15%">时间</th>
+
+						<th width="7%">剩余天数</th>
+
+						<th width="34%">操作</th>
+
+					</tr>
+
+					{if $allapplet}
+
+					{foreach $allapplet as $item}
+
+					<tr>
+
+						<td class="fontfamily-a">{$item.id}</td>
+
+						<td>{$item.name}</td>
+
+						<td>{$item.username}</td>
+
+						<td class="fontfamily-a">{$item.tel}</td>
+
+						<td>
+
+							<?php $type = unserialize($item['type']); ?>
+
+							{if $type}
+
+							{if in_array('0', $type)}微信小程序<br>{/if}
+
+						<!-- 	{if in_array('2', $type)}支付宝小程序<br>{/if}
+
+							{if in_array('1', $type)}百度小程序{/if} -->
+
+							{/if}
+
+						</td>
+
+						<td class="fontfamily-a">{if $item.end_time==0}{else}{$item.dateline|date='Y-m-d',###}-{$item.end_time|date='Y-m-d',###}{/if}</td>
+
+						<td  class="fontfamily-a"> {if $item.end_time==0}{else}{$item.days}{/if}</td>
+
+						<td>
+
+							<input type="hidden" value="{$item.flag}">
+
+							<a href="{:Url('Datashow/index')}?appletid={$item.id}" >
+
+								<input type="button" value="进入管理" class="newbtn" style="cursor:pointer;color: #fb8166;">
+
+							</a>
+                            <span class="linetd"></span>
+							<a href="{:Url('Applet/edit')}?id={$item.id}">
+
+								<input type="button" value="编辑"  class="newbtn" style="cursor:pointer">
+
+							</a>
+                            <span class="linetd"></span>
+							<input type="button" value="绑定管理员"  class="newbtn" style="cursor:pointer" data-toggle="modal" href="#stack2" onclick="bangding({$item.id})">
+                            <span class="linetd"></span>
+							<input type="button" value="解绑管理员"  class="newbtn" style="cursor:pointer" onclick="jiebang({$item.id},{$item.bangding})">
+                            <span class="linetd"></span>
+							{if $item.pay_time < 0}
+
+								<a href="{:Url('Applet/billing')}?appletid={$item.id}"><span class="newbtn">开通</span></a>
+
+							{else}
+
+								<a href="{:Url('Applet/billing')}?appletid={$item.id}"><span class="newbtn">续费</span></a>
+
+							{/if}
+
+						</td>
+
+					</tr>
+
+					{/foreach}
+
+					{/if}
+
+				</thead>
+
+			</table>
+
+			<div class="list_page">
+
+					{$applet->render()}
+
+			</div>
+
+		</div>
+
+		
+
+		<!--解绑管理员-->
+
+		<div class="alertbox" id="jiebang" style="display:none">
+
+			<div class="alert2" style="height: 160px">
+
+				<div class="alert2_head">解绑管理员
+
+					</image src="/image/close_alert.png"/>
+
+				</div>
+
+				<div class="alert2_content hbj">
+
+					<div class="alert2_content_text">您确定要解绑管理员<span id="jb_name" style="color: #f73e4c;">王美丽</span>么？</div>
+
+                    <input type="hidden" id="jb_id" name="jb_id" value="">
+
+					<div style="cursor:pointer" class="alert2_content_btn1" onclick="jieb_ex()">确定</div>
+
+					<div style="cursor:pointer" class="alert2_content_btn2" onclick="cell_jb()">取消</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!--解绑管理员-->
+<!--解绑管理员-->
+
+        <div class="alertbox" id="jiebang2" style="display:none">
+
+            <div class="alert2" style="height: 160px">
+
+                <div class="alert2_head">解绑管理员
+
+                    </image src="/image/close_alert.png"/>
+
+                </div>
+
+                <div class="alert2_content hbj">
+
+                    <div class="alert2_content_text">该小程序还未绑定管理员，请先绑定！</div>
+
+                    <input type="hidden" id="jb_id" name="jb_id" value="">
+
+                    <div style="cursor:pointer" class="alert2_content_btn1" onclick="jieb_ex2()">确定</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--解绑管理员-->
+
+		<!--绑定管理员-->
+
+        <form action="{:Url('Applet/admin_add')}"   class="form-horizontal" method="post" enctype="multipart/form-data">
+
+            <div class="alertbox" id="stack2" style="display: none">
+
+                <div class="alert2" style="top: 300px">
+
+                    <div class="alert2_head">绑定管理员
+
+                        <img src="/image/close_alert.png" onclick="notshow()"/>
+
+                    </div>
+
+                    <div class="alert2_content">
+
+                        <div class="hbj">
+
+                            <input type="hidden" name="userid" id="userid">
+
+                            <input type="hidden" name="appletid" id="appletid">
+
+                            <div class="bind_title">手机号</div>
+
+                            <input class="bind_input" type="text" name="" id="tel" value="" />
+
+                            <div onclick="userget()" class="bind_btn">搜索</div>
+
+                        </div>
+
+                        <div class="search_result" id="yonghu">
+
+
+
+                            <div class="search_result_title" id="yhm"></div>
+
+                            <div class="search_result_title" id="xim"></div>
+
+
+
+                            <button class="bind_btn" style="background-color: #d84a38" type="submit" >绑定</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!--<div class="alert2_content hbj" style="display:none" id="yonghu">-->
+
+                        <!--<table >-->
+
+                            <!--<tr>-->
+
+                                <!--<td id="yhm" ></td>-->
+
+                                <!--<td id="xim" ></td>-->
+
+                            <!--</tr>-->
+
+                        <!--</table>-->
+
+                    <!--</div>-->
+
+                    <!--<div  class="alert2_content hbj" style="display:none" id="bangding">-->
+
+                        <!--<button class="bind_btn" type="submit" >绑定</button>-->
+
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+
+        </form>
+
+		<!--绑定管理员-->
+
+	</body>
+
+
+
+</html>
+
+<script type="text/javascript">
+
+	//判断显示类型
+
+	$(function () {
+
+		var show = '<?php echo input('show'); ?>';
+
+		if(show){
+
+		    if(show == 1){
+
+		        $("#type2").addClass('on');
+
+			}else if(show == 2){
+
+                $("#type3").addClass('on');
+
+			}else if(show == 3){
+
+                $("#type4").addClass('on');
+
+			}else if(show == 4){
+
+                $("#type5").addClass('on');
+
+			}else if(show == 5){
+
+                $("#type6").addClass('on');
+
+            }else if(show == 6){
+
+                $("#type7").addClass('on');
+                
+            }
+
+
+
+		}else{
+
+		    $("#type1").addClass('on');
+
+		}
+
+    });
+
+
+
+
+
+    //将请求设置为同步
+
+    $.ajaxSetup({
+
+        async : false
+
+    });
+
+
+
+    //关闭绑定窗口
+
+	function notshow() {
+
+		$("#stack2").hide();
+
+    }
+
+
+
+    //解绑显示框
+
+    function jiebang(id,bangding) {
+
+        if(bangding==0){
+
+           $('#jiebang2').show()
+
+            return;
+
+        }
+
+        var name = "";
+
+        //获取管理员名称
+
+        $.post("{:Url('Applet/adminname')}",{"appletid":id},function(data){
+
+            name = data;
+
+        })
+
+        $("#jb_name").html(name);
+
+        $("#jb_id").val(id);
+
+        $("#jiebang").show();
+
+    }
+
+    
+
+    //执行解绑
+    function jieb_ex2(){
+        $('#jiebang2').hide()
+    }
+    function jieb_ex() {
+
+        var id = $("#jb_id").val();
+
+        $.post("{:Url('Applet/del_admin')}",{"appletid":id},function(data){
+
+            location.reload();
+
+        })
+    }
+
+
+
+    //关闭解绑
+
+    function cell_jb() {
+
+        $("#jiebang").hide();
+
+
+
+    }
+
+
+
+    // 搜索功能
+
+    function searchapp(){
+
+        var val = $("#keyworld").val();
+
+        if(!val){
+
+            alert("请输入搜索小程序名称");
+
+        }else{
+
+            location.href="{:Url('Applet/index')}"+"?keyworld="+val;
+
+        }
+
+
+
+    }
+
+
+
+    // 绑定管理员信息搜索
+
+    function userget(){
+
+        var tel = $("#tel").val();
+
+        if(!tel){
+
+            alert("请输入手机号码！");
+
+            return;
+
+        }
+
+        if(!(/^1[3456789]\d{9}$/.test(tel))){
+
+            alert("请输入正确的手机号码！");
+
+            return ;
+
+        }
+
+        $.post("{:Url('Applet/userinfo')}",{"tel":tel},function(data){
+
+
+
+            if(data.message){
+
+                $("#bangding").hide();
+
+                $("#yonghu").hide();
+
+                alert(data.message);
+
+            }else{
+
+                $("#yonghu").show();
+
+                $("#yhm").html("用户名："+data.username);
+
+                $("#xim").html("姓名："+data.realname);
+
+                $("#userid").val(data.uid);
+
+            }
+
+
+
+        })
+
+
+
+
+
+    }
+
+    // 绑定管理员
+
+    function bangding(id){
+
+        $("#stack2").show();
+
+        $("#yonghu").hide();
+
+        $("#tel").val("");
+
+        $("#appletid").val(id);
+
+    }
+
+
+
+    // 解绑管理员
+
+    function jieb(id,bangding){
+
+        if(bangding==0){
+
+            alert("该小程序还未绑定管理员，请先绑定！");
+
+            return;
+
+        }
+
+        var name = "";
+
+        //获取管理员名称
+
+        $.post("{:Url('Applet/adminname')}",{"appletid":id},function(data){
+
+            name = data;
+
+        })
+
+        if(confirm('你确定要解绑该小程序的管理员'+name+'嘛？')){
+
+            $.post("{:Url('Applet/del_admin')}",{"appletid":id},function(data){
+
+                location.reload();
+
+            })
+
+        }else{
+
+            return false;
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+    function checkaddinfo(){
+
+
+
+        var username = $("#username").val();
+
+
+
+        var realname = $("#realname").val();
+
+
+
+        var mobile = $("#mobile").val();
+
+
+
+        //业务类型
+
+        var type = [];
+
+        $('input[name="type[]"]:checked').each(function(){
+
+            type.push($(this).val());
+
+        });
+
+
+
+        if(!username){
+
+
+
+            alert("请输入用户名！");
+
+
+
+            return false;
+
+
+
+        }else if(!realname){
+
+
+
+            alert("请输入用户真实姓名！");
+
+
+
+            return false;
+
+
+
+        }else if(!mobile){
+
+
+
+            alert("请输入用户手机号");
+
+
+
+            return false;
+
+
+
+        }else if(type.length == 0){
+
+
+
+            alert("请选择业务类型");
+
+
+
+            return false;
+
+
+
+        }else{
+
+
+
+            return true;
+
+
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+</script>

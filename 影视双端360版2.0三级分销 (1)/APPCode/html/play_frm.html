@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<style type="text/css">
+       html,body{background-color:#000;}
+    </style>
+</head>
+
+<body>
+  
+  <!-- <header class="aui-bar aui-bar-nav" id="header" style=" background: linear-gradient(#ff5e3e , #ff1679 );color:#fff;position: relative;padding-top:25px;"> -->
+      <!-- <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()"> -->
+          <!-- <span class="aui-iconfont aui-icon-left" style=color:#fff ></span> -->
+      <!-- </a> -->
+      <!-- <div id="title" class="aui-title" >正在播放视频....</div> -->
+      <!-- <a id="play" class="aui-btn aui-pull-right" style=color:#fff tapmode onclick="jieXi()"> -->
+          <!-- 更换线路 -->
+      <!-- </a> -->
+  <!-- </header> -->
+
+
+		<header class="aui-navBar aui-navBar-fixed" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);;position: relative;padding-top:25px;" id="header">
+
+                    <a  tapmode onclick="closeWin()" class="aui-navBar-item"  tyle="color: #c4c4c4;"  >
+                  <i class="icon icon-back-b"></i>
+
+                    </a>
+                    <div class="aui-center">
+                        <span class="aui-center-title"   id="title" style="color: #c4c4c4;" >  正在播放 </span>
+                    </div>
+
+                    <a  id="play"   tapmode onclick="jieXi()" tapmode  class="aui-navBar-item" style="color: #c4c4c4;"  >
+                  <i class="icon icon-genghuanxianlu-b"></i> 更换线路
+                    </a>
+
+            </header>
+
+ 
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/date.min.js"></script>
+<script type="text/javascript">
+    var jx1 = localStorage.getItem('jx1');
+    var jx2 = localStorage.getItem('jx2');
+    var jx3 = localStorage.getItem('jx3');
+    var jx4 = localStorage.getItem('jx4');
+    var jx5 = localStorage.getItem('jx5');
+	    var api_url = localStorage.getItem('api_url');
+    apiready = function(){
+
+      api.parseTapmode();
+      var header = $api.byId('aui-header');
+      $api.fixStatusBar(header);
+      var headerPos = $api.offset(header);
+      var body_h = $api.offset($api.dom('body')).h;
+
+      api.addEventListener({
+          name: 'keyback'
+      }, function(ret, err) {
+        api.setScreenOrientation({
+            orientation: 'portrait_up'
+        });
+        api.closeWin();
+      });
+
+
+      var browser = api.require('webBrowser');
+      browser.openView({
+          url: api.pageParam.url,
+          rect: {
+              x: 0,
+              y: 70,
+              w: 'auto',
+               h: 'auto',
+          }
+      }, function(ret, err) {
+
+          switch (ret.state) {
+              case 0:
+                  break;
+              case 1:
+                  break;
+              case 2:
+                  break;
+              case 3:
+                  break;
+              case 4:
+                  break;
+              default:
+                  break;
+          };
+
+
+      });
+
+		if(api.pageParam.needRecordHistory){
+			record_play_history();
+		}else{
+
+		}
+    }
+
+    function getCaption(obj){
+      var index=obj.lastIndexOf("\=");
+      obj=obj.substring(index+1,obj.length);
+      return obj;
+    }
+
+    function closeWin(){
+      api.setScreenOrientation({
+          orientation: 'portrait_up'
+      });
+      api.closeWin();
+    }
+
+    function jieXi(){
+      api.actionSheet({
+          title: '蝶影VIPVIP线路',
+          cancelTitle: '取消',
+          buttons: ['VIP线路1', 'VIP线路2', 'VIP线路3', 'VIP线路4', 'VIP线路5']
+      }, function(ret, err) {
+          var index = ret.buttonIndex;
+          if (ret.buttonIndex==1) {
+            vipHuanxian(localStorage.getItem('jx1'));
+          }
+          if (ret.buttonIndex==2) {
+            vipHuanxian(localStorage.getItem('jx2'));
+          }
+          if (ret.buttonIndex==3) {
+            vipHuanxian(localStorage.getItem('jx3'));
+          }
+          if (ret.buttonIndex==4) {
+            vipHuanxian(localStorage.getItem('jx4'));
+          }
+          if (ret.buttonIndex==5) {
+            vipHuanxian(localStorage.getItem('jx5'));
+          }
+         
+      });
+    }
+
+
+    function vipHuanxian(jiekou){
+      api.hideProgress();
+      var browser = api.require('webBrowser');
+      browser.loadUrl({
+          url: jiekou+api.pageParam.srcUrl
+      });
+    }
+
+	function record_play_history(){
+	  //alert(api.pageParam.title);
+	  api.ajax({
+	      url: api_url+'/App/Index/jilu.html',
+		  method: 'get',
+	      data:{
+	      	values:{
+	      		uid: localStorage.getItem('user_id'),
+	      		title: api.pageParam.title,
+	      		url: api.pageParam.srcUrl,
+	      		//time: new Date().format('yyyy-MM-dd hh:mm:ss'),
+	      		//ping: getPing(api.pageParam.srcUrl)
+	      	}
+	      }
+      },function(ret,err){
+      });
+	}
+
+	function getPing(url){
+		if(url.indexOf("youku.com")>0){
+			return '优酷';
+		}else if(url.indexOf("iqiyi.com")>0){
+			return '爱奇艺';
+		}else if(url.indexOf("v.qq.com")>0){
+			return "腾讯"
+    }else if(url.indexOf("tv.sohu.com")>0){
+			return "搜狐"
+    }else if(url.indexOf("v.qq.com")>0){
+      return "pptv"
+    }else if(url.indexOf("pptv.com")>0){
+      return "芒果"
+    }else if(url.indexOf("mgtv.com")>0){
+      return "M1905"
+    }else if(url.indexOf("1905.com")>0){
+      return "暴风"
+    }else if(url.indexOf("baofeng.com")>0){
+      return "乐视"
+    }else if(url.indexOf("le.com")>0){
+      return "风行"
+    }else if(url.indexOf("xxooweizhiurl.com")>0){
+      return "未知"
+		}
+
+	}
+
+
+</script>
+
+
+
+</html>

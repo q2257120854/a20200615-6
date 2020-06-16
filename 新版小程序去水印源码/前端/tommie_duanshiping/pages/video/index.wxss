@@ -1,0 +1,134 @@
+.container {
+    height: 100%;
+    width: 750rpx;
+}
+
+.rengwu {
+    width: 720rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rengwu .title {
+    display: flex;
+    align-self: flex-start;
+    font-size: 36rpx;
+    font-weight: bold;
+    margin: 10rpx;
+    color: #1c2438;
+}
+
+.rengwu .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 4rpx 4rpx 5rpx #e9eaec;
+    background-color: white;
+    width: 660rpx;
+    height: 120rpx;
+    padding: 0 30rpx;
+    margin-bottom: 50rpx;
+    font-size: 32rpx;
+    color: #495060;
+}
+
+.rengwu .but {
+    border: 1px solid #ed3f14;
+    background: none;
+    color: #ed3f14;
+    font-size: 28rpx;
+}
+
+.rengwu .but::after {
+    border: none;
+    background: none;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 750rpx;
+    padding: 5rpx;
+}
+
+.item {
+    margin: 5rpx;
+    width: 365rpx;
+    height: 600rpx;
+}
+
+.item image {
+    width: 365rpx;
+    height: 600rpx;
+}
+
+.item .title {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 75rpx;
+    background-color: rgba(0,0,0,0.5);
+    width: 365rpx;
+    height: 60rpx;
+}
+
+.item text {
+    margin: 0 10rpx;
+    font-size: 28rpx;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item .play_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 365rpx;
+    height: 600rpx;
+    position: relative;
+    bottom: 680rpx;
+}
+
+.item .play_main .play {
+    width: 80rpx;
+    height: 80rpx;
+    opacity: 0.6;
+}
+
+.containers {
+    margin-top: 15rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containers .items {
+    margin-bottom: 12rpx;
+    width: 720rpx;
+    height: 360rpx;
+}
+
+.containers .items image {
+    width: 720rpx;
+    height: 360rpx;
+    border-radius: 6px 6px 0 0;
+}
+
+.containers .items .t {
+    width: 692rpx;
+    height: 52rpx;
+    position: relative;
+    bottom: 64rpx;
+    background-color: rgba(68,68,68,0.5);
+    color: white;
+    padding: 0 15rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 32rpx;
+}

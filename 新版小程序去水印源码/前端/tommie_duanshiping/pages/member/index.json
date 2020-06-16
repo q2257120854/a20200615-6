@@ -1,0 +1,10 @@
+{
+    "navigationBarBackgroundColor": "#fed201",
+    "navigationBarTitleText": "会员中心",
+    "disableScroll": true,
+    "usingComponents": {
+        "i-cell-group": "../../../dist/cell-group/index",
+        "i-cell": "../../../dist/cell/index",
+        "i-icon": "../../../dist/icon/index"
+    }
+}

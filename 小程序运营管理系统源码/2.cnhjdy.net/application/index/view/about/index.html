@@ -1,0 +1,185 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navSystem" class="navSystem2">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			公司介绍--{$applet.name}
+		</li>
+	</ul>
+	
+
+	<style type="text/css">
+		.editors{
+			max-width: 770px;
+			min-height: 600px;
+			margin-left: 20px;
+		}
+		.w-e-text-container{
+			min-height: 600px !important;
+		}
+		.weiz{
+			margin-left:20px;
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+		.chongdingy{
+			background-color:#f5f5f5; 
+			padding:10px 0;
+		}
+		.chongdingywz{
+			text-align: left !important;
+			font-size: 16px;
+			padding-left: 20px;
+		}
+	</style>
+
+
+	<div class="row-fluid">
+		<div class="span12">
+		
+			<form action="{:Url('About/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+
+
+				<div class="control-group chongdingy">
+
+					<label class="control-label chongdingywz">介绍页面板块样式DIY</label>
+
+				</div>
+
+				<div class="control-group">
+
+					<label class="control-label">页顶部样式</label>
+
+					<div class="controls">
+
+						<label class="radio">
+
+						<input type="radio" name="header" value="1" {if $abouts}{if $abouts.header==1}checked=checked{/if}{/if}/>
+
+						背景、标题、LOGO
+
+						</label>
+
+						<label class="radio">
+
+						<input type="radio" name="header" value="3" {if $abouts}{if $abouts.header==3}checked=checked{/if}{/if}/>
+
+						幻灯片[带链接]
+
+						</label> 
+
+						<label class="radio">
+
+						<input type="radio" name="header" value="0" {if $abouts}{if $abouts.header==0}checked=checked{/if}{/if}/>
+
+						不显示
+
+						</label> 
+
+					</div>
+
+				</div>
+
+				<div class="control-group">
+
+					<label class="control-label">电话、时间区块</label>
+
+					<div class="controls">
+
+						<label class="radio">
+
+						<input type="radio" name="tel_box" value="1" {if $abouts}{if $abouts.tel_box==1}checked=checked{/if}{/if}/>
+
+						显示
+
+						</label>
+
+						<label class="radio">
+
+						<input type="radio" name="tel_box" value="0" {if $abouts}{if $abouts.tel_box==0}checked=checked{/if}{/if}/>
+
+						隐藏
+
+						</label> 
+
+					</div>
+
+				</div>
+
+				<div class="control-group">
+
+					<label class="control-label">服务中心板块</label>
+
+					<div class="controls">
+
+						<label class="radio">
+
+						<input type="radio" name="serv_box" value="1" {if $abouts}{if $abouts.serv_box==1}checked=checked{/if}{/if}/>
+
+						彩色实心
+
+						</label>
+
+						<label class="radio">
+
+						<input type="radio" name="serv_box" value="2" {if $abouts}{if $abouts.serv_box==2}checked=checked{/if}{/if}/>
+
+						白色边框
+
+						</label>
+
+						<label class="radio">
+
+						<input type="radio" name="serv_box" value="0" {if $abouts}{if $abouts.serv_box==0}checked=checked{/if}{/if}/>
+
+						本板块隐藏
+
+						</label> 
+
+					</div>
+
+				</div>
+
+				<div class="control-group chongdingy">
+
+					<label class="control-label chongdingywz">介绍页面内容</label>
+
+				</div>
+		   
+		        <div class="editors">
+			        <script id="editor" name="content" type="text/plain">{$abouts.content}</script>
+			    </div>
+				
+				<div class="weiz">
+					<input type="submit" value="提交" class="btn green" >
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+    	$(function() {
+	    	var ue = UE.getEditor('editor');
+		});
+    	function checkinfo(){
+    		val = $("#ueditor_textarea_content").val();
+    		if(!val){
+        		alert("请输入内容");
+        		return false;
+        	}else{
+        		$("#content").val(val);
+        	}
+	    }
+    </script>
+
+
+{include file="public/foot_more" /}

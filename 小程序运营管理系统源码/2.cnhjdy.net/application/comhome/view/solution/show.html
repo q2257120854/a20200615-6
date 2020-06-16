@@ -1,0 +1,90 @@
+{include file="public/top" /}
+<title>{$info.title}-解决方案</title>
+<meta name="keywords" content="{$info.title}-解决方案">
+<meta name="description" content="{$info.title}-解决方案">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/com/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css" />
+<link rel="stylesheet" type="text/css" href="/com/css/index.css" />
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    {include file="public/head"}
+      <div class="solutebox">
+            <div class="solute main clearfix">
+                <div class="solute_leftbox">
+                    <div class="solute_leftbd">
+                        {foreach $info.slides as $res}
+                        <div>
+                            <img src="{$res}"/>
+                        </div>
+                        {/foreach}
+                    </div>
+                    <div class="solute_lefthd">
+                        <ul></ul>
+                    </div>
+                    <div class="prev iconfont icon-arrow-left"></div>
+                    <div class="next iconfont icon-arrow-right"></div>
+                </div>
+                <div class="solute_right">
+                    <p class="solute_right_p1">{$info.title}<span>{$info.entitle}</span></p>
+                    <div class="solute_right_div solute_right_div1 clearfix">
+                        <div class="solute_right_icon iconfont {$info.typedesc['icon1']}" style="color: #FFF32E;"></div>
+                        <div class="solute_right_text">
+                            <p class="solute_right_text_p1">{$info.typedesc['title1']}</p>
+                            <p class="solute_right_text_p2">{$info.typedesc['descs1']}</p>
+                        </div>
+                    </div>
+                    <div class="solute_right_div solute_right_div2 clearfix">
+                        <div class="solute_right_icon iconfont {$info.typedesc['icon2']}" style="color: #F8759B;"></div>
+                        <div class="solute_right_text">
+                            <p class="solute_right_text_p1">{$info.typedesc['title2']}</p>
+                            <p class="solute_right_text_p2">{$info.typedesc['descs2']}</p>
+                        </div>
+                    </div>
+                    <div class="solute_right_div solute_right_div3 clearfix">
+                        <div class="solute_right_icon iconfont {$info.typedesc['icon3']}" style="color: #76F7FF;"></div>
+                        <div class="solute_right_text">
+                            <p class="solute_right_text_p1">{$info.typedesc['title3']}</p>
+                            <p class="solute_right_text_p2">{$info.typedesc['descs3']}</p>
+                        </div>
+                    </div>
+                    <div class="solute_right_div solute_right_div4 clearfix">
+                        <div class="solute_right_icon iconfont {$info.typedesc['icon4']}" style="color: #C5A8FF;"></div>
+                        <div class="solute_right_text">
+                            <p class="solute_right_text_p1">{$info.typedesc['title4']}</p>
+                            <p class="solute_right_text_p2">{$info.typedesc['descs4']}</p>
+                        </div>
+                    </div>
+                    <div class="solute_right_div solute_right_div5 clearfix">
+                        <div class="solute_right_icon iconfont {$info.typedesc['icon5']}" style="color: #A8FFB4;"></div>
+                        <div class="solute_right_text">
+                            <p class="solute_right_text_p1">{$info.typedesc['title5']}</p>
+                            <p class="solute_right_text_p2">{$info.typedesc['descs5']}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {include file="public/foot"}
+</body>
+<script>
+$(function(){
+            $.ajax({
+                url:"{:Url('Solution/addHits')}?id=<?php echo $_GET['id']?>",
+                type:"POST",
+                dateType:"json",
+                success:function(res){
+                    if(res == 1){
+                        // alert(res)
+                    }
+                }
+            });
+        })
+</script>
+</html>

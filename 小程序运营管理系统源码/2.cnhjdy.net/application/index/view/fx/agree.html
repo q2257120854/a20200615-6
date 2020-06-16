@@ -1,0 +1,83 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navFx" class="navFx1-3">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			分销商申请协议--{$applet.name}
+		</li>
+	</ul>
+	
+
+	<style type="text/css">
+		.editors{
+			max-width: 770px;
+			min-height: 600px;
+			margin-left: 20px;
+		}
+		.w-e-text-container{
+			min-height: 600px !important;
+		}
+		.weiz{
+			margin-left:20px;
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+		.chongdingy{
+			background-color:#f5f5f5; 
+			padding:10px 0;
+		}
+		.chongdingywz{
+			text-align: left !important;
+			font-size: 16px;
+			padding-left: 20px;
+		}
+	</style>
+
+
+	<div class="row-fluid">
+		<div class="span12">
+		
+			<form action="{:Url('Fx/agreesave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+				<div class="control-group chongdingy">
+
+					<label class="control-label chongdingywz">分销商申请协议</label>
+
+				</div>
+		   
+		        <div class="editors">
+			        <script id="editor" name="content" type="text/plain">{$item.fxs_xy}</script>
+			    </div>
+				
+				<div class="weiz">
+					<input type="submit" value="提交" class="btn green" >
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+    	$(function() {
+	    	var ue = UE.getEditor('editor');
+		});
+    	function checkinfo(){
+    		val = $("#ueditor_textarea_content").val();
+    		if(!val){
+        		alert("请输入内容");
+        		return false;
+        	}else{
+        		$("#content").val(val);
+        	}
+	    }
+    </script>
+
+
+{include file="public/foot_more" /}

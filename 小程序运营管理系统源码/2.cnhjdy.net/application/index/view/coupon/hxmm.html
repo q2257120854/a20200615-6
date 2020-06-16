@@ -1,0 +1,116 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.editors{
+		max-width: 770px;
+		min-height: 600px;
+	}
+	.w-e-text-container{
+		min-height: 600px !important;
+	}
+	.weiz{
+		margin-left:20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+</style>
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<input type="hidden" id="nowhtml" value="navSale" class="navSale2">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			核销密码--{$applet.name}
+		</li>
+	</ul>
+
+	<style type="text/css">
+		.sss{
+			display: inline-block;
+		}
+	</style>
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+
+				<form action="{:Url('Coupon/hxsave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+					
+				
+					<div class="control-group">
+
+						<label class="control-label">核销密码</label>
+
+						<div class="controls">
+
+							<input name="hxmm" id="hxmm" type="text" class="span3 m-wrap"  style="height: 35px !important;"  value="{$hxmm.hxmm}" />
+
+						</div>
+
+					</div>
+
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+{include file="public/foot_more" /}
+
+
+<script type="text/javascript">
+
+
+
+   	function checkinfo(){
+
+   		var hxmm = $("#hxmm").val();
+
+   		if(!hxmm){
+   			alert("核销密码不能为空！");
+   			return false;
+   		}
+
+   	}
+
+
+
+
+
+</script>

@@ -1,0 +1,169 @@
+{extend name="index_base" /} {block name="seo"}
+<title>我的帖子 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+    <div class="fly-panel fly-panel-user" pad20>
+        <!--
+    <div class="fly-msg" style="margin-top: 15px;">
+      您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+    </div>
+    -->
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title" id="LAY_mine">
+                <li data-type="mine-jie" lay-id="index" class="layui-this">我发的帖（
+                    <span>{$count}</span>）</li>
+                <li lay-id="collection">我收藏的帖（{$count_collect}）</li>
+                <li><a href="{:url('bbs/forum/add')}">发表新帖</a></li>
+            </ul>
+            <div class="layui-tab-content" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+
+                    <table id="demo" lay-filter="test"></table>
+
+                </div>
+                <div class="layui-tab-item">
+                    <table id="myCollection" lay-filter="test11"></table>
+
+                    <script type="text/javascript">
+                        //帖子收藏
+                        layui.use(['form', 'laytpl', 'form', 'element', 'table', 'util'], function() {
+                            var form = layui.form,
+                                jq = layui.jquery;
+                            var util = layui.util;
+                            var laytpl = layui.laytpl;
+
+                            var element = layui.element;
+
+                            var table = layui.table;
+
+                            //我发表的帖
+                            table.render({
+                                elem: '#demo',
+                                url: "{:url('index/api/getMyItem')}" //数据接口
+                                    ,
+                                method: 'post',
+                                where: {
+                                    item: 'forum'
+                                },
+                                cols: [
+                                    [{
+                                        field: 'title',
+                                        title: '帖子标题',
+                                        minWidth: 300,
+                                        templet: '<div><a href="/thread/{{ d.id }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+                                    }, {
+                                        field: 'status',
+                                        title: '状态',
+                                        width: 100,
+                                        align: 'center',
+                                        templet: function(d) {
+                                            if (d.status == 1) {
+                                                return '<span style="color: #FF5722;">加精</span>';
+                                            } else if (d.status == -1) {
+                                                return '<span style="color: #ccc;">审核中</span>';
+                                            } else {
+                                                return '<span style="color: #999;">正常</span>'
+                                            }
+                                        }
+                                    }, {
+                                        field: 'time',
+                                        title: '发表时间',
+                                        width: 120,
+                                        align: 'center',
+                                        templet: '<div>{{ layui.util.timeAgo(d.time*1000, 1) }}</div>'
+                                    }, {
+                                        title: '数据',
+                                        width: 150,
+                                        templet: '<div><span style="font-size: 12px;">{{d.view}}阅/{{d.reply}}答</span></div>'
+                                    }, {
+                                        title: '操作',
+                                        width: 100,
+                                        templet: function(d) {
+                                            var url = "{:url('bbs/forum/edit',array('id'=>'" + d.id + "'))}";
+                                            return d.open == 1 ? '<a class="layui-btn layui-btn-sm" href="' + url + '" target="_blank">编辑</a>' : ''
+
+                                        }
+                                    }]
+                                ],
+                                page: true,
+                                skin: 'line'
+                            });
+                            //我收藏的帖
+                            table.render({
+                                elem: '#myCollection',
+                                url: "{:url('index/api/getMyCollect')}" //数据接口
+                                    ,
+                                method: 'post',
+                                where: {
+                                    ctype: 1,
+                                    item: 'forum'
+                                },
+                                cols: [
+                                    [{
+                                        field: 'title',
+                                        title: '帖子标题',
+                                        minWidth: 300,
+                                        templet: '<div><a href="/thread/{{ d.fid }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+                                    }, {
+                                        field: 'username',
+                                        title: '作者',
+                                        minWidth: 300,
+                                        templet: '<div><a href="/home/{{ d.zuid }}.html" target="_blank" class="layui-table-link">{{ d.username }}</a></div>'
+                                    }, {
+                                        field: 'time',
+                                        title: '收藏时间',
+                                        width: 120,
+                                        align: 'center',
+                                        templet: '<div>{{ layui.util.timeAgo(d.time*1000, 1) }}</div>'
+                                    }]
+                                ],
+                                page: true,
+                                skin: 'line'
+                            });
+
+
+
+
+                            jq('.discollect').click(function() {
+
+                                var idnum = jq(this).data('id');
+                                var obj = jq(this);
+                                layer.confirm('取消收藏', {
+                                    icon: 3,
+                                    title: '提示'
+                                }, function(index) {
+
+                                    jq.post('{:url("index/api/zan_collect")}', {
+                                        'zan_collect': 'collect',
+                                        'id': idnum,
+                                        'type': 1
+                                    }, function(data) {
+                                        if (data.code == 201) {
+                                            jq(obj).parent().remove();
+                                            layer.msg(data.msg, {
+                                                icon: 1,
+                                                time: 1000
+                                            });
+                                        } else {
+                                            layer.msg(data.msg, {
+                                                icon: 2,
+                                                anim: 6,
+                                                time: 1000
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}

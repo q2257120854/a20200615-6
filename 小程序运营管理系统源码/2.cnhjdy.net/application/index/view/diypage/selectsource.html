@@ -1,0 +1,234 @@
+<div class="modal-dialog">
+
+          <style>
+
+        #selectUrl_url .modal-body {padding: 10px 15px;}
+
+        #selectUrl_url .tab-pane {margin-top: 5px; min-height: 400px; max-height: 400px; overflow-y: auto;}
+
+        #selectUrl_url .page-head {padding: 9px 0; margin-bottom: 8px;}
+
+        #selectUrl_url .page-head h4 {margin: 0;}
+
+        #selectUrl_url .btn {margin-bottom: 3px;}
+
+        #selectUrl_url .modal-dialog {width: 930px;}
+
+        #selectUrl_url .line {border-bottom: 1px dashed #ddd; color: #999; height: 36px; line-height: 36px;}
+
+        #selectUrl_url .line .icon {height: 35px; width: 30px; position: relative; float: left;}
+
+        #selectUrl_url .line .icon.icon-1:before {content: ""; width: 10px; height: 10px; border: 1px dashed #ccc; position: absolute; top: 12px; left: 10px;}
+
+        #selectUrl_url .line .icon.icon-2 {width: 50px;}
+
+        #selectUrl_url .line .icon.icon-2:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 20px;}
+
+        #selectUrl_url .line .icon.icon-3 {width: 60px;}
+
+        #selectUrl_url .line .icon.icon-3:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 30px;}
+
+        #selectUrl_url .line .btn-sm {float: right; margin-top: 5px; margin-right: 5px; height: 24px; line-height: 24px; padding: 0 10px;}
+
+        #selectUrl_url .line .text {display: block;}
+
+        #selectUrl_url .line .label-sm {padding: 2px 5px;}
+
+        #selectUrl_url .line.good {height: 60px; padding: 4px 0;}
+
+        #selectUrl_url .line.good .image {height: 50px; width: 50px; border: 1px solid #ccc; float: left;}
+
+        #selectUrl_url .line.good .image img {height: 100%; width: 100%;}
+
+        #selectUrl_url .line.good .text {padding-left: 60px; height: 52px;}
+
+        #selectUrl_url .line.good .text p {padding: 0; margin: 0;}
+
+        #selectUrl_url .line.good .text .name {font-size: 15px; line-height: 32px; height: 28px;}
+
+        #selectUrl_url .line.good .text .price {font-size: 12px; line-height: 18px; height: 18px;}
+
+        #selectUrl_url .line.good .btn-sm {height: 32px; padding: 5px 10px; line-height: 22px; margin-top: 9px;}
+
+        #selectUrl_url .tip {line-height: 250px; text-align: center;}
+
+        #selectUrl_url .nav-tabs > li > a {padding: 8px 20px;}
+        #selectUrl .modal-body {padding: 10px 15px;}
+
+        #selectUrl .tab-pane {margin-top: 5px; min-height: 400px; max-height: 400px; overflow-y: auto;}
+
+        #selectUrl .page-head {padding: 9px 0; margin-bottom: 8px;}
+
+        #selectUrl .page-head h4 {margin: 0;}
+
+        #selectUrl .btn {margin-bottom: 3px;}
+
+        #selectUrl .modal-dialog {width: 930px;}
+
+        #selectUrl .line {border-bottom: 1px dashed #ddd; color: #999; height: 36px; line-height: 36px;}
+
+        #selectUrl .line .icon {height: 35px; width: 30px; position: relative; float: left;}
+
+        #selectUrl .line .icon.icon-1:before {content: ""; width: 10px; height: 10px; border: 1px dashed #ccc; position: absolute; top: 12px; left: 10px;}
+
+        #selectUrl .line .icon.icon-2 {width: 50px;}
+
+        #selectUrl .line .icon.icon-2:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 20px;}
+
+        #selectUrl .line .icon.icon-3 {width: 60px;}
+
+        #selectUrl .line .icon.icon-3:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 30px;}
+
+        #selectUrl .line .btn-sm {float: right; margin-top: 5px; margin-right: 5px; height: 24px; line-height: 24px; padding: 0 10px;}
+
+        #selectUrl .line .text {display: block;}
+
+        #selectUrl .line .label-sm {padding: 2px 5px;}
+
+        #selectUrl .line.good {height: 60px; padding: 4px 0;}
+
+        #selectUrl .line.good .image {height: 50px; width: 50px; border: 1px solid #ccc; float: left;}
+
+        #selectUrl .line.good .image img {height: 100%; width: 100%;}
+
+        #selectUrl .line.good .text {padding-left: 60px; height: 52px;}
+
+        #selectUrl .line.good .text p {padding: 0; margin: 0;}
+
+        #selectUrl .line.good .text .name {font-size: 15px; line-height: 32px; height: 28px;}
+
+        #selectUrl .line.good .text .price {font-size: 12px; line-height: 18px; height: 18px;}
+
+        #selectUrl .line.good .btn-sm {height: 32px; padding: 5px 10px; line-height: 22px; margin-top: 9px;}
+
+        #selectUrl .tip {line-height: 250px; text-align: center;}
+
+        #selectUrl .nav-tabs > li > a {padding: 8px 20px;}
+    </style>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <button data-dismiss="modal" class="close" type="button">×</button>
+
+            <h4 class="modal-title">选择数据来源</h4>
+
+        </div>
+
+        <div class="modal-body">
+
+            <ul class="nav nav-tabs" id="selectUrlTab">
+
+                <li class="active"><a href="#sut_diypage">
+
+                    {if $type == 'noticcate'}
+
+                        公告栏目
+
+                    {elseif $type == 'goodscate'}
+
+                        商品栏目
+
+                    {elseif $type == 'piccate'}
+
+                        案例栏目
+
+                    {elseif $type == 'articlecate'}
+
+                        文章栏目
+
+                    {elseif $type == 'picartcate'}
+
+                        图文栏目
+
+                    {elseif $type == 'ptcate'}
+
+                        拼团栏目
+
+                    {elseif $type == 'formcate'}
+
+                        表单列表
+
+                    {/if}
+
+                </a></li>
+
+            </ul>
+
+            <div class="tab-content ">
+
+                <div class="tab-pane active" id="sut_diypage">
+
+                    <div class="alert alert-alt alert-danger alert-dismissible" role="alert">
+
+                        选择对应的栏目后，小程序将从后台读取相应的栏目数据
+
+                    </div>
+
+                    <div id="select-diypage-list">
+                        {if $list}
+                        {foreach $list as $v}
+                        
+                        <div class="line">
+
+                            <div class="icon icon-link1"></div>
+
+                            <nav data-href="cateid:{$v['id']}" data-linktype="page" class="btn btn-default btn-sm" title="选择">选择</nav>
+                            {if $type == "picartcate"}
+                                <div class="text">
+                                {if $v['type'] =="showPic"}
+                                    <span class="label label-warning" style="margin-right: 5px">组图</span>
+                                {/if}
+                                {if $v['type'] =="showArt"}
+                                    <span class="label label-success" style="margin-right: 5px">文章</span>
+                                {/if}
+                                <span style="font-weight: bold">|-{$v['name']}</span></div>
+                            {else}
+                                <div class="text" style="font-weight: bold">|-{$v['name']}</div>
+                            {/if}
+                        </div>
+                        {if $v['subcate']}
+                            {foreach $v['subcate'] as $vi}
+                              <div class="line">
+
+                                <div class="icon icon-link1" style="margin-left: 10px"></div>
+
+                                <nav data-href="cateid:{$vi['id']}" data-linktype="page" class="btn btn-default btn-sm" title="选择">选择</nav>
+                                    {if $type == "picartcate"}
+                                        <div class="text">
+                                        {if $vi['type'] =="showPic"}
+                                            <span class="label label-warning" style="margin-right: 5px">组图</span>
+                                        {/if}
+                                        {if $vi['type'] =="showArt"}
+                                            <span class="label label-success" style="margin-right: 5px">文章</span>
+                                        {/if}
+                                        {$vi['name']}</div>
+                                    {else}
+                                        <div class="text">|--{$vi['name']}</div>
+                                    {/if}
+                                </div>
+                            {/foreach}
+                        {/if}
+                        {/foreach}
+                        {/if}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+
+        </div>
+
+
+    </div>
+
+</div>
+

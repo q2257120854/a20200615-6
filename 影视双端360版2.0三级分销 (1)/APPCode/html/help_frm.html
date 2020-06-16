@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+      <section id="list" class="aui-content aui-margin-b-15">
+          <ul class="aui-list aui-media-list" id="wenti">
+              <li class="aui-list-item" onclick="openWin('web', {title:v.title, url:v.linkurl, data:v.content})">
+                  <div class="aui-media-list-item-inner">
+                      <div class="aui-list-item-inner aui-list-item-arrow">
+                          <div class="aui-list-item-text">
+                              <div class="aui-list-item-title"></div>
+                          </div>
+                          <!-- <div class="aui-list-item-text aui-ellipsis-2" v-text="v.content"></div> -->
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </section>
+  </body>
+  <script type="text/x-dot-template" id="newsx">
+		{{~ it : value : index }}
+				 
+				<li class="aui-list-item" onclick="openWin('web_win', {title:'{{= value. title }}',data:'{{= value. con }}'})">
+					 <div class="aui-media-list-item-inner">
+                      <div class="aui-list-item-inner aui-list-item-arrow">
+                          <div class="aui-list-item-text">
+                              <div class="aui-list-item-title">{{= value. title }}</div>
+                          </div>
+                          <!-- <div class="aui-list-item-text aui-ellipsis-2" v-text="v.content"></div> -->
+                      </div>
+                  </div>
+              </li>
+		{{~}}
+	</script>
+  <script type="text/javascript" src="../script/doT.js"></script>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+   var api_url = localStorage.getItem('api_url');
+		apiready = function(){
+          var wenti = $api.byId('wenti');
+			var newsx = $api.byId('newsx');
+			api.ajax({
+				  url: api_url+'/App/App/news.html',
+				  method: 'get',
+			  },function(ret, err){
+				  if (ret) {
+					//alert(JSON.stringify(ret))
+					var pagefn = doT.template(newsx.text);
+					wenti.innerHTML = pagefn(ret);
+				
+				  } else {
+					alert( '常见问题加载失败！' );
+					api.hideProgress();
+				}      
+			  });
+		};
+		
+		
+		
+  </script>
+  </html>

@@ -1,0 +1,48 @@
+{include file="public/top" /}
+<title>小程序案例</title>
+<meta name="keywords" content="小程序案例">
+<meta name="description" content="小程序案例">
+<link rel="stylesheet" type="text/css" href="/com/css/icon/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/index.css"/>
+<link rel="stylesheet" type="text/css" href="/com/css/wnmd.css"/>
+<script src="/com/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/com/js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    {include file="public/head"}
+    <div class="cases_banner">
+            <div class="profit_banner_div main">
+                <p class="profit_banner_en">CASES</p>
+                <p class="profit_banner_cn">小程序案例</p>
+            </div>
+        </div>
+        <div class="casesbox">
+            <div class="cases main">
+                <div class="clearfix">
+                {foreach $list as $res}
+                <a class="cases_single">
+                    <div class="cases_single_div1">
+                        <img class="cases_single_div1_img" src="{$res.pic}"/>
+                        <div class="cases_ewm">
+                            <img class="cases_ewm_img" src="{$res.ewm}"/>
+                            <div class="cases_ewm_div1">小程序搜索</div>
+                            <div class="cases_ewm_div2">{$res.title}</div>
+                        </div>
+                    </div>
+                    <div class="cases_div">
+                        <span class="cases_div_span2">{$res.casetype}</span>
+                    </div>
+                </a>
+                {/foreach}
+                </div>
+                <div class="dynamic_fy" style="margin-top: 0;margin-bottom: 120px;">
+                        {$lists->render()}
+                </div>
+            </div>
+        </div>
+    
+    {include file="public/foot"}
+</body>
+</html>

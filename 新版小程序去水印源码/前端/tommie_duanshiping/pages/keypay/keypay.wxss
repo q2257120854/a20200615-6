@@ -1,0 +1,80 @@
+.container {
+    height: 100%;
+}
+
+.h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 60rpx;
+    font-size: 36rpx;
+    color: #495060;
+}
+
+.duihuan {
+    display: flex;
+    justify-content: center;
+    padding: 40rpx 0;
+}
+
+.duihuan input {
+    height: 70rpx;
+    width: 60%;
+    padding: 0 20rpx;
+    background-color: white;
+    font-size: 30rpx;
+}
+
+.duihuan .txt {
+    height: 70rpx;
+    background-color: #ff9900;
+}
+
+.duihuan .txt text {
+    line-height: 70rpx;
+    color: white;
+    margin: auto 40rpx;
+    font-size: 32rpx;
+}
+
+.help {
+    width: 710rpx;
+    margin: 0 40rpx;
+}
+
+.help .title {
+    font-size: 36rpx;
+}
+
+.help text {
+    color: #4e4e4e;
+    font-size: 30rpx;
+}
+
+.service {
+    position: fixed;
+    right: -10rpx;
+    bottom: 15%;
+    display: flex;
+    justify-content: center;
+    width: 200rpx;
+    background-color: #ff9900;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+}
+
+.service-img-button {
+    line-height: 80rpx;
+    height: 80rpx;
+    width: 200rpx;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 32rpx;
+}
+
+.service-img-button::after {
+    border: none;
+    background: none;
+}

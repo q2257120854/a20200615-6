@@ -1,0 +1,142 @@
+<view class="fav-hint" style="display: {{showAddMeBtn&&scrollTop==0?'block':'none'}};">
+    <text>点击'···'添加到我的小程序,</text>
+    <text>微信首页下拉即可快速访问</text>
+    <view bindtap="onClickAddToMinProgramCloseBtn" class="close-fav-hint"></view>
+</view>
+<view class="container">
+    <view bindtap="tipKeFuMsg" class="gonggao">
+        <i-notice-bar loop icon="systemprompt" speed="1200" wx:if="{{description}}">
+        {{description}}
+</i-notice-bar>
+    </view>
+    <view bindtap="copy" class="zhifubao" wx:if="{{copyText}}">
+        <image src="{{url}}{{adImg}}"></image>
+        <view class="wenzi">
+            <text class="left">{{adText}}</text>
+            <text class="fuzhi">☜点击复制</text>
+        </view>
+    </view>
+    <view class="inputmain">
+        <view class="weui-cells weui-cells_after-title" style="width:520rpx;border-radius: 5px;">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd" style="height: 86rpx;display:flex;">
+                    <view class="iconfont icon-lianjie lianjie"></view>
+                    <input bindconfirm="recommend" bindinput="invalue" class=" weui-input" confirmType="search" name="url" placeholder="请输入分享链接" value="{{inputvalue}}"></input>
+                </view>
+                <view class="weui-cell__ft" wx:if="{{inputvalue}}">
+                    <icon bindtap="clear" color="#E64340" size="23" type="clear"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="jiexibut" wx:if="{{loginState==0}}">
+            <button bindgetuserinfo="updateUserInfo" class="login-button" openType="getUserInfo">登录</button>
+        </view>
+        <view bindtap="query" bindtouchend="end" bindtouchstart="start" class="jiexibut" style="background-color:{{color}}" wx:else>解析</view>
+    </view>
+    <view wx:if="{{playurl}}">
+        <view class="videos">
+            <video id="myVideo" src="{{playurl}}"></video>
+        </view>
+        <view class="button">
+            <i-button bind:click="handleClick" bindtap="downloads" type="error">
+                <i-icon size="28" type="mobilephone_fill"></i-icon>下载视频</i-button>
+            <i-button bind:click="handleClick" bindtap="copydownurl" type="primary">
+                <i-icon size="28" type="accessory"></i-icon>复制链接</i-button>
+        </view>
+    </view>
+    <view class="ad" wx:if="{{adId.length>0}}">
+        <ad unitId="{{adId}}"></ad>
+    </view>
+    <view class="weui-footer" style="text-align: left;margin-top: 15px;background-color: #fff;padding-left: 10px;">
+        <view class="weui-footer__text" style="font-size: 36rpx;color: #000;padding-bottom: 0rpx;font-weight: 600;padding-top:10px;">常见问题</view>
+    </view>
+    <view style="display: flex;background-color: #fff;padding-bottom: 10px;padding-top: 10px;">
+        <view style="width: 50%;overflow: hidden;margin-right: 0px;margin-left: 15px;background-image: linear-gradient(60deg, #05a057 30%, #0dcb71 70%);border-radius: 5px;height: 82px;">
+            <navigator style="opacity:1;background-color:rgba(0, 0, 0, 0);display: flex;" url="../help/index">
+                <view style="width:65%;overflow:hidden;padding-left: 13px;">
+                    <view style="line-height: 18px;padding-top: 23px;">
+                        <text style="font-size:18px;overflow:hidden;color:#fff;font-weight: 600;">使用教程</text>
+                    </view>
+                    <view>
+                        <text style="overflow:hidden;color:#fff;font-size: 14px;">如何去除水印</text>
+                    </view>
+                </view>
+                <view style="width:35%;margin-left: 15px;">
+                    <image src="/tommie_duanshiping/resource/image/bz2.png" style="width:30px;height:30px;display:block;padding-top:27px;"></image>
+                </view>
+            </navigator>
+        </view>
+        <view style="width: 50%;overflow: hidden;margin-right:15px;margin-left: 10px;background-image: linear-gradient(60deg, #f4700f 30%,#fd8024 70%);border-radius: 5px;height: 82px;">
+            <navigator style="opacity:1;background-color:rgba(0, 0, 0, 0);display: flex;" url="../cishu/index">
+                <view style="width:65%;overflow:hidden;padding-left: 13px;">
+                    <view style="line-height: 18px;padding-top: 23px;">
+                        <text style="font-size:18px;overflow:hidden;color:#fff;font-weight: 600;">邀请好友</text>
+                    </view>
+                    <view>
+                        <text style="overflow:hidden;color:#fff;font-size: 14px;">转发邀请好友</text>
+                    </view>
+                </view>
+                <view style="width:35%;margin-left: 15px;">
+                    <image src="/tommie_duanshiping/resource/image/fx2.png" style="width:30px;height:30px;display:block;padding-top:27px;"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view style="display: flex;background-color: #fff;padding-bottom: 10px;padding-top: 0px;">
+        <view style="width: 50%;overflow: hidden;margin-right: 0px;margin-left: 15px;background-image: linear-gradient(60deg, #3271ea 30%,#6797fd 70%);border-radius: 5px;height: 82px;">
+            <navigator style="opacity:1;background-color:rgba(0, 0, 0, 0);display: flex;" url="../shibai/index">
+                <view style="width:65%;overflow:hidden;padding-left: 13px;">
+                    <view style="line-height: 18px;padding-top: 23px;">
+                        <text style="font-size:18px;overflow:hidden;color:#fff;font-weight: 600;">常见问题</text>
+                    </view>
+                    <view>
+                        <text style="overflow:hidden;color:#fff;font-size: 14px;">去水印失败</text>
+                    </view>
+                </view>
+                <view style="width:35%;margin-left: 15px;">
+                    <image src="/tommie_duanshiping/resource/image/02.png" style="width:30px;height:30px;display:block;padding-top:27px;"></image>
+                </view>
+            </navigator>
+        </view>
+        <view style="width: 50%;overflow: hidden;margin-right:15px;margin-left: 10px;background-image: linear-gradient(60deg, #32bbfb 30%,#24e3ff 70%);border-radius: 5px;height: 82px;">
+            <navigator style="opacity:1;background-color:rgba(0, 0, 0, 0);display: flex;" url="../user/user">
+                <view style="width:65%;overflow:hidden;padding-left: 13px;">
+                    <view style="line-height: 18px;padding-top: 23px;">
+                        <text style="font-size:18px;overflow:hidden;color:#fff;font-weight: 600;">MD5说明</text>
+                    </view>
+                    <view>
+                        <text style="overflow:hidden;color:#fff;font-size: 14px;">改MD5上热门</text>
+                    </view>
+                </view>
+                <view style="width:35%;margin-left: 15px;">
+                    <image src="/tommie_duanshiping/resource/image/01.png" style="width:30px;height:30px;display:block;padding-top:27px;"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="weui-footer">
+        <view class="weui-footer__text">视频归平台及作者所有，本应用不储存任何视频及图片。</view>
+    </view>
+</view>
+<view class="comp-fixed-menu {{scrollTop?'comp-fixed-menu-show':'comp-fixed-menu-hide'}}">
+    <button bindtap="_eventbackToTop" class="item" style="background:{{touming==1?'rgba(255, 255, 255, 0.49)':'#fff'}}">
+        <view class="iconfont icon-fanhuidingbu"></view>
+        <view class="text">顶部</view>
+    </button>
+    <button bindtap="gomd5" class="item item-bg-1 item-1">
+        <view class="iconfont icon-douyintexiao"></view>
+        <view class="text">MD5</view>
+    </button>
+    <button showMessageCard class="item item-bg-2 item-2" openType="contact" sendMessageImg="../../images/contact_customer.jpg" sendMessagePath="/pages/mine/index?action=add_custom" sendMessageTitle="">
+        <view class="iconfont icon-kefu"></view>
+        <view class="text">客服</view>
+    </button>
+    <button bindtap="toduihuan" class="item item-bg-3 item-3" wx:if="{{isMember==='1'}}">
+        <view class="iconfont icon-liwu"></view>
+        <view class="text">兑卡</view>
+    </button>
+    <button bindtap="onClose1" class="item {{isMember==1?'item-bg-4':'item-bg-3'}} {{isMember==1?'item-4':'item-3'}}">
+        <view class="iconfont icon-right-arrow"></view>
+        <view class="text">收起</view>
+    </button>
+</view>

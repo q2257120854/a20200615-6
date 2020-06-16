@@ -1,0 +1,75 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.chongdingy{
+
+		background-color:#f5f5f5; 
+
+		padding:10px 0;
+
+	}
+
+	.chongdingywz{
+
+		text-align: left !important;
+
+		font-size: 16px;
+
+		padding-left: 20px;
+
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navSale" class="navSale6">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			多规格商品设置--{$applet.name}
+		</li>
+	</ul>
+	<div class="row-fluid">
+		<div class="portlet box">
+			<div class="portlet-body form">
+				<form action="{:Url('Duoproductsset/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+	 				<div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">多规格订单表单管理</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">表单选择</label>
+						<div class="controls">
+							<select name="formset" class="span3 m-wrap">
+								<option value="0">---不启用---</option>
+								{if $forms}
+									{foreach $forms as $v}
+									<option value="{$v.id}" {if $yunfeidata}{if $yunfeidata.formset==$v.id}selected="selected"{/if}{/if}>{$v.formname}</option>
+									{/foreach}
+								{/if}
+							</select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择后则可提交信息</span>
+						</div>
+					</div>
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz" style="width: 500px">运费管理</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">运费</label>
+						<div class="controls">
+							<input name="yunfei" type="text" class="span2 m-wrap" value="{if $yunfeidata}{$yunfeidata.yfei}{/if}"  style="height: 35px !important;" /> 元
+							<span style="color:#999999; line-height:40px; margin-left:20px;">设置0则为包邮</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">满额包邮</label>
+						<div class="controls">
+							<input name="baoyou" type="text" class="span2 m-wrap" value="{if $yunfeidata}{$yunfeidata.byou}{/if}"  style="height: 35px !important;" /> 元
+							<span style="color:#999999; line-height:40px; margin-left:20px;">单次下单满多少包邮</span>
+						</div>
+					</div>
+					<div class="form-actions" style="overflow: hidden;display: block;">
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{include file="public/foot_more" /}

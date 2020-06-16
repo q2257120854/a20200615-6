@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>LaySNS后台管理</title>
+<link rel="stylesheet" href="__ADMIN__/css/font.css">
+<link rel="stylesheet" href="__ADMIN__/css/login.css">
+<link rel="stylesheet" href="__ADMIN__/css/xadmin.css">
+<link rel="stylesheet" href="__ADMIN__/plugins/layui/css/layui.css">
+<script src="__ADMIN__/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__ADMIN__/plugins/layui/layui.js" type="text/javascript"></script>
+</head>
+<body class="login-bg">
+    
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">LaySNS 后台管理登录</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form method="post" class="layui-form" >
+            <input type="text" name="username" placeholder="请输入管理员账号" required lay-verify="required" autocomplete="off" class="layui-input" >
+            <hr class="hr15">
+            <input type="password" name="password" placeholder="请输入您的登录密码" required lay-verify="required" autocomplete="off" class="layui-input">
+            <hr class="hr15">
+  {if condition="$yzm eq 1||$code eq 1"}
+<div class="layui-form-item">
+<input style="width:180px;float:left;margin-right: 10px;" type="text" name="verify" placeholder="图形认证" required lay-verify="required" autocomplete="off" class="layui-input">
+<img id="captcha" src="{:url('login/captcha')}" onclick="this.src='{:url('login/captcha')}?'+Math.random();" width="150" style="float:left; cursor:pointer;border-radius: 5px;" alt="captcha" />
+</div>
+{/if}
+                      <hr class="hr15">
+            <input value="登录" lay-submit="" lay-filter="login_index" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+		<div>&#22823;&#37327;&#28304;&#30721;&#65292;&#25345;&#32493;&#26356;&#26032;&#65306;&#119;&#119;&#119;&#46;&#108;&#97;&#110;&#114;&#101;&#110;&#122;&#104;&#105;&#106;&#105;&#97;&#46;&#99;&#111;&#109;</div>
+    </div>
+<script type="text/javascript">
+		if (top.location != self.location){     
+			top.location=self.location;     
+		}   
+	</script>
+<script>
+layui.use('form',function(){
+  var form = layui.form
+  ,jq = layui.jquery;
+
+  form.on('submit(login_index)', function(data){
+    loading = layer.load(2, {
+      shade: [0.2,'#000']
+    });
+    var param = data.field;
+    jq.post('{:url("login/login")}',param,function(data){
+      if(data.code == 200){
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+          location.href = '{:url("index/adminindex")}';
+        });
+      }else{
+        layer.close(loading);
+        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        
+        $('#captcha').attr('src',"{:url('login/captcha')}?"+Math.random());
+        
+      }
+    });
+    return false;
+  });
+
+})
+</script>
+</body>
+</html>

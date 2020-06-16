@@ -1,0 +1,31 @@
+{template 'common/header'}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel=title">
+            修改会员到期时间
+        </h3>
+    </div>
+    <div class="panel-body">
+        <form action="{php echo $this->createWebUrl('editmember');}&openid={$dates['openid']}" method="POST" class="form-horizontal"
+            role="form">
+    
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">选择日期</label>
+                <div class="col-sm-10">
+                    {php echo _tpl_form_field_date('date', $value = $date, $withtime = true);}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+{template 'common/footer'}

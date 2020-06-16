@@ -1,0 +1,434 @@
+{include file="public/head" /}
+
+
+
+{include file="public/top" /}
+
+
+
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP6">
+
+
+
+
+
+
+
+	<ul class="breadcrumb">
+
+
+
+		<li>
+
+
+
+			<i class="icon-home"></i>
+
+
+
+			会员卡设置--{$applet.name}
+
+
+
+		</li>
+
+
+
+	</ul>
+
+
+
+	
+
+
+
+	<style type="text/css">
+
+
+
+		.chongdingy{
+
+
+
+			background-color:#f5f5f5; 
+
+
+
+			padding:10px 0;
+
+
+
+		} 
+
+
+
+		.chongdingywz{
+
+
+
+			text-align: left !important;
+
+
+
+			font-size: 16px;
+
+
+
+			padding-left: 20px;
+
+
+
+		}
+
+
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+
+
+
+
+		<div class="portlet box">
+
+
+
+
+
+
+
+			
+
+
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('Vipset/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">会员卡基础设置</label>
+
+					</div>
+
+					
+
+
+					<div class="control-group">
+
+						<label class="control-label">开启会员卡</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="isopen" value="0" {if $item}{if $item.isopen==0}checked='checked'{/if}{/if}/>
+
+							不启用
+
+							</label> 
+							<label class="radio">
+							<input type="radio" name="isopen" value="1" {if $item}{if $item.isopen==1}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							启用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="isopen" value="2" {if $item}{if $item.isopen==2}checked='checked'{/if}{/if}/>
+
+							强制开启
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认开启</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">会员卡审核</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="shenhe" value="2" {if $item}{if $item.shenhe==2}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							不启用
+
+							</label> 
+							<label class="radio">
+							<input type="radio" name="shenhe" value="1" {if $item}{if $item.shenhe==1}checked='checked'{/if}{/if}/>
+
+							启用
+
+							</label>
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">会员卡名称</label>
+
+						<div class="controls">
+							<input name="name" type="text" class="span3 m-wrap" value="{if $item}{$item.name}{else}会员卡{/if}"  style="height: 35px !important;" />
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不可为空，为空默认设置为会员卡</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">表单选择</label>
+						<div class="controls">
+							<select name="formid" class="span3 m-wrap">
+								<option value="0">---不启用---</option>
+								{if $forms}
+									{foreach $forms as $v}
+									<option value="{$v.id}" {if $item.formid==$v.id}selected="selected"{/if}>{$v.formname}</option>
+									{/foreach}
+								{/if}
+							</select>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">选择后则可提交信息</span>
+						</div>
+					</div>
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">会员卡功能设置</label>
+
+					</div>
+
+					
+
+
+					<div class="control-group">
+
+						<label class="control-label">充值</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="recharge" value="0" {if $item}{if $item.recharge==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="recharge" value="1" {if $item}{if $item.recharge==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">领优惠券</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="coupon" value="0" {if $item}{if $item.coupon==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="coupon" value="1" {if $item}{if $item.coupon==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">积分签到</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="sign" value="0" {if $item}{if $item.sign==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="sign" value="1" {if $item}{if $item.sign==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">积分兑换</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="exchange" value="0" {if $item}{if $item.exchange==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="exchange" value="1" {if $item}{if $item.exchange==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+						</div>
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">秒杀商品</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="miaosha" value="0" {if $item}{if $item.miaosha==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="miaosha" value="1" {if $item}{if $item.miaosha==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">多规格商品</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="duo" value="0" {if $item}{if $item.duo==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="duo" value="1" {if $item}{if $item.duo==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+					<div class="control-group">
+
+						<label class="control-label">预约预定商品</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="yuyue" value="0" {if $item}{if $item.yuyue==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="yuyue" value="1" {if $item}{if $item.yuyue==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group">
+
+						<label class="control-label">拼团商品</label>
+
+						<div class="controls">
+
+							<label class="radio">
+							<input type="radio" name="pt" value="0" {if $item}{if $item.pt==0}checked='checked'{/if}{else}checked='checked'{/if}/>
+
+							直接可用
+
+							</label>
+							<label class="radio">
+							<input type="radio" name="pt" value="1" {if $item}{if $item.pt==1}checked='checked'{/if}{/if}/>
+
+							开卡后可用
+
+							</label>
+
+							<span style="color:#999999; line-height:40px; margin-left:20px;">不选默认直接可用</span>
+
+						</div>
+
+					</div>
+
+					<div class="control-group chongdingy">
+
+						<label class="control-label chongdingywz">会员卡模板消息</label>
+
+					</div>
+					<div class="control-group chongdingy" style="background-color:#fcf8e3; margin-bottom:20px !important">
+						<label class="control-label chongdingywz" style="background-color:#fcf8e3; color:#8a6d3b;width:100%">注：如不需要发送模板消息的请留空。</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">支付通知模板消息id</label>
+						<div class="controls">
+							<input name="mid" type="text" class="span4 m-wrap" value="{if $msg}{$msg.mid}{/if}" style="height: 35px !important;">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">模板消息跳转页面路径</label>
+						<div class="controls">
+							<input name="url" type="text" class="span4 m-wrap" value="{if $msg}{$msg.url}{/if}" style="height: 35px !important;">
+							<span style="color:#999999; line-height:40px; margin-left:20px;">例：sudu8_page/center/center 跳转页面路径，可带参数</span>
+						</div>
+					</div>
+					<div class="form-actions">
+
+						<button type="submit" class="btn green">确定</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{include file="public/foot_more" /}

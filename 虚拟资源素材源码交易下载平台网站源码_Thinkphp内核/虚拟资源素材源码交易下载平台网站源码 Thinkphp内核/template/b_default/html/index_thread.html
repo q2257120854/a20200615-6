@@ -1,0 +1,387 @@
+{extend name="index_base" /} {block name="seo"}
+<title>{$t.title|strip_tags} - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="css"}
+
+<style type="text/css">
+    .pagination {
+        margin: 0 0 20px 0;
+    }
+    
+    i {
+        font-style: italic;
+    }
+    
+    .pop_reward_page {
+        border-radius: 19px !important;
+    }
+    
+    .reward {
+        width: 320px;
+        height: 363px;
+        border-radius: 14px;
+        padding: 0 40px;
+    }
+    
+    .reward_avatar img {
+        border-radius: 100px;
+        width: 92px;
+        height: 92px;
+        margin-top: -45px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.46);
+    }
+    
+    .pop_reward_page .layui-layer-content {
+        overflow: inherit !important;
+    }
+    
+    .close_reward {
+        width: 46px;
+        height: 46px;
+        position: absolute;
+        right: 1px;
+        cursor: pointer;
+    }
+    
+    .reward_btn {
+        background: #f1bc78;
+        position: absolute;
+        bottom: 40px;
+        font-size: 30px;
+        color: #d3454e;
+        width: 320px;
+        text-align: center;
+        line-height: 60px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .reward_btn:hover {
+        background: #fbd776;
+    }
+    
+    .reward_name {
+        text-align: center;
+        margin: 10px;
+        font-size: 20px;
+        color: #fff;
+    }
+    
+    div#reward_form {
+        text-align: center;
+        margin: 40px 0 0;
+    }
+    
+    div#reward_form span {
+        color: #FBD776;
+        font-size: 70px;
+    }
+    
+    div#reward_form i {
+        color: #FBD776;
+        font-style: normal;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    
+    div#reward_edior {
+        font-size: 18px;
+        text-align: center;
+        color: #fcc16e;
+        cursor: pointer;
+        width: 100px;
+        margin: 10px auto 10px;
+    }
+    
+    .reward_avatar {
+        text-align: center;
+    }
+    
+    div#reward_form input {
+        background: 0;
+        border: 0;
+        color: #FBD776;
+        font-size: 70px;
+        text-align: center;
+        width: 155px;
+    }
+    
+    .jie-admin-delete,
+    .jie-admin-color {
+        cursor: pointer;
+    }
+    
+    .setcolor {
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+</style>
+{/block} {block name="body"} {include file="index/menu"}
+<div class="layui-container">
+        <input type="hidden" value="2" id="type" />
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8 content detail">
+            <div class="fly-panel detail-box">
+                <h1>{$t.title}</h1>
+                <input type="hidden" value="{$t.tid}" id="cateid" />
+                <div class="fly-detail-info">
+
+                    <span class="layui-hide-xs">
+            <a style="color:#fff;" class="layui-badge layui-bg-green fly-detail-column"  href="{:url('bbs/index/cate',array('cate_alias'=>$t.alias))}">{$t.name}</a>
+          </span> {if condition="$t['settop'] eq 1"}
+                    <span style="margin-right: 4px;" class="layui-badge layui-bg-black">置顶</span>{/if} {if condition="$t['choice'] eq 1"}
+                    <span class="layui-badge layui-bg-red">精帖</span>{/if} {if condition="$isbanzhu eq 1 || $t['uid'] eq session('userid')"}
+
+                    <span class="layui-badge layui-bg-orange"><a  style="color:#fff;" href="{:url('bbs/forum/edit',array('id'=>$t['id']))}" target="_blank">编辑</a></span> {/if}{include file="index/superdo"}
+                    <div class="fly-admin-box" data-id="437">
+                    </div>
+
+                    <span class="fly-list-nums">
+                            
+                    <a href="#comment">
+                        <i class="iconfont" title="回答"></i> {$t.reply}</a>
+                    <i class="iconfont" title="人气"></i> {$t.view} </span>
+                </div>
+                <div class="detail-about">
+                    <a class="fly-avatar" href="{:url('user/index/home',array('id'=>$t.userid))}">
+                        <img src="{$t.userhead|getheadurl}" alt="{$t.username}"> </a>
+                    <div class="fly-detail-user">
+                        <a href="{:url('user/index/home',array('id'=>$t.userid))}" class="fly-link">
+                            <cite>{$t.username}</cite>
+                        </a>
+                        <!-- {if condition="$isbanzhu eq 1 && session('userid') neq $t.uid"} <span><a style="color:#999;cursor:pointer"  data-id="{$t.id}" data-url="{:url('bbs/forum/gaguser')}" class="jinyan_btn">  <img src="__HOME__/images/gag.png" width="20"/>禁言</a></span>                        {/if} -->
+                        <span data-id="{$t.id}" data-type='1' data-title="{$t.username}的帖子" data-url="{:url('bbs/forum/jubao')}" type="jubao" style="cursor:pointer">
+                           
+                            举报
+                          </span>
+                    </div>
+                    <div class="detail-hits" id="LAY_jieAdmin" data-id="437">
+                        <span>{$t.time|friendlyDate} </span>
+                    </div>
+                </div>
+                <div class="detail-body photos">
+                    <div class="wangEditor-container cl" style="border: 0px solid #e6e6e6;">
+
+                        <div  style="padding: 0;margin-top: 0;">
+                            {$content|htmlspecialchars_decode} {if condition="$viewtype gt 0"} {if $viewtype eq 2}
+                            <div style="border:1px dashed #2F4056;height:30px;line-height:30px;padding-left:15px;color:#F7B824;font-size:12px;">需要回复后才能继续阅览后面的内容
+                                <a href="#comment" style="margin-left:10px;">点击回复</a></div>
+                            {else /}
+                            <div style="border:1px dashed #2F4056;height:30px;line-height:30px;padding-left:15px;color:#F7B824;font-size:12px;">需要付费{$viewscore}{:JF_NAME}才能继续阅读此帖
+                                <a href="javascript:;" id="fufei" style="margin-left:10px;">点击付费</a></div>
+                            {/if}
+                            <script>
+                                layui.use(['element'], function() {
+                                    var jq = layui.jquery;
+                                    var uid = "{:session('userid')}";
+                                    var url = "{:url('bbs/forum/payread',array(),true)}";
+                                    jq('#fufei').click(function() {
+                                        var score = "{$viewscore}";
+                                        var fid = "{$t.id}";
+                                        var jifenname = "{$site_config['jifen_name']}";
+                                        if (uid > 0) {
+                                            layer.confirm('阅读需要扣除您' + score + jifenname + ',是否继续?', {
+                                                icon: 3,
+                                                title: '提示'
+                                            }, function(index) {
+                                                jq.post(url, {
+                                                    fid: fid
+                                                }, function(data) {
+                                                    if (data.code == 200) {
+                                                        layer.msg(data.msg, {
+                                                            icon: 1,
+                                                            time: 1000
+                                                        }, function() {
+                                                            location.reload();
+                                                        });
+                                                    } else {
+                                                        layer.msg(data.msg, {
+                                                            icon: 2,
+                                                            anim: 6,
+                                                            time: 1000
+                                                        });
+                                                    }
+                                                });
+                                                layer.close(index);
+                                            });
+
+
+                                        } else {
+                                            layer.msg('请先登录', {
+                                                icon: 2,
+                                                anim: 6,
+                                                time: 1000
+                                            });
+                                        }
+
+
+                                    });
+
+
+                                });
+                            </script>
+                            {/if}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            {:hook('attachlinkshow',array('id'=>$t.id,'type'=>2))}
+
+            <div class="fly-panel detail-box" style="text-align:center">
+                <div class="layui-btn-container" data-id="{$t.id}">
+                    <input id="zuid" type="hidden" value="{$t.uid}" />
+                    <button data-type='1' data-do='zan' class="zancoll layui-btn layui-btn-primary {if $threadext['zan'] eq 1} layui-bg-gray{/if} {if $threadext['self'] eq 1} disabled{/if}" data-url="{:url('index/api/zan_collect')}"><i class="fa fa-thumbs-up"></i> 点赞 <em>{$t.zan}</em></button>
+                    <button data-type='1' data-do='collect' class="zancoll layui-btn layui-btn-primary {if $threadext['collect'] eq 1} layui-bg-gray{/if} {if $threadext['self'] eq 1} disabled{/if}" data-url="{:url('index/api/zan_collect')}"><i class="fa fa-heart"></i> 收藏 <em>{$t.collect}</em></button>
+                    <button data-type='0' data-do='collect' class="zancoll layui-btn layui-btn-primary {if $threadext['guanzhu'] eq 1} layui-bg-gray{/if} {if $threadext['self'] eq 1} disabled{/if}" data-url="{:url('index/api/zan_collect')}"><i class="fa fa-heart"></i> 关注楼主 <em>{$user.collect}</em></button>
+
+                    <button id="tipauthor" class="layui-btn layui-btn-primary"><i class="fa fa-rmb"></i> 打赏楼主 <em>{$user.tips}</em></button>
+                    <a id="seebydesc" class="layui-btn layui-btn-primary" href="?see_desc=1#comment"><i class="fa fa-sort-numeric-desc"></i> 倒序看帖</a>
+                    <a id="onlyseelz" class="layui-btn layui-btn-primary" href="?see_lz=1#comment"><i class="fa fa-hourglass-1 fa-sm"></i> 只看楼主</a>
+                </div>
+            </div>
+
+            <div id="dashang" class="layui-layer-content dashang" style="display:none;background:url(__HOME__/images/shang.png)">
+                <div class="reward">
+                    <div class="close_reward"></div>
+                    <div class="reward_avatar"><img src="{$user.userhead}" class="avatar" width="40" height="40"></div>
+                    <div class="reward_name">{$user.username}</div>
+                    <div id="reward_form">
+                        <input type="hidden" id="reward_id" value="{$t.id}" />
+                        <input type="text" id="rewarding_input" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" maxlength="4" name="reward_number" value="1" />
+                        <i>{:JF_NAME}</i>
+                        <p style="color:#dedede">点击数字可修改金额</p>
+                    </div>
+
+                    <div id="reward_btn" class="reward_btn" data-url="{:url('index/api/tipauthor')}">打赏</div>
+                </div>
+            </div>
+
+            <div class="fly-panel detail-box" id="flyReply">
+                <a name="comment"> </a>
+                <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
+                    <legend>回帖</legend>
+                </fieldset>
+                <ul class="jieda" id="jieda">
+                    {volist name="tptc" id="vo"}
+                    <li id="tpt{$vo.id}" class="jieda-daan">
+
+                        <div class="detail-about detail-about-reply">
+                            <a class="fly-avatar" href="{:url('user/index/home',array('id'=>$vo.userid))}">
+                                <img src="__ROOT__{$vo.userhead}" alt="{$vo.username}" /> </a>
+                            <div class="fly-detail-user">
+                                <a href="{:url('user/index/home',array('id'=>$vo.userid))}" class="fly-link">
+                                    <cite class="username">{if condition="$vo['uid'] eq session('userid')"}我{else /}{$vo.username}{/if} {if condition="$vo['uid'] eq $t['userid']"} [楼主]{/if}</cite>
+                                </a>
+                                <!-- <span style="color:#5FB878">(管理员)</span>  -->
+                            </div>
+                            <div class="detail-hits">
+                                <span>{$vo.time|friendlyDate}</span>
+                            </div>
+                            <i class="iconfont icon-caina" style="display:none" title="最佳答案"></i>
+                        </div>
+                        <div class="detail-body jieda-body photos">
+                            <p>{$vo.content|htmlspecialchars_decode}</p>
+                            {if condition="$vo['tid'] gt 0"}
+                            <div class="home-dacontent">
+                                {$vo.tid|getcommentbyid}
+                            </div>
+
+                            {/if}
+
+                        </div>
+                        <div class="jieda-reply">
+
+                            <span class="jieda-zan {if in_array($vo['id'],$commentzan)}zanok{/if}" data-id="{$vo.id}" data-url="{:url('index/api/zan_collect')}" type="zan">
+                <i class="iconfont icon-zan"></i>
+                <em>{$vo.zan}</em>
+              </span> {if condition="$vo['uid'] neq session('userid')"}
+                            <span class="jieda-jubao" data-id="{$vo.id}" data-title="{$vo.username}的评论" data-type='2' data-url="{:url('bbs/forum/jubao')}" type="jubao">
+                <img src="__HOME__/images/jubao2.png" width="20">
+                <em>举报</em>
+              </span>
+                            <span type="reply" data-id="{$vo.id}">
+                <i class="iconfont icon-svgmoban53"></i>
+                回复</span> {/if} {if condition="$isbanzhu || $vo['uid'] eq session('userid')"}
+
+                            <span type="edit"><a style="color:#999" data-id="{$vo.id}" data-url="{:url('bbs/forum/delcomment')}" class="del_btn"> <i class="iconfont icon-guanbi"></i>删除</a></span> {/if}{if condition="$isbanzhu eq 1 && session('userid')
+                            neq $vo.uid"}
+
+                            <span type="edit"><a style="color:#999" data-id="{$vo.id}" data-url="{:url('index/api/gaguser')}" class="jinyan_btn">  <img src="__HOME__/images/gag.png" width="20">禁言</a></span>{/if}
+                        </div>
+                    </li>
+                    {/volist}
+
+                </ul>
+                <div class="pages">{$tptc->render()}</div>
+                <div style="text-align: center">
+                </div>
+
+                <div class="layui-form layui-form-pane">
+                    <form>
+                        <div class="layui-form-item layui-form-text">
+                            <div class="layui-input-block">
+                                <span id="huifu"></span>
+                                <textarea id="content" name="content" lay-verify="content"  style="height:150px;width: 100%;" required lay-verify="required"></textarea>
+                                <input type="hidden" name="tid" value="0" id="tid" />
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn" lay-submit="" data-url="{:url('user/comment/add',array('id'=>$t.id))}" lay-filter="comment_add">提交回答</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {include file="index/cateright"}
+    </div>
+</div>
+{/block} {block name="script"}
+<script src="__PUBLIC__/plugins/ace/ace.js"></script>
+<script src="__PUBLIC__/js/thread.js"></script>
+<script>
+    layui.use(['form', 'layedit'], function() {
+        var form = layui.form,
+            jq = layui.jquery;
+        var layedit = layui.layedit;
+        layedit.set({
+                //暴露layupload参数设置接口 --详细查看layupload参数说明
+                uploadImage: {
+                    url: '{:url("index/upload/upimage")}',
+                    accept: 'image',
+                    acceptMime: 'image/*',
+                    exts: 'jpg|png|gif|bmp|jpeg',
+                    size: '10240'
+                }, calldel: {
+                    url: '/Attachment/DeleteFile'
+                }
+                //开发者模式 --默认为false
+                , devmode: true
+                //插入代码设置
+                , codeConfig: {
+                    hide: true,  //是否显示编码语言选择框
+                    default: 'javascript' //hide为true时的默认语言格式
+                }
+                , tool: [
+                    'code', 'strong', 'italic', 'underline', 'del', 'addhr', '|', 'fontFomatt', 'colorpicker', 'face'
+                    , '|', 'left', 'center', 'right', '|', 'link', 'unlink', 'image_alt', 'anchors','html'
+               
+                ]
+                , height: '90%'
+            });
+             editor = layedit.build('content');
+
+              form.verify({
+             content: function(value) { 
+            return layedit.sync(editor);
+           }});
+
+    });
+</script>
+<script>
+</script> {/block}

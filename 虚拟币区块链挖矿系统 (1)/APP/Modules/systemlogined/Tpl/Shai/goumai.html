@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tables - Ace Admin</title>
+
+    <meta name="description" content="Static &amp; Dynamic Tables" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--basic styles-->
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css" />
+
+    <style type="text/css" title="currentStyle">
+        @import "__PUBLIC__/css/TableTools.css";
+    </style>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+
+    <!--page specific plugin styles-->
+
+    <!--fonts-->
+
+    <!--bbc styles-->
+
+    <link rel="stylesheet" href="__PUBLIC__/css/bbc.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/bbc-responsive.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/css/bbc-skins.min.css" />
+    <script src="__PUBLIC__/js/My97DatePicker/WdatePicker.js"></script>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__PUBLIC__/css/bbc-ie.min.css" />
+    <![endif]-->
+
+    <!--inline styles if any-->
+</head>
+
+<body>
+<!--导航-->
+<include file="Public:navbar" />
+
+<div class="container-fluid" id="main-container">
+    <a id="menu-toggler" href="#">
+        <span></span>
+    </a>
+
+    <!--边栏-->
+    <include file="Public:sidebar" />
+
+    <div id="main-content" class="clearfix">
+        <div id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="#">Home</a>
+
+							<span class="divider">
+								<i class="icon-angle-right"></i>
+							</span>
+                </li>
+                <li class="active">游戏管理</li>
+            </ul><!--.breadcrumb-->
+        </div>
+
+        <div id="page-content" class="clearfix">
+            <div class="page-header position-relative">
+                <h1> 游戏购买管理 </h1><span>购买总金额:&nbsp;&nbsp;{$zgoumai}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>赢利总金额:&nbsp;&nbsp;{$zyingmoney}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>已消除泡沫:&nbsp;&nbsp;{$yixiaochu}</span>
+            </div><!--/.page-header-->
+
+            <div class="row-fluid">
+                <!--PAGE CONTENT BEGINS HERE-->
+                <form id="table-searchbar" method="POST" action="{:U(GROUP_NAME.'/Shai/goumai')}" class="form-inline well well-small">
+                    <div class="row-fluid">&nbsp;&nbsp;用户ID
+                        <input type="text" class="input-small" name="id" value="{:$_POST['id']}">
+                        &nbsp;&nbsp;开始日期
+                        <input type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="{:$_POST['starttime']}"class="input-small" name="starttime">
+                        &nbsp;&nbsp;截止日期
+                        <input type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="{:$_POST['endtime']}" class="input-small" name="endtime">
+                        <button type="submit" class="btn btn-small no-border" id="btn-query" type="button"><i class="icon-search"></i>查询</button>
+                    </div>
+                </form>
+			
+                <table id="table_report" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>会员id</th>
+                        <th>会员编号</th>
+                        <th>金额</th>
+                        <th>购买</th>
+                        <th>下单时间</th>
+                        <th>结束时间</th>
+                        <th>状态</th>
+                        <th>开奖点数</th>
+                        <th>中奖金额</th>
+                        <th>开奖结果</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="list" item="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.uid}</td>
+                            <td><a target="_blank" href="{:U('Member/inMember',array('u'=>$vo['username']))}">{$vo.username}</a></td>
+                            <td>{$vo.money}</td>
+                            <td><?php if($vo['buyid']<=6){echo $vo['buyid'];}elseif($vo['buyid']==7){ echo '大';}else{echo '小';}?></td>
+                            <td>{$vo.starttime|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.endtime|date="Y-m-d H:i:s",###}</td>
+                            <td><?php if($vo['status']==1){ echo '<span style="color:#ea2000;">进行中</span>';}if($vo['status']==2){ echo '已结束';}?></td>
+                            <td>{$vo.isid}</td>
+                            <td>{$vo.yingmoney}</td>
+                            <td>
+                                <?php if($vo['isid']!=0){
+                             if($vo['isid']==$vo['buyid']){
+                               	echo '<span style="color:#ed5859">中奖</span>';
+                                        }else if($vo['isid']>3 && $vo['buyid']==7){
+                                            echo '<span style="color:#ed5859">中奖</span>';
+
+                                        }else if($vo['isid']<=3 && $vo['buyid']==8){
+                                            echo '<span style="color:#ed5859">中奖</span>';
+
+                                  }else{
+                                        echo '未中奖';
+                                    }
+                                }else{
+                                echo '未开奖';
+                                } ?>
+                            </td>
+                        </tr>
+                    </foreach>
+                    <tr>
+                        <td colspan="18" style="text-align:center;"><div class="page">{$page}</div></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                </form>
+            </div>
+            <!--PAGE CONTENT ENDS HERE-->
+        </div><!--/row-->
+    </div><!--/#page-content-->
+</div><!--/#main-content-->
+</div><!--/.fluid-container#main-container-->
+
+<a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse">
+    <i class="icon-double-angle-up icon-only bigger-110"></i>
+</a>
+
+<!--basic scripts-->
+<script src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+
+<!--page specific plugin scripts-->
+<script src="__PUBLIC__/js/bootbox.min.js"></script>
+<script src="__PUBLIC__/js/jquery.dataTables.min.js"></script>
+<script src="__PUBLIC__/js/jquery.dataTables.bootstrap.js"></script>
+<script src="__PUBLIC__/js/TableTools.min.js"></script>
+<!--bbc scripts-->
+
+<script src="__PUBLIC__/js/bbc-elements.min.js"></script>
+<script src="__PUBLIC__/js/bbc.min.js"></script>
+
+<script src="__PUBLIC__/js/bootstrap.notification.js"></script>
+<script src="__PUBLIC__/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript">
+    function clear1(){
+        var start,end;
+        if(confirm("确认要导出会员信息吗?")){
+            if($("#start_time").val()){
+                start = $("#start_time").val();
+            }else{
+                start =0;
+            }
+            if($("#end_time").val()){
+                end   =  $("#end_time").val();
+            }else{
+                end   = 0;
+            }
+
+            window.location.href = "/index.php/systemlogined/Excel/member/";
+        }
+    }
+</script>
+<!--inline scripts related to this page-->
+</body>
+</html>

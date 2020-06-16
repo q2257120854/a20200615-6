@@ -1,0 +1,57 @@
+.container {
+    height: 100%;
+    width: 750rpx;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 750rpx;
+    padding: 5rpx;
+}
+
+.item {
+    margin: 5rpx;
+    width: 365rpx;
+    height: 600rpx;
+}
+
+.item image {
+    width: 365rpx;
+    height: 600rpx;
+}
+
+.item .title {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 75rpx;
+    background-color: rgba(0,0,0,0.50);
+    width: 365rpx;
+    height: 60rpx;
+}
+
+.item text {
+    margin: 0 10rpx;
+    font-size: 28rpx;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item .play_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 365rpx;
+    height: 600rpx;
+    position: relative;
+    bottom: 680rpx;
+}
+
+.item .play_main .play {
+    width: 80rpx;
+    height: 80rpx;
+    opacity: 0.6;
+}

@@ -1,0 +1,39 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updatetaoke')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item">
+                <label class="layui-form-label">推广方式</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="taoke[type]" value="1" title="API" {if condition="@$taoke.type eq 1" }checked{/if}>
+                    <input type="radio" name="taoke[type]" value="2" title="网站" {if condition="@$taoke.type eq 2" }checked{/if}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">领券商品API</label>
+                <div class="layui-input-block">
+                    <input type="text" name="taoke[quan_api]" value="{$taoke.quan_api|default=''}" autocomplete="off" class="layui-input">
+                </div>
+                <div class="label-tint">点击 <a href="http://www.dataoke.com/" target="_blank">http://www.dataoke.com/</a> 申请</div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">CMS网站</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="taoke[url]" value="{$taoke.url|default=''}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="formbtngroup">
+        <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+        <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+    </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

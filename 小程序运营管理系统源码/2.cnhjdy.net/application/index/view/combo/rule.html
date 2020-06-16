@@ -1,0 +1,429 @@
+{include file="public/new_left" /}
+
+{include file="public/new_head" /}
+
+<div class="content">
+
+	<div class="clearfix">
+
+		<div class="jurisdiction_title fl">查看以及修改各套餐的权限</div>
+
+	</div>
+    <div style="float: right; margin-right: 80px; padding-bottom: 50px">
+
+        <button class="agent_list_btn agent_list_btn3" type="button" style="cursor: pointer"  onClick="shut()">关闭</button>
+
+        <button class="agent_list_btn agent_list_btn1" type="button"  style="cursor: pointer" id="group_save_btn" onClick="save_rule({$id})">保存</button>
+
+    </div>
+
+	<div class="jurisdiction_box">
+
+		<div class="jurisdiction_single">
+
+			<label ><input type="checkbox"  id="select_all" onchange="select_all()" {if count($combo) == 136}checked="checked" stat="1"{else}stat="0"{/if} name="select_all" value="-1"/>全选</label>
+
+		</div>
+
+		{volist name="rule" id="vo"}
+
+		{if $vo.id != 137}
+
+		<div class="jurisdiction_single">
+
+			<label ><input type="checkbox" onClick="checkeds($(this))" {if $vo.id==1 || $vo.id=="104" }checked="ture" disabled="true"{else} {if in_array($vo.id, $combo)}checked="ture"{/if} {if count($combo) == 0} {if $vo.id == 1 || $vo.id ==2}checked="checked"{/if}{/if}{/if} name="nodes" pid="{$vo.pid}"  level_id="{$vo.level}"  value="{$vo.id}"/>{$vo.name}</label>
+
+			<div class="jurisdiction_div hbj2">
+
+				<div class="jurisdiction_line"></div>
+
+				<div class="flex1 clearfix">
+
+					{if array_key_exists('child', $vo)}
+
+						{volist name="vo.child" id="vo1"}
+
+							<div class="jurisdiction_single_check fl">
+
+								<label><input type="checkbox" onClick="checkeds($(this))" name="nodes" {if $vo1.id==2 || $vo1.id==105}checked="ture" disabled="true"{else} {if in_array($vo1.id, $combo)}checked="ture"{/if} {if count($combo) == 0} {/if} {/if} name="nodes" pid="{$vo1.pid}"  level_id="{$vo1.level}"  value="{$vo1.id}"/>{$vo1.name}</label>
+
+								{if array_key_exists('child', $vo1)}
+
+								（
+
+									{volist name="vo1.child" id="vo2"}
+
+										<div class="jurisdiction_three"><label><input type="checkbox" name="nodes" {if in_array($vo2.id, $combo)}checked="ture"{/if} {if count($combo) == 0} {/if} name="nodes" pid="{$vo2.pid}"  level_id="{$vo2.level}"  value="{$vo2.id}" />{$vo2.name}</label></div>
+
+									{/volist}
+
+								）
+
+								{/if}
+
+
+
+							</div>
+
+						{/volist}
+
+					{/if}
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		{else}
+
+			<div class="jurisdiction_single">
+
+				<label ><input type="checkbox"   name="nodes" value="{$vo.id}" checked="ture" disabled="true"/>{$vo.name}</label>
+
+			</div>
+
+		{/if}
+
+		{/volist}
+
+	</div>
+
+	
+
+</div>
+
+
+
+<script>
+
+    //全部选中
+
+    function select_all() {
+
+        var stat = $("#select_all").attr('stat');
+
+        if(stat == 0)
+
+        {
+
+            $("input[name='nodes']").each(function () {
+
+                $(this).prop('checked',true);
+
+            });
+
+            $("#select_all").attr('stat',1);
+
+        }
+
+        else
+
+        {
+
+            $("input[name='nodes']").each(function () {
+
+                $(this).prop('checked',false);
+
+            });
+
+            $("#select_all").attr('stat',0);
+
+        }
+
+    }
+
+
+
+    //为复选框设置选中事件
+
+    $(":checkbox").click(function(){
+
+        //先获取点击的这个level_id
+
+        var tmp_level_id = level_id = $(this).attr("level_id");
+
+        var id = $(this).val();
+
+        var pid = $(this).attr("pid");
+
+        //判断是选择还是取消
+
+        if($(this).prop("checked")){
+
+            //所有子权限也选中
+
+            $("input[name='nodes']").each(function (k,v) {
+
+                if($(this).attr('pid') == id)
+
+                {
+
+                    $(this).attr('checked',true);
+
+                    $("input[name='nodes']").each(function () {
+
+                        if($(this).attr('pid') == $(v).val())
+
+                        {
+
+                            $(this).attr('checked',true);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+            //所有上级权限也选中
+
+            $("input[name='nodes']").each(function (k, v) {
+
+                if($(this).val() == pid)
+
+                {
+
+                    $(this).attr('checked',true);
+
+                    $("input[name='nodes']").each(function () {
+
+                        if($(this).val() == $(v).attr("pid"))
+
+                        {
+
+                            $(this).attr('checked',true);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+
+
+            //所有的都选中,全选也选中
+
+            if(id > 0){
+
+                var all = true;
+
+                $("input[name='nodes']").each(function (k, v) {
+
+                    if($(this).attr('checked'))
+
+                    {
+
+                        all = all && true;
+
+                    }else{
+
+                        all = all && false;
+
+                    }
+
+                });
+
+                if(all){
+
+                    $("#select_all").attr('stat', 1);
+
+                    $("#select_all").prop('checked',true);
+
+                }
+
+            }
+
+
+
+
+
+
+
+        }else{
+
+            //所有子权限也取消
+
+            $("input[name='nodes']").each(function (k, v) {
+
+                if($(this).attr('pid') == id)
+
+                {
+
+                    $(this).removeAttr('checked');
+
+                    $("input[name='nodes']").each(function () {
+
+                        if($(this).attr('pid') == $(v).val())
+
+                        {
+
+                            $(this).removeAttr('checked');
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+
+
+            //有一个不选,全选取消
+
+            if(id > 0){
+
+                $("#select_all").attr('stat', 0);
+
+                $("#select_all").prop('checked',false);
+
+            }
+
+
+
+            //所有子选项取消,父选项也取消
+
+            $("input[name='nodes']").each(function (k, v) {
+
+                if($(this).val() == pid)
+
+                {
+
+                    var flag = true;
+
+                    $("input[name='nodes']").each(function (k, v) {
+
+                        if($(this).attr('pid') == pid)
+
+                        {
+
+                            if($(this).attr('checked')){
+
+                                //选中
+
+                                flag = flag && false;
+
+                            }else{  //未选
+
+                                flag = flag && true;
+
+                            }
+
+                        }
+
+                    });
+
+                    if(flag){
+
+                        $(this).attr('checked', false);
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    });
+
+
+
+    //保存权限
+
+    function save_rule(id){
+
+        var id = id;
+
+        var temp = new Array();
+
+        //获取所有被选中的,保存到数组中
+
+        $("input[name='nodes']:checked").each(function () {
+
+            temp.push($(this).val());
+
+        });
+
+        if(temp.length == 0)
+
+        {
+
+            alert("请选择需要分配的权限");
+
+            return false;
+
+        }
+
+
+
+        $.ajax({
+
+            url:"{:Url('Combo/save_rule')}",
+
+            type:'post',
+
+            dataType:'json',
+
+            data:{
+
+                id:id,
+
+                temp:temp
+
+            },
+
+            success:function (res) {
+
+                if(res != 0)
+
+                {
+
+                    alert('修改成功');
+
+                    window.location ="{:Url('Combo/index')}";
+
+                }
+
+                else
+
+                {
+
+                    alert('修改失败');
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+
+    //关闭
+
+    function shut(){
+
+        window.location ="{:Url('Combo/index')}";
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
+

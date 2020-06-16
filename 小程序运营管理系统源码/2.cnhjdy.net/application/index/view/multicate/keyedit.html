@@ -1,0 +1,169 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navCon" class="navCon10-2">
+
+
+
+	<ul class="breadcrumb">
+
+		<li>
+
+			<i class="icon-home"></i>
+
+			筛选条件修改--{$applet.name}
+
+		</li>
+
+	</ul>
+
+	
+
+	<style type="text/css">
+
+		.chongdingy{
+
+			background-color:#f5f5f5; 
+
+			padding:10px 0;
+
+		} 
+
+		.chongdingywz{
+
+			text-align: left !important;
+
+			font-size: 16px;
+
+			padding-left: 20px;
+
+		}
+
+	</style>
+
+
+
+
+
+	<div class="row-fluid">
+
+
+
+		<div class="portlet box">
+
+
+
+			
+
+			<div class="portlet-body form">
+
+				<form action="{:Url('multicate/keyeditsave')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+				<input type="hidden" name="id" value="{if $list}{$list.id}{/if}">
+					<div class="control-group chongdingy">
+						<label class="control-label chongdingywz">筛选条件</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">排序</label>
+						<div class="controls">
+							<input type="text" name="sort" value="{if $list}{$list.sort}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;">序号越大越靠前</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">名称</label>
+						<div class="controls">
+							<input type="text" name="name" value="{if $list}{$list.varible}{/if}"/>
+							<span style="color:#999999; line-height:40px; margin-left:20px;"></span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">启用</label>
+						<div class="controls">
+							<label class="radio">
+							<input type="radio" name="status" value="1" {if $list}{if $list.status==1}checked{/if}{/if}/>
+							启用
+							</label>
+							<label class="radio">
+							<input type="radio" name="status" value="0" {if $list}{if $list.status==0}checked{/if}{/if}/>不启用</label> 
+							<span style="color:#999999; line-height:40px; margin-left:20px;">启用后，方可生效</span>
+
+						</div>
+
+
+
+					</div>
+
+
+					<div class="control-group">
+
+
+
+						<label class="control-label">筛选条件</label>
+
+
+
+						<div class="controls">
+
+
+
+							<div class="lines">
+							{if $sons}
+		                        {foreach $sons as $v}
+		                        <label style="margin-right: 20px">
+		                            <input type="checkbox" name="ids[]" value="{$v['id']}" checked readonly>
+		                            <input type="text" name="varibles[]" value="{$v['varible']}">
+		                        </label>
+		                        {/foreach}
+		                    {/if}
+		                    </div>
+		                    <br/>
+		                    <br/>
+		                    <br/>
+							<button type="button" onclick="addline()">添加</button>
+						</div>
+
+
+
+					</div>
+
+				<script>
+	                function addline() {
+	                    var html = '<label style="margin-right: 20px">\n' +
+	                        '<input type="checkbox" name="ids[]" value="0" checked>\n' +
+	                        '<input type="text" name="varibles[]" value="">\n' +
+	                        '</label>';
+	                    $(".lines").append(html);
+	                }
+	            </script>
+					<div class="form-actions">
+
+
+
+						<button type="submit" class="btn green">确定</button>
+
+
+
+					</div>
+
+
+
+
+
+				</form>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+{include file="public/foot_more" /}

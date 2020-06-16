@@ -1,0 +1,9 @@
+.idea
+/application/database.php
+/install/install.lock
+/data/install.lock
+/uploads/*
+/application/api/
+/application/extra/cache.php
+/application/extra/session.php
+/application/extra/cookie.php

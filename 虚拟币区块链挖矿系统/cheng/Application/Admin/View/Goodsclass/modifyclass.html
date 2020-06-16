@@ -1,0 +1,131 @@
+<extend name="Index:base" />
+<block name="content">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <!-- 面包屑导航 -->
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="{:U('Admin/Index/index')}">首页</a>
+                </li>
+                <li>
+                    <a href="{:U('Admin/Goodsclass/index')}">{$page['title']['prev']}</a>
+                </li>
+                <li class="active">
+                    {$page['title']['current']}
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-content">
+            <!-- 页面导航 -->
+            <div class="page-header">
+                <h1>
+                    {$page['title']['current']}
+                    <a class="btn btn-info btn-sm pull-right" href="{:U('Admin/Goodsclass/index')}">
+                        <i class="icon-reply icon-only"></i>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="row" style="margin-top:35px;">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" role="form" action="{:U('Admin/Goodsclass/updataClass')}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" value="{$class['cid']}" name="cid">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right"> 所属父级分类 </label>
+                            <div class="col-sm-10" id="selparent">
+                                    <div id="menu-0" class="col-xs-10 col-sm-2  no-padding">                                        
+                                        <select class="form-control">
+                                            <option value="0">顶级分类</option>
+                                        </select>
+                                    </div>
+                                <volist name="path" id="child" key="ci">
+                                    <div id="menu-0" class="col-xs-10 col-sm-2  no-padding">                                        
+                                        <select class="form-control">
+                                            <option value="{$curr[$ci-1]}">--</option>
+                                            <foreach name="child" item="vo">
+                                                <option value="{$vo['cid']}" {$vo["cid"]==$curr[$ci]?'selected':''}>{$vo['cname']}</option>
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </volist>
+                            </div>
+                        </div>
+                        <input class="col-xs-10 col-sm-5" id="showid" name="parentid" value="{$curr[$ci]}" type="hidden">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right"> 分类名称 </label>
+                            <div class="col-sm-10">
+                                <input class="col-xs-10 col-sm-5" type="text" placeholder="请填写分类名称" value="{$class['cname']}" name="cname">
+                            </div>
+                        </div>
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="privatejs">
+    <script type="text/javascript">
+        jQuery(function($) {
+            //设置当前页面的菜单高亮显示 开始
+            var nownav = '#sidebar a[href*=Goodsclass]';
+            var parentattr = $(nownav).parent().parent().attr("class");
+            $(nownav).parent().addClass('active');
+            if (parentattr == 'submenu') {
+                $(nownav).parent().parent().parent().addClass('active open');
+            };
+            //设置当前页面的菜单高亮显示 结束
+
+            //联动菜单
+            $('#selparent').on('change','select',function(){
+                var parentid = 0;                       
+                var number = $(this).parent().prop('id').split('-')[1];
+                numbers = parseInt(number)+1;
+                var prevval = $(this).parent().prev().children().eq(0).val();                        
+                $(this).parent().nextAll().remove();
+                parentid = $(this).val();
+
+                if ($(this).val() == prevval) {
+                    $('#showid').val(parentid);
+                    return;
+                };
+                
+                if (parentid == 0) {
+                    $('#showid').val(parentid);
+                    return;
+                };
+                var str = '<div id="menu-'+numbers+'" class="col-xs-10 col-sm-2  no-padding"><select class="form-control"></select></div>';
+                $(this).parent().after(str);
+                $.ajax({
+                    url:"__APP__/Admin/Goodsclass/viewClassId",
+                    type:'post',
+                    data:{parentid:parentid},
+                    success:function(data){
+                        var datas = JSON.parse(data);
+                        printstr = '<option value="'+parentid+'">--</option>';
+                        for (var i=0; i< datas.length; i++) {
+                            printstr += '<option value="'+datas[i].cid+'">'+datas[i].cname+'</option>';
+                        }
+                        $('#menu-'+numbers+' select').html(printstr);
+                    }
+                })
+                $('#showid').val(parentid);
+            })
+        });
+    </script>
+</block>

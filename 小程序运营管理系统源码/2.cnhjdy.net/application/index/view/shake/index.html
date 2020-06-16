@@ -1,0 +1,180 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel8-1">
+
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<div class="input-box" style="margin-bottom: 10px; position: relative;">
+
+					<div class="btn-group" style="float:right">
+
+						<a href="{:Url('Shake/add')}?appletid=<?php echo $_GET['appletid']?>" >
+						<button id="sample_editable_1_new" class="btn green">
+						新增活动 <i class="icon-plus"></i>
+						</button>
+						</a>
+
+					</div>
+				</div>
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">名称</th>
+
+							<th style="width: 50px;">图片</th>
+
+							<th style="width: 100px;">开始时间</th>
+	
+							<th style="width: 100px;">结束时间</th>
+
+							<th style="width:100px">状态</th>
+
+							<th style="width: 50px;">参与人数</th>
+
+							<th style="width: 50px;">获奖人数</th>
+
+							<th style="width: 50px;">浏览量</th>
+
+							<th style="width: 50px;">分享量</th>
+
+							<th style="width:200px">管理</th>
+							
+							<th style="width:200px">基础操作</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+						{if $activity}
+						{foreach $activity as $item}
+							<tr>
+								<td>
+									{$item.title}
+								</td>
+								<td>
+									{if $item.thumb}
+									<img src="{$item.thumb}" style="width:50px; height:30px;">
+									{/if}
+								</td>
+								<td>{$item.begin|date='Y-m-d H:i:s',###}</td>
+								<td>
+									{$item.end|date='Y-m-d H:i:s',###}
+								</td>
+								<td>
+									{if $item.status == 1}
+										<span class="btn green">已开启</span>
+									{else}
+										<span class="btn gray">已关闭</span>
+									{/if}
+								</td>
+								<td>{$item.participate}</td>
+								<td>{$item.win}</td>
+								<td>{$item.browse}</td>
+								<td>{$item.share}</td>
+								<td>
+									<a href="{:Url('Shake/setprize')}?appletid=<?php echo $_GET['appletid']?>&aid={$item.id}"><button class="btn btncolor">奖项设置</button></a>
+									<a href="{:Url('Shake/record')}?appletid=<?php echo $_GET['appletid']?>&aid={$item.id}"><button class="btn btncolor">抽奖记录</button></a>
+								</td>
+								<td>
+									<a href="{:Url('Shake/edit')}?appletid=<?php echo $_GET['appletid']?>&aid={$item.id}"><button class="btn btncolor">编辑</button></a>
+									<!-- <form action="{:Url('Shake/delActivity')}?appletid=<?php echo $_GET['appletid']?>&aid={$item.id}"  method="post" enctype="multipart/form-data" onsubmit = "return del()">
+										<button class="btn btncolor" type="submit">删除</button>
+									</form> -->
+									<button class="btn btncolor" id="del" onclick="delActivity({$item.id})">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="11">底部菜单添加活动链接: <span id="shake{$item.id}">/sudu8_page_plugin_shake/index/index?id={$item.id}</span> <button class="btn green js-clip{$item.id}" style="padding: 3px 3px;" onclick="copyUrl({$item.id})" data-clipboard-text="/sudu8_page_plugin_shake/index/index?id={$item.id}">复制链接</button></td>
+								
+							</tr>
+						{/foreach}
+					{/if}
+					
+					</tbody>
+
+				</table>
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$count}</font>条数据
+					</div>
+					<div class="fenye_right">
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function delActivity(id){
+		var id = id;
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			$.ajax({
+                url: "{:Url('shake/delActivity')}",
+                type:'POST',
+                data: {
+                    appletid: "<?php echo $_GET['appletid']; ?>",
+                    id : id
+                },
+                success: function(res){
+                    if(res == 1){
+                        location.reload();
+                    }
+                }
+            })
+			
+		}else{
+			return false;
+		}
+	}
+
+
+	function copyUrl(id){
+		// var clipboard = $("#shake"+id).text();
+		 var clipboard = new Clipboard('.js-clip'+id);
+		clipboard.on('success', function(e) {
+		    alert("链接复制成功");
+		    e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+		    alert("链接复制失败");
+		});
+	}
+
+
+</script>
+
+
+
+{include file="public/foot_more" /}

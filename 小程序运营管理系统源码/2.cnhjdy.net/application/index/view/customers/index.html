@@ -1,0 +1,78 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<script type="text/javascript" src="/js/jscolor.js"></script>
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:13px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+
+	.jscolor{
+		width: 30px;
+		height: 30px;
+		border: 1px solid #dedede;
+		outline: none;
+	}
+	.m-wrap{
+		outline: none;
+		padding-left: 10px;
+	}
+
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel1">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			客服设置--{$applet.name}
+		</li>
+	</ul>
+	
+
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+			<div class="portlet box ">
+
+				<div class="portlet-body">
+
+					
+					<div class="control-group chongdingy" style="background-color:#fcf8e3; margin-bottom:20px !important">
+
+					<label class="control-label chongdingywz" style="background-color:#fcf8e3; color:#8a6d3b;">客服相关设置，操作步骤，点击链接<a href="{:Url('customers/help')}?appletid=<?php echo $_GET['appletid']?>">[客服设置操作步骤]</a>查看</label>
+
+
+				</div>
+
+					<form action="{:Url('Customers/save')}?appletid=<?php echo $_GET['appletid']?>" id="form_sample_2" class="form-horizontal" method="post" enctype="multipart/form-data" onsubmit = "return checkinfo();">
+
+						<div class="control-group chongdingy">
+							<label class="control-label chongdingywz">客服设置</label>
+						</div>
+						<input type="hidden" name="id" value="{if $base}{$base.id}{/if}">
+						<div class="control-group">
+							<label class="control-label">客服openid</label>
+							<div class="controls">
+								<input name="openid" type="text" class="span3 m-wrap"  style="height: 35px !important;" value="{if $base}{$base.openid}{/if}" />
+								<span style="color:#999999; line-height:40px; margin-left:20px;">发送"openid"给客服可获取自己的openid</span>
+							</div>
+						</div>
+		
+						<div class="weiz" style="margin-left: 460px;">
+							<input type="submit" value="提交" class="btn green" >
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{include file="public/foot_more" /}

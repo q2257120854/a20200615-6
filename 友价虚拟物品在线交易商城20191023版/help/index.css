@@ -1,0 +1,73 @@
+/*头部*/
+.yjcode .mtop{float:left;text-align:left;width:1150px;}
+.yjcode .mtop .u1{float:left;width:1150px;padding:10px 0;}
+.yjcode .mtop .u1 li{float:left;}
+.yjcode .mtop .mmenu{float:left;width:1150px;height:40px;background-color:#FF6600;}
+.yjcode .mtop .mmenu a{float:left;color:#fff;font-weight:700;font-size:14px;padding:13px 13px 0 13px;height:27px;}
+.yjcode .mtop .mmenu a:hover{text-decoration:none;background-color:#EA5D00;}
+.yjcode .mtop .mmenu .a1{background-color:#C44E00;}
+.yjcode .mtop .mmenu .a1:hover{background-color:#C44E00;}
+.yjcode .mtop #smenu{float:left;width:1138px;height:36px;background-color:#F5F6F7;border:#ddd solid 1px;border-top:0;padding:0 0 0 10px;}
+.yjcode .mtop #smenu a{float:left;padding:4px 11px 0 11px;margin:8px 0 0 0;height:16px;}
+.yjcode .mtop #smenu a:hover{text-decoration:none;background-color:#E4E4E4;}
+
+/*介绍正文*/
+.yjcode .abouttxt{float:left;margin:10px 0;text-align:left;width:1150px;line-height:28px;color:#666;}
+
+/*帮助中心*/
+.yjcode .helpleft{float:left;width:192px;text-align:left;margin:10px 0 10px 0;}
+.yjcode .helpleft .u1{float:left;width:180px;border:#DFDFDF solid 1px;height:30px;}
+.yjcode .helpleft .u1 li{float:left;}
+.yjcode .helpleft .u1 .l1{padding:6px 0 0 10px;font-weight:700;font-size:14px;width:170px;height:24px;background-color:#EFEEEE;}
+.yjcode .helpleft .u2{float:left;width:180px;border:#DFDFDF solid 1px;border-top:0;margin:0 0 10px 0;}
+.yjcode .helpleft .u2 li{float:left;}
+.yjcode .helpleft .u2 .l1{background-color:#f5f5f5;width:160px;height:22px;font-weight:700;border-bottom:#DFDFDF solid 1px;padding:6px 0 0 20px;}
+.yjcode .helpleft .u2 .l2{width:150px;height:22px;border-bottom:#EFEFEF dotted 1px;padding:6px 0 0 30px;}
+.yjcode .helpright{float:left;margin:10px 0 0 0;text-align:left;width:956px;border:#DFDFDF solid 1px;min-height:727px;}
+.yjcode .helpright .wz{float:left;padding:8px 0 0 10px;width:946px;height:20px;background:url(../img/bgcap2.gif) left top repeat-x;border-bottom:#DFDFDF solid 1px;}
+.yjcode .helpright .wz span{font-size:10px;font-family:Arial, Helvetica, sans-serif;}
+.yjcode .helpright .helplist{float:left;font-size:14px;width:958px;text-align:left;padding-top:10px;}
+.yjcode .helpright .helplist li{float:left;height:24px;padding-top:2px;}
+.yjcode .helpright .helplist .l1{width:786px;padding-left:10px;}
+.yjcode .helpright .helplist .l2{width:150px;text-align:right;padding-right:10px;color:#999;}
+.yjcode .helpright .helplist .l3{width:936px;border-top:#ADADAD dotted 1px;margin:5px 0 0 10px;height:15px;padding:0;}
+.yjcode .helpright .titcap{float:left;font-size:18px;width:936px;padding:20px 10px 7px 10px;text-align:center;}
+.yjcode .helpright .u1{float:left;padding:7px 0 6px 0;width:936px;margin:10px 0 0 10px;border-bottom:#DDDDDD dotted 1px;background-color:#F4F4F4;border-top:#DDDDDD dotted 1px;}
+.yjcode .helpright .u1 li{float:left;}
+.yjcode .helpright .u1 .l1{width:806px;text-align:left;color:#999;padding:0 0 0 10px;}
+.yjcode .helpright .u1 .l2{color:red;font-weight:700;width:120px;cursor:pointer;}
+.yjcode .helpright #newm{float:left;margin-right:10px;width:936px;}
+.yjcode .helpright #newm img{position:absolute;margin:0 0 0 808px;}
+.yjcode .helpright .ntxt{float:left;font-size:14px;line-height:25px;padding:20px;width:916px;}
+.yjcode .helpright .ntxt img{max-width:850px;}
+.yjcode .helpright .nxg{float:left;margin:15px 0 0 10px;width:916px;font-size:14px;padding:10px 10px 7px 10px;line-height:25px;background-color:#F8F8F8;border-top:#E4E4E4 solid 1px;border-bottom:#E4E4E4 solid 1px;}
+.yjcode .helpright .nxg a{font-weight:700;color:#005BB0;}
+.yjcode .helpright .nxg a:hover{color:#ff6600;}
+
+/*操作提示页面*/
+.yjcode .succap{float:left;width:1138px;height:22px;margin:20px 0 0 0;font-size:14px;font-weight:700;padding:8px 0 0 10px;text-align:left;border:#ddd solid 1px;background-color:#f2f2f2;}
+.yjcode .sucmain{float:left;width:788px;border:#DDDDDD solid 1px;border-top:0;height:167px;background:url(../img/suc.jpg) no-repeat;background-position:185px 66px;text-align:left;padding:80px 0 0 360px;line-height:25px;}
+.yjcode .sucmain strong{font-size:14px;}
+.yjcode .sucmain a{color:#999;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	form {
+	     margin: 0 !important; 
+	    display: inline-block !important;
+	}	
+</style>
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel4-2">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			积分签到列表--{$applet.name}
+		</li>
+	</ul>
+
+	<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th style="width: 50px;">id</th>
+							<th style="width: 100px;">签到人</th>
+							<th style="width: 50px;">签到积分</th>
+							<th style="width: 100px;">签到时间</th>
+
+						</tr>
+
+					</thead>
+
+					<tbody>
+						
+						{if $sign}
+							{foreach $sign as $item}
+								<tr>
+									<td>{$item.id}</td>
+									<td><img src="{$item.avatar}" alt="" style="width:60px;">{$item.nickname}</td>
+									<td style="color:green">{$item.score}</td>
+									<td>
+										{$item.creattime}
+									
+									</td>
+	
+								</tr>
+							{/foreach}
+						{/if}
+						
+					</tbody>
+
+				</table>
+				<!-- 分页 -->
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+	function del(id,count){
+		if(count>0){
+			alert("该栏目中还存在子集栏目，请先删除所有子集栏目后再删除！");
+			return false;
+		}
+		if(confirm('该删除操作不可逆，请谨慎操作?')){
+			return true;
+		}else{
+	        return false;
+	    }
+	}
+</script>
+
+
+
+{include file="public/foot_more" /}

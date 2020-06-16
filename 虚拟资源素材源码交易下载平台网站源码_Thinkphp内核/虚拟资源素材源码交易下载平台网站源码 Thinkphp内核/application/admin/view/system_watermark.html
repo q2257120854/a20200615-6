@@ -1,0 +1,84 @@
+{extend name="base" /} {block name="body"}
+<form class="layui-form form-container" data-url="{:url('admin/system/updatewatermark')}" localtion-url="{:url('system/siteConfig')}">
+
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+                <!-- 'switch'=> 1, #水印开关
+                'mark_type'=>1, #水印类型,1文字2图片
+                'font' => 25,#字体大小
+                'font_path'=>'simfang.ttf', #字体文件(可以忽略,程序已有自带字体)
+                'code'=>'#66ccff', #字体颜色
+                'position'=>9,#字体位置
+                'text'=>'测试水印', #字体内容
+                'img'=>'/uploads/2019/06/08/logo.png' #图片水印文件,（已带有ROOT_PATH） -->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">水印开关</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="switch" value="0" title="关闭" {if condition="@$watermark.switch eq 0" }checked{/if}>
+                            <input type="radio" name="switch" value="1" title="开启" {if condition="@$watermark.switch eq 1" }checked{/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">水印类型</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="mark_type" value="1" title="文字" {if condition="@$watermark.mark_type eq 1" }checked{/if}>
+                            <input type="radio" name="mark_type" value="2" title="图片" {if condition="@$watermark.mark_type eq 2" }checked{/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">字体大小</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="font" value="{$watermark.font|default='25'}" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <!-- <div class="layui-form-item">
+                            <label class="layui-form-label">字体文件</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="font_path" value="{$watermark.font_path|default='simfang.ttf'}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div> -->
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">字体颜色</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="code" value="{$watermark.code|default='#66ccff'}" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                    <label class="layui-form-label">字体位置</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="position" value="{$watermark.position|default='9'}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                        <label class="layui-form-label">文字</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="text" value="{$watermark.text|default='LaySNS'}" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                            <label class="layui-form-label">水印图片</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" id="coverpic" name="img" value="{$watermark.img|default='/public/images/logo.png'}" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+            
+                    <div id="upload-img-box" style="padding:10px 0;height:110px">
+                       {if $watermark.img} <img src="{$watermark.img}" width="200" height="100" /> {/if}
+                    </div>
+             
+            </div>
+
+        </div>
+    </div>
+    <div class="formbtngroup">
+        <button id="creatlink" class="layui-btn layui-btn-sm" lay-submit="" type="submit" lay-filter="formadd">保存</button>
+        <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+    </div>
+</form>
+
+{/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+
+{/block}

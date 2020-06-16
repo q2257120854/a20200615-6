@@ -1,0 +1,43 @@
+
+        <div class="pageheader notab">
+            <h1 class="pagetitle">支付宝管理设置</h1>
+            <span class="pagedesc">设置支付宝的基本信息</span>
+            
+        </div><!--pageheader-->
+        
+        <div id="contentwrapper" class="contentwrapper lineheight21">
+        
+        
+            <form class="stdform stdform2" method="post">
+			 
+				 
+				<p>
+					<label>商户ID</label>
+					<span class="field"><input type="text" name="app_id" id="app_id" value="{$_CFG.alipay2019.app_id}" class="smallinput" /></span>
+				</p>
+				
+				<p>
+					<label>商户私钥</label>
+					<span class="field">
+					<textarea rows="10"  name="merchant_private_key" class="smallinput"  id="merchant_private_key">{$_CFG.alipay2019.merchant_private_key}
+					</textarea>
+					
+				 
+				</p>
+					<p>
+					<label>支付宝公钥</label>
+					<span class="field">
+				 
+						<textarea rows="10"  name="alipay_public_key" class="smallinput"  id="alipay_public_key">{$_CFG.alipay2019.alipay_public_key}
+					</textarea>
+					</span>
+				</p>
+				<p class="stdformbutton">
+					<button class="submit radius2">提交</button>
+					<input type="reset" class="reset radius2" value="重置" />
+				</p>
+			</form>
+        
+        
+        </div><!--contentwrapper-->
+        

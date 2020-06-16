@@ -1,0 +1,420 @@
+{include file="public/head" /}
+
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel6-4">
+
+<ul class="breadcrumb">
+
+    <li>
+
+        <i class="icon-home"></i>
+
+        订单管理--{$applet.name}
+
+    </li>
+
+</ul>
+
+
+
+<style type="text/css">
+
+    .shuk{
+
+        outline: none;
+
+        border: 1px solid #dedede;
+
+        width: 300px;
+
+    }
+
+    .cesd{
+
+        height: 28px;
+
+        line-height: 28px;
+
+        width: 28px;
+
+        display: inline-block;
+
+        vertical-align: top;
+
+        cursor: pointer;
+
+        border:1px solid #dedede;
+
+        padding: 0 10px;
+
+    }
+
+    .zzcc{
+
+        position: fixed;
+
+        top: 0; 
+
+        width: 100%;
+
+        height: 100%;
+
+        background-color: #000000;
+
+        opacity: 0.4;
+
+        z-index: 100000;
+
+
+
+    }
+
+    .bbdd{
+
+        position: fixed;
+
+        z-index: 100001;
+
+        background-color: #ffffff;
+
+        width: 400px;
+
+        height: 220px;
+
+        top: 50%;
+
+        left: 50%;
+
+        margin-top: -200px;
+
+        margin-left: -110px;
+
+        padding: 10px;
+
+        border:1px solid #e7e7e7;
+
+    }
+
+    .ddhh{
+
+        line-height: 30px;
+
+        position: relative;
+
+    }
+
+    .ddxx{
+
+        position: absolute;
+
+        right: 0;
+
+        top:0;
+
+        cursor:pointer
+
+    }
+
+</style>
+
+
+
+   
+
+
+
+
+
+
+
+
+<!--    <table class="table we7-table table-hover article-list vertical-middle">
+
+
+
+        <tbody id="shujl">
+
+
+
+        </tbody>
+
+
+
+    </table>
+
+ -->
+
+    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+
+
+    <thead>
+
+        <tr style="background:#f8f8f8">
+
+
+
+            <td style="width:60px;border-left:1px solid #f2f2f2;">商品</td>
+
+
+
+            <td style="width:150px;"></td>
+
+
+
+            <td style="width:70px;text-align: center;">单价/数量</td>
+
+
+
+            <td style="width:100px;text-align: center;">价格</td>
+
+
+
+            <td style="width:100px;text-align: center;">核销时间</td>
+
+
+
+            <td style="width:120px;text-align: center">状态</td>
+
+
+
+        </tr>
+
+    </thead>
+
+
+
+
+
+<tbody>
+
+{foreach $orders as $item}
+
+
+
+    <tr class="trorder">
+
+
+
+        <td colspan="4" style="border-left:1px solid #dedede;">
+
+            {$item['shopname']}:  {$item['order_id']}                             
+
+            订单编号:  {$item['order_id']}                               
+
+
+
+        </td>
+
+
+
+        <td colspan="2" style="text-align:right;font-size:12px;border-right:1px solid #dedede" class="aops">
+
+
+
+            <span style="float: right;">下单时间：{$item['creattime']} </span>                        
+
+
+
+        </td>
+
+
+
+    </tr>
+
+    
+
+    {foreach $item['jsondata'] as $index => $val}
+
+    <tr class="trbody">
+
+
+
+        <td style="overflow:hidden;border-left:1px solid #dedede;" >
+
+            <img src="{$val['proinfo']['thumb']}" style="width:50px;height:50px;border:1px solid #ccc; padding:1px;" onerror="">
+
+        </td>
+
+
+
+        <td style="text-align: left;overflow:hidden;border-left:none;"> 
+
+            {$val['baseinfo']['title']} 
+
+        </td>
+
+
+
+        <td style="text-align:center;border-left:none; border-right:1px solid #dedede">
+
+            {$val['proinfo']['price']}x{$val['num']}
+
+        </td>
+
+        
+
+        {if $index == 0}
+
+        <td style="text-align:center;border-left:none;" rowspan="{$item['counts']}">
+
+            总价：{$item['allprice']}
+
+            <br/>
+
+            实付：{$item['price']}
+
+        </td>
+
+
+
+        <td style="text-align:right;border-left:none;" rowspan="{$item['counts']}">
+
+            {$item['hxtime']}
+
+        </td>
+
+
+
+        <td style="text-align:center;border-left:none;border-right:1px solid #dedede;" rowspan="{$item['counts']}">
+
+            {if $item['flag'] ==0}未支付{/if}
+
+            {if $item['flag'] ==1}
+
+                <a class="btn btn-danger btn-sm" onclick="return confirm('此操作不可恢复，确定核销该订单吗？'); return false;" href="{:Url('Powerfulsh/fahuo')}?appletid=<?php echo $_GET['appletid']?>&orderid={$item['id']}&shopid={$item['sid']}">核销</a>
+
+            {/if}
+
+            {if $item['flag'] ==2} <span class="btn btn-success btn-sm">已结算</span>{/if}
+
+            {if $item['flag'] ==3} <span class="btn btn-success btn-sm">已过期</span>{/if}
+
+            {if $item['flag'] ==4} <a class="btn btn-success btn-sm">已发货</a>{/if}
+
+        </td>
+
+        {/if}
+
+        
+
+    </tr>
+
+    {/foreach}
+
+    <tr style="border-bottom:none;background:#f9f9f9;">
+
+        
+
+        <td colspan="3" style="text-align:left;border-left:1px solid #dedede;border-bottom:1px solid #dedede;" >
+
+            {if $item['couponinfo']['price']}
+
+            优惠券：{$item['couponinfo']['price']}元<span style="padding: 0 20px"></span>
+
+            {/if}
+
+            {if $item['jf']>0}
+
+            积分：{$item['jf']}【抵扣{$item['jfmoney']}元】
+
+            {/if}
+
+        </td>
+
+        
+
+        <td colspan="3" style="text-align:right;border-right:1px solid #dedede;border-bottom:1px solid #dedede;">
+
+            买家留言： {$item['liuyan']}
+
+        </td>
+
+    </tr>
+
+
+
+    <tr>
+
+        <td colspan="3" style="height:20px;padding:8px;border-top:none;border-left:1px solid #dedede;border-bottom:1px solid #dedede;">
+            {if $item['address_get']}
+                姓名：{$item['address_get']['name']}<br/>
+
+                电话：{$item['address_get']['mobile']}<br/>
+
+                邮编：<br/>
+
+                地址：{$item['address_get']['address']} <br/>
+            {/if}
+
+        </td>
+
+        <td colspan="3" style="height:20px;padding:8px;border-top:none;border-right:1px solid #dedede;border-bottom:1px solid #dedede;">
+
+            {if $item['kuadi']}
+
+            快递：{$item['kuadi']}<br/>
+
+            快递号：{$item['kuaidihao']}
+
+        {/if}
+
+        </td>
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+        <td colspan="6" style="height:20px;padding:0;border-top:none;">&nbsp;</td>
+
+    </tr>
+
+
+
+   {/foreach}
+
+
+
+
+
+        </tbody></table>
+
+
+
+            <!-- 分页 -->
+
+                <div>
+
+                    
+
+                    <div class="fenye_right">
+
+                        {$total->render()}
+
+                    </div>
+
+                </div>
+
+
+
+        </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{include file="public/foot_more" /}

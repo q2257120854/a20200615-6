@@ -1,0 +1,12 @@
+.contact{padding:5px 0;background-color:#FA7D7F;}
+.contact .d1{margin:0;text-align:center;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;}
+.contact .d1 img{max-height:50px;}
+
+.shezhi{text-align:left;height:41px;font-size:14px;color:#666;font-weight:700;}
+.shezhi .d1{margin:10px 0 0 10px;width:35px;height:30px;border-bottom:#ddd solid 1px;}
+.shezhi .d1 img{width:20px;height:20px;}
+.shezhi .d2{margin:10px 0 0 0;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;border-bottom:#ddd solid 1px;height:30px;}
+.shezhi .d3{margin:11px 0 0 0;padding:0 10px 0 0;width:30px;text-align:right;border-bottom:#ddd solid 1px;height:29px;}
+
+.txt{text-align:left;border-bottom:#ddd solid 1px;}
+.txt .d1{margin:10px 0 10px 45px;line-height:20px;}

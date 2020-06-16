@@ -1,0 +1,631 @@
+{include file="public/head" /}
+{include file="public/top" /}
+
+<input type="hidden" id="nowhtml" value="navModel" class="navModel8-1">
+<link href="/css/common.css?v=20170426" rel="stylesheet">
+
+
+<style type="text/css">
+.square {
+    width: 150px;
+    height: 150px;
+    background: #ddd;
+    border-radius: 10px;
+    text-align: center;
+    float: left;
+    margin-left: 70px;
+    margin-top: -30px;
+    position: relative;
+}
+.square .del{
+    position: absolute;
+    right: 0;
+    top: 0
+}
+.play{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    text-align: center;
+    background: #ddd;
+    float: left;
+    margin-left: 70px;
+    margin-top: -30px;
+}
+
+.prize_img{
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.prize_title{
+    margin: 0 auto;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.del{
+    margin-left: -40px; 
+}
+
+
+</style>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.square').each(function() {
+        $(this).mouseover(function() {
+            $(this).css("background", "#aaa");
+        })
+        $(this).mouseout(function() {
+            $(this).css("background", "#ddd");
+        })
+        $(this).click(function(){
+            var num = $(this).data('num');
+            $("#num").val(num);
+        })
+    })
+
+    $("#choose").click(function(){
+        $('#edit').removeClass('active');
+        $('#choose').addClass('active');
+        $('.choosing').each(function(){
+            $(this).show();
+        })
+        $('.editing').hide();
+    })
+
+    $("#edit").click(function(){
+        $('#choose').removeClass('active');
+        $('#edit').addClass('active');
+        $('.choosing').each(function(){
+            $(this).hide();
+        })
+        $('.editing').show();
+
+        $('input[name="title"]').val('');
+        $('input[name="thumb"]').val('');
+        $('select[name="types"]').val('');
+        $('input[name="detail"]').val('');
+        $('input[name="total"]').val('');
+        $('input[name="chance"]').val('');
+        $('input[name="thumb"]').parent().next().find("img").attr("src", "");
+        $('#pid').val('');
+
+        $('#not_yhq').show();
+        $('#yhq').hide();
+    })
+
+    $("select[name='types']").change(function(){
+        if($(this).val() == '4'){
+            $('#not_yhq').hide();
+            $('#yhq').show();
+        }else{
+            $('#not_yhq').show();
+            $('#yhq').hide();
+        }
+    })
+
+    
+
+    $("#switch").click(function(){
+        
+        $.ajax({
+            url: "{:Url('Shake/changeMeans')}",
+            data: {
+                id: $("#aid").val()
+            },
+            success: function(res){
+                if(res == '0'){
+                    $("#switch").prev().val('0'); 
+                    $("#switch").prev().prev().html("<text>摇一摇</text>");
+                }else{
+                    $("#switch").prev().val('1'); 
+                    $("#switch").prev().prev().html("<text>点击开始</text>");
+                }
+            }
+        })
+    })
+
+    $(".del").each(function(){
+        $(this).click(function(){
+            // if(confirm('此操作不可恢复，确认吗？')){
+                var index = $(this).data('index');
+                $.ajax({
+                    url: "{:Url('shake/deletePrize')}",
+                    type:'POST',
+                    data: {
+                        id: $("#aid").val(),
+                        index: index,
+                        appletid: "<?php echo $_GET['appletid']; ?>",
+                    },
+                    success: function(res){
+                        // window.location.href = "{php echo $this->createWebUrl('activity', array('op' => 'editPrize'))}" + "&id=" + $("#aid").val();
+                        location.reload();
+                    }
+                })
+            // }
+        })
+    })
+})
+
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">活动奖项设置</h4>
+    </div>
+    <div class="panel-body">
+        <input type="hidden" id="aid" name="aid" value="{$activity.id}" />
+        <div style="margin-top: 30px" class="row">
+            <div class="col-sm-1" style="margin-left: 50px;margin-top: 50px"></div>
+            <div href="#mask" data-toggle="modal" data-num='1' class=" square" id='square1'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[1]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title"> 
+                    {$selectedPrizes[1]['title']}
+                </div>
+
+                    {if $selectedPrizes[1]}
+                        <div class="btn red del" data-index='1' style="padding:4px 6px;">×</div>
+                    {/if}
+            </div>
+            
+            <div href="#mask" data-toggle="modal" data-num='2' class=" square" id='square2'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[2]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title">
+                    {$selectedPrizes[2]['title']} 
+                </div>
+                {if $selectedPrizes[2]}
+                    <div class="btn red del" data-index='2' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+           
+            <div href="#mask" data-toggle="modal" data-num='3' class=" square" id='square3'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[3]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title">
+                    {$selectedPrizes[3]['title']} 
+                </div>
+
+                {if $selectedPrizes[3]}
+                    <div class="btn red del" data-index='3' style="padding:4px 6px;">×</div>
+                {/if}
+
+            </div>
+
+        </div>
+        <div style="margin-top: 50px" class="row">
+            <div class="col-sm-1" style="margin-left: 50px;margin-top: 50px"></div>
+            <div href="#mask" data-toggle="modal" data-num='8' class=" square" id='square8'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[8]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title">
+                    {$selectedPrizes[8]['title']} 
+                </div>
+                {if $selectedPrizes[8]}
+                    <div class="btn red del" data-index='8' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+                
+
+            <div class="col-sm-2 play">
+                <div style="margin-top: 55px;font-size: 24px" >
+                    {if $base.means == 1}
+                    <text>点击开始</text>
+                    {else}
+                    <text>摇一摇</text>
+                    {/if}
+                </div>
+                <input type="hidden" name="switch" value="">
+                <div class="btn green" style="margin-top: 8px;"   id="switch">切换</div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div href="#mask" data-toggle="modal" data-num='4' class=" square" id='square4'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[4]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title"> 
+                    {$selectedPrizes[4]['title']}
+                </div>
+                {if $selectedPrizes[4]}
+                    <div class="btn red del" data-index='4' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+           
+               
+        </div>
+        <div style="margin-top: 50px;margin-bottom: 30px" class="row">
+            <div class="col-sm-1" style="margin-left: 50px;margin-top: 50px"></div>
+            <div href="#mask" data-toggle="modal" data-num='7' class=" square" id='square7'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[7]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title"> 
+                    {$selectedPrizes[7]['title']}
+                </div>
+                {if $selectedPrizes[7]}
+                    <div class="btn red del" data-index='7' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+            
+                
+            <div href="#mask" data-toggle="modal" data-num='6' class=" square" id='square6'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[6]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title">
+                    {$selectedPrizes[6]['title']} 
+                </div>
+                {if $selectedPrizes[6]}
+                    <div class="btn red del" data-index='6' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+
+                
+            <div href="#mask" data-toggle="modal" data-num='5' class=" square" id='square5'>
+                <div class="prize_img">
+                    <img src="{$selectedPrizes[5]['thumb']}" width="100" height="100" alt="">
+                </div>
+                <div class="prize_title">
+                    {$selectedPrizes[5]['title']} 
+                </div>
+                {if $selectedPrizes[5]}
+                    <div class="btn red del" data-index='5' style="padding:4px 6px;">×</div>
+                {/if}
+            </div>
+
+                
+        </div>
+
+    
+    <table class="table table-responsive we7-table table-hover vertical-middle" style="table-layout: fixed;margin-top: 50px;text-align: center;"> 
+    <!-- class="table we7-table table-hover article-list vertical-middle" -->
+    <tbody>
+        <tr style="background-color: #F4F6F9">
+            <td><b>标题</b></td>
+            <td><b>类型</b></td>
+            <td><b>内容</b></td>
+            <td><b>库存</b></td>
+            <td><b>总数量</b></td>
+            <td><b>总概率</b></td>
+        </tr>
+        {volist name="$prizes_set" id="p"}
+        <tr>
+            <td>{$p['title']}</td>
+            <td>
+                {if $p['types']=='1'}积分{/if}
+                {if $p['types']=='2'}余额{/if}
+                {if $p['types']=='3'}实物{/if}
+                {if $p['types']=='4'}优惠券{/if}
+            </td>
+            <td>{$p['detail']}</td>
+            <td>{$p['storage']}</td>
+            <td>{$p['total_num']}</td>
+            <td>{$p['total_chance']}%</td>
+        </tr>
+        {/volist}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>合计：{$total_num_sum}</td>
+            <td>合计：{$total_chance_sum}%</td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="modal fade" id="mask" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1030">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1200px;margin-left: -240px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <ul class="nav nav-tabs" style="margin-bottom: 0">
+                    <li class="active" id="choose"><a class="modal-title" id="myModalLabel">选择奖品</a></li>
+                    <li id="edit"><a class="modal-title" id="myModalLabel">添加奖品</a></li>
+                </ul>
+            </div>
+            <div class="modal-body choosing" style="background-color: #FFF">
+                    <table id="prizes" class="table we7-table table-hover article-list vertical-middle" style="background-color: #FFF">
+                        <tr>
+                            <td style="width: 14%">标题</td>
+                            <td style="width: 14%">图片</td>
+                            <td style="width: 13%">类型</td>
+                            <td style="width: 13%">内容</td>
+                            <td style="width: 13%">数量</td>
+                            <td style="width: 13%">概率</td>
+                            <td style="width: 18%">操作</td>
+                        </tr>
+                        {volist name="$prizes" id="vo"}
+                        <tr>
+                            <td>
+                                {$vo['title']}
+                            </td>
+                            <td>
+                                <img src="{$vo['thumb']}" width="60" height="60" alt="">
+                            </td>
+                            <td>
+                                {if $vo['types']=='1'}积分{/if}
+                                {if $vo['types']=='2'}余额{/if}
+                                {if $vo['types']=='3'}实物{/if}
+                                {if $vo['types']=='4'}优惠券{/if}
+                            </td>
+                            <td>
+                                {$vo['detail']}
+                            </td>
+                            <td>
+                                {$vo['total']}
+                            </td>
+                            <td>
+                                {$vo['chance']/100}%
+                            </td>
+                            <td>
+                                <a class="btn btn-default btn-sm" onclick="modifyPrize({$vo['id']})" id="prize{$vo['id']}">编辑</a>
+                                <a class="btn green" onclick="selectPrize({$vo['id']})" data-dismiss="modal">选择</a>
+                                <a class="btn red" onclick="deletePrize(this, {$vo['id']})">删除</a>
+                            </td>
+                        </tr>
+                        {/volist}
+                    </table>
+            </div>
+            <div class="modal-footer choosing">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!-- <button type="button" class="btn btn-primary">确定</button> -->
+            </div>
+            <div class="editing" style="display: none;">
+                <form class="form-horizontal" action="" method="post" style="background-color: #FFF">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">奖项标题</label>
+                            <div class="form-controls col-sm-5">
+                                <input type="text" name="title" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off"> 
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">必填</span>
+
+                            </div>
+                            
+                        </div>
+                        
+
+                        <div class="control-group">
+                            <label class="control-label">主图</label>
+                            <div class="controls" style="margin-left: 205px;">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail commonuploadpic1" style="width: 140px; height:90px;">
+                                        <img src="/image/noimage.jpg" alt="" id="zhutu" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="width:140px; height:90px;"></div>
+                                <div>
+                                    <span class="btn btn-file">
+                                        <span class="fileupload-new commonchangepic" data-type="1">选择图片<input type="hidden" name="commonuploadpic1" id="thumb"></span>
+                                    </span> 
+                                </div>
+                                <div class="zphpx"><font color="#999999">最顶部长方形LOGO（200px X 70px）</font></div>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">所属类型</label>
+                            <div class="form-controls col-sm-5" style="padding-right: 30px;">
+                                <select name="types" class="form-control">
+                                    <option value="">--选择奖品类型--</option>
+                                    <option value="1">积分</option>
+                                    <option value="2">余额</option>
+                                    <option value="3">实物</option>
+                                    <option value="4">优惠券</option>
+                                </select>
+
+                            <span style="color:#999999; line-height:40px; margin-left:20px;">必填</span>
+
+                            </div>
+                        </div>
+                        <div class="form-group" id="not_yhq">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">奖品内容</label>
+                            <div class="form-controls col-sm-5">
+                                <input type="text" name="detail" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">积分和余额要填数字</span>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group" id="yhq" style="display: none;">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">优惠券</label>
+                            <div class="form-controls col-sm-5" style="padding-right: 30px;">
+                                <select name="yhq" id="youhuiquan" class="form-control">
+                                    <option value="">--选择优惠券--</option>
+                                    {volist name="$coupons" id="vo"}
+                                    <option value="{$vo['id']}">{$vo['title']}</option>
+                                    {/volist}
+                                </select>
+
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">必填</span>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">数量</label>
+                            <div class="form-controls col-sm-5">
+                                <input type="text" name="total" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">必填</span>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label col-sm-2" style="margin-right:45px">中奖概率</label>
+                            <div class="form-controls col-sm-5">
+                                <input type="text" name="chance" value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">‱</span>
+                                <span style="color:#999999; line-height:40px; margin-left:20px;">填0~9999的整数，填1概率即为万分之一</span>
+                            </div>
+                            
+                        </div>
+                        <input type="hidden" id="pid" name="pid" value="" />
+                        <input type="hidden" disabled name="num" id="num" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" id="addPrize" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function modifyPrize(id){
+        $.ajax({
+            url: "{:Url('shake/getPrize')}",
+            type: 'post',
+            data: {
+                id: id
+            },
+            success: function(res){
+                var j = JSON.parse(res);
+                $('input[name="title"]').val(j.title);
+                $('input[name="commonuploadpic1"]').val(j.thumb);
+                $('select[name="types"]').val(j.types);
+                if(j.types != '4'){
+                   $('#not_yhq').show();
+                   $('#yhq').hide();
+                   $('input[name="detail"]').val(j.detail); 
+                }else{
+                   $('#not_yhq').hide();
+                   $('#yhq').show();
+                   $('#youhuiquan').find('option[value="'+j.detail+'"]').attr('selected', true);
+                }
+                $('input[name="total"]').val(j.total);
+                $('input[name="chance"]').val(j.chance);
+                $("#zhutu").attr("src", j.thumb_https);
+                $('#pid').val(j.id);
+            }
+        })
+        $('#choose').removeClass('active');
+        $('#edit').addClass('active');
+        $('.choosing').each(function(){
+            $(this).hide();
+        })
+        $('.editing').show();
+    }
+
+    function deletePrize(that, id){
+        if(confirm('此操作不可恢复，确认吗？')){
+            $.ajax({
+            url: "{:Url('shake/delPrize')}",
+            type: 'POST',
+            data: {
+                id: id,
+                appletid: "<?php echo $_GET['appletid']; ?>",
+            },
+            success: function(res){
+                var json = JSON.parse(res);
+                if(json == 1){
+                    $(that).parent().parent().remove();
+                    alert('删除成功！');
+                }
+            }
+        })
+        }
+    }
+
+    function selectPrize(id){
+        $.ajax({
+            url: "{:Url('Shake/selectPrize')}",
+            type: 'POST',
+            data: {
+                id: id,
+                num: $("#num").val(),
+                aid: $("#aid").val(),
+                appletid: "<?php echo $_GET['appletid']; ?>",
+            },
+            success: function(res){
+                var json = JSON.parse(res);
+                if(json.flag == 1){
+                    alert(json.warning);
+                }else if(json.flag == 2){
+                    alert(json.warning);
+                }else{
+                    // window.location.href = "{:Url('shake/setprize')}" + "&appletid=" + appletid + "&id=" + json.aid;
+                    location.reload();
+                }
+            }
+        })
+    }
+
+    $("#addPrize").click(function(){
+        // alert($('select[name="types"]').val());
+        if(!$("#aid").val()) alert('未选择活动！');
+        else if(!$('input[name="title"]').val()) alert('标题必填！');
+        else if(!$('input[name="commonuploadpic1"]').val()) alert('图片必填！');
+        else if(!$('select[name="types"]').val()) alert('类型必填！');
+        else if(!$('input[name="detail"]').val() && !$('select[name="yhq"]').val()) alert('内容必填！');
+        else if(!$('input[name="total"]').val()) alert('数量必填！');
+        else if(!$('input[name="chance"]').val()) alert('概率必填！');
+        else if($('input[name="chance"]').val() >= 10000 || $('input[name="chance"]').val() < 0) alert('概率必须小于100%！');
+        else{
+            $.ajax({
+                url: "{:Url('Shake/addPrize')}",
+                type: "post",
+                data:{
+                    aid: $("#aid").val(),
+                    appletid: "<?php echo $_GET['appletid']; ?>",
+                    pid: $("#pid").val(),
+                    // num: num,
+                    title: $('input[name="title"]').val(),
+                    thumb: $('input[name="commonuploadpic1"]').val(),
+                    types: $('select[name="types"]').val(),
+                    detail: $('select[name="types"]').val() == 4 ? $('select[name="yhq"]').val() :$('input[name="detail"]').val(),
+                    total: $('input[name="total"]').val(),
+                    chance: $('input[name="chance"]').val()
+                },
+                success: function(res){
+                    var json = JSON.parse(res);
+                    switch(json.types){
+                        case '1': json.types = '积分';break;
+                        case '2': json.types = '余额';break;
+                        case '3': json.types = '实物';break;
+                        case '4': json.types = '优惠券';break;
+                    }
+                    if(json.flag == 'add'){
+                        //alert(json.title);//<img src="{media $item['thumb']}" width="60" height="60" alt="">http://wxkf2.nttrip.cn/attachment/
+                        
+                        var html = '<tr><td>'+json.title+'</td><td><img src="'+json.thumb+'" width="60" height="60" alt=""></td><td>'+json.types+'</td><td>'+json.detail+'</td><td>'+
+                                    json.total+'</td><td>'+json.chance+'%</td><td>'+
+                                    '<a class="btn btn-default btn-sm" onclick="modifyPrize('+json.id+')" id="prize'+json.id+'">编辑</a>'+  
+                                    ' <a class="btn green" onclick="selectPrize('+json.id+')" data-dismiss="modal">选择</a>'+
+                                    ' <a class="btn red" onclick="deletePrize(this, '+json.id+')">删除</a>'+
+                                    '</td></tr>';
+                        $('#prizes').find("tr:first").after(html);
+                    }else{
+                        var html2 = '<td>'+json.title+'</td><td><img src="'+json.thumb+'" width="60" height="60" alt=""></td><td>'+json.types+'</td><td>'+json.detail+'</td><td>'+
+                                    json.total+'</td><td>'+json.chance+'%</td><td>'+
+                                    '<a class="btn btn-default btn-sm" onclick="modifyPrize('+json.id+')" id="prize'+json.id+'">编辑</a>'+
+                                    ' <a class="btn green" onclick="selectPrize('+json.id+')" data-dismiss="modal">选择</a>'+
+                                    ' <a class="btn red" onclick="deletePrize(this, '+json.id+')">删除</a>'+
+                                    '</td>';
+                        var temp = '#prize' + json.id;
+                        $(temp).parent().parent().html(html2);
+                    }
+                    $('#edit').removeClass('active');
+                    $('#choose').addClass('active');
+                    $('.choosing').each(function(){
+                        $(this).show();
+                    })
+                    $('.editing').hide();
+
+                }
+            })
+        }
+    })
+</script>
+
+{include file="public/foot_more" /}

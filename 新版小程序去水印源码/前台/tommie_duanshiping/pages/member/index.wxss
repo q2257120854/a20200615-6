@@ -1,0 +1,148 @@
+.UCenter-bg {
+    background: #fed201;
+    background-size: cover;
+    height: 346rpx;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.UCenter-bg text {
+    opacity: 0.8;
+}
+
+.text-xl {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+}
+
+.text-sm {
+    font-size: 28rpx;
+}
+
+.UCenter-bg image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.UCenter-bg .png {
+    border-radius: 50px;
+}
+
+.UCenter-bg .gif-wave {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    mix-blend-mode: screen;
+    height: 100rpx;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 4%;
+    width: 750rpx;
+    background-color: white;
+}
+
+.login {
+    width: 150rpx;
+    background: linear-gradient(45deg,#ff6700 0%,#ffa000 100%);
+    color: white;
+    height: 150rpx;
+    line-height: 150rpx;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+.login-hover {
+    background-color: #f36643;
+}
+
+.top image {
+    height: 120rpx;
+    width: 120rpx;
+    border-radius: 50px;
+}
+
+.top text {
+    margin: 20rpx 0;
+    font-size: 28rpx;
+}
+
+.main {
+    height: 65%;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f9;
+}
+
+.main .line {
+    background-color: #a7a7a7;
+    height: 2rpx;
+    width: 680rpx;
+}
+
+.main .item {
+    display: flex;
+    align-items: center;
+    width: 650rpx;
+    margin: 30rpx;
+}
+
+.nav {
+    display: flex;
+}
+
+.main .item image {
+    height: 32rpx;
+    width: 32rpx;
+    margin-left: 15rpx;
+}
+
+.main .item text {
+    font-size: 32rpx;
+    margin-left: 10rpx;
+    margin-right: 15rpx;
+}
+
+.service {
+    position: fixed;
+    right: -10rpx;
+    top: 6%;
+    display: flex;
+    justify-content: center;
+    width: 200rpx;
+    background-color: #ed3f14;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+}
+
+.service-img-button {
+    line-height: 80rpx;
+    height: 80rpx;
+    width: 200rpx;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 32rpx;
+}
+
+.service-img-button::after {
+    border: none;
+    background: none;
+}

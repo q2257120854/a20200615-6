@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>LaySNS后台管理</title>
+<link rel="stylesheet" href="__ADMIN__/plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="__ADMIN__/css/main.css" media="all" /> 
+<link rel="stylesheet" href="__ADMIN__/css/font.css">
+<link rel="stylesheet" href="__ADMIN__/css/xadmin.css">{block name="css"}{/block}
+<script src="__ADMIN__/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__ADMIN__/plugins/layui/layui.js"></script>
+</head>
+
+<body>
+
+    <!--主体-->
+    <div style="margin-bottom:36px;">
+
+        {block name="body"}{/block}
+    </div>
+
+    {block name="page"}{/block}
+
+    <script>
+        var token = '{$token}';
+    </script> {block name="js"}{/block}
+    <!--页面JS脚本-->
+    {block name="script"}{/block}
+</body>
+
+</html>

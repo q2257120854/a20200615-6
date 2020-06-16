@@ -1,0 +1,105 @@
+	
+
+
+
+		</div>
+	</div>
+
+	<div class="footer">
+
+		{php}echo date("Y");{/php} &copy; {$Think.APP_COMPANY}版权所有 v{$Think.VERSION_APP} 
+
+	</div>
+
+	
+
+	<script src="/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+	<script src="/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+
+	<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<script src="/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+	<script src="/js/jquery.blockui.min.js" type="text/javascript"></script>  
+
+	<script src="/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+	<script src="/js/jquery.uniform.min.js" type="text/javascript" ></script>
+
+	<script type="text/javascript" src="/js/bootstrap-fileupload.js"></script>
+
+	<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+
+	<script type="text/javascript" src="/js/select2.min.js"></script>
+
+	<script type="text/javascript" src="/js/wysihtml5-0.3.0.js"></script> 
+
+	<script type="text/javascript" src="/js/bootstrap-wysihtml5.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.tagsinput.min.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.toggle.buttons.js"></script>
+
+	<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+
+	<script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+
+	<script type="text/javascript" src="/js/clockface.js"></script>
+
+	<script type="text/javascript" src="/js/date.js"></script>
+
+	<script type="text/javascript" src="/js/daterangepicker.js"></script> 
+
+	<script type="text/javascript" src="/js/bootstrap-colorpicker.js"></script>  
+
+	<script type="text/javascript" src="/js/bootstrap-timepicker.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.inputmask.bundle.min.js"></script>   
+
+	<script type="text/javascript" src="/js/jquery.input-ip-address-control-1.0.min.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.multi-select.js"></script>   
+
+	<script src="/js/bootstrap-modal.js" type="text/javascript" ></script>
+
+	<script src="/js/bootstrap-modalmanager.js" type="text/javascript" ></script> 
+
+	<script src="/js/app.js"></script>
+	
+	
+	<script src="/js/form-components.js"></script>   
+
+	<script src="/js/ui-modals.js"></script>
+	
+
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   	App.init(); // initlayout and core plugins
+		   	FormComponents.init();
+			UIModals.init();
+		   
+
+		   //控制左侧导航选中
+		   //1.一级导航选中
+		   var nowhtml = $("#nowhtml").val();
+		   var pli = $("#"+nowhtml).parent().parent();
+		   $("#"+nowhtml).addClass("selected");
+		   $("#"+nowhtml).removeClass("arrow");
+		   $(pli).addClass("active");
+		   //2.二级导航选中
+		   var erji = $("#erjihtml").val();
+		   if(erji){
+		   		$("#"+erji).addClass("active");
+		   }
+
+		});
+
+	</script>
+
+
+
+	</body>
+</html>

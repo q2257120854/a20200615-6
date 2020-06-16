@@ -1,0 +1,137 @@
+body{
+    background-color: #F5F5F5;
+}
+.yjcode{width:1200px;}
+img{border:0;}
+
+/*全站主题颜色 同一系列，从深到浅*/
+.g_ac0{color:#333;}
+.g_ac0_h{color:#188EEE;}
+.g_ac0:hover{color:#188EEE;}
+.g_ac1{color:#333;}
+.g_ac1_h{color:#188EEE;}
+.g_ac1:hover{color:#188EEE;}
+.g_ac2{color:#188EEE;}
+.g_ac2_h{color:#188EEE;}
+.g_ac2:hover{color:#FF5D56;}
+.g_ac3{color:#2255DD;}
+.g_ac3_h{color:#FFA500;}
+.g_ac3:hover{color:#FF5D56;}
+
+.g_ac98_h{color:#FF5D56;} /*过渡色，通用色*/
+.g_ac98:hover{color:#FF5D56;} /*过渡色，通用色*/
+.g_ac99_h{color:#B90505;} /*过渡色，通用色*/
+.g_ac99:hover{color:#B90505;} /*过渡色，通用色*/
+
+.g_bc0{border-color:#ccc;}
+.g_bc0_h{border-color:#188EEE;}
+.g_bc0:hover{border-color:#188EEE;}
+
+.g_bg0{background-color:#FFA500;color:#fff;}
+.g_bg1{background-color:#188EEE;color:#fff;}
+/*全站主题色结束*/
+
+
+
+/*菜单右侧广告*/
+.bfbtop1 .top1 .menu .rmenuad{
+	float: right;
+}
+
+
+.bfbtop1 .top1 .menu .rmenuad li img{
+	width: 100px;
+    height: 40px;
+    border: #ddd solid 1px;
+    margin: 9px 0 0 9px;
+}
+
+
+/*底部帮助*/
+.bfbbot{
+	background-color: #fff;
+    border-top: #E6E6E6 solid 1px;
+    margin: 10px 0 0 0;}
+.bfbbot {float:left;width:1200px;text-align:left;}
+.bfbbot .u1{float:left;background:url(../homeimg/bottombck.png) center top no-repeat;width:1200px;height:140px;}
+.bfbbot .u1 li{float:left;width:150px;padding:11px 0 0 80px;line-height:23px;}
+.bfbbot .u1 li span{float:left;width:150px;font-size:14px;font-weight:700;height:23px;}
+.bfbbot .u1 li .a1{color:#8a8a8a;}
+.bfbbot .bq{float:left;width:1200px;color:#777777;text-align:center;line-height:23px;padding:20px 0 10px 0;}
+.bfbbot .bq a{color:#777777;}
+
+/*客服*/
+.rightfd{position:fixed;bottom:20px;width:55px;right:15px;z-index:99999;}
+.rightfd .d0{float:left;width:55px;height:65px;background-color:#188EEE;cursor:pointer;}
+.rightfd .d0 .s1{float:left;width:55px;height:21px;padding:44px 0 0 0;text-align:center;color:#fff;background:url(../homeimg/ShoppingCart.png) no-repeat;background-position:13px 10px;}
+.rightfd .d0:hover{background-color:orange;}
+.rightfd .d1{float:left;width:55px;height:65px;background-color:#188EEE;}
+.rightfd .d1 .s1{float:left;width:55px;height:21px;padding:44px 0 0 0;text-align:center;color:#fff;background:url(../homeimg/zxicon.png) no-repeat;background-position:13px 10px;}
+.rightfd .d1 .sd1{position:absolute;left:-120px;top:0px;width:120px;background-color:orange;display:none;padding:10px 0 7px 0;color:#fff;}
+.rightfd .d1 .sd1 a{float:left;padding:3px 0 0 30px;background:url(../homeimg/qq4.gif) left top no-repeat;width:72px;height:21px;text-align:left;margin:0 0 6px 9px;}
+.rightfd .d1 .sd1 a:hover{text-decoration:none;color:red;}
+.rightfd .d1 .sd1 strong{color:#fff;}
+.rightfd .d1:hover .sd1{display:block;}
+.rightfd .d1:hover{background-color:orange;}
+.rightfd .d2{float:left;width:55px;height:65px;background-color:#188EEE;}
+.rightfd .d2 .s1{float:left;width:55px;height:21px;padding:44px 0 0 0;text-align:center;color:#fff;background:url(../homeimg/kficon.png) no-repeat;background-position:13px 10px;}
+.rightfd .d2 .sd1{position:absolute;left:-120px;top:0px;width:120px;height:129px;background-color:orange;display:none;padding:10px 0 0 0;color:#fff;}
+.rightfd .d2 .sd1 img{margin:0 0 5px 0;}
+.rightfd .d2:hover .sd1{display:block;}
+.rightfd .d2:hover{background-color:orange;}
+.rightfd .d3{float:left;width:55px;height:65px;background-color:#188EEE;cursor:pointer;}
+.rightfd .d3 .s1{float:left;width:55px;height:21px;padding:44px 0 0 0;text-align:center;color:#fff;background:url(../homeimg/fanhui.png) no-repeat;background-position:17px 10px;}
+.rightfd .d3:hover{background-color:orange;}
+
+/*顶部菜单-会员中心*/
+.clearfix:after {
+	content: "";
+	height: 0;
+	visibility: hidden;
+	display: block;
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+.bfbtop .top .u1 .umenu{
+	right: 357px;
+	width: 407px;
+	padding: 0 6px 15px 14px;
+	background: #fff;
+	position: relative;
+	font-size: 13px;
+	text-align: left;
+	-moz-box-shadow: 0 0 6px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,.2);
+	box-shadow: 0 0 6px rgba(0,0,0,.2);
+	top: 21px;
+}
+.bfbtop .top .u1 .umenu a{float:left;width:70px;padding:7px 0 0 10px;height:18px;}
+.bfbtop .top .u1 .umenu dl {
+	float: left;
+    display: inline;
+    margin: 0 0 10px 25px;
+    width: 110px;
+    overflow: hidden;
+}
+.bfbtop .top .u1 .umenu dt {
+	height: 18px;
+	line-height: 18px;
+	color: #FFA500;
+	font-weight: 700
+}
+.bfbtop .top .u1 .umenu dd a {
+	display: block;
+	height: 28px;
+	line-height: 28px;
+	border-bottom: 1px dashed #ededed;
+	color: #333;
+}
+.bfbtop .top .u1 .umenu dd a:hover {
+	color: #FFA500;
+}
+.bfbtop .top .u1 .umenu dd a strong {
+	color: #188EEE;
+}
+/*会员中心结束*/

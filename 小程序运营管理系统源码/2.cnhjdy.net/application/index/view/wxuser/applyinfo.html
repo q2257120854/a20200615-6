@@ -1,0 +1,277 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<style type="text/css">
+	.chongdingy{
+		background-color:#f5f5f5; 
+		padding:10px 0;
+	}
+	.chongdingywz{
+		text-align: left !important;
+		font-size: 16px;
+		padding-left: 20px;
+	}
+	.control-group_c{
+		width: 100%;
+		min-height: 35px;
+		margin-bottom: 10px;
+	}
+</style>
+
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP5">
+
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			会员申请管理--{$applet.name}
+		</li>
+	</ul>
+
+
+	<div class="row-fluid">
+
+		<div class="portlet box">
+
+			
+			<div class="portlet-body form">
+
+						<div class="control-group chongdingy">
+
+							<label class="control-label chongdingywz">会员申请信息</label>
+
+						</div>
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">头像和昵称:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								<img src="{$item['avatar']}" class="member_details_tx" />{$item['nickname']}
+
+							</div>
+
+						</div>
+
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">OPENID:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['openid']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">会员卡卡号:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{if $item['flag']==1}{$item['vipid']}{else}尚未成为会员{/if}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">申请状态:</label>
+
+							<div class="controls" style="line-height:35px;">
+								{if $item['flag'] == 4}
+								<button class="btn blue dx" style="padding:5px 10px">免审</button>
+								{/if}
+								{if $item['flag'] == 3}
+								<button class="btn gray dx" style="padding:5px 10px">待审核</button>
+								{/if}
+								{if $item['flag'] == 2}
+								<button class="btn red dx" style="padding:5px 10px">不通过</button>
+								{/if}
+								{if $item['flag'] == 1}
+								<button class="btn green dx" style="padding:5px 10px">通过</button>
+								{/if}
+
+							</div>
+
+						</div>
+
+						{if $item['flag'] == 2}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">不通过原因:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['beizhu']}
+
+							</div>
+
+						</div>
+						{/if}
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">真实姓名:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['realname']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">手机号:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['mobile']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">生日:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['birth']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">申请时间:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$item['applytime']}
+
+							</div>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">审核时间:</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{if $item['flag'] == 3}{else}{$item['examinetime']}{/if}
+
+							</div>
+
+						</div>
+
+						{if $item['fid'] > 0}
+						<div class="control-group chongdingy">
+
+							<label class="control-label chongdingywz">会员申请信息</label>
+
+						</div>
+						<div class="control-group_c">
+
+							<label class="control-label" style="color:#666666">项目名称</label>
+
+							<div class="controls" style="line-height:35px;">
+								
+								{$forminfo['title']}
+
+							</div>
+
+						</div>
+						{foreach $forminfo['val'] as $item2}
+							{if $item2['type']== 3}
+							<div class="control-group_c">
+
+								<label class="control-label" style="color:#666666">{$item2['name']}</label>
+
+								<div class="controls" style="line-height:35px;">
+									
+									{foreach $item2['val'] as $item3}
+
+										{$item3},
+
+									{/foreach}
+
+								</div>
+
+							</div>
+
+							{elseif $item2['type']== 5}
+							<div class="control-group_c">
+
+								<label class="control-label" style="color:#666666">{$item2['name']}</label>
+
+								<div class="controls" style="line-height:35px;">
+									
+									{foreach $item2['z_val'] as $item5}
+
+				                        <img src="{$item5}" style="width:100px; height:100px; ">
+
+									{/foreach}
+
+								</div>
+
+							</div>
+							{else}
+							<div class="control-group_c">
+
+								<label class="control-label" style="color:#666666">{$item2['name']}</label>
+
+								<div class="controls" style="line-height:35px;">
+									{$item2['val']}
+
+								</div>
+
+							</div>
+							{/if}
+						{/foreach}
+						{/if}
+
+
+
+						<div class="form-actions" style="padding-left: 10px">
+
+							<a href="javascript:;" onclick="javascript:history.back(-1);" class="btn" style="background: #35aa47;color:#fff">返回</a>
+
+						</div>
+
+					</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

@@ -1,0 +1,49 @@
+			{extend name="base" /}
+{block name="body"}
+{empty name="custom_adminlist"}
+
+			<div class="admin-main">
+<div class="layui-field-box layui-form">
+
+				
+				<table class="layui-table admin-table">
+				<thead>
+                  					<tr>
+						<th>
+						 	序号
+	                    </th>
+						{volist name="listKey" id="vo"}
+							<th>{$vo}</th>
+						{/volist}
+					</tr>
+                    </thead>
+                    <tbody>
+                {volist name="list" id="lv" key="vo"}
+					<tr>
+						
+						{volist name="listKey" id="lk"}
+							<td>{$lv[$key]}</td>
+						{/volist}
+					</tr>
+					{/volist}
+                    </tbody>
+                </table>
+	</div>
+		
+			
+		</div>		
+{else /}
+
+		{present name="custom_adminlist"}
+				{$custom_adminlist}
+			{/present}
+
+		{/empty}
+		{/block}
+ {block name="page"}
+<div class="btable-paged" >
+<div class="layui-main">
+	{$list->render()}
+</div>
+</div>
+ {/block}

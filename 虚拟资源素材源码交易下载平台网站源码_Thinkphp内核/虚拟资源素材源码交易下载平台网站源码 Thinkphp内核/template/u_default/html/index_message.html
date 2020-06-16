@@ -1,0 +1,183 @@
+{extend name="index_base" /} {block name="seo"}
+<title>我的消息 - {$site_config['site_title']} - {$site_config['seo_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<link rel="stylesheet" href="__PUBLIC__css/tp5page.css">
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+
+    <div class="fly-panel fly-panel-user" pad20>
+        <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
+
+
+            <div id="LAY_minemsg" style="margin-top: 10px;">
+
+
+                {empty name="tptc"}
+                <div class="fly-none">您暂时没有新的消息</div>
+                {else /}
+                <button class="layui-btn layui-btn-primary read_del" data-xm="标记已读" data-url="{:url('user/message/readmsg')}">全部标记已读</button>
+
+                <button class="layui-btn layui-btn-danger read_del" data-xm="删除" data-url="{:url('user/message/delallmessage')}">删除全部消息</button>
+
+                <ul class="mine-msg">
+                    {volist name="tptc" id="vo"} {if condition="$vo['type'] eq 2"}
+                    <li class="messagelist">
+                        <blockquote class="layui-elem-quote">
+                            <a href="{:url('user/message/home',array('id'=>$vo.userid))}" target="_blank"><cite>{$vo.username}</cite></a>回复了您的帖子<a target="_blank" href="{:url('bbs/index/thread',array('id'=>$vo['content']))}"><cite>{$vo.content|getforumbyid}</cite></a>
+                        </blockquote>
+                        <p><span>{$vo.time|friendlyDate}</span>{if $vo.status eq 1}<a href="javascript:;" data-url="{:url('user/message/readmessage',array('id'=>$vo['id']))}" class=" elementread layui-btn layui-btn-sm layui-btn-primary fly-delete">标记已读</a>{/if}
+                            <a href="javascript:;" data-url="{:url('user/message/delmessage',array('id'=>$vo['id']))}" class=" elementdel layui-btn layui-btn-sm layui-btn-danger fly-delete">删除</a></p>
+                    </li>
+                    {elseif condition="$vo['type'] eq 3" /}
+                    <li class="messagelist">
+                        <blockquote class="layui-elem-quote">
+                            <a href="{:url('user/message/home',array('id'=>$vo.userid))}" target="_blank"><cite>{$vo.username}</cite></a>回复了帖子<a target="_blank" href="{:url('bbs/index/thread',array('id'=>$vo['content']))}"><cite>{$vo.content|getforumbyid}</cite></a>中你的评论
+                        </blockquote>
+                        <p><span>{$vo.time|friendlyDate}</span> {if $vo.status eq 1}<a href="javascript:;" data-url="{:url('user/message/readmessage',array('id'=>$vo['id']))}" class=" elementread layui-btn layui-btn-sm layui-btn-primary fly-delete">标记已读</a>{/if}
+                            <a href="javascript:;" data-url="{:url('user/message/delmessage',array('id'=>$vo['id']))}" class=" elementdel layui-btn layui-btn-sm layui-btn-danger fly-delete">删除</a>
+                        </p>
+                    </li>
+                    {elseif condition="$vo['type'] eq 4" /}
+                    <li class="messagelist">
+                        <blockquote class="layui-elem-quote">
+                            <a href="{:url('user/message/home',array('id'=>$vo.userid))}" target="_blank"><cite>{$vo.username}</cite></a>评论了你的文章<a target="_blank" href="{:url('index/index/'.arttmplbyid($vo.content),array('id'=>$vo['content']))}"><cite>{$vo.content|getartbyid}</cite></a>
+                        </blockquote>
+                        <p><span>{$vo.time|friendlyDate}</span> {if $vo.status eq 1}<a href="javascript:;" data-url="{:url('user/message/readmessage',array('id'=>$vo['id']))}" class=" elementread layui-btn layui-btn-sm layui-btn-primary fly-delete">标记已读</a>{/if}
+                            <a href="javascript:;" data-url="{:url('user/message/delmessage',array('id'=>$vo['id']))}" class=" elementdel layui-btn layui-btn-sm layui-btn-danger fly-delete">删除</a>
+                        </p>
+                    </li>
+                    {else /}
+                    <li class="messagelist">
+                        <blockquote class="layui-elem-quote">
+                            系统消息：{$vo.content|htmlspecialchars_decode}
+                        </blockquote>
+                        <p><span>{$vo.time|friendlyDate}</span> {if $vo.rstatus eq 1}<a href="javascript:;" data-url="{:url('user/message/readsysmessage',array('id'=>$vo['rid']))}" class=" elementread layui-btn layui-btn-sm layui-btn-primary fly-delete">标记已读</a>{/if}
+                            <a href="javascript:;" data-url="{:url('user/message/delsysmessage',array('id'=>$vo['rid']))}" class=" elementdel layui-btn layui-btn-sm layui-btn-danger fly-delete">删除</a></p>
+                    </li>
+                    {/if} {/volist}
+
+
+                </ul>
+                <div style="text-align: center;">
+
+
+                    {$tptc->render()}</div>
+
+
+                {/empty}
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{/block} {block name="script"}
+<script>
+    layui.use(['layer', 'jquery', 'form'], function() {
+        var layer = layui.layer,
+            form = layui.form,
+            jq = layui.jquery;
+
+
+        jq('.read_del').click(function() {
+            var url = jq(this).data('url');
+            var xm = jq(this).data('xm');
+            layer.confirm('你确定要' + xm + '所有消息吗?', {
+                icon: 3,
+                title: xm + '提示'
+            }, function(index) {
+                loading = layer.load(2, {
+                    shade: [0.2, '#000']
+                });
+
+
+                jq.getJSON(url, function(data) {
+                    if (data.code == 200) {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        }, function() {
+                            // 
+
+                            location.reload();
+
+
+                        });
+                    } else {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 2,
+                            anim: 6,
+                            time: 1000
+                        });
+                    }
+                });
+
+            });
+        });
+        jq('.elementread').click(function() {
+            var url = jq(this).data('url');
+
+            loading = layer.load(2, {
+                shade: [0.2, '#000']
+            });
+            jq.getJSON(url, function(data) {
+                if (data.code == 200) {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        location.reload();
+                    });
+                } else {
+                    layer.close(loading);
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        anim: 6,
+                        time: 1000
+                    });
+                }
+            });
+
+        });
+
+        jq('.elementdel').click(function() {
+            var url = jq(this).data('url');
+            layer.confirm('你确定要删除该条消息吗?', {
+                icon: 3,
+                title: '删除提示'
+            }, function(index) {
+                loading = layer.load(2, {
+                    shade: [0.2, '#000']
+                });
+                jq.getJSON(url, function(data) {
+                    if (data.code == 200) {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 1,
+                            time: 1000
+                        }, function() {
+                            location.reload();
+                        });
+                    } else {
+                        layer.close(loading);
+                        layer.msg(data.msg, {
+                            icon: 2,
+                            anim: 6,
+                            time: 1000
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>
+{/block}

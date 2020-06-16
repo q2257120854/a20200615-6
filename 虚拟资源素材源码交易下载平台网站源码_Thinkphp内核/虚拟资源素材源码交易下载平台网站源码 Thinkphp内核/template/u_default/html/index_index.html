@@ -1,0 +1,86 @@
+{extend name="index_base" /} {block name="seo"}
+<title>个人中心 - {$site_config['site_title']}</title>
+
+
+<meta name="keywords" content="{$site_config['seo_keyword']}">
+<meta name="description" content="{$site_config['seo_description']}"> {/block} {block name="body"}
+<div class="layui-container fly-marginTop fly-user-main">
+    {include file="index/menu"}
+    <div class="fly-panel fly-panel-user" pad20="" style="padding-top:20px;">
+        {if condition="($tptc.status neq 2) and ($tptc.status neq 5)"}
+        <div class="fly-msg" style="margin-bottom: 20px;">
+            您的邮箱尚未验证，这比较影响您的帐号安全，
+            <a href="{:url('user/index/set')}">立即去激活？</a>
+        </div>
+        {/if}
+        <div class="layui-row layui-col-space20">
+            <div class="layui-col-md6">
+
+                {include file="index/sign"}
+
+            </div>
+            <div class="layui-col-md6">
+                <div class="fly-panel fly-panel-border">
+                    <div class="fly-panel-title">
+                        我的会员信息
+                    </div>
+                    <div class="fly-panel-main layui-text" style="padding: 18px 15px; height: 50px; line-height: 26px;">
+                        <p>您的积分为：<i id="pointnum">{$tptc.point}</i> {if $site_config.open_pay} <a class="layui-btn layui-btn-sm layui-btn-warm" href="{:url('user/pay/index')}">充值</a>{/if}</p>
+                        <p>您当前为：{$tptc.grades|getgradenamebyid}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md12" style="margin-top: -20px;">
+                <div class="fly-panel fly-panel-border">
+                    <div class="fly-panel-title">
+                        积分明细
+                    </div>
+                    <div class="fly-panel-main">
+                        <table id="userpint"></table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'laytpl', 'form', 'element', 'table', 'util'], function() {
+        var form = layui.form,
+            jq = layui.jquery;
+        var util = layui.util;
+        var laytpl = layui.laytpl;
+
+        var element = layui.element;
+
+        var table = layui.table;
+        //
+        table.render({
+            elem: '#userpint',
+            url: "{:url('user/index/getmypoint')}" //数据接口
+                ,
+            method: 'post',
+            cols: [
+                [{
+                    field: 'add_time',
+                    title: '时间',
+                    align: 'center',
+                    templet: '<div>{{ layui.util.timeAgo(d.add_time*1000, 1) }}</div>'
+                }, {
+                    field: 'title',
+                    title: '积分项目',
+                    maxWidth: '100px',
+                    //   templet: '<div><a href="/index/article/id/{{ d.id }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+                }, {
+                    field: 'score',
+                    title: '分值',
+
+                    //   templet: '<div><a href="/index/article/id/{{ d.id }}.html" target="_blank" class="layui-table-link">{{ d.title }}</a></div>'
+                }]
+            ],
+            page: true,
+            skin: 'line'
+        });
+    });
+</script>
+{/block}

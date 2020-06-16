@@ -1,0 +1,137 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP1">
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		用户管理--{$applet.name}
+	</li>
+</ul>
+
+<script type="text/javascript">
+	$(function(){
+		$("#filter").click(function(){
+			var user_info = $('#user_info').val();
+			var url = window.location.href;
+
+			window.location.href = "{:Url('wxuser/index')}?appletid=<?php echo $_GET['appletid']?>" + "&vip=" + $('#vip').val() + "&user_info=" + user_info;
+		})
+	})
+</script>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+			
+			<div class="float-left mr-20" style="margin-top: 10px; margin-bottom: 10px">		
+				<select name="vip" id="vip" class="form-control" style="width: 200px;display: inline-block;font-size: 12px">
+							<option value="1" {if isset($_GET['vip'])}{if $_GET['vip'] == 1} selected="selected" {/if}{/if}  >全部</option>
+							<option value="2"  {if isset($_GET['vip'])}{if $_GET['vip'] == 2} selected="selected" {/if}{/if} >会员</option>
+							<option value="3"  {if isset($_GET['vip'])}{if $_GET['vip'] == 3} selected="selected" {/if}{/if} >非会员</option>						
+				</select>
+				<input type="text" name="user_info" style="width: 200px;font-size: 12px" value="{if isset($_GET['user_info'])}{$_GET['user_info']}{/if}" id="user_info" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="昵称或手机号的关键字" autocomplete="off">
+				<div class="btn green" id="filter" style="font-size: 12px;" />提交</div>
+				<!-- <div class="btn btn-primary" style="display: inline-block;font-size: 12px" id="excel" onclick="window.location.href = window.location.href + '&opt=excel';" >导出excel</div> -->
+			</div>
+
+			<div class="portlet-body">
+
+
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							
+							<th>ID</th>
+				            <th>头像-昵称</th>
+				            <th>姓名-手机号</th>
+				            <th>身份</th>
+				            <th>注册时间</th>
+				            <th>积分 / 余额</th>
+				            <th>订单 / 优惠券</th>
+				            <th>操作</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $user}
+						{foreach $user['data'] as $item}
+							<tr>
+								<td>
+									{$item.id}
+								</td>
+								<td>
+				                    <img src="{$item.avatar}" onerror="this.src='/image/nopic.jpg'" style="width:50px; height:50px;">-
+									{$item.nickname}
+				                </td>
+								<td>
+									{$item.realname}-{$item.mobile}
+								</td>
+								<td>{if $item.vipid}会员{else}普通用户{/if}</td>
+								<td>
+									{$item.createtime}
+								</td>
+								<td>
+									积分：{$item['score']}
+				                    <br/>
+				                    余额：{$item['money']}
+								</td>
+								<td>
+									订单：{$item.orders}
+									<br/>
+									优惠券：<a href="{:Url('Coupon/userrecord')}?appletid=<?php echo $_GET['appletid']?>&openid={$item.openid}" >{$item.coupon}</a>
+								</td>
+								<td>
+		                			<a class="btn btn-default btn-sm btncolor" href="{:Url('post')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}" >编辑</a>
+
+		                			<a class="btn btn-default btn-sm btncolor" onclick="return confirm('此操作不可恢复，确认吗？'); return false;" href="{:Url('delete')}?appletid=<?php echo $_GET['appletid']?>&id={$item.id}">删除</a>
+		            			</td>
+
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$userold->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

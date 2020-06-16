@@ -1,0 +1,26 @@
+        <div class="pageheader notab">
+            <h1 class="pagetitle">Payspai支付设置</h1>
+            <span class="pagedesc">设置Payspai支付的基本信息&nbsp;&nbsp;&nbsp;<b>此支付不可用，请勿操作</b></a></span>
+            
+        </div><!--pageheader-->
+        
+        <div id="contentwrapper" class="contentwrapper lineheight21">
+        
+        
+            <form class="stdform stdform2" method="post">
+				<p>
+					<label>Payspai个人微信商户ID</label>
+					<span class="field"><input type="text" name="uid" id="uid" value="{$_CFG.payspai.uid}" class="smallinput" /></span>
+				</p>
+				<p>
+					<label>Payspai个人微信商户token</label>
+					<span class="field"><input type="text" name="token" id="token" value="{$_CFG.payspai.token}" class="smallinput" /></span>
+				</p>
+				<p class="stdformbutton">
+					<button class="submit radius2">提交</button>
+					<input type="reset" class="reset radius2" value="重置" />
+				</p>
+			</form>
+        
+        
+        </div><!--contentwrapper-->

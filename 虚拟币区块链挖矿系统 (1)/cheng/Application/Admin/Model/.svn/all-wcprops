@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/sanxia/!svn/ver/315/Application/Admin/Model
+END
+ClassModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/ClassModel.class.php
+END
+GroupMemViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/GroupMemViewModel.class.php
+END
+BrandModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/BrandModel.class.php
+END
+ClassBrandViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/ClassBrandViewModel.class.php
+END
+AttrModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/AttrModel.class.php
+END
+ClassAttrViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sanxia/!svn/ver/315/Application/Admin/Model/ClassAttrViewModel.class.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/sanxia/!svn/ver/221/Application/Admin/Model/index.html
+END
+RuleViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sanxia/!svn/ver/221/Application/Admin/Model/RuleViewModel.class.php
+END

@@ -1,0 +1,9 @@
+@charset "gb2312";
+.ntop{display:block;height:33px;font-weight:700;padding:17px 0 0 0;text-align:center;background-color:#DF3031;color:#fff;font-size:15px;}
+
+.dts{margin:30px;border:#ddd solid 3px;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;text-align:center;padding:110px 0 20px 0;line-height:35px;}
+.dts strong{font-size:16px;}
+.errts .dts{background:url(img/err.jpg) center top no-repeat;background-color:#fff;}
+.errts .dts strong{color:#ff0000;}
+.okts .dts{background:url(img/suc.jpg) center top no-repeat;background-color:#fff;}
+.okts .dts strong{color:green;}

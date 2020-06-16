@@ -1,0 +1,92 @@
+{include file="public/head" /}
+
+{include file="public/s_head" /}
+
+
+		<div>
+			<div class="wgldxcs">
+				<span>
+					<img src="/image/weixin.png">
+				</span>
+				请选择您要操作的应用
+			</div>
+			<div class="sruck">
+				<input type="text" placeholder="请输入搜索小程序名称" class="sousxcx" id="keyworld">
+				<div class="nid" onclick="search()">
+					<img src="/image/search-icon.png">
+				</div> 
+			</div>
+		</div>
+
+		<div class="shuxcs" style="border-top:1px solid #dedede; padding:20px 0 0 20px; font-size:0">
+			
+			{if $allapplet}
+				{foreach $allapplet as $item} 
+				<a href="{:Url('Index/index')}?appletid={$item.id}">
+					<div class="divdk" onmouseover="xiansyy(this)" onmouseout="yincyy(this)">
+
+						<div class="xcxtb">
+							<img src="{$item.thumb}" class="xcxlogo">
+						</div>
+						<div class="xcxmz">
+							{$item.name}
+						</div>
+						<div class="zzzzc" name="zzc">
+							<div class="zzzzc_y"></div>
+							<div class="zzzzc_z">进入应用  >></div>
+						</div>
+					</div>
+				</a>
+				{/foreach} 
+			{else}
+				<div class="meiyxcs">您还没有相应的小程序应用，请联系我们进行开通！</div>
+			{/if}
+
+
+		</div>
+		
+		<div>
+			<div  class="sydfyxs">
+				{$applet->render()}
+			</div>
+			
+		</div>
+
+
+	</div>
+
+
+
+
+
+	<script type="text/javascript">
+
+		function xiansyy(me){
+			var zzc = $(me).find("div[name='zzc']");
+			$(zzc).show();
+		}
+		function yincyy(me){
+			var zzc = $(me).find("div[name='zzc']");
+			$(zzc).hide();
+		}
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot" /}

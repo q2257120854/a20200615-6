@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>列表</title>
+      <link rel="stylesheet" type="text/css" href="../css/apic.css"/>
+  </head>
+  <body>
+    <header id="header" class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" onclick="api.closeWin()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">购买VIP</div>
+    </header>
+    <footer id="footer" class="aui-bar aui-bar-tab aui-border-t">
+        <!-- <div class="aui-bar-tab-item aui-bg-info aui-text-white" tapmode onclick="buy()">
+            支付宝 <span id="total">0</span>
+        </div> -->
+        <div class="aui-bar-tab-item aui-bg-purple aui-text-white" tapmode onclick="paymoney()">
+            需要支付 <span id="total2">0</span>
+        </div>
+		<input type="hidden"  id="price">
+		<input type="hidden" id="title">
+        <!-- <div class="aui-bar-tab-item aui-bg-info aui-text-white" tapmode onclick="mqq()">客服充值</div> -->
+    </footer>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/doT.js" ></script>
+  <script type="text/javascript">
+  var active = '';
+  var total = '';
+  var total2 = '';
+  var num = 1;
+   var api_url = localStorage.getItem('api_url');
+  apiready = function(){
+      api.parseTapmode();
+      var header = $api.byId('header');
+      $api.fixStatusBar(header);
+      var footer = $api.byId('footer');
+      //total = $api.byId('total');
+      total2 = $api.byId('total2');
+      //加载frame
+      var header_h = $api.offset(header).h;
+      var footer_h = $api.offset(footer).h;
+      api.openFrame({
+    		  name: 'open_vip_frm',
+        	url: './open_vip_frm.html',
+        	rect: {x:0, y:header_h, w:'auto', h:api.frameHeight-header_h-footer_h}
+    	});
+		
+  };
+   function setTotal(id,name){
+		//alert(id)
+		var id = localStorage.getItem(id);
+		$api.val($api.byId('price'),id)
+		$api.val($api.byId('title'),name)
+      //$api.text(total, '￥'+parseFloat(price.toFixed(2)));
+     $api.text(total2, parseInt(id));
+  }
+ 
+  
+	function paymoney(){
+	
+	var price = $api.val($api.byId('price'));
+	var title = $api.val($api.byId('title'));
+	
+	if(title == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 哎呀~   请先选择要开通的时间哦！',
+					duration: 5000
+				});
+				return;
+			}
+		var user_id = localStorage.getItem('user_id');
+		if (localStorage.getItem('user_id')<1) {
+			  api.toast({
+				msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				duration: 2000
+			});
+				api.openWin({
+				   name: 'login',
+				   url: './login.html',
+				   delay: 2000
+			   });
+			   return;
+			 }
+		 var xurl = price+'&name='+title+'&uid='+user_id;
+		 var sys = api.systemType;
+				if (sys == 'ios') {
+				  
+					api.openApp({
+					
+						   iosUrl: api_url+'/pay/?fee='+xurl
+				   },function(ret,err){
+				   });
+				  
+				}else {
+				    
+					api.openWin({
+						name: 'pays',
+						url: './pays.html',
+						pageParam: {
+							url: api_url+'/pay/?fee='+xurl
+						}
+					});
+				 
+
+				}
+		 
+	}
+  </script>
+  </html>

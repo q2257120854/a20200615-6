@@ -1,0 +1,90 @@
+{include file="public/head" /}
+{include file="public/top" /}
+<input type="hidden" id="nowhtml" value="navVIP" class="navVIP4">
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home"></i>
+		开卡记录
+	</li>
+</ul>
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+
+		<div class="portlet box ">
+
+
+			<div class="portlet-body">
+
+
+
+
+				<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+					<thead>
+
+						<tr>
+							<th>用户信息</th>
+							<th>卡号</th>
+							<th>开通时间</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+					{if $list}
+						{foreach $list as $item}
+							<tr>
+								<td>
+				                    <img src="{$item.avatar}" style="width:30px; height:30px;">
+									{$item.nickname}
+				                </td>
+								<td>
+									{$item.vipid}
+								</td>
+								<td>
+									{:date("Y-m-d H:i:s",$item.vipcreatetime)}
+								</td>
+							</tr>
+						{/foreach}
+					{/if}
+					</tbody>
+
+				</table>
+
+
+				<!-- 分页 -->
+				<div>
+					<div class="fenye_left">
+						一共查询到<font color="red" style="padding:0 10px;">{$counts}</font>条数据
+					</div>
+					<div class="fenye_right">
+						{$list->render()}
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{include file="public/foot_more" /}

@@ -1,0 +1,626 @@
+{extend name="base" /} {block name="body"}
+<style type="text/css">
+
+    .tpt_sels a {
+        padding-right: 15px;
+        position: relative
+    }
+    
+    .tpt_sels a {
+        padding: 0 20px 0 8px;
+        color: #3B6268;
+        background: #FFFFBA;
+        border: 1px #F8E06E solid;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        height: 26px;
+        line-height: 26px;
+        display: block;
+        float: left
+    }
+    
+    .tpt_sels a em {
+        width: 12px;
+        height: 12px;
+        font-style: normal;
+        display: block;
+        position: absolute;
+        top: 7px;
+        right: 4px;
+        z-index: 2;
+        background: url(__ADMIN__/images/sx.png) no-repeat 0 0;
+    }
+</style>
+
+<!--tab标签-->
+<div class="layui-tab layui-tab-brief"  lay-filter="type">
+    <ul class="layui-tab-title">
+        <li class="layui-this" lay-id="1">SEO配置</li>
+        <li lay-id="2">基本配置</li>
+        <li lay-id="3">显示配置</li>
+        <li lay-id="4">邮箱配置</li>
+        <li lay-id="5">积分规则</li>
+        <li lay-id="6">服务配置</li>
+        <li><a target="_self" href="{:url('admin/system/ota')}">OTA配置</a></li>
+    </ul>
+
+
+    <form class="layui-form form-container layui-tab-content" data-url="{:url('admin/system/updateSiteConfig')}" localtion-url="{:url('admin/system/siteConfig')}">
+
+        <div class="layui-tab-item layui-show">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站标题</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="site_config[site_title]" value="{$site_config.site_title|default=''}" required lay-verify="required" placeholder="请输入网站标题" autocomplete="off" class="layui-input">
+                </div>
+				    <div class="layui-input-inline">
+                        <label class="layui-form-label">网站ico</label>
+						 <input type="hidden" name="site_config[favicon]" value="{$site_config.favicon|default=''}" id="faviconval" />
+                         <img class="layui-upload-img" id="faviconpic" src="__ROOT__{$site_config.favicon|default='/public/images/favicon.ico'}" style="width: 32px;height:32px;margin-right:25px">
+					</div>
+					   <div class="layui-input-inline"> <button type="button" class="layui-btn layui-btn-primary uploadlogo" data-id="favicon">上传ICO图片</button>    </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站Logo</label>
+                <div class="layui-input-inline">
+                    <button type="button" class="layui-btn uploadlogo" data-id="cms">上传CMS Logo</button>
+                </div>
+                <div class="layui-input-inline">
+                    <button type="button" class="layui-btn uploadlogo" data-id="bbs">上传BBS Logo</button>
+                </div>
+                <div class="layui-input-inline">
+                    <button type="button" class="layui-btn uploadlogo" data-id="uc">上传用户中心 Logo</button>
+                </div>
+            </div>
+            <div class="layui-upload-list">
+                <label class="layui-form-label"></label>
+                <input type="hidden" name="site_config[cmslogo]" value="{$site_config.cmslogo|default=''}" id="cmsval" />
+                <input type="hidden" name="site_config[bbslogo]" value="{$site_config.bbslogo|default=''}" id="bbsval" />
+                <input type="hidden" name="site_config[uclogo]" value="{$site_config.uclogo|default=''}" id="ucval" />
+                <img class="layui-upload-img" id="cmspic" src="__ROOT__{$site_config.cmslogo|default=''}" style="width: 170px;height:70px;margin-right:25px">
+                <img class="layui-upload-img" id="bbspic" src="__ROOT__{$site_config.bbslogo|default=''}" style="width: 170px;height:70px;margin-right:25px">
+                <img class="layui-upload-img" id="ucpic" src="__ROOT__{$site_config.uclogo|default=''}" style="width: 170px;height:70px">
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SEO标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="site_config[seo_title]" value="{$site_config.seo_title|default=''}" placeholder="请输入SEO标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SEO关键字</label>
+                <div class="layui-input-block">
+                    <input type="text" name="site_config[seo_keyword]" value="{$site_config.seo_keyword|default=''}" placeholder="请输入SEO关键字" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SEO说明</label>
+                <div class="layui-input-block">
+                    <textarea name="site_config[seo_description]" placeholder="请输入SEO说明" class="layui-textarea">{$site_config.seo_description|default=''}</textarea>
+                </div>
+            </div>
+
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">版权信息</label>
+                <div class="layui-input-block">
+                    <input type="text" name="site_config[site_copyright]" value="{$site_config.site_copyright|default=''}" placeholder="请输入版权信息" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">ICP备案号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="site_config[site_icp]" value="{$site_config.site_icp|default=''}" placeholder="请输入版权信息" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">统计代码</label>
+                <div class="layui-input-block">
+                    <textarea name="site_config[site_tongji]" placeholder="请输入统计代码" class="layui-textarea">{$site_config.site_tongji|default=''}</textarea>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-tab-item">
+
+            <div class="layui-form-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">CMS/BBS</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="site_config[cb_open]" value="3" title="全开" {if condition="$site_config.cb_open eq 3" }checked{/if}>
+                        <input type="radio" name="site_config[cb_open]" value="1" title="只开CMS" {if condition="$site_config.cb_open eq 1" }checked{/if}>
+                        <input type="radio" name="site_config[cb_open]" value="2" title="只开BBS" {if condition="$site_config.cb_open eq 2" }checked{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开启DeBug</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="site_config[site_wjt]" value="1" title="开启" {if condition="$site_config.site_wjt eq 1" }checked{/if}>
+                        <input type="radio" name="site_config[site_wjt]" value="0" title="关闭" {if condition="$site_config.site_wjt eq 0" }checked{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">会员注册</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="site_config[user_reg]" value="1" title="开启" {if condition="$site_config.user_reg eq 1" }checked{/if}>
+                        <input type="radio" name="site_config[user_reg]" value="0" title="关闭" {if condition="$site_config.user_reg eq 0" }checked{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发文章审核</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="site_config[article_sh]" value="0" title="开启" {if condition="$site_config.article_sh eq 0" }checked{/if}>
+                        <input type="radio" name="site_config[article_sh]" value="1" title="关闭" {if condition="$site_config.article_sh eq 1" }checked{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发帖审核</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="site_config[forum_sh]" value="0" title="开启" {if condition="$site_config.forum_sh eq 0" }checked{/if}>
+                        <input type="radio" name="site_config[forum_sh]" value="1" title="关闭" {if condition="$site_config.forum_sh eq 1" }checked{/if}>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">留言审核</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="site_config[reply_sh]" value="0" title="无需审核" {if condition="@$site_config.reply_sh eq 0" }checked{/if}>
+                        <input type="radio" name="site_config[reply_sh]" value="1" title="全部需审核" {if condition="@$site_config.reply_sh eq 1" }checked{/if}>
+                        <input type="radio" name="site_config[reply_sh]" value="2" title="关键字触发" {if condition="@$site_config.reply_sh eq 2" }checked{/if}>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">留言审核关键字</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="site_config[reply_keywords]" value="{$site_config.reply_keywords|default='http,www,qq'}"  placeholder="安全路径" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="label-tint">需要</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">邮箱验证</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="site_config[email_sh]" value="0" title="开启" {if condition="$site_config.email_sh eq 0" }checked{/if}>
+                            <input type="radio" name="site_config[email_sh]" value="1" title="关闭" {if condition="$site_config.email_sh eq 1" }checked{/if}>
+                        </div>
+                    </div>
+                    <div class="label-tint">开启邮箱验证后，未激活邮箱的用户无法发帖和评论</div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">验证码场景</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="site_config[site_yzm]" value="{$site_config.site_yzm|default=''}" required lay-verify="required" placeholder="验证码场景" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="label-tint">1\注册2\登录3\忘记密码4\后台登录[填写数字时用半角括号隔开，否则无效。如1,2]</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">后台安全路径</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="site_config[safe_dir]" value="{$site_config.safe_dir|default=''}"  placeholder="安全路径" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="label-tint">设置安全路径后你的后台地址为  网址/admin/login/index/v/安全路径</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">后台安全码</label>
+                        <div class="layui-input-inline">
+                            <input type="radio" name="site_config[security_code]" value="1" title="开启" {if condition="@$site_config.security_code eq 1" }checked{/if}>              
+                            <input type="radio" name="site_config[security_code]" value="0" title="关闭" {if condition="@$site_config.security_code eq 0" }checked{/if}>
+                      </div>
+                    </div>
+                    <div class="label-tint">后台登录开启此功能后可混淆非法登陆者（显示验证码实则需要输入安全码）</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">缩略图宽度</label>
+                        <div class="layui-input-inline">
+                            <input type="number" name="site_config[thumb_width]" value="{$site_config.thumb_width|default='400'}" required lay-verify="required" placeholder="验证码场景" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="label-tint">单位：px;对于图片上传到本地有效</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">上传后缀</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="site_config[upext]" value="{$site_config.upext|default='jpg,png,bmp,rar,zip,ico'}" required lay-verify="required" placeholder="上传文件后缀" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="label-tint">jpg,png,bmp,rar,zip,ico</div>
+                </div>
+                <div class="layui-form-item">
+                    <div>
+                        <label class="layui-form-label">上传大小限制(单位:M)</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="site_config[upsize]" value="{$site_config.upsize|default='10'}" required lay-verify="required" placeholder="上传大小限制" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="layui-tab-item">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>CMS相关条数控制</legend>
+            </fieldset>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">首页最近更新</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_home_newlist]" value="{$site_config.c_home_newlist|default=20}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">首页文字栏目</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_home_text]" value="{$site_config.c_home_text|default=10}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">首页图片栏目</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_home_pic]" value="{$site_config.c_home_pic|default=10}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">列表页主体</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_list_main]" value="{$site_config.c_list_main|default=10}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">列表页排行榜</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_list_phb]" value="{$site_config.c_list_phb|default=10}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">列表页推荐</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_list_choice]" value="{$site_config.c_list_choice|default=10}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">详情页主体</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_view_main]" value="{$site_config.c_view_main|default=15}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">详情页排行榜</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[c_view_phb]" value="{$site_config.c_view_phb|default=10}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>BBS相关条数控制</legend>
+            </fieldset>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">首页置顶数</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_home_settop]" value="{$site_config.b_home_settop|default=5}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">首页主体</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_home_main]" value="{$site_config.b_home_main|default=15}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">首页回帖榜</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_home_phb]" value="{$site_config.b_home_phb|default=12}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">首页热议</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_home_hot]" value="{$site_config.b_home_hot|default=15}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">板块页主体</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_list_main]" value="{$site_config.b_list_main|default=15}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">板块页热议</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_list_hot]" value="{$site_config.b_list_hot|default=15}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">板块页发帖榜</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_list_phb]" value="{$site_config.b_list_phb|default=12}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width:90px">帖子页回帖数</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_view_reply]" value="{$site_config.b_view_reply|default=5}" autocomplete="off" class="layui-input">
+                </div>
+                <label class="layui-form-label" style="width:90px">帖子页热议</label>
+                <div class="layui-input-inline" style="width:50px">
+                    <input type="number" name="site_config[b_view_hot]" value="{$site_config.b_view_hot|default=15}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">SMTP 服务器</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="site_config[smtp_server]" value="{$site_config.smtp_server|default=''}" placeholder="SMTP 服务器" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SMTP服务器的端口号</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[smtp_port]" value="{$site_config.smtp_port|default=''}" placeholder="SMTP服务器的端口号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">SMTP服务器用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="site_config[smtp_user]" value="{$site_config.smtp_user|default=''}" placeholder="SMTP服务器用户名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">SMTP服务器密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="site_config[smtp_pass]" value="{$site_config.smtp_pass|default=''}" placeholder="SMTP服务器密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱激活邮件模板</label>
+                <div class="layui-input-block">
+
+                    <textarea id="jihuo" name="site_config[mail_tpl_active]" style="width:100%;height:100px">
+                      {$site_config.mail_tpl_active|default=''}</textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">找回密码邮件模板</label>
+                <div class="layui-input-block">
+
+                    <textarea id="givepwd" name="site_config[mail_tpl_resetpwd]" style="width:100%;height:100px">
+                      {$site_config.mail_tpl_resetpwd|default=''}</textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">站长邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="J_email" name="site_config[smtp_cs]" value="{$site_config.smtp_cs|default=''}" placeholder="邮件地址为空时，默认使用后台默认邮件测试地址" autocomplete="off" class="layui-input">
+                </div>
+                <input type="button" id="J_mail_test" value="发送测试邮件" class="layui-btn layui-btn">
+            </div>
+
+
+        </div>
+        <div class="layui-tab-item">
+            <div class="layui-form-item">
+                <label class="layui-form-label">积分名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="site_config[jifen_name]" value="{$site_config.jifen_name|default='积分'}" placeholder="请填写积分的别名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱验证</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_email]" value="{$site_config.jifen_email|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">注册</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_reg]" value="{$site_config.jifen_reg|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">登录</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_login]" value="{$site_config.jifen_login|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">发布帖子</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_add]" value="{$site_config.jifen_add|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">回复帖子</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_comment]" value="{$site_config.jifen_comment|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">发布文章</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="site_config[jifen_artadd]" value="{$site_config.jifen_artadd|default='0'}" placeholder="请填写整数" min="0" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-tab-item">
+            <div class="layui-form-item">
+                <label class="layui-form-label">淘客推广</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_taoke]" value="1" title="开启" {if condition="@$site_config.open_taoke eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_taoke]" value="0" title="关闭" {if condition="@$site_config.open_taoke eq 0" }checked{/if}>
+                </div>
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/taoke')}" class="layui-btn layui-btn" style="float:left">
+                    淘客配置
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">开启签到</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_sign]" value="1" title="开启" {if condition="$site_config.open_sign eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_sign]" value="0" title="关闭" {if condition="$site_config.open_sign eq 0" }checked{/if}>
+                </div>
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/signrule')}" class="layui-btn layui-btn" style="float:left">
+                    积分规则
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">QQ登录</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_qqlogin]" value="1" title="开启" {if condition="$site_config.open_qqlogin eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_qqlogin]" value="0" title="关闭" {if condition="$site_config.open_qqlogin eq 0" }checked{/if}>
+                </div>
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/qqlogin')}" class="layui-btn layui-btn" style="float:left">
+                    QQ登录配置
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">七牛存储</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_7niu]" value="1" title="开启" {if condition="@$site_config.open_7niu eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_7niu]" value="0" title="关闭" {if condition="@$site_config.open_7niu eq 0" }checked{/if}>
+                </div>
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/qiniu')}" class="layui-btn layui-btn" style="float:left">
+                    七牛配置
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">在线充值</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_pay]" value="1" title="开启" {if condition="@$site_config.open_pay eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_pay]" value="0" title="关闭" {if condition="@$site_config.open_pay eq 0" }checked{/if}>
+                </div>
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/pay')}" class="layui-btn layui-btn" style="float:left">
+                    支付配置
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">短信功能</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="site_config[open_sms]" value="1" title="开启" {if condition="@$site_config.open_sms eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[open_sms]" value="0" title="关闭" {if condition="@$site_config.open_sms eq 0" }checked{/if}>
+                </div>
+                <a href="{:url('admin/system/sms')}" class="layui-btn layui-btn" style="float:left">
+                    短信宝配置
+                </a>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图片水印</label>
+                <!-- <div class="layui-input-inline">
+                    <input type="radio" name="site_config[watermark]" value="1" title="开启" {if condition="@$site_config.watermark eq 1" }checked{/if}>
+                    <input type="radio" name="site_config[watermark]" value="0" title="关闭" {if condition="@$site_config.watermark eq 0" }checked{/if}>
+                </div> -->
+                <!--<input type="button"   value="积分规则" class="layui-btn layui-btn">-->
+                <a href="{:url('admin/system/watermark')}" class="layui-btn layui-btn" style="float:left">
+                    参数设置
+                </a>
+            </div>
+        </div>
+        <div class="btable-paged">
+            <div class="layui-main">
+                <div class="formbtngroup">
+                    <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="formadd">提交</button>
+                    <button onclick="history.go(-1);return false;" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+</div>
+{/block} {block name="script"}
+
+<script>
+    layui.use(['element', 'jquery', 'upload'], function() {
+        var ajax_mail_test = "{:url('system/ajax_mail_test')}";
+        var element = layui.element,
+            upload = layui.upload,
+            $ = layui.jquery; //导航的hover效果、二级菜单等功能，需要依赖element模块
+			
+			  var layid = location.hash.replace(/^#type=/, '');
+  element.tabChange('type', layid); //
+		
+  element.on('tab(type)', function(){
+    location.hash = 'type='+ this.getAttribute('lay-id');
+  });		
+        upload.render({
+            elem: '.uploadlogo',
+            url: '{:url("upload/upimage")}',
+			exts: 'jpg|png|gif|bmp|jpeg|ico',
+            done: function(res, index, upload) {
+
+                if (res.code == '0') {
+
+                    var item = this.item;
+                    // console.log('222222');
+                    // console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+                    // jq('input[name=pic]').val(res.path);
+                    var btnid = item.data('id');
+                    var rurl = "__ROOT__";
+                    $('#' + btnid + 'val').val(res.data.src);
+
+                    $('#' + btnid + 'pic').attr('src', rurl + res.data.src);
+
+                    return layer.msg('上传成功');
+                } else {
+
+                    return layer.msg(res.msg);
+                }
+            }
+        });
+        $('#tpt_input').keydown(function(e) {
+            if (e.which === 13) {
+                $("#tpt_btn").click();
+                e.preventDefault();
+                return false;
+            }
+        });
+        $('#J_mail_test').click(function() {
+            var email = $('#J_email').val();
+
+            if (email == '') {
+                layer.msg('邮箱为空', {
+                    icon: 2,
+                    time: 1000
+                }, function() {
+
+                });
+
+                //  return false;
+            }
+            $.post(ajax_mail_test, {
+                email: email
+            }, function(result) {
+
+                if (result.code == 1) {
+
+                    layer.msg(result.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+
+                    });
+                } else {
+                    layer.msg(result.msg, {
+                        icon: 2,
+                        time: 1000
+                    }, function() {
+
+                    });
+                }
+            });
+        });
+    });
+</script> {/block} {block name="js"}
+<script type="text/javascript" src="__ADMIN__/js/formadd.js"></script>
+<script type="text/javascript" src="__ADMIN__/js/jquery-1.9.1.min.js"></script>
+{/block}

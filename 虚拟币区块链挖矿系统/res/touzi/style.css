@@ -1,0 +1,405 @@
+﻿
+html{
+    /*iphone6的375尺寸作为16px基准，600px正好18px大小*/
+    font-size:calc(100% + 2 * (100vw - 375px) / 225);
+}
+@media screen and (min-width: 600px) {
+    /*600px-1000px每100像素宽字体增加1px(18px-22px)*/
+    html{ font-size: calc(112.5% + 4 * (100vw - 600px)/400)}
+}
+@media screen and (min-width: 1000px) {
+    /*1000px往后是每100像素0.5px增加*/
+    html{ font-size: calc(137.5% + 4 * (100vw - 600px)/1000)}
+}
+
+*{ margin: 0; padding: 0;}
+
+body{font-family: "微软雅黑"; }
+/* ============ start flex box  =========== */
+.dice-box li{ -webkit-flex: 1; flex: 1; }
+.dice-box li.current a{ background-color: #fff; color: #000 !important;}
+.dice-box li a{width: 75px;display: inline-block;  color: #fff; height: 50px;
+    text-decoration: none;}
+
+.i {
+    display: block;
+    width: 80%;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px 25px;
+    margin: 0 auto;
+}
+a,button,input,textarea{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+}
+
+/* 底部导航栏 */
+/*.dice-icon-1{
+    background:url(../images/person-center/footer/dice-icon-1.png) no-repeat;
+}
+
+.dice-icon-2{
+    background:url(../images/person-center/footer/dice-icon-2.png) no-repeat;
+}
+
+.myShare-icon-1{
+    background:url(../images/person-center/footer/myShare-icon-1.png) no-repeat;
+}
+
+.myShare-icon-2{
+    background:url(../images/person-center/footer/myShare-icon-2.png) no-repeat;
+}
+
+.personCenter-icon-1{
+    background:url(../images/person-center/footer/personCenter-icon-1.png) no-repeat;
+}
+
+.personCenter-icon-2{
+    background:url(../images/person-center/footer/personCenter-icon-2.png) no-repeat;
+}
+.hb-icon-1{
+    background: url(../images/person-center/footer/hongbao-icon-1.png) no-repeat;
+}
+.hb-icon-2{
+    background: url(../images/person-center/footer/hongbao-icon-2.png) no-repeat;
+}*/
+
+
+
+/* ============    个人中心    =============*/
+.puchase-record-icon{
+    background: url(/res/touzi/purchase-history.png) no-repeat;
+ }
+.chip-library-icon{
+    background: url(/res/touzi/chip-library.png) no-repeat;
+}
+.recharge-record-icon{
+    background: url(/res/touzi/purchase-history.png) no-repeat;
+}
+.conversion-record-icon{
+    background: url(/res/touzi/conversion-record.png) no-repeat;
+}
+.online-service-icon{
+    background: url(/res/touzi/online-service.png) no-repeat;
+}
+/* 用户头像 */
+.user-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+a{text-decoration: none;    color: #999;}
+/* 立即充值*/
+.btn-recharge{
+    text-decoration: none;
+    color: #fff;
+    background-color: #E11222;
+    border-radius: 5px;
+    font-size: 13px;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    border:0;
+    outline: none;
+}
+
+/* ==========　start 个人中心 style ========== */
+.person-center-box{
+    margin: 10px auto;
+    background: #fff;
+    padding: 20px;
+
+}
+.person-center-itemlist{ list-style: none; margin: 0; padding: 0;
+    background: #fff;
+    display: block;
+    font-family: "微软雅黑";
+
+}
+ul.person-center-itemlist li{
+    width: 100%; padding: 5px;
+}
+ul.person-center-itemlist li a{
+    text-decoration: none;
+    color: rgba(51, 51, 51, 0.58);
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+ul.person-center-itemlist li{
+    display: block;
+    font-size: 15px;
+    color: rgba(51, 51, 51, 0.58);
+    border-bottom: 1px solid #e8e8e8;
+    overflow: hidden;
+    word-wrap: normal;
+    white-space: nowrap;
+    _white-space: normal;
+    text-overflow: ellipsis;
+    background: url(/res/touzi/arrow_r.png) no-repeat 94.5% center;
+    background-size: auto 30%;
+    font-size: 12px;
+    padding: 6px 0;
+}
+ul.person-center-itemlist li span{color: #000;  font-size: 13px;}
+ul.person-center-itemlist img{
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+ul.person-center-itemlist li:last-child{ border-bottom: none;}
+/* ==========　end 个人中心 style ========== */
+
+
+
+/* ==========　start 底部数据加载 style ========== */
+.dropload-up,.dropload-down{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    font-size: 12px;
+    /* 开启硬件加速 */
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+}
+.dropload-down{
+    height: 50px;
+}
+.dropload-refresh,.dropload-update,.dropload-load,.dropload-noData{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.dropload-load .loading{
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    margin: 6px;
+    border: 2px solid #666;
+    border-bottom-color: transparent;
+    vertical-align: middle;
+    -webkit-animation: rotate 0.75s linear infinite;
+    animation: rotate 0.75s linear infinite;
+}
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========　end 底部数据加载 style ========== */
+
+
+
+/* ============  筹码选择 ============*/
+
+.radio-a-bigAndSmall{
+    border-radius: 8px;
+    /*border: 3px solid #742F0A;*/
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+}
+.radio-a-span{
+    font-weight: bold;
+}
+
+/* ===========  点数选择  ===========*/
+.wrap-count{
+    border-radius: 8px;
+    text-align: center;
+    width: 95%;
+    height: auto;
+    font-size: 22px;
+    margin: 0 auto 55px auto;
+    padding: 10px;
+}
+.yellow-border{
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF201;
+    border-radius: 6px;
+    /* border: 2px dotted #FFF201; */
+    width: 100%;
+    height: auto;
+}
+input[type='radio']:checked{-webkit-tap-highlight-color: rgba(0, 0, 0, 0); background-color: transparent;}
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    position: relative;
+    margin-right: -1.5rem;
+    z-index: 1000;
+    left: 3px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /*background: url(../images/count/number.png) no-repeat;*/
+
+
+}
+/* 护盾.num-4{  background-position: 0 0;  width: 40px; height:45px; }
+.num-5{  background-position: -85px 0;width: 40px; height:45px;  }
+.num-6{  background-position: -167px 0;width: 40px; height:45px;  }
+.num-7{  background-position: 0 -45px;width: 40px; height:45px;  }
+.num-8{  background-position: -85px -45px; width: 40px; height:45px;  }
+.num-9{   background-position: -166px -45px;width: 40px; height:45px;  }
+.num-10{  background-position: 0 -90px;width: 40px; height:45px;  }
+.num-11{  background-position: -84px -90px;width: 40px; height:45px;  }
+.num-12{  background-position: -168px -90px;width: 40px; height:45px;  }
+.num-13{  background-position: 0 -137px;width: 40px; height:45px;  }
+.num-14{  background-position: -83px -137px;width: 40px; height:45px;  }
+.num-15{  background-position: -167px -137px;width: 40px; height:45px;  }
+.num-16{  background-position: 0 -183px; width: 40px; height:45px;  }
+.num-17{  background-position: -85px -183px;width: 40px; height:45px;   }
+
+input:checked{ transition: background-position 0.2s ease-in-out; }
+.num-4:checked {  background-position: -42px 0; }
+.num-5:checked {  background-position: -126px 0;  }
+.num-6:checked {  background-position: -210px 0;  }
+.num-7:checked {  background-position: -42px -45px; }
+.num-8:checked {  background-position: -126px -45px;  }
+.num-9:checked {  background-position: -210px -45px;  }
+.num-10:checked {  background-position:-42px -92px;  }
+.num-11:checked {  background-position: -126px -92px; }
+.num-12:checked {  background-position: -210px -92px;  }
+.num-13:checked {  background-position: -42px -138px;  }
+.num-14:checked {  background-position: -126px -138px;  }
+.num-15:checked {  background-position: -210px -138px; }
+.num-16:checked {  background-position: -43px -185px; }
+.num-17:checked {  background-position: -126px -185px;  }*/
+
+
+/* 钻石
+.num-4{  background-position: 0 0;  width: 45px; height:40px; }
+.num-5{  background-position: -92px 0;width: 45px; height:40px;  }
+.num-6{  background-position: -184px 0;width: 45px; height:40px;  }
+.num-7{  background-position: 0 -43px;width: 45px; height:40px;  }
+.num-8{  background-position: -91px -43px; width: 45px; height:40px;  }
+.num-9{   background-position: -183px -43px;width: 45px; height:40px;  }
+.num-10{  background-position: 0 -86px;width: 45px; height:40px;  }
+.num-11{  background-position: -91px -86px;width: 45px; height:40px;  }
+.num-12{  background-position: -183px -86px;width: 45px; height:40px;  }
+.num-13{  background-position: 0 -129px;width: 45px; height:40px;  }
+.num-14{  background-position: -91px -129px;width: 45px; height:40px;  }
+.num-15{  background-position: -183px -129px;width: 45px; height:40px;  }
+.num-16{  background-position: 0 -172px; width: 45px; height:40px;  }
+.num-17{  background-position: -91px -172px;width: 45px; height:40px;   }
+
+input:checked{ transition: background-position 0.2s ease-in-out; }
+.num-4:checked {  background-position: -45px 0; }
+.num-5:checked {  background-position: -137px 0;  }
+.num-6:checked {  background-position: -229px 0;  }
+.num-7:checked {  background-position: -45px -43px; }
+.num-8:checked {  background-position: -137px -43px;  }
+.num-9:checked {  background-position: -229px -43px;  }
+.num-10:checked {  background-position:-45px -86px;  }
+.num-11:checked {  background-position: -137px -86px; }
+.num-12:checked {  background-position: -229px -86px;  }
+.num-13:checked {  background-position: -45px -129px;  }
+.num-14:checked {  background-position: -137px -129px;  }
+.num-15:checked {  background-position: -229px -129px; }
+.num-16:checked {  background-position: -45px -172px; }
+.num-17:checked {  background-position: -137px -172px;  }*/
+
+/* 星 */
+.num-4{  background-position: 0 0;  width: 45px; height:45px; }
+.num-5{  background-position: -90px 0;width: 45px; height:45px;  }
+.num-6{  background-position: -180px 0;width: 45px; height:45px;  }
+.num-7{  background-position: -270px 0;width: 45px; height:45px;  }
+.num-8{  background-position: 0 -45px; width: 45px; height:45px;  }
+.num-9{   background-position: -90px -45px;width: 45px; height:45px;  }
+.num-10{  background-position: -180px -45px;width: 45px; height:45px;  }
+.num-11{  background-position: -270px -45px;width: 45px; height:45px;  }
+.num-12{  background-position: 0 -90px;width: 45px; height:45px;  }
+.num-13{  background-position: -90px -90px;width: 45px; height:45px;  }
+.num-14{  background-position: -180px -90px;width: 45px; height:45px;  }
+.num-15{  background-position: -270px -90px;width: 45px; height:45px;  }
+.num-16{  background-position: 0 -135px; width: 45px; height:45px;  }
+.num-17{  background-position: -90px -135px;width: 45px; height:45px;   }
+
+input:checked{ transition: background-position 0.2s ease-in-out; }
+.num-4:checked {  background-position: -45px 0; }
+.num-5:checked {  background-position: -137px 0;  }
+.num-6:checked {  background-position: -225px 0;  }
+.num-7:checked {  background-position: -315px 0; }
+.num-8:checked {  background-position: -45px -45px;  }
+.num-9:checked {  background-position: -135px -45px;  }
+.num-10:checked {  background-position:-225px -45px;  }
+.num-11:checked {  background-position: -315px -45px; }
+.num-12:checked {  background-position: -45px -91px;  }
+.num-13:checked {  background-position: -135px -90px;  }
+.num-14:checked {  background-position: -225px -90px;  }
+.num-15:checked {  background-position: -315px -90px; }
+.num-16:checked {  background-position: -45px -135px; }
+.num-17:checked {  background-position: -135px -135px;  }
+
+
+/*骰子切换*/
+.wrap{width:90px; height:90px; margin: 60px auto 40px auto; }
+.dice{width:90px; height:90px; background:url(/res/touzi/dice.png) no-repeat; cursor:pointer;  display: inline-block;position:relative; border-radius: 25px;}
+
+.dice_1{background-position:-5px -4px}
+.dice_2{background-position:-5px -107px}
+.dice_3{background-position:-5px -212px}
+.dice_4{background-position:-5px -317px}
+.dice_5{background-position:-5px -427px}
+.dice_6{background-position:-5px -535px}
+.dice_t{background-position:-5px -651px}
+.dice_s{background-position:-5px -763px}
+.dice_e{background-position:-5px -876px}
+
+
+/*游戏规则弹窗 关闭类*/
+.close-icon{
+    display: block;
+    background: url(/res/touzi/close-icon.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+

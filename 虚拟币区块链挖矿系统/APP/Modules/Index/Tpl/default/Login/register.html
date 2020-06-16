@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>注册</title>
+	<link href="/Public/kj/css/layer.css" type="text/css" rel="stylesheet">
+	<link href="/Public/kj/css/register.css" rel="stylesheet" type="text/css">
+	<script src="/Public/kj/js/jquery.min.js"></script>
+	<script src="/Public/kj/js/rem.js"></script>
+	<script src="/Public/kj/js/safari.js"></script>
+	<script src="/Public/kj/js/layer.js"></script>
+	<script src="/Public/kj/js/login/Register.js"></script>
+</head>
+<body>
+<!--登录头部-->
+<div class="loginbg">
+    <div class="title"><span><img src="/Public/kj/img/icon1.png"></span></div>
+</div>
+<!--edn-->
+<!--登录框-->
+<div class="loginbord">
+    <div class="loginbox Registerbox">
+        <form class="formpot" method="post"  action="" id="myform" >
+            <div class="login-inpt Register-inpt">
+                <ul>
+                    <li class="phone">
+                        <label>推荐人</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="username" id="username" placeholder="请输入推荐人账号">
+                        </div>
+                    </li>
+                    <li class="phone">
+                        <label>手机号</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="mobile" id="mobile" placeholder="请输入手机号码">
+                        </div>
+                    </li>
+                    <li class="GraphicVerificationCode">
+                        <label>图形验证码</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="verify" id="verify" placeholder="图形验证码">
+                            <i><img src="{:U('Sem/verify')}" onClick="this.src='{:U('Sem/verify','','')}?'+Math.random();" width="100%" height="100%"></i>
+                        </div>
+                    </li>
+                    <li class="Vercode">
+                        <label>验证码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="code" id="code" placeholder="输入验证码">
+                            <input type="button" class="getcode" id="getcode" value="获取验证码" onclick="send_sms_reg_code()">
+                        </div>
+                    </li>
+                    <li class="AlipayAccount">
+                        <label>支付宝账号</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="zhifubao" id="zhifubao" placeholder="请输入账户信息">
+                        </div>
+                    </li>
+                    <li class="wechat">
+                        <label>微信号</label>
+                        <div class="inpt-lit">
+                            <input type="text" name="weixin" id="weixin" placeholder="请输入微信号">
+                        </div>
+                    </li>
+                    <li class="password">
+                        <label>登录密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password" id="password" placeholder="请输入登录密码">
+                        </div>
+                    </li>
+                    <li class="password">
+                        <label>确认密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password1" id="password1" placeholder="请再次输入登录密码">
+                        </div>
+                    </li>
+                    <li class="password">
+                        <label>交易密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password2" id="password2" placeholder="请输入交易密码">
+                        </div>
+                    </li>
+                    <li class="password">
+                        <label>确认密码</label>
+                        <div class="inpt-lit">
+                            <input type="password" name="password21" id="password21" placeholder="请再次输入交易密码">
+                        </div>
+                    </li>
+                </ul>
+                <input type="hidden" name="parent" id="parent" value="{$uid}"/>
+            </div>
+        </form>
+        <div class="loginbtn">
+            <button id="registerbtn">注册</button>
+        </div>
+    </div>
+    <div class="login-btom Register-btom">
+        <p>已有账号？<a href='{:U("Index/Login/index")}' class="linkregister">立即登录</a></p>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".loginbtn").click(function(){
+		
+			$.ajax({
+				url:'{:U("Index/login/registerpost")}',
+				type:'POST',
+				data:$("#myform").serialize(),
+				dataType:'json',
+				success:function(json){
+						alert(json.info);
+						if(json.result ==1){
+							window.location.href='{:U("Index/Login/index")}';	
+						}
+					
+					
+				},
+				error:function(){
+						alert("网络故障");	
+				}
+					
+				
+				
+			})	
+		
+	})
+
+
+</script>
+<!--edn-->
+</body>
+</html>

@@ -1,0 +1,36 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<body>
+<!--顶部开始-->
+<header class="header">
+    <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+    <span class="header_c">兑换</span>
+		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+</header>
+<div class="height40"></div>
+<!--顶部结束-->
+<div style="width:100%;">
+	<h1 class="goods_title" style="text-align:center;font-size:1.2em;font-weight: bold;width:100%;padding:10px 0px">{$product.title}</h1>
+	<div class="tao hu_title"style="height:190px;width:100%;margin-top:10px">
+	<span>商品详情：</span>
+	<p style="width:90%;margin-left:5%">{$product.content} </p>
+
+	</div>
+
+	<div style="padding:10px 0;margin:10px 0;text-align: center；width:100%">
+		
+	</div>
+	<div class="goods_gm"style="width: 90%;margin-left: 5%;border-radius: 5px">
+		<a id="buy" href="{:U('Shop/buy',array('id'=>$product['id']))}" class="weui_btn weui_btn_warn weui_btn_disabled" style="background-color:#ff7387">立即兑换</a>
+	</div>
+</div>
+<script src="/Public/web/js/jquery-weui.min.js"></script>
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+</body>
+</html>
+
+
+
+
+
+

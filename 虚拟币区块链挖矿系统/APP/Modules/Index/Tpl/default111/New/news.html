@@ -1,0 +1,44 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+<body>
+<!--顶部开始-->
+<!--顶部开始-->
+<div class="header">
+    <span class="header_l"><a href="javascript:history.go(-1);"><i class="fa fa-chevron-left"></i></a></span>
+    <span class="header_c">网站公告</span>
+
+		<!--<span style="position: absolute;right: 10%;top: 0px;text-align:center;width:20%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 12px; ">{$memberinfo['username']} </span>
+		<span class="header_r"><a href="{:U(GROUP_NAME .'/personal_set/myInfo')}"><i class="fa fa-user"></i></a></span>-->
+</div>
+<div class="height40"></div>
+<!--顶部结束-->
+<!--顶部结束-->
+<div class="container">
+
+    <div class="accordion">
+        <dl>
+		
+		
+		   <volist name="list" id="vo">
+		<dt>
+                <a href="{:U('Index/New/newsdetails',array('news_id'=>$vo['id']))}" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger" style="color:#3660f0;">
+                
+                {$vo.title}
+                <span style="font-size:14px; float:right;">{$vo.addtime|date="Y-m-d",###}</span>
+                </a>
+            	
+            
+            </dt>
+          
+			</volist>
+			
+			
+			
+    </div>
+
+</div>
+ <div id="pages">{$page}</div>
+
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+</body>
+</html>
+

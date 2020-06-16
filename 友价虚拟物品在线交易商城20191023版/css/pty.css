@@ -1,0 +1,32 @@
+body{margin:0;font-size:12px;color:#383838;font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;}
+ul{margin:0;list-style-type:none;}
+form{margin:0;}
+p{margin:2pt 0 0 0;}
+*{margin:0 auto;padding:0;}
+a{color:#383838;text-decoration:none;}
+a:hover{color:#0073EA;text-decoration:none;}
+
+.productlx{float:left;background-color:#F5F9FF;border:#D5E4FA solid 1px;width:865px;text-align:left;margin:20px 0 0 0;padding:10px 0 10px 20px;clear:both;}
+.productlx .kjxz{float:left;width:865px;}
+.productlx .kjxz li{float:left;}
+.productlx .kjxz .l1{width:70px;font-size:14px;padding:6px 0 0 0;}
+.productlx .kjxz .l2{width:795px;}
+.productlx .kjxz .l2 select{float:left;font-size:14px;height:30px;}
+.productlx .ptype{float:left;width:156px;height:284px;background-color:#FFFFFF;border:#D5E4FA solid 1px;padding:5px 0 0 3px;OVERFLOW-Y: auto; OVERFLOW-X:hidden;margin:10px 10px 0 0;}
+.productlx .ptype a{float:left;width:137px;height:20px;clear:both;border:#fff solid 1px;background-color:#fff;padding:4px 0 0 14px;}
+.productlx .ptype a:hover{text-decoration:none;}
+.productlx .ptype .a1{color:#3366CC;font-weight:700;}
+.productlx .ptype .a2{color:#404040;background:url(../img/jianright.gif) no-repeat;background-position:135px 7px;}
+.productlx .ptype .a2:hover{border:#82BCE0 dotted 1px;background-color:#DFF1FB;background-image:none;color:#ff6600;}
+.productlx .sel{float:left;margin:10px 0 0 0;background-color:#FFFAF2;border:#FEDBAB solid 1px;padding:9px 0 0 10px;height:25px;width:833px;font-weight:700;}
+.productlx .sel span{color:#ff6600;}
+.productlx .fb{text-align:center;float:left;width:845px;margin:10px 0 0 0;}
+.productlx .fb input{border:0;background:url(../img/profb.gif) left top no-repeat;width:269px;height:30px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;}
+.productlx .gz{text-align:center;float:left;width:845px;margin:10px 0 0 0;}
+
+.ptype2{float:left;width:148px;height:276px;background-color:#FFFFFF;padding:0 0 10px 3px;OVERFLOW-Y: auto; OVERFLOW-X:hidden;margin:0 10px 0 0;}
+.ptype2 a{float:left;width:132px;height:20px;clear:both;border:#fff solid 1px;background-color:#fff;padding:4px 0 0 14px;}
+.ptype2 a:hover{text-decoration:none;}
+.ptype2 .a1{color:#3366CC;font-weight:700;}
+.ptype2 .a2{color:#404040;background:url(../img/jianright.gif) no-repeat;background-position:135px 5px;}
+.ptype2 .a2:hover{border:#82BCE0 dotted 1px;background-color:#DFF1FB;background-image:none;color:#ff6600;}

@@ -1,0 +1,245 @@
+.list_true {
+    padding: 0px 0px 0px 0px;
+    background: #FFF;
+    /* box-shadow: 0 1px 3px #cecece; */
+    position: relative;
+    margin-top: 20px;
+}
+
+.list_title {
+    line-height: 25px;
+    height: 35px;
+    border-bottom: 1px solid #efefef;
+    font-size: 17px;
+    color: #5F5F5F;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.list_left {
+    padding: 0px;
+    border: 5px solid #f6f6f6;
+    margin-top: -5px;
+}
+
+.list_right {
+    padding: 1px;
+    /* border: 1px solid #f6f6f6; */
+}
+
+.list_ph_ul {
+    padding-top: 10px;
+    padding: 0px 17px;
+}
+
+.list_ph_ul li a {
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.list_ph_ul li a i {
+    font-style: normal;
+    display: inline-block;
+    background: #CACACA;
+    color: #FFF;
+    width: 9%;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.list_ph_ul li a p {
+    width: 87%;
+    float: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.list_ph_ul li a p:hover {
+    color: #FF4700;
+}
+
+.list_ph_ul li:nth-child(1) a i {
+    background: #ff5555;
+}
+
+.list_ph_ul li:nth-child(2) a i {
+    background: #ff9900;
+}
+
+.list_ph_ul li:nth-child(3) a i {
+    background: #ffcc00;
+}
+
+.cz-title {
+    position: relative;
+    height: 45px;
+    line-height: 35px;
+    text-indent: 30px;
+    font-size: 17px;
+    border-bottom: 1px solid #F6F6F6;
+    margin-top: 13px;
+}
+
+.cz-title:after {
+    content: " ";
+    position: absolute;
+    height: 20px;
+    width: 0;
+    border: 1.5px solid #5298ff;
+    left: 0;
+    top: 8px;
+    margin-left: 18px; 
+}
+
+
+.list_ul li {
+    padding: 0;
+    justify-content: center;
+    align-items: Center;
+    padding: 0px 23px;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #E0E0E0;
+}
+
+.list_ul li:last-child {
+    border: 0
+}
+
+.list_ul li:hover {
+    background: #F7F7F7;
+}
+
+.list_ul li:hover .lists_right_title {
+    color: #333;
+}
+
+.lists_left {
+    padding: 0;
+}
+
+.lists_left img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #f5f5f5;
+    height: 150px;
+    border-radius: 9px;
+}
+
+.lists_right_title {
+    display: block;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.lists_right {
+    padding-left: 40px;
+}
+
+.lists_right span {
+    color: #999;
+    margin-bottom: 10px;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lists_right span img {
+    margin-top: -4px;
+}
+
+.lists_right p {
+    color: #666;
+    line-height: 32px;
+    max-height: 64px;
+    padding: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .list_true {
+        margin: 0 3px;
+    }
+    .lists_left img {
+        height: 80px;
+    }
+}
+
+#fanyetools {
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background: #44C2F1;
+}
+
+.serch_btn2 {
+    border: 1px solid #008bff;
+    background: #008bff;
+    color: #FFF;
+    height: 43px;
+    font-size: 24px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.serch_text2 {
+    border: 1px solid #008bff;
+    height: 43px;
+    padding: 7px 15px;
+    color: #5d5d5d;
+    line-height: 43px;
+    border-radius: 0px;
+}
+
+.list_ph_ul li a img {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 991px) {
+    .serch2 {
+        height: 43px;
+        float: none;
+        padding: 0px 7px;
+        margin: 9px 0px 10px 0px;
+        margin-top: 60px;
+    }
+}
+
+@media only screen and (max-width: 900px){
+.web-nav {
+    position: fixed;
+    top: 0px;
+}
+}
+
+@media screen and (max-width: 991px)
+{
+.serch2 {
+    height: 43px;
+    float: none;
+    padding: 0px 7px;
+    margin: 9px 0px 10px 0px;
+}
+}

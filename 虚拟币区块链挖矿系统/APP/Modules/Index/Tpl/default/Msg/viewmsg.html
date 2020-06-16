@@ -1,0 +1,77 @@
+<include file="./APP/Modules/Index/Tpl/default/Public/header.html" />
+
+
+
+<div class="inner-block">
+    <div class="inbox">
+    		 
+    	 	<div class="col-md-8 compose-right">
+					<div class="inbox-details-default">
+						<div class="inbox-details-heading">
+					查看留言
+						</div>
+						<div class="inbox-details-body">
+						
+						
+
+	            
+
+
+<br />
+<table width="80%" border="0" cellspacing="0" cellpadding="0" class="CommonTb">
+  <tr>
+    <td align="right" style="width:100px;">留言状态：</td>
+    <td><font id="ctl00_ContentPlaceHolder1_lblKey1"><font color=blue>{$msg.status}</font></font></td>
+  </tr>
+  <tr>
+    <td align="right" style="width:100px;">留言时间：</td>
+    <td><font>{$msg.sendtime|date='Y-m-d H:i:s',###}</font></td>
+  </tr>
+  <tr>
+    <td align="right">留言标题：</td>
+    <td><font>{$msg.subject}</font></td>
+  </tr>
+  <tr>
+    <td align="right">留言内容：</td>
+    <td><font>{$msg.content}</font></td>
+  </tr>
+  <tr>
+    <td align="right">回复时间：</td>
+    <td><font>
+    	<if condition="$msg.writetime == 0"><else/>{$msg.writetime|date='Y-m-d H:i:s',###}</if></font></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">回复内容：</td>
+    <td valign="top"><font>
+    	<if condition="$msg.reply == ''"><else/>{$msg.reply}</if></font></td>
+  </tr>
+</table>
+<div style="text-align:center; margin-top:30px;">
+<input id="btnback" class="buttom" onclick="javascript:window.history.go(-1)" type="button"value="返 回" />
+</div>
+<br />
+
+
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		   	</div>
+					</div>
+				</div>
+    	
+          <div class="clearfix"> </div>     
+   </div>
+</div>
+		
+		
+<include file="./APP/Modules/Index/Tpl/default/Public/footer.html" />
+
+

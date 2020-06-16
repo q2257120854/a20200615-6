@@ -1,0 +1,37 @@
+<?php
+    namespace Admin\Model;
+    use Think\Model;
+    class AttrModel extends Model{
+
+    	//查询所有的属性列表
+        public function selectAttr($map= '1' ,$limit = ''){
+        	$attr = D('ClassAttrView');
+        	return $attr ->where($map) -> limit($limit) -> order("cid asc,attrsort asc") -> select();
+        }
+
+        //查询属性列表总数
+        public function attrCount($map= '1'){
+        	$attr = M('attribute');
+        	return $attr -> where($map) -> count();
+        }
+
+        //查询所有属性列表包含属性值
+        public function allAttr($map= '1' ,$limit = ''){
+        	$attr = $this -> selectAttr($map,$limit);
+        	foreach ($attr as $key => $value) {
+        		$data = $this -> findAttrValue($value['attrid']);
+        		$attrvalue = '';
+        		foreach ($data as $k => $v) {
+	        		$attrvalue[$k] = $v['attrvalue'];
+	        	}
+	        	$attr[$key]['attrvalue'] =  implode(',', $attrvalue);
+        	}
+        	return $attr;
+        }
+
+        //查询指定属性的属性值
+        public function findAttrValue($attrid){
+        	$attr = M('goodstoattr');
+        	return $attr -> where("attrid = $attrid") -> select();
+        }
+    }
